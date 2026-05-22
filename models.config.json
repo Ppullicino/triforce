@@ -1,0 +1,5 @@
+{
+  "architect": { "provider": "anthropic", "model": "claude-sonnet-4-6" },
+  "developer": { "provider": "google",    "model": "gemini-2.5-flash" },
+  "reviewer":  { "provider": "google",    "model": "gemini-2.5-flash" }
+}
