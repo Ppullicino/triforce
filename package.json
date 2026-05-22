@@ -5,12 +5,14 @@
   "main": "orchestrator.js",
   "type": "module",
   "scripts": {
-    "start": "node orchestrator.js"
+    "start": "node server.js",
+    "cli": "node orchestrator.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@google/genai": "^2.6.0",
     "dotenv": "^16.0.0",
+    "express": "^5.2.1",
     "openai": "^6.39.0"
   }
 }

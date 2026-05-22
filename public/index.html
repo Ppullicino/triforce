@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triforce</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #58a6ff;
+      text-transform: uppercase;
+    }
+
+    .logo span { color: #8b949e; font-weight: 400; }
+
+    .status-pill {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #8b949e;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .status-pill.active  { background: #1f3a5f; border-color: #58a6ff; color: #58a6ff; }
+    .status-pill.done    { background: #1a3a2a; border-color: #3fb950; color: #3fb950; }
+    .status-pill.error   { background: #3a1a1a; border-color: #f85149; color: #f85149; }
+
+    /* ── Task bar ── */
+    .task-bar {
+      display: flex;
+      gap: 10px;
+      padding: 14px 24px;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      flex-shrink: 0;
+      align-items: flex-start;
+    }
+
+    .task-bar textarea {
+      flex: 1;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #e6edf3;
+      padding: 9px 12px;
+      font-size: 0.875rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 42px;
+      max-height: 120px;
+      line-height: 1.5;
+      transition: border-color 0.15s;
+    }
+
+    .task-bar textarea:focus { outline: none; border-color: #58a6ff; }
+
+    .go-btn {
+      background: #238636;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 22px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .go-btn:hover:not(:disabled) { background: #2ea043; }
+    .go-btn:disabled { background: #21262d; color: #484f58; cursor: not-allowed; }
+
+    /* ── Panels ── */
+    .panels {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      gap: 14px;
+      padding: 16px 24px;
+      min-height: 0;
+    }
+
+    .panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      min-width: 0;
+    }
+
+    .panel.active {
+      border-color: #58a6ff;
+      box-shadow: 0 0 0 1px #58a6ff22;
+    }
+
+    .panel-header {
+      padding: 12px 14px;
+      background: #21262d;
+      border-bottom: 1px solid #30363d;
+      flex-shrink: 0;
+    }
+
+    .panel-role {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #8b949e;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .panel-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .panel-controls select {
+      flex: 1;
+      min-width: 0;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      color: #e6edf3;
+      padding: 5px 8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+
+    .panel-controls select:focus { outline: none; border-color: #58a6ff; }
+
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-output {
+      flex: 1;
+      padding: 14px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 0.775rem;
+      line-height: 1.65;
+      color: #c9d1d9;
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 160px;
+    }
+
+    .panel-output.idle { color: #484f58; font-style: italic; font-family: inherit; font-size: 0.8rem; }
+
+    .sandbox-divider {
+      margin: 10px 14px 0;
+      border: none;
+      border-top: 1px solid #30363d;
+      flex-shrink: 0;
+    }
+
+    .sandbox-output {
+      padding: 10px 14px 14px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+      flex-shrink: 0;
+    }
+
+    .sandbox-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8b949e;
+      margin-bottom: 6px;
+    }
+
+    .sandbox-pass { color: #3fb950; }
+    .sandbox-fail { color: #f85149; }
+
+    .panel-error {
+      padding: 12px 14px;
+      color: #f85149;
+      font-size: 0.8rem;
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      white-space: pre-wrap;
+    }
+
+    /* ── Cost bar ── */
+    .cost-bar {
+      display: none;
+      padding: 10px 24px;
+      background: #161b22;
+      border-top: 1px solid #30363d;
+      font-size: 0.775rem;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    .cost-bar.visible { display: flex; }
+
+    .cost-item { color: #8b949e; }
+    .cost-item b { color: #c9d1d9; font-weight: 500; }
+    .cost-total { color: #3fb950; font-weight: 600; margin-left: auto; }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .panels {
+        flex-direction: column;
+        padding: 12px;
+        gap: 12px;
+      }
+      .task-bar { padding: 12px; }
+      header { padding: 12px; }
+      .cost-bar { padding: 10px 12px; gap: 12px; }
+      .cost-total { margin-left: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">◈ Triforce <span>/ multi-agent pipeline</span></div>
+  <div class="status-pill" id="status-pill">Idle</div>
+</header>
+
+<div class="task-bar">
+  <textarea id="task-input" rows="1" placeholder="Describe the coding task…">Create a JavaScript function that takes an array of numbers, removes duplicates, sorts them in ascending order, and returns the result. Include a test that proves it works.</textarea>
+  <button class="go-btn" id="go-btn">Go</button>
+</div>
+
+<div class="panels">
+  <div class="panel" id="panel-architect">
+    <div class="panel-header">
+      <div class="panel-role">Architect</div>
+      <div class="panel-controls">
+        <select id="provider-architect" aria-label="Architect provider"></select>
+        <select id="model-architect"    aria-label="Architect model"></select>
+      </div>
+    </div>
+    <div class="panel-body" id="body-architect">
+      <div class="panel-output idle" id="output-architect">Waiting…</div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-developer">
+    <div class="panel-header">
+      <div class="panel-role">Developer</div>
+      <div class="panel-controls">
+        <select id="provider-developer" aria-label="Developer provider"></select>
+        <select id="model-developer"    aria-label="Developer model"></select>
+      </div>
+    </div>
+    <div class="panel-body" id="body-developer">
+      <div class="panel-output idle" id="output-developer">Waiting…</div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-reviewer">
+    <div class="panel-header">
+      <div class="panel-role">Reviewer</div>
+      <div class="panel-controls">
+        <select id="provider-reviewer" aria-label="Reviewer provider"></select>
+        <select id="model-reviewer"    aria-label="Reviewer model"></select>
+      </div>
+    </div>
+    <div class="panel-body" id="body-reviewer">
+      <div class="panel-output idle" id="output-reviewer">Waiting…</div>
+    </div>
+  </div>
+</div>
+
+<div class="cost-bar" id="cost-bar"></div>
+
+<script>
+  const PROVIDERS = {
+    anthropic: ['claude-sonnet-4-6', 'claude-opus-4-7', 'claude-haiku-4-5'],
+    google:    ['gemini-2.5-flash', 'gemini-2.5-pro'],
+    openai:    ['gpt-4o', 'gpt-4o-mini', 'gpt-4.1', 'gpt-4.1-mini'],
+  };
+
+  const ROLES = ['architect', 'developer', 'reviewer'];
+
+  // ── Dropdown setup ──────────────────────────────────────────
+
+  function buildProviderSelect(sel) {
+    sel.innerHTML = Object.keys(PROVIDERS)
+      .map(p => `<option value="${p}">${p}</option>`)
+      .join('');
+  }
+
+  function buildModelSelect(providerSel, modelSel) {
+    const models = PROVIDERS[providerSel.value] ?? [];
+    modelSel.innerHTML = models.map(m => `<option value="${m}">${m}</option>`).join('');
+  }
+
+  function initDropdowns() {
+    for (const role of ROLES) {
+      const pSel = document.getElementById(`provider-${role}`);
+      const mSel = document.getElementById(`model-${role}`);
+      buildProviderSelect(pSel);
+      buildModelSelect(pSel, mSel);
+      pSel.addEventListener('change', () => buildModelSelect(pSel, mSel));
+    }
+  }
+
+  async function loadDefaults() {
+    try {
+      const config = await fetch('/api/config').then(r => r.json());
+      for (const role of ROLES) {
+        const { provider, model } = config[role] ?? {};
+        if (!provider) continue;
+        const pSel = document.getElementById(`provider-${role}`);
+        const mSel = document.getElementById(`model-${role}`);
+        pSel.value = provider;
+        buildModelSelect(pSel, mSel);
+        mSel.value = model;
+      }
+    } catch (e) {
+      console.warn('Could not load config defaults:', e);
+    }
+  }
+
+  // ── UI helpers ───────────────────────────────────────────────
+
+  function setStatus(text, state = '') {
+    const pill = document.getElementById('status-pill');
+    pill.textContent = text;
+    pill.className = 'status-pill' + (state ? ` ${state}` : '');
+  }
+
+  function setGoBtn(enabled) {
+    const btn = document.getElementById('go-btn');
+    btn.disabled = !enabled;
+    btn.textContent = enabled ? 'Go' : 'Running…';
+  }
+
+  function setActivePanel(stage) {
+    for (const role of ROLES) {
+      document.getElementById(`panel-${role}`).classList.toggle('active', role === stage);
+    }
+  }
+
+  function clearActivePanels() {
+    for (const role of ROLES) {
+      document.getElementById(`panel-${role}`).classList.remove('active');
+    }
+  }
+
+  function resetPanels() {
+    for (const role of ROLES) {
+      const out = document.getElementById(`output-${role}`);
+      out.textContent = 'Waiting…';
+      out.className = 'panel-output idle';
+
+      // Remove sandbox nodes if present
+      const body = document.getElementById(`body-${role}`);
+      body.querySelectorAll('.sandbox-divider, .sandbox-output, .panel-error')
+          .forEach(el => el.remove());
+    }
+    const costBar = document.getElementById('cost-bar');
+    costBar.className = 'cost-bar';
+    costBar.innerHTML = '';
+  }
+
+  // ── Event handlers ───────────────────────────────────────────
+
+  function handleEvent(event) {
+    switch (event.type) {
+      case 'status':
+        setStatus(event.label, 'active');
+        // Sandbox stage: keep developer panel highlighted (it's running dev's code)
+        setActivePanel(event.stage === 'sandbox' ? 'developer' : event.stage);
+        break;
+
+      case 'output': {
+        const out = document.getElementById(`output-${event.role}`);
+        out.className = 'panel-output';
+        out.textContent = event.text;
+        out.scrollTop = out.scrollHeight;
+        break;
+      }
+
+      case 'sandbox': {
+        const body = document.getElementById('body-developer');
+        const hr = document.createElement('hr');
+        hr.className = 'sandbox-divider';
+        body.appendChild(hr);
+
+        const box = document.createElement('div');
+        box.className = 'sandbox-output';
+
+        const label = document.createElement('div');
+        label.className = 'sandbox-label';
+        label.textContent = 'Execution';
+        box.appendChild(label);
+
+        const exitOk = (event.exitCode === 0 || event.exitCode === null) && !event.timedOut;
+        const content = document.createElement('div');
+        content.className = exitOk ? 'sandbox-pass' : 'sandbox-fail';
+
+        const lines = [];
+        if (event.timedOut) lines.push('[TIMED OUT after 10 seconds]');
+        if (event.stdout)   lines.push(event.stdout.trimEnd());
+        if (event.stderr)   lines.push('[stderr] ' + event.stderr.trimEnd());
+        if (!lines.length)  lines.push('[No output]');
+        content.textContent = lines.join('\n');
+        box.appendChild(content);
+        body.appendChild(box);
+        body.scrollTop = body.scrollHeight;
+        break;
+      }
+
+      case 'cost': {
+        const bar = document.getElementById('cost-bar');
+        bar.innerHTML = event.records.map(r =>
+          `<span class="cost-item">${r.role}: <b>$${r.cost.toFixed(6)}</b></span>`
+        ).join('') + `<span class="cost-total">Total $${event.total.toFixed(6)}</span>`;
+        bar.className = 'cost-bar visible';
+        break;
+      }
+
+      case 'done':
+        setStatus(`Done (${event.elapsed}s)`, 'done');
+        clearActivePanels();
+        setGoBtn(true);
+        break;
+
+      case 'error': {
+        const body = document.getElementById(`body-${event.stage}`);
+        const errEl = document.createElement('div');
+        errEl.className = 'panel-error';
+        errEl.textContent = `Error: ${event.message}`;
+        body.appendChild(errEl);
+        setStatus(`Error in ${event.stage}`, 'error');
+        clearActivePanels();
+        setGoBtn(true);
+        break;
+      }
+    }
+  }
+
+  // ── Pipeline runner ──────────────────────────────────────────
+
+  async function runPipeline() {
+    const task = document.getElementById('task-input').value.trim();
+    if (!task) return;
+
+    const config = {};
+    for (const role of ROLES) {
+      config[role] = {
+        provider: document.getElementById(`provider-${role}`).value,
+        model:    document.getElementById(`model-${role}`).value,
+      };
+    }
+
+    resetPanels();
+    setGoBtn(false);
+    setStatus('Starting…', 'active');
+
+    let response;
+    try {
+      response = await fetch('/api/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ task, config }),
+      });
+    } catch (err) {
+      setStatus('Network error', 'error');
+      setGoBtn(true);
+      return;
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop(); // hold incomplete line
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        try {
+          handleEvent(JSON.parse(line.slice(6)));
+        } catch (e) { /* skip malformed */ }
+      }
+    }
+  }
+
+  // ── Init ─────────────────────────────────────────────────────
+
+  document.getElementById('go-btn').addEventListener('click', runPipeline);
+  document.getElementById('task-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) runPipeline();
+  });
+
+  initDropdowns();
+  loadDefaults();
+</script>
+</body>
+</html>
