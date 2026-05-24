@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5/css/xterm.css">
 <style>
   :root {
     --summary-h: clamp(240px, 36vh, 360px);
@@ -419,10 +420,10 @@
     z-index:300;
     display:flex; flex-direction:column;
     align-items:center; justify-content:flex-start;
-    padding:24px 24px 0;
+    padding:24px 24px 16px;
     opacity:0; pointer-events:none;
     transition:opacity 0.35s ease;
-    overflow-y:auto;
+    overflow:hidden;
   }
   .output-panel.show { opacity:1; pointer-events:all; }
 
@@ -452,9 +453,13 @@
 
   .op-output {
     width:100%; max-width:560px;
-    font-family:'Share Tech Mono',monospace; font-size:12px;
-    line-height:1.9; color:var(--mono);
+    flex:1; min-height:0;
+    overflow:hidden;
+    position:relative;
   }
+  /* xterm.js fills the op-output container */
+  .op-output .xterm { height:100%; }
+  .op-output .xterm-viewport { overflow-y:hidden !important; }
 
   .ol  { display:block; }
   .os  { color:var(--blue); opacity:.92; }
@@ -664,9 +669,10 @@
     left: 50vw; right: 0;
     align-items: flex-start;
     justify-content: center;
-    padding: 32px clamp(40px, 6vw, 120px) 32px 56px;
+    padding: 32px clamp(40px, 6vw, 120px) 24px 56px;
     transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
     transform: translateX(28px);
+    overflow: hidden;
   }
   body.is-zoomed .output-panel.show {
     transform: translateX(0);
@@ -1083,9 +1089,7 @@
     <select id="prov-architect"></select>
     <select id="mod-architect"></select>
   </div>
-  <div class="op-output" id="outArchitect">
-    <span class="out-wait">_ AWAITING TASK</span>
-  </div>
+  <div class="op-output" id="outArchitect"></div>
 </div>
 
 <div class="output-panel" id="opDeveloper">
@@ -1094,9 +1098,7 @@
     <select id="prov-developer"></select>
     <select id="mod-developer"></select>
   </div>
-  <div class="op-output" id="outDeveloper">
-    <span class="out-wait">_ AWAITING ARCHITECT</span>
-  </div>
+  <div class="op-output" id="outDeveloper"></div>
 </div>
 
 <div class="output-panel" id="opReviewer">
@@ -1105,9 +1107,7 @@
     <select id="prov-reviewer"></select>
     <select id="mod-reviewer"></select>
   </div>
-  <div class="op-output" id="outReviewer">
-    <span class="out-wait">_ AWAITING DEVELOPER</span>
-  </div>
+  <div class="op-output" id="outReviewer"></div>
 </div>
 
 <!-- SUMMARY PANEL -->
@@ -1215,6 +1215,8 @@
 
 <div class="flash" id="flash"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5/lib/xterm.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10/lib/addon-fit.js"></script>
 <script>
   // ── CONFIG ──
   const MONTHLY_BUDGET = 5.00;
@@ -1246,6 +1248,98 @@
   const scene        = document.getElementById('scene');
 
   const ROLE_LABELS = ['ARCHITECT', 'DEVELOPER', 'REVIEWER'];
+
+  // ── TERMINALS ──
+  const TERM_THEME = {
+    background:   '#040507',
+    foreground:   '#a8c8dc',
+    cursor:       '#f0c040',
+    cursorAccent: '#040507',
+    selectionBackground: 'rgba(79,195,247,0.20)',
+    black:   '#000000', red:     '#f85149', green:   '#00e5b0', yellow:  '#f0c040',
+    blue:    '#4fc3f7', magenta: '#c98edd', cyan:    '#5ccfe6', white:   '#a8c8dc',
+    brightBlack:   '#6e7681', brightRed:   '#ff7b72', brightGreen: '#5cffd1',
+    brightYellow:  '#f7dc8a', brightBlue:  '#9ee2ff', brightMagenta: '#dbb4fc',
+    brightCyan:    '#87e7fb', brightWhite: '#e6f0f7',
+  };
+
+  const terminals  = {};
+  const fitAddons  = {};
+  const outIds     = { architect: 'outArchitect', developer: 'outDeveloper', reviewer: 'outReviewer' };
+
+  function createTerminals() {
+    for (const role of ROLES) {
+      const term = new Terminal({
+        theme:       TERM_THEME,
+        fontFamily:  '"Share Tech Mono", monospace',
+        fontSize:    12,
+        lineHeight:  1.5,
+        cursorBlink: true,
+        cursorStyle: 'bar',
+        scrollback:  5000,
+        convertEol:  true,
+      });
+      const fit = new FitAddon.FitAddon();
+      term.loadAddon(fit);
+      const el = document.getElementById(outIds[role]);
+      term.open(el);
+      term.write('\x1b[2m_ AWAITING TASK\x1b[0m');
+      term.onData(data => {
+        if (ws && ws.readyState === 1) ws.send(JSON.stringify({ type: 'input', role, data }));
+      });
+      terminals[role] = term;
+      fitAddons[role]  = fit;
+    }
+  }
+
+  // ANSI helpers
+  const A = {
+    reset: '\x1b[0m', bold: '\x1b[1m', dim: '\x1b[2m',
+    gold:  '\x1b[38;2;240;192;64m',
+    blue:  '\x1b[38;2;79;195;247m',
+    green: '\x1b[38;2;141;220;182m',
+    pass:  '\x1b[38;2;0;229;176m',
+    fail:  '\x1b[38;2;248;81;73m',
+    label: '\x1b[38;2;200;150;42m',
+  };
+
+  function writeOutput(role, text) {
+    const term = terminals[role];
+    if (!term) return;
+    term.reset();
+    const lines = text.split('\n');
+    if (role === 'architect') {
+      for (const line of lines) {
+        if (!line.trim()) { term.write('\r\n'); continue; }
+        if (/^\d+\./.test(line)) term.write(A.blue  + line + A.reset + '\r\n');
+        else                      term.write(A.label + A.bold + line + A.reset + '\r\n');
+      }
+    } else if (role === 'developer') {
+      for (const line of lines) term.write(A.green + line + A.reset + '\r\n');
+    } else if (role === 'reviewer') {
+      for (const line of lines) {
+        if      (/\bPASS\b/i.test(line) || /^[✓✔]/.test(line)) term.write(A.pass + A.bold + line + A.reset + '\r\n');
+        else if (/\bFAIL\b/i.test(line) || /^[✗✘×]/.test(line)) term.write(A.fail + A.bold + line + A.reset + '\r\n');
+        else term.write(A.blue + line + A.reset + '\r\n');
+      }
+    }
+  }
+
+  // ── WEBSOCKET ──
+  let ws = null;
+
+  function connectWS() {
+    const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    ws = new WebSocket(`${proto}//${location.host}`);
+    ws.onopen  = () => console.log('[ws] connected');
+    ws.onmessage = (e) => { try { handleEvent(JSON.parse(e.data)); } catch {} };
+    ws.onclose = () => { console.log('[ws] reconnecting...'); setTimeout(connectWS, 2000); };
+    ws.onerror = (e) => console.error('[ws] error', e);
+  }
+
+  window.addEventListener('resize', () => {
+    for (const role of ROLES) { try { fitAddons[role].fit(); } catch {} }
+  });
 
   // ── STATE ──
   let appState = 'home';
@@ -1305,7 +1399,10 @@
     document.body.setAttribute('data-shard', String(idx));
     document.getElementById('summaryPanel').classList.remove('show');
     tfWorld.style.transform = '';
-    setTimeout(() => panels[idx].classList.add('show'), 450);
+    setTimeout(() => {
+      panels[idx].classList.add('show');
+      setTimeout(() => { try { fitAddons[ROLES[idx]].fit(); } catch {} }, 60);
+    }, 450);
     stageLabel.textContent = ROLE_LABELS[idx];
     stageLabel.classList.add('show');
     backBtn.classList.add('show');
@@ -1464,9 +1561,9 @@
   function resetForRun() {
     segs.forEach((_, i) => setSegState(i, 'dim'));
     panels.forEach(p => p.classList.remove('show'));
-    document.getElementById('outArchitect').innerHTML = '<span class="out-wait">_ PLANNING...</span>';
-    document.getElementById('outDeveloper').innerHTML = '<span class="out-wait">_ AWAITING ARCHITECT</span>';
-    document.getElementById('outReviewer').innerHTML  = '<span class="out-wait">_ AWAITING DEVELOPER</span>';
+    terminals.architect.reset(); terminals.architect.write('\x1b[2m_ PLANNING...\x1b[0m');
+    terminals.developer.reset(); terminals.developer.write('\x1b[2m_ AWAITING ARCHITECT\x1b[0m');
+    terminals.reviewer.reset();  terminals.reviewer.write('\x1b[2m_ AWAITING DEVELOPER\x1b[0m');
     document.body.classList.remove('is-complete');
     document.body.classList.remove('is-zoomed');
     document.body.removeAttribute('data-shard');
@@ -1517,9 +1614,7 @@
           }, 400);
 
         } else if (stage === 'sandbox') {
-          // Still in developer panel — append executing indicator
-          const devOut = document.getElementById('outDeveloper');
-          devOut.innerHTML += '\n<span class="olb ol">// EXECUTING IN SANDBOX...</span>';
+          terminals.developer.write('\r\n' + A.label + A.bold + '// EXECUTING IN SANDBOX...' + A.reset + '\r\n');
 
         } else if (stage === 'reviewer') {
           agentData.developer.latency = (Date.now() - agentData.developer.startTime) / 1000;
@@ -1541,35 +1636,23 @@
       }
 
       case 'output': {
-        const roleIdx = { architect: 0, developer: 1, reviewer: 2 }[event.role];
-        const outId = ['outArchitect', 'outDeveloper', 'outReviewer'][roleIdx];
-        const outEl = document.getElementById(outId);
-        outEl.innerHTML = formatOutput(event.role, event.text);
-        outEl.classList.remove('typing');
-        agentData[event.role].text = event.text;
+        writeOutput(event.role, event.text);
+        agentData[event.role].text    = event.text;
         agentData[event.role].summary = generateSummary(event.role, event.text);
         break;
       }
 
+      case 'pty': {
+        const term = terminals[event.role];
+        if (term) term.write(event.data);
+        break;
+      }
+
       case 'sandbox': {
-        const devOut = document.getElementById('outDeveloper');
         const exitOk = (event.exitCode === 0 || event.exitCode === null) && !event.timedOut;
-        const lines = [];
-        if (event.timedOut) lines.push('[TIMED OUT after 10 seconds]');
-        if (event.stdout)   lines.push(...event.stdout.trimEnd().split('\n'));
-        if (event.stderr)   lines.push('[stderr] ' + event.stderr.trimEnd());
-        if (!lines.length)  lines.push('[No output]');
-
-        // Replace "EXECUTING..." label with result label
-        const resultLabel = `<span class="olb ol">// EXECUTION · EXIT ${event.exitCode ?? 0}</span>`;
-        devOut.innerHTML = devOut.innerHTML.replace(
-          /<span class="olb ol">\/\/ EXECUTING IN SANDBOX\.\.\.<\/span>/,
-          resultLabel
-        );
-        devOut.innerHTML += '\n' + lines.map(l =>
-          `<span class="${exitOk ? 'op-pass' : 'op-fail'} ol">${escHtml(l)}</span>`
-        ).join('\n');
-
+        const exitColor = exitOk ? A.pass : A.fail;
+        const exitLine  = `// EXIT ${event.exitCode ?? 0}${event.timedOut ? ' (TIMED OUT)' : ''}`;
+        terminals.developer.write(exitColor + A.bold + exitLine + A.reset + '\r\n');
         agentData.developer.sandboxPass = exitOk;
         break;
       }
@@ -1602,9 +1685,8 @@
 
       case 'error': {
         const stageIdx = { architect: 0, developer: 1, sandbox: 1, reviewer: 2 }[event.stage] ?? 0;
-        const outId = ['outArchitect', 'outDeveloper', 'outReviewer'][stageIdx];
-        document.getElementById(outId).innerHTML =
-          `<span class="op-fail ol">ERROR: ${escHtml(event.message)}</span>`;
+        const errRole  = ROLES[stageIdx];
+        terminals[errRole].write(A.fail + A.bold + 'ERROR: ' + event.message + A.reset + '\r\n');
         setSegState(stageIdx, 'dim');
         sdot.className = 'sdot';
         stxt.textContent = 'ERROR';
@@ -1619,9 +1701,14 @@
   }
 
   // ── PIPELINE RUNNER ──
-  async function runPipeline() {
+  function runPipeline() {
     const task = inp.value.trim();
     if (!task || pipelineRunning) return;
+    if (!ws || ws.readyState !== 1) {
+      sdot.className = 'sdot';
+      stxt.textContent = 'NO CONNECTION';
+      return;
+    }
     pipelineRunning = true;
     execBtn.disabled = true;
 
@@ -1638,38 +1725,7 @@
       };
     }
 
-    let response;
-    try {
-      response = await fetch('/api/run', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ task, config }),
-      });
-    } catch (err) {
-      pipelineRunning = false;
-      execBtn.disabled = false;
-      sdot.className = 'sdot';
-      stxt.textContent = 'NETWORK ERROR';
-      promptBar.style.opacity = '1';
-      promptBar.style.pointerEvents = 'all';
-      return;
-    }
-
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let buf = '';
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buf += decoder.decode(value, { stream: true });
-      const lines = buf.split('\n');
-      buf = lines.pop();
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        try { handleEvent(JSON.parse(line.slice(6))); } catch {}
-      }
-    }
+    ws.send(JSON.stringify({ type: 'run', task, config }));
   }
 
   // ── USAGE BAR ──
@@ -1743,6 +1799,8 @@
 
   buildSelects();
   loadDefaults();
+  createTerminals();
+  connectWS();
 
   // ── BACKGROUND RAIN (removed — will revisit later) ──
   (function() { return; // disabled

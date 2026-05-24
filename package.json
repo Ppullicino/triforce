@@ -11,8 +11,10 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@google/genai": "^2.6.0",
+    "@homebridge/node-pty-prebuilt-multiarch": "^0.13.1",
     "dotenv": "^16.0.0",
     "express": "^5.2.1",
-    "openai": "^6.39.0"
+    "openai": "^6.39.0",
+    "ws": "^8.21.0"
   }
 }

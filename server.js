@@ -1,8 +1,14 @@
 import 'dotenv/config';
 import express from 'express';
-import { readFile, writeFile } from 'node:fs/promises';
-import { exec } from 'node:child_process';
+import http from 'http';
+import { WebSocketServer } from 'ws';
+import pty from '@homebridge/node-pty-prebuilt-multiarch';
+import { readFile, writeFile, appendFile, mkdir } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
 import { Agent } from './agent.js';
+
+const TRANSCRIPTS_DIR = './transcripts';
+await mkdir(TRANSCRIPTS_DIR, { recursive: true });
 
 const RATES = {
   'claude-sonnet-4-6': [3.00,  15.00],
@@ -22,6 +28,8 @@ const SYSTEM_PROMPTS = {
   reviewer:  'You are the Reviewer agent in the Triforce system. You receive code written by another agent and the terminal output from executing that code. Analyze both and produce a clear Pass/Fail verdict. If Pass: confirm what worked. If Fail: identify exactly what went wrong and what should be fixed. Be concise and specific.',
 };
 
+const SHELL = process.platform === 'win32' ? 'powershell.exe' : 'bash';
+
 function stripCodeFences(text) {
   return text
     .replace(/^```(?:javascript|js)?\n?/gm, '')
@@ -29,11 +37,34 @@ function stripCodeFences(text) {
     .trim();
 }
 
-function runInSandbox(code, timeoutMs = 10000) {
+// Spawn code in a subprocess and stream stdout/stderr back over ws as pty events.
+function runInSandbox(code, ws, timeoutMs = 10000) {
   return new Promise(async (resolve) => {
     await writeFile('sandbox.js', code, 'utf8');
-    exec('node sandbox.js', { timeout: timeoutMs }, (err, stdout, stderr) => {
-      resolve({ stdout, stderr, exitCode: err ? err.code : 0, timedOut: err?.killed ?? false });
+    const child = spawn('node', ['sandbox.js']);
+    let stdout = '', stderr = '';
+    let timedOut = false;
+
+    const timer = setTimeout(() => {
+      timedOut = true;
+      child.kill();
+    }, timeoutMs);
+
+    child.stdout.on('data', (data) => {
+      const text = data.toString();
+      stdout += text;
+      if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'pty', role: 'developer', data: text }));
+    });
+
+    child.stderr.on('data', (data) => {
+      const text = data.toString();
+      stderr += text;
+      if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'pty', role: 'developer', data: '\x1b[31m' + text + '\x1b[0m' }));
+    });
+
+    child.on('close', (exitCode) => {
+      clearTimeout(timer);
+      resolve({ stdout, stderr, exitCode: exitCode ?? 1, timedOut });
     });
   });
 }
@@ -46,16 +77,117 @@ function computeCosts(records) {
   });
 }
 
-const app = express();
-app.use(express.json());
-app.use(express.static('public'));
-
-// Module-level session usage — reset on each /api/run, read by /api/usage
+// ── MODULE-LEVEL USAGE (reset each run, read by /api/usage) ──
 let sessionUsage = {
   architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
   developer: { inputTokens: 0, outputTokens: 0, cost: 0 },
   reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
 };
+
+async function runPipeline(ws, task, config) {
+  const send = (data) => { if (ws.readyState === 1) ws.send(JSON.stringify(data)); };
+  const records = [];
+
+  sessionUsage = {
+    architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
+    developer: { inputTokens: 0, outputTokens: 0, cost: 0 },
+    reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
+  };
+
+  // Per-run transcript buffers (for cross-agent context)
+  const runLog = { architect: '', developer: '', reviewer: '' };
+  const runHeader = `\n${'─'.repeat(60)}\n[${new Date().toISOString()}] ${task}\n${'─'.repeat(60)}\n`;
+
+  const track = (role, model, usage) => {
+    records.push({ role, model, ...usage });
+    const [inRate, outRate] = RATES[model] ?? [0, 0];
+    sessionUsage[role] = {
+      inputTokens:  usage.inputTokens,
+      outputTokens: usage.outputTokens,
+      cost: (usage.inputTokens / 1e6) * inRate + (usage.outputTokens / 1e6) * outRate,
+    };
+  };
+
+  const startTime = Date.now();
+
+  // ── Stage 1: Architect ──
+  send({ type: 'status', stage: 'architect', label: 'Stage 1: Architect' });
+  let plan;
+  try {
+    const agent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
+    const { text, usage } = await agent.call(task);
+    track('architect', config.architect.model, usage);
+    plan = text;
+    runLog.architect = text;
+    send({ type: 'output', role: 'architect', text });
+    await appendFile(`${TRANSCRIPTS_DIR}/architect.log`, runHeader + text + '\n');
+  } catch (err) {
+    send({ type: 'error', stage: 'architect', message: err.message });
+    return;
+  }
+
+  // ── Stage 2: Developer (receives architect plan as context) ──
+  send({ type: 'status', stage: 'developer', label: 'Stage 2: Developer' });
+  let code;
+  try {
+    const agent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS.developer });
+    const { text, usage } = await agent.call(plan);
+    track('developer', config.developer.model, usage);
+    code = stripCodeFences(text);
+    runLog.developer = code;
+    send({ type: 'output', role: 'developer', text: code });
+    await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, runHeader + code + '\n');
+  } catch (err) {
+    send({ type: 'error', stage: 'developer', message: err.message });
+    return;
+  }
+
+  // ── Stage 3: Sandbox (streaming output via pty events) ──
+  send({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
+  let sandboxResult;
+  try {
+    sandboxResult = await runInSandbox(code, ws);
+    const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
+    await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, sandboxLog);
+  } catch (err) {
+    sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
+  }
+  send({ type: 'sandbox', ...sandboxResult });
+
+  // ── Stage 4: Reviewer (receives architect plan + developer code + execution results) ──
+  send({ type: 'status', stage: 'reviewer', label: 'Stage 4: Reviewer' });
+  try {
+    const executionSummary = [
+      `Exit code: ${sandboxResult.exitCode ?? 0}`,
+      sandboxResult.timedOut ? 'Status: TIMED OUT' : '',
+      sandboxResult.stdout ? `stdout:\n${sandboxResult.stdout}` : 'stdout: (empty)',
+      sandboxResult.stderr ? `stderr:\n${sandboxResult.stderr}` : '',
+    ].filter(Boolean).join('\n');
+
+    const prompt = `ARCHITECT PLAN:\n${runLog.architect}\n\nCODE:\n${runLog.developer}\n\nEXECUTION RESULTS:\n${executionSummary}`;
+    const agent = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS.reviewer });
+    const { text, usage } = await agent.call(prompt);
+    track('reviewer', config.reviewer.model, usage);
+    runLog.reviewer = text;
+    send({ type: 'output', role: 'reviewer', text });
+    await appendFile(`${TRANSCRIPTS_DIR}/reviewer.log`, runHeader + text + '\n');
+  } catch (err) {
+    send({ type: 'error', stage: 'reviewer', message: err.message });
+    return;
+  }
+
+  const costRecords = computeCosts(records);
+  const total = costRecords.reduce((sum, r) => sum + r.cost, 0);
+  send({ type: 'cost', records: costRecords, total });
+
+  const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
+  send({ type: 'done', elapsed });
+}
+
+// ── EXPRESS + HTTP SERVER ──
+const app = express();
+app.use(express.json());
+app.use(express.static('public'));
 
 app.get('/api/usage', (req, res) => {
   const total = Object.values(sessionUsage).reduce(
@@ -78,100 +210,48 @@ app.get('/api/config', async (req, res) => {
   }
 });
 
-app.post('/api/run', async (req, res) => {
-  const { task, config } = req.body;
+const httpServer = http.createServer(app);
+const wss = new WebSocketServer({ server: httpServer });
 
-  if (!task?.trim()) return res.status(400).json({ error: 'task is required' });
-
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
-  res.flushHeaders();
-
-  const send = (data) => res.write(`data: ${JSON.stringify(data)}\n\n`);
-  const records = [];
-  sessionUsage = {
-    architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
-    developer: { inputTokens: 0, outputTokens: 0, cost: 0 },
-    reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
-  };
-  const track = (role, model, usage) => {
-    records.push({ role, model, ...usage });
-    const [inRate, outRate] = RATES[model] ?? [0, 0];
-    sessionUsage[role] = {
-      inputTokens:  usage.inputTokens,
-      outputTokens: usage.outputTokens,
-      cost: (usage.inputTokens / 1e6) * inRate + (usage.outputTokens / 1e6) * outRate,
-    };
-  };
-  const startTime = Date.now();
-
-  // Stage 1: Architect
-  send({ type: 'status', stage: 'architect', label: 'Stage 1: Architect' });
-  let plan;
-  try {
-    const agent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
-    const { text, usage } = await agent.call(task);
-    track('architect', config.architect.model, usage);
-    plan = text;
-    send({ type: 'output', role: 'architect', text });
-  } catch (err) {
-    send({ type: 'error', stage: 'architect', message: err.message });
-    return res.end();
+wss.on('connection', (ws) => {
+  // Spawn three persistent shells — one per agent role.
+  // Shells survive across pipeline runs within this session.
+  const shells = {};
+  for (const role of ['architect', 'developer', 'reviewer']) {
+    const shell = pty.spawn(SHELL, [], {
+      name: 'xterm-color',
+      cols: 120,
+      rows: 40,
+      cwd: process.cwd(),
+      env: process.env,
+    });
+    shell.onData((data) => {
+      if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'pty', role, data }));
+    });
+    shells[role] = shell;
   }
 
-  // Stage 2: Developer
-  send({ type: 'status', stage: 'developer', label: 'Stage 2: Developer' });
-  let code;
-  try {
-    const agent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS.developer });
-    const { text, usage } = await agent.call(plan);
-    track('developer', config.developer.model, usage);
-    code = stripCodeFences(text);
-    send({ type: 'output', role: 'developer', text: code });
-  } catch (err) {
-    send({ type: 'error', stage: 'developer', message: err.message });
-    return res.end();
-  }
+  ws.on('message', async (raw) => {
+    let msg;
+    try { msg = JSON.parse(raw); } catch { return; }
 
-  // Stage 3: Sandbox (shown in developer panel)
-  send({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
-  let sandboxResult;
-  try {
-    sandboxResult = await runInSandbox(code);
-  } catch (err) {
-    sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
-  }
-  send({ type: 'sandbox', ...sandboxResult });
+    if (msg.type === 'run') {
+      await runPipeline(ws, msg.task, msg.config);
+    } else if (msg.type === 'input') {
+      // Keyboard input from browser xterm → persistent shell
+      shells[msg.role]?.write(msg.data);
+    } else if (msg.type === 'resize') {
+      // Terminal resize from browser
+      try { shells[msg.role]?.resize(msg.cols, msg.rows); } catch {}
+    }
+  });
 
-  // Stage 4: Reviewer
-  send({ type: 'status', stage: 'reviewer', label: 'Stage 4: Reviewer' });
-  try {
-    const executionSummary = [
-      `Exit code: ${sandboxResult.exitCode ?? 0}`,
-      sandboxResult.timedOut ? 'Status: TIMED OUT' : '',
-      sandboxResult.stdout ? `stdout:\n${sandboxResult.stdout}` : 'stdout: (empty)',
-      sandboxResult.stderr ? `stderr:\n${sandboxResult.stderr}` : '',
-    ].filter(Boolean).join('\n');
-
-    const prompt = `CODE:\n${code}\n\nEXECUTION RESULTS:\n${executionSummary}`;
-    const agent = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS.reviewer });
-    const { text, usage } = await agent.call(prompt);
-    track('reviewer', config.reviewer.model, usage);
-    send({ type: 'output', role: 'reviewer', text });
-  } catch (err) {
-    send({ type: 'error', stage: 'reviewer', message: err.message });
-    return res.end();
-  }
-
-  const costRecords = computeCosts(records);
-  const total = costRecords.reduce((sum, r) => sum + r.cost, 0);
-  send({ type: 'cost', records: costRecords, total });
-
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
-  send({ type: 'done', elapsed });
-  res.end();
+  ws.on('close', () => {
+    for (const shell of Object.values(shells)) {
+      try { shell.kill(); } catch {}
+    }
+  });
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Triforce server running on http://localhost:${PORT}`));
+httpServer.listen(PORT, () => console.log(`Triforce server running on http://localhost:${PORT}`));
