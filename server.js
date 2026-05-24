@@ -50,6 +50,25 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
+// Module-level session usage — reset on each /api/run, read by /api/usage
+let sessionUsage = {
+  architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
+  developer: { inputTokens: 0, outputTokens: 0, cost: 0 },
+  reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
+};
+
+app.get('/api/usage', (req, res) => {
+  const total = Object.values(sessionUsage).reduce(
+    (acc, r) => ({
+      inputTokens:  acc.inputTokens  + r.inputTokens,
+      outputTokens: acc.outputTokens + r.outputTokens,
+      cost: acc.cost + r.cost,
+    }),
+    { inputTokens: 0, outputTokens: 0, cost: 0 }
+  );
+  res.json({ ...sessionUsage, total });
+});
+
 app.get('/api/config', async (req, res) => {
   try {
     const raw = await readFile('./models.config.json', 'utf8');
@@ -71,7 +90,20 @@ app.post('/api/run', async (req, res) => {
 
   const send = (data) => res.write(`data: ${JSON.stringify(data)}\n\n`);
   const records = [];
-  const track = (role, model, usage) => records.push({ role, model, ...usage });
+  sessionUsage = {
+    architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
+    developer: { inputTokens: 0, outputTokens: 0, cost: 0 },
+    reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
+  };
+  const track = (role, model, usage) => {
+    records.push({ role, model, ...usage });
+    const [inRate, outRate] = RATES[model] ?? [0, 0];
+    sessionUsage[role] = {
+      inputTokens:  usage.inputTokens,
+      outputTokens: usage.outputTokens,
+      cost: (usage.inputTokens / 1e6) * inRate + (usage.outputTokens / 1e6) * outRate,
+    };
+  };
   const startTime = Date.now();
 
   // Stage 1: Architect
