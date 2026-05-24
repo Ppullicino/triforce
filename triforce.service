@@ -1,0 +1,19 @@
+[Unit]
+Description=Triforce Multi-Agent AI Pipeline Server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=peter
+WorkingDirectory=/home/peter/git/triforce
+ExecStart=/home/peter/.nvm/versions/node/v24.15.0/bin/node server.js
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=triforce
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

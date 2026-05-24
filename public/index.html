@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>TRIFORCE</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#c8962a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Triforce">
+<link rel="apple-touch-icon" href="/icons/icon-192x192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -603,6 +609,57 @@
     .result-bar { padding: 10px 14px; }
   }
 
+  /* ── INSTALL PROMPT ── */
+  .install-prompt {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 9998;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px;
+    background: linear-gradient(180deg, rgba(4,5,7,0.97), rgba(4,5,7,0.93));
+    border-bottom: 1px solid rgba(200,150,42,0.35);
+    box-shadow: 0 0 20px rgba(200,150,42,0.12);
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    gap: 12px;
+  }
+  .install-prompt.show { transform: translateY(0); }
+  .install-prompt-content {
+    display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;
+  }
+  .install-prompt-icon { width: 28px; height: 28px; flex-shrink: 0; }
+  .install-prompt-text { min-width: 0; }
+  .install-prompt-title {
+    font-family: 'Cinzel', serif; font-size: 10px; font-weight: 700;
+    letter-spacing: .28em; color: var(--gold-bright);
+    text-shadow: 0 0 8px rgba(240,192,64,.4);
+    padding-left: .28em;
+  }
+  .install-prompt-sub {
+    font-family: 'Share Tech Mono', monospace; font-size: 8px;
+    letter-spacing: .12em; color: var(--text-dim); opacity: .65;
+    margin-top: 2px;
+  }
+  .install-prompt-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .install-btn {
+    font-family: 'Share Tech Mono', monospace; font-size: 8.5px;
+    letter-spacing: .18em; padding: 6px 14px;
+    background: linear-gradient(135deg, #8a6418, #c8962a, #f0c040, #c8962a, #8a6418);
+    background-size: 200% 100%;
+    border: none; border-radius: 2px; cursor: pointer; color: #040507;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(200,150,42,.35);
+    transition: all .2s;
+  }
+  .install-btn:hover { box-shadow: 0 0 20px rgba(240,192,64,.55); transform: translateY(-1px); }
+  .install-dismiss {
+    font-family: 'Share Tech Mono', monospace; font-size: 8px;
+    letter-spacing: .14em; padding: 6px 10px;
+    background: transparent; border: 1px solid rgba(200,150,42,.20);
+    border-radius: 2px; cursor: pointer; color: var(--text-dim);
+    transition: all .2s;
+  }
+  .install-dismiss:hover { border-color: rgba(200,150,42,.45); color: var(--text); }
+
   .complete-glow {
     position:fixed; inset:0; pointer-events:none; z-index:2;
     background:
@@ -956,6 +1013,26 @@
 </style>
 </head>
 <body>
+
+<!-- PWA INSTALL PROMPT -->
+<div class="install-prompt" id="installPrompt">
+  <div class="install-prompt-content">
+    <svg class="install-prompt-icon" viewBox="0 0 100 87" fill="none">
+      <polygon points="50,2 98,85 2,85" fill="none" stroke="#c8962a" stroke-width="3"/>
+      <polygon points="50,25 74,68 26,68" fill="#f0c040" opacity=".95"/>
+      <polygon points="27,25 51,68 3,68" fill="#f0c040" opacity=".95"/>
+      <polygon points="73,25 97,68 49,68" fill="#f0c040" opacity=".95"/>
+    </svg>
+    <div class="install-prompt-text">
+      <div class="install-prompt-title">INSTALL TRIFORCE</div>
+      <div class="install-prompt-sub">ADD TO HOME SCREEN FOR FULL EXPERIENCE</div>
+    </div>
+  </div>
+  <div class="install-prompt-actions">
+    <button class="install-btn" id="installBtn">INSTALL</button>
+    <button class="install-dismiss" id="installDismiss">✕</button>
+  </div>
+</div>
 
 <header class="hdr">
   <div class="logo">
@@ -1801,6 +1878,45 @@
   loadDefaults();
   createTerminals();
   connectWS();
+
+  // ── SERVICE WORKER + PWA INSTALL ──
+  let deferredInstallPrompt = null;
+  const installPromptEl = document.getElementById('installPrompt');
+  const installBtn      = document.getElementById('installBtn');
+  const installDismiss  = document.getElementById('installDismiss');
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(err => console.warn('[sw] registration failed', err));
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    // Show the prompt after 30 seconds if user hasn't dismissed it
+    setTimeout(() => {
+      if (deferredInstallPrompt) installPromptEl.classList.add('show');
+    }, 30000);
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    installPromptEl.classList.remove('show');
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (!deferredInstallPrompt) return;
+    installPromptEl.classList.remove('show');
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+  });
+
+  installDismiss.addEventListener('click', () => {
+    installPromptEl.classList.remove('show');
+    deferredInstallPrompt = null;
+  });
 
   // ── BACKGROUND RAIN (removed — will revisit later) ──
   (function() { return; // disabled

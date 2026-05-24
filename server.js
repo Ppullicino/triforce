@@ -187,6 +187,19 @@ async function runPipeline(ws, task, config) {
 // ── EXPRESS + HTTP SERVER ──
 const app = express();
 app.use(express.json());
+
+// PWA-critical headers
+app.get('/sw.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.sendFile('sw.js', { root: './public' });
+});
+app.get('/manifest.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/manifest+json');
+  res.sendFile('manifest.json', { root: './public' });
+});
+
+app.use('/icons', express.static('public/icons'));
 app.use(express.static('public'));
 
 app.get('/api/usage', (req, res) => {
