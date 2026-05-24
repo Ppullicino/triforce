@@ -1,340 +1,1114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Triforce</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>TRIFORCE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --summary-h: clamp(240px, 36vh, 360px);
+    --prompt-h:  86px;
+    --void:        #040507;
+    --void-deep:   #02030a;
+    --void-tint:   #070912;
+    --gold:          #c8962a;
+    --gold-bright:   #f0c040;
+    --gold-deep:     #8a6418;
+    --gold-pale:     #f7dc8a;
+    --gold-glow:     rgba(240,192,64,0.22);
+    --gold-glow-soft:rgba(200,150,42,0.10);
+    --blue:        #4fc3f7;
+    --blue-bright: #9ee2ff;
+    --blue-deep:   #1d5a82;
+    --blue-glow:   rgba(79,195,247,0.30);
+    --text:        #e6f0f7;
+    --text-dim:    #7a9bb5;
+    --text-faint:  #4a6478;
+    --mono:        #b6d2e2;
+    --pass:        #00e5b0;
+    --pass-bright: #5cffd1;
+    --glow-gold:   0 0 6px rgba(240,192,64,.55), 0 0 14px rgba(240,192,64,.28), 0 0 28px rgba(200,150,42,.14);
+    --glow-blue:   0 0 6px rgba(79,195,247,.55), 0 0 14px rgba(79,195,247,.28), 0 0 28px rgba(79,195,247,.14);
+    --glow-pass:   0 0 6px rgba(0,229,176,.55),  0 0 14px rgba(0,229,176,.28),  0 0 28px rgba(0,229,176,.12);
+  }
 
-    body {
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-    /* ── Header ── */
-    header {
-      display: flex;
+  html, body {
+    width:100%; height:100%;
+    overflow:hidden;
+    background:var(--void);
+    font-family:'Rajdhani',sans-serif;
+    color:var(--text);
+    touch-action:none;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-feature-settings:"ss01","cv11","calt";
+  }
+
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 110%, rgba(200,150,42,0.07), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(79,195,247,0.05), transparent 60%),
+      radial-gradient(ellipse 120% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+    pointer-events:none; z-index:1;
+  }
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(79,195,247,0.008) 3px, rgba(79,195,247,0.008) 6px);
+    pointer-events:none; z-index:9999;
+    mix-blend-mode:overlay;
+  }
+
+  .hdr {
+    position:fixed; top:0; left:0; right:0; height:52px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 26px;
+    background:linear-gradient(180deg, rgba(4,5,7,0.92), rgba(4,5,7,0.78));
+    border-bottom:1px solid rgba(200,150,42,0.10);
+    z-index:500; backdrop-filter:blur(12px);
+    transition: opacity 0.5s ease;
+  }
+  .hdr::after {
+    content:''; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(79,195,247,.20) 30%, rgba(200,150,42,.35) 50%, rgba(79,195,247,.20) 70%, transparent);
+    opacity:.55;
+  }
+
+  .logo { display:flex; align-items:center; gap:12px; }
+  .tf-mark { width:22px; height:19px; filter:drop-shadow(0 0 6px rgba(240,192,64,.35)); }
+  .logo-name {
+    font-family:'Cinzel',serif; font-size:13px; font-weight:700; letter-spacing:.32em;
+    color:var(--gold-bright);
+    text-shadow:0 0 10px rgba(240,192,64,.45), 0 0 22px rgba(200,150,42,.18);
+  }
+  .logo-sep { color:rgba(79,195,247,0.28); margin:0 4px; font-weight:300; }
+  .logo-sub {
+    font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:.28em;
+    color:var(--blue); opacity:.62;
+    text-shadow:0 0 8px rgba(79,195,247,.25);
+  }
+
+  .status {
+    display:flex; align-items:center; gap:8px;
+    font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:.22em;
+    color:var(--text-dim);
+    padding:5px 10px;
+    border:1px solid rgba(79,195,247,0.10);
+    border-radius:2px;
+    background:rgba(79,195,247,0.03);
+  }
+  .sdot {
+    width:6px; height:6px; border-radius:50%;
+    background:var(--blue); box-shadow:0 0 6px var(--blue), 0 0 12px rgba(79,195,247,.35);
+    animation:idle 2.5s ease-in-out infinite;
+  }
+  .sdot.run {
+    background:var(--gold-bright);
+    box-shadow:0 0 7px var(--gold-bright), 0 0 14px rgba(240,192,64,.4);
+    animation:bpulse .8s ease-in-out infinite;
+  }
+  .sdot.ok  {
+    background:var(--pass);
+    box-shadow:0 0 7px var(--pass), 0 0 16px rgba(0,229,176,.45);
+    animation:none;
+  }
+
+  @keyframes idle   { 0%,100%{opacity:1} 50%{opacity:.30} }
+  @keyframes bpulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.7);opacity:.7} }
+
+  .stage-label {
+    position:fixed; top:64px; left:0; right:0;
+    text-align:center;
+    font-family:'Cinzel',serif; font-size:11px; font-weight:600; letter-spacing:.42em;
+    color:var(--gold-bright); opacity:0;
+    transition:opacity 0.4s ease;
+    z-index:400;
+    text-shadow:var(--glow-gold);
+  }
+  .stage-label.show { opacity:0.82; }
+
+  .scene {
+    position:fixed;
+    top:52px; left:0; right:0; bottom:0;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    z-index:2;
+  }
+
+  .tf-world {
+    position:absolute;
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    transform-origin:center center;
+    transition:transform 0.8s cubic-bezier(0.77,0,0.175,1),
+               opacity   0.4s ease;
+    will-change:transform;
+  }
+
+  .tf-svg-wrap {
+    position:relative;
+    width: min(85vw, 72vh);
+    height: min(85vw, 72vh);
+  }
+
+  .tf-halo {
+    position:absolute; inset:-22%;
+    background:
+      radial-gradient(circle at 50% 56%, rgba(247,220,138,0.10) 0%, rgba(240,192,64,0.06) 22%, rgba(200,150,42,0.025) 42%, transparent 62%);
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 1.2s ease;
+    z-index:0;
+  }
+  body.is-complete .tf-halo {
+    opacity:1;
+    animation:haloBreathe 5s ease-in-out infinite;
+  }
+  @keyframes haloBreathe {
+    0%,100% { opacity:.7; transform:scale(1); }
+    50%     { opacity:1;  transform:scale(1.07); }
+  }
+
+  .tf-centre-bloom {
+    position:absolute;
+    left:50%; top:50%;
+    width:30%; height:30%;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(247,220,138,0.18) 0%, rgba(240,192,64,0.06) 35%, transparent 70%);
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 1.2s ease;
+    z-index:0;
+  }
+  body.is-complete .tf-centre-bloom {
+    opacity:1;
+    animation:centreBreathe 3.4s ease-in-out infinite;
+  }
+  @keyframes centreBreathe {
+    0%,100% { opacity:.45; transform:translate(-50%,-50%) scale(.85); }
+    50%     { opacity:.85; transform:translate(-50%,-50%) scale(1.1); }
+  }
+
+  .sparks {
+    position:absolute;
+    inset:-10% -10% 0 -10%;
+    pointer-events:none;
+    overflow:visible;
+    z-index:1;
+  }
+  .spark {
+    position:absolute;
+    width:3px; height:3px;
+    border-radius:50%;
+    background:#f7dc8a;
+    box-shadow:
+      0 0 4px #f0c040,
+      0 0 10px rgba(240,192,64,.85),
+      0 0 18px rgba(200,150,42,.4);
+    opacity:0;
+    bottom:0;
+  }
+  body.is-complete .spark {
+    animation:sparkrise var(--dur,9s) linear var(--delay,0s) infinite;
+  }
+  .spark.blue {
+    background:#9ee2ff;
+    box-shadow:
+      0 0 4px #4fc3f7,
+      0 0 10px rgba(79,195,247,.7),
+      0 0 18px rgba(79,195,247,.3);
+  }
+  @keyframes sparkrise {
+    0%   { opacity:0; transform:translate(0, 20px) scale(.4); }
+    12%  { opacity:1; }
+    50%  { transform:translate(var(--sway, 8px), -50%) scale(1); }
+    88%  { opacity:.9; }
+    100% { opacity:0; transform:translate(calc(var(--sway, 8px) * -0.5), -200px) scale(.6); }
+  }
+
+  .tf-main-svg { width:100%; height:100%; }
+
+  .shard-label {
+    position:absolute;
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    pointer-events:none;
+    transition:opacity 0.5s ease;
+  }
+  .shard-label.architect { top:18%; left:50%; transform:translateX(-50%); }
+  .shard-label.developer { bottom:16%; left:22%;  transform:translateX(-50%); }
+  .shard-label.reviewer  { bottom:16%; right:22%; transform:translateX(50%); }
+
+  .sl-glyph {
+    font-size:10px; color:var(--gold); opacity:0.35;
+    transition:all 0.5s;
+  }
+  .sl-name  {
+    font-family:'Cinzel',serif; font-size:10px; font-weight:600;
+    letter-spacing:.32em; color:var(--text-dim); opacity:0.45;
+    transition:all 0.5s; white-space:nowrap;
+  }
+  .sl-summary {
+    font-family:'Share Tech Mono',monospace; font-size:7.5px;
+    letter-spacing:.12em; color:var(--mono); opacity:0;
+    transition:opacity 0.6s ease; text-align:center; line-height:1.55;
+    max-width:88px;
+  }
+
+  .shard-label.is-active .sl-glyph { color:var(--blue-bright); opacity:1; text-shadow:var(--glow-blue); }
+  .shard-label.is-active .sl-name  { color:var(--blue-bright); opacity:1; text-shadow:var(--glow-blue); }
+
+  .shard-label.is-done .sl-glyph { color:var(--gold-bright); opacity:1; text-shadow:var(--glow-gold); }
+  .shard-label.is-done .sl-name  { color:var(--gold-bright); opacity:1; text-shadow:var(--glow-gold); }
+  .shard-label.is-done .sl-summary { opacity:0.55; }
+
+  .shard-hit {
+    position:absolute; cursor:pointer; opacity:0;
+    transition:opacity 0.3s;
+  }
+  .shard-hit:hover { opacity:1; }
+
+  .seg { transition:all 0.5s ease; }
+  .seg.dim      { fill:rgba(200,150,42,0.018); stroke:rgba(200,150,42,0.07);  }
+  .seg.active   { fill:rgba(200,150,42,0.12);  stroke:#f0c040; animation:npulse 1.8s ease-in-out infinite; }
+  .seg.done     { fill:rgba(200,150,42,0.07);  stroke:rgba(240,192,64,0.55); filter:url(#gdone); }
+  .seg.complete { fill:rgba(200,150,42,0.13);  stroke:#f0c040; filter:url(#gdone); }
+
+  @keyframes npulse {
+    0%,100% { fill:rgba(200,150,42,0.10); stroke-opacity:1;   filter:url(#neon); }
+    50%     { fill:rgba(240,192,64,0.20); stroke-opacity:0.7; filter:url(#neonbright); }
+  }
+
+  body.is-complete .seg.complete {
+    animation: shardBreathe 4.5s ease-in-out infinite;
+  }
+  body.is-complete #seg1.complete { animation-delay: 0.6s; }
+  body.is-complete #seg2.complete { animation-delay: 1.2s; }
+  @keyframes shardBreathe {
+    0%,100% { fill:rgba(200,150,42,0.10); stroke:#e6b73a; filter:url(#gdone); }
+    50%     { fill:rgba(247,220,138,0.20); stroke:#f7dc8a; filter:url(#neon); }
+  }
+
+  .output-panel {
+    position:fixed;
+    top:90px; left:0; right:0; bottom:88px;
+    z-index:300;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:flex-start;
+    padding:24px 24px 0;
+    opacity:0; pointer-events:none;
+    transition:opacity 0.35s ease;
+    overflow-y:auto;
+  }
+  .output-panel.show { opacity:1; pointer-events:all; }
+
+  .op-role {
+    font-family:'Cinzel',serif; font-size:15px; font-weight:700;
+    letter-spacing:.38em; margin-bottom:8px;
+    transition:color 0.4s;
+    padding-left:.38em;
+  }
+  .op-role.blue  { color:var(--blue-bright); text-shadow:var(--glow-blue); }
+  .op-role.gold  { color:var(--gold-bright); text-shadow:var(--glow-gold); }
+
+  .op-selects { display:flex; gap:8px; margin-bottom:22px; }
+
+  select {
+    background:rgba(4,5,7,0.85);
+    border:1px solid rgba(79,195,247,0.14); border-radius:2px;
+    color:var(--text-dim); font-family:'Share Tech Mono',monospace;
+    font-size:8.5px; letter-spacing:.10em; padding:5px 22px 5px 9px;
+    outline:none; cursor:pointer; appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='4'%3E%3Cpath d='M0 0l3 4 3-4z' fill='%234fc3f7' opacity='.5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 7px center;
+    backdrop-filter:blur(4px);
+    transition:all .2s;
+  }
+  select:hover { border-color:rgba(79,195,247,.45); color:var(--text); background-color:rgba(79,195,247,0.04); }
+
+  .op-output {
+    width:100%; max-width:560px;
+    font-family:'Share Tech Mono',monospace; font-size:12px;
+    line-height:1.9; color:var(--mono);
+  }
+
+  .ol  { display:block; }
+  .os  { color:var(--blue); opacity:.92; }
+  .oc  { color:#8ddcb6; }
+  .olb { color:var(--gold-bright); font-size:10px; letter-spacing:.18em; opacity:.78; font-weight:bold; }
+  .op-pass { color:var(--pass); font-weight:bold; text-shadow:var(--glow-pass); letter-spacing:.08em; }
+  .op-fail { color:#f85149; font-weight:bold; letter-spacing:.08em; }
+  .out-wait { color:var(--text-dim); opacity:.4; font-size:10.5px; letter-spacing:.18em; animation:blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:.4} 50%{opacity:.15} }
+
+  .typing::after { content:'█'; color:var(--blue-bright); animation:cur 1s step-end infinite; font-size:10px; margin-left:2px; text-shadow:var(--glow-blue); }
+  @keyframes cur { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .back-btn {
+    position:fixed; top:62px; left:22px;
+    font-family:'Share Tech Mono',monospace; font-size:9.5px; letter-spacing:.22em;
+    color:var(--text-dim); cursor:pointer; z-index:400;
+    opacity:0; pointer-events:none; transition:opacity 0.3s, color 0.2s;
+    display:flex; align-items:center; gap:6px;
+    padding:6px 12px;
+    border:1px solid rgba(200,150,42,0.10);
+    border-radius:2px;
+    background:rgba(4,5,7,0.6);
+    backdrop-filter:blur(6px);
+  }
+  .back-btn.show { opacity:0.7; pointer-events:all; }
+  .back-btn:hover { opacity:1; color:var(--gold-bright); border-color:rgba(200,150,42,0.30); }
+
+  .prompt-bar {
+    position:fixed; bottom:0; left:0; right:0; height:78px;
+    background:linear-gradient(180deg, rgba(4,5,7,0.85), rgba(4,5,7,0.97));
+    border-top:1px solid rgba(200,150,42,0.18);
+    backdrop-filter:blur(14px);
+    display:flex; align-items:center; padding:0 22px; gap:14px;
+    z-index:600; transition:opacity 0.4s ease, transform 0.4s ease;
+  }
+  .prompt-bar::before {
+    content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(200,150,42,.20) 15%, var(--gold-bright) 50%, rgba(200,150,42,.20) 85%, transparent);
+    box-shadow:0 0 14px rgba(200,150,42,.32), 0 0 4px rgba(240,192,64,.5);
+  }
+
+  .prompt-wrap { flex:1; position:relative; display:flex; align-items:center; }
+
+  .prompt-tri-mark {
+    position:absolute; left:16px; width:15px; height:13px; opacity:.32;
+    pointer-events:none;
+    filter:drop-shadow(0 0 4px rgba(240,192,64,.3));
+  }
+
+  .prompt-inp {
+    width:100%;
+    background:rgba(200,150,42,0.035);
+    border:1px solid rgba(200,150,42,0.20);
+    border-radius:3px;
+    padding:13px 52px 13px 42px; color:var(--text);
+    font-family:'Rajdhani',sans-serif; font-size:14.5px; font-weight:500; letter-spacing:.015em;
+    outline:none; transition:all .25s; caret-color:var(--gold-bright);
+    box-shadow:inset 0 0 18px rgba(200,150,42,0.03);
+  }
+  .prompt-inp:focus {
+    border-color:rgba(200,150,42,0.55);
+    background:rgba(200,150,42,0.06);
+    box-shadow:inset 0 0 22px rgba(200,150,42,0.05), 0 0 18px rgba(200,150,42,0.10);
+  }
+  .prompt-inp::placeholder { color:var(--text-dim); opacity:.42; font-weight:400; }
+
+  .char-count {
+    position:absolute; right:14px;
+    font-family:'Share Tech Mono',monospace; font-size:8.5px; letter-spacing:.12em;
+    color:var(--text-dim); opacity:.45; pointer-events:none;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .cost-micro { display:flex; flex-direction:column; align-items:flex-end; gap:3px; flex-shrink:0; }
+  .cost-micro-lbl {
+    font-family:'Share Tech Mono',monospace; font-size:7.5px; letter-spacing:.22em;
+    color:var(--text-dim); opacity:.55;
+  }
+  .cost-micro-val {
+    font-family:'Share Tech Mono',monospace; font-size:12px;
+    color:var(--gold-bright);
+    text-shadow:0 0 10px rgba(240,192,64,.35);
+    font-variant-numeric:tabular-nums;
+  }
+
+  .exec-btn {
+    width:52px; height:52px;
+    background:linear-gradient(135deg, #8a6418 0%, #c8962a 25%, #f0c040 50%, #c8962a 75%, #8a6418 100%);
+    background-size:220% 100%;
+    border:none; border-radius:3px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:
+      0 0 0 1px rgba(247,220,138,0.4) inset,
+      0 0 18px rgba(200,150,42,.4),
+      0 0 32px rgba(200,150,42,.18);
+    transition:all .25s;
+    position:relative; overflow:hidden; flex-shrink:0;
+  }
+  .exec-btn::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(90deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
+    background-size:220% 100%;
+    animation:shim 2.5s ease-in-out infinite;
+  }
+  @keyframes shim { 0%{background-position:220% 0} 100%{background-position:-220% 0} }
+  .exec-btn:hover {
+    box-shadow:
+      0 0 0 1px rgba(247,220,138,0.6) inset,
+      0 0 28px rgba(240,192,64,.65),
+      0 0 50px rgba(240,192,64,.22);
+    transform:translateY(-1px);
+  }
+  .exec-btn:active { transform:translateY(0); }
+  .exec-icon { width:22px; height:19px; position:relative; z-index:1; filter:drop-shadow(0 1px 0 rgba(247,220,138,0.6)); }
+  .exec-btn:disabled { opacity:0.45; cursor:not-allowed; transform:none; }
+
+  .flash {
+    position:fixed; inset:0;
+    background:radial-gradient(ellipse at center, rgba(240,192,64,0.10) 0%, rgba(200,150,42,0.04) 30%, transparent 70%);
+    pointer-events:none; z-index:9000; opacity:0; transition:opacity .22s;
+  }
+  .flash.show { opacity:1; }
+
+  body.is-complete .shard-label .sl-summary { opacity: 0 !important; }
+
+  @media (max-height: 720px) {
+    .summary-card { padding: 10px 12px 9px; gap:4px; }
+    .summary-cards { gap: 9px; }
+    .summary-title { margin-bottom: 12px; }
+    .sc-summary { font-size:12px; line-height:1.42; margin-top:2px; }
+    .sc-stats { margin-top: 3px; }
+    .result-bar { padding: 10px 14px; }
+  }
+
+  .complete-glow {
+    position:fixed; inset:0; pointer-events:none; z-index:2;
+    background:
+      radial-gradient(ellipse 65% 55% at 50% 38%, rgba(240,192,64,0.09) 0%, transparent 60%),
+      radial-gradient(ellipse 90% 80% at 50% 50%, rgba(200,150,42,0.04) 0%, transparent 70%);
+    opacity:0; transition:opacity 1.5s ease;
+  }
+  .complete-glow.show { opacity:1; }
+
+  body.is-complete:not(.is-zoomed) .tf-svg-wrap {
+    width:  min(46vw, 30vh) !important;
+    height: min(46vw, 30vh) !important;
+  }
+  .tf-svg-wrap {
+    transition: width 0.9s cubic-bezier(0.77,0,0.175,1),
+                height 0.9s cubic-bezier(0.77,0,0.175,1);
+  }
+
+  body.is-zoomed .tf-world {
+    transform: translateX(-24vw) !important;
+    transition: transform 0.75s cubic-bezier(0.77,0,0.175,1) !important;
+  }
+  body.is-zoomed .tf-svg-wrap {
+    width:  min(40vw, 58vh) !important;
+    height: min(40vw, 58vh) !important;
+  }
+
+  body.is-zoomed .shard-label .sl-name { font-size:13px; letter-spacing:.42em; }
+  body.is-zoomed .shard-label .sl-glyph { font-size:13px; }
+
+  body.is-zoomed[data-shard="0"] #lbl1,
+  body.is-zoomed[data-shard="0"] #lbl2,
+  body.is-zoomed[data-shard="0"] #seg1,
+  body.is-zoomed[data-shard="0"] #seg2,
+  body.is-zoomed[data-shard="1"] #lbl0,
+  body.is-zoomed[data-shard="1"] #lbl2,
+  body.is-zoomed[data-shard="1"] #seg0,
+  body.is-zoomed[data-shard="1"] #seg2,
+  body.is-zoomed[data-shard="2"] #lbl0,
+  body.is-zoomed[data-shard="2"] #lbl1,
+  body.is-zoomed[data-shard="2"] #seg0,
+  body.is-zoomed[data-shard="2"] #seg1 {
+    opacity: 0.07;
+    transition: opacity 0.6s ease;
+  }
+
+  body.is-zoomed .output-panel {
+    top: 90px; bottom: 100px;
+    left: 50vw; right: 0;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px clamp(40px, 6vw, 120px) 32px 56px;
+    transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    transform: translateX(28px);
+  }
+  body.is-zoomed .output-panel.show {
+    transform: translateX(0);
+  }
+  body.is-zoomed .op-output {
+    width: 100%;
+    max-width: 100%;
+  }
+  body.is-zoomed .op-role {
+    font-size: 18px;
+    letter-spacing:.42em;
+    margin-bottom: 12px;
+    padding-left:.42em;
+  }
+  body.is-zoomed .op-selects { margin-bottom: 28px; }
+
+  body.is-zoomed .output-panel::before {
+    content:'';
+    position:absolute;
+    left:0; top:8%; bottom:8%; width:1px;
+    background:linear-gradient(180deg, transparent, rgba(200,150,42,.25) 18%, rgba(240,192,64,.55) 50%, rgba(200,150,42,.25) 82%, transparent);
+    box-shadow:0 0 14px rgba(200,150,42,.32), 0 0 4px rgba(240,192,64,.5);
+    pointer-events:none;
+  }
+
+  @media (max-width: 820px) {
+    body.is-zoomed .tf-world { transform: translateY(-22vh) !important; }
+    body.is-zoomed .tf-svg-wrap { width: min(60vw, 32vh) !important; height: min(60vw, 32vh) !important; }
+    body.is-zoomed .output-panel {
+      left: 0; right: 0; top: auto; bottom: 100px; height: 48vh;
+      padding: 24px 28px;
       align-items: center;
-      justify-content: space-between;
-      padding: 14px 24px;
-      background: #161b22;
-      border-bottom: 1px solid #30363d;
-      flex-shrink: 0;
+      border-top: 1px solid rgba(200,150,42,0.10);
     }
-
-    .logo {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: #58a6ff;
-      text-transform: uppercase;
+    body.is-zoomed .output-panel::before {
+      left: 12%; right: 12%; top: 0; bottom: auto; width: auto; height: 1px;
+      background:linear-gradient(90deg, transparent, rgba(200,150,42,.25) 18%, rgba(240,192,64,.55) 50%, rgba(200,150,42,.25) 82%, transparent);
     }
+  }
 
-    .logo span { color: #8b949e; font-weight: 400; }
+  .summary-panel {
+    position: fixed;
+    left: 0; right: 0;
+    bottom: var(--prompt-h);
+    height: var(--summary-h);
+    z-index: 400;
+    opacity: 0;
+    transform: translateY(28px);
+    pointer-events: none;
+    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+    overflow-y: auto;
+    padding: 0 32px 20px;
+  }
+  .summary-panel.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  .summary-panel::-webkit-scrollbar { width: 3px; }
+  .summary-panel::-webkit-scrollbar-thumb { background: rgba(200,150,42,.22); border-radius:2px; }
+  .summary-panel::-webkit-scrollbar-track { background: transparent; }
 
-    .status-pill {
-      font-size: 0.75rem;
-      padding: 4px 12px;
-      border-radius: 20px;
-      background: #21262d;
-      border: 1px solid #30363d;
-      color: #8b949e;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
+  .summary-divider {
+    height: 1px;
+    margin: 0 auto 18px;
+    max-width: 1100px;
+    background: linear-gradient(90deg, transparent, rgba(200,150,42,.30) 18%, var(--gold-bright) 50%, rgba(200,150,42,.30) 82%, transparent);
+    box-shadow: 0 0 14px rgba(200,150,42,.28), 0 0 4px rgba(240,192,64,.45);
+  }
 
-    .status-pill.active  { background: #1f3a5f; border-color: #58a6ff; color: #58a6ff; }
-    .status-pill.done    { background: #1a3a2a; border-color: #3fb950; color: #3fb950; }
-    .status-pill.error   { background: #3a1a1a; border-color: #f85149; color: #f85149; }
+  .summary-title {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; font-weight:600; letter-spacing: .42em;
+    color: var(--gold-bright); opacity: 0.72;
+    text-align: center;
+    margin-bottom: 18px;
+    padding-left:.42em;
+    text-shadow:0 0 10px rgba(240,192,64,.25);
+  }
+  .summary-title::before,
+  .summary-title::after {
+    content:'◆';
+    display:inline-block;
+    font-size:6px;
+    color:var(--gold);
+    opacity:.5;
+    margin:0 14px;
+    transform:translateY(-2px);
+  }
 
-    /* ── Task bar ── */
-    .task-bar {
-      display: flex;
-      gap: 10px;
-      padding: 14px 24px;
-      background: #161b22;
-      border-bottom: 1px solid #30363d;
-      flex-shrink: 0;
-      align-items: flex-start;
-    }
+  .summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px) {
+    .summary-cards { grid-template-columns: 1fr; }
+  }
 
-    .task-bar textarea {
-      flex: 1;
-      background: #0d1117;
-      border: 1px solid #30363d;
-      border-radius: 6px;
-      color: #e6edf3;
-      padding: 9px 12px;
-      font-size: 0.875rem;
-      font-family: inherit;
-      resize: vertical;
-      min-height: 42px;
-      max-height: 120px;
-      line-height: 1.5;
-      transition: border-color 0.15s;
-    }
+  .summary-card {
+    position:relative;
+    background: linear-gradient(180deg, rgba(200,150,42,0.055), rgba(200,150,42,0.025));
+    border: 1px solid rgba(200,150,42,0.18);
+    border-radius: 3px;
+    padding: 14px 16px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    overflow:hidden;
+  }
+  .summary-card::before {
+    content:'';
+    position:absolute;
+    top:-1px; right:-1px;
+    width:14px; height:14px;
+    background: linear-gradient(225deg, var(--void) 50%, transparent 50%);
+    border-left:1px solid rgba(200,150,42,0.22);
+    border-bottom:1px solid rgba(200,150,42,0.22);
+  }
+  .summary-card::after {
+    content:'';
+    position:absolute;
+    top:0; left:10%; right:10%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--accent, var(--gold)) 50%, transparent);
+    opacity:.55;
+  }
+  .summary-card:hover {
+    border-color: rgba(240,192,64,0.45);
+    background: linear-gradient(180deg, rgba(200,150,42,0.09), rgba(200,150,42,0.04));
+    transform:translateY(-1px);
+    box-shadow:0 4px 18px rgba(200,150,42,0.08), 0 0 0 1px rgba(240,192,64,0.05) inset;
+  }
+  .summary-card[data-agent="architect"] { --accent: var(--gold-bright); }
+  .summary-card[data-agent="developer"] { --accent: var(--blue-bright); }
+  .summary-card[data-agent="reviewer"]  { --accent: var(--pass-bright); }
 
-    .task-bar textarea:focus { outline: none; border-color: #58a6ff; }
+  .sc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:8px;
+  }
 
-    .go-btn {
-      background: #238636;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      padding: 9px 22px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s;
-      flex-shrink: 0;
-    }
+  .sc-role {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; font-weight: 700; letter-spacing: .32em;
+    color: var(--gold-bright); opacity: 0.92;
+    text-shadow:0 0 8px rgba(240,192,64,.22);
+    display:flex; align-items:center; gap:8px;
+    padding-left:.32em;
+  }
+  .sc-role-glyph {
+    display:inline-block;
+    width:9px; height:8px;
+  }
 
-    .go-btn:hover:not(:disabled) { background: #2ea043; }
-    .go-btn:disabled { background: #21262d; color: #484f58; cursor: not-allowed; }
+  .sc-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px; letter-spacing: .16em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight:bold;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .sc-badge.pass {
+    color: var(--pass);
+    border: 1px solid rgba(0,229,176,0.40);
+    background: rgba(0,229,176,0.08);
+    text-shadow:0 0 8px rgba(0,229,176,.4);
+    box-shadow:0 0 12px rgba(0,229,176,0.10) inset;
+  }
+  .sc-badge.done {
+    color: var(--gold-bright);
+    border: 1px solid rgba(200,150,42,0.40);
+    background: rgba(200,150,42,0.08);
+    text-shadow:0 0 8px rgba(240,192,64,.3);
+  }
+  .sc-badge.fail {
+    color: #f85149;
+    border: 1px solid rgba(248,81,73,0.40);
+    background: rgba(248,81,73,0.08);
+  }
 
-    /* ── Panels ── */
-    .panels {
-      display: flex;
-      flex-direction: row;
-      flex: 1;
-      gap: 14px;
-      padding: 16px 24px;
-      min-height: 0;
-    }
+  .sc-meta {
+    display:flex; align-items:center; gap:6px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8.5px; letter-spacing: .08em;
+    color: var(--text-dim); opacity: 0.65;
+  }
+  .sc-meta-dot {
+    width:3px; height:3px; border-radius:50%;
+    background:var(--accent, var(--gold));
+    opacity:.6;
+    flex-shrink:0;
+  }
+  .sc-model { color:var(--mono); opacity:.85; }
+  .sc-provider { opacity:.55; }
 
-    .panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      min-width: 0;
-    }
+  .sc-summary {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight:400; line-height: 1.5;
+    color: var(--text); opacity: 0.78;
+    margin-top: 4px;
+    letter-spacing:.005em;
+    text-wrap:pretty;
+  }
 
-    .panel.active {
-      border-color: #58a6ff;
-      box-shadow: 0 0 0 1px #58a6ff22;
-    }
+  .sc-stats {
+    display:flex; gap:14px; margin-top:6px;
+    font-family:'Share Tech Mono',monospace; font-size:8.5px;
+    letter-spacing:.10em;
+    color:var(--text-faint);
+    font-variant-numeric:tabular-nums;
+  }
+  .sc-stat { display:flex; align-items:center; gap:4px; }
+  .sc-stat-val { color:var(--mono); opacity:.85; }
+  .sc-stat-lbl { opacity:.55; }
 
-    .panel-header {
-      padding: 12px 14px;
-      background: #21262d;
-      border-bottom: 1px solid #30363d;
-      flex-shrink: 0;
-    }
+  .result-bar {
+    grid-column: 1 / -1;
+    margin-top: 6px;
+    padding: 14px 18px;
+    background:
+      linear-gradient(90deg, rgba(0,229,176,0.04), rgba(0,229,176,0.09) 50%, rgba(0,229,176,0.04));
+    border: 1px solid rgba(0,229,176,0.30);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position:relative;
+    box-shadow:0 0 24px rgba(0,229,176,0.05) inset, 0 0 18px rgba(0,229,176,0.06);
+  }
+  .result-bar::before,
+  .result-bar::after {
+    content:'';
+    position:absolute;
+    top:0; bottom:0; width:1px;
+    background:linear-gradient(180deg, transparent, var(--pass), transparent);
+    opacity:.6;
+  }
+  .result-bar::before { left:0; }
+  .result-bar::after  { right:0; }
 
-    .panel-role {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: #8b949e;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
+  .result-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; font-weight:700; letter-spacing: .32em;
+    color: var(--pass-bright);
+    text-shadow: var(--glow-pass);
+    padding-left:.32em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .result-star {
+    display:inline-block;
+    width:10px; height:10px;
+    color:var(--pass);
+    font-size:11px;
+    text-shadow:var(--glow-pass);
+    animation:starpulse 2.4s ease-in-out infinite;
+  }
+  @keyframes starpulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%     { opacity:.7; transform:scale(1.15); }
+  }
 
-    .panel-controls {
-      display: flex;
-      gap: 6px;
-    }
-
-    .panel-controls select {
-      flex: 1;
-      min-width: 0;
-      background: #0d1117;
-      border: 1px solid #30363d;
-      border-radius: 4px;
-      color: #e6edf3;
-      padding: 5px 8px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: border-color 0.15s;
-    }
-
-    .panel-controls select:focus { outline: none; border-color: #58a6ff; }
-
-    .panel-body {
-      flex: 1;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .panel-output {
-      flex: 1;
-      padding: 14px;
-      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-      font-size: 0.775rem;
-      line-height: 1.65;
-      color: #c9d1d9;
-      white-space: pre-wrap;
-      word-break: break-word;
-      min-height: 160px;
-    }
-
-    .panel-output.idle { color: #484f58; font-style: italic; font-family: inherit; font-size: 0.8rem; }
-
-    .sandbox-divider {
-      margin: 10px 14px 0;
-      border: none;
-      border-top: 1px solid #30363d;
-      flex-shrink: 0;
-    }
-
-    .sandbox-output {
-      padding: 10px 14px 14px;
-      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-      font-size: 0.75rem;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      word-break: break-word;
-      flex-shrink: 0;
-    }
-
-    .sandbox-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #8b949e;
-      margin-bottom: 6px;
-    }
-
-    .sandbox-pass { color: #3fb950; }
-    .sandbox-fail { color: #f85149; }
-
-    .panel-error {
-      padding: 12px 14px;
-      color: #f85149;
-      font-size: 0.8rem;
-      font-family: 'SFMono-Regular', Consolas, monospace;
-      white-space: pre-wrap;
-    }
-
-    /* ── Cost bar ── */
-    .cost-bar {
-      display: none;
-      padding: 10px 24px;
-      background: #161b22;
-      border-top: 1px solid #30363d;
-      font-size: 0.775rem;
-      gap: 20px;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-shrink: 0;
-    }
-
-    .cost-bar.visible { display: flex; }
-
-    .cost-item { color: #8b949e; }
-    .cost-item b { color: #c9d1d9; font-weight: 500; }
-    .cost-total { color: #3fb950; font-weight: 600; margin-left: auto; }
-
-    /* ── Mobile ── */
-    @media (max-width: 768px) {
-      .panels {
-        flex-direction: column;
-        padding: 12px;
-        gap: 12px;
-      }
-      .task-bar { padding: 12px; }
-      header { padding: 12px; }
-      .cost-bar { padding: 10px 12px; gap: 12px; }
-      .cost-total { margin-left: 0; width: 100%; }
-    }
-  </style>
+  .result-meta {
+    display:flex; gap:18px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: .14em;
+    color: var(--text-dim); opacity: 0.78;
+    font-variant-numeric:tabular-nums;
+  }
+  .result-meta-item { display:flex; align-items:center; gap:6px; }
+  .result-meta-val { color:var(--mono); }
+  .result-meta-lbl { color:var(--text-faint); font-size:8.5px; }
+</style>
 </head>
 <body>
 
-<header>
-  <div class="logo">◈ Triforce <span>/ multi-agent pipeline</span></div>
-  <div class="status-pill" id="status-pill">Idle</div>
+<header class="hdr">
+  <div class="logo">
+    <svg class="tf-mark" viewBox="0 0 100 87">
+      <polygon points="50,2 98,85 2,85" fill="none" stroke="#c8962a" stroke-width="3"/>
+      <polygon points="50,25 74,68 26,68" fill="#f0c040" opacity=".95"/>
+      <polygon points="27,25 51,68 3,68" fill="#f0c040" opacity=".95"/>
+      <polygon points="73,25 97,68 49,68" fill="#f0c040" opacity=".95"/>
+    </svg>
+    <span class="logo-name">TRIFORCE</span>
+    <span class="logo-sep">/</span>
+    <span class="logo-sub">MULTI-AGENT PIPELINE</span>
+  </div>
+  <div class="status">
+    <div class="sdot" id="sdot"></div>
+    <span id="stxt">IDLE</span>
+  </div>
 </header>
 
-<div class="task-bar">
-  <textarea id="task-input" rows="1" placeholder="Describe the coding task…">Create a JavaScript function that takes an array of numbers, removes duplicates, sorts them in ascending order, and returns the result. Include a test that proves it works.</textarea>
-  <button class="go-btn" id="go-btn">Go</button>
+<div class="stage-label" id="stageLabel"></div>
+
+<div class="back-btn" id="backBtn" onclick="zoomOut()">‹ OVERVIEW</div>
+
+<div class="scene" id="scene">
+  <div class="tf-world" id="tfWorld">
+    <div class="tf-svg-wrap">
+
+      <div class="tf-halo"></div>
+      <div class="tf-centre-bloom"></div>
+
+      <svg class="tf-main-svg" viewBox="0 0 200 174" fill="none">
+        <defs>
+          <filter id="neon" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.5" result="b1"/>
+            <feGaussianBlur stdDeviation="7"   result="b2"/>
+            <feGaussianBlur stdDeviation="14"  result="b3"/>
+            <feMerge><feMergeNode in="b3"/><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="neonbright" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="4"  result="b1"/>
+            <feGaussianBlur stdDeviation="12" result="b2"/>
+            <feGaussianBlur stdDeviation="22" result="b3"/>
+            <feMerge><feMergeNode in="b3"/><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="gdone" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2.2" result="b1"/>
+            <feGaussianBlur stdDeviation="5.5" result="b2"/>
+            <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <polygon points="100,4 196,170 4,170" fill="none" stroke="rgba(200,150,42,0.10)" stroke-width="0.4"/>
+        <polygon points="100,12 188,164 12,164" fill="none" stroke="rgba(200,150,42,0.05)" stroke-width="0.25" stroke-dasharray="1,2"/>
+
+        <polygon id="seg0" class="seg dim" points="100,4 148,87 52,87"   stroke-width="1"/>
+        <polygon id="seg1" class="seg dim" points="52,87 100,170 4,170"  stroke-width="1"/>
+        <polygon id="seg2" class="seg dim" points="148,87 196,170 100,170" stroke-width="1"/>
+
+        <polygon points="100,87 52,87 148,87" fill="rgba(4,5,7,0.95)" stroke="rgba(200,150,42,0.06)" stroke-width="0.3"/>
+      </svg>
+
+      <div class="shard-label architect" id="lbl0">
+        <span class="sl-glyph">△</span>
+        <span class="sl-name">ARCHITECT</span>
+        <span class="sl-summary" id="sum0"></span>
+      </div>
+
+      <div class="shard-label developer" id="lbl1">
+        <span class="sl-glyph">△</span>
+        <span class="sl-name">DEVELOPER</span>
+        <span class="sl-summary" id="sum1"></span>
+      </div>
+
+      <div class="shard-label reviewer" id="lbl2">
+        <span class="sl-glyph">△</span>
+        <span class="sl-name">REVIEWER</span>
+        <span class="sl-summary" id="sum2"></span>
+      </div>
+
+      <svg class="tf-main-svg" viewBox="0 0 200 174" fill="none" style="position:absolute;top:0;left:0;pointer-events:none;" id="hitSvg">
+        <polygon id="hit0" points="100,4 148,87 52,87"  fill="transparent" style="pointer-events:none;cursor:pointer;"/>
+        <polygon id="hit1" points="52,87 100,170 4,170" fill="transparent" style="pointer-events:none;cursor:pointer;"/>
+        <polygon id="hit2" points="148,87 196,170 100,170" fill="transparent" style="pointer-events:none;cursor:pointer;"/>
+      </svg>
+
+      <div class="sparks" id="sparks">
+        <span class="spark"      style="left:12%; --dur:8.5s;  --delay:0s;    --sway:14px;"></span>
+        <span class="spark"      style="left:24%; --dur:10s;   --delay:1.2s;  --sway:-10px;"></span>
+        <span class="spark"      style="left:38%; --dur:9s;    --delay:2.4s;  --sway:8px;"></span>
+        <span class="spark blue" style="left:50%; --dur:11s;   --delay:0.6s;  --sway:-6px;"></span>
+        <span class="spark"      style="left:62%; --dur:8s;    --delay:3.0s;  --sway:12px;"></span>
+        <span class="spark"      style="left:76%; --dur:10.5s; --delay:1.8s;  --sway:-12px;"></span>
+        <span class="spark blue" style="left:88%; --dur:9.5s;  --delay:4.0s;  --sway:6px;"></span>
+        <span class="spark"      style="left:6%;  --dur:11s;   --delay:5.0s;  --sway:10px;"></span>
+        <span class="spark"      style="left:94%; --dur:9s;    --delay:6.0s;  --sway:-8px;"></span>
+        <span class="spark blue" style="left:32%; --dur:12s;   --delay:7.0s;  --sway:-14px;"></span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="complete-glow" id="completeGlow"></div>
 </div>
 
-<div class="panels">
-  <div class="panel" id="panel-architect">
-    <div class="panel-header">
-      <div class="panel-role">Architect</div>
-      <div class="panel-controls">
-        <select id="provider-architect" aria-label="Architect provider"></select>
-        <select id="model-architect"    aria-label="Architect model"></select>
-      </div>
-    </div>
-    <div class="panel-body" id="body-architect">
-      <div class="panel-output idle" id="output-architect">Waiting…</div>
-    </div>
+<!-- OUTPUT PANELS -->
+<div class="output-panel" id="opArchitect">
+  <div class="op-role blue">ARCHITECT</div>
+  <div class="op-selects">
+    <select id="prov-architect"></select>
+    <select id="mod-architect"></select>
   </div>
-
-  <div class="panel" id="panel-developer">
-    <div class="panel-header">
-      <div class="panel-role">Developer</div>
-      <div class="panel-controls">
-        <select id="provider-developer" aria-label="Developer provider"></select>
-        <select id="model-developer"    aria-label="Developer model"></select>
-      </div>
-    </div>
-    <div class="panel-body" id="body-developer">
-      <div class="panel-output idle" id="output-developer">Waiting…</div>
-    </div>
-  </div>
-
-  <div class="panel" id="panel-reviewer">
-    <div class="panel-header">
-      <div class="panel-role">Reviewer</div>
-      <div class="panel-controls">
-        <select id="provider-reviewer" aria-label="Reviewer provider"></select>
-        <select id="model-reviewer"    aria-label="Reviewer model"></select>
-      </div>
-    </div>
-    <div class="panel-body" id="body-reviewer">
-      <div class="panel-output idle" id="output-reviewer">Waiting…</div>
-    </div>
+  <div class="op-output" id="outArchitect">
+    <span class="out-wait">_ AWAITING TASK</span>
   </div>
 </div>
 
-<div class="cost-bar" id="cost-bar"></div>
+<div class="output-panel" id="opDeveloper">
+  <div class="op-role blue">DEVELOPER</div>
+  <div class="op-selects">
+    <select id="prov-developer"></select>
+    <select id="mod-developer"></select>
+  </div>
+  <div class="op-output" id="outDeveloper">
+    <span class="out-wait">_ AWAITING ARCHITECT</span>
+  </div>
+</div>
+
+<div class="output-panel" id="opReviewer">
+  <div class="op-role blue">REVIEWER</div>
+  <div class="op-selects">
+    <select id="prov-reviewer"></select>
+    <select id="mod-reviewer"></select>
+  </div>
+  <div class="op-output" id="outReviewer">
+    <span class="out-wait">_ AWAITING DEVELOPER</span>
+  </div>
+</div>
+
+<!-- SUMMARY PANEL -->
+<div class="summary-panel" id="summaryPanel">
+  <div class="summary-divider"></div>
+  <div class="summary-title">PIPELINE SUMMARY</div>
+  <div class="summary-cards">
+
+    <div class="summary-card" data-agent="architect" onclick="zoomIn(0)">
+      <div class="sc-header">
+        <span class="sc-role">
+          <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
+          ARCHITECT
+        </span>
+        <span class="sc-badge done" id="badge-architect">COMPLETE</span>
+      </div>
+      <div class="sc-meta">
+        <span class="sc-model" id="sc-model-0">—</span>
+        <span class="sc-meta-dot"></span>
+        <span class="sc-provider" id="sc-provider-0">—</span>
+      </div>
+      <div class="sc-summary" id="sc-summary-0">—</div>
+      <div class="sc-stats">
+        <span class="sc-stat"><span class="sc-stat-val" id="sc-lat-0">—</span><span class="sc-stat-lbl">latency</span></span>
+        <span class="sc-stat"><span class="sc-stat-val" id="sc-cost-0">—</span><span class="sc-stat-lbl">cost</span></span>
+      </div>
+    </div>
+
+    <div class="summary-card" data-agent="developer" onclick="zoomIn(1)">
+      <div class="sc-header">
+        <span class="sc-role">
+          <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
+          DEVELOPER
+        </span>
+        <span class="sc-badge done" id="badge-developer">COMPLETE</span>
+      </div>
+      <div class="sc-meta">
+        <span class="sc-model" id="sc-model-1">—</span>
+        <span class="sc-meta-dot"></span>
+        <span class="sc-provider" id="sc-provider-1">—</span>
+      </div>
+      <div class="sc-summary" id="sc-summary-1">—</div>
+      <div class="sc-stats">
+        <span class="sc-stat"><span class="sc-stat-val" id="sc-lat-1">—</span><span class="sc-stat-lbl">latency</span></span>
+        <span class="sc-stat"><span class="sc-stat-val" id="sc-cost-1">—</span><span class="sc-stat-lbl">cost</span></span>
+      </div>
+    </div>
+
+    <div class="summary-card" data-agent="reviewer" onclick="zoomIn(2)">
+      <div class="sc-header">
+        <span class="sc-role">
+          <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
+          REVIEWER
+        </span>
+        <span class="sc-badge pass" id="badge-reviewer">★ PASS</span>
+      </div>
+      <div class="sc-meta">
+        <span class="sc-model" id="sc-model-2">—</span>
+        <span class="sc-meta-dot"></span>
+        <span class="sc-provider" id="sc-provider-2">—</span>
+      </div>
+      <div class="sc-summary" id="sc-summary-2">—</div>
+      <div class="sc-stats">
+        <span class="sc-stat"><span class="sc-stat-val" id="sc-lat-2">—</span><span class="sc-stat-lbl">latency</span></span>
+        <span class="sc-stat"><span class="sc-stat-val" id="sc-cost-2">—</span><span class="sc-stat-lbl">cost</span></span>
+      </div>
+    </div>
+
+    <div class="result-bar">
+      <span class="result-label"><span class="result-star">★</span><span id="result-label-text">PIPELINE COMPLETE</span></span>
+      <span class="result-meta">
+        <span class="result-meta-item"><span class="result-meta-lbl">RUNTIME</span><span class="result-meta-val" id="result-runtime">—</span></span>
+        <span class="result-meta-item"><span class="result-meta-lbl">COST</span><span class="result-meta-val" id="result-cost">—</span></span>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROMPT BAR -->
+<div class="prompt-bar" id="promptBar">
+  <div class="prompt-wrap">
+    <svg class="prompt-tri-mark" viewBox="0 0 100 87">
+      <polygon points="50,2 98,85 2,85" fill="none" stroke="#c8962a" stroke-width="4"/>
+      <polygon points="50,25 74,68 26,68" fill="#f0c040"/>
+      <polygon points="27,25 51,68 3,68" fill="#f0c040"/>
+      <polygon points="73,25 97,68 49,68" fill="#f0c040"/>
+    </svg>
+    <input class="prompt-inp" id="promptInp" type="text" placeholder="Describe your coding task…"/>
+    <span class="char-count" id="charCount">0</span>
+  </div>
+  <div class="cost-micro">
+    <span class="cost-micro-lbl">SESSION</span>
+    <span class="cost-micro-val" id="costVal">$0.00</span>
+  </div>
+  <button class="exec-btn" id="execBtn" title="Execute">
+    <svg class="exec-icon" viewBox="0 0 100 87">
+      <polygon points="50,2 98,85 2,85" fill="none" stroke="#0a0800" stroke-width="4"/>
+      <polygon points="50,25 74,68 26,68" fill="#0a0800" opacity=".92"/>
+      <polygon points="27,25 51,68 3,68" fill="#0a0800" opacity=".92"/>
+      <polygon points="73,25 97,68 49,68" fill="#0a0800" opacity=".92"/>
+    </svg>
+  </button>
+</div>
+
+<div class="flash" id="flash"></div>
 
 <script>
+  // ── CONFIG ──
   const PROVIDERS = {
     anthropic: ['claude-sonnet-4-6', 'claude-opus-4-7', 'claude-haiku-4-5'],
     google:    ['gemini-2.5-flash', 'gemini-2.5-pro'],
     openai:    ['gpt-4o', 'gpt-4o-mini', 'gpt-4.1', 'gpt-4.1-mini'],
   };
-
   const ROLES = ['architect', 'developer', 'reviewer'];
 
-  // ── Dropdown setup ──────────────────────────────────────────
+  // ── DOM ──
+  const tfWorld      = document.getElementById('tfWorld');
+  const segs         = [0,1,2].map(i => document.getElementById('seg'+i));
+  const lbls         = [0,1,2].map(i => document.getElementById('lbl'+i));
+  const panels       = ['opArchitect','opDeveloper','opReviewer'].map(id => document.getElementById(id));
+  const hits         = [0,1,2].map(i => document.getElementById('hit'+i));
+  const sdot         = document.getElementById('sdot');
+  const stxt         = document.getElementById('stxt');
+  const stageLabel   = document.getElementById('stageLabel');
+  const backBtn      = document.getElementById('backBtn');
+  const flash        = document.getElementById('flash');
+  const completeGlow = document.getElementById('completeGlow');
+  const promptBar    = document.getElementById('promptBar');
+  const execBtn      = document.getElementById('execBtn');
+  const inp          = document.getElementById('promptInp');
+  const cc           = document.getElementById('charCount');
+  const costVal      = document.getElementById('costVal');
+  const scene        = document.getElementById('scene');
 
-  function buildProviderSelect(sel) {
-    sel.innerHTML = Object.keys(PROVIDERS)
-      .map(p => `<option value="${p}">${p}</option>`)
-      .join('');
-  }
+  const ROLE_LABELS = ['ARCHITECT', 'DEVELOPER', 'REVIEWER'];
 
-  function buildModelSelect(providerSel, modelSel) {
-    const models = PROVIDERS[providerSel.value] ?? [];
-    modelSel.innerHTML = models.map(m => `<option value="${m}">${m}</option>`).join('');
-  }
+  // ── STATE ──
+  let appState = 'home';
+  let pipelineRunning = false;
+  const agentData = {
+    architect: { provider: '', model: '', text: '', summary: '', cost: 0, latency: 0, startTime: 0 },
+    developer: { provider: '', model: '', text: '', summary: '', cost: 0, latency: 0, startTime: 0 },
+    reviewer:  { provider: '', model: '', text: '', summary: '', cost: 0, latency: 0, startTime: 0 },
+  };
+  let totalCost = 0;
+  let totalElapsed = '0';
 
-  function initDropdowns() {
+  // ── DROPDOWNS ──
+  function buildSelects() {
     for (const role of ROLES) {
-      const pSel = document.getElementById(`provider-${role}`);
-      const mSel = document.getElementById(`model-${role}`);
-      buildProviderSelect(pSel);
-      buildModelSelect(pSel, mSel);
-      pSel.addEventListener('change', () => buildModelSelect(pSel, mSel));
+      const pSel = document.getElementById(`prov-${role}`);
+      const mSel = document.getElementById(`mod-${role}`);
+      pSel.innerHTML = Object.keys(PROVIDERS).map(p => `<option value="${p}">${p}</option>`).join('');
+      rebuildModels(pSel, mSel);
+      pSel.addEventListener('change', () => rebuildModels(pSel, mSel));
     }
+  }
+
+  function rebuildModels(pSel, mSel) {
+    const models = PROVIDERS[pSel.value] ?? [];
+    mSel.innerHTML = models.map(m => `<option value="${m}">${m}</option>`).join('');
   }
 
   async function loadDefaults() {
@@ -343,153 +1117,350 @@
       for (const role of ROLES) {
         const { provider, model } = config[role] ?? {};
         if (!provider) continue;
-        const pSel = document.getElementById(`provider-${role}`);
-        const mSel = document.getElementById(`model-${role}`);
+        const pSel = document.getElementById(`prov-${role}`);
+        const mSel = document.getElementById(`mod-${role}`);
         pSel.value = provider;
-        buildModelSelect(pSel, mSel);
+        rebuildModels(pSel, mSel);
         mSel.value = model;
       }
-    } catch (e) {
-      console.warn('Could not load config defaults:', e);
+    } catch (e) { /* use defaults */ }
+  }
+
+  // ── VISUAL STATE ──
+  function setSegState(idx, state) {
+    segs[idx].setAttribute('class', 'seg ' + state);
+    const roleClass = ['architect','developer','reviewer'][idx];
+    const stateClass = state === 'active' ? 'is-active'
+                     : (state === 'done' || state === 'complete') ? 'is-done' : '';
+    lbls[idx].setAttribute('class', `shard-label ${roleClass} ${stateClass}`);
+  }
+
+  function zoomIn(idx) {
+    appState = 'zoomed-' + idx;
+    panels.forEach(p => p.classList.remove('show'));
+    document.body.classList.add('is-zoomed');
+    document.body.setAttribute('data-shard', String(idx));
+    document.getElementById('summaryPanel').classList.remove('show');
+    tfWorld.style.transform = '';
+    setTimeout(() => panels[idx].classList.add('show'), 450);
+    stageLabel.textContent = ROLE_LABELS[idx];
+    stageLabel.classList.add('show');
+    backBtn.classList.add('show');
+    promptBar.style.opacity = '0';
+    promptBar.style.pointerEvents = 'none';
+  }
+
+  function zoomOut() {
+    appState = pipelineRunning ? 'running' : (allDone() ? 'complete' : 'home');
+    tfWorld.style.transform = '';
+    document.body.classList.remove('is-zoomed');
+    document.body.removeAttribute('data-shard');
+    panels.forEach(p => p.classList.remove('show'));
+    stageLabel.classList.remove('show');
+    backBtn.classList.remove('show');
+    if (!pipelineRunning) {
+      promptBar.style.opacity = '1';
+      promptBar.style.pointerEvents = 'all';
+    }
+    if (allDone()) enableHitAreas();
+    if (document.body.classList.contains('is-complete')) {
+      setTimeout(() => document.getElementById('summaryPanel').classList.add('show'), 500);
     }
   }
 
-  // ── UI helpers ───────────────────────────────────────────────
-
-  function setStatus(text, state = '') {
-    const pill = document.getElementById('status-pill');
-    pill.textContent = text;
-    pill.className = 'status-pill' + (state ? ` ${state}` : '');
+  function allDone() {
+    return segs.every(s => s.classList.contains('done') || s.classList.contains('complete'));
   }
 
-  function setGoBtn(enabled) {
-    const btn = document.getElementById('go-btn');
-    btn.disabled = !enabled;
-    btn.textContent = enabled ? 'Go' : 'Running…';
+  function enableHitAreas() {
+    hits.forEach((h, i) => {
+      h.style.pointerEvents = 'all';
+      h.style.cursor = 'pointer';
+      h.onclick = () => zoomIn(i);
+    });
+    document.getElementById('hitSvg').style.pointerEvents = 'all';
   }
 
-  function setActivePanel(stage) {
-    for (const role of ROLES) {
-      document.getElementById(`panel-${role}`).classList.toggle('active', role === stage);
+  function doFlash(cb) {
+    flash.classList.add('show');
+    setTimeout(() => { flash.classList.remove('show'); if (cb) cb(); }, 200);
+  }
+
+  function showCompleteState() {
+    appState = 'complete';
+    pipelineRunning = false;
+    panels.forEach(p => p.classList.remove('show'));
+    stageLabel.classList.remove('show');
+    backBtn.classList.remove('show');
+    tfWorld.style.transform = 'scale(1) translate(0,0)';
+    scene.style.transition = 'all 0.9s cubic-bezier(0.77,0,0.175,1)';
+    scene.style.top = '52px';
+    scene.style.bottom = 'calc(var(--summary-h) + var(--prompt-h))';
+    document.body.classList.add('is-complete');
+    document.body.classList.remove('is-zoomed');
+    setTimeout(() => {
+      document.getElementById('summaryPanel').classList.add('show');
+      completeGlow.classList.add('show');
+      setTimeout(() => {
+        promptBar.style.opacity = '1';
+        promptBar.style.pointerEvents = 'all';
+        execBtn.disabled = false;
+        enableHitAreas();
+      }, 600);
+    }, 500);
+  }
+
+  // ── OUTPUT FORMATTING ──
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function formatOutput(role, text) {
+    const lines = text.split('\n');
+    if (role === 'developer') {
+      return lines.map(l => `<span class="oc ol">${escHtml(l)}</span>`).join('\n');
     }
-  }
-
-  function clearActivePanels() {
-    for (const role of ROLES) {
-      document.getElementById(`panel-${role}`).classList.remove('active');
+    if (role === 'reviewer') {
+      return lines.map(l => {
+        const e = escHtml(l);
+        if (/\bPASS\b/i.test(l)) return `<span class="op-pass ol">${e}</span>`;
+        if (/\bFAIL\b/i.test(l)) return `<span class="op-fail ol">${e}</span>`;
+        if (/^[✓✔]/.test(l))    return `<span class="op-pass ol">${e}</span>`;
+        if (/^[✗✘×]/.test(l))   return `<span class="op-fail ol">${e}</span>`;
+        return `<span class="os ol">${e}</span>`;
+      }).join('\n');
     }
+    // architect — numbered steps
+    return lines.map(l => {
+      const e = escHtml(l);
+      if (!l.trim()) return `<span class="ol"> </span>`;
+      if (/^\d+\./.test(l)) return `<span class="os ol">${e}</span>`;
+      return `<span class="olb ol">${e}</span>`;
+    }).join('\n');
   }
 
-  function resetPanels() {
-    for (const role of ROLES) {
-      const out = document.getElementById(`output-${role}`);
-      out.textContent = 'Waiting…';
-      out.className = 'panel-output idle';
-
-      // Remove sandbox nodes if present
-      const body = document.getElementById(`body-${role}`);
-      body.querySelectorAll('.sandbox-divider, .sandbox-output, .panel-error')
-          .forEach(el => el.remove());
+  function generateSummary(role, text) {
+    const lines = text.split('\n').filter(l => l.trim());
+    if (role === 'architect') {
+      const steps = lines.filter(l => /^\d+\./.test(l)).length;
+      const first = lines.find(l => /^\d+\./.test(l)) || lines[0] || '';
+      const detail = first.replace(/^\d+\.\s*/, '').slice(0, 80);
+      return steps > 0 ? `Generated ${steps}-step plan. ${detail}` : lines[0]?.slice(0, 120) || 'Plan generated.';
     }
-    const costBar = document.getElementById('cost-bar');
-    costBar.className = 'cost-bar';
-    costBar.innerHTML = '';
+    if (role === 'developer') {
+      const codeLines = lines.filter(l => l.trim() && !l.startsWith('//')).length;
+      return `Wrote ${codeLines} lines of executable JavaScript. ${lines[0]?.slice(0, 60) || ''}`;
+    }
+    if (role === 'reviewer') {
+      const verdict = lines.find(l => /\b(PASS|FAIL)\b/i.test(l));
+      return verdict ? verdict.replace(/[★✓✔✗✘]/g, '').trim().slice(0, 150) : lines[0]?.slice(0, 150) || 'Review complete.';
+    }
+    return text.slice(0, 120);
   }
 
-  // ── Event handlers ───────────────────────────────────────────
+  function populateSummaryCards() {
+    const roles = ['architect', 'developer', 'reviewer'];
+    roles.forEach((role, i) => {
+      const d = agentData[role];
+      document.getElementById(`sc-model-${i}`).textContent    = d.model    || '—';
+      document.getElementById(`sc-provider-${i}`).textContent = d.provider || '—';
+      document.getElementById(`sc-summary-${i}`).textContent  = d.summary  || '—';
+      document.getElementById(`sc-lat-${i}`).textContent  = d.latency ? d.latency.toFixed(1) + 's' : '—';
+      document.getElementById(`sc-cost-${i}`).textContent = d.cost ? '$' + d.cost.toFixed(4) : '—';
+    });
 
+    // Reviewer verdict badge
+    const revText = agentData.reviewer.text;
+    const badge = document.getElementById('badge-reviewer');
+    if (/\bFAIL\b/i.test(revText)) {
+      badge.textContent = '✗ FAIL';
+      badge.className = 'sc-badge fail';
+      document.getElementById('result-label-text').textContent = 'PIPELINE COMPLETE — REVIEW FLAGGED';
+    } else {
+      badge.textContent = '★ PASS';
+      badge.className = 'sc-badge pass';
+      document.getElementById('result-label-text').textContent = 'PIPELINE COMPLETE — ALL STAGES DONE';
+    }
+
+    document.getElementById('result-runtime').textContent = totalElapsed + 's';
+    document.getElementById('result-cost').textContent    = '$' + totalCost.toFixed(4);
+  }
+
+  // ── RESET ──
+  function resetForRun() {
+    segs.forEach((_, i) => setSegState(i, 'dim'));
+    panels.forEach(p => p.classList.remove('show'));
+    document.getElementById('outArchitect').innerHTML = '<span class="out-wait">_ PLANNING...</span>';
+    document.getElementById('outDeveloper').innerHTML = '<span class="out-wait">_ AWAITING ARCHITECT</span>';
+    document.getElementById('outReviewer').innerHTML  = '<span class="out-wait">_ AWAITING DEVELOPER</span>';
+    document.body.classList.remove('is-complete');
+    document.body.classList.remove('is-zoomed');
+    document.body.removeAttribute('data-shard');
+    completeGlow.classList.remove('show');
+    document.getElementById('summaryPanel').classList.remove('show');
+    scene.style.transition = '';
+    scene.style.top = '52px';
+    scene.style.bottom = '0';
+    ROLES.forEach(role => {
+      agentData[role] = { provider: document.getElementById(`prov-${role}`).value,
+                          model: document.getElementById(`mod-${role}`).value,
+                          text: '', summary: '', cost: 0, latency: 0, startTime: 0 };
+    });
+    totalCost = 0;
+    sdot.className = 'sdot run';
+    stxt.textContent = 'STARTING...';
+    costVal.textContent = '$0.00';
+  }
+
+  // ── EVENT HANDLER ──
   function handleEvent(event) {
     switch (event.type) {
-      case 'status':
-        setStatus(event.label, 'active');
-        // Sandbox stage: keep developer panel highlighted (it's running dev's code)
-        setActivePanel(event.stage === 'sandbox' ? 'developer' : event.stage);
+
+      case 'status': {
+        const { stage } = event;
+
+        if (stage === 'architect') {
+          agentData.architect.startTime = Date.now();
+          setSegState(0, 'active');
+          stxt.textContent = 'STAGE 1 · ARCHITECT';
+          setTimeout(() => doFlash(() => zoomIn(0)), 300);
+
+        } else if (stage === 'developer') {
+          agentData.architect.latency = (Date.now() - agentData.architect.startTime) / 1000;
+          agentData.developer.startTime = Date.now();
+          setSegState(0, 'done');
+          document.getElementById('sum0').textContent = 'Plan ready';
+          stxt.textContent = 'STAGE 2 · DEVELOPER';
+          setTimeout(() => {
+            doFlash(() => {
+              zoomOut();
+              setTimeout(() => {
+                setSegState(1, 'active');
+                doFlash(() => zoomIn(1));
+              }, 500);
+            });
+          }, 400);
+
+        } else if (stage === 'sandbox') {
+          // Still in developer panel — append executing indicator
+          const devOut = document.getElementById('outDeveloper');
+          devOut.innerHTML += '\n<span class="olb ol">// EXECUTING IN SANDBOX...</span>';
+
+        } else if (stage === 'reviewer') {
+          agentData.developer.latency = (Date.now() - agentData.developer.startTime) / 1000;
+          agentData.reviewer.startTime = Date.now();
+          setSegState(1, 'done');
+          document.getElementById('sum1').textContent = 'Code complete';
+          stxt.textContent = 'STAGE 4 · REVIEWER';
+          setTimeout(() => {
+            doFlash(() => {
+              zoomOut();
+              setTimeout(() => {
+                setSegState(2, 'active');
+                doFlash(() => zoomIn(2));
+              }, 500);
+            });
+          }, 400);
+        }
         break;
+      }
 
       case 'output': {
-        const out = document.getElementById(`output-${event.role}`);
-        out.className = 'panel-output';
-        out.textContent = event.text;
-        out.scrollTop = out.scrollHeight;
+        const roleIdx = { architect: 0, developer: 1, reviewer: 2 }[event.role];
+        const outId = ['outArchitect', 'outDeveloper', 'outReviewer'][roleIdx];
+        const outEl = document.getElementById(outId);
+        outEl.innerHTML = formatOutput(event.role, event.text);
+        outEl.classList.remove('typing');
+        agentData[event.role].text = event.text;
+        agentData[event.role].summary = generateSummary(event.role, event.text);
         break;
       }
 
       case 'sandbox': {
-        const body = document.getElementById('body-developer');
-        const hr = document.createElement('hr');
-        hr.className = 'sandbox-divider';
-        body.appendChild(hr);
-
-        const box = document.createElement('div');
-        box.className = 'sandbox-output';
-
-        const label = document.createElement('div');
-        label.className = 'sandbox-label';
-        label.textContent = 'Execution';
-        box.appendChild(label);
-
+        const devOut = document.getElementById('outDeveloper');
         const exitOk = (event.exitCode === 0 || event.exitCode === null) && !event.timedOut;
-        const content = document.createElement('div');
-        content.className = exitOk ? 'sandbox-pass' : 'sandbox-fail';
-
         const lines = [];
         if (event.timedOut) lines.push('[TIMED OUT after 10 seconds]');
-        if (event.stdout)   lines.push(event.stdout.trimEnd());
+        if (event.stdout)   lines.push(...event.stdout.trimEnd().split('\n'));
         if (event.stderr)   lines.push('[stderr] ' + event.stderr.trimEnd());
         if (!lines.length)  lines.push('[No output]');
-        content.textContent = lines.join('\n');
-        box.appendChild(content);
-        body.appendChild(box);
-        body.scrollTop = body.scrollHeight;
+
+        // Replace "EXECUTING..." label with result label
+        const resultLabel = `<span class="olb ol">// EXECUTION · EXIT ${event.exitCode ?? 0}</span>`;
+        devOut.innerHTML = devOut.innerHTML.replace(
+          /<span class="olb ol">\/\/ EXECUTING IN SANDBOX\.\.\.<\/span>/,
+          resultLabel
+        );
+        devOut.innerHTML += '\n' + lines.map(l =>
+          `<span class="${exitOk ? 'op-pass' : 'op-fail'} ol">${escHtml(l)}</span>`
+        ).join('\n');
+
+        agentData.developer.sandboxPass = exitOk;
         break;
       }
 
       case 'cost': {
-        const bar = document.getElementById('cost-bar');
-        bar.innerHTML = event.records.map(r =>
-          `<span class="cost-item">${r.role}: <b>$${r.cost.toFixed(6)}</b></span>`
-        ).join('') + `<span class="cost-total">Total $${event.total.toFixed(6)}</span>`;
-        bar.className = 'cost-bar visible';
+        totalCost = event.total;
+        costVal.textContent = '$' + event.total.toFixed(4);
+        event.records.forEach(r => {
+          if (agentData[r.role]) agentData[r.role].cost = r.cost;
+        });
         break;
       }
 
-      case 'done':
-        setStatus(`Done (${event.elapsed}s)`, 'done');
-        clearActivePanels();
-        setGoBtn(true);
+      case 'done': {
+        totalElapsed = event.elapsed;
+        agentData.reviewer.latency = (Date.now() - agentData.reviewer.startTime) / 1000;
+        setSegState(0, 'complete');
+        setSegState(1, 'complete');
+        setSegState(2, 'complete');
+        document.getElementById('sum2').textContent = /\bFAIL\b/i.test(agentData.reviewer.text) ? '✗ FAIL' : '★ PASS';
+        sdot.className = 'sdot ok';
+        stxt.textContent = `COMPLETE · ${event.elapsed}s`;
+        pipelineRunning = false;
+        populateSummaryCards();
+        setTimeout(() => doFlash(() => showCompleteState()), 1500);
         break;
+      }
 
       case 'error': {
-        const body = document.getElementById(`body-${event.stage}`);
-        const errEl = document.createElement('div');
-        errEl.className = 'panel-error';
-        errEl.textContent = `Error: ${event.message}`;
-        body.appendChild(errEl);
-        setStatus(`Error in ${event.stage}`, 'error');
-        clearActivePanels();
-        setGoBtn(true);
+        const stageIdx = { architect: 0, developer: 1, sandbox: 1, reviewer: 2 }[event.stage] ?? 0;
+        const outId = ['outArchitect', 'outDeveloper', 'outReviewer'][stageIdx];
+        document.getElementById(outId).innerHTML =
+          `<span class="op-fail ol">ERROR: ${escHtml(event.message)}</span>`;
+        setSegState(stageIdx, 'dim');
+        sdot.className = 'sdot';
+        stxt.textContent = 'ERROR';
+        pipelineRunning = false;
+        execBtn.disabled = false;
+        promptBar.style.opacity = '1';
+        promptBar.style.pointerEvents = 'all';
         break;
       }
     }
   }
 
-  // ── Pipeline runner ──────────────────────────────────────────
-
+  // ── PIPELINE RUNNER ──
   async function runPipeline() {
-    const task = document.getElementById('task-input').value.trim();
-    if (!task) return;
+    const task = inp.value.trim();
+    if (!task || pipelineRunning) return;
+    pipelineRunning = true;
+    execBtn.disabled = true;
+
+    resetForRun();
+    promptBar.style.opacity = '0';
+    promptBar.style.pointerEvents = 'none';
 
     const config = {};
     for (const role of ROLES) {
       config[role] = {
-        provider: document.getElementById(`provider-${role}`).value,
-        model:    document.getElementById(`model-${role}`).value,
+        provider: document.getElementById(`prov-${role}`).value,
+        model:    document.getElementById(`mod-${role}`).value,
       };
     }
-
-    resetPanels();
-    setGoBtn(false);
-    setStatus('Starting…', 'active');
 
     let response;
     try {
@@ -499,38 +1470,38 @@
         body: JSON.stringify({ task, config }),
       });
     } catch (err) {
-      setStatus('Network error', 'error');
-      setGoBtn(true);
+      pipelineRunning = false;
+      execBtn.disabled = false;
+      sdot.className = 'sdot';
+      stxt.textContent = 'NETWORK ERROR';
+      promptBar.style.opacity = '1';
+      promptBar.style.pointerEvents = 'all';
       return;
     }
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
-    let buffer = '';
+    let buf = '';
 
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop(); // hold incomplete line
+      buf += decoder.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
       for (const line of lines) {
         if (!line.startsWith('data: ')) continue;
-        try {
-          handleEvent(JSON.parse(line.slice(6)));
-        } catch (e) { /* skip malformed */ }
+        try { handleEvent(JSON.parse(line.slice(6))); } catch {}
       }
     }
   }
 
-  // ── Init ─────────────────────────────────────────────────────
+  // ── INIT ──
+  execBtn.addEventListener('click', runPipeline);
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') runPipeline(); });
+  inp.addEventListener('input', () => cc.textContent = inp.value.length);
 
-  document.getElementById('go-btn').addEventListener('click', runPipeline);
-  document.getElementById('task-input').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) runPipeline();
-  });
-
-  initDropdowns();
+  buildSelects();
   loadDefaults();
 </script>
 </body>
