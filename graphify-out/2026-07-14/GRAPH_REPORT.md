@@ -1,11 +1,11 @@
 # Graph Report - triforce  (2026-07-14)
 
 ## Corpus Check
-- 19 files · ~12,717 words
+- 19 files · ~15,062 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 112 nodes · 130 edges · 15 communities (8 shown, 7 thin omitted)
+- 114 nodes · 133 edges · 15 communities (8 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -33,24 +33,26 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `Agent` - 10 edges
-2. `main()` - 8 edges
-3. `runPipeline()` - 5 edges
-4. `track()` - 5 edges
+2. `main()` - 9 edges
+3. `track()` - 6 edges
+4. `runPipeline()` - 5 edges
 5. `Triforce — Running & Operations` - 5 edges
-6. `runDeveloper()` - 4 edges
-7. `Systemd Service (Always-On)` - 4 edges
-8. `PWA — Install as App` - 4 edges
-9. `inTriangle()` - 3 edges
+6. `Systemd Service (Always-On)` - 4 edges
+7. `PWA — Install as App` - 4 edges
+8. `inTriangle()` - 3 edges
+9. `stripCodeFences()` - 3 edges
 10. `runArchitect()` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `runReviewer()` --calls--> `track()`  [EXTRACTED]
+  orchestrator.js → usage.js
 - `runArchitect()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
 - `runDeveloper()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
-- `runReviewer()` --calls--> `track()`  [EXTRACTED]
-  orchestrator.js → usage.js
 - `main()` --calls--> `printSummary()`  [EXTRACTED]
+  orchestrator.js → usage.js
+- `main()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
 
 ## Import Cycles
@@ -59,8 +61,8 @@
 ## Communities (15 total, 7 thin omitted)
 
 ### Community 0 - "orchestrator.js"
-Cohesion: 0.22
-Nodes (15): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+7 more)
+Cohesion: 0.20
+Nodes (16): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+8 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.13
@@ -79,8 +81,8 @@ Cohesion: 0.17
 Nodes (11): Access, Android (Chrome), iPhone / iPad (Safari), Mac (Chrome or Edge), Notes, One-time Install, PWA — Install as App, Service Management (+3 more)
 
 ### Community 5 - "server.js"
-Cohesion: 0.24
-Nodes (10): app, computeCosts(), httpServer, RATES, runInSandbox(), runPipeline(), sessionUsage, stripCodeFences() (+2 more)
+Cohesion: 0.21
+Nodes (11): app, computeCosts(), httpServer, RATES, runInSandbox(), runPipeline(), sessionUsage, stripCodeFences() (+3 more)
 
 ### Community 6 - "manifest.json"
 Cohesion: 0.20
@@ -91,7 +93,7 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ## Knowledge Gaps
-- **54 isolated node(s):** `SHARDS`, `BG`, `GOLD`, `SIZES`, `maskBuf` (+49 more)
+- **56 isolated node(s):** `SHARDS`, `BG`, `GOLD`, `SIZES`, `maskBuf` (+51 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -99,10 +101,12 @@ Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
+  _High betweenness centrality (0.049) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+- **Why does `main()` connect `orchestrator.js` to `Agent`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **What connects `SHARDS`, `BG`, `GOLD` to the rest of the system?**
-  _54 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _56 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._

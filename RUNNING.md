@@ -2,7 +2,7 @@
 
 ## Access
 
-- **Local network:** http://10.168.69.10:3000
+- **Local network:** http://10.168.69.5:3000
 - **On the VM itself:** http://localhost:3000
 
 ---
