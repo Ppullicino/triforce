@@ -132,6 +132,44 @@
   @keyframes idle   { 0%,100%{opacity:1} 50%{opacity:.30} }
   @keyframes bpulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.7);opacity:.7} }
 
+  .mode-toggle {
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(200, 150, 42, 0.15);
+    border-radius: 2px;
+    background: rgba(200, 150, 42, 0.03);
+    overflow: hidden;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: .18em;
+    z-index: 600;
+  }
+  .mode-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 12px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+  }
+  .mode-btn:hover {
+    color: var(--gold-bright);
+    background: rgba(200, 150, 42, 0.05);
+  }
+  .mode-btn.active {
+    color: var(--void-deep);
+    background: var(--gold);
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(200,150,42,0.3);
+  }
+  @media (max-width: 650px) {
+    .mode-lbl-full { display: none; }
+  }
+
   /* ── USAGE BAR ── */
   :root {
     --google: #5cc878;
@@ -770,6 +808,97 @@
     }
   }
 
+  /* ── MOBILE ≤ 768px ── */
+  @media (max-width: 768px) {
+    /* Shrink triforce so bottom shards sit higher on screen in overview */
+    .tf-svg-wrap {
+      width: min(78vw, 48vh) !important;
+      height: min(78vw, 48vh) !important;
+    }
+
+    /* Lift developer/reviewer labels to avoid lower-screen overlap */
+    .shard-label.developer { top: 76%; left: 26%; transform: translate(-50%, -50%); }
+    .shard-label.reviewer  { top: 76%; left: 74%; transform: translate(-50%, -50%); }
+
+    /* Complete state — reinforce scene clearance above summary panel */
+    body.is-complete:not(.is-zoomed) .scene {
+      bottom: calc(var(--summary-h) + var(--prompt-h)) !important;
+    }
+
+    /* Reduce shard label font sizes */
+    .sl-name    { font-size: 8px !important; letter-spacing: .24em; }
+    .sl-summary { font-size: 6.5px !important; }
+
+    /* ── ZOOM: slide triforce up, output panel below it ── */
+    body.is-zoomed .tf-world {
+      transform: translateY(-28vh) !important;
+      transition: transform 0.65s cubic-bezier(0.77,0,0.175,1) !important;
+    }
+    body.is-zoomed .output-panel {
+      top: calc(84px + 32vh) !important;
+      bottom: 88px !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: auto !important;
+      padding: 16px 20px 12px !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      border-top: 1px solid rgba(200,150,42,0.12) !important;
+      transform: none !important;
+    }
+    body.is-zoomed .output-panel.show {
+      transform: none !important;
+    }
+    body.is-zoomed .output-panel::before {
+      display: none !important;
+    }
+    body.is-zoomed .op-role {
+      font-size: 14px !important;
+      margin-bottom: 6px !important;
+    }
+    body.is-zoomed .op-selects {
+      margin-bottom: 12px !important;
+    }
+    body.is-zoomed .op-output {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+
+  /* ── MOBILE FIXES ≤ 420px ── */
+  @media (max-width: 420px) {
+    /* Collapse usage bar — hide per-provider rows, show total only */
+    .ub-providers {
+      display: none;
+    }
+    .ub-total {
+      padding-left: 0;
+      border-left: none;
+      flex: 1;
+      justify-content: center;
+      gap: 6px;
+    }
+    .ub-total::before {
+      content: 'TOTAL';
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 7.5px;
+      letter-spacing: .18em;
+      color: var(--text-dim);
+      opacity: .55;
+    }
+
+    /* Problem 4: Stage label — push below header + usage bar, shrink font */
+    .stage-label {
+      top: 62px !important;
+      font-size: 9px !important;
+    }
+
+    /* Problem 5: Scene viewport — already top:84px (52px hdr + 32px bar), ensure it holds */
+    .scene {
+      top: 84px;
+    }
+  }
+
   .summary-panel {
     position: fixed;
     left: 0; right: 0;
@@ -1046,6 +1175,10 @@
     <span class="logo-sep">/</span>
     <span class="logo-sub">MULTI-AGENT PIPELINE</span>
   </div>
+  <div class="mode-toggle">
+    <button id="btn-mode1" class="mode-btn active" onclick="setMode(1)"><span class="mode-lbl-full">MODE 1: </span>SEQUENTIAL</button>
+    <button id="btn-mode2" class="mode-btn" onclick="setMode(2)"><span class="mode-lbl-full">MODE 2: </span>COOPERATIVE</button>
+  </div>
   <div class="status">
     <div class="sdot" id="sdot"></div>
     <span id="stxt">IDLE</span>
@@ -1197,7 +1330,7 @@
       <div class="sc-header">
         <span class="sc-role">
           <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
-          ARCHITECT
+          <span class="sc-role-text">ARCHITECT</span>
         </span>
         <span class="sc-badge done" id="badge-architect">COMPLETE</span>
       </div>
@@ -1217,7 +1350,7 @@
       <div class="sc-header">
         <span class="sc-role">
           <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
-          DEVELOPER
+          <span class="sc-role-text">DEVELOPER</span>
         </span>
         <span class="sc-badge done" id="badge-developer">COMPLETE</span>
       </div>
@@ -1237,7 +1370,7 @@
       <div class="sc-header">
         <span class="sc-role">
           <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
-          REVIEWER
+          <span class="sc-role-text">REVIEWER</span>
         </span>
         <span class="sc-badge pass" id="badge-reviewer">★ PASS</span>
       </div>
@@ -1419,6 +1552,44 @@
   });
 
   // ── STATE ──
+  let selectedMode = 1;
+  window.setMode = function(mode) {
+    if (pipelineRunning) return;
+    selectedMode = mode;
+    
+    // Toggle active classes on buttons
+    document.getElementById('btn-mode1').classList.toggle('active', mode === 1);
+    document.getElementById('btn-mode2').classList.toggle('active', mode === 2);
+    
+    // Update role labels dynamically
+    const labels = mode === 2 
+      ? ['PROMPT DESIGNER', 'CODER', 'SUPERVISOR']
+      : ['ARCHITECT', 'DEVELOPER', 'REVIEWER'];
+      
+    // 1. Shard labels on the 3D Triforce SVG
+    document.querySelector('#lbl0 .sl-name').textContent = labels[0];
+    document.querySelector('#lbl1 .sl-name').textContent = labels[1];
+    document.querySelector('#lbl2 .sl-name').textContent = labels[2];
+    
+    // 2. Output Panel role headers
+    document.querySelector('#opArchitect .op-role').textContent = labels[0];
+    document.querySelector('#opDeveloper .op-role').textContent = labels[1];
+    document.querySelector('#opReviewer .op-role').textContent = labels[2];
+    
+    // 3. Summary Card role text
+    const scTexts = document.querySelectorAll('.sc-role-text');
+    if (scTexts.length >= 3) {
+      scTexts[0].textContent = labels[0];
+      scTexts[1].textContent = labels[1];
+      scTexts[2].textContent = labels[2];
+    }
+    
+    // 4. Update ROLE_LABELS list so zooming uses correct header
+    ROLE_LABELS[0] = labels[0];
+    ROLE_LABELS[1] = labels[1];
+    ROLE_LABELS[2] = labels[2];
+  };
+
   let appState = 'home';
   let pipelineRunning = false;
   const agentData = {
@@ -1666,12 +1837,12 @@
     switch (event.type) {
 
       case 'status': {
-        const { stage } = event;
+        const { stage, label } = event;
 
         if (stage === 'architect') {
           agentData.architect.startTime = Date.now();
           setSegState(0, 'active');
-          stxt.textContent = 'STAGE 1 · ARCHITECT';
+          stxt.textContent = label || 'STAGE 1 · ARCHITECT';
           setTimeout(() => doFlash(() => zoomIn(0)), 300);
 
         } else if (stage === 'developer') {
@@ -1679,7 +1850,7 @@
           agentData.developer.startTime = Date.now();
           setSegState(0, 'done');
           document.getElementById('sum0').textContent = 'Plan ready';
-          stxt.textContent = 'STAGE 2 · DEVELOPER';
+          stxt.textContent = label || 'STAGE 2 · DEVELOPER';
           setTimeout(() => {
             doFlash(() => {
               zoomOut();
@@ -1698,7 +1869,7 @@
           agentData.reviewer.startTime = Date.now();
           setSegState(1, 'done');
           document.getElementById('sum1').textContent = 'Code complete';
-          stxt.textContent = 'STAGE 4 · REVIEWER';
+          stxt.textContent = label || 'STAGE 4 · REVIEWER';
           setTimeout(() => {
             doFlash(() => {
               zoomOut();
@@ -1802,7 +1973,7 @@
       };
     }
 
-    ws.send(JSON.stringify({ type: 'run', task, config }));
+    ws.send(JSON.stringify({ type: 'run', task, config, mode: selectedMode }));
   }
 
   // ── USAGE BAR ──
@@ -1878,6 +2049,7 @@
   loadDefaults();
   createTerminals();
   connectWS();
+  setMode(1);
 
   // ── SERVICE WORKER + PWA INSTALL ──
   let deferredInstallPrompt = null;

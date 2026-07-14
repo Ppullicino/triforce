@@ -1,4 +1,4 @@
-const CACHE_NAME = 'triforce-v1';
+const CACHE_NAME = 'triforce-v6';
 
 const PRECACHE = [
   '/',

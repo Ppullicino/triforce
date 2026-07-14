@@ -28,6 +28,13 @@ const SYSTEM_PROMPTS = {
   reviewer:  'You are the Reviewer agent in the Triforce system. You receive code written by another agent and the terminal output from executing that code. Analyze both and produce a clear Pass/Fail verdict. If Pass: confirm what worked. If Fail: identify exactly what went wrong and what should be fixed. Be concise and specific.',
 };
 
+const SYSTEM_PROMPTS_MODE2 = {
+  designer: 'You are the Prompt Designer agent in the Triforce system. Your job is to analyze a coding task and produce a clear, detailed specification/prompt for a programmer. If you receive feedback from the Supervisor, refine the specification accordingly. Output ONLY the specification. No conversational preamble. No markdown formatting.',
+  coder: 'You are the Coder agent in the Triforce system. Your job is to write valid, executable JavaScript code based on the specification provided. If you receive feedback/errors from the Supervisor/Sandbox, update the code to fix the issues. Output ONLY valid, executable JavaScript. No markdown code fences. No explanatory text. No comments unless they are inline code comments. The code must run directly with Node.js.',
+  supervisorPromptCheck: 'You are the Supervisor agent in the Triforce system. Your job is to review a coding specification designed by another agent. Decide if it is ready for the coder (Greenlight) or needs refinement (Fix). If it needs refinement, provide specific feedback. Output your verdict in this exact format:\nVERDICT: [GREENLIGHT or FIX]\nFEEDBACK: [Your feedback if verdict is FIX]',
+  supervisorCodeCheck: 'You are the Supervisor agent in the Triforce system. You receive the coder\'s Javascript code and the terminal output from executing it in a sandbox. Analyze both and produce a clear Pass/Fail verdict. If it works, output \'VERDICT: PASS\'. If it fails, output \'VERDICT: FAIL\' and specify what needs to be fixed. Output format:\nVERDICT: [PASS or FAIL]\nFEEDBACK: [Your feedback if verdict is FAIL]'
+};
+
 const SHELL = process.platform === 'win32' ? 'powershell.exe' : 'bash';
 
 function stripCodeFences(text) {
@@ -84,7 +91,15 @@ let sessionUsage = {
   reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
 };
 
-async function runPipeline(ws, task, config) {
+/**
+ * Executes the Triforce multi-agent pipeline.
+ * Supports two modes:
+ * Mode 1 (Sequential Handoff): Run standard sequence (Architect -> Developer -> Sandbox -> Reviewer)
+ *        with full task/plan context passed forward (piggybacking) to save costs and reduce reasoning gaps.
+ * Mode 2 (Cooperative Loop): Run a prompt designer specification loop and coder loop, where the
+ *        Supervisor checks the specification/code and requests corrections in up to 3 iterative loops.
+ */
+async function runPipeline(ws, task, config, mode = 1) {
   const send = (data) => { if (ws.readyState === 1) ws.send(JSON.stringify(data)); };
   const records = [];
 
@@ -101,79 +116,240 @@ async function runPipeline(ws, task, config) {
   const track = (role, model, usage) => {
     records.push({ role, model, ...usage });
     const [inRate, outRate] = RATES[model] ?? [0, 0];
+    const itemCost = (usage.inputTokens / 1e6) * inRate + (usage.outputTokens / 1e6) * outRate;
     sessionUsage[role] = {
-      inputTokens:  usage.inputTokens,
-      outputTokens: usage.outputTokens,
-      cost: (usage.inputTokens / 1e6) * inRate + (usage.outputTokens / 1e6) * outRate,
+      inputTokens:  sessionUsage[role].inputTokens + usage.inputTokens,
+      outputTokens: sessionUsage[role].outputTokens + usage.outputTokens,
+      cost:         sessionUsage[role].cost + itemCost,
     };
   };
 
   const startTime = Date.now();
 
-  // ── Stage 1: Architect ──
-  send({ type: 'status', stage: 'architect', label: 'Stage 1: Architect' });
-  let plan;
-  try {
-    const agent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
-    const { text, usage } = await agent.call(task);
-    track('architect', config.architect.model, usage);
-    plan = text;
-    runLog.architect = text;
-    send({ type: 'output', role: 'architect', text });
-    await appendFile(`${TRANSCRIPTS_DIR}/architect.log`, runHeader + text + '\n');
-  } catch (err) {
-    send({ type: 'error', stage: 'architect', message: err.message });
-    return;
-  }
+  if (mode === 2) {
+    // ── Mode 2 Cooperative Loop ──
+    const designerAgent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS_MODE2.designer });
+    const coderAgent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS_MODE2.coder });
+    const promptSupervisor = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS_MODE2.supervisorPromptCheck });
+    const codeSupervisor = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS_MODE2.supervisorCodeCheck });
 
-  // ── Stage 2: Developer (receives architect plan as context) ──
-  send({ type: 'status', stage: 'developer', label: 'Stage 2: Developer' });
-  let code;
-  try {
-    const agent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS.developer });
-    const { text, usage } = await agent.call(plan);
-    track('developer', config.developer.model, usage);
-    code = stripCodeFences(text);
-    runLog.developer = code;
-    send({ type: 'output', role: 'developer', text: code });
-    await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, runHeader + code + '\n');
-  } catch (err) {
-    send({ type: 'error', stage: 'developer', message: err.message });
-    return;
-  }
+    let spec = '';
+    let specApproved = false;
 
-  // ── Stage 3: Sandbox (streaming output via pty events) ──
-  send({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
-  let sandboxResult;
-  try {
-    sandboxResult = await runInSandbox(code, ws);
-    const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
-    await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, sandboxLog);
-  } catch (err) {
-    sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
-  }
-  send({ type: 'sandbox', ...sandboxResult });
+    // ── Stage 1 & 4 (Prompt Loop) ──
+    send({ type: 'status', stage: 'architect', label: 'Stage 1: Prompt Designer' });
+    let designerPrompt = `TASK:\n${task}`;
+    let promptLoopCount = 0;
 
-  // ── Stage 4: Reviewer (receives architect plan + developer code + execution results) ──
-  send({ type: 'status', stage: 'reviewer', label: 'Stage 4: Reviewer' });
-  try {
-    const executionSummary = [
-      `Exit code: ${sandboxResult.exitCode ?? 0}`,
-      sandboxResult.timedOut ? 'Status: TIMED OUT' : '',
-      sandboxResult.stdout ? `stdout:\n${sandboxResult.stdout}` : 'stdout: (empty)',
-      sandboxResult.stderr ? `stderr:\n${sandboxResult.stderr}` : '',
-    ].filter(Boolean).join('\n');
+    while (promptLoopCount < 3 && !specApproved) {
+      promptLoopCount++;
+      const iterHeader = `\n--- ITERATION ${promptLoopCount} ---\n`;
+      
+      // Call Prompt Designer
+      send({ type: 'pty', role: 'architect', data: `\r\n\x1b[35m[Iteration ${promptLoopCount}] Running Prompt Designer...\x1b[0m\r\n` });
+      try {
+        const { text, usage } = await designerAgent.call(designerPrompt);
+        track('architect', config.architect.model, usage);
+        spec = text;
+        runLog.architect += iterHeader + text + '\n';
+        send({ type: 'output', role: 'architect', text: runLog.architect });
+        await appendFile(`${TRANSCRIPTS_DIR}/architect.log`, runHeader + iterHeader + text + '\n');
+      } catch (err) {
+        send({ type: 'error', stage: 'architect', message: err.message });
+        return;
+      }
 
-    const prompt = `ARCHITECT PLAN:\n${runLog.architect}\n\nCODE:\n${runLog.developer}\n\nEXECUTION RESULTS:\n${executionSummary}`;
-    const agent = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS.reviewer });
-    const { text, usage } = await agent.call(prompt);
-    track('reviewer', config.reviewer.model, usage);
-    runLog.reviewer = text;
-    send({ type: 'output', role: 'reviewer', text });
-    await appendFile(`${TRANSCRIPTS_DIR}/reviewer.log`, runHeader + text + '\n');
-  } catch (err) {
-    send({ type: 'error', stage: 'reviewer', message: err.message });
-    return;
+      // Call Supervisor for Prompt Check
+      send({ type: 'status', stage: 'reviewer', label: `Stage 4: Supervisor (Prompt Check ${promptLoopCount})` });
+      send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[35m[Iteration ${promptLoopCount}] Running Supervisor (Prompt Check)...\x1b[0m\r\n` });
+      
+      let supervisorResult;
+      try {
+        const { text, usage } = await promptSupervisor.call(`SPECIFICATION TO REVIEW:\n${spec}`);
+        track('reviewer', config.reviewer.model, usage);
+        supervisorResult = text;
+        runLog.reviewer += iterHeader + '[Prompt Check]\n' + text + '\n';
+        send({ type: 'output', role: 'reviewer', text: runLog.reviewer });
+        await appendFile(`${TRANSCRIPTS_DIR}/reviewer.log`, runHeader + iterHeader + '[Prompt Check]\n' + text + '\n');
+      } catch (err) {
+        send({ type: 'error', stage: 'reviewer', message: err.message });
+        return;
+      }
+
+      // Parse verdict
+      const verdictMatch = supervisorResult.match(/VERDICT:\s*(\w+)/i);
+      const verdict = verdictMatch ? verdictMatch[1].toUpperCase() : 'FIX';
+      if (verdict === 'GREENLIGHT') {
+        specApproved = true;
+        send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[GREENLIGHT] Specification approved by Supervisor.\x1b[0m\r\n` });
+      } else {
+        const feedbackMatch = supervisorResult.match(/FEEDBACK:\s*([\s\S]+)/i);
+        const feedback = feedbackMatch ? feedbackMatch[1].trim() : 'Please refine the specification.';
+        send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[FIX] Supervisor requested refinement.\x1b[0m\r\n` });
+        
+        // Update Prompt Designer's next prompt with feedback
+        designerPrompt = `SPECIFICATION GENERATED:\n${spec}\n\nSUPERVISOR FEEDBACK:\n${feedback}\n\nPlease update the specification to address this feedback.`;
+        // Set state back to architect
+        send({ type: 'status', stage: 'architect', label: `Stage 1: Prompt Designer (Iteration ${promptLoopCount + 1})` });
+      }
+    }
+
+    if (!specApproved) {
+      send({ type: 'error', stage: 'architect', message: 'Failed to design a specification acceptable to the Supervisor after 3 iterations.' });
+      return;
+    }
+
+    // ── Stage 2 & 4 (Code Loop) ──
+    let codeApproved = false;
+    let codeLoopCount = 0;
+    let coderPrompt = `SPECIFICATION:\n${spec}`;
+    let code = '';
+
+    while (codeLoopCount < 3 && !codeApproved) {
+      codeLoopCount++;
+      const iterHeader = `\n--- ITERATION ${codeLoopCount} ---\n`;
+
+      // Call Coder (Developer)
+      send({ type: 'status', stage: 'developer', label: `Stage 2: Coder (Iteration ${codeLoopCount})` });
+      send({ type: 'pty', role: 'developer', data: `\r\n\x1b[35m[Iteration ${codeLoopCount}] Running Coder...\x1b[0m\r\n` });
+      try {
+        const { text, usage } = await coderAgent.call(coderPrompt);
+        track('developer', config.developer.model, usage);
+        code = stripCodeFences(text);
+        runLog.developer += iterHeader + code + '\n';
+        send({ type: 'output', role: 'developer', text: runLog.developer });
+        await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, runHeader + iterHeader + code + '\n');
+      } catch (err) {
+        send({ type: 'error', stage: 'developer', message: err.message });
+        return;
+      }
+
+      // Run Sandbox
+      send({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
+      let sandboxResult;
+      try {
+        sandboxResult = await runInSandbox(code, ws);
+        const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
+        await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, sandboxLog);
+      } catch (err) {
+        sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
+      }
+      send({ type: 'sandbox', ...sandboxResult });
+
+      // Call Supervisor for Code Check
+      send({ type: 'status', stage: 'reviewer', label: `Stage 4: Supervisor (Code Check ${codeLoopCount})` });
+      send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[35m[Iteration ${codeLoopCount}] Running Supervisor (Code Check)...\x1b[0m\r\n` });
+
+      const executionSummary = [
+        `Exit code: ${sandboxResult.exitCode ?? 0}`,
+        sandboxResult.timedOut ? 'Status: TIMED OUT' : '',
+        sandboxResult.stdout ? `stdout:\n${sandboxResult.stdout}` : 'stdout: (empty)',
+        sandboxResult.stderr ? `stderr:\n${sandboxResult.stderr}` : '',
+      ].filter(Boolean).join('\n');
+
+      let supervisorResult;
+      try {
+        const prompt = `SPECIFICATION:\n${spec}\n\nCODE GENERATED:\n${code}\n\nSANDBOX RUN RESULTS:\n${executionSummary}`;
+        const { text, usage } = await codeSupervisor.call(prompt);
+        track('reviewer', config.reviewer.model, usage);
+        supervisorResult = text;
+        runLog.reviewer += iterHeader + '[Code Check]\n' + text + '\n';
+        send({ type: 'output', role: 'reviewer', text: runLog.reviewer });
+        await appendFile(`${TRANSCRIPTS_DIR}/reviewer.log`, runHeader + iterHeader + '[Code Check]\n' + text + '\n');
+      } catch (err) {
+        send({ type: 'error', stage: 'reviewer', message: err.message });
+        return;
+      }
+
+      // Parse verdict
+      const verdictMatch = supervisorResult.match(/VERDICT:\s*(\w+)/i);
+      const verdict = verdictMatch ? verdictMatch[1].toUpperCase() : 'FAIL';
+      if (verdict === 'PASS') {
+        codeApproved = true;
+        send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[PASS] Code approved by Supervisor.\x1b[0m\r\n` });
+      } else {
+        const feedbackMatch = supervisorResult.match(/FEEDBACK:\s*([\s\S]+)/i);
+        const feedback = feedbackMatch ? feedbackMatch[1].trim() : 'Please fix the code.';
+        send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[FAIL] Supervisor flagged code issues.\x1b[0m\r\n` });
+
+        // Update Coder's prompt with feedback and sandbox results
+        coderPrompt = `PREVIOUS CODE:\n${code}\n\nSANDBOX RUN RESULTS:\n${executionSummary}\n\nSUPERVISOR FEEDBACK:\n${feedback}\n\nPlease update the code to fix these issues. Output ONLY the updated Javascript code, no comments or markdown.`;
+      }
+    }
+
+    if (!codeApproved) {
+      send({ type: 'error', stage: 'reviewer', message: 'Failed to write code that passes Supervisor checks after 3 iterations.' });
+      return;
+    }
+
+  } else {
+    // ── Mode 1: Sequential Pipeline (with full context handoff / piggybacking) ──
+    // ── Stage 1: Architect ──
+    send({ type: 'status', stage: 'architect', label: 'Stage 1: Architect' });
+    let plan;
+    try {
+      const agent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
+      const { text, usage } = await agent.call(task);
+      track('architect', config.architect.model, usage);
+      plan = text;
+      runLog.architect = text;
+      send({ type: 'output', role: 'architect', text });
+      await appendFile(`${TRANSCRIPTS_DIR}/architect.log`, runHeader + text + '\n');
+    } catch (err) {
+      send({ type: 'error', stage: 'architect', message: err.message });
+      return;
+    }
+
+    // ── Stage 2: Developer (receives task + plan as context) ──
+    send({ type: 'status', stage: 'developer', label: 'Stage 2: Developer' });
+    let code;
+    try {
+      const agent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS.developer });
+      const prompt = `TASK:\n${task}\n\nPLAN:\n${plan}`;
+      const { text, usage } = await agent.call(prompt);
+      track('developer', config.developer.model, usage);
+      code = stripCodeFences(text);
+      runLog.developer = code;
+      send({ type: 'output', role: 'developer', text: code });
+      await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, runHeader + code + '\n');
+    } catch (err) {
+      send({ type: 'error', stage: 'developer', message: err.message });
+      return;
+    }
+
+    // ── Stage 3: Sandbox (streaming output via pty events) ──
+    send({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
+    let sandboxResult;
+    try {
+      sandboxResult = await runInSandbox(code, ws);
+      const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
+      await appendFile(`${TRANSCRIPTS_DIR}/developer.log`, sandboxLog);
+    } catch (err) {
+      sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
+    }
+    send({ type: 'sandbox', ...sandboxResult });
+
+    // ── Stage 4: Reviewer (receives task + plan + code + execution results) ──
+    send({ type: 'status', stage: 'reviewer', label: 'Stage 4: Reviewer' });
+    try {
+      const executionSummary = [
+        `Exit code: ${sandboxResult.exitCode ?? 0}`,
+        sandboxResult.timedOut ? 'Status: TIMED OUT' : '',
+        sandboxResult.stdout ? `stdout:\n${sandboxResult.stdout}` : 'stdout: (empty)',
+        sandboxResult.stderr ? `stderr:\n${sandboxResult.stderr}` : '',
+      ].filter(Boolean).join('\n');
+
+      const prompt = `TASK:\n${task}\n\nARCHITECT PLAN:\n${runLog.architect}\n\nCODE:\n${runLog.developer}\n\nEXECUTION RESULTS:\n${executionSummary}`;
+      const agent = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS.reviewer });
+      const { text, usage } = await agent.call(prompt);
+      track('reviewer', config.reviewer.model, usage);
+      runLog.reviewer = text;
+      send({ type: 'output', role: 'reviewer', text });
+      await appendFile(`${TRANSCRIPTS_DIR}/reviewer.log`, runHeader + text + '\n');
+    } catch (err) {
+      send({ type: 'error', stage: 'reviewer', message: err.message });
+      return;
+    }
   }
 
   const costRecords = computeCosts(records);
@@ -249,7 +425,7 @@ wss.on('connection', (ws) => {
     try { msg = JSON.parse(raw); } catch { return; }
 
     if (msg.type === 'run') {
-      await runPipeline(ws, msg.task, msg.config);
+      await runPipeline(ws, msg.task, msg.config, msg.mode);
     } else if (msg.type === 'input') {
       // Keyboard input from browser xterm → persistent shell
       shells[msg.role]?.write(msg.data);
