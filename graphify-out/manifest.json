@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784131182.7814207,
-    "ast_hash": "4120b21019df4c9f09be3e2abdcb76a0",
+    "mtime": 1784131447.2402089,
+    "ast_hash": "26804472e23b0717be47ffd5c8dd268a",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784127858.9888785,
-    "ast_hash": "29ce12d4b9c8888ac0266e9eb9aaa392",
+    "mtime": 1784131646.921399,
+    "ast_hash": "6de1df1f2ef0a23a68ee58b44a1f745a",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "RUNNING.md": {
-    "mtime": 1784127313.0274284,
-    "ast_hash": "dc3be3e6efe1fc0469a7433d49cb4e70",
+    "mtime": 1784131604.3242052,
+    "ast_hash": "bbe7581bf8a83eee4444a650618fd160",
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1784127858.9888785,
-    "ast_hash": "7197216e71726ab5e1ea454f53866a81",
+    "mtime": 1784131504.685104,
+    "ast_hash": "306b58b0a8e5733f72f96fe7004d2055",
     "semantic_hash": ""
   },
   "triforce-phase0-prompt.md": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "cli.js": {
-    "mtime": 1784131182.7804208,
-    "ast_hash": "7bfc5223addfc13320a932b98cf52dcf",
+    "mtime": 1784131504.684104,
+    "ast_hash": "d0e4515e102454b39f7727930a104dc0",
     "semantic_hash": ""
   },
   "REVIEW_FIX_LOG.md": {
@@ -170,8 +170,8 @@
     "semantic_hash": ""
   },
   "test/package.test.js": {
-    "mtime": 1784131182.7814207,
-    "ast_hash": "2da4d5bc27cec3c4ac5f279c3383484d",
+    "mtime": 1784131530.7466054,
+    "ast_hash": "ab3199a5b724f320cac7469412ee1693",
     "semantic_hash": ""
   },
   "cli-input.js": {
@@ -182,6 +182,16 @@
   "test/cli-input.test.js": {
     "mtime": 1784131182.7814207,
     "ast_hash": "2f986bac5c5152b421ccd320a99a66d6",
+    "semantic_hash": ""
+  },
+  "test/workspace.test.js": {
+    "mtime": 1784131646.921399,
+    "ast_hash": "4e571089a9fac9956be558c6258350bc",
+    "semantic_hash": ""
+  },
+  "workspace.js": {
+    "mtime": 1784131646.9203992,
+    "ast_hash": "8762653acbea6779ef220370d35d368e",
     "semantic_hash": ""
   }
 }

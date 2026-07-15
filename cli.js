@@ -175,8 +175,9 @@ async function setupWizard() {
   console.log('\n[Step 3/4] Default Pipeline Mode');
   console.log('  1: Sequential Pipeline (Architect -> Coder -> Sandbox -> Reviewer)');
   console.log('  2: Supervisor Specification Loop (Prompt Designer <-> Supervisor Loop)');
+  console.log('  3: Project Workspace (multi-file project + isolated tests)');
   const defaultModeStr = await rl.question('Select default pipeline mode [1]: ');
-  const defaultMode = defaultModeStr.trim() === '2' ? 2 : 1;
+  const defaultMode = ['2', '3'].includes(defaultModeStr.trim()) ? Number(defaultModeStr.trim()) : 1;
 
   // Step 4/4: Configure Role Assignments & Max Iterations
   console.log('\n[Step 4/4] Role Assignments & Loop Limits');
@@ -394,7 +395,7 @@ async function main() {
   try {
     const existing = await readFile(join(__dirname, 'models.config.json'), 'utf8');
     config = JSON.parse(existing);
-    defaultMode = config.defaultMode === 2 ? 2 : 1;
+    defaultMode = [2, 3].includes(config.defaultMode) ? config.defaultMode : 1;
     console.log('Existing configuration found in models.config.json.');
     const reconfigure = await rl.question('Do you want to re-run the configuration setup? (y/n) [n]: ');
     if (reconfigure.toLowerCase().startsWith('y')) {

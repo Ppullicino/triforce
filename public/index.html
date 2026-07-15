@@ -1178,6 +1178,7 @@
   <div class="mode-toggle">
     <button id="btn-mode1" class="mode-btn active" onclick="setMode(1)"><span class="mode-lbl-full">MODE 1: </span>SEQUENTIAL</button>
     <button id="btn-mode2" class="mode-btn" onclick="setMode(2)"><span class="mode-lbl-full">MODE 2: </span>COOPERATIVE</button>
+    <button id="btn-mode3" class="mode-btn" onclick="setMode(3)"><span class="mode-lbl-full">MODE 3: </span>WORKSPACE</button>
   </div>
   <div class="status">
     <div class="sdot" id="sdot"></div>
@@ -1563,11 +1564,14 @@
     // Toggle active classes on buttons
     document.getElementById('btn-mode1').classList.toggle('active', mode === 1);
     document.getElementById('btn-mode2').classList.toggle('active', mode === 2);
+    document.getElementById('btn-mode3').classList.toggle('active', mode === 3);
     
     // Update role labels dynamically
-    const labels = mode === 2 
+    const labels = mode === 2
       ? ['PROMPT DESIGNER', 'CODER', 'SUPERVISOR']
-      : ['CLAUDE CODE', 'CODEX', 'ANTIGRAVITY'];
+      : mode === 3
+        ? ['WORKSPACE ARCHITECT', 'PROJECT CODER', 'PROJECT REVIEWER']
+        : ['CLAUDE CODE', 'CODEX', 'ANTIGRAVITY'];
       
     // 1. Shard labels on the 3D Triforce SVG
     document.querySelector('#lbl0 .sl-name').textContent = labels[0];
@@ -1622,7 +1626,7 @@
   async function loadDefaults() {
     try {
       const config = await fetch('/api/config').then(r => r.json());
-      setMode(config.defaultMode === 2 ? 2 : 1);
+      setMode([2, 3].includes(config.defaultMode) ? config.defaultMode : 1);
       for (const role of ROLES) {
         const { provider, model } = config[role] ?? {};
         if (!provider) continue;

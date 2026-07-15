@@ -17,6 +17,7 @@
     "sandbox.js",
     "server.js",
     "usage.js",
+    "workspace.js",
     "RUNNING.md",
     "install-service.sh",
     "triforce.service"

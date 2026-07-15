@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 25 files · ~19,423 words
+- 29 files · ~21,374 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 171 nodes · 220 edges · 18 communities (10 shown, 8 thin omitted)
+- 184 nodes · 246 edges · 19 communities (11 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `98ee5007`
+- Built from commit: `0ad5de6d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -33,35 +33,36 @@
 - cli.js
 - 2026-07-15
 - sandbox.test.js
+- files
 
 ## God Nodes (most connected - your core abstractions)
 1. `Agent` - 15 edges
-2. `files` - 12 edges
+2. `files` - 14 edges
 3. `main()` - 9 edges
-4. `setupWizard()` - 7 edges
-5. `runSandboxed()` - 6 edges
-6. `runPipeline()` - 6 edges
+4. `runPipeline()` - 9 edges
+5. `setupWizard()` - 7 edges
+6. `runSandboxed()` - 6 edges
 7. `track()` - 6 edges
 8. `2026-07-15` - 6 edges
 9. `resolveBinPath()` - 5 edges
-10. `Triforce — Running & Operations` - 5 edges
+10. `parseWorkspaceManifest()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `runInSandbox()` --calls--> `runSandboxed()`  [EXTRACTED]
   orchestrator.js → sandbox.js
 - `runReviewer()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
+- `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
+  cli.js → cli-input.js
 - `runArchitect()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
 - `runDeveloper()` --calls--> `track()`  [EXTRACTED]
-  orchestrator.js → usage.js
-- `main()` --calls--> `printSummary()`  [EXTRACTED]
   orchestrator.js → usage.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (18 total, 8 thin omitted)
+## Communities (19 total, 8 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
@@ -76,16 +77,16 @@ Cohesion: 0.20
 Nodes (8): Agent, delay(), firstTextBlock(), getErrorStatus(), isRetryableError(), resolveBinPath(), RETRYABLE_STATUSES, withTimeout()
 
 ### Community 3 - "package.json"
-Cohesion: 0.07
-Nodes (26): bin, triforce, description, devDependencies, pngjs, files, main, name (+18 more)
+Cohesion: 0.13
+Nodes (14): bin, triforce, description, devDependencies, pngjs, main, name, scripts (+6 more)
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
 Nodes (11): Access, Android (Chrome), iPhone / iPad (Safari), Mac (Chrome or Edge), Notes, One-time Install, PWA — Install as App, Service Management (+3 more)
 
 ### Community 5 - "server.js"
-Cohesion: 0.14
-Nodes (15): runSandboxed(), ALLOWED_MODELS, app, computeCosts(), __dirname, httpServer, latestUsage, RATES (+7 more)
+Cohesion: 0.12
+Nodes (20): runSandboxed(), ALLOWED_MODELS, app, computeCosts(), __dirname, httpServer, latestUsage, RATES (+12 more)
 
 ### Community 6 - "manifest.json"
 Cohesion: 0.20
@@ -96,15 +97,19 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ### Community 15 - "cli.js"
-Cohesion: 0.29
-Nodes (13): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), checkCodexLogin(), connectWebSocket(), __dirname, getNetworkIPs(), main() (+5 more)
+Cohesion: 0.22
+Nodes (14): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), checkCodexLogin(), connectWebSocket(), __dirname, getNetworkIPs(), readTask() (+6 more)
 
 ### Community 16 - "2026-07-15"
 Cohesion: 0.20
 Nodes (9): 2026-07-15, 2026-07-15 Mode Synchronization Follow-up, Automated regression coverage, Code Review Fix Log, Dependencies, deployment, and operations, Original Finding Resolution Index, Pipeline correctness and configuration, Provider process and response reliability (+1 more)
 
+### Community 18 - "files"
+Cohesion: 0.14
+Nodes (14): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, public/ (+6 more)
+
 ## Knowledge Gaps
-- **81 isolated node(s):** `rl`, `__dirname`, `SHARDS`, `BG`, `GOLD` (+76 more)
+- **84 isolated node(s):** `rl`, `__dirname`, `SHARDS`, `BG`, `GOLD` (+79 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -113,11 +118,15 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `dependencies` to `package.json`?**
+- **Why does `files` connect `files` to `package.json`?**
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `dependencies` to `package.json`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `SHARDS` to the rest of the system?**
-  _81 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _84 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `server.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.1368421052631579 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1225071225071225 - nodes in this community are weakly interconnected._
+- **Should `files` be split into smaller, more focused modules?**
+  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._

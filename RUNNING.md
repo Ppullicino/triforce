@@ -93,4 +93,5 @@ The app opens as a standalone window without browser chrome.
 - The installer detects the invoking user's Node binary and project path when it renders the service unit. Re-run it after moving the project or changing Node installations.
 - Transcripts are disabled by default. Set `TRIFORCE_TRANSCRIPTS=1` to create private, per-run transcript directories under `./transcripts/`; these are excluded from git and may contain sensitive data.
 - Generated JavaScript requires a functioning per-user systemd manager. It runs with Node's permission model plus systemd resource, filesystem, process, and network restrictions.
+- Mode 3 creates persistent multi-file projects under `~/.local/share/triforce/workspaces/` (override with `TRIFORCE_WORKSPACE_ROOT`). Generated paths are validated, dependencies are exposed read-only, and the declared Node test file runs with a private network and writes restricted to its own workspace.
 - The `.env` file holds your API keys and is excluded from git.

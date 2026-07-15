@@ -7,11 +7,14 @@ import { spawn } from 'node:child_process';
 import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { homedir } from 'node:os';
 import { Agent } from './agent.js';
 import { runSandboxed } from './sandbox.js';
+import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest } from './workspace.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TRANSCRIPTS_DIR = join(__dirname, 'transcripts');
+const WORKSPACES_DIR = process.env.TRIFORCE_WORKSPACE_ROOT || join(homedir(), '.local', 'share', 'triforce', 'workspaces');
 if (process.env.TRIFORCE_TRANSCRIPTS === '1') await mkdir(TRANSCRIPTS_DIR, { recursive: true, mode: 0o700 });
 const AUTH_TOKEN = process.env.TRIFORCE_TOKEN || randomBytes(32).toString('hex');
 if (!process.env.TRIFORCE_TOKEN) console.warn(`TRIFORCE_TOKEN was not set; generated one-time token: ${AUTH_TOKEN}`);
@@ -50,6 +53,11 @@ const SYSTEM_PROMPTS_MODE2 = {
   coder: 'You are the Coder agent in the Triforce system. Your job is to write valid, executable JavaScript code based on the specification provided. If you receive feedback/errors from the Supervisor/Sandbox, update the code to fix the issues. Output ONLY valid, executable JavaScript. No markdown code fences. No explanatory text. No comments unless they are inline code comments. The code must run directly with Node.js.',
   supervisorPromptCheck: 'You are the Supervisor agent in the Triforce system. Your job is to review a coding specification designed by another agent. Decide if it is ready for the coder (Greenlight) or needs refinement (Fix). If it needs refinement, provide specific feedback. Output your verdict in this exact format:\nVERDICT: [GREENLIGHT or FIX]\nFEEDBACK: [Your feedback if verdict is FIX]',
   supervisorCodeCheck: 'You are the Supervisor agent in the Triforce system. You receive the coder\'s Javascript code and the terminal output from executing it in a sandbox. Analyze both and produce a clear Pass/Fail verdict. If it works, output \'VERDICT: PASS\'. If it fails, output \'VERDICT: FAIL\' and specify what needs to be fixed. Output format:\nVERDICT: [PASS or FAIL]\nFEEDBACK: [Your feedback if verdict is FAIL]'
+};
+
+const SYSTEM_PROMPTS_WORKSPACE = {
+  coder: 'You are the Workspace Coder in Triforce. Build the requested multi-file project. Return ONLY one valid JSON object with this shape: {"files":[{"path":"relative/path","content":"complete file contents"}],"testFile":"test.js"}. Include every required source, asset, package manifest, and automated test as text. Paths must be relative and may not contain .., .git, or node_modules. The testFile must be runnable with Node, must import and exercise the application in-process, and must not spawn child processes. Do not use markdown fences or add prose outside the JSON.',
+  reviewer: 'You are the Workspace Reviewer in Triforce. Review the requested task, architecture plan, generated file manifest, and isolated test output. Return exactly VERDICT: PASS or VERDICT: FAIL followed by FEEDBACK: with concise, actionable details. PASS only when the generated project satisfies the task and its tests exited successfully.',
 };
 
 function stripCodeFences(text) {
@@ -97,7 +105,7 @@ async function runPipeline(ws, task, config, mode = 1) {
     if (!config[role] || typeof config[role].provider !== 'string' || typeof config[role].model !== 'string') throw new Error(`Invalid ${role} configuration`);
     if (!ALLOWED_MODELS.get(config[role].provider)?.has(config[role].model)) throw new Error(`Unsupported ${role} provider/model`);
   }
-  mode = mode === 2 ? 2 : 1;
+  mode = [2, 3].includes(mode) ? mode : 1;
   const send = (data) => { if (ws.readyState === 1) ws.send(JSON.stringify(data)); };
   try {
     const records = [];
@@ -133,8 +141,76 @@ async function runPipeline(ws, task, config, mode = 1) {
   };
 
   const startTime = Date.now();
+  let completedWorkspaceDir = null;
 
-  if (mode === 2) {
+  if (mode === 3) {
+    send({ type: 'status', stage: 'architect', label: 'Stage 1: Workspace Architect' });
+    const architect = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
+    const { text: plan, usage: planUsage } = await architect.call(task);
+    track('architect', config.architect.model, planUsage);
+    runLog.architect = plan;
+    send({ type: 'output', role: 'architect', text: plan });
+    await logTranscript('architect', runHeader + plan + '\n');
+
+    const coder = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS_WORKSPACE.coder });
+    const reviewer = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS_WORKSPACE.reviewer });
+    let coderPrompt = `TASK:\n${task}\n\nARCHITECTURE PLAN:\n${plan}`;
+    let approved = false;
+
+    for (let iteration = 1; iteration <= maxIterations && !approved; iteration++) {
+      send({ type: 'status', stage: 'developer', label: `Stage 2: Workspace Coder (${iteration})` });
+      const { text, usage } = await coder.call(coderPrompt);
+      track('developer', config.developer.model, usage);
+      runLog.developer = text;
+      send({ type: 'output', role: 'developer', text });
+      await logTranscript('developer', runHeader + `\n--- ITERATION ${iteration} ---\n` + text + '\n');
+
+      let manifest, workspace, result;
+      try {
+        manifest = parseWorkspaceManifest(text);
+        workspace = await createWorkspace(manifest, WORKSPACES_DIR, { dependencyRoot: join(__dirname, 'node_modules') });
+        send({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files });
+        send({ type: 'pty', role: 'developer', data: `\r\n\x1b[32m[Workspace] Wrote ${workspace.files.length} files to ${workspace.directory}\x1b[0m\r\n` });
+        send({ type: 'status', stage: 'sandbox', label: `Stage 3: Workspace Tests (${iteration})` });
+        result = await runWorkspaceTest(workspace, {
+          packageRoot: __dirname,
+          onOutput: (value, kind) => send({ type: 'pty', role: 'developer', data: kind === 'stderr' ? `\x1b[31m${value}\x1b[0m` : value }),
+        });
+      } catch (err) {
+        result = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
+      }
+      send({ type: 'sandbox', ...result });
+
+      const summary = [
+        `Workspace: ${workspace?.directory ?? '(manifest rejected)'}`,
+        `Files: ${workspace?.files.join(', ') ?? '(none)'}`,
+        `Exit code: ${result.exitCode}`,
+        result.timedOut ? 'Status: TIMED OUT' : '',
+        result.stdout ? `stdout:\n${result.stdout}` : 'stdout: (empty)',
+        result.stderr ? `stderr:\n${result.stderr}` : '',
+      ].filter(Boolean).join('\n');
+      send({ type: 'status', stage: 'reviewer', label: `Stage 4: Workspace Review (${iteration})` });
+      const reviewPrompt = `TASK:\n${task}\n\nPLAN:\n${plan}\n\nGENERATED MANIFEST:\n${text}\n\nTEST RESULTS:\n${summary}`;
+      const { text: review, usage: reviewUsage } = await reviewer.call(reviewPrompt);
+      track('reviewer', config.reviewer.model, reviewUsage);
+      runLog.reviewer += `\n--- ITERATION ${iteration} ---\n${review}\n`;
+      send({ type: 'output', role: 'reviewer', text: runLog.reviewer });
+      await logTranscript('reviewer', runHeader + runLog.reviewer);
+      approved = /VERDICT:\s*PASS/i.test(review) && result.exitCode === 0 && !result.timedOut;
+      if (approved) {
+        pipelinePassed = true;
+        completedWorkspaceDir = workspace.directory;
+        send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[PASS] Project preserved at ${workspace.directory}\x1b[0m\r\n` });
+      } else {
+        const feedback = review.match(/FEEDBACK:\s*([\s\S]+)/i)?.[1]?.trim() || summary;
+        coderPrompt = `TASK:\n${task}\n\nARCHITECTURE PLAN:\n${plan}\n\nPREVIOUS ATTEMPT RESULTS:\n${summary}\n\nREVIEWER FEEDBACK:\n${feedback}\n\nReturn a complete corrected workspace JSON manifest.`;
+      }
+    }
+    if (!approved) {
+      send({ type: 'error', stage: 'reviewer', message: `Failed to produce a passing workspace after ${maxIterations} iterations.` });
+      return;
+    }
+  } else if (mode === 2) {
     // ── Mode 2 Cooperative Loop ──
     const designerAgent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS_MODE2.designer });
     const coderAgent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS_MODE2.coder });
@@ -363,7 +439,7 @@ async function runPipeline(ws, task, config, mode = 1) {
 
   // Run graphify update . to keep the graph current
   try {
-    const child = spawn('graphify', ['update', '.'], { stdio: 'ignore', cwd: __dirname });
+    const child = spawn('graphify', ['update', '.'], { stdio: 'ignore', cwd: completedWorkspaceDir || __dirname });
     await Promise.race([
       new Promise((resolve, reject) => { child.once('close', resolve); child.once('error', reject); }),
       new Promise((_, reject) => setTimeout(() => { child.kill('SIGKILL'); reject(new Error('graphify update timed out')); }, 30000)),
