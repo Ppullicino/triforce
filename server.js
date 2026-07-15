@@ -445,7 +445,7 @@ app.get('/api/config', async (req, res) => {
 
 const httpServer = http.createServer(app);
 const wss = new WebSocketServer({ noServer: true });
-const activeRuns = new WeakSet();
+let pipelineActive = false;
 
 httpServer.on('upgrade', (req, socket, head) => {
   const origin = req.headers.origin;
@@ -461,11 +461,11 @@ wss.on('connection', (ws) => {
     try { msg = JSON.parse(raw); } catch { return; }
 
     if (msg.type === 'run') {
-      if (activeRuns.has(ws)) return ws.send(JSON.stringify({ type: 'error', stage: 'architect', message: 'A pipeline is already running' }));
-      activeRuns.add(ws);
+      if (pipelineActive) return ws.send(JSON.stringify({ type: 'error', stage: 'architect', message: 'Another terminal or browser pipeline is already running' }));
+      pipelineActive = true;
       try { await runPipeline(ws, msg.task, msg.config, msg.mode); }
       catch (err) { if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'error', stage: 'architect', message: err.message })); }
-      finally { activeRuns.delete(ws); }
+      finally { pipelineActive = false; }
     }
   });
 });

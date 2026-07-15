@@ -4,237 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "REVIEW_FIX_LOG.md",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "review_fix_log",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "review_fix_log.md"
-    },
-    {
-      "label": "Code Review Fix Log",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "review_fix_log_code_review_fix_log",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "code review fix log"
-    },
-    {
-      "label": "2026-07-15",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "review_fix_log_2026_07_15",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "2026-07-15"
-    },
-    {
-      "label": "Provider process and response reliability",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "review_fix_log_provider_process_and_response_reliability",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "provider process and response reliability"
-    },
-    {
-      "label": "Server boundary and execution isolation",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "review_fix_log_server_boundary_and_execution_isolation",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "server boundary and execution isolation"
-    },
-    {
-      "label": "Pipeline correctness and configuration",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "review_fix_log_pipeline_correctness_and_configuration",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "pipeline correctness and configuration"
-    },
-    {
-      "label": "Dependencies, deployment, and operations",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "review_fix_log_dependencies_deployment_and_operations",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "dependencies, deployment, and operations"
-    },
-    {
-      "label": "Automated regression coverage",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L41",
-      "_origin": "ast",
-      "id": "review_fix_log_automated_regression_coverage",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "automated regression coverage"
-    },
-    {
-      "label": "Original Finding Resolution Index",
-      "file_type": "document",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L45",
-      "_origin": "ast",
-      "id": "review_fix_log_original_finding_resolution_index",
-      "community": 16,
-      "community_name": "2026-07-15",
-      "norm_label": "original finding resolution index"
-    },
-    {
-      "label": "RUNNING.md",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "running",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "running.md"
-    },
-    {
-      "label": "Triforce \u2014 Running & Operations",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "running_triforce_running_operations",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "triforce \u2014 running & operations"
-    },
-    {
-      "label": "Access",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "running_access",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "access"
-    },
-    {
-      "label": "Systemd Service (Always-On)",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "running_systemd_service_always_on",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "systemd service (always-on)"
-    },
-    {
-      "label": "One-time Install",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "running_one_time_install",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "one-time install"
-    },
-    {
-      "label": "Service Management",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "running_service_management",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "service management"
-    },
-    {
-      "label": "View Logs",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "running_view_logs",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "view logs"
-    },
-    {
-      "label": "PWA \u2014 Install as App",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L59",
-      "_origin": "ast",
-      "id": "running_pwa_install_as_app",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "pwa \u2014 install as app"
-    },
-    {
-      "label": "Android (Chrome)",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L63",
-      "_origin": "ast",
-      "id": "running_android_chrome",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "android (chrome)"
-    },
-    {
-      "label": "iPhone / iPad (Safari)",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L72",
-      "_origin": "ast",
-      "id": "running_iphone_ipad_safari",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "iphone / ipad (safari)"
-    },
-    {
-      "label": "Mac (Chrome or Edge)",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L81",
-      "_origin": "ast",
-      "id": "running_mac_chrome_or_edge",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "mac (chrome or edge)"
-    },
-    {
-      "label": "Notes",
-      "file_type": "document",
-      "source_file": "RUNNING.md",
-      "source_location": "L91",
-      "_origin": "ast",
-      "id": "running_notes",
-      "community": 4,
-      "community_name": "Triforce \u2014 Running & Operations",
-      "norm_label": "notes"
-    },
-    {
       "label": "agent.js",
       "file_type": "code",
       "source_file": "agent.js",
@@ -607,6 +376,105 @@
       "community": 15,
       "community_name": "cli.js",
       "norm_label": "main()"
+    },
+    {
+      "label": "gen-icons.mjs",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "gen_icons",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "gen-icons.mjs"
+    },
+    {
+      "label": "SHARDS",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "gen_icons_shards",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "shards"
+    },
+    {
+      "label": "BG",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "gen_icons_bg",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "bg"
+    },
+    {
+      "label": "GOLD",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "gen_icons_gold",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "gold"
+    },
+    {
+      "label": "edgeFunction()",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "gen_icons_edgefunction",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "edgefunction()"
+    },
+    {
+      "label": "inTriangle()",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "gen_icons_intriangle",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "intriangle()"
+    },
+    {
+      "label": "makeIcon()",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "gen_icons_makeicon",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "makeicon()"
+    },
+    {
+      "label": "SIZES",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "gen_icons_sizes",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "sizes"
+    },
+    {
+      "label": "maskBuf",
+      "file_type": "code",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "gen_icons_maskbuf",
+      "community": 7,
+      "community_name": "gen-icons.mjs",
+      "norm_label": "maskbuf"
     },
     {
       "label": "install-service.sh",
@@ -1090,6 +958,116 @@
       "norm_label": "pngjs"
     },
     {
+      "label": "manifest.json",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "public_manifest",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "manifest.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "public_manifest_name",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "name"
+    },
+    {
+      "label": "short_name",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "public_manifest_short_name",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "short_name"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "public_manifest_description",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "description"
+    },
+    {
+      "label": "start_url",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "public_manifest_start_url",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "start_url"
+    },
+    {
+      "label": "display",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "public_manifest_display",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "display"
+    },
+    {
+      "label": "background_color",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "public_manifest_background_color",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "background_color"
+    },
+    {
+      "label": "theme_color",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "public_manifest_theme_color",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "theme_color"
+    },
+    {
+      "label": "orientation",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "public_manifest_orientation",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "orientation"
+    },
+    {
+      "label": "icons",
+      "file_type": "code",
+      "source_file": "public/manifest.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "public_manifest_icons",
+      "community": 6,
+      "community_name": "manifest.json",
+      "norm_label": "icons"
+    },
+    {
       "label": "sw.js",
       "file_type": "code",
       "source_file": "public/sw.js",
@@ -1299,17 +1277,6 @@
       "norm_label": "wss"
     },
     {
-      "label": "activeRuns",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L448",
-      "_origin": "ast",
-      "id": "server_activeruns",
-      "community": 5,
-      "community_name": "server.js",
-      "norm_label": "activeruns"
-    },
-    {
       "label": "agent.test.js",
       "file_type": "code",
       "source_file": "test/agent.test.js",
@@ -1332,224 +1299,15 @@
       "norm_label": "sandbox.test.js"
     },
     {
-      "label": "gen-icons.mjs",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "gen-icons.mjs",
-      "id": "gen_icons"
-    },
-    {
-      "label": "SHARDS",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "shards",
-      "id": "gen_icons_shards"
-    },
-    {
-      "label": "BG",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L16",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "bg",
-      "id": "gen_icons_bg"
-    },
-    {
-      "label": "GOLD",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "gold",
-      "id": "gen_icons_gold"
-    },
-    {
-      "label": "edgeFunction()",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L19",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "edgefunction()",
-      "id": "gen_icons_edgefunction"
-    },
-    {
-      "label": "inTriangle()",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L23",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "intriangle()",
-      "id": "gen_icons_intriangle"
-    },
-    {
-      "label": "makeIcon()",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L33",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "makeicon()",
-      "id": "gen_icons_makeicon"
-    },
-    {
-      "label": "SIZES",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L74",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "sizes",
-      "id": "gen_icons_sizes"
-    },
-    {
-      "label": "maskBuf",
-      "file_type": "code",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L83",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "gen-icons.mjs",
-      "norm_label": "maskbuf",
-      "id": "gen_icons_maskbuf"
-    },
-    {
-      "label": "manifest.json",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "manifest.json",
-      "id": "public_manifest"
-    },
-    {
-      "label": "name",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "name",
-      "id": "public_manifest_name"
-    },
-    {
-      "label": "short_name",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "short_name",
-      "id": "public_manifest_short_name"
-    },
-    {
-      "label": "description",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "description",
-      "id": "public_manifest_description"
-    },
-    {
-      "label": "start_url",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "start_url",
-      "id": "public_manifest_start_url"
-    },
-    {
-      "label": "display",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "display",
-      "id": "public_manifest_display"
-    },
-    {
-      "label": "background_color",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "background_color",
-      "id": "public_manifest_background_color"
-    },
-    {
-      "label": "theme_color",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "theme_color",
-      "id": "public_manifest_theme_color"
-    },
-    {
-      "label": "orientation",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "orientation",
-      "id": "public_manifest_orientation"
-    },
-    {
-      "label": "icons",
-      "file_type": "code",
-      "source_file": "public/manifest.json",
-      "source_location": "L10",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "manifest.json",
-      "norm_label": "icons",
-      "id": "public_manifest_icons"
-    },
-    {
       "label": "usage.js",
       "file_type": "code",
       "source_file": "usage.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 18,
-      "community_name": "usage.js",
-      "norm_label": "usage.js",
-      "id": "usage"
+      "id": "usage",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "usage.js"
     },
     {
       "label": "RATES",
@@ -1557,10 +1315,10 @@
       "source_file": "usage.js",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 18,
-      "community_name": "usage.js",
-      "norm_label": "rates",
-      "id": "usage_rates"
+      "id": "usage_rates",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "rates"
     },
     {
       "label": "records",
@@ -1568,10 +1326,10 @@
       "source_file": "usage.js",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 18,
-      "community_name": "usage.js",
-      "norm_label": "records",
-      "id": "usage_records"
+      "id": "usage_records",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "records"
     },
     {
       "label": "track()",
@@ -1579,10 +1337,10 @@
       "source_file": "usage.js",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 18,
-      "community_name": "usage.js",
-      "norm_label": "track()",
-      "id": "usage_track"
+      "id": "usage_track",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "track()"
     },
     {
       "label": "printSummary()",
@@ -1590,10 +1348,10 @@
       "source_file": "usage.js",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 18,
-      "community_name": "usage.js",
-      "norm_label": "printsummary()",
-      "id": "usage_printsummary"
+      "id": "usage_printsummary",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "printsummary()"
     },
     {
       "label": "graphify.md",
@@ -1601,10 +1359,10 @@
       "source_file": ".agents/rules/graphify.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "agents_rules_graphify",
       "community": 9,
       "community_name": "graphify.md",
-      "norm_label": "graphify.md",
-      "id": "agents_rules_graphify"
+      "norm_label": "graphify.md"
     },
     {
       "label": "graphify",
@@ -1612,10 +1370,10 @@
       "source_file": ".agents/rules/graphify.md",
       "source_location": "L6",
       "_origin": "ast",
+      "id": "agents_rules_graphify_graphify",
       "community": 9,
       "community_name": "graphify.md",
-      "norm_label": "graphify",
-      "id": "agents_rules_graphify_graphify"
+      "norm_label": "graphify"
     },
     {
       "label": "graphify.md",
@@ -1623,10 +1381,10 @@
       "source_file": ".agents/workflows/graphify.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "agents_workflows_graphify",
       "community": 10,
       "community_name": "graphify.md",
-      "norm_label": "graphify.md",
-      "id": "agents_workflows_graphify"
+      "norm_label": "graphify.md"
     },
     {
       "label": "Workflow: graphify",
@@ -1634,10 +1392,10 @@
       "source_file": ".agents/workflows/graphify.md",
       "source_location": "L6",
       "_origin": "ast",
+      "id": "agents_workflows_graphify_workflow_graphify",
       "community": 10,
       "community_name": "graphify.md",
-      "norm_label": "workflow: graphify",
-      "id": "agents_workflows_graphify_workflow_graphify"
+      "norm_label": "workflow: graphify"
     },
     {
       "label": "AGENTS.md",
@@ -1645,10 +1403,10 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "agents",
       "community": 8,
       "community_name": "AGENTS.md",
-      "norm_label": "agents.md",
-      "id": "agents"
+      "norm_label": "agents.md"
     },
     {
       "label": "graphify",
@@ -1656,10 +1414,10 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "agents_graphify",
       "community": 8,
       "community_name": "AGENTS.md",
-      "norm_label": "graphify",
-      "id": "agents_graphify"
+      "norm_label": "graphify"
     },
     {
       "label": "CLAUDE.md",
@@ -1667,10 +1425,10 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "claude",
       "community": 11,
       "community_name": "CLAUDE.md",
-      "norm_label": "claude.md",
-      "id": "claude"
+      "norm_label": "claude.md"
     },
     {
       "label": "graphify",
@@ -1678,10 +1436,252 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "claude_graphify",
       "community": 11,
       "community_name": "CLAUDE.md",
-      "norm_label": "graphify",
-      "id": "claude_graphify"
+      "norm_label": "graphify"
+    },
+    {
+      "label": "REVIEW_FIX_LOG.md",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "review_fix_log",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "review_fix_log.md"
+    },
+    {
+      "label": "Code Review Fix Log",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "review_fix_log_code_review_fix_log",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "code review fix log"
+    },
+    {
+      "label": "2026-07-15",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "review_fix_log_2026_07_15",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "2026-07-15"
+    },
+    {
+      "label": "Provider process and response reliability",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "review_fix_log_provider_process_and_response_reliability",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "provider process and response reliability"
+    },
+    {
+      "label": "Server boundary and execution isolation",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "review_fix_log_server_boundary_and_execution_isolation",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "server boundary and execution isolation"
+    },
+    {
+      "label": "Pipeline correctness and configuration",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "review_fix_log_pipeline_correctness_and_configuration",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "pipeline correctness and configuration"
+    },
+    {
+      "label": "Dependencies, deployment, and operations",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "review_fix_log_dependencies_deployment_and_operations",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "dependencies, deployment, and operations"
+    },
+    {
+      "label": "Automated regression coverage",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "review_fix_log_automated_regression_coverage",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "automated regression coverage"
+    },
+    {
+      "label": "Original Finding Resolution Index",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "review_fix_log_original_finding_resolution_index",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "original finding resolution index"
+    },
+    {
+      "label": "2026-07-15 Mode Synchronization Follow-up",
+      "file_type": "document",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "review_fix_log_2026_07_15_mode_synchronization_follow_up",
+      "community": 16,
+      "community_name": "2026-07-15",
+      "norm_label": "2026-07-15 mode synchronization follow-up"
+    },
+    {
+      "label": "RUNNING.md",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "running",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "running.md"
+    },
+    {
+      "label": "Triforce \u2014 Running & Operations",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "running_triforce_running_operations",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "triforce \u2014 running & operations"
+    },
+    {
+      "label": "Access",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "running_access",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "access"
+    },
+    {
+      "label": "Systemd Service (Always-On)",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "running_systemd_service_always_on",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "systemd service (always-on)"
+    },
+    {
+      "label": "One-time Install",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "running_one_time_install",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "one-time install"
+    },
+    {
+      "label": "Service Management",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "running_service_management",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "service management"
+    },
+    {
+      "label": "View Logs",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "running_view_logs",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "view logs"
+    },
+    {
+      "label": "PWA \u2014 Install as App",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "running_pwa_install_as_app",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "pwa \u2014 install as app"
+    },
+    {
+      "label": "Android (Chrome)",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "running_android_chrome",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "android (chrome)"
+    },
+    {
+      "label": "iPhone / iPad (Safari)",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "running_iphone_ipad_safari",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "iphone / ipad (safari)"
+    },
+    {
+      "label": "Mac (Chrome or Edge)",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "running_mac_chrome_or_edge",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "mac (chrome or edge)"
+    },
+    {
+      "label": "Notes",
+      "file_type": "document",
+      "source_file": "RUNNING.md",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "running_notes",
+      "community": 4,
+      "community_name": "Triforce \u2014 Running & Operations",
+      "norm_label": "notes"
     },
     {
       "label": "triforce-phase0-prompt.md",
@@ -1689,10 +1689,10 @@
       "source_file": "triforce-phase0-prompt.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "triforce_phase0_prompt",
       "community": 14,
       "community_name": "triforce-phase0-prompt.md",
-      "norm_label": "triforce-phase0-prompt.md",
-      "id": "triforce_phase0_prompt"
+      "norm_label": "triforce-phase0-prompt.md"
     },
     {
       "label": "Triforce Phase 0 \u2014 Claude Code Hand-Off Prompt",
@@ -1700,203 +1700,13 @@
       "source_file": "triforce-phase0-prompt.md",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "triforce_phase0_prompt_triforce_phase_0_claude_code_hand_off_prompt",
       "community": 14,
       "community_name": "triforce-phase0-prompt.md",
-      "norm_label": "triforce phase 0 \u2014 claude code hand-off prompt",
-      "id": "triforce_phase0_prompt_triforce_phase_0_claude_code_hand_off_prompt"
+      "norm_label": "triforce phase 0 \u2014 claude code hand-off prompt"
     }
   ],
   "links": [
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "review_fix_log",
-      "target": "review_fix_log_code_review_fix_log",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "review_fix_log_code_review_fix_log",
-      "target": "review_fix_log_2026_07_15",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L45",
-      "weight": 1.0,
-      "source": "review_fix_log_code_review_fix_log",
-      "target": "review_fix_log_original_finding_resolution_index",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L41",
-      "weight": 1.0,
-      "source": "review_fix_log_2026_07_15",
-      "target": "review_fix_log_automated_regression_coverage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "review_fix_log_2026_07_15",
-      "target": "review_fix_log_dependencies_deployment_and_operations",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "review_fix_log_2026_07_15",
-      "target": "review_fix_log_pipeline_correctness_and_configuration",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "review_fix_log_2026_07_15",
-      "target": "review_fix_log_provider_process_and_response_reliability",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "REVIEW_FIX_LOG.md",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "review_fix_log_2026_07_15",
-      "target": "review_fix_log_server_boundary_and_execution_isolation",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "running",
-      "target": "running_triforce_running_operations",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "running_triforce_running_operations",
-      "target": "running_access",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L91",
-      "weight": 1.0,
-      "source": "running_triforce_running_operations",
-      "target": "running_notes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "running_triforce_running_operations",
-      "target": "running_pwa_install_as_app",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "running_triforce_running_operations",
-      "target": "running_systemd_service_always_on",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "running_systemd_service_always_on",
-      "target": "running_one_time_install",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "running_systemd_service_always_on",
-      "target": "running_service_management",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L44",
-      "weight": 1.0,
-      "source": "running_systemd_service_always_on",
-      "target": "running_view_logs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L63",
-      "weight": 1.0,
-      "source": "running_pwa_install_as_app",
-      "target": "running_android_chrome",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L72",
-      "weight": 1.0,
-      "source": "running_pwa_install_as_app",
-      "target": "running_iphone_ipad_safari",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "RUNNING.md",
-      "source_location": "L81",
-      "weight": 1.0,
-      "source": "running_pwa_install_as_app",
-      "target": "running_mac_chrome_or_edge",
-      "confidence_score": 1.0
-    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -2671,6 +2481,108 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_bg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_edgefunction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_gold",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_intriangle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_makeicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_maskbuf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_shards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "gen_icons",
+      "target": "gen_icons_sizes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "gen_icons_intriangle",
+      "target": "gen_icons_edgefunction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gen-icons.mjs",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "gen_icons_makeicon",
+      "target": "gen_icons_intriangle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "install-service.sh",
       "source_location": "L1",
       "weight": 1.0,
@@ -2799,6 +2711,39 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "usage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "usage_printsummary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "usage_track",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -2869,10 +2814,65 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "orchestrator.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "orchestrator_runarchitect",
+      "target": "usage_track",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "orchestrator_rundeveloper",
+      "target": "usage_track",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
       "source_location": "L211",
       "weight": 1.0,
       "source": "orchestrator_main",
       "target": "orchestrator_runsandbox",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "orchestrator_runreviewer",
+      "target": "usage_track",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L325",
+      "weight": 1.0,
+      "source": "orchestrator_main",
+      "target": "usage_printsummary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "orchestrator_main",
+      "target": "usage_track",
       "confidence_score": 1.0
     },
     {
@@ -3155,21 +3155,101 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "public/sw.js",
-      "source_location": "L3",
+      "source_file": "public/manifest.json",
+      "source_location": "L7",
       "weight": 1.0,
-      "source": "public_sw",
-      "target": "public_sw_precache",
+      "source": "public_manifest",
+      "target": "public_manifest_background_color",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L448",
+      "source_file": "public/manifest.json",
+      "source_location": "L4",
       "weight": 1.0,
-      "source": "server",
-      "target": "server_activeruns",
+      "source": "public_manifest",
+      "target": "public_manifest_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/manifest.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "public_manifest",
+      "target": "public_manifest_display",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/manifest.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "public_manifest",
+      "target": "public_manifest_icons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/manifest.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "public_manifest",
+      "target": "public_manifest_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/manifest.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "public_manifest",
+      "target": "public_manifest_orientation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/manifest.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "public_manifest",
+      "target": "public_manifest_short_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/manifest.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "public_manifest",
+      "target": "public_manifest_start_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/manifest.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "public_manifest",
+      "target": "public_manifest_theme_color",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "public/sw.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "public_sw",
+      "target": "public_sw_precache",
       "confidence_score": 1.0
     },
     {
@@ -3379,204 +3459,12 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_bg"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_edgefunction"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_gold"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_intriangle"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_makeicon"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L83",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_maskbuf"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_shards"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L74",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons",
-      "target": "gen_icons_sizes"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons_intriangle",
-      "target": "gen_icons_edgefunction"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "gen-icons.mjs",
-      "source_location": "L59",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gen_icons_makeicon",
-      "target": "gen_icons_intriangle"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_background_color"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_description"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_display"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_icons"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_name"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_orientation"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_short_name"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_start_url"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "public/manifest.json",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "public_manifest",
-      "target": "public_manifest_theme_color"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "usage.js",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "usage",
-      "target": "usage_printsummary"
+      "target": "usage_printsummary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3584,9 +3472,9 @@
       "source_file": "usage.js",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "usage",
-      "target": "usage_rates"
+      "target": "usage_rates",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3594,9 +3482,9 @@
       "source_file": "usage.js",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "usage",
-      "target": "usage_records"
+      "target": "usage_records",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3604,9 +3492,9 @@
       "source_file": "usage.js",
       "source_location": "L16",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "usage",
-      "target": "usage_track"
+      "target": "usage_track",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3614,9 +3502,9 @@
       "source_file": ".agents/rules/graphify.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "agents_rules_graphify",
-      "target": "agents_rules_graphify_graphify"
+      "target": "agents_rules_graphify_graphify",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3624,9 +3512,9 @@
       "source_file": ".agents/workflows/graphify.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "agents_workflows_graphify",
-      "target": "agents_workflows_graphify_workflow_graphify"
+      "target": "agents_workflows_graphify_workflow_graphify",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3634,9 +3522,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "agents",
-      "target": "agents_graphify"
+      "target": "agents_graphify",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3644,9 +3532,209 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_graphify"
+      "target": "claude_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "review_fix_log",
+      "target": "review_fix_log_code_review_fix_log",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "review_fix_log_code_review_fix_log",
+      "target": "review_fix_log_2026_07_15",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "review_fix_log_code_review_fix_log",
+      "target": "review_fix_log_2026_07_15_mode_synchronization_follow_up",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "review_fix_log_code_review_fix_log",
+      "target": "review_fix_log_original_finding_resolution_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "review_fix_log_2026_07_15",
+      "target": "review_fix_log_automated_regression_coverage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "review_fix_log_2026_07_15",
+      "target": "review_fix_log_dependencies_deployment_and_operations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "review_fix_log_2026_07_15",
+      "target": "review_fix_log_pipeline_correctness_and_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "review_fix_log_2026_07_15",
+      "target": "review_fix_log_provider_process_and_response_reliability",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "REVIEW_FIX_LOG.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "review_fix_log_2026_07_15",
+      "target": "review_fix_log_server_boundary_and_execution_isolation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "running",
+      "target": "running_triforce_running_operations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "running_triforce_running_operations",
+      "target": "running_access",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "running_triforce_running_operations",
+      "target": "running_notes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "running_triforce_running_operations",
+      "target": "running_pwa_install_as_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "running_triforce_running_operations",
+      "target": "running_systemd_service_always_on",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "running_systemd_service_always_on",
+      "target": "running_one_time_install",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "running_systemd_service_always_on",
+      "target": "running_service_management",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "running_systemd_service_always_on",
+      "target": "running_view_logs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "running_pwa_install_as_app",
+      "target": "running_android_chrome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "running_pwa_install_as_app",
+      "target": "running_iphone_ipad_safari",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RUNNING.md",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "running_pwa_install_as_app",
+      "target": "running_mac_chrome_or_edge",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3654,11 +3742,11 @@
       "source_file": "triforce-phase0-prompt.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "triforce_phase0_prompt",
-      "target": "triforce_phase0_prompt_triforce_phase_0_claude_code_hand_off_prompt"
+      "target": "triforce_phase0_prompt_triforce_phase_0_claude_code_hand_off_prompt",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e939a1edaea67c2b772a649b65dcf1afdb9234cd"
+  "built_at_commit": "6e47e4b49816fba83262b387e82acb86ef5526f5"
 }

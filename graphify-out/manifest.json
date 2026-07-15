@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784127410.903944,
-    "ast_hash": "6b8a3d2eea95daf6e6effd8ec9743c42",
+    "mtime": 1784127858.9888785,
+    "ast_hash": "29ce12d4b9c8888ac0266e9eb9aaa392",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1784127274.1570096,
-    "ast_hash": "8f651e20c6905761ed681bc87ca37b18",
+    "mtime": 1784127858.9888785,
+    "ast_hash": "7197216e71726ab5e1ea454f53866a81",
     "semantic_hash": ""
   },
   "triforce-phase0-prompt.md": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "REVIEW_FIX_LOG.md": {
-    "mtime": 1784127462.4491515,
-    "ast_hash": "1ef7bafb8aa2ba13424ebe75832200f8",
+    "mtime": 1784127858.9898784,
+    "ast_hash": "fd4e375f6a339db6d224de0dd919cfd5",
     "semantic_hash": ""
   },
   "test/sandbox.test.js": {

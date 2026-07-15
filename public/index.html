@@ -1622,6 +1622,7 @@
   async function loadDefaults() {
     try {
       const config = await fetch('/api/config').then(r => r.json());
+      setMode(config.defaultMode === 2 ? 2 : 1);
       for (const role of ROLES) {
         const { provider, model } = config[role] ?? {};
         if (!provider) continue;

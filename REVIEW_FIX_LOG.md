@@ -72,3 +72,9 @@ This log maps the whole-codebase review findings to completed changes and verifi
 26. Hardcoded standalone task: command-line task text is accepted with the original sample as fallback.
 27. Stale graph: Graphify output refreshed after every remediation batch.
 28. Indefinite service-worker staleness: navigation is network-first and static assets revalidate in the background.
+
+## 2026-07-15 Mode Synchronization Follow-up
+
+- Browser startup now reads `defaultMode` from `models.config.json` and applies the same mode selected by the terminal setup wizard.
+- The browser toggle remains available as an explicit override for the next browser-submitted run.
+- Pipeline locking is now server-wide rather than per WebSocket, preventing terminal and browser clients from running overlapping pipelines.
