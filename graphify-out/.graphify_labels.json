@@ -4,6 +4,7 @@
   "2": "Agent",
   "3": "package.json",
   "4": "Triforce — Running & Operations",
+  "5": "index.js",
   "6": "manifest.json",
   "7": "gen-icons.mjs",
   "8": "AGENTS.md",
@@ -32,5 +33,6 @@
   "31": "vite.config.ts",
   "32": "index.d.ts",
   "33": "scripts",
-  "34": "server-protocol.test.js"
+  "34": "server-protocol.test.js",
+  "35": "workspace.js"
 }
