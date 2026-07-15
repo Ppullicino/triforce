@@ -64,4 +64,4 @@ jobs:
             adb install -r clients/android/app/build/outputs/apk/debug/app-debug.apk || { echo '::error::Android APK installation failed'; exit 1; }
             adb shell am start -W -n com.triforce.remote/.MainActivity | tee /tmp/triforce-launch.txt
             sleep 3
-            adb shell pidof com.triforce.remote || { adb logcat -d -t 300; echo '::error::Android process exited after launch'; exit 1; }
+            adb shell pidof com.triforce.remote || { failure=$(adb logcat -d -t 500 | grep -E 'FATAL EXCEPTION|AndroidRuntime|Caused by:' | tail -20 | tr '\n' ' '); echo "::error::Android process exited after launch: $failure"; exit 1; }
