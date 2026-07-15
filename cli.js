@@ -28,6 +28,34 @@ function resolveBinPath(cmd) {
   }
 }
 
+function checkClaudeLogin() {
+  try {
+    const claudePath = resolveBinPath('claude');
+    const out = execSync(`${claudePath} auth status`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    return JSON.parse(out).loggedIn === true;
+  } catch {
+    return false;
+  }
+}
+
+function checkCodexLogin() {
+  try {
+    return existsSync(join(os.homedir(), '.codex', 'config.toml'));
+  } catch {
+    return false;
+  }
+}
+
+function checkAgyLogin() {
+  try {
+    const settingsPath = join(os.homedir(), '.gemini', 'antigravity-cli', 'settings.json');
+    const localSettingsPath = join(os.homedir(), '.gemini', 'antigravity-cli', 'settings.local.json');
+    return existsSync(settingsPath) || existsSync(localSettingsPath);
+  } catch {
+    return false;
+  }
+}
+
 async function checkAndInstallDependencies(forceUpdate = false) {
   console.log('\nChecking required CLI tools...');
 
@@ -145,8 +173,19 @@ async function setupWizard() {
   console.log('\n[Step 1/4] Log in to the CLI tools (uses your consumer accounts/subscriptions)');
 
   // 1a: Claude Code
-  const authClaude = await rl.question('Authenticate with Claude Code CLI now? (y/n) [y]: ');
-  if (!authClaude.toLowerCase().startsWith('n')) {
+  const isClaudeLoggedIn = checkClaudeLogin();
+  if (isClaudeLoggedIn) {
+    console.log('✅ Claude Code: Already logged in.');
+  }
+  const promptClaude = isClaudeLoggedIn 
+    ? 'Re-authenticate with Claude Code CLI now? (y/n) [n]: ' 
+    : 'Authenticate with Claude Code CLI now? (y/n) [y]: ';
+  const authClaude = await rl.question(promptClaude);
+  const shouldAuthClaude = isClaudeLoggedIn 
+    ? authClaude.toLowerCase().startsWith('y') 
+    : !authClaude.toLowerCase().startsWith('n');
+
+  if (shouldAuthClaude) {
     console.log('\nRunning "claude auth login"... Please follow the browser instructions.');
     await new Promise((resolve) => {
       const child = spawn(resolveBinPath('claude'), ['auth', 'login'], { stdio: 'inherit' });
@@ -155,8 +194,19 @@ async function setupWizard() {
   }
 
   // 1b: Codex CLI
-  const authCodex = await rl.question('\nAuthenticate with Codex CLI now? (y/n) [y]: ');
-  if (!authCodex.toLowerCase().startsWith('n')) {
+  const isCodexLoggedIn = checkCodexLogin();
+  if (isCodexLoggedIn) {
+    console.log('✅ Codex CLI: Already configured/logged in.');
+  }
+  const promptCodex = isCodexLoggedIn 
+    ? 'Re-authenticate with Codex CLI now? (y/n) [n]: ' 
+    : 'Authenticate with Codex CLI now? (y/n) [y]: ';
+  const authCodex = await rl.question(promptCodex);
+  const shouldAuthCodex = isCodexLoggedIn 
+    ? authCodex.toLowerCase().startsWith('y') 
+    : !authCodex.toLowerCase().startsWith('n');
+
+  if (shouldAuthCodex) {
     const useDeviceAuth = await rl.question('Are you on a remote/headless VM? (y/n) [y]: ');
     const codexArgs = !useDeviceAuth.toLowerCase().startsWith('n') ? ['login', '--device-auth'] : ['login'];
     console.log(`\nRunning "codex ${codexArgs.join(' ')}"... Please follow the instructions.`);
@@ -167,8 +217,19 @@ async function setupWizard() {
   }
 
   // 1c: Antigravity CLI
-  const authAgy = await rl.question('\nAuthenticate with Antigravity CLI (agy) now? (y/n) [y]: ');
-  if (!authAgy.toLowerCase().startsWith('n')) {
+  const isAgyLoggedIn = checkAgyLogin();
+  if (isAgyLoggedIn) {
+    console.log('✅ Antigravity CLI (agy): Already configured/logged in.');
+  }
+  const promptAgy = isAgyLoggedIn 
+    ? 'Re-authenticate with Antigravity CLI now? (y/n) [n]: ' 
+    : 'Authenticate with Antigravity CLI (agy) now? (y/n) [y]: ';
+  const authAgy = await rl.question(promptAgy);
+  const shouldAuthAgy = isAgyLoggedIn 
+    ? authAgy.toLowerCase().startsWith('y') 
+    : !authAgy.toLowerCase().startsWith('n');
+
+  if (shouldAuthAgy) {
     console.log('\nVerifying Antigravity CLI session... (Follow instructions to sign in if prompted)');
     await new Promise((resolve) => {
       const child = spawn(resolveBinPath('agy'), ['-p', 'ping'], { stdio: 'inherit' });
@@ -265,6 +326,13 @@ function startServer() {
       console.error('To stop the systemd service, run:');
       console.log('  sudo systemctl stop triforce\n');
       process.exit(1);
+    }
+    process.stderr.write(data);
+  });
+
+  serverProcess.stdout.on('data', (data) => {
+    if (process.env.DEBUG) {
+      process.stdout.write(data);
     }
   });
   

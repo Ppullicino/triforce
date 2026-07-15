@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1784103036.5023005,
-    "ast_hash": "61b60a0a6bbea03134e1379b62692284",
+    "mtime": 1784112493.3548708,
+    "ast_hash": "0182dbd35b7c2f3ff37326e008c1fc6d",
     "semantic_hash": ""
   },
   "triforce-phase0-prompt.md": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "cli.js": {
-    "mtime": 1784111991.9104898,
-    "ast_hash": "9fe28d11cf4c4fe40a95b29525929c91",
+    "mtime": 1784112501.7756827,
+    "ast_hash": "a598e0ab715c405299c462757fe5efc4",
     "semantic_hash": ""
   }
 }
