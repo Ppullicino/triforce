@@ -42,7 +42,7 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 6 | Android container shell | COMPLETE | `step-06:` | Kotlin shell, packaged shared client, origin-scoped bridge, Keystore AES-GCM vault, hardened WebView/network policy; unit/lint/APK and API-29 install/launch smoke pass in Actions run 29446888732. |
 | 7 | Security, resilience, and compatibility hardening | COMPLETE | `step-07:` | Threat model/review log, native CORS + origin/auth enforcement, safe login/CSP, TLS/version diagnostics, validated ordered replay; 26 server, 18 client, 3 protocol tests and npm audits pass. |
 | 8 | Packaging, signing documentation, and CI artifacts | COMPLETE | `step-08:` | Root SemVer synchronization, audit/test matrix, signing/release docs, and checksummed server/Windows/macOS/Android artifacts all pass in Actions run 29448101313. |
-| 9 | End-to-end validation and release candidate | NOT STARTED | `step-09:` | — |
+| 9 | End-to-end validation and release candidate | IN PROGRESS | `step-09:` | Building deterministic remote-mode/reconnect validation, representative platform matrix, operations docs, and RC checklist/tag. |
 
 ## Current handoff
 
