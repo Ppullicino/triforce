@@ -41,14 +41,14 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 5 | Desktop shell for Windows and macOS | COMPLETE | `step-05:` | Tauri 2 shell with Windows Credential Manager/macOS Keychain, restricted navigation, menus/window/updater hooks; Windows and macOS native tests, debug builds, server checks, and launch probes pass in Actions run 29442130327. |
 | 6 | Android container shell | COMPLETE | `step-06:` | Kotlin shell, packaged shared client, origin-scoped bridge, Keystore AES-GCM vault, hardened WebView/network policy; unit/lint/APK and API-29 install/launch smoke pass in Actions run 29446888732. |
 | 7 | Security, resilience, and compatibility hardening | COMPLETE | `step-07:` | Threat model/review log, native CORS + origin/auth enforcement, safe login/CSP, TLS/version diagnostics, validated ordered replay; 26 server, 18 client, 3 protocol tests and npm audits pass. |
-| 8 | Packaging, signing documentation, and CI artifacts | IN PROGRESS | `step-08:` | Defining unified versioning, release artifacts/checksums, CI audits, and signing procedures. |
+| 8 | Packaging, signing documentation, and CI artifacts | COMPLETE | `step-08:` | Root SemVer synchronization, audit/test matrix, signing/release docs, and checksummed server/Windows/macOS/Android artifacts all pass in Actions run 29448101313. |
 | 9 | End-to-end validation and release candidate | NOT STARTED | `step-09:` | — |
 
 ## Current handoff
 
-- Current step: Step 8 — packaging, signing documentation, and CI artifacts.
-- Next action: Define one release-version source, consolidate the cross-platform CI
-  matrix, produce checksummed unsigned artifacts, and document owner-controlled signing.
+- Current step: Step 9 — end-to-end validation and release candidate.
+- Next action: Build the remote test harness and cross-platform validation matrix,
+  exercise authentication/run/reconnect/failure cases, finish operations docs, and tag RC1.
 - Known blockers: None.
 - Important constraint: Do not put provider API keys in any client. Clients receive
   only Triforce host URLs and Triforce authentication credentials.
