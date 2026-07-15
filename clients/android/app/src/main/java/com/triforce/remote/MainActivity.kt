@@ -18,6 +18,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedCallback
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewCompat
+import androidx.webkit.WebViewFeature
 import org.json.JSONObject
 
 class MainActivity : ComponentActivity() {
@@ -52,7 +53,11 @@ class MainActivity : ComponentActivity() {
             cacheMode = WebSettings.LOAD_DEFAULT
         }
         WebViewCompat.startSafeBrowsing(this, null)
-        installCredentialBridge(CredentialVault(this))
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
+            installCredentialBridge(CredentialVault(this))
+        } else {
+            showError("Android System WebView is out of date. Update it to enable secure credential storage, then tap to retry.")
+        }
         webView.webViewClient = object : WebViewClient() {
             override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest) = assetLoader.shouldInterceptRequest(request.url)
             override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {

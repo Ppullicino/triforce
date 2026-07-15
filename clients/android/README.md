@@ -15,6 +15,11 @@ navigation are disabled. Certificate errors are cancelled. HTTPS is required for
 hosts; cleartext is permitted only for `10.0.2.2` and `localhost` during emulator
 development and is labeled insecure by the shared host UI.
 
+Android 8.0 (API 26) and newer are supported. Secure credential messaging also
+requires a System WebView that implements the origin-scoped web-message-listener
+feature. If an older factory WebView is encountered, the app shows an update prompt
+instead of falling back to the unsafe unrestricted JavaScript interface.
+
 ## Requirements and commands
 
 - Android Studio or command-line SDK with API 36 and Build Tools 36.0.0

@@ -635,8 +635,8 @@
     "semantic_hash": ""
   },
   "clients/android/app/build.gradle.kts": {
-    "mtime": 1784142173.237068,
-    "ast_hash": "960e27f8997b8a1b9d4e17ad5606d6ba",
+    "mtime": 1784142554.0613763,
+    "ast_hash": "21cac92b5d4cac16df230c298aa0dc75",
     "semantic_hash": ""
   },
   "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt": {
@@ -670,8 +670,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/android-smoke.yml": {
-    "mtime": 1784141985.849407,
-    "ast_hash": "a04e8f192a37127dba081ad64fdb190c",
+    "mtime": 1784145363.088977,
+    "ast_hash": "0b53abe85fef92d5f523e01a565ce3c5",
     "semantic_hash": ""
   },
   "clients/android/README.md": {
