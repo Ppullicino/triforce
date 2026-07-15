@@ -3,6 +3,8 @@ import readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import { spawn, fork, execSync } from 'node:child_process';
 import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import WebSocket from 'ws';
 
 const rl = readline.createInterface({ input, output });
@@ -126,9 +128,11 @@ async function setupWizard() {
   return { skipMode, defaultMode, config };
 }
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 function startServer() {
   console.log('\nSpinning up the Triforce backend server...');
-  const serverProcess = fork('server.js', [], {
+  const serverProcess = fork(join(__dirname, 'server.js'), [], {
     stdio: 'ignore', // Let it run silently in the background
     env: { ...process.env, PORT: '3000' }
   });

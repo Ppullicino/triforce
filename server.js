@@ -5,8 +5,11 @@ import { WebSocketServer } from 'ws';
 import pty from '@homebridge/node-pty-prebuilt-multiarch';
 import { readFile, writeFile, appendFile, mkdir } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import { Agent } from './agent.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const TRANSCRIPTS_DIR = './transcripts';
 await mkdir(TRANSCRIPTS_DIR, { recursive: true });
 
@@ -369,15 +372,15 @@ app.use(express.json());
 app.get('/sw.js', (req, res) => {
   res.setHeader('Content-Type', 'application/javascript');
   res.setHeader('Cache-Control', 'no-cache');
-  res.sendFile('sw.js', { root: './public' });
+  res.sendFile('sw.js', { root: join(__dirname, 'public') });
 });
 app.get('/manifest.json', (req, res) => {
   res.setHeader('Content-Type', 'application/manifest+json');
-  res.sendFile('manifest.json', { root: './public' });
+  res.sendFile('manifest.json', { root: join(__dirname, 'public') });
 });
 
-app.use('/icons', express.static('public/icons'));
-app.use(express.static('public'));
+app.use('/icons', express.static(join(__dirname, 'public/icons')));
+app.use(express.static(join(__dirname, 'public')));
 
 app.get('/api/usage', (req, res) => {
   const total = Object.values(sessionUsage).reduce(

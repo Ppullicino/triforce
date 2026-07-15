@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 20 files · ~16,198 words
+- 20 files · ~16,237 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 125 nodes · 149 edges · 16 communities (9 shown, 7 thin omitted)
+- 127 nodes · 151 edges · 16 communities (9 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e0cfef47`
+- Built from commit: `17e4e462`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -82,8 +82,8 @@ Cohesion: 0.17
 Nodes (11): Access, Android (Chrome), iPhone / iPad (Safari), Mac (Chrome or Edge), Notes, One-time Install, PWA — Install as App, Service Management (+3 more)
 
 ### Community 5 - "server.js"
-Cohesion: 0.21
-Nodes (11): app, computeCosts(), httpServer, RATES, runInSandbox(), runPipeline(), sessionUsage, stripCodeFences() (+3 more)
+Cohesion: 0.19
+Nodes (12): app, computeCosts(), __dirname, httpServer, RATES, runInSandbox(), runPipeline(), sessionUsage (+4 more)
 
 ### Community 6 - "manifest.json"
 Cohesion: 0.20
@@ -94,11 +94,11 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ### Community 15 - "cli.js"
-Cohesion: 0.43
-Nodes (7): checkAndInstallDependencies(), connectWebSocket(), main(), promptLoop(), rl, setupWizard(), startServer()
+Cohesion: 0.36
+Nodes (8): checkAndInstallDependencies(), connectWebSocket(), __dirname, main(), promptLoop(), rl, setupWizard(), startServer()
 
 ## Knowledge Gaps
-- **58 isolated node(s):** `rl`, `SHARDS`, `BG`, `GOLD`, `SIZES` (+53 more)
+- **60 isolated node(s):** `rl`, `__dirname`, `SHARDS`, `BG`, `GOLD` (+55 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -106,13 +106,13 @@ Nodes (7): checkAndInstallDependencies(), connectWebSocket(), main(), promptLoop
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
-  _High betweenness centrality (0.045) - this node is a cross-community bridge._
+  _High betweenness centrality (0.046) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
 - **Why does `main()` connect `orchestrator.js` to `Agent`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **What connects `rl`, `SHARDS`, `BG` to the rest of the system?**
-  _58 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `rl`, `__dirname`, `SHARDS` to the rest of the system?**
+  _60 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
