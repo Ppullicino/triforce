@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/desktop-smoke.yml": {
-    "mtime": 1784140306.350875,
-    "ast_hash": "d8232cbd0b76502fc34a2d7dab8f8e55",
+    "mtime": 1784140369.4758174,
+    "ast_hash": "92d3127d95fbc4cecce37b459d2a6d51",
     "semantic_hash": ""
   },
   "clients/desktop/README.md": {

@@ -365,8 +365,8 @@
     "semantic_hash": ""
   },
   "clients/desktop/src-tauri/tauri.conf.json": {
-    "mtime": 1784140127.757871,
-    "ast_hash": "2e794f9b6f6f62fbeef95e0f08141170",
+    "mtime": 1784140677.1326709,
+    "ast_hash": "511271ac02bd522ae504abe31e63166a",
     "semantic_hash": ""
   },
   "clients/shared/src/core/native-integration.ts": {
@@ -392,6 +392,246 @@
   "clients/desktop/README.md": {
     "mtime": 1784140236.6290438,
     "ast_hash": "e888d1659017bc5e21be913da82a96ab",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/128x128.png": {
+    "mtime": 1784140669.7497942,
+    "ast_hash": "e3333c43856904ca25bedb266d40c73c",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/128x128@2x.png": {
+    "mtime": 1784140669.767794,
+    "ast_hash": "ae85e90355fbeb579a6e743d0d4a08b0",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/32x32.png": {
+    "mtime": 1784140669.7227945,
+    "ast_hash": "b6475f4585c331068da3ace577b86eec",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/64x64.png": {
+    "mtime": 1784140669.7327945,
+    "ast_hash": "d1a89c8fe89af7f9da8675686b237443",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square107x107Logo.png": {
+    "mtime": 1784140669.2998016,
+    "ast_hash": "e95fefe7d532a0c807203f89ba4ed680",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square142x142Logo.png": {
+    "mtime": 1784140669.3118014,
+    "ast_hash": "6b2b3ecf7cdf18e3a167a2935feae248",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square150x150Logo.png": {
+    "mtime": 1784140669.3258014,
+    "ast_hash": "b288310ba810e30db958f5811ae55864",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square284x284Logo.png": {
+    "mtime": 1784140669.3458009,
+    "ast_hash": "dc9f9f4ca1f8f6a6e104bbd162fa6c17",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square30x30Logo.png": {
+    "mtime": 1784140669.2568023,
+    "ast_hash": "0023c61630f9c69d30ce09c8fbfeb3be",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square310x310Logo.png": {
+    "mtime": 1784140669.3678005,
+    "ast_hash": "f64f4ea68286cbc3840d8c64b6132191",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square44x44Logo.png": {
+    "mtime": 1784140669.2668023,
+    "ast_hash": "a2a3314a13fcdd3fa5124cdf1b42cbca",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square71x71Logo.png": {
+    "mtime": 1784140669.277802,
+    "ast_hash": "a993a2d72e0c41a6930a80061311f4f3",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/Square89x89Logo.png": {
+    "mtime": 1784140669.287802,
+    "ast_hash": "21057860867c8664689d141f1a6c3571",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/StoreLogo.png": {
+    "mtime": 1784140669.2468026,
+    "ast_hash": "052fbb913895fcc6b8a77c5c4a127e02",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-hdpi/ic_launcher.png": {
+    "mtime": 1784140670.231786,
+    "ast_hash": "7d04747fea1c792ddec34769bd64a243",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-hdpi/ic_launcher_foreground.png": {
+    "mtime": 1784140670.1317878,
+    "ast_hash": "5aa5ec3b0dca0cc43a1841f61f97565f",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-hdpi/ic_launcher_round.png": {
+    "mtime": 1784140670.2217863,
+    "ast_hash": "e8a540f5f2fce6cd04b4c74079b14f8b",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-mdpi/ic_launcher.png": {
+    "mtime": 1784140670.2527857,
+    "ast_hash": "63cac21ffd17f81630cccbe427bebc8b",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-mdpi/ic_launcher_foreground.png": {
+    "mtime": 1784140670.1427877,
+    "ast_hash": "280adae07efa0b2ff68d859a565eb8f3",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-mdpi/ic_launcher_round.png": {
+    "mtime": 1784140670.241786,
+    "ast_hash": "93a1b054597e0c2cdfc94e5e8d52fd35",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xhdpi/ic_launcher.png": {
+    "mtime": 1784140670.2757854,
+    "ast_hash": "854f219fdb39a3f2cdc8a50206e59563",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xhdpi/ic_launcher_foreground.png": {
+    "mtime": 1784140670.1597874,
+    "ast_hash": "82fd9ecdb413fd6dd265bd1940eb1ddc",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xhdpi/ic_launcher_round.png": {
+    "mtime": 1784140670.2637856,
+    "ast_hash": "55f011fb4b0cb7d2497dd9740f80bf0e",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xxhdpi/ic_launcher.png": {
+    "mtime": 1784140670.302785,
+    "ast_hash": "f5bd5a074b494be14cf3e38feb7a167d",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1784140670.181787,
+    "ast_hash": "e966941b7fdf51de5a4347ac4125de1d",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xxhdpi/ic_launcher_round.png": {
+    "mtime": 1784140670.2897851,
+    "ast_hash": "9f9bd720a33a67a1d30fda33acea26ae",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher.png": {
+    "mtime": 1784140670.3367844,
+    "ast_hash": "301cc21a63922abc5b3087280a8231e9",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1784140670.2117865,
+    "ast_hash": "f322f980decf9c82803633a624afea5e",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/android/mipmap-xxxhdpi/ic_launcher_round.png": {
+    "mtime": 1784140670.3197846,
+    "ast_hash": "79dc1566653ce368b30f692b21ddb783",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/icon.png": {
+    "mtime": 1784140669.7877936,
+    "ast_hash": "48f97a56569e12e1a77be64722803688",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-20x20@1x.png": {
+    "mtime": 1784140669.8077931,
+    "ast_hash": "7e16bebf961d75320a0fa1765da9b091",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-20x20@2x-1.png": {
+    "mtime": 1784140669.7977934,
+    "ast_hash": "ec38b0631c5dab3853988bf91ce45823",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-20x20@2x.png": {
+    "mtime": 1784140669.8177931,
+    "ast_hash": "ec38b0631c5dab3853988bf91ce45823",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-20x20@3x.png": {
+    "mtime": 1784140669.826793,
+    "ast_hash": "fb3e3bb5ebc5e16a6071191460e98391",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-29x29@1x.png": {
+    "mtime": 1784140669.8467925,
+    "ast_hash": "61cc89be7d4d51002f33df977e3d0c9b",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-29x29@2x-1.png": {
+    "mtime": 1784140669.8367927,
+    "ast_hash": "d8b22e973efc053adf2bc29e319e367f",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-29x29@2x.png": {
+    "mtime": 1784140669.8567924,
+    "ast_hash": "d8b22e973efc053adf2bc29e319e367f",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-29x29@3x.png": {
+    "mtime": 1784140669.8677921,
+    "ast_hash": "32de5a9cd59e7dc6ecdfe156987838bd",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-40x40@1x.png": {
+    "mtime": 1784140669.886792,
+    "ast_hash": "ec38b0631c5dab3853988bf91ce45823",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-40x40@2x-1.png": {
+    "mtime": 1784140669.8777921,
+    "ast_hash": "bb292ebf9d2a8b59ecc859ffbacd0ee4",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-40x40@2x.png": {
+    "mtime": 1784140669.8977916,
+    "ast_hash": "bb292ebf9d2a8b59ecc859ffbacd0ee4",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-40x40@3x.png": {
+    "mtime": 1784140669.9097915,
+    "ast_hash": "43b0f470cceb523c3f581e7d4d303a55",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-512@2x.png": {
+    "mtime": 1784140670.117788,
+    "ast_hash": "df4c29132d97faabbfc239b511e1cb63",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-60x60@2x.png": {
+    "mtime": 1784140669.9207914,
+    "ast_hash": "43b0f470cceb523c3f581e7d4d303a55",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-60x60@3x.png": {
+    "mtime": 1784140669.934791,
+    "ast_hash": "9913f32f57b3273747b0db70128eb80f",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-76x76@1x.png": {
+    "mtime": 1784140669.945791,
+    "ast_hash": "d86f5cc3bf1a169ebbc5806392cf8ff6",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-76x76@2x.png": {
+    "mtime": 1784140669.9587908,
+    "ast_hash": "95322bbcdaf0ce62d93089842df8294e",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/icons/ios/AppIcon-83.5x83.5@2x.png": {
+    "mtime": 1784140669.9727905,
+    "ast_hash": "292340a30e4b68d7217727aecde864ba",
     "semantic_hash": ""
   }
 }

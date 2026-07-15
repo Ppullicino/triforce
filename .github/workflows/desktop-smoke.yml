@@ -32,10 +32,19 @@ jobs:
       - name: Install JavaScript dependencies
         run: npm ci
       - name: Verify shared client and protocol
-        run: npm run test --workspace @triforce/client && npm run test --workspace @triforce/protocol
+        run: npm run test --workspace @triforce/client && npm run test --workspace @triforce/protocol && node --test test/server-protocol.test.js
       - name: Build shared client
         run: npm run build
       - name: Check native credential and window shell
         run: cargo test --manifest-path clients/desktop/src-tauri/Cargo.toml
       - name: Build debug desktop executable
         run: npm run build --workspace @triforce/desktop -- --debug --no-bundle
+      - name: Launch desktop executable
+        shell: pwsh
+        run: |
+          $name = if ($IsWindows) { "triforce-desktop.exe" } else { "triforce-desktop" }
+          $path = Join-Path "clients/desktop/src-tauri/target/debug" $name
+          $process = Start-Process $path -PassThru
+          Start-Sleep -Seconds 8
+          if ($process.HasExited) { throw "Desktop executable exited during launch smoke test" }
+          Stop-Process -Id $process.Id -Force
