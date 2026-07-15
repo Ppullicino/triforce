@@ -108,7 +108,8 @@ let sessionUsage = {
 async function runPipeline(ws, task, config, mode = 1) {
   const maxIterations = config.maxIterations ?? 3;
   const send = (data) => { if (ws.readyState === 1) ws.send(JSON.stringify(data)); };
-  const records = [];
+  try {
+    const records = [];
 
   sessionUsage = {
     architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
@@ -374,6 +375,9 @@ async function runPipeline(ws, task, config, mode = 1) {
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
   send({ type: 'done', elapsed });
+  } catch (err) {
+    send({ type: 'error', stage: 'architect', message: err.message });
+  }
 }
 
 // ── EXPRESS + HTTP SERVER ──
