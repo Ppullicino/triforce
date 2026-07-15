@@ -6,6 +6,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import WebSocket from 'ws';
+import os from 'node:os';
 
 const rl = readline.createInterface({ input, output });
 
@@ -93,12 +94,36 @@ async function setupWizard() {
   await checkAndInstallDependencies(updateCLIs.toLowerCase().startsWith('y'));
 
   // Step 1: Log in
-  console.log('\n[Step 1/4] Log in to Claude Code (uses your Claude Pro subscription)');
+  console.log('\n[Step 1/4] Log in to the CLI tools (uses your consumer accounts/subscriptions)');
+
+  // 1a: Claude Code
   const authClaude = await rl.question('Authenticate with Claude Code CLI now? (y/n) [y]: ');
   if (!authClaude.toLowerCase().startsWith('n')) {
     console.log('\nRunning "claude auth login"... Please follow the browser instructions.');
     await new Promise((resolve) => {
       const child = spawn('claude', ['auth', 'login'], { stdio: 'inherit' });
+      child.on('close', resolve);
+    });
+  }
+
+  // 1b: Codex CLI
+  const authCodex = await rl.question('\nAuthenticate with Codex CLI now? (y/n) [y]: ');
+  if (!authCodex.toLowerCase().startsWith('n')) {
+    const useDeviceAuth = await rl.question('Are you on a remote/headless VM? (y/n) [y]: ');
+    const codexArgs = !useDeviceAuth.toLowerCase().startsWith('n') ? ['login', '--device-auth'] : ['login'];
+    console.log(`\nRunning "codex ${codexArgs.join(' ')}"... Please follow the instructions.`);
+    await new Promise((resolve) => {
+      const child = spawn('codex', codexArgs, { stdio: 'inherit' });
+      child.on('close', resolve);
+    });
+  }
+
+  // 1c: Antigravity CLI
+  const authAgy = await rl.question('\nAuthenticate with Antigravity CLI (agy) now? (y/n) [y]: ');
+  if (!authAgy.toLowerCase().startsWith('n')) {
+    console.log('\nRunning "agy login"... Please follow the instructions.');
+    await new Promise((resolve) => {
+      const child = spawn('agy', ['login'], { stdio: 'inherit' });
       child.on('close', resolve);
     });
   }
@@ -130,11 +155,35 @@ async function setupWizard() {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+function getNetworkIPs() {
+  const interfaces = os.networkInterfaces();
+  const ips = [];
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      if (iface.family === 'IPv4' && !iface.internal) {
+        ips.push(iface.address);
+      }
+    }
+  }
+  return ips;
+}
+
 function startServer() {
   console.log('\nSpinning up the Triforce backend server...');
   const serverProcess = fork(join(__dirname, 'server.js'), [], {
-    stdio: 'ignore', // Let it run silently in the background
+    stdio: ['inherit', 'pipe', 'pipe'],
     env: { ...process.env, PORT: '3000' }
+  });
+
+  serverProcess.stderr.on('data', (data) => {
+    const str = data.toString();
+    if (str.includes('EADDRINUSE')) {
+      console.error('\n❌ Error: Port 3000 is already in use!');
+      console.error('If the old systemd service or another Triforce instance is running, stop it first.');
+      console.error('To stop the systemd service, run:');
+      console.log('  sudo systemctl stop triforce\n');
+      process.exit(1);
+    }
   });
   
   // Clean up server process when CLI exits
@@ -150,7 +199,19 @@ function connectWebSocket(defaultMode, config) {
 
   ws.on('open', () => {
     console.log('\n🚀 Connected to Triforce Server!');
-    console.log('🌐 Visual Dashboard: http://localhost:3000\n');
+    console.log('🌐 Visual Dashboard (Local):   http://localhost:3000');
+    
+    try {
+      const networkIPs = getNetworkIPs();
+      for (const ip of networkIPs) {
+        console.log(`🌐 Visual Dashboard (Network): http://${ip}:3000`);
+      }
+    } catch (err) {}
+
+    console.log('\n💡 TIP: If you are running on a remote VM, you can access the dashboard by:');
+    console.log('   1. Opening port 3000 in your VM\'s firewall/security group.');
+    console.log('   2. Or using an SSH tunnel from your local machine:');
+    console.log('      ssh -L 3000:localhost:3000 <user>@<vm-ip>\n');
     promptLoop(ws, defaultMode, config);
   });
 

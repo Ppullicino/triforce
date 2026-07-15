@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784103033.6613526,
-    "ast_hash": "1718139d76abdfdbc8c11ebd1970b5ff",
+    "mtime": 1784105785.2481787,
+    "ast_hash": "6f76ce648abfffddb3df2eeb44a695e0",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "cli.js": {
-    "mtime": 1784105696.7416763,
-    "ast_hash": "92a47f1026087f283b134eb1f95bc1ec",
+    "mtime": 1784105776.8763206,
+    "ast_hash": "a0e31ed6167a1c7711f29c9a257be055",
     "semantic_hash": ""
   }
 }
