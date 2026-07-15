@@ -18,7 +18,7 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": ["../../../public/icons/icon-128x128.png", "../../../public/icons/icon-512x512.png"],
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
     "category": "DeveloperTool",
     "shortDescription": "Operate remote Triforce agent servers",
     "longDescription": "A secure cross-platform client for remote Triforce multi-agent development servers."
