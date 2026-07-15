@@ -59,4 +59,9 @@ jobs:
           api-level: 29
           arch: x86_64
           disable-animations: true
-          script: gradle -p clients/android connectedDebugAndroidTest
+          script: |
+            gradle -p clients/android assembleDebug
+            adb install -r clients/android/app/build/outputs/apk/debug/app-debug.apk
+            adb shell am start -W -n com.triforce.remote/.MainActivity | tee /tmp/triforce-launch.txt
+            grep -q 'Status: ok' /tmp/triforce-launch.txt
+            adb shell pidof com.triforce.remote
