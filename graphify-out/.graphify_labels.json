@@ -34,5 +34,11 @@
   "32": "index.d.ts",
   "33": "scripts",
   "34": "server-protocol.test.js",
-  "35": "files"
+  "35": "files",
+  "36": "package.json",
+  "37": "default.json",
+  "38": "lib.rs",
+  "39": "Triforce Desktop",
+  "40": "build.rs",
+  "41": "main.rs"
 }

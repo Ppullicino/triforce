@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Triforce Remote",
+  "version": "0.1.0",
+  "identifier": "com.triforce.remote",
+  "build": {
+    "beforeDevCommand": "npm run dev --workspace @triforce/client",
+    "devUrl": "http://127.0.0.1:4173",
+    "beforeBuildCommand": "npm run build --workspace @triforce/client",
+    "frontendDist": "../../shared/dist"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' http: https: ws: wss:; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": ["../../../public/icons/icon-128x128.png", "../../../public/icons/icon-512x512.png"],
+    "category": "DeveloperTool",
+    "shortDescription": "Operate remote Triforce agent servers",
+    "longDescription": "A secure cross-platform client for remote Triforce multi-agent development servers."
+  }
+}

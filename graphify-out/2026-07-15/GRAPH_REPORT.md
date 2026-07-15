@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 475 nodes · 598 edges · 35 communities (25 shown, 10 thin omitted)
+- 475 nodes · 587 edges · 36 communities (26 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.74)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `06979e35`
+- Built from commit: `8b7c1282`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,12 +46,13 @@
 - index.d.ts
 - scripts
 - server-protocol.test.js
+- files
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
 2. `files` - 16 edges
-3. `Agent` - 15 edges
-4. `Triforce Cross-Platform Client Plan` - 15 edges
+3. `Triforce Cross-Platform Client Plan` - 15 edges
+4. `Agent` - 15 edges
 5. `RunRegistry` - 14 edges
 6. `TriforceConnection` - 13 edges
 7. `compilerOptions` - 12 edges
@@ -74,7 +75,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (35 total, 10 thin omitted)
+## Communities (36 total, 10 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
@@ -153,26 +154,30 @@ Cohesion: 0.15
 Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, PipelineConfiguration, PipelineMode, RunCommand, ServerEvent (+4 more)
 
 ### Community 33 - "scripts"
-Cohesion: 0.05
-Nodes (38): bin, triforce, description, devDependencies, pngjs, files, main, name (+30 more)
+Cohesion: 0.09
+Nodes (22): bin, triforce, description, devDependencies, pngjs, main, name, scripts (+14 more)
 
 ### Community 34 - "server-protocol.test.js"
 Cohesion: 0.10
 Nodes (11): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+3 more)
 
+### Community 35 - "files"
+Cohesion: 0.12
+Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
+
 ## Knowledge Gaps
-- **231 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+226 more)
+- **231 isolated node(s):** `Packages`, `Protocol and run recovery`, `Hosts, credentials, and connections`, `Shared interface`, `Commands` (+226 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `promptLoop()` connect `cli.js` to `package.json`?**
-  _High betweenness centrality (0.027) - this node is a cross-community bridge._
-- **Why does `Agent` connect `Agent` to `orchestrator.js`, `index.ts`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
-- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
+- **Why does `RunRegistry` connect `files` to `index.ts`?**
+  _High betweenness centrality (0.062) - this node is a cross-community bridge._
+- **Why does `TriforceConnection` connect `package.json` to `files`?**
+  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **What connects `Packages`, `Protocol and run recovery`, `Hosts, credentials, and connections` to the rest of the system?**
   _231 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._

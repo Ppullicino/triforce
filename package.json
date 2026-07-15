@@ -6,6 +6,7 @@
   "type": "module",
   "workspaces": [
     "clients/shared",
+    "clients/desktop",
     "packages/*"
   ],
   "bin": {
@@ -37,6 +38,7 @@
     "typecheck": "npm run typecheck --workspace @triforce/protocol && npm run typecheck --workspace @triforce/client",
     "lint": "npm run lint --workspace @triforce/protocol && npm run lint --workspace @triforce/client",
     "dev:client": "npm run dev --workspace @triforce/client"
+    ,"desktop:check": "npm run check --workspace @triforce/desktop"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

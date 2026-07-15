@@ -1,8 +1,9 @@
 import { PROTOCOL_VERSION, type AgentRole, type PipelineConfiguration, type PipelineMode } from '@triforce/protocol';
 import { type FormEvent, useEffect, useMemo, useState } from 'react';
 import { TriforceConnection, type ConnectionState } from './core/connection';
-import { BrowserHostStorage, HostRepository, MemoryCredentialStorage, type HostProfile } from './core/hosts';
+import { BrowserHostStorage, HostRepository, type HostProfile } from './core/hosts';
 import { initialPipelineState, reducePipeline, type PipelineViewState } from './core/pipeline';
+import { createCredentialStorage } from './core/platform-credentials';
 
 const roles: AgentRole[] = ['architect', 'developer', 'reviewer'];
 const defaultConfig: PipelineConfiguration = {
@@ -12,12 +13,13 @@ const defaultConfig: PipelineConfiguration = {
 };
 
 export function App() {
-  const repository = useMemo(() => new HostRepository(new BrowserHostStorage(localStorage), new MemoryCredentialStorage()), []);
+  const repository = useMemo(() => new HostRepository(new BrowserHostStorage(localStorage), createCredentialStorage()), []);
   const [hosts, setHosts] = useState<HostProfile[]>([]);
   const [error, setError] = useState('');
   const [connection, setConnection] = useState<TriforceConnection | null>(null);
   const [connectionState, setConnectionState] = useState<ConnectionState>('disconnected');
   const [activeHost, setActiveHost] = useState<HostProfile | null>(null);
+  const [preferredHostId, setPreferredHostId] = useState(() => localStorage.getItem('triforce.selected-host.v1'));
   const [pipeline, setPipeline] = useState<PipelineViewState>(initialPipelineState);
   const [history, setHistory] = useState<PipelineViewState[]>([]);
   const [screen, setScreen] = useState<'run' | 'history' | 'settings' | 'diagnostics'>('run');
@@ -41,21 +43,21 @@ export function App() {
       if (updated.status !== current.status && ['completed', 'failed'].includes(updated.status)) setHistory(items => [updated, ...items].slice(0, 50));
       return updated;
     }));
-    setConnection(next); setActiveHost(host);
+    setConnection(next); setActiveHost(host); setPreferredHostId(host.id); localStorage.setItem('triforce.selected-host.v1', host.id);
     await next.connect(await repository.token(host.id) ?? undefined);
   }
 
   if (!activeHost || !connection || connectionState !== 'connected') {
-    return <HostScreen hosts={hosts} state={connectionState} error={error} onAdd={addHost} onConnect={connectHost}
+    return <HostScreen hosts={hosts} preferredHostId={preferredHostId} state={connectionState} error={error} onAdd={addHost} onConnect={connectHost}
       onDelete={async id => { await repository.delete(id); setHosts(await repository.list()); }} />;
   }
 
   return <Dashboard host={activeHost} connection={connection} connectionState={connectionState} pipeline={pipeline}
-    history={history} screen={screen} setScreen={setScreen} onSwitch={() => { connection.disconnect(); setActiveHost(null); }} />;
+    history={history} screen={screen} setScreen={setScreen} onSwitch={() => { connection.disconnect(); localStorage.removeItem('triforce.selected-host.v1'); setPreferredHostId(null); setActiveHost(null); }} />;
 }
 
-function HostScreen({ hosts, state, error, onAdd, onConnect, onDelete }: {
-  hosts: HostProfile[]; state: ConnectionState; error: string; onAdd: (event: FormEvent<HTMLFormElement>) => void;
+function HostScreen({ hosts, preferredHostId, state, error, onAdd, onConnect, onDelete }: {
+  hosts: HostProfile[]; preferredHostId: string | null; state: ConnectionState; error: string; onAdd: (event: FormEvent<HTMLFormElement>) => void;
   onConnect: (host: HostProfile) => void; onDelete: (id: string) => void;
 }) {
   return <main className="shell"><section className="hero" aria-labelledby="app-title">
@@ -70,7 +72,7 @@ function HostScreen({ hosts, state, error, onAdd, onConnect, onDelete }: {
     {error && <p className="error" role="alert">{error}</p>}
     {state !== 'disconnected' && <p className={`connection ${state}`}>{state}</p>}
     <ul className="host-list" aria-label="Saved Triforce hosts">{hosts.map(host => <li key={host.id}>
-      <span><strong>{host.name}</strong><small>{host.url}</small></span><span className="host-actions">
+      <span><strong>{host.name}{host.id === preferredHostId && ' · Recent'}</strong><small>{host.url}</small></span><span className="host-actions">
         <button type="button" onClick={() => onConnect(host)}>Connect</button>
         <button type="button" className="quiet" onClick={() => onDelete(host.id)}>Delete</button>
       </span></li>)}</ul><small>Protocol {PROTOCOL_VERSION}</small>

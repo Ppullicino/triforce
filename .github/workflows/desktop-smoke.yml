@@ -1,0 +1,41 @@
+name: Desktop smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'clients/desktop/**'
+      - 'clients/shared/**'
+      - 'packages/protocol/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/desktop-smoke.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  native-check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install JavaScript dependencies
+        run: npm ci
+      - name: Verify shared client and server
+        run: npm test
+      - name: Build shared client
+        run: npm run build
+      - name: Check native credential and window shell
+        run: cargo test --manifest-path clients/desktop/src-tauri/Cargo.toml
+      - name: Build debug desktop executable
+        run: npm run build --workspace @triforce/desktop -- --debug --no-bundle

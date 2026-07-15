@@ -6,3 +6,4 @@ dist/
 coverage/
 *.local
 *.tsbuildinfo
+target/
