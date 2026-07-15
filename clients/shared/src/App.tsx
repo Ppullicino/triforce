@@ -72,7 +72,7 @@ function HostScreen({ hosts, preferredHostId, state, error, onAdd, onConnect, on
     {error && <p className="error" role="alert">{error}</p>}
     {state !== 'disconnected' && <p className={`connection ${state}`}>{state}</p>}
     <ul className="host-list" aria-label="Saved Triforce hosts">{hosts.map(host => <li key={host.id}>
-      <span><strong>{host.name}{host.id === preferredHostId && ' · Recent'}</strong><small>{host.url}</small></span><span className="host-actions">
+      <span><strong>{host.name}{host.id === preferredHostId && ' · Recent'}</strong><small>{host.url}{host.url.startsWith('http:') && ' · Insecure local development'}</small></span><span className="host-actions">
         <button type="button" onClick={() => onConnect(host)}>Connect</button>
         <button type="button" className="quiet" onClick={() => onDelete(host.id)}>Delete</button>
       </span></li>)}</ul><small>Protocol {PROTOCOL_VERSION}</small>

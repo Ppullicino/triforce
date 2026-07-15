@@ -400,6 +400,369 @@
       "norm_label": "main()"
     },
     {
+      "label": "build.gradle.kts",
+      "file_type": "code",
+      "source_file": "clients/android/app/build.gradle.kts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_app_build_gradle",
+      "community": 45,
+      "community_name": "build.gradle.kts",
+      "norm_label": "build.gradle.kts"
+    },
+    {
+      "label": "MainActivitySecurityTest.kt",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "mainactivitysecuritytest.kt"
+    },
+    {
+      "label": "MainActivitySecurityTest",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "mainactivitysecuritytest"
+    },
+    {
+      "label": ".webViewUsesHardenedSettingsAndPackagedHttpsOrigin()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_webviewuseshardenedsettingsandpackagedhttpsorigin",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".webviewuseshardenedsettingsandpackagedhttpsorigin()"
+    },
+    {
+      "label": ".findWebView()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_findwebview",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".findwebview()"
+    },
+    {
+      "label": "android",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "android",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "android"
+    },
+    {
+      "label": "WebView",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_kt_webview",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "webview"
+    },
+    {
+      "label": ".credentialsRoundTripThroughAndroidKeystore()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_credentialsroundtripthroughandroidkeystore",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".credentialsroundtripthroughandroidkeystore()"
+    },
+    {
+      "label": "CredentialVault.kt",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "credentialvault.kt"
+    },
+    {
+      "label": "CredentialVault",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "credentialvault"
+    },
+    {
+      "label": ".set()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_set",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".set()"
+    },
+    {
+      "label": "String",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_kt_string",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "string"
+    },
+    {
+      "label": ".get()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_get",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".get()"
+    },
+    {
+      "label": ".delete()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_delete",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".delete()"
+    },
+    {
+      "label": ".key()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_key",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".key()"
+    },
+    {
+      "label": "SecretKey",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "secretkey",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "secretkey"
+    },
+    {
+      "label": ".storageKey()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_storagekey",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".storagekey()"
+    },
+    {
+      "label": "MainActivity.kt",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "mainactivity.kt"
+    },
+    {
+      "label": "MainActivity",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "mainactivity"
+    },
+    {
+      "label": "ComponentActivity",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "componentactivity",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "componentactivity"
+    },
+    {
+      "label": "WebView",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_kt_webview",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "webview"
+    },
+    {
+      "label": "TextView",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "textview",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "textview"
+    },
+    {
+      "label": ".onCreate()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_oncreate",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".oncreate()"
+    },
+    {
+      "label": "Bundle",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "bundle",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "bundle"
+    },
+    {
+      "label": ".installCredentialBridge()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_installcredentialbridge",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".installcredentialbridge()"
+    },
+    {
+      "label": ".showError()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_showerror",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".showerror()"
+    },
+    {
+      "label": "String",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_kt_string",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": "string"
+    },
+    {
+      "label": ".onDestroy()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_ondestroy",
+      "community": 1,
+      "community_name": "dependencies",
+      "norm_label": ".ondestroy()"
+    },
+    {
+      "label": "NetworkPolicyTest.kt",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/test/java/com/triforce/remote/NetworkPolicyTest.kt",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest",
+      "community": 43,
+      "community_name": "App.tsx",
+      "norm_label": "networkpolicytest.kt"
+    },
+    {
+      "label": "NetworkPolicyTest",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/test/java/com/triforce/remote/NetworkPolicyTest.kt",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest_networkpolicytest",
+      "community": 43,
+      "community_name": "App.tsx",
+      "norm_label": "networkpolicytest"
+    },
+    {
+      "label": ".cleartextIsDeniedExceptForEmulatorLoopback()",
+      "file_type": "code",
+      "source_file": "clients/android/app/src/test/java/com/triforce/remote/NetworkPolicyTest.kt",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest_networkpolicytest_cleartextisdeniedexceptforemulatorloopback",
+      "community": 43,
+      "community_name": "App.tsx",
+      "norm_label": ".cleartextisdeniedexceptforemulatorloopback()"
+    },
+    {
+      "label": "build.gradle.kts",
+      "file_type": "code",
+      "source_file": "clients/android/build.gradle.kts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_build_gradle",
+      "community": 46,
+      "community_name": "build.gradle.kts",
+      "norm_label": "build.gradle.kts"
+    },
+    {
+      "label": "settings.gradle.kts",
+      "file_type": "code",
+      "source_file": "clients/android/settings.gradle.kts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_settings_gradle",
+      "community": 47,
+      "community_name": "settings.gradle.kts",
+      "norm_label": "settings.gradle.kts"
+    },
+    {
       "label": "package.json",
       "file_type": "code",
       "source_file": "clients/desktop/package.json",
@@ -724,7 +1087,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "string",
+      "id": "clients_desktop_src_tauri_src_lib_rs_string",
       "community": 38,
       "community_name": "lib.rs",
       "norm_label": "string"
@@ -1726,8 +2089,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app_test",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "app.test.tsx"
     },
     {
@@ -1737,8 +2100,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "app.tsx"
     },
     {
@@ -1748,8 +2111,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_app_roles",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "roles"
     },
     {
@@ -1759,8 +2122,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "clients_shared_src_app_defaultconfig",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "defaultconfig"
     },
     {
@@ -1770,8 +2133,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "clients_shared_src_app_app",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "app()"
     },
     {
@@ -1781,8 +2144,8 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "clients_shared_src_app_hostscreen",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "hostscreen()"
     },
     {
@@ -1792,8 +2155,8 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "clients_shared_src_app_dashboard",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "dashboard()"
     },
     {
@@ -2430,8 +2793,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "native-integration.ts"
     },
     {
@@ -2441,8 +2804,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration_installnativeintegration",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "installnativeintegration()"
     },
     {
@@ -2452,8 +2815,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_test",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "pipeline.test.ts"
     },
     {
@@ -2463,8 +2826,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "pipeline.ts"
     },
     {
@@ -2474,8 +2837,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_usageitem",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "usageitem"
     },
     {
@@ -2485,8 +2848,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_pipelineviewstate",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "pipelineviewstate"
     },
     {
@@ -2496,8 +2859,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_emptyusage",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "emptyusage"
     },
     {
@@ -2507,8 +2870,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_initialpipelinestate",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "initialpipelinestate()"
     },
     {
@@ -2518,8 +2881,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_reducepipeline",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "reducepipeline()"
     },
     {
@@ -2529,8 +2892,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_bounded",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "bounded()"
     },
     {
@@ -2540,8 +2903,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_mapstatus",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "mapstatus()"
     },
     {
@@ -2611,15 +2974,125 @@
       "norm_label": ".delete()"
     },
     {
-      "label": "createCredentialStorage()",
+      "label": "AndroidBridge",
       "file_type": "code",
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L10",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_androidbridge",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "androidbridge"
+    },
+    {
+      "label": ".postMessage()",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_androidbridge_postmessage",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": ".postmessage()"
+    },
+    {
+      "label": "pending",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_pending",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "pending"
+    },
+    {
+      "label": "AndroidCredentialStorage",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "androidcredentialstorage"
+    },
+    {
+      "label": ".get()",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage_get",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": ".get()"
+    },
+    {
+      "label": ".set()",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage_set",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": ".set()"
+    },
+    {
+      "label": ".delete()",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage_delete",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": ".delete()"
+    },
+    {
+      "label": "handleAndroidCredentialResponse()",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_handleandroidcredentialresponse",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "handleandroidcredentialresponse()"
+    },
+    {
+      "label": "androidRequest()",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_androidrequest",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "androidrequest()"
+    },
+    {
+      "label": "createCredentialStorage()",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_createcredentialstorage",
       "community": 34,
       "community_name": "server-protocol.test.js",
       "norm_label": "createcredentialstorage()"
+    },
+    {
+      "label": "Window",
+      "file_type": "code",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "clients_shared_src_core_platform_credentials_window",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "window"
     },
     {
       "label": "main.tsx",
@@ -2628,8 +3101,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_main",
-      "community": 43,
-      "community_name": "App.tsx",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
       "norm_label": "main.tsx"
     },
     {
@@ -3527,8 +4000,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "package_files",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "files"
     },
     {
@@ -3538,8 +4011,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_agent_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "agent.js"
     },
     {
@@ -3549,8 +4022,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_cli_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "cli.js"
     },
     {
@@ -3560,8 +4033,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_cli_input_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "cli-input.js"
     },
     {
@@ -3571,8 +4044,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_models_config_json",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "models.config.json"
     },
     {
@@ -3582,8 +4055,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_orchestrator_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "orchestrator.js"
     },
     {
@@ -3593,8 +4066,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_public",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "public/"
     },
     {
@@ -3604,8 +4077,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_sandbox_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "sandbox.js"
     },
     {
@@ -3615,8 +4088,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_server_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "server.js"
     },
     {
@@ -3626,8 +4099,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_usage_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "usage.js"
     },
     {
@@ -3637,8 +4110,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_workspace_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "workspace.js"
     },
     {
@@ -3648,8 +4121,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_run_registry_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "run-registry.js"
     },
     {
@@ -3659,8 +4132,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_packages_protocol_src",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "packages/protocol/src/"
     },
     {
@@ -3670,8 +4143,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_running_md",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "running.md"
     },
     {
@@ -3681,8 +4154,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_install_service_sh",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "install-service.sh"
     },
     {
@@ -3692,8 +4165,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_triforce_service",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "triforce.service"
     },
     {
@@ -3813,8 +4286,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "package_dependencies",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "dependencies"
     },
     {
@@ -3824,8 +4297,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "package_dependencies_anthropic_ai_sdk",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@anthropic-ai/sdk"
     },
     {
@@ -3835,8 +4308,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "anthropic_ai_sdk",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@anthropic-ai/sdk"
     },
     {
@@ -3846,8 +4319,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "package_dependencies_google_genai",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@google/genai"
     },
     {
@@ -3857,8 +4330,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "google_genai",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@google/genai"
     },
     {
@@ -3868,8 +4341,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "package_dependencies_dotenv",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "dotenv"
     },
     {
@@ -3879,8 +4352,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "dotenv",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "dotenv"
     },
     {
@@ -3890,8 +4363,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "package_dependencies_express",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "express"
     },
     {
@@ -3901,8 +4374,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "express",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "express"
     },
     {
@@ -3912,8 +4385,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "package_dependencies_openai",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "openai"
     },
     {
@@ -3923,8 +4396,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "openai",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "openai"
     },
     {
@@ -3934,8 +4407,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "package_dependencies_ws",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "ws"
     },
     {
@@ -3945,8 +4418,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "ws",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "ws"
     },
     {
@@ -3956,8 +4429,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "package_dependencies_zod",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "zod"
     },
     {
@@ -3967,8 +4440,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "package_json_zod",
-      "community": 1,
-      "community_name": "dependencies",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "zod"
     },
     {
@@ -6086,6 +6559,39 @@
     {
       "label": "README.md",
       "file_type": "document",
+      "source_file": "clients/android/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_readme",
+      "community": 44,
+      "community_name": "Triforce Android",
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Triforce Android",
+      "file_type": "document",
+      "source_file": "clients/android/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_android_readme_triforce_android",
+      "community": 44,
+      "community_name": "Triforce Android",
+      "norm_label": "triforce android"
+    },
+    {
+      "label": "Requirements and commands",
+      "file_type": "document",
+      "source_file": "clients/android/README.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "clients_android_readme_requirements_and_commands",
+      "community": 44,
+      "community_name": "Triforce Android",
+      "norm_label": "requirements and commands"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
       "source_file": "clients/desktop/README.md",
       "source_location": "L1",
       "_origin": "ast",
@@ -7001,6 +7507,439 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest",
+      "target": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest",
+      "target": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_credentialsroundtripthroughandroidkeystore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest",
+      "target": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_findwebview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest",
+      "target": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_webviewuseshardenedsettingsandpackagedhttpsorigin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_webviewuseshardenedsettingsandpackagedhttpsorigin",
+      "target": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_findwebview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L30",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_findwebview",
+      "target": "android",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L30",
+      "weight": 1.0,
+      "context": "return_type",
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_findwebview",
+      "target": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_kt_webview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_credentialsroundtripthroughandroidkeystore",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_set",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_storagekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L76",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_installcredentialbridge",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_oncreate",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_set",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_set",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_storagekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_set",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_kt_string",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L34",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_delete",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_kt_string",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L25",
+      "weight": 1.0,
+      "context": "return_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_get",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_kt_string",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L47",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_storagekey",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_kt_string",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_get",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_get",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_storagekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_delete",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_storagekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt",
+      "source_location": "L36",
+      "weight": 1.0,
+      "context": "return_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_credentialvault_credentialvault_key",
+      "target": "secretkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L24",
+      "weight": 1.0,
+      "context": "field",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_kt_webview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_installcredentialbridge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_oncreate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_ondestroy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_showerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "target": "componentactivity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L25",
+      "weight": 1.0,
+      "context": "field",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity",
+      "target": "textview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_oncreate",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_kt_webview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_oncreate",
+      "target": "textview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L28",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_oncreate",
+      "target": "bundle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_oncreate",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_installcredentialbridge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt",
+      "source_location": "L95",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_mainactivity_showerror",
+      "target": "clients_android_app_src_main_java_com_triforce_remote_mainactivity_kt_string",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/test/java/com/triforce/remote/NetworkPolicyTest.kt",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest",
+      "target": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest_networkpolicytest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/app/src/test/java/com/triforce/remote/NetworkPolicyTest.kt",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest_networkpolicytest",
+      "target": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest_networkpolicytest_cleartextisdeniedexceptforemulatorloopback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "clients/desktop/package.json",
       "source_location": "L12",
       "weight": 1.0,
@@ -7302,6 +8241,17 @@
       "weight": 1.0,
       "context": "generic_arg",
       "source": "clients_desktop_src_tauri_src_lib_credential_get",
+      "target": "clients_desktop_src_tauri_src_lib_rs_string",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/src/lib.rs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "context": "generic_arg",
+      "source": "clients_desktop_src_tauri_src_lib_credential_get",
       "target": "option",
       "confidence_score": 1.0
     },
@@ -7320,22 +8270,11 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L13",
-      "weight": 1.0,
-      "context": "generic_arg",
-      "source": "clients_desktop_src_tauri_src_lib_credential_get",
-      "target": "string",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/src/lib.rs",
       "source_location": "L36",
       "weight": 1.0,
       "context": "generic_arg",
       "source": "clients_desktop_src_tauri_src_lib_credential_delete",
-      "target": "string",
+      "target": "clients_desktop_src_tauri_src_lib_rs_string",
       "confidence_score": 1.0
     },
     {
@@ -7346,7 +8285,7 @@
       "weight": 1.0,
       "context": "generic_arg",
       "source": "clients_desktop_src_tauri_src_lib_credential_set",
-      "target": "string",
+      "target": "clients_desktop_src_tauri_src_lib_rs_string",
       "confidence_score": 1.0
     },
     {
@@ -9344,6 +10283,17 @@
       "context": "type",
       "confidence": "EXTRACTED",
       "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidcredentialstorage",
+      "target": "clients_shared_src_core_hosts_credentialstorage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L4",
       "weight": 1.0,
       "source": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
@@ -9728,13 +10678,74 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_test",
+      "target": "clients_shared_src_core_platform_credentials_handleandroidcredentialresponse",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L10",
       "weight": 1.0,
       "source": "clients_shared_src_core_platform_credentials",
+      "target": "clients_shared_src_core_platform_credentials_androidbridge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials",
+      "target": "clients_shared_src_core_platform_credentials_androidcredentialstorage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials",
+      "target": "clients_shared_src_core_platform_credentials_androidrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials",
       "target": "clients_shared_src_core_platform_credentials_createcredentialstorage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials",
+      "target": "clients_shared_src_core_platform_credentials_handleandroidcredentialresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials",
+      "target": "clients_shared_src_core_platform_credentials_pending",
       "confidence_score": 1.0
     },
     {
@@ -9745,6 +10756,27 @@
       "weight": 1.0,
       "source": "clients_shared_src_core_platform_credentials",
       "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials",
+      "target": "clients_shared_src_core_platform_credentials_window",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/main.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "clients_shared_src_main",
+      "target": "clients_shared_src_core_platform_credentials",
       "confidence_score": 1.0
     },
     {
@@ -9775,6 +10807,123 @@
       "weight": 1.0,
       "source": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
       "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage_set",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidbridge",
+      "target": "clients_shared_src_core_platform_credentials_androidbridge_postmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidrequest",
+      "target": "clients_shared_src_core_platform_credentials_androidbridge_postmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidcredentialstorage",
+      "target": "clients_shared_src_core_platform_credentials_androidcredentialstorage_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidcredentialstorage",
+      "target": "clients_shared_src_core_platform_credentials_androidcredentialstorage_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidcredentialstorage",
+      "target": "clients_shared_src_core_platform_credentials_androidcredentialstorage_set",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidcredentialstorage_get",
+      "target": "clients_shared_src_core_platform_credentials_androidrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_handleandroidcredentialresponse",
+      "target": "clients_shared_src_core_platform_credentials_androidcredentialstorage_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidcredentialstorage_set",
+      "target": "clients_shared_src_core_platform_credentials_androidrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_androidcredentialstorage_delete",
+      "target": "clients_shared_src_core_platform_credentials_androidrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/core/platform-credentials.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "clients_shared_src_core_platform_credentials_handleandroidcredentialresponse",
+      "target": "clients_shared_src_core_platform_credentials_androidcredentialstorage_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/main.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "clients_shared_src_main",
+      "target": "clients_shared_src_core_platform_credentials_handleandroidcredentialresponse",
       "confidence_score": 1.0
     },
     {
@@ -13252,6 +14401,26 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "clients/android/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "clients_android_readme",
+      "target": "clients_android_readme_triforce_android",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/android/README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "clients_android_readme_triforce_android",
+      "target": "clients_android_readme_requirements_and_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "clients/desktop/README.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -13291,5 +14460,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1c0fcc30632650bb70b11ca0a18c5c35c0e56c28"
+  "built_at_commit": "027f2041d58d4fd29d4481be4eedb2c6b0bd2ea0"
 }
