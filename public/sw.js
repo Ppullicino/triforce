@@ -1,4 +1,4 @@
-const CACHE_NAME = 'triforce-v6';
+const CACHE_NAME = 'triforce-v7';
 
 const PRECACHE = [
   '/',
@@ -90,11 +90,21 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cache-first for static assets
+  // Network-first for navigations so application updates are not held indefinitely.
+  if (request.mode === 'navigate') {
+    event.respondWith(fetch(request).then(response => {
+      if (response.ok) caches.open(CACHE_NAME).then(cache => cache.put(request, response.clone()));
+      return response;
+    }).catch(() => caches.match(request).then(cached => cached || new Response(OFFLINE_HTML, {
+      headers: { 'Content-Type': 'text/html' },
+    }))));
+    return;
+  }
+
+  // Stale-while-revalidate for static assets.
   event.respondWith(
     caches.match(request).then((cached) => {
-      if (cached) return cached;
-      return fetch(request)
+      const network = fetch(request)
         .then((response) => {
           if (response.ok) {
             const clone = response.clone();
@@ -111,6 +121,7 @@ self.addEventListener('fetch', (event) => {
           }
           return new Response('', { status: 503 });
         });
+      return cached || network;
     })
   );
 });

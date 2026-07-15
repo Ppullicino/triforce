@@ -1,10 +1,10 @@
 import 'dotenv/config';
-import { readFile, writeFile } from 'node:fs/promises';
-import { exec } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
 import { Agent } from './agent.js';
 import { track, printSummary } from './usage.js';
+import { runSandboxed } from './sandbox.js';
 
-const TASK = `Create a JavaScript function that takes an array of numbers, removes duplicates, sorts them in ascending order, and returns the result. Include a test that proves it works.`;
+const DEFAULT_TASK = `Create a JavaScript function that takes an array of numbers, removes duplicates, sorts them in ascending order, and returns the result. Include a test that proves it works.`;
 
 const SYSTEM_PROMPTS = {
   architect: 'You are the Architect agent in the Triforce system. Your job is to analyze a coding task and produce a clear, structured implementation plan. Output ONLY the plan as numbered steps. No code. No markdown formatting. No preamble.',
@@ -33,12 +33,7 @@ function stripCodeFences(text) {
 }
 
 function runInSandbox(code, timeoutMs = 10000) {
-  return new Promise(async (resolve) => {
-    await writeFile('sandbox.js', code, 'utf8');
-    exec('node sandbox.js', { timeout: timeoutMs }, (err, stdout, stderr) => {
-      resolve({ stdout, stderr, exitCode: err ? err.code : 0, timedOut: err?.killed ?? false });
-    });
-  });
+  return runSandboxed(code, { timeoutMs });
 }
 
 async function loadConfig() {
@@ -110,6 +105,8 @@ async function main() {
   const startTime = Date.now();
   const config = await loadConfig();
   validateApiKeys(config);
+  const taskArgs = process.argv.slice(2).filter((arg, i, args) => arg !== '--mode' && args[i - 1] !== '--mode');
+  const TASK = taskArgs.join(' ').trim() || DEFAULT_TASK;
 
   const modeArgIdx = process.argv.indexOf('--mode');
   const mode = modeArgIdx !== -1 ? parseInt(process.argv[modeArgIdx + 1], 10) : 1;
@@ -264,10 +261,12 @@ async function main() {
   } else {
     // ── Mode 1: Sequential Pipeline (Task + Plan Context Piggybacking) ──
     const agents = Object.fromEntries(
-      Object.entries(config).map(([role, { provider, model }]) => [
+      ['architect', 'developer', 'reviewer'].map(role => {
+        const { provider, model, unsafePermissions } = config[role];
+        return [
         role,
-        new Agent({ provider, model, systemPrompt: SYSTEM_PROMPTS[role] }),
-      ])
+        new Agent({ provider, model, unsafePermissions, systemPrompt: SYSTEM_PROMPTS[role] }),
+      ];})
     );
 
     let plan;

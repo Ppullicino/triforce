@@ -2,8 +2,11 @@
 
 ## Access
 
-- **Local network:** http://10.168.69.5:3000
-- **On the VM itself:** http://localhost:3000
+The dashboard and WebSocket require the `TRIFORCE_TOKEN` stored in `.env`. Authenticate once with:
+
+`http://localhost:3000/auth?token=<TRIFORCE_TOKEN>`
+
+The authentication route sets an HTTP-only, same-site cookie and redirects to the dashboard. Do not expose port 3000 directly to an untrusted network; use an SSH tunnel or an authenticated TLS reverse proxy.
 
 ---
 
@@ -87,6 +90,7 @@ The app opens as a standalone window without browser chrome.
 
 ## Notes
 
-- The service file references the NVM node binary at its current path. If you upgrade Node via NVM, update the `ExecStart` path in `/etc/systemd/system/triforce.service` and run `sudo systemctl daemon-reload && sudo systemctl restart triforce`.
-- Transcript files are written to `./transcripts/` and are excluded from git.
+- The installer detects the invoking user's Node binary and project path when it renders the service unit. Re-run it after moving the project or changing Node installations.
+- Transcripts are disabled by default. Set `TRIFORCE_TRANSCRIPTS=1` to create private, per-run transcript directories under `./transcripts/`; these are excluded from git and may contain sensitive data.
+- Generated JavaScript requires a functioning per-user systemd manager. It runs with Node's permission model plus systemd resource, filesystem, process, and network restrictions.
 - The `.env` file holds your API keys and is excluded from git.

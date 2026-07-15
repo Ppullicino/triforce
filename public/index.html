@@ -1780,7 +1780,7 @@
     return text.slice(0, 120);
   }
 
-  function populateSummaryCards() {
+  function populateSummaryCards(passed) {
     const roles = ['architect', 'developer', 'reviewer'];
     roles.forEach((role, i) => {
       const d = agentData[role];
@@ -1792,9 +1792,8 @@
     });
 
     // Reviewer verdict badge
-    const revText = agentData.reviewer.text;
     const badge = document.getElementById('badge-reviewer');
-    if (/\bFAIL\b/i.test(revText)) {
+    if (!passed) {
       badge.textContent = '✗ FAIL';
       badge.className = 'sc-badge fail';
       document.getElementById('result-label-text').textContent = 'PIPELINE COMPLETE — REVIEW FLAGGED';
@@ -1917,19 +1916,31 @@
         break;
       }
 
+      case 'usage': {
+        const values = Object.values(event.usage || {});
+        const total = values.reduce((acc, item) => ({
+          inputTokens: acc.inputTokens + (item.inputTokens || 0),
+          outputTokens: acc.outputTokens + (item.outputTokens || 0),
+          cost: acc.cost + (item.cost || 0),
+        }), { inputTokens: 0, outputTokens: 0, cost: 0 });
+        updateUsageBar({ ...event.usage, total });
+        break;
+      }
+
       case 'done': {
         totalElapsed = event.elapsed;
         agentData.reviewer.latency = (Date.now() - agentData.reviewer.startTime) / 1000;
         setSegState(0, 'complete');
         setSegState(1, 'complete');
         setSegState(2, 'complete');
-        document.getElementById('sum2').textContent = /\bFAIL\b/i.test(agentData.reviewer.text) ? '✗ FAIL' : '★ PASS';
-        sdot.className = 'sdot ok';
+        const passed = event.passed === true;
+        document.getElementById('sum2').textContent = passed ? '★ PASS' : '✗ FAIL';
+        sdot.className = passed ? 'sdot ok' : 'sdot';
         stxt.textContent = `COMPLETE · ${event.elapsed}s`;
         pipelineRunning = false;
         stopUsagePoll();
         fetch('/api/usage').then(r => r.json()).then(updateUsageBar).catch(() => {});
-        populateSummaryCards();
+        populateSummaryCards(passed);
         setTimeout(() => doFlash(() => showCompleteState()), 1500);
         break;
       }

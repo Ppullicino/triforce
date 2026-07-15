@@ -5,15 +5,16 @@ StartLimitIntervalSec=0
 
 [Service]
 Type=simple
-User=peter
-WorkingDirectory=/home/peter/git/triforce
-ExecStart=/home/peter/.nvm/versions/node/v24.15.0/bin/node server.js
+User=@USER@
+WorkingDirectory=@WORKDIR@
+ExecStart=@NODE@ server.js
 Restart=always
 RestartSec=5
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=triforce
 Environment=NODE_ENV=production
+EnvironmentFile=-@WORKDIR@/.env
 
 [Install]
 WantedBy=multi-user.target

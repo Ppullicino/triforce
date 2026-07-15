@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 import readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
-import { spawn, fork, execSync } from 'node:child_process';
+import { spawn, fork, execSync, execFileSync } from 'node:child_process';
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import WebSocket from 'ws';
 import os from 'node:os';
+import { randomBytes } from 'node:crypto';
 
 const rl = readline.createInterface({ input, output });
 
 let isRunning = false;
 let resolveRunPromise = null;
+let activeSocket = null;
+let promptStarted = false;
 
 import { existsSync } from 'node:fs';
 
@@ -31,7 +34,7 @@ function resolveBinPath(cmd) {
 function checkClaudeLogin() {
   try {
     const claudePath = resolveBinPath('claude');
-    const out = execSync(`${claudePath} auth status`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    const out = execFileSync(claudePath, ['auth', 'status'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 10000 });
     return JSON.parse(out).loggedIn === true;
   } catch {
     return false;
@@ -40,7 +43,8 @@ function checkClaudeLogin() {
 
 function checkCodexLogin() {
   try {
-    return existsSync(join(os.homedir(), '.codex', 'config.toml'));
+    execFileSync(resolveBinPath('codex'), ['login', 'status'], { stdio: 'ignore', timeout: 10000 });
+    return true;
   } catch {
     return false;
   }
@@ -48,15 +52,14 @@ function checkCodexLogin() {
 
 function checkAgyLogin() {
   try {
-    const settingsPath = join(os.homedir(), '.gemini', 'antigravity-cli', 'settings.json');
-    const localSettingsPath = join(os.homedir(), '.gemini', 'antigravity-cli', 'settings.local.json');
-    return existsSync(settingsPath) || existsSync(localSettingsPath);
+    execFileSync(resolveBinPath('agy'), ['-p', 'ping'], { stdio: 'ignore', timeout: 30000 });
+    return true;
   } catch {
     return false;
   }
 }
 
-async function checkAndInstallDependencies(forceUpdate = false) {
+async function checkAndInstallDependencies() {
   console.log('\nChecking required CLI tools...');
 
   const checkCommand = (cmd) => {
@@ -69,91 +72,15 @@ async function checkAndInstallDependencies(forceUpdate = false) {
     }
   };
 
-  // 1. Claude Code
-  const hasClaude = checkCommand('claude');
-  if (!hasClaude || forceUpdate) {
-    const action = !hasClaude ? 'Installing' : 'Updating';
-    console.log(`⚠️ ${action} Claude Code CLI globally...`);
-    try {
-      execSync('npm install -g @anthropic-ai/claude-code@latest', { stdio: 'inherit' });
-      console.log('✅ Claude Code installed/updated successfully!');
-    } catch (err) {
-      console.error('❌ Failed to install/update Claude Code:', err.message);
-    }
-  } else {
-    console.log('✅ Claude Code is installed.');
-  }
-
-  // 2. Codex
-  const hasCodex = checkCommand('codex');
-  if (!hasCodex || forceUpdate) {
-    const action = !hasCodex ? 'Installing' : 'Updating';
-    console.log(`⚠️ ${action} Codex CLI globally...`);
-    try {
-      execSync('npm install -g @openai/codex@latest', { stdio: 'inherit' });
-      console.log('✅ Codex installed/updated successfully!');
-    } catch (err) {
-      console.error('❌ Failed to install/update Codex:', err.message);
-    }
-  } else {
-    console.log('✅ Codex is installed.');
-  }
-
-  // 3. Antigravity (agy)
-  const hasAgy = checkCommand('agy');
-  if (!hasAgy || forceUpdate) {
-    const action = !hasAgy ? 'Installing' : 'Updating';
-    console.log(`⚠️ ${action} Antigravity CLI (agy) using installer...`);
-    try {
-      const hasCurl = checkCommand('curl');
-      const installCmd = hasCurl
-        ? 'curl -fsSL https://antigravity.google/cli/install.sh | bash'
-        : 'wget -qO- https://antigravity.google/cli/install.sh | bash';
-      execSync(installCmd, { stdio: 'inherit' });
-      console.log('✅ Antigravity CLI (agy) installed/updated successfully!');
-    } catch (err) {
-      console.error('❌ Failed to install/update Antigravity CLI (agy):', err.message);
-    }
-  } else {
-    console.log('✅ Antigravity CLI (agy) is installed.');
-  }
-
-  // 4. Graphify (graphifyy)
-  const hasGraphify = checkCommand('graphify');
-  if (!hasGraphify || forceUpdate) {
-    const action = !hasGraphify ? 'Installing' : 'Updating';
-    console.log(`⚠️ ${action} Graphify via uv/pip...`);
-    try {
-      // If uv is not installed, install it locally to ~/.local/bin
-      if (!checkCommand('uv')) {
-        console.log('⚠️ uv is not installed. Attempting to install uv locally...');
-        try {
-          const uvInstallCmd = checkCommand('curl')
-            ? 'curl -LsSf https://astral.sh/uv/install.sh | sh'
-            : 'wget -qO- https://astral.sh/uv/install.sh | sh';
-          execSync(uvInstallCmd, { stdio: 'inherit' });
-        } catch (err) {
-          console.log('⚠️ Failed to install uv via installer:', err.message);
-        }
-      }
-
-      // Check if uv is now available (either in PATH or via resolveBinPath)
-      const uvPath = resolveBinPath('uv');
-      const hasLocalUv = existsSync(uvPath) || checkCommand('uv');
-
-      if (hasLocalUv) {
-        execSync(`${uvPath} tool install --force graphifyy`, { stdio: 'inherit' });
-      } else if (checkCommand('pipx')) {
-        execSync('pipx install --force graphifyy', { stdio: 'inherit' });
-      } else {
-        execSync('pip install --upgrade graphifyy', { stdio: 'inherit' });
-      }
-      console.log('✅ Graphify installed/updated successfully!');
-    } catch (err) {
-      console.error('❌ Failed to install/update Graphify:', err.message);
-    }
-  } else {
-    console.log('✅ Graphify is installed.');
+  const tools = [
+    ['Claude Code', 'claude'], ['Codex', 'codex'], ['Antigravity', 'agy'],
+    ['Graphify', 'graphify'], ['systemd-run sandbox helper', 'systemd-run'],
+  ];
+  const missing = tools.filter(([, command]) => !checkCommand(command));
+  for (const [name, command] of tools) console.log(`${checkCommand(command) ? '✅' : '❌'} ${name} (${command})`);
+  if (missing.length) {
+    console.warn('\nInstall missing tools from their official, versioned distribution instructions before selecting them.');
+    console.warn('Triforce does not download or pipe remote installation scripts into a shell.');
   }
 }
 
@@ -166,8 +93,7 @@ async function setupWizard() {
 
   // Step 0: Check dependencies
   console.log('[Step 0/4] Verify CLI dependencies (Claude Code, Codex, Antigravity)...');
-  const updateCLIs = await rl.question('Check and update all three CLIs to their latest versions? (y/n) [n]: ');
-  await checkAndInstallDependencies(updateCLIs.toLowerCase().startsWith('y'));
+  await checkAndInstallDependencies();
 
   // Step 1: Log in
   console.log('\n[Step 1/4] Log in to the CLI tools (uses your consumer accounts/subscriptions)');
@@ -256,6 +182,7 @@ async function setupWizard() {
   
   const config = {
     maxIterations: 3,
+    defaultMode,
     architect: { provider: 'claude-cli', model: 'claude-cli-default' },
     developer: { provider: 'claude-cli', model: 'claude-cli-default' },
     reviewer:  { provider: 'claude-cli', model: 'claude-cli-default' }
@@ -285,12 +212,13 @@ async function setupWizard() {
     config.developer = await askRole('Coder / Developer', 1);
     config.reviewer  = await askRole('Supervisor / Reviewer', 1);
   }
+  for (const role of ['architect', 'developer', 'reviewer']) config[role].unsafePermissions = skipMode;
 
   const itersStr = await rl.question('\nEnter maximum loop iterations (cap) for feedback loop [3]: ');
   const parsedIters = parseInt(itersStr.trim(), 10);
   config.maxIterations = isNaN(parsedIters) ? 3 : parsedIters;
 
-  await writeFile('./models.config.json', JSON.stringify(config, null, 2), 'utf8');
+  await writeFile(join(__dirname, 'models.config.json'), JSON.stringify(config, null, 2), 'utf8');
   console.log('\n✅ Configuration saved successfully to models.config.json.');
   
   return { skipMode, defaultMode, config };
@@ -311,11 +239,11 @@ function getNetworkIPs() {
   return ips;
 }
 
-function startServer() {
+function startServer(authToken) {
   console.log('\nSpinning up the Triforce backend server...');
   const serverProcess = fork(join(__dirname, 'server.js'), [], {
     stdio: ['inherit', 'pipe', 'pipe', 'ipc'],
-    env: { ...process.env, PORT: '3000' }
+    env: { ...process.env, PORT: '3000', TRIFORCE_TOKEN: authToken }
   });
 
   serverProcess.stderr.on('data', (data) => {
@@ -344,17 +272,18 @@ function startServer() {
   });
 }
 
-function connectWebSocket(defaultMode, config) {
-  const ws = new WebSocket('ws://localhost:3000');
+function connectWebSocket(defaultMode, config, authToken) {
+  const ws = new WebSocket('ws://localhost:3000', { headers: { Cookie: `triforce_token=${authToken}` } });
 
   ws.on('open', () => {
+    activeSocket = ws;
     console.log('\n🚀 Connected to Triforce Server!');
-    console.log('🌐 Visual Dashboard (Local):   http://localhost:3000');
+    console.log(`🌐 Visual Dashboard (Local):   http://localhost:3000/auth?token=${authToken}`);
     
     try {
       const networkIPs = getNetworkIPs();
       for (const ip of networkIPs) {
-        console.log(`🌐 Visual Dashboard (Network): http://${ip}:3000`);
+        console.log(`🌐 Visual Dashboard (Network): http://${ip}:3000/auth?token=${authToken}`);
       }
     } catch (err) {}
 
@@ -362,7 +291,13 @@ function connectWebSocket(defaultMode, config) {
     console.log('   1. Opening port 3000 in your VM\'s firewall/security group.');
     console.log('   2. Or using an SSH tunnel from your local machine:');
     console.log('      ssh -L 3000:localhost:3000 <user>@<vm-ip>\n');
-    promptLoop(ws, defaultMode, config);
+    if (!promptStarted) {
+      promptStarted = true;
+      promptLoop(defaultMode, config).catch(err => {
+        console.error('Prompt loop failed:', err.message);
+        process.exit(1);
+      });
+    }
   });
 
   ws.on('message', (data) => {
@@ -390,8 +325,14 @@ function connectWebSocket(defaultMode, config) {
   });
 
   ws.on('close', () => {
+    if (activeSocket === ws) activeSocket = null;
+    if (isRunning) {
+      isRunning = false;
+      resolveRunPromise?.();
+      resolveRunPromise = null;
+    }
     console.log('\nBackend connection lost. Retrying...');
-    setTimeout(() => connectWebSocket(defaultMode, config), 2000);
+    setTimeout(() => connectWebSocket(defaultMode, config, authToken), 2000);
   });
 
   ws.on('error', () => {
@@ -399,7 +340,7 @@ function connectWebSocket(defaultMode, config) {
   });
 }
 
-async function promptLoop(ws, defaultMode, config) {
+async function promptLoop(defaultMode, config) {
   while (true) {
     if (isRunning) {
       await new Promise(r => { resolveRunPromise = r; });
@@ -412,7 +353,12 @@ async function promptLoop(ws, defaultMode, config) {
     }
 
     isRunning = true;
-    ws.send(JSON.stringify({
+    if (!activeSocket || activeSocket.readyState !== WebSocket.OPEN) {
+      console.log('Backend is reconnecting; task was not submitted.');
+      isRunning = false;
+      continue;
+    }
+    activeSocket.send(JSON.stringify({
       type: 'run',
       task: task,
       config: config,
@@ -426,8 +372,9 @@ async function main() {
   let defaultMode = 1;
 
   try {
-    const existing = await readFile('./models.config.json', 'utf8');
+    const existing = await readFile(join(__dirname, 'models.config.json'), 'utf8');
     config = JSON.parse(existing);
+    defaultMode = config.defaultMode === 2 ? 2 : 1;
     console.log('Existing configuration found in models.config.json.');
     const reconfigure = await rl.question('Do you want to re-run the configuration setup? (y/n) [n]: ');
     if (reconfigure.toLowerCase().startsWith('y')) {
@@ -442,11 +389,12 @@ async function main() {
     defaultMode = setup.defaultMode;
   }
 
-  startServer();
+  const authToken = process.env.TRIFORCE_TOKEN || randomBytes(32).toString('hex');
+  startServer(authToken);
   
   // Wait 1.5 seconds for the server to bind to port 3000
   setTimeout(() => {
-    connectWebSocket(defaultMode, config);
+    connectWebSocket(defaultMode, config, authToken);
   }, 1500);
 }
 

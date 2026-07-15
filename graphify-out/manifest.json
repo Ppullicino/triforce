@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "agent.js": {
-    "mtime": 1784124432.918385,
-    "ast_hash": "07eeff3d96c5f8cbea9dbc141c3f8492",
+    "mtime": 1784127510.6044054,
+    "ast_hash": "2d3c87f3a84d4ce0a701aa1765477d39",
     "semantic_hash": ""
   },
   "gen-icons.mjs": {
@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "install-service.sh": {
-    "mtime": 1779660846.2187893,
-    "ast_hash": "ed3d336c37d477418a42fa90d12147f3",
+    "mtime": 1784127313.0274284,
+    "ast_hash": "639535b4e10e3f34140162f954ada1b8",
     "semantic_hash": ""
   },
   "models.config.json": {
@@ -35,13 +35,13 @@
     "semantic_hash": ""
   },
   "orchestrator.js": {
-    "mtime": 1784101823.8928843,
-    "ast_hash": "07caef0ac1d178076bf73055240970f1",
+    "mtime": 1784127082.261792,
+    "ast_hash": "bf6ffac61da9c787882b808966757aa5",
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784103768.863997,
-    "ast_hash": "6f01cbe2ed61a52363a92e4d5dec81b2",
+    "mtime": 1784127194.1011894,
+    "ast_hash": "a5bd31ead4573ff2d22e218ae03fd176",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -50,13 +50,13 @@
     "semantic_hash": ""
   },
   "public/sw.js": {
-    "mtime": 1779752921.1984801,
-    "ast_hash": "f36aac4b5099f4401a2e49e6a0e8504c",
+    "mtime": 1784127274.1570096,
+    "ast_hash": "26833c14a7d26596eacca61f43c8cfd2",
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784122686.653149,
-    "ast_hash": "c75f39cf51213deefb99810216ce374d",
+    "mtime": 1784127410.903944,
+    "ast_hash": "6b8a3d2eea95daf6e6effd8ec9743c42",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "RUNNING.md": {
-    "mtime": 1784040728.4760756,
-    "ast_hash": "1b2bd643cf4bf66be178af3bcfca3666",
+    "mtime": 1784127313.0274284,
+    "ast_hash": "dc3be3e6efe1fc0469a7433d49cb4e70",
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1784112493.3548708,
-    "ast_hash": "0182dbd35b7c2f3ff37326e008c1fc6d",
+    "mtime": 1784127274.1570096,
+    "ast_hash": "8f651e20c6905761ed681bc87ca37b18",
     "semantic_hash": ""
   },
   "triforce-phase0-prompt.md": {
@@ -145,8 +145,23 @@
     "semantic_hash": ""
   },
   "cli.js": {
-    "mtime": 1784115608.3671458,
-    "ast_hash": "5f97f615a61c28345b3c67e203f791e9",
+    "mtime": 1784127503.2805192,
+    "ast_hash": "b51213157a4d2b7eac0913f24047f653",
+    "semantic_hash": ""
+  },
+  "REVIEW_FIX_LOG.md": {
+    "mtime": 1784127462.4491515,
+    "ast_hash": "1ef7bafb8aa2ba13424ebe75832200f8",
+    "semantic_hash": ""
+  },
+  "test/sandbox.test.js": {
+    "mtime": 1784127242.5134788,
+    "ast_hash": "bdc6cc45c5441ed6f38b3cbe0bbd0917",
+    "semantic_hash": ""
+  },
+  "test/agent.test.js": {
+    "mtime": 1784127439.590504,
+    "ast_hash": "2d49dfed4a61b23077923fbd8d1fc732",
     "semantic_hash": ""
   }
 }
