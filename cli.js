@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
-import { spawn, fork } from 'node:child_process';
+import { spawn, fork, execSync } from 'node:child_process';
 import { readFile, writeFile } from 'node:fs/promises';
 import WebSocket from 'ws';
 
@@ -10,6 +10,74 @@ const rl = readline.createInterface({ input, output });
 let isRunning = false;
 let resolveRunPromise = null;
 
+async function checkAndInstallDependencies(forceUpdate = false) {
+  console.log('\nChecking required CLI tools...');
+
+  const checkCommand = (cmd) => {
+    try {
+      execSync(`which ${cmd}`, { stdio: 'ignore' });
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  // 1. Claude Code
+  const hasClaude = checkCommand('claude');
+  if (!hasClaude || forceUpdate) {
+    const action = !hasClaude ? 'Installing' : 'Updating';
+    console.log(`⚠️ ${action} Claude Code CLI globally...`);
+    try {
+      execSync('npm install -g @anthropic-ai/claude-code@latest', { stdio: 'inherit' });
+      console.log('✅ Claude Code installed/updated successfully!');
+    } catch (err) {
+      console.error('❌ Failed to install/update Claude Code:', err.message);
+    }
+  } else {
+    console.log('✅ Claude Code is installed.');
+  }
+
+  // 2. Codex
+  const hasCodex = checkCommand('codex');
+  if (!hasCodex || forceUpdate) {
+    const action = !hasCodex ? 'Installing' : 'Updating';
+    console.log(`⚠️ ${action} Codex CLI globally...`);
+    try {
+      execSync('npm install -g @openai/codex@latest', { stdio: 'inherit' });
+      console.log('✅ Codex installed/updated successfully!');
+    } catch (err) {
+      console.error('❌ Failed to install/update Codex:', err.message);
+    }
+  } else {
+    console.log('✅ Codex is installed.');
+  }
+
+  // 3. Antigravity (agy)
+  const hasAgy = checkCommand('agy');
+  if (!hasAgy || forceUpdate) {
+    const action = !hasAgy ? 'Installing' : 'Updating';
+    console.log(`⚠️ ${action} Antigravity CLI (agy) to ~/.local/bin/agy...`);
+    try {
+      const installCmd = `
+        mkdir -p /tmp/agy-install && 
+        cd /tmp/agy-install && 
+        wget -q https://antigravity.google/cli/releases/latest/agy-linux-amd64-v1.tar.gz && 
+        tar -xzf agy-linux-amd64-v1.tar.gz && 
+        mkdir -p ~/.local/bin && 
+        mv agy ~/.local/bin/agy && 
+        chmod +x ~/.local/bin/agy && 
+        rm -rf /tmp/agy-install
+      `;
+      execSync(installCmd, { stdio: 'inherit' });
+      console.log('✅ Antigravity CLI (agy) installed/updated successfully!');
+    } catch (err) {
+      console.error('❌ Failed to install/update Antigravity CLI (agy):', err.message);
+    }
+  } else {
+    console.log('✅ Antigravity CLI (agy) is installed.');
+  }
+}
+
 async function setupWizard() {
   console.log(`
 ==================================================
@@ -17,8 +85,13 @@ async function setupWizard() {
 ==================================================
 `);
 
+  // Step 0: Check dependencies
+  console.log('[Step 0/4] Verify CLI dependencies (Claude Code, Codex, Antigravity)...');
+  const updateCLIs = await rl.question('Check and update all three CLIs to their latest versions? (y/n) [n]: ');
+  await checkAndInstallDependencies(updateCLIs.toLowerCase().startsWith('y'));
+
   // Step 1: Log in
-  console.log('[Step 1/3] Log in to Claude Code (uses your Claude Pro subscription)');
+  console.log('\n[Step 1/4] Log in to Claude Code (uses your Claude Pro subscription)');
   const authClaude = await rl.question('Authenticate with Claude Code CLI now? (y/n) [y]: ');
   if (!authClaude.toLowerCase().startsWith('n')) {
     console.log('\nRunning "claude auth login"... Please follow the browser instructions.');
@@ -29,12 +102,12 @@ async function setupWizard() {
   }
 
   // Step 2: Dangerously skip permissions
-  console.log('\n[Step 2/3] Skip permission approvals');
+  console.log('\n[Step 2/4] Skip permission approvals');
   const skipPerms = await rl.question('Enable Dangerously Skip Permission Mode for all 3 agents? (y/n) [y]: ');
   const skipMode = !skipPerms.toLowerCase().startsWith('n');
 
   // Step 3: Select mode
-  console.log('\n[Step 3/3] Default Pipeline Mode');
+  console.log('\n[Step 3/4] Default Pipeline Mode');
   console.log('  1: Sequential Pipeline (Architect -> Coder -> Sandbox -> Reviewer)');
   console.log('  2: Supervisor Specification Loop (Prompt Designer <-> Supervisor Loop)');
   const defaultModeStr = await rl.question('Select default pipeline mode [1]: ');

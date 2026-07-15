@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1779660704.825249,
-    "ast_hash": "a19a2695a8c75d8f6e06db89eccc8ad0",
+    "mtime": 1784103768.863997,
+    "ast_hash": "6f01cbe2ed61a52363a92e4d5dec81b2",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -142,6 +142,11 @@
   "public/icons/icon-96x96.png": {
     "mtime": 1779660732.347771,
     "ast_hash": "950fce4bb420b95b07513d0db35cf85d",
+    "semantic_hash": ""
+  },
+  "cli.js": {
+    "mtime": 1784103763.507094,
+    "ast_hash": "6716a0d4bc0599fb3888f9ed3369ecc1",
     "semantic_hash": ""
   }
 }

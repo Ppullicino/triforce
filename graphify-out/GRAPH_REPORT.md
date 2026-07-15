@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 20 files · ~15,910 words
+- 20 files · ~16,198 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 124 nodes · 147 edges · 16 communities (9 shown, 7 thin omitted)
+- 125 nodes · 149 edges · 16 communities (9 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `87ca49ff`
+- Built from commit: `e0cfef47`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,8 +41,8 @@
 6. `main()` - 4 edges
 7. `Systemd Service (Always-On)` - 4 edges
 8. `PWA — Install as App` - 4 edges
-9. `connectWebSocket()` - 3 edges
-10. `inTriangle()` - 3 edges
+9. `setupWizard()` - 3 edges
+10. `connectWebSocket()` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `runReviewer()` --calls--> `track()`  [EXTRACTED]
@@ -94,8 +94,8 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ### Community 15 - "cli.js"
-Cohesion: 0.48
-Nodes (6): connectWebSocket(), main(), promptLoop(), rl, setupWizard(), startServer()
+Cohesion: 0.43
+Nodes (7): checkAndInstallDependencies(), connectWebSocket(), main(), promptLoop(), rl, setupWizard(), startServer()
 
 ## Knowledge Gaps
 - **58 isolated node(s):** `rl`, `SHARDS`, `BG`, `GOLD`, `SIZES` (+53 more)
@@ -106,7 +106,7 @@ Nodes (6): connectWebSocket(), main(), promptLoop(), rl, setupWizard(), startSer
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
-  _High betweenness centrality (0.046) - this node is a cross-community bridge._
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `main()` connect `orchestrator.js` to `Agent`?**
