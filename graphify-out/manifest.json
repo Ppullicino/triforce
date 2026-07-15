@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784129588.4201002,
-    "ast_hash": "cc75cd0d41f119e1e9126ce024f0ac36",
+    "mtime": 1784131182.7814207,
+    "ast_hash": "4120b21019df4c9f09be3e2abdcb76a0",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "cli.js": {
-    "mtime": 1784129588.4201002,
-    "ast_hash": "db405bac239376f0e4e5f530ef0932f9",
+    "mtime": 1784131182.7804208,
+    "ast_hash": "7bfc5223addfc13320a932b98cf52dcf",
     "semantic_hash": ""
   },
   "REVIEW_FIX_LOG.md": {
@@ -170,8 +170,18 @@
     "semantic_hash": ""
   },
   "test/package.test.js": {
-    "mtime": 1784129588.4211001,
-    "ast_hash": "c4e96f2a3002bbc9d8aba7bb2044ce23",
+    "mtime": 1784131182.7814207,
+    "ast_hash": "2da4d5bc27cec3c4ac5f279c3383484d",
+    "semantic_hash": ""
+  },
+  "cli-input.js": {
+    "mtime": 1784131182.7814207,
+    "ast_hash": "24b167c14e0530f4a5002e01c56f4d03",
+    "semantic_hash": ""
+  },
+  "test/cli-input.test.js": {
+    "mtime": 1784131182.7814207,
+    "ast_hash": "2f986bac5c5152b421ccd320a99a66d6",
     "semantic_hash": ""
   }
 }

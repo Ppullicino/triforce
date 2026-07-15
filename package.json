@@ -10,6 +10,7 @@
   "files": [
     "agent.js",
     "cli.js",
+    "cli-input.js",
     "models.config.json",
     "orchestrator.js",
     "public/",

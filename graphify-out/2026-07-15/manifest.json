@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784127194.1011894,
-    "ast_hash": "a5bd31ead4573ff2d22e218ae03fd176",
+    "mtime": 1784129588.4201002,
+    "ast_hash": "cc75cd0d41f119e1e9126ce024f0ac36",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "cli.js": {
-    "mtime": 1784127503.2805192,
-    "ast_hash": "b51213157a4d2b7eac0913f24047f653",
+    "mtime": 1784129588.4201002,
+    "ast_hash": "db405bac239376f0e4e5f530ef0932f9",
     "semantic_hash": ""
   },
   "REVIEW_FIX_LOG.md": {
@@ -162,6 +162,16 @@
   "test/agent.test.js": {
     "mtime": 1784127439.590504,
     "ast_hash": "2d49dfed4a61b23077923fbd8d1fc732",
+    "semantic_hash": ""
+  },
+  "sandbox.js": {
+    "mtime": 1784127233.7226086,
+    "ast_hash": "49d669870c2de970a6d03b7a7984d25e",
+    "semantic_hash": ""
+  },
+  "test/package.test.js": {
+    "mtime": 1784129588.4211001,
+    "ast_hash": "c4e96f2a3002bbc9d8aba7bb2044ce23",
     "semantic_hash": ""
   }
 }

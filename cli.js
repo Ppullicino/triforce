@@ -8,6 +8,7 @@ import { dirname, join } from 'node:path';
 import WebSocket from 'ws';
 import os from 'node:os';
 import { randomBytes } from 'node:crypto';
+import { readTask } from './cli-input.js';
 
 const rl = readline.createInterface({ input, output });
 
@@ -306,6 +307,7 @@ function connectWebSocket(defaultMode, config, authToken) {
     console.log('   1. Opening port 3000 in your VM\'s firewall/security group.');
     console.log('   2. Or using an SSH tunnel from your local machine:');
     console.log('      ssh -L 3000:localhost:3000 <user>@<vm-ip>\n');
+    console.log('For multiline prompts, enter /paste, paste the full prompt, then enter /run.\n');
     if (!promptStarted) {
       promptStarted = true;
       promptLoop(defaultMode, config).catch(err => {
@@ -363,7 +365,8 @@ async function promptLoop(defaultMode, config) {
       await new Promise(r => { resolveRunPromise = r; });
     }
     
-    const task = await rl.question('Triforce> ');
+    const task = await readTask(rl, message => console.log(message));
+    if (task === null) continue;
     if (!task.trim()) continue;
     if (task.trim().toLowerCase() === 'exit') {
       process.exit(0);
