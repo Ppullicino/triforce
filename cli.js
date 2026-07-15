@@ -75,23 +75,12 @@ async function checkAndInstallDependencies(forceUpdate = false) {
   const hasAgy = checkCommand('agy');
   if (!hasAgy || forceUpdate) {
     const action = !hasAgy ? 'Installing' : 'Updating';
-    console.log(`⚠️ ${action} Antigravity CLI (agy) to ~/.local/bin/agy...`);
+    console.log(`⚠️ ${action} Antigravity CLI (agy) using installer...`);
     try {
       const hasCurl = checkCommand('curl');
-      const downloadCmd = hasCurl
-        ? 'curl -fsSL https://antigravity.google/cli/releases/latest/agy-linux-amd64-v1.tar.gz -o agy-linux-amd64-v1.tar.gz'
-        : 'wget -q https://antigravity.google/cli/releases/latest/agy-linux-amd64-v1.tar.gz';
-
-      const installCmd = `
-        mkdir -p /tmp/agy-install && 
-        cd /tmp/agy-install && 
-        ${downloadCmd} && 
-        tar -xzf agy-linux-amd64-v1.tar.gz && 
-        mkdir -p ~/.local/bin && 
-        mv agy ~/.local/bin/agy && 
-        chmod +x ~/.local/bin/agy && 
-        rm -rf /tmp/agy-install
-      `;
+      const installCmd = hasCurl
+        ? 'curl -fsSL https://antigravity.google/cli/install.sh | bash'
+        : 'wget -qO- https://antigravity.google/cli/install.sh | bash';
       execSync(installCmd, { stdio: 'inherit' });
       console.log('✅ Antigravity CLI (agy) installed/updated successfully!');
     } catch (err) {

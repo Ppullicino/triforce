@@ -1,7 +1,7 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 20 files · ~17,241 words
+- 20 files · ~17,210 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dc76b4c4`
+- Built from commit: `630e9b20`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

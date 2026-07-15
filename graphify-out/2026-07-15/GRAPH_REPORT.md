@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 20 files · ~17,141 words
+- 20 files · ~17,241 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 132 nodes · 163 edges · 16 communities (9 shown, 7 thin omitted)
+- 132 nodes · 164 edges · 16 communities (9 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `55de8091`
+- Built from commit: `dc76b4c4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -94,7 +94,7 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ### Community 15 - "cli.js"
-Cohesion: 0.31
+Cohesion: 0.33
 Nodes (10): checkAndInstallDependencies(), connectWebSocket(), __dirname, getNetworkIPs(), main(), promptLoop(), resolveBinPath(), rl (+2 more)
 
 ## Knowledge Gaps
