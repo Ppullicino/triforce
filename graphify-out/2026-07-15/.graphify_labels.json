@@ -18,5 +18,17 @@
   "16": "2026-07-15",
   "17": "sandbox.test.js",
   "18": "files",
-  "19": "cli-input.test.js"
+  "19": "cli-input.test.js",
+  "20": "devDependencies",
+  "21": "compilerOptions",
+  "22": "package.json",
+  "23": "package.json",
+  "24": "compilerOptions",
+  "25": "compilerOptions",
+  "26": "index.ts",
+  "27": "Client Architecture and Development",
+  "28": "tsconfig.json",
+  "29": "eslint.config.js",
+  "30": "test-setup.ts",
+  "31": "vite.config.ts"
 }

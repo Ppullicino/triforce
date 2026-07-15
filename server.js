@@ -11,6 +11,8 @@ import { homedir } from 'node:os';
 import { Agent } from './agent.js';
 import { runSandboxed } from './sandbox.js';
 import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest } from './workspace.js';
+import { RunRegistry } from './run-registry.js';
+import { capabilities, isCompatibleProtocol, validateClientCommand } from './packages/protocol/src/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TRANSCRIPTS_DIR = join(__dirname, 'transcripts');
@@ -18,6 +20,7 @@ const WORKSPACES_DIR = process.env.TRIFORCE_WORKSPACE_ROOT || join(homedir(), '.
 if (process.env.TRIFORCE_TRANSCRIPTS === '1') await mkdir(TRANSCRIPTS_DIR, { recursive: true, mode: 0o700 });
 const AUTH_TOKEN = process.env.TRIFORCE_TOKEN || randomBytes(32).toString('hex');
 if (!process.env.TRIFORCE_TOKEN) console.warn(`TRIFORCE_TOKEN was not set; generated one-time token: ${AUTH_TOKEN}`);
+const runRegistry = new RunRegistry();
 
 const RATES = {
   'claude-sonnet-4-6': [3.00,  15.00],
@@ -519,9 +522,16 @@ app.get('/api/config', async (req, res) => {
   }
 });
 
+app.get('/api/capabilities', (_req, res) => res.json(capabilities));
+app.get('/api/runs', (_req, res) => res.json({ runs: runRegistry.list() }));
+app.get('/api/runs/:runId', (req, res) => {
+  const run = runRegistry.get(req.params.runId);
+  if (!run) return res.status(404).json({ error: 'run not found' });
+  res.json({ run: runRegistry.snapshot(run) });
+});
+
 const httpServer = http.createServer(app);
 const wss = new WebSocketServer({ noServer: true });
-let pipelineActive = false;
 
 httpServer.on('upgrade', (req, socket, head) => {
   const origin = req.headers.origin;
@@ -531,17 +541,42 @@ httpServer.on('upgrade', (req, socket, head) => {
 });
 
 wss.on('connection', (ws) => {
+  const unsubscribe = new Set();
+  ws.on('close', () => {
+    for (const remove of unsubscribe) remove();
+    unsubscribe.clear();
+  });
   ws.on('message', async (raw) => {
     if (raw.length > 1024 * 1024) return ws.close(1009, 'Message too large');
     let msg;
     try { msg = JSON.parse(raw); } catch { return; }
 
-    if (msg.type === 'run') {
-      if (pipelineActive) return ws.send(JSON.stringify({ type: 'error', stage: 'architect', message: 'Another terminal or browser pipeline is already running' }));
-      pipelineActive = true;
-      try { await runPipeline(ws, msg.task, msg.config, msg.mode); }
-      catch (err) { if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'error', stage: 'architect', message: err.message })); }
-      finally { pipelineActive = false; }
+    if (!['run', 'subscribe', 'capabilities'].includes(msg.type)) return;
+    const parsed = validateClientCommand(msg);
+    if (!parsed.success) {
+      return ws.send(JSON.stringify({ type: 'protocol_error', code: 'INVALID_COMMAND', message: parsed.error.issues[0]?.message || 'Invalid command' }));
+    }
+    const command = parsed.data;
+    if (command.protocolVersion && !isCompatibleProtocol(command.protocolVersion)) {
+      return ws.send(JSON.stringify({ type: 'protocol_error', code: 'INCOMPATIBLE_VERSION', message: `Server requires protocol major ${capabilities.protocolMajor}`, capabilities }));
+    }
+    if (command.type === 'capabilities') {
+      return ws.send(JSON.stringify({ type: 'capabilities', capabilities }));
+    }
+    if (command.type === 'subscribe') {
+      const run = runRegistry.get(command.runId);
+      if (!run) return ws.send(JSON.stringify({ type: 'protocol_error', code: 'RUN_NOT_FOUND', message: 'Run not found' }));
+      unsubscribe.add(runRegistry.subscribe(run, ws, command.afterEventId));
+      return;
+    }
+    if (command.type === 'run') {
+      try {
+        const run = runRegistry.start(command, pipelineSocket => runPipeline(pipelineSocket, command.task, command.config, command.mode));
+        ws.send(JSON.stringify({ type: 'run_started', run: runRegistry.snapshot(run) }));
+        unsubscribe.add(runRegistry.subscribe(run, ws));
+      } catch (err) {
+        ws.send(JSON.stringify({ type: 'error', stage: 'architect', message: err.message }));
+      }
     }
   });
 });

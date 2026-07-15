@@ -22,6 +22,8 @@
     "server.js",
     "usage.js",
     "workspace.js",
+    "run-registry.js",
+    "packages/protocol/src/",
     "RUNNING.md",
     "install-service.sh",
     "triforce.service"
@@ -42,7 +44,8 @@
     "dotenv": "^16.0.0",
     "express": "^5.2.1",
     "openai": "^6.39.0",
-    "ws": "^8.21.0"
+    "ws": "^8.21.0",
+    "zod": "^4.0.0"
   },
   "devDependencies": {
     "pngjs": "^7.0.0"
