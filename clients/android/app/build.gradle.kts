@@ -29,7 +29,10 @@ val syncSharedClient by tasks.registering(Sync::class) {
     from(rootProject.projectDir.resolve("../shared/dist"))
     into(sharedAssets.map { it.dir("www") })
 }
-android.sourceSets.getByName("main").assets.srcDir(sharedAssets)
+// Resolve the directory eagerly because AGP 9 rejects Provider instances in the
+// legacy SourceSet API. The explicit preBuild dependency below still guarantees
+// that the generated assets exist before Android packages them.
+android.sourceSets.getByName("main").assets.srcDir(sharedAssets.get().asFile)
 tasks.named("preBuild").configure { dependsOn(syncSharedClient) }
 
 dependencies {

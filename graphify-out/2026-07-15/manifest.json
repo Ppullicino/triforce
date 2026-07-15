@@ -635,8 +635,8 @@
     "semantic_hash": ""
   },
   "clients/android/app/build.gradle.kts": {
-    "mtime": 1784141985.848407,
-    "ast_hash": "6368c3a4901b823c99953a81d0d934f0",
+    "mtime": 1784142173.237068,
+    "ast_hash": "960e27f8997b8a1b9d4e17ad5606d6ba",
     "semantic_hash": ""
   },
   "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt": {
@@ -660,8 +660,8 @@
     "semantic_hash": ""
   },
   "clients/android/build.gradle.kts": {
-    "mtime": 1784141896.3660176,
-    "ast_hash": "e4bfca0ac2664dae55a065b41f9c9619",
+    "mtime": 1784142173.237068,
+    "ast_hash": "ff36d1613cc9d16fd659a7f839431414",
     "semantic_hash": ""
   },
   "clients/android/settings.gradle.kts": {
