@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "CROSS_PLATFORM_CLIENT_PLAN.md": {
-    "mtime": 1784141766.5373788,
-    "ast_hash": "b0e0dbdbeb7f094bd1eb42fbc156854f",
+    "mtime": 1784141994.483252,
+    "ast_hash": "6e6620683864b441c4ecd7413ad916f8",
     "semantic_hash": ""
   },
   "clients/shared/eslint.config.js": {
@@ -215,13 +215,13 @@
     "semantic_hash": ""
   },
   "clients/shared/src/App.tsx": {
-    "mtime": 1784140209.674496,
-    "ast_hash": "9810e97aefcfc90faec0101add8ca07c",
+    "mtime": 1784141855.8917503,
+    "ast_hash": "8f5ee14d0a5972d5d410154bcdf3a546",
     "semantic_hash": ""
   },
   "clients/shared/src/main.tsx": {
-    "mtime": 1784140114.484094,
-    "ast_hash": "2f404d7061486d1ffcdd7e04cb630e87",
+    "mtime": 1784141896.3650177,
+    "ast_hash": "0a8b60946e6f4234f0661b30f817de34",
     "semantic_hash": ""
   },
   "clients/shared/src/test-setup.ts": {
@@ -375,13 +375,13 @@
     "semantic_hash": ""
   },
   "clients/shared/src/core/platform-credentials.test.ts": {
-    "mtime": 1784140066.3639026,
-    "ast_hash": "39a2a88cbe06026fb05ce60dd523252a",
+    "mtime": 1784141863.7346082,
+    "ast_hash": "d0e357fd31e13fdc654f10b27c0cca3c",
     "semantic_hash": ""
   },
   "clients/shared/src/core/platform-credentials.ts": {
-    "mtime": 1784140066.3629026,
-    "ast_hash": "a5ef60526aa1a4a12bb217f4352dc19c",
+    "mtime": 1784141896.3660176,
+    "ast_hash": "a2f73930eaa0eecf2cdf946faffd34a8",
     "semantic_hash": ""
   },
   ".github/workflows/desktop-smoke.yml": {
@@ -632,6 +632,51 @@
   "clients/desktop/src-tauri/icons/ios/AppIcon-83.5x83.5@2x.png": {
     "mtime": 1784140669.9727905,
     "ast_hash": "292340a30e4b68d7217727aecde864ba",
+    "semantic_hash": ""
+  },
+  "clients/android/app/build.gradle.kts": {
+    "mtime": 1784141985.848407,
+    "ast_hash": "6368c3a4901b823c99953a81d0d934f0",
+    "semantic_hash": ""
+  },
+  "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt": {
+    "mtime": 1784141985.848407,
+    "ast_hash": "1917012940ff10b0eafe183427e5b897",
+    "semantic_hash": ""
+  },
+  "clients/android/app/src/main/java/com/triforce/remote/CredentialVault.kt": {
+    "mtime": 1784141935.3463144,
+    "ast_hash": "3d725db5ba3ce26acb2bb716851aaaa2",
+    "semantic_hash": ""
+  },
+  "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt": {
+    "mtime": 1784141935.3463144,
+    "ast_hash": "55176041c762ac9d7a2abedb333bb91f",
+    "semantic_hash": ""
+  },
+  "clients/android/app/src/test/java/com/triforce/remote/NetworkPolicyTest.kt": {
+    "mtime": 1784141985.849407,
+    "ast_hash": "fe1a11787d54db4b8fa5f7809b44d619",
+    "semantic_hash": ""
+  },
+  "clients/android/build.gradle.kts": {
+    "mtime": 1784141896.3660176,
+    "ast_hash": "e4bfca0ac2664dae55a065b41f9c9619",
+    "semantic_hash": ""
+  },
+  "clients/android/settings.gradle.kts": {
+    "mtime": 1784141896.3660176,
+    "ast_hash": "246014adee7a50091dc14d6e4ccc4530",
+    "semantic_hash": ""
+  },
+  ".github/workflows/android-smoke.yml": {
+    "mtime": 1784141985.849407,
+    "ast_hash": "a04e8f192a37127dba081ad64fdb190c",
+    "semantic_hash": ""
+  },
+  "clients/android/README.md": {
+    "mtime": 1784141985.849407,
+    "ast_hash": "2efd34d9ed25e6635b510ac61dd35ba9",
     "semantic_hash": ""
   }
 }

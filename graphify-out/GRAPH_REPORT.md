@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 604 nodes · 750 edges · 48 communities (36 shown, 12 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.75)
+- 604 nodes · 728 edges · 51 communities (39 shown, 12 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.74)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `027f2041`
+- Built from commit: `1654621e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,14 +54,16 @@
 - files
 - App.tsx
 - Triforce Android
+- dependencies
+- pipeline.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
 2. `files` - 16 edges
-3. `Agent` - 15 edges
-4. `Triforce Cross-Platform Client Plan` - 15 edges
+3. `Triforce Cross-Platform Client Plan` - 15 edges
+4. `Agent` - 15 edges
 5. `RunRegistry` - 14 edges
-6. `TriforceConnection` - 13 edges
+6. `TriforceConnection` - 12 edges
 7. `compilerOptions` - 12 edges
 8. `scripts` - 10 edges
 9. `CredentialVault` - 9 edges
@@ -82,7 +84,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (48 total, 12 thin omitted)
+## Communities (51 total, 12 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
@@ -162,11 +164,11 @@ Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, P
 
 ### Community 33 - "scripts"
 Cohesion: 0.05
-Nodes (39): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, bin, triforce, dependencies (+31 more)
+Nodes (40): bin, triforce, description, devDependencies, pngjs, files, main, name (+32 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.05
-Nodes (30): App(), defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile (+22 more)
+Cohesion: 0.10
+Nodes (11): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+3 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -189,11 +191,19 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "files"
-Cohesion: 0.12
-Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
+Cohesion: 0.13
+Nodes (11): App(), defaultConfig, roles, AndroidBridge, AndroidCredentialStorage, androidRequest(), createCredentialStorage(), handleAndroidCredentialResponse() (+3 more)
+
+### Community 48 - "dependencies"
+Cohesion: 0.13
+Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
+
+### Community 49 - "pipeline.ts"
+Cohesion: 0.36
+Nodes (7): bounded(), emptyUsage, initialPipelineState(), mapStatus(), PipelineViewState, reducePipeline(), UsageItem
 
 ## Knowledge Gaps
-- **277 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+272 more)
+- **279 isolated node(s):** `Objective`, `Agent handoff contract`, `Current handoff`, `Product decisions`, `Step 1 — Monorepo and shared-client foundation` (+274 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -201,11 +211,11 @@ Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.co
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `promptLoop()` connect `cli.js` to `package.json`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `Agent` connect `Agent` to `orchestrator.js`, `index.ts`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
-  _277 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `normalizeHostUrl()` connect `server-protocol.test.js` to `package.json`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **What connects `Objective`, `Agent handoff contract`, `Current handoff` to the rest of the system?**
+  _279 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
