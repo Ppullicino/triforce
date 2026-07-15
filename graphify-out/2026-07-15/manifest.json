@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "clients/shared/src/App.tsx": {
-    "mtime": 1784141855.8917503,
-    "ast_hash": "8f5ee14d0a5972d5d410154bcdf3a546",
+    "mtime": 1784146710.912452,
+    "ast_hash": "0d6288643bb63bdb18529a60adf9d228",
     "semantic_hash": ""
   },
   "clients/shared/src/main.tsx": {
@@ -300,8 +300,8 @@
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.test.ts": {
-    "mtime": 1784146425.9254558,
-    "ast_hash": "c32a79ed2120bee1f95ab21c7b927abb",
+    "mtime": 1784146723.2352355,
+    "ast_hash": "f09d0405870b0e62982a45aa29c22582",
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.ts": {
