@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 44 files · ~24,324 words
+- 49 files · ~25,842 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 345 nodes · 398 edges · 32 communities (23 shown, 9 thin omitted)
+- 397 nodes · 464 edges · 35 communities (25 shown, 10 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `48a5b7ff`
+- Built from commit: `97a22bf2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -44,18 +44,20 @@
 - index.ts
 - Client Architecture and Development
 - tsconfig.json
+- index.d.ts
+- scripts
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
-2. `Agent` - 15 edges
-3. `Triforce Cross-Platform Client Plan` - 15 edges
-4. `files` - 14 edges
-5. `compilerOptions` - 10 edges
-6. `main()` - 9 edges
-7. `scripts` - 9 edges
-8. `runPipeline()` - 9 edges
-9. `setupWizard()` - 7 edges
-10. `compilerOptions` - 7 edges
+2. `files` - 16 edges
+3. `Agent` - 15 edges
+4. `Triforce Cross-Platform Client Plan` - 15 edges
+5. `RunRegistry` - 14 edges
+6. `compilerOptions` - 12 edges
+7. `main()` - 9 edges
+8. `scripts` - 9 edges
+9. `runPipeline()` - 9 edges
+10. `setupWizard()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `runInSandbox()` --calls--> `runSandboxed()`  [EXTRACTED]
@@ -72,23 +74,23 @@
 ## Import Cycles
 - None detected.
 
-## Communities (32 total, 9 thin omitted)
+## Communities (35 total, 10 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
 Nodes (16): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+8 more)
 
 ### Community 1 - "dependencies"
-Cohesion: 0.15
-Nodes (13): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+5 more)
+Cohesion: 0.13
+Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
 
 ### Community 2 - "Agent"
 Cohesion: 0.20
 Nodes (8): Agent, delay(), firstTextBlock(), getErrorStatus(), isRetryableError(), resolveBinPath(), RETRYABLE_STATUSES, withTimeout()
 
 ### Community 3 - "package.json"
-Cohesion: 0.09
-Nodes (22): bin, triforce, description, devDependencies, pngjs, main, name, scripts (+14 more)
+Cohesion: 0.07
+Nodes (29): bin, triforce, description, devDependencies, pngjs, files, main, name (+21 more)
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
@@ -96,7 +98,7 @@ Nodes (11): Access, Android (Chrome), iPhone / iPad (Safari), Mac (Chrome or Edg
 
 ### Community 5 - "server.js"
 Cohesion: 0.12
-Nodes (20): runSandboxed(), ALLOWED_MODELS, app, computeCosts(), __dirname, httpServer, latestUsage, RATES (+12 more)
+Nodes (21): runSandboxed(), ALLOWED_MODELS, app, computeCosts(), __dirname, httpServer, latestUsage, RATES (+13 more)
 
 ### Community 6 - "manifest.json"
 Cohesion: 0.20
@@ -113,10 +115,6 @@ Nodes (14): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), 
 ### Community 16 - "2026-07-15"
 Cohesion: 0.20
 Nodes (9): 2026-07-15, 2026-07-15 Mode Synchronization Follow-up, Automated regression coverage, Code Review Fix Log, Dependencies, deployment, and operations, Original Finding Resolution Index, Pipeline correctness and configuration, Provider process and response reliability (+1 more)
-
-### Community 18 - "files"
-Cohesion: 0.14
-Nodes (14): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, public/ (+6 more)
 
 ### Community 19 - "cli-input.test.js"
 Cohesion: 0.12
@@ -135,44 +133,52 @@ Cohesion: 0.11
 Nodes (17): dependencies, react, react-dom, @triforce/protocol, name, private, scripts, build (+9 more)
 
 ### Community 23 - "package.json"
-Cohesion: 0.11
-Nodes (17): devDependencies, typescript, exports, files, import, typescript, name, private (+9 more)
+Cohesion: 0.09
+Nodes (21): dependencies, zod, devDependencies, typescript, exports, files, import, src (+13 more)
 
 ### Community 24 - "compilerOptions"
-Cohesion: 0.15
-Nodes (12): compilerOptions, declaration, declarationMap, module, moduleResolution, noUncheckedIndexedAccess, outDir, rootDir (+4 more)
+Cohesion: 0.13
+Nodes (14): compilerOptions, allowJs, checkJs, declaration, declarationMap, module, moduleResolution, noUncheckedIndexedAccess (+6 more)
 
 ### Community 25 - "compilerOptions"
 Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
 ### Community 26 - "index.ts"
-Cohesion: 0.27
-Nodes (6): App(), AgentConfiguration, AgentRole, PipelineConfiguration, PipelineMode, PROTOCOL_VERSION
+Cohesion: 0.13
+Nodes (15): App(), agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+7 more)
 
 ### Community 27 - "Client Architecture and Development"
-Cohesion: 0.50
-Nodes (3): Client Architecture and Development, Commands, Packages
+Cohesion: 0.40
+Nodes (4): Client Architecture and Development, Commands, Packages, Protocol and run recovery
+
+### Community 32 - "index.d.ts"
+Cohesion: 0.15
+Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, PipelineConfiguration, PipelineMode, RunCommand, ServerEvent (+4 more)
+
+### Community 33 - "scripts"
+Cohesion: 0.22
+Nodes (9): scripts, build, cli, dev:client, lint, start, test, test:server (+1 more)
 
 ## Knowledge Gaps
-- **191 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+186 more)
+- **218 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+213 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `devDependencies` connect `devDependencies` to `package.json`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `files` connect `files` to `package.json`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `RunRegistry` connect `files` to `server.js`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `devDependencies` connect `devDependencies` to `package.json`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
-  _191 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _218 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `dependencies` be split into smaller, more focused modules?**
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
 - **Should `server.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.1225071225071225 - nodes in this community are weakly interconnected._
-- **Should `files` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1164021164021164 - nodes in this community are weakly interconnected._

@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 397 nodes · 464 edges · 35 communities (25 shown, 10 thin omitted)
+- 397 nodes · 451 edges · 35 communities (25 shown, 10 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `97a22bf2`
+- Built from commit: `0936b0c5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -50,22 +50,22 @@
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
 2. `files` - 16 edges
-3. `Agent` - 15 edges
-4. `Triforce Cross-Platform Client Plan` - 15 edges
-5. `RunRegistry` - 14 edges
+3. `Triforce Cross-Platform Client Plan` - 15 edges
+4. `RunRegistry` - 14 edges
+5. `Agent` - 14 edges
 6. `compilerOptions` - 12 edges
-7. `main()` - 9 edges
-8. `scripts` - 9 edges
-9. `runPipeline()` - 9 edges
-10. `setupWizard()` - 7 edges
+7. `scripts` - 9 edges
+8. `main()` - 9 edges
+9. `setupWizard()` - 7 edges
+10. `compilerOptions` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `runInSandbox()` --calls--> `runSandboxed()`  [EXTRACTED]
-  orchestrator.js → sandbox.js
 - `runReviewer()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
 - `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
   cli.js → cli-input.js
+- `runInSandbox()` --calls--> `runSandboxed()`  [EXTRACTED]
+  orchestrator.js → sandbox.js
 - `runArchitect()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
 - `runDeveloper()` --calls--> `track()`  [EXTRACTED]
@@ -77,8 +77,8 @@
 ## Communities (35 total, 10 thin omitted)
 
 ### Community 0 - "orchestrator.js"
-Cohesion: 0.20
-Nodes (16): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+8 more)
+Cohesion: 0.18
+Nodes (17): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+9 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.13
@@ -89,16 +89,16 @@ Cohesion: 0.20
 Nodes (8): Agent, delay(), firstTextBlock(), getErrorStatus(), isRetryableError(), resolveBinPath(), RETRYABLE_STATUSES, withTimeout()
 
 ### Community 3 - "package.json"
-Cohesion: 0.07
-Nodes (29): bin, triforce, description, devDependencies, pngjs, files, main, name (+21 more)
+Cohesion: 0.12
+Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
 Nodes (11): Access, Android (Chrome), iPhone / iPad (Safari), Mac (Chrome or Edge), Notes, One-time Install, PWA — Install as App, Service Management (+3 more)
 
 ### Community 5 - "server.js"
-Cohesion: 0.12
-Nodes (21): runSandboxed(), ALLOWED_MODELS, app, computeCosts(), __dirname, httpServer, latestUsage, RATES (+13 more)
+Cohesion: 0.60
+Nodes (4): createWorkspace(), parseWorkspaceManifest(), runWorkspaceTest(), safePath()
 
 ### Community 6 - "manifest.json"
 Cohesion: 0.20
@@ -145,8 +145,8 @@ Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
 ### Community 26 - "index.ts"
-Cohesion: 0.13
-Nodes (15): App(), agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+7 more)
+Cohesion: 0.07
+Nodes (31): App(), agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+23 more)
 
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.40
@@ -157,28 +157,28 @@ Cohesion: 0.15
 Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, PipelineConfiguration, PipelineMode, RunCommand, ServerEvent (+4 more)
 
 ### Community 33 - "scripts"
-Cohesion: 0.22
-Nodes (9): scripts, build, cli, dev:client, lint, start, test, test:server (+1 more)
+Cohesion: 0.09
+Nodes (22): bin, triforce, description, devDependencies, pngjs, main, name, scripts (+14 more)
 
 ## Knowledge Gaps
-- **218 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+213 more)
+- **218 isolated node(s):** `Packages`, `Protocol and run recovery`, `Commands`, `Objective`, `Agent handoff contract` (+213 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `RunRegistry` connect `files` to `server.js`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `package.json`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
+- **Why does `files` connect `package.json` to `scripts`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `dependencies` to `scripts`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **What connects `Packages`, `Protocol and run recovery`, `Commands` to the rest of the system?**
   _218 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
-- **Should `server.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.1164021164021164 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Should `cli-input.test.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

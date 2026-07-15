@@ -30,5 +30,8 @@
   "28": "tsconfig.json",
   "29": "eslint.config.js",
   "30": "test-setup.ts",
-  "31": "vite.config.ts"
+  "31": "vite.config.ts",
+  "32": "index.d.ts",
+  "33": "scripts",
+  "34": "server-protocol.test.js"
 }
