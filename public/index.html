@@ -1253,17 +1253,17 @@
       </svg>
 
       <div class="shard-label architect" id="lbl0">
-        <span class="sl-name">ARCHITECT</span>
+        <span class="sl-name">CLAUDE CODE</span>
         <span class="sl-summary" id="sum0"></span>
       </div>
 
       <div class="shard-label developer" id="lbl1">
-        <span class="sl-name">DEVELOPER</span>
+        <span class="sl-name">CODEX</span>
         <span class="sl-summary" id="sum1"></span>
       </div>
 
       <div class="shard-label reviewer" id="lbl2">
-        <span class="sl-name">REVIEWER</span>
+        <span class="sl-name">ANTIGRAVITY</span>
         <span class="sl-summary" id="sum2"></span>
       </div>
 
@@ -1294,7 +1294,7 @@
 
 <!-- OUTPUT PANELS -->
 <div class="output-panel" id="opArchitect">
-  <div class="op-role blue">ARCHITECT</div>
+  <div class="op-role blue">CLAUDE CODE</div>
   <div class="op-selects">
     <select id="prov-architect"></select>
     <select id="mod-architect"></select>
@@ -1303,7 +1303,7 @@
 </div>
 
 <div class="output-panel" id="opDeveloper">
-  <div class="op-role blue">DEVELOPER</div>
+  <div class="op-role blue">CODEX</div>
   <div class="op-selects">
     <select id="prov-developer"></select>
     <select id="mod-developer"></select>
@@ -1312,7 +1312,7 @@
 </div>
 
 <div class="output-panel" id="opReviewer">
-  <div class="op-role blue">REVIEWER</div>
+  <div class="op-role blue">ANTIGRAVITY</div>
   <div class="op-selects">
     <select id="prov-reviewer"></select>
     <select id="mod-reviewer"></select>
@@ -1330,7 +1330,7 @@
       <div class="sc-header">
         <span class="sc-role">
           <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
-          <span class="sc-role-text">ARCHITECT</span>
+          <span class="sc-role-text">CLAUDE CODE</span>
         </span>
         <span class="sc-badge done" id="badge-architect">COMPLETE</span>
       </div>
@@ -1350,7 +1350,7 @@
       <div class="sc-header">
         <span class="sc-role">
           <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
-          <span class="sc-role-text">DEVELOPER</span>
+          <span class="sc-role-text">CODEX</span>
         </span>
         <span class="sc-badge done" id="badge-developer">COMPLETE</span>
       </div>
@@ -1370,7 +1370,7 @@
       <div class="sc-header">
         <span class="sc-role">
           <svg class="sc-role-glyph" viewBox="0 0 100 87"><polygon points="50,4 96,84 4,84" fill="none" stroke="currentColor" stroke-width="6"/></svg>
-          <span class="sc-role-text">REVIEWER</span>
+          <span class="sc-role-text">ANTIGRAVITY</span>
         </span>
         <span class="sc-badge pass" id="badge-reviewer">★ PASS</span>
       </div>
@@ -1457,7 +1457,7 @@
   const costVal      = document.getElementById('costVal');
   const scene        = document.getElementById('scene');
 
-  const ROLE_LABELS = ['ARCHITECT', 'DEVELOPER', 'REVIEWER'];
+  const ROLE_LABELS = ['CLAUDE CODE', 'CODEX', 'ANTIGRAVITY'];
 
   // ── TERMINALS ──
   const TERM_THEME = {
@@ -1564,7 +1564,7 @@
     // Update role labels dynamically
     const labels = mode === 2 
       ? ['PROMPT DESIGNER', 'CODER', 'SUPERVISOR']
-      : ['ARCHITECT', 'DEVELOPER', 'REVIEWER'];
+      : ['CLAUDE CODE', 'CODEX', 'ANTIGRAVITY'];
       
     // 1. Shard labels on the 3D Triforce SVG
     document.querySelector('#lbl0 .sl-name').textContent = labels[0];
@@ -1842,7 +1842,7 @@
         if (stage === 'architect') {
           agentData.architect.startTime = Date.now();
           setSegState(0, 'active');
-          stxt.textContent = label || 'STAGE 1 · ARCHITECT';
+          stxt.textContent = label || 'STAGE 1 · CLAUDE CODE';
           setTimeout(() => doFlash(() => zoomIn(0)), 300);
 
         } else if (stage === 'developer') {
@@ -1850,7 +1850,7 @@
           agentData.developer.startTime = Date.now();
           setSegState(0, 'done');
           document.getElementById('sum0').textContent = 'Plan ready';
-          stxt.textContent = label || 'STAGE 2 · DEVELOPER';
+          stxt.textContent = label || 'STAGE 2 · CODEX';
           setTimeout(() => {
             doFlash(() => {
               zoomOut();
@@ -1869,7 +1869,7 @@
           agentData.reviewer.startTime = Date.now();
           setSegState(1, 'done');
           document.getElementById('sum1').textContent = 'Code complete';
-          stxt.textContent = label || 'STAGE 4 · REVIEWER';
+          stxt.textContent = label || 'STAGE 4 · ANTIGRAVITY';
           setTimeout(() => {
             doFlash(() => {
               zoomOut();

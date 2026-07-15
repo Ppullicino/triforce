@@ -284,8 +284,8 @@ async function runPipeline(ws, task, config, mode = 1) {
 
   } else {
     // ── Mode 1: Sequential Pipeline (with full context handoff / piggybacking) ──
-    // ── Stage 1: Architect ──
-    send({ type: 'status', stage: 'architect', label: 'Stage 1: Architect' });
+    // ── Stage 1: Claude Code ──
+    send({ type: 'status', stage: 'architect', label: 'Stage 1: Claude Code' });
     let plan;
     try {
       const agent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
@@ -300,8 +300,8 @@ async function runPipeline(ws, task, config, mode = 1) {
       return;
     }
 
-    // ── Stage 2: Developer (receives task + plan as context) ──
-    send({ type: 'status', stage: 'developer', label: 'Stage 2: Developer' });
+    // ── Stage 2: Codex (receives task + plan as context) ──
+    send({ type: 'status', stage: 'developer', label: 'Stage 2: Codex' });
     let code;
     try {
       const agent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS.developer });
@@ -329,8 +329,8 @@ async function runPipeline(ws, task, config, mode = 1) {
     }
     send({ type: 'sandbox', ...sandboxResult });
 
-    // ── Stage 4: Reviewer (receives task + plan + code + execution results) ──
-    send({ type: 'status', stage: 'reviewer', label: 'Stage 4: Reviewer' });
+    // ── Stage 4: Antigravity (receives task + plan + code + execution results) ──
+    send({ type: 'status', stage: 'reviewer', label: 'Stage 4: Antigravity' });
     try {
       const executionSummary = [
         `Exit code: ${sandboxResult.exitCode ?? 0}`,

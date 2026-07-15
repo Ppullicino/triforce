@@ -58,7 +58,7 @@ function validateApiKeys(config) {
 }
 
 async function runArchitect(agent) {
-  console.log(`\n=== STAGE 1: ARCHITECT (${agent.provider}/${agent.model}) ===`);
+  console.log(`\n=== STAGE 1: CLAUDE CODE (${agent.provider}/${agent.model}) ===`);
   const { text, usage } = await agent.call(TASK);
   track('architect', agent.model, usage);
   console.log(text);
@@ -279,7 +279,7 @@ async function main() {
     }
 
     // Pass Task + Plan context to Developer
-    console.log(`\n=== STAGE 2: DEVELOPER (${agents.developer.provider}/${agents.developer.model}) ===`);
+    console.log(`\n=== STAGE 2: CODEX (${agents.developer.provider}/${agents.developer.model}) ===`);
     let code;
     try {
       const prompt = `TASK:\n${TASK}\n\nPLAN:\n${plan}`;
@@ -302,7 +302,7 @@ async function main() {
     }
 
     // Pass Task + Plan + Code + Sandbox context to Reviewer
-    console.log(`\n=== STAGE 4: REVIEWER (${agents.reviewer.provider}/${agents.reviewer.model}) ===`);
+    console.log(`\n=== STAGE 4: ANTIGRAVITY (${agents.reviewer.provider}/${agents.reviewer.model}) ===`);
     try {
       const executionSummary = [
         `Exit code: ${sandboxResult.exitCode ?? 0}`,
