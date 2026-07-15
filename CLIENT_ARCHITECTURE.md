@@ -29,6 +29,23 @@ The server retains at most 50 runs in memory. Each run retains at most 600 event
 Runs continue while clients are disconnected, but this initial registry is process
 local and does not survive a server restart.
 
+## Hosts, credentials, and connections
+
+The shared client normalizes full HTTP(S) server URLs and derives API and WebSocket
+addresses without putting credentials into URLs. Saved host metadata is handled by a
+`HostStorage` adapter. Secrets use a separate `CredentialStorage` adapter; the browser
+development adapter is intentionally memory-only. Desktop and Android shells must
+provide their OS credential-store adapters before release.
+
+Clients authenticate by posting the token in a JSON body to `POST /api/session`. The
+server returns an HTTP-only session cookie. The earlier query-string `/auth` flow is
+retained only for compatibility with the legacy dashboard and should not be used by
+new clients.
+
+`TriforceConnection` reports explicit connection states and retries unexpected socket
+closures with bounded exponential backoff. It records the active run and highest
+event ID, then sends a replay subscription after reconnecting.
+
 ## Commands
 
 Run these from the repository root:

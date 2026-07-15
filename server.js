@@ -478,11 +478,26 @@ function cookieToken(req) {
   return req.headers.cookie?.split(';').map(v => v.trim()).find(v => v.startsWith('triforce_token='))?.slice('triforce_token='.length);
 }
 
-app.get('/auth', (req, res) => {
-  if (!tokenMatches(req.query.token)) return res.status(401).send('Invalid token');
+function setSessionCookie(req, res) {
   const secure = req.secure || req.headers['x-forwarded-proto'] === 'https' ? '; Secure' : '';
   res.setHeader('Set-Cookie', `triforce_token=${AUTH_TOKEN}; HttpOnly; SameSite=Strict; Path=/${secure}`);
+}
+
+app.get('/auth', (req, res) => {
+  if (!tokenMatches(req.query.token)) return res.status(401).send('Invalid token');
+  setSessionCookie(req, res);
   res.redirect('/');
+});
+
+app.post('/api/session', (req, res) => {
+  if (!tokenMatches(req.body?.token)) return res.status(401).json({ error: 'invalid credentials' });
+  setSessionCookie(req, res);
+  res.status(204).end();
+});
+
+app.delete('/api/session', (_req, res) => {
+  res.setHeader('Set-Cookie', 'triforce_token=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0');
+  res.status(204).end();
 });
 
 app.use('/api', (req, res, next) => tokenMatches(cookieToken(req)) ? next() : res.status(401).json({ error: 'unauthorized' }));

@@ -24,5 +24,24 @@ button { font: inherit; }
 .eyebrow { color: #65d8ff; font-size: .78rem; font-weight: 800; letter-spacing: .22em; }
 h1 { margin: .4rem 0 1rem; max-width: 11ch; font-size: clamp(3rem, 10vw, 7rem); line-height: .88; letter-spacing: -.065em; }
 .lede { max-width: 38rem; color: #b8c2d9; font-size: clamp(1rem, 3vw, 1.3rem); line-height: 1.6; }
-button { display: block; margin: 2rem 0 1rem; padding: .9rem 1.2rem; border: 0; border-radius: .7rem; background: #65d8ff; color: #07101d; font-weight: 800; cursor: pointer; }
+button { padding: .9rem 1.2rem; border: 0; border-radius: .7rem; background: #65d8ff; color: #07101d; font-weight: 800; cursor: pointer; }
 small { color: #7e8aa4; }
+.host-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0; }
+.host-form label { display: grid; gap: .4rem; color: #b8c2d9; font-size: .82rem; font-weight: 700; }
+.host-form label:nth-child(2) { grid-column: span 2; }
+.host-form input { width: 100%; padding: .85rem; border: 1px solid #2b3650; border-radius: .6rem; background: #111827; color: inherit; font: inherit; }
+.host-form button { align-self: end; }
+.host-list { display: grid; gap: .75rem; margin: 0 0 1.5rem; padding: 0; list-style: none; }
+.host-list li { display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; padding: 1rem; border: 1px solid #26314a; border-radius: .8rem; background: rgba(17, 24, 39, .75); }
+.host-list li > span:first-child { display: grid; gap: .3rem; overflow: hidden; }
+.host-list small { overflow: hidden; text-overflow: ellipsis; }
+.host-actions { display: flex; gap: .5rem; }
+.host-actions button { padding: .55rem .75rem; }
+.host-actions .quiet { background: #253047; color: #dbe4f7; }
+.connection-state { grid-column: 1 / -1; color: #65d8ff; text-transform: capitalize; }
+.error { color: #ff8d9b; }
+@media (max-width: 560px) {
+  .host-form { grid-template-columns: 1fr; }
+  .host-form label:nth-child(2) { grid-column: auto; }
+  .host-list li { grid-template-columns: 1fr; }
+}

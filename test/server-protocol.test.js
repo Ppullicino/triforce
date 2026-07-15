@@ -27,6 +27,12 @@ test('protects protocol discovery and negotiates WebSocket versions', async () =
   const origin = `http://127.0.0.1:${port}`;
   try {
     assert.equal((await fetch(`${origin}/api/capabilities`)).status, 401);
+    const login = await fetch(`${origin}/api/session`, {
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token }),
+    });
+    assert.equal(login.status, 204);
+    assert.match(login.headers.get('set-cookie'), /HttpOnly/);
+    assert.doesNotMatch(login.url, new RegExp(token));
     const response = await fetch(`${origin}/api/capabilities`, { headers: { cookie: `triforce_token=${token}` } });
     assert.equal(response.status, 200);
     assert.equal((await response.json()).protocolMajor, 1);

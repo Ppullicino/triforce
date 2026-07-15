@@ -36,7 +36,7 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 0 | Durable roadmap and agent handoff rules | COMPLETE | `step-00:` | Plan and instructions added; planning commit records the final SHA. |
 | 1 | Monorepo and shared-client foundation | COMPLETE | `step-01:` | npm workspaces, shared React/Vite client, protocol package, docs; lint, typecheck, 22 server tests, 1 client test, and builds pass. |
 | 2 | Versioned server protocol and resumable run API | COMPLETE | `step-02:` | Protocol v1 schemas, capability/status APIs, stable run IDs, bounded replay registry; 25 server, 3 protocol, and 1 client tests pass. |
-| 3 | Shared connection, authentication, and host profiles | NOT STARTED | `step-03:` | — |
+| 3 | Shared connection, authentication, and host profiles | COMPLETE | `step-03:` | Host CRUD, strict URL normalization, separate credential adapters, body-based session auth, state/reconnect/replay core; 25 server, 10 client, 3 protocol tests pass. |
 | 4 | Shared responsive Triforce interface | NOT STARTED | `step-04:` | — |
 | 5 | Desktop shell for Windows and macOS | NOT STARTED | `step-05:` | — |
 | 6 | Android container shell | NOT STARTED | `step-06:` | — |
@@ -46,9 +46,9 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 
 ## Current handoff
 
-- Current step: Step 3 — shared connection, authentication, and host profiles.
-- Next action: Implement URL normalization, storage adapters, credential-safe auth,
-  connection state, and bounded reconnect/replay behavior in the shared client core.
+- Current step: Step 4 — shared responsive Triforce interface.
+- Next action: Build the full task, pipeline, terminal, usage, history, settings, and
+  diagnostics experience on the shared connection core with responsive E2E coverage.
 - Known blockers: None.
 - Important constraint: Do not put provider API keys in any client. Clients receive
   only Triforce host URLs and Triforce authentication credentials.

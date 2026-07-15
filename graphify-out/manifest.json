@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784139267.5654933,
-    "ast_hash": "6acdbb4a293c94289e558a1308244f01",
+    "mtime": 1784139435.5505955,
+    "ast_hash": "24ef18b7078f5508878e617fd45fd731",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "CROSS_PLATFORM_CLIENT_PLAN.md": {
-    "mtime": 1784139356.4189565,
-    "ast_hash": "7b2d89c0ea8dcd113a63d7f0934ac9e1",
+    "mtime": 1784139615.1025283,
+    "ast_hash": "c830827494d9ee2b4f26cebe910378dc",
     "semantic_hash": ""
   },
   "clients/shared/eslint.config.js": {
@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "clients/shared/src/App.tsx": {
-    "mtime": 1784138920.805495,
-    "ast_hash": "ac7a402dabe086fce9340643b09c5048",
+    "mtime": 1784139562.0924313,
+    "ast_hash": "bda541507999bdaf917f7f3fe80018a9",
     "semantic_hash": ""
   },
   "clients/shared/src/main.tsx": {
@@ -260,8 +260,8 @@
     "semantic_hash": ""
   },
   "CLIENT_ARCHITECTURE.md": {
-    "mtime": 1784139276.450339,
-    "ast_hash": "946e089a735f596328fe47a8d7ab7d76",
+    "mtime": 1784139615.1015282,
+    "ast_hash": "3720f1f03f8270290c3a564c0b95fe1c",
     "semantic_hash": ""
   },
   "clients/shared/index.html": {
@@ -295,8 +295,33 @@
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
-    "mtime": 1784139291.6550758,
-    "ast_hash": "92a9f200122109d2846061ef7bda1d4a",
+    "mtime": 1784139528.6530018,
+    "ast_hash": "1e4071dd890568b57883c1cf2d576fd8",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/connection.test.ts": {
+    "mtime": 1784139581.7350965,
+    "ast_hash": "942f3e0722a3f9d30cb16fa587855754",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/connection.ts": {
+    "mtime": 1784139496.5405507,
+    "ast_hash": "8d80baea42fc5488da32009ea4b9de36",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/host-url.ts": {
+    "mtime": 1784139496.5405507,
+    "ast_hash": "a952f373a42d12e7311c3385b4d56eae",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/hosts.test.ts": {
+    "mtime": 1784139528.6530018,
+    "ast_hash": "33ab56ddf87f5e14b3033d3dc13f6a27",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/hosts.ts": {
+    "mtime": 1784139496.5405507,
+    "ast_hash": "c8c4a57ec5c9e8829dcbd1f5763d5fd2",
     "semantic_hash": ""
   }
 }
