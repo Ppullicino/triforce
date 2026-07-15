@@ -2089,8 +2089,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "app.test.tsx"
     },
     {
@@ -2100,8 +2100,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "app.tsx"
     },
     {
@@ -2111,8 +2111,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_app_roles",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "roles"
     },
     {
@@ -2122,8 +2122,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "clients_shared_src_app_connectionmessages",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "connectionmessages"
     },
     {
@@ -2133,8 +2133,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "clients_shared_src_app_defaultconfig",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "defaultconfig"
     },
     {
@@ -2144,8 +2144,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "clients_shared_src_app_app",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "app()"
     },
     {
@@ -2155,8 +2155,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "clients_shared_src_app_hostscreen",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "hostscreen()"
     },
     {
@@ -2166,8 +2166,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "clients_shared_src_app_dashboard",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "dashboard()"
     },
     {
@@ -2177,8 +2177,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "connection.test.ts"
     },
     {
@@ -2188,8 +2188,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "mocksocket"
     },
     {
@@ -2199,8 +2199,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_send",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".send()"
     },
     {
@@ -2210,8 +2210,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_close",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".close()"
     },
     {
@@ -2221,8 +2221,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_open",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".open()"
     },
     {
@@ -2232,8 +2232,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_message",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".message()"
     },
     {
@@ -2287,8 +2287,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": "socketlike"
     },
     {
@@ -2298,8 +2298,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike_send",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".send()"
     },
     {
@@ -2309,8 +2309,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike_close",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".close()"
     },
     {
@@ -2320,8 +2320,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike_addeventlistener",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".addeventlistener()"
     },
     {
@@ -2342,8 +2342,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": "triforceconnection"
     },
     {
@@ -2353,8 +2353,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_constructor",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".constructor()"
     },
     {
@@ -2364,8 +2364,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_onstate",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".onstate()"
     },
     {
@@ -2375,8 +2375,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_onevent",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".onevent()"
     },
     {
@@ -2386,8 +2386,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_connect",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".connect()"
     },
     {
@@ -2397,8 +2397,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_disconnect",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".disconnect()"
     },
     {
@@ -2419,8 +2419,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_opensocket",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".opensocket()"
     },
     {
@@ -2430,8 +2430,8 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_handlemessage",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".handlemessage()"
     },
     {
@@ -2441,8 +2441,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_handleclose",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".handleclose()"
     },
     {
@@ -2452,8 +2452,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_transition",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".transition()"
     },
     {
@@ -2606,8 +2606,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_credentialstorage_get",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".get()"
     },
     {
@@ -2782,8 +2782,8 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_hostrepository_token",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".token()"
     },
     {
@@ -2804,8 +2804,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "native-integration.ts"
     },
     {
@@ -2815,8 +2815,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration_installnativeintegration",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "installnativeintegration()"
     },
     {
@@ -2826,8 +2826,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "pipeline.test.ts"
     },
     {
@@ -2837,8 +2837,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "pipeline.ts"
     },
     {
@@ -2848,8 +2848,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_usageitem",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "usageitem"
     },
     {
@@ -2859,8 +2859,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_pipelineviewstate",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "pipelineviewstate"
     },
     {
@@ -2870,8 +2870,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_emptyusage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "emptyusage"
     },
     {
@@ -2881,8 +2881,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_initialpipelinestate",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "initialpipelinestate()"
     },
     {
@@ -2892,8 +2892,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_reducepipeline",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "reducepipeline()"
     },
     {
@@ -2903,8 +2903,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_bounded",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "bounded()"
     },
     {
@@ -2914,8 +2914,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_mapstatus",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "mapstatus()"
     },
     {
@@ -3112,8 +3112,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_main",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "main.tsx"
     },
     {
@@ -5798,10 +5798,21 @@
       "norm_label": "latestusage"
     },
     {
+      "label": "runValidationPipeline()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L102",
+      "_origin": "ast",
+      "id": "server_runvalidationpipeline",
+      "community": 26,
+      "community_name": "index.ts",
+      "norm_label": "runvalidationpipeline()"
+    },
+    {
       "label": "runPipeline()",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L110",
+      "source_location": "L121",
       "_origin": "ast",
       "id": "server_runpipeline",
       "community": 26,
@@ -5812,7 +5823,7 @@
       "label": "app",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L475",
+      "source_location": "L486",
       "_origin": "ast",
       "id": "server_app",
       "community": 26,
@@ -5823,7 +5834,7 @@
       "label": "tokenMatches()",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L493",
+      "source_location": "L504",
       "_origin": "ast",
       "id": "server_tokenmatches",
       "community": 26,
@@ -5834,7 +5845,7 @@
       "label": "cookieToken()",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L499",
+      "source_location": "L510",
       "_origin": "ast",
       "id": "server_cookietoken",
       "community": 26,
@@ -5845,7 +5856,7 @@
       "label": "bearerToken()",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L503",
+      "source_location": "L514",
       "_origin": "ast",
       "id": "server_bearertoken",
       "community": 26,
@@ -5856,7 +5867,7 @@
       "label": "webSocketProtocolToken()",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L508",
+      "source_location": "L519",
       "_origin": "ast",
       "id": "server_websocketprotocoltoken",
       "community": 26,
@@ -5867,7 +5878,7 @@
       "label": "requestIsAuthorized()",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L515",
+      "source_location": "L526",
       "_origin": "ast",
       "id": "server_requestisauthorized",
       "community": 26,
@@ -5878,7 +5889,7 @@
       "label": "setSessionCookie()",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L519",
+      "source_location": "L530",
       "_origin": "ast",
       "id": "server_setsessioncookie",
       "community": 26,
@@ -5889,7 +5900,7 @@
       "label": "httpServer",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L594",
+      "source_location": "L605",
       "_origin": "ast",
       "id": "server_httpserver",
       "community": 26,
@@ -5900,7 +5911,7 @@
       "label": "wss",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L595",
+      "source_location": "L606",
       "_origin": "ast",
       "id": "server_wss",
       "community": 26,
@@ -5974,6 +5985,72 @@
       "norm_label": "projectroot"
     },
     {
+      "label": "remote-client-e2e.test.js",
+      "file_type": "code",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "test_remote_client_e2e_test",
+      "community": 53,
+      "community_name": "MockSocket",
+      "norm_label": "remote-client-e2e.test.js"
+    },
+    {
+      "label": "nativeOrigins",
+      "file_type": "code",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "test_remote_client_e2e_test_nativeorigins",
+      "community": 53,
+      "community_name": "MockSocket",
+      "norm_label": "nativeorigins"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "test_remote_client_e2e_test_config",
+      "community": 53,
+      "community_name": "MockSocket",
+      "norm_label": "config"
+    },
+    {
+      "label": "startServer()",
+      "file_type": "code",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "test_remote_client_e2e_test_startserver",
+      "community": 53,
+      "community_name": "MockSocket",
+      "norm_label": "startserver()"
+    },
+    {
+      "label": "nativeSocket()",
+      "file_type": "code",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "test_remote_client_e2e_test_nativesocket",
+      "community": 53,
+      "community_name": "MockSocket",
+      "norm_label": "nativesocket()"
+    },
+    {
+      "label": "messages()",
+      "file_type": "code",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "test_remote_client_e2e_test_messages",
+      "community": 53,
+      "community_name": "MockSocket",
+      "norm_label": "messages()"
+    },
+    {
       "label": "run-registry.test.js",
       "file_type": "code",
       "source_file": "test/run-registry.test.js",
@@ -6013,8 +6090,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "test_server_protocol_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "server-protocol.test.js"
     },
     {
@@ -6024,8 +6101,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "test_server_protocol_test_startserver",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "startserver()"
     },
     {
@@ -6500,6 +6577,149 @@
       "community": 19,
       "community_name": "cli-input.test.js",
       "norm_label": "per-step completion procedure"
+    },
+    {
+      "label": "OPERATIONS.md",
+      "file_type": "document",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "operations",
+      "community": 55,
+      "community_name": "Triforce Remote Operations Guide",
+      "norm_label": "operations.md"
+    },
+    {
+      "label": "Triforce Remote Operations Guide",
+      "file_type": "document",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "operations_triforce_remote_operations_guide",
+      "community": 55,
+      "community_name": "Triforce Remote Operations Guide",
+      "norm_label": "triforce remote operations guide"
+    },
+    {
+      "label": "Deployment and monitoring",
+      "file_type": "document",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "operations_deployment_and_monitoring",
+      "community": 55,
+      "community_name": "Triforce Remote Operations Guide",
+      "norm_label": "deployment and monitoring"
+    },
+    {
+      "label": "Data and backup",
+      "file_type": "document",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "operations_data_and_backup",
+      "community": 55,
+      "community_name": "Triforce Remote Operations Guide",
+      "norm_label": "data and backup"
+    },
+    {
+      "label": "Upgrade",
+      "file_type": "document",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "operations_upgrade",
+      "community": 55,
+      "community_name": "Triforce Remote Operations Guide",
+      "norm_label": "upgrade"
+    },
+    {
+      "label": "Rollback and recovery",
+      "file_type": "document",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "operations_rollback_and_recovery",
+      "community": 55,
+      "community_name": "Triforce Remote Operations Guide",
+      "norm_label": "rollback and recovery"
+    },
+    {
+      "label": "Release ownership",
+      "file_type": "document",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "operations_release_ownership",
+      "community": 55,
+      "community_name": "Triforce Remote Operations Guide",
+      "norm_label": "release ownership"
+    },
+    {
+      "label": "RELEASE_CHECKLIST.md",
+      "file_type": "document",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "release_checklist",
+      "community": 56,
+      "community_name": "0.1.0-rc.1 Validation Record",
+      "norm_label": "release_checklist.md"
+    },
+    {
+      "label": "0.1.0-rc.1 Validation Record",
+      "file_type": "document",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "release_checklist_0_1_0_rc_1_validation_record",
+      "community": 56,
+      "community_name": "0.1.0-rc.1 Validation Record",
+      "norm_label": "0.1.0-rc.1 validation record"
+    },
+    {
+      "label": "Compatibility matrix",
+      "file_type": "document",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "release_checklist_compatibility_matrix",
+      "community": 56,
+      "community_name": "0.1.0-rc.1 Validation Record",
+      "norm_label": "compatibility matrix"
+    },
+    {
+      "label": "Functional and failure cases",
+      "file_type": "document",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "release_checklist_functional_and_failure_cases",
+      "community": 56,
+      "community_name": "0.1.0-rc.1 Validation Record",
+      "norm_label": "functional and failure cases"
+    },
+    {
+      "label": "Security and accessibility sign-off",
+      "file_type": "document",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "release_checklist_security_and_accessibility_sign_off",
+      "community": 56,
+      "community_name": "0.1.0-rc.1 Validation Record",
+      "norm_label": "security and accessibility sign-off"
+    },
+    {
+      "label": "Operations and release",
+      "file_type": "document",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "release_checklist_operations_and_release",
+      "community": 56,
+      "community_name": "0.1.0-rc.1 Validation Record",
+      "norm_label": "operations and release"
     },
     {
       "label": "RELEASE_NOTES.md",
@@ -7425,7 +7645,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L159",
+      "source_location": "L170",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "agent_agent_call"
@@ -9874,6 +10094,17 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test_messages",
+      "target": "clients_shared_src_core_connection_test_mocksocket_message"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/shared/src/core/connection.ts",
@@ -10881,6 +11112,17 @@
       "source": "clients_shared_src_core_hosts_hostrepository",
       "target": "clients_shared_src_core_hosts_hostrepository_upsert",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test_startserver",
+      "target": "clients_shared_src_core_hosts_hostrepository_token"
     },
     {
       "relation": "indirect_call",
@@ -13973,7 +14215,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L475",
+      "source_location": "L486",
       "weight": 1.0,
       "source": "server",
       "target": "server_app",
@@ -13983,7 +14225,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L503",
+      "source_location": "L514",
       "weight": 1.0,
       "source": "server",
       "target": "server_bearertoken",
@@ -14003,7 +14245,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L499",
+      "source_location": "L510",
       "weight": 1.0,
       "source": "server",
       "target": "server_cookietoken",
@@ -14023,7 +14265,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L594",
+      "source_location": "L605",
       "weight": 1.0,
       "source": "server",
       "target": "server_httpserver",
@@ -14063,7 +14305,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L515",
+      "source_location": "L526",
       "weight": 1.0,
       "source": "server",
       "target": "server_requestisauthorized",
@@ -14083,7 +14325,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L110",
+      "source_location": "L121",
       "weight": 1.0,
       "source": "server",
       "target": "server_runpipeline",
@@ -14103,7 +14345,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L519",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_runvalidationpipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L530",
       "weight": 1.0,
       "source": "server",
       "target": "server_setsessioncookie",
@@ -14153,7 +14405,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L493",
+      "source_location": "L504",
       "weight": 1.0,
       "source": "server",
       "target": "server_tokenmatches",
@@ -14173,7 +14425,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L508",
+      "source_location": "L519",
       "weight": 1.0,
       "source": "server",
       "target": "server_websocketprotocoltoken",
@@ -14183,7 +14435,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L595",
+      "source_location": "L606",
       "weight": 1.0,
       "source": "server",
       "target": "server_wss",
@@ -14239,7 +14491,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L116",
+      "source_location": "L127",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "server_allowed_models"
@@ -14249,7 +14501,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L312",
+      "source_location": "L323",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "server_stripcodefences",
@@ -14260,7 +14512,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L325",
+      "source_location": "L336",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "server_runinsandbox",
@@ -14271,7 +14523,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L462",
+      "source_location": "L473",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "server_computecosts",
@@ -14282,7 +14534,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L181",
+      "source_location": "L192",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "workspace_createworkspace",
@@ -14293,7 +14545,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L180",
+      "source_location": "L191",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "workspace_parseworkspacemanifest",
@@ -14304,7 +14556,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L185",
+      "source_location": "L196",
       "weight": 1.0,
       "source": "server_runpipeline",
       "target": "workspace_runworkspacetest",
@@ -14315,7 +14567,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L516",
+      "source_location": "L527",
       "weight": 1.0,
       "source": "server_requestisauthorized",
       "target": "server_tokenmatches",
@@ -14326,7 +14578,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L516",
+      "source_location": "L527",
       "weight": 1.0,
       "source": "server_requestisauthorized",
       "target": "server_cookietoken",
@@ -14337,7 +14589,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L516",
+      "source_location": "L527",
       "weight": 1.0,
       "source": "server_requestisauthorized",
       "target": "server_bearertoken",
@@ -14371,6 +14623,56 @@
       "weight": 1.0,
       "source": "test_package_test",
       "target": "test_package_test_projectroot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test",
+      "target": "test_remote_client_e2e_test_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test",
+      "target": "test_remote_client_e2e_test_messages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test",
+      "target": "test_remote_client_e2e_test_nativeorigins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test",
+      "target": "test_remote_client_e2e_test_nativesocket",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test",
+      "target": "test_remote_client_e2e_test_startserver",
       "confidence_score": 1.0
     },
     {
@@ -14791,6 +15093,116 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "operations",
+      "target": "operations_triforce_remote_operations_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "operations_triforce_remote_operations_guide",
+      "target": "operations_data_and_backup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "operations_triforce_remote_operations_guide",
+      "target": "operations_deployment_and_monitoring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "operations_triforce_remote_operations_guide",
+      "target": "operations_release_ownership",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "operations_triforce_remote_operations_guide",
+      "target": "operations_rollback_and_recovery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OPERATIONS.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "operations_triforce_remote_operations_guide",
+      "target": "operations_upgrade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "release_checklist",
+      "target": "release_checklist_0_1_0_rc_1_validation_record",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "release_checklist_0_1_0_rc_1_validation_record",
+      "target": "release_checklist_compatibility_matrix",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "release_checklist_0_1_0_rc_1_validation_record",
+      "target": "release_checklist_functional_and_failure_cases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "release_checklist_0_1_0_rc_1_validation_record",
+      "target": "release_checklist_operations_and_release",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "RELEASE_CHECKLIST.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "release_checklist_0_1_0_rc_1_validation_record",
+      "target": "release_checklist_security_and_accessibility_sign_off",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "RELEASE_NOTES.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -15190,5 +15602,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "61118d4967a1e7f756845bb5b73e67a1c74d7aab"
+  "built_at_commit": "7dbb8cd08321acd839f7d2eb6073624a010c9ece"
 }

@@ -8,6 +8,9 @@ on:
       - 'clients/desktop/**'
       - 'clients/shared/**'
       - 'packages/protocol/**'
+      - 'server.js'
+      - 'run-registry.js'
+      - 'test/remote-client-e2e.test.js'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/desktop-smoke.yml'
@@ -34,7 +37,7 @@ jobs:
       - name: Verify synchronized release version
         run: npm run version:check
       - name: Verify shared client and protocol
-        run: npm run test --workspace @triforce/client && npm run test --workspace @triforce/protocol && node --test test/server-protocol.test.js
+        run: npm test
       - name: Build shared client
         run: npm run build
       - name: Check native credential and window shell

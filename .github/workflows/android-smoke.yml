@@ -8,6 +8,8 @@ on:
       - 'clients/android/**'
       - 'clients/shared/**'
       - 'packages/protocol/**'
+      - 'server.js'
+      - 'test/remote-client-e2e.test.js'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/android-smoke.yml'

@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784146632.4768298,
-    "ast_hash": "3d31110f0258f8a78e305b4e3f756f96",
+    "mtime": 1784147835.6444533,
+    "ast_hash": "459d859c2ad09667e6db15f79ff9e3d9",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/desktop-smoke.yml": {
-    "mtime": 1784146949.1992645,
-    "ast_hash": "aa24395a709ba429afee4f634e975c8f",
+    "mtime": 1784147929.2340302,
+    "ast_hash": "8116f3aa162b3da2e3ca65f0351894ba",
     "semantic_hash": ""
   },
   "clients/desktop/README.md": {
@@ -670,8 +670,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/android-smoke.yml": {
-    "mtime": 1784146949.2002645,
-    "ast_hash": "f25f944736f2a9e4efeb6587bf97e525",
+    "mtime": 1784147929.2340302,
+    "ast_hash": "6bb08ed32541d90b05ef0072bd7158e2",
     "semantic_hash": ""
   },
   "clients/android/README.md": {
@@ -712,6 +712,21 @@
   "SIGNING.md": {
     "mtime": 1784146949.2002645,
     "ast_hash": "3b424ce8ce1ca8e5fe23d33a1d4998ea",
+    "semantic_hash": ""
+  },
+  "test/remote-client-e2e.test.js": {
+    "mtime": 1784147865.4500031,
+    "ast_hash": "89c182d6396139d11ef39f0a244a95aa",
+    "semantic_hash": ""
+  },
+  "OPERATIONS.md": {
+    "mtime": 1784147929.2350302,
+    "ast_hash": "1f18471d1d8e170dcf864b34f2abe57f",
+    "semantic_hash": ""
+  },
+  "RELEASE_CHECKLIST.md": {
+    "mtime": 1784147929.2350302,
+    "ast_hash": "5476b923d62420a063de7147a41e2510",
     "semantic_hash": ""
   }
 }

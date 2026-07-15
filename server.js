@@ -99,6 +99,17 @@ let latestUsage = {
   reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
 };
 
+async function runValidationPipeline(ws, task, _config, mode) {
+  const send = event => ws.send(JSON.stringify(event));
+  send({ type: 'status', stage: 'architect', label: `Validating mode ${mode}` });
+  await new Promise(resolve => setTimeout(resolve, 75));
+  for (const role of ['architect', 'developer', 'reviewer']) {
+    send({ type: 'output', role, text: `${role} completed ${task} in mode ${mode}` });
+  }
+  send({ type: 'pty', role: 'developer', data: `representative remote output for mode ${mode}\n` });
+  send({ type: 'done', elapsed: '0.08', passed: true });
+}
+
 /**
  * Executes the Triforce multi-agent pipeline.
  * Supports two modes:
@@ -637,7 +648,10 @@ wss.on('connection', (ws) => {
     }
     if (command.type === 'run') {
       try {
-        const run = runRegistry.start(command, pipelineSocket => runPipeline(pipelineSocket, command.task, command.config, command.mode));
+        const useValidationPipeline = process.env.NODE_ENV === 'test' && process.env.TRIFORCE_E2E_FAKE_PIPELINE === '1';
+        const run = runRegistry.start(command, pipelineSocket => useValidationPipeline
+          ? runValidationPipeline(pipelineSocket, command.task, command.config, command.mode)
+          : runPipeline(pipelineSocket, command.task, command.config, command.mode));
         ws.send(JSON.stringify({ type: 'run_started', run: runRegistry.snapshot(run) }));
         unsubscribe.add(runRegistry.subscribe(run, ws));
       } catch (err) {

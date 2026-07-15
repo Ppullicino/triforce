@@ -1,7 +1,7 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 80 files · ~40,541 words
+- 80 files · ~40,547 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -213,7 +213,7 @@ Cohesion: 0.50
 Nodes (3): Compatibility, Migration and security changes, Triforce Remote 0.1.0 Release Notes
 
 ## Knowledge Gaps
-- **300 isolated node(s):** `Compatibility`, `Migration and security changes`, `Shared release procedure`, `Windows`, `Apple` (+295 more)
+- **300 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+295 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -224,7 +224,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `index.ts`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `Compatibility`, `Migration and security changes`, `Shared release procedure` to the rest of the system?**
+- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
   _300 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
