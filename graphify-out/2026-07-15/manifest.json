@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784139146.2666085,
-    "ast_hash": "2728177193b0a038cecd6a967703eaab",
+    "mtime": 1784140050.2361739,
+    "ast_hash": "e737e6b232340ab41c05b567a37cd89c",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "CROSS_PLATFORM_CLIENT_PLAN.md": {
-    "mtime": 1784139916.2234302,
-    "ast_hash": "6eb55983bb3645c8d55812a439ba3233",
+    "mtime": 1784140236.6300437,
+    "ast_hash": "22b17c03a0752f69796fdaa8f878a76a",
     "semantic_hash": ""
   },
   "clients/shared/eslint.config.js": {
@@ -205,8 +205,8 @@
     "semantic_hash": ""
   },
   "clients/shared/package.json": {
-    "mtime": 1784139822.9820042,
-    "ast_hash": "0c2b305335e95f08707519692bca3c5b",
+    "mtime": 1784140114.483094,
+    "ast_hash": "c2a5213a2b89fa42795437c2249d24bd",
     "semantic_hash": ""
   },
   "clients/shared/src/App.test.tsx": {
@@ -215,13 +215,13 @@
     "semantic_hash": ""
   },
   "clients/shared/src/App.tsx": {
-    "mtime": 1784139775.2978106,
-    "ast_hash": "8fb1bcde3a540850f7472151bf797a3d",
+    "mtime": 1784140209.674496,
+    "ast_hash": "9810e97aefcfc90faec0101add8ca07c",
     "semantic_hash": ""
   },
   "clients/shared/src/main.tsx": {
-    "mtime": 1784138920.805495,
-    "ast_hash": "c10fd1ff88f07819fb37655ef1ffd3f1",
+    "mtime": 1784140114.484094,
+    "ast_hash": "2f404d7061486d1ffcdd7e04cb630e87",
     "semantic_hash": ""
   },
   "clients/shared/src/test-setup.ts": {
@@ -337,6 +337,61 @@
   "clients/shared/src/responsive.test.ts": {
     "mtime": 1784139875.993109,
     "ast_hash": "127f10c153c1a492adf6e945fd557fc8",
+    "semantic_hash": ""
+  },
+  "clients/desktop/package.json": {
+    "mtime": 1784140050.2371738,
+    "ast_hash": "f2fa059b2d4952f131e515d1795696c8",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/build.rs": {
+    "mtime": 1784140050.2371738,
+    "ast_hash": "1be34a5c61c2c35365de3dab14298f0b",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/capabilities/default.json": {
+    "mtime": 1784140050.2381737,
+    "ast_hash": "23bb169641f6b600460325397bea5f97",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/src/lib.rs": {
+    "mtime": 1784140277.898352,
+    "ast_hash": "48c1f60c349658494fd7ddae5172fa6c",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/src/main.rs": {
+    "mtime": 1784140050.2381737,
+    "ast_hash": "48f3e91ae48351daa7298ab0cd63783c",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/tauri.conf.json": {
+    "mtime": 1784140127.757871,
+    "ast_hash": "2e794f9b6f6f62fbeef95e0f08141170",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/native-integration.ts": {
+    "mtime": 1784140114.483094,
+    "ast_hash": "07cb0cfa488c4290e40bd5d687584dc0",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/platform-credentials.test.ts": {
+    "mtime": 1784140066.3639026,
+    "ast_hash": "39a2a88cbe06026fb05ce60dd523252a",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/platform-credentials.ts": {
+    "mtime": 1784140066.3629026,
+    "ast_hash": "a5ef60526aa1a4a12bb217f4352dc19c",
+    "semantic_hash": ""
+  },
+  ".github/workflows/desktop-smoke.yml": {
+    "mtime": 1784140306.350875,
+    "ast_hash": "d8232cbd0b76502fc34a2d7dab8f8e55",
+    "semantic_hash": ""
+  },
+  "clients/desktop/README.md": {
+    "mtime": 1784140236.6290438,
+    "ast_hash": "e888d1659017bc5e21be913da82a96ab",
     "semantic_hash": ""
   }
 }
