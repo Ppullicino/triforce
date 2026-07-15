@@ -4,6 +4,10 @@
   "description": "Multi-agent development orchestrator",
   "main": "orchestrator.js",
   "type": "module",
+  "workspaces": [
+    "clients/shared",
+    "packages/*"
+  ],
   "bin": {
     "triforce": "./cli.js"
   },
@@ -25,7 +29,12 @@
   "scripts": {
     "start": "node server.js",
     "cli": "node cli.js",
-    "test": "node --test"
+    "test": "npm run test:server && npm run test --workspaces --if-present",
+    "test:server": "node --test test/*.test.js",
+    "build": "npm run build --workspace @triforce/protocol && npm run build --workspace @triforce/client",
+    "typecheck": "npm run typecheck --workspace @triforce/protocol && npm run typecheck --workspace @triforce/client",
+    "lint": "npm run lint --workspace @triforce/protocol && npm run lint --workspace @triforce/client",
+    "dev:client": "npm run dev --workspace @triforce/client"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

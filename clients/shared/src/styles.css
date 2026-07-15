@@ -1,0 +1,28 @@
+:root {
+  color: #f4f7ff;
+  background: #090d18;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button { font: inherit; }
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.25rem, 5vw, 5rem);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(54, 193, 255, 0.17), transparent 30rem),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.2), transparent 34rem),
+    #090d18;
+}
+
+.hero { width: min(100%, 48rem); }
+.eyebrow { color: #65d8ff; font-size: .78rem; font-weight: 800; letter-spacing: .22em; }
+h1 { margin: .4rem 0 1rem; max-width: 11ch; font-size: clamp(3rem, 10vw, 7rem); line-height: .88; letter-spacing: -.065em; }
+.lede { max-width: 38rem; color: #b8c2d9; font-size: clamp(1rem, 3vw, 1.3rem); line-height: 1.6; }
+button { display: block; margin: 2rem 0 1rem; padding: .9rem 1.2rem; border: 0; border-radius: .7rem; background: #65d8ff; color: #07101d; font-weight: 800; cursor: pointer; }
+small { color: #7e8aa4; }

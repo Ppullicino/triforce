@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1784038881.5635793,
-    "ast_hash": "6a47d64fcc136324ca395065a707ef76",
+    "mtime": 1784138672.6155548,
+    "ast_hash": "c89982718a6fe7350f530a0397e7e75b",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -192,6 +192,11 @@
   "workspace.js": {
     "mtime": 1784131646.9203992,
     "ast_hash": "8762653acbea6779ef220370d35d368e",
+    "semantic_hash": ""
+  },
+  "CROSS_PLATFORM_CLIENT_PLAN.md": {
+    "mtime": 1784138672.6155548,
+    "ast_hash": "acff7399f63b0acfb0bd28daf85b4f18",
     "semantic_hash": ""
   }
 }

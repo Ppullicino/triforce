@@ -34,7 +34,7 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | Step | Milestone | Status | Commit prefix | Evidence / handoff |
 |---:|---|---|---|---|
 | 0 | Durable roadmap and agent handoff rules | COMPLETE | `step-00:` | Plan and instructions added; planning commit records the final SHA. |
-| 1 | Monorepo and shared-client foundation | NOT STARTED | `step-01:` | — |
+| 1 | Monorepo and shared-client foundation | COMPLETE | `step-01:` | npm workspaces, shared React/Vite client, protocol package, docs; lint, typecheck, 22 server tests, 1 client test, and builds pass. |
 | 2 | Versioned server protocol and resumable run API | NOT STARTED | `step-02:` | — |
 | 3 | Shared connection, authentication, and host profiles | NOT STARTED | `step-03:` | — |
 | 4 | Shared responsive Triforce interface | NOT STARTED | `step-04:` | — |
@@ -46,10 +46,9 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 
 ## Current handoff
 
-- Current step: Step 0 — durable roadmap and agent handoff rules.
-- Next action: Begin Step 1 by choosing the package workspace tooling compatible with
-  the existing Node.js project, then scaffold the shared client without changing the
-  existing production UI behavior.
+- Current step: Step 2 — versioned server protocol and resumable run API.
+- Next action: Inventory every existing WebSocket event and command, define runtime
+  schemas in `packages/protocol`, then move runs into a bounded server-owned registry.
 - Known blockers: None.
 - Important constraint: Do not put provider API keys in any client. Clients receive
   only Triforce host URLs and Triforce authentication credentials.
