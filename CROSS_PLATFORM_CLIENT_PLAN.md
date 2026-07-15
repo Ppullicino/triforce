@@ -40,7 +40,7 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 4 | Shared responsive Triforce interface | COMPLETE | `step-04:` | Responsive host/task/run/history/settings/diagnostics UI, all modes, bounded stream reducer, accessibility; 25 server, 14 client, 3 protocol tests pass. |
 | 5 | Desktop shell for Windows and macOS | COMPLETE | `step-05:` | Tauri 2 shell with Windows Credential Manager/macOS Keychain, restricted navigation, menus/window/updater hooks; Windows and macOS native tests, debug builds, server checks, and launch probes pass in Actions run 29442130327. |
 | 6 | Android container shell | COMPLETE | `step-06:` | Kotlin shell, packaged shared client, origin-scoped bridge, Keystore AES-GCM vault, hardened WebView/network policy; unit/lint/APK and API-29 install/launch smoke pass in Actions run 29446888732. |
-| 7 | Security, resilience, and compatibility hardening | NOT STARTED | `step-07:` | — |
+| 7 | Security, resilience, and compatibility hardening | IN PROGRESS | `step-07:` | Auditing authentication/origin boundaries, event ordering, version skew, dependencies, and secrets. |
 | 8 | Packaging, signing documentation, and CI artifacts | NOT STARTED | `step-08:` | — |
 | 9 | End-to-end validation and release candidate | NOT STARTED | `step-09:` | — |
 
