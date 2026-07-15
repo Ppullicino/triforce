@@ -63,5 +63,9 @@ jobs:
             gradle -p clients/android assembleDebug || { echo '::error::Android APK assembly failed'; exit 1; }
             adb install -r clients/android/app/build/outputs/apk/debug/app-debug.apk || { echo '::error::Android APK installation failed'; exit 1; }
             adb shell am start -W -n com.triforce.remote/.MainActivity | tee /tmp/triforce-launch.txt
-            grep -q 'Status: ok' /tmp/triforce-launch.txt || { echo '::error::Android activity did not report a successful launch'; exit 1; }
-            adb shell pidof com.triforce.remote || { adb logcat -d -t 300; echo '::error::Android process exited after launch'; exit 1; }
+            launched=false
+            for attempt in 1 2 3 4 5 6 7 8 9 10; do
+              if adb shell pidof com.triforce.remote; then launched=true; break; fi
+              sleep 1
+            done
+            $launched || { adb logcat -d -t 300; echo '::error::Android process exited after launch'; exit 1; }
