@@ -13,6 +13,21 @@ const rl = readline.createInterface({ input, output });
 let isRunning = false;
 let resolveRunPromise = null;
 
+import { existsSync } from 'node:fs';
+
+function resolveBinPath(cmd) {
+  try {
+    execSync(`which ${cmd}`, { stdio: 'ignore' });
+    return cmd;
+  } catch {
+    const localBin = join(os.homedir(), '.local/bin', cmd);
+    if (existsSync(localBin)) {
+      return localBin;
+    }
+    return cmd;
+  }
+}
+
 async function checkAndInstallDependencies(forceUpdate = false) {
   console.log('\nChecking required CLI tools...');
 
@@ -21,7 +36,8 @@ async function checkAndInstallDependencies(forceUpdate = false) {
       execSync(`which ${cmd}`, { stdio: 'ignore' });
       return true;
     } catch {
-      return false;
+      const localBin = join(os.homedir(), '.local/bin', cmd);
+      return existsSync(localBin);
     }
   };
 
@@ -122,7 +138,7 @@ async function setupWizard() {
   if (!authClaude.toLowerCase().startsWith('n')) {
     console.log('\nRunning "claude auth login"... Please follow the browser instructions.');
     await new Promise((resolve) => {
-      const child = spawn('claude', ['auth', 'login'], { stdio: 'inherit' });
+      const child = spawn(resolveBinPath('claude'), ['auth', 'login'], { stdio: 'inherit' });
       child.on('close', resolve);
     });
   }
@@ -134,7 +150,7 @@ async function setupWizard() {
     const codexArgs = !useDeviceAuth.toLowerCase().startsWith('n') ? ['login', '--device-auth'] : ['login'];
     console.log(`\nRunning "codex ${codexArgs.join(' ')}"... Please follow the instructions.`);
     await new Promise((resolve) => {
-      const child = spawn('codex', codexArgs, { stdio: 'inherit' });
+      const child = spawn(resolveBinPath('codex'), codexArgs, { stdio: 'inherit' });
       child.on('close', resolve);
     });
   }
@@ -144,7 +160,7 @@ async function setupWizard() {
   if (!authAgy.toLowerCase().startsWith('n')) {
     console.log('\nRunning "agy login"... Please follow the instructions.');
     await new Promise((resolve) => {
-      const child = spawn('agy', ['login'], { stdio: 'inherit' });
+      const child = spawn(resolveBinPath('agy'), ['login'], { stdio: 'inherit' });
       child.on('close', resolve);
     });
   }

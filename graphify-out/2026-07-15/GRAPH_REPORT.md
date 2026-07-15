@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 20 files · ~16,500 words
+- 20 files · ~17,043 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 128 nodes · 153 edges · 16 communities (9 shown, 7 thin omitted)
+- 130 nodes · 157 edges · 16 communities (9 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5ed7f97c`
+- Built from commit: `d7c31621`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -33,7 +33,7 @@
 - cli.js
 
 ## God Nodes (most connected - your core abstractions)
-1. `Agent` - 11 edges
+1. `Agent` - 13 edges
 2. `main()` - 9 edges
 3. `track()` - 6 edges
 4. `runPipeline()` - 5 edges
@@ -70,7 +70,7 @@ Cohesion: 0.13
 Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, @homebridge/node-pty-prebuilt-multiarch, openai, dependencies, @anthropic-ai/sdk (+7 more)
 
 ### Community 2 - "Agent"
-Cohesion: 0.27
+Cohesion: 0.24
 Nodes (4): Agent, delay(), getErrorStatus(), RETRYABLE_STATUSES
 
 ### Community 3 - "package.json"
@@ -106,9 +106,9 @@ Nodes (9): checkAndInstallDependencies(), connectWebSocket(), __dirname, getNetw
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
-  _High betweenness centrality (0.045) - this node is a cross-community bridge._
+  _High betweenness centrality (0.053) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **Why does `main()` connect `orchestrator.js` to `Agent`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `SHARDS` to the rest of the system?**

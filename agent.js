@@ -1,6 +1,23 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { GoogleGenAI } from '@google/genai';
 import OpenAI from 'openai';
+import os from 'node:os';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { execSync } from 'node:child_process';
+
+function resolveBinPath(cmd) {
+  try {
+    execSync(`which ${cmd}`, { stdio: 'ignore' });
+    return cmd;
+  } catch {
+    const localBin = join(os.homedir(), '.local/bin', cmd);
+    if (existsSync(localBin)) {
+      return localBin;
+    }
+    return cmd;
+  }
+}
 
 const RETRYABLE_STATUSES = new Set([429, 503]);
 const MAX_RETRIES = 3;
@@ -127,7 +144,7 @@ export class Agent {
       args.push('-p');
       args.push('--permission-mode', 'bypassPermissions');
 
-      const child = spawn('claude', args);
+      const child = spawn(resolveBinPath('claude'), args);
       let stdout = '';
       let stderr = '';
 
@@ -164,7 +181,7 @@ export class Agent {
       }
       args.push('-');
 
-      const child = spawn('codex', args);
+      const child = spawn(resolveBinPath('codex'), args);
       let stdout = '';
       let stderr = '';
 
@@ -201,7 +218,7 @@ export class Agent {
 
       const args = ['--dangerously-skip-permissions', '-p', fullPrompt];
 
-      const child = spawn('agy', args);
+      const child = spawn(resolveBinPath('agy'), args);
       let stdout = '';
       let stderr = '';
 

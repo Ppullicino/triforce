@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 20 files · ~17,043 words
+- 20 files · ~17,141 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 130 nodes · 157 edges · 16 communities (9 shown, 7 thin omitted)
+- 132 nodes · 163 edges · 16 communities (9 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d7c31621`
+- Built from commit: `55de8091`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -38,11 +38,11 @@
 3. `track()` - 6 edges
 4. `runPipeline()` - 5 edges
 5. `Triforce — Running & Operations` - 5 edges
-6. `connectWebSocket()` - 4 edges
-7. `main()` - 4 edges
-8. `Systemd Service (Always-On)` - 4 edges
-9. `PWA — Install as App` - 4 edges
-10. `setupWizard()` - 3 edges
+6. `resolveBinPath()` - 4 edges
+7. `setupWizard()` - 4 edges
+8. `connectWebSocket()` - 4 edges
+9. `main()` - 4 edges
+10. `Systemd Service (Always-On)` - 4 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `runReviewer()` --calls--> `track()`  [EXTRACTED]
@@ -71,7 +71,7 @@ Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, @homebridge/node-
 
 ### Community 2 - "Agent"
 Cohesion: 0.24
-Nodes (4): Agent, delay(), getErrorStatus(), RETRYABLE_STATUSES
+Nodes (5): Agent, delay(), getErrorStatus(), resolveBinPath(), RETRYABLE_STATUSES
 
 ### Community 3 - "package.json"
 Cohesion: 0.14
@@ -94,8 +94,8 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ### Community 15 - "cli.js"
-Cohesion: 0.33
-Nodes (9): checkAndInstallDependencies(), connectWebSocket(), __dirname, getNetworkIPs(), main(), promptLoop(), rl, setupWizard() (+1 more)
+Cohesion: 0.31
+Nodes (10): checkAndInstallDependencies(), connectWebSocket(), __dirname, getNetworkIPs(), main(), promptLoop(), resolveBinPath(), rl (+2 more)
 
 ## Knowledge Gaps
 - **60 isolated node(s):** `rl`, `__dirname`, `SHARDS`, `BG`, `GOLD` (+55 more)
@@ -106,11 +106,11 @@ Nodes (9): checkAndInstallDependencies(), connectWebSocket(), __dirname, getNetw
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `server.js`?**
-  _High betweenness centrality (0.053) - this node is a cross-community bridge._
+  _High betweenness centrality (0.051) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
 - **Why does `main()` connect `orchestrator.js` to `Agent`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `SHARDS` to the rest of the system?**
   _60 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
