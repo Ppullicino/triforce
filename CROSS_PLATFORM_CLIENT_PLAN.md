@@ -39,16 +39,16 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 3 | Shared connection, authentication, and host profiles | COMPLETE | `step-03:` | Host CRUD, strict URL normalization, separate credential adapters, body-based session auth, state/reconnect/replay core; 25 server, 10 client, 3 protocol tests pass. |
 | 4 | Shared responsive Triforce interface | COMPLETE | `step-04:` | Responsive host/task/run/history/settings/diagnostics UI, all modes, bounded stream reducer, accessibility; 25 server, 14 client, 3 protocol tests pass. |
 | 5 | Desktop shell for Windows and macOS | COMPLETE | `step-05:` | Tauri 2 shell with Windows Credential Manager/macOS Keychain, restricted navigation, menus/window/updater hooks; Windows and macOS native tests, debug builds, server checks, and launch probes pass in Actions run 29442130327. |
-| 6 | Android container shell | IN PROGRESS | `step-06:` | Kotlin shell, packaged shared client, origin-scoped bridge, Keystore AES-GCM vault, hardened WebView/network policy, and Android CI candidate added. |
+| 6 | Android container shell | COMPLETE | `step-06:` | Kotlin shell, packaged shared client, origin-scoped bridge, Keystore AES-GCM vault, hardened WebView/network policy; unit/lint/APK and API-29 install/launch smoke pass in Actions run 29446888732. |
 | 7 | Security, resilience, and compatibility hardening | NOT STARTED | `step-07:` | — |
 | 8 | Packaging, signing documentation, and CI artifacts | NOT STARTED | `step-08:` | — |
 | 9 | End-to-end validation and release candidate | NOT STARTED | `step-09:` | — |
 
 ## Current handoff
 
-- Current step: Step 6 — Android container shell.
-- Next action: Push the Android candidate, inspect unit/lint/APK and emulator results,
-  fix platform failures, and mark complete only after both Android jobs pass.
+- Current step: Step 7 — security, resilience, and compatibility hardening.
+- Next action: Mark Step 7 in progress, document the remote-client threat model,
+  add security/fault/version-skew regression coverage, and run dependency/secret scans.
 - Known blockers: None.
 - Important constraint: Do not put provider API keys in any client. Clients receive
   only Triforce host URLs and Triforce authentication credentials.

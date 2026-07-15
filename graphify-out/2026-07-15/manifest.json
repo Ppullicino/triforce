@@ -650,8 +650,8 @@
     "semantic_hash": ""
   },
   "clients/android/app/src/main/java/com/triforce/remote/MainActivity.kt": {
-    "mtime": 1784141935.3463144,
-    "ast_hash": "55176041c762ac9d7a2abedb333bb91f",
+    "mtime": 1784145726.0346956,
+    "ast_hash": "038231ca93d121685d62cb49bcd72ebc",
     "semantic_hash": ""
   },
   "clients/android/app/src/test/java/com/triforce/remote/NetworkPolicyTest.kt": {
@@ -675,8 +675,8 @@
     "semantic_hash": ""
   },
   "clients/android/README.md": {
-    "mtime": 1784141985.849407,
-    "ast_hash": "2efd34d9ed25e6635b510ac61dd35ba9",
+    "mtime": 1784145726.0346956,
+    "ast_hash": "94eb9679677d99b1658a8cc9c402c25c",
     "semantic_hash": ""
   }
 }

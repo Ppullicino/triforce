@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 75 files · ~37,104 words
+- 75 files · ~37,281 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 604 nodes · 750 edges · 48 communities (36 shown, 12 thin omitted)
+- 607 nodes · 751 edges · 52 communities (38 shown, 14 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `897322f2`
+- Built from commit: `0307c8a0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,6 +54,10 @@
 - files
 - App.tsx
 - Triforce Android
+- App.tsx
+- MainActivity
+- String
+- WebView
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
@@ -64,8 +68,8 @@
 6. `TriforceConnection` - 13 edges
 7. `compilerOptions` - 12 edges
 8. `scripts` - 10 edges
-9. `CredentialVault` - 9 edges
-10. `main()` - 9 edges
+9. `main()` - 9 edges
+10. `runPipeline()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `runInSandbox()` --calls--> `runSandboxed()`  [EXTRACTED]
@@ -82,15 +86,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (48 total, 12 thin omitted)
+## Communities (52 total, 14 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
 Nodes (16): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+8 more)
 
 ### Community 1 - "dependencies"
-Cohesion: 0.11
-Nodes (12): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault, String, String, WebView (+4 more)
+Cohesion: 0.20
+Nodes (6): android, WebView, MainActivitySecurityTest, CredentialVault, String, SecretKey
 
 ### Community 2 - "Agent"
 Cohesion: 0.20
@@ -165,8 +169,8 @@ Cohesion: 0.05
 Nodes (39): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, bin, triforce, dependencies (+31 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.05
-Nodes (30): App(), defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile (+22 more)
+Cohesion: 0.07
+Nodes (18): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+10 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -192,10 +196,18 @@ Nodes (3): Development, Prerequisites, Triforce Desktop
 Cohesion: 0.12
 Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
 
+### Community 48 - "App.tsx"
+Cohesion: 0.17
+Nodes (12): App(), defaultConfig, roles, installNativeIntegration(), bounded(), emptyUsage, initialPipelineState(), mapStatus() (+4 more)
+
+### Community 49 - "MainActivity"
+Cohesion: 0.24
+Nodes (7): Bundle, MainActivity, ComponentActivity, CredentialVault, String, TextView, WebView
+
 ## Knowledge Gaps
-- **277 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+272 more)
+- **277 isolated node(s):** `Requirements and commands`, `rl`, `__dirname`, `name`, `version` (+272 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -204,13 +216,13 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `index.ts`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
+- **What connects `Requirements and commands`, `rl`, `__dirname` to the rest of the system?**
   _277 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `dependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.11666666666666667 - nodes in this community are weakly interconnected._
 - **Should `cli-input.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
+- **Should `compilerOptions` be split into smaller, more focused modules?**
+  _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
