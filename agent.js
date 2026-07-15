@@ -33,6 +33,8 @@ export class Agent {
       case 'openai':
         if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY is not set');
         return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      case 'claude-cli':
+        return null;
       default:
         throw new Error(`Unknown provider: "${this.provider}"`);
     }
@@ -61,9 +63,10 @@ export class Agent {
 
   async _callProvider(userPrompt) {
     switch (this.provider) {
-      case 'anthropic': return this._callAnthropic(userPrompt);
-      case 'google':    return this._callGoogle(userPrompt);
-      case 'openai':    return this._callOpenAI(userPrompt);
+      case 'anthropic':  return this._callAnthropic(userPrompt);
+      case 'google':     return this._callGoogle(userPrompt);
+      case 'openai':     return this._callOpenAI(userPrompt);
+      case 'claude-cli': return this._callClaudeCLI(userPrompt);
     }
   }
 
@@ -111,4 +114,43 @@ export class Agent {
       },
     };
   }
+
+  async _callClaudeCLI(userPrompt) {
+    const { spawn } = await import('node:child_process');
+    return new Promise((resolve, reject) => {
+      const args = [];
+      if (this.systemPrompt) {
+        args.push('--system-prompt', this.systemPrompt);
+      }
+      args.push('-p');
+      args.push('--permission-mode', 'bypassPermissions');
+
+      const child = spawn('claude', args);
+      let stdout = '';
+      let stderr = '';
+
+      child.stdout.on('data', (data) => {
+        stdout += data.toString();
+      });
+
+      child.stderr.on('data', (data) => {
+        stderr += data.toString();
+      });
+
+      child.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error(`claude CLI exited with code ${code}. Stderr: ${stderr}`));
+        } else {
+          resolve({
+            text: stdout.trim(),
+            usage: { inputTokens: 0, outputTokens: 0 },
+          });
+        }
+      });
+
+      child.stdin.write(userPrompt);
+      child.stdin.end();
+    });
+  }
 }
+

@@ -4,9 +4,12 @@
   "description": "Multi-agent development orchestrator",
   "main": "orchestrator.js",
   "type": "module",
+  "bin": {
+    "triforce": "./cli.js"
+  },
   "scripts": {
     "start": "node server.js",
-    "cli": "node orchestrator.js"
+    "cli": "node cli.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

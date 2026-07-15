@@ -20,6 +20,7 @@ const RATES = {
   'gpt-4o-mini':       [0.15,  0.60],
   'gpt-4.1':           [2.00,  8.00],
   'gpt-4.1-mini':      [0.40,  1.60],
+  'claude-cli-default': [0.00, 0.00],
 };
 
 const SYSTEM_PROMPTS = {
