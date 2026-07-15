@@ -46,6 +46,16 @@ new clients.
 closures with bounded exponential backoff. It records the active run and highest
 event ID, then sends a replay subscription after reconnecting.
 
+## Shared interface
+
+The shared React interface contains host setup, task composition, all three pipeline
+modes, per-role streamed output, a bounded terminal, workspace artifacts, usage cost,
+session run history, editable agent settings, and connection diagnostics. Its compact
+layout collapses below 800 px and has an additional phone layout below 560 px. Keyboard
+focus, semantic labels, live status, scalable text, and reduced-motion preferences are
+supported. The original `public/` dashboard remains the production fallback during
+native-shell development.
+
 ## Commands
 
 Run these from the repository root:

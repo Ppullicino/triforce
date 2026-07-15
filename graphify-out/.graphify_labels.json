@@ -33,6 +33,5 @@
   "31": "vite.config.ts",
   "32": "index.d.ts",
   "33": "scripts",
-  "34": "server-protocol.test.js",
-  "35": "workspace.js"
+  "34": "server-protocol.test.js"
 }

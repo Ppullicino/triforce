@@ -49,3 +49,17 @@ test('reconnects with bounded backoff and resumes after the last event', async (
     expect.objectContaining({ type: 'subscribe', afterEventId: 7 }),
   ]));
 });
+
+test('sends all three pipeline modes through the shared protocol', async () => {
+  const socket = new MockSocket();
+  const connection = new TriforceConnection('https://host.example', {
+    fetch: vi.fn().mockResolvedValue(new Response(JSON.stringify({ protocolMajor: 1 }), { status: 200 })),
+    createSocket: () => socket,
+  });
+  await connection.connect(); socket.open();
+  const config = {
+    architect: { provider: 'openai', model: 'gpt-4.1' }, developer: { provider: 'openai', model: 'gpt-4.1' }, reviewer: { provider: 'openai', model: 'gpt-4.1' },
+  };
+  for (const mode of [1, 2, 3] as const) connection.run('build', config, mode);
+  expect(socket.sent.map(value => JSON.parse(value)).filter(value => value.type === 'run').map(value => value.mode)).toEqual([1, 2, 3]);
+});

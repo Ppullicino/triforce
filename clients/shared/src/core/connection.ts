@@ -1,4 +1,4 @@
-import { PROTOCOL_VERSION, type ServerEvent } from '@triforce/protocol';
+import { PROTOCOL_VERSION, type PipelineConfiguration, type PipelineMode, type ServerEvent } from '@triforce/protocol';
 import { normalizeHostUrl } from './host-url';
 
 export type ConnectionState = 'connecting' | 'connected' | 'unauthorized' | 'incompatible' | 'unreachable' | 'disconnected' | 'reconnecting';
@@ -71,6 +71,11 @@ export class TriforceConnection {
     this.socket?.close();
     this.socket = null;
     this.transition('disconnected');
+  }
+
+  run(task: string, config: PipelineConfiguration, mode: PipelineMode) {
+    if (!this.socket || this.state !== 'connected') throw new Error('Connect to a Triforce host first');
+    this.socket.send(JSON.stringify({ type: 'run', protocolVersion: PROTOCOL_VERSION, task, config, mode }));
   }
 
   private openSocket(url: string) {

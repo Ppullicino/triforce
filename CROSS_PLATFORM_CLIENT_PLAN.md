@@ -37,7 +37,7 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 1 | Monorepo and shared-client foundation | COMPLETE | `step-01:` | npm workspaces, shared React/Vite client, protocol package, docs; lint, typecheck, 22 server tests, 1 client test, and builds pass. |
 | 2 | Versioned server protocol and resumable run API | COMPLETE | `step-02:` | Protocol v1 schemas, capability/status APIs, stable run IDs, bounded replay registry; 25 server, 3 protocol, and 1 client tests pass. |
 | 3 | Shared connection, authentication, and host profiles | COMPLETE | `step-03:` | Host CRUD, strict URL normalization, separate credential adapters, body-based session auth, state/reconnect/replay core; 25 server, 10 client, 3 protocol tests pass. |
-| 4 | Shared responsive Triforce interface | NOT STARTED | `step-04:` | — |
+| 4 | Shared responsive Triforce interface | COMPLETE | `step-04:` | Responsive host/task/run/history/settings/diagnostics UI, all modes, bounded stream reducer, accessibility; 25 server, 14 client, 3 protocol tests pass. |
 | 5 | Desktop shell for Windows and macOS | NOT STARTED | `step-05:` | — |
 | 6 | Android container shell | NOT STARTED | `step-06:` | — |
 | 7 | Security, resilience, and compatibility hardening | NOT STARTED | `step-07:` | — |
@@ -46,9 +46,9 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 
 ## Current handoff
 
-- Current step: Step 4 — shared responsive Triforce interface.
-- Next action: Build the full task, pipeline, terminal, usage, history, settings, and
-  diagnostics experience on the shared connection core with responsive E2E coverage.
+- Current step: Step 5 — desktop shell for Windows and macOS.
+- Next action: Scaffold the Tauri 2 shell around the shared build, implement secure
+  credential and navigation adapters, document prerequisites, and verify Rust checks.
 - Known blockers: None.
 - Important constraint: Do not put provider API keys in any client. Clients receive
   only Triforce host URLs and Triforce authentication credentials.
