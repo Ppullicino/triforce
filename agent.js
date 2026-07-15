@@ -67,6 +67,8 @@ export class Agent {
       case 'google':     return this._callGoogle(userPrompt);
       case 'openai':     return this._callOpenAI(userPrompt);
       case 'claude-cli': return this._callClaudeCLI(userPrompt);
+      case 'codex-cli':  return this._callCodexCLI(userPrompt);
+      case 'agy-cli':    return this._callAgyCLI(userPrompt);
     }
   }
 
@@ -150,6 +152,77 @@ export class Agent {
 
       child.stdin.write(userPrompt);
       child.stdin.end();
+    });
+  }
+
+  async _callCodexCLI(userPrompt) {
+    const { spawn } = await import('node:child_process');
+    return new Promise((resolve, reject) => {
+      const args = ['exec', '--dangerously-bypass-approvals-and-sandbox'];
+      if (this.systemPrompt) {
+        args.push('-c', `system_prompt=${JSON.stringify(this.systemPrompt)}`);
+      }
+      args.push('-');
+
+      const child = spawn('codex', args);
+      let stdout = '';
+      let stderr = '';
+
+      child.stdout.on('data', (data) => {
+        stdout += data.toString();
+      });
+
+      child.stderr.on('data', (data) => {
+        stderr += data.toString();
+      });
+
+      child.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error(`codex CLI exited with code ${code}. Stderr: ${stderr}`));
+        } else {
+          resolve({
+            text: stdout.trim(),
+            usage: { inputTokens: 0, outputTokens: 0 },
+          });
+        }
+      });
+
+      child.stdin.write(userPrompt);
+      child.stdin.end();
+    });
+  }
+
+  async _callAgyCLI(userPrompt) {
+    const { spawn } = await import('node:child_process');
+    return new Promise((resolve, reject) => {
+      const fullPrompt = this.systemPrompt 
+        ? `[System Instructions]\n${this.systemPrompt}\n\n[User Request]\n${userPrompt}`
+        : userPrompt;
+
+      const args = ['--dangerously-skip-permissions', '-p', fullPrompt];
+
+      const child = spawn('agy', args);
+      let stdout = '';
+      let stderr = '';
+
+      child.stdout.on('data', (data) => {
+        stdout += data.toString();
+      });
+
+      child.stderr.on('data', (data) => {
+        stderr += data.toString();
+      });
+
+      child.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error(`agy CLI exited with code ${code}. Stderr: ${stderr}`));
+        } else {
+          resolve({
+            text: stdout.trim(),
+            usage: { inputTokens: 0, outputTokens: 0 },
+          });
+        }
+      });
     });
   }
 }

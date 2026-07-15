@@ -24,6 +24,8 @@ const RATES = {
   'gpt-4.1':           [2.00,  8.00],
   'gpt-4.1-mini':      [0.40,  1.60],
   'claude-cli-default': [0.00, 0.00],
+  'codex-cli-default': [0.00, 0.00],
+  'agy-cli-default':   [0.00, 0.00],
 };
 
 const SYSTEM_PROMPTS = {
@@ -104,6 +106,7 @@ let sessionUsage = {
  *        Supervisor checks the specification/code and requests corrections in up to 3 iterative loops.
  */
 async function runPipeline(ws, task, config, mode = 1) {
+  const maxIterations = config.maxIterations ?? 3;
   const send = (data) => { if (ws.readyState === 1) ws.send(JSON.stringify(data)); };
   const records = [];
 
@@ -145,7 +148,7 @@ async function runPipeline(ws, task, config, mode = 1) {
     let designerPrompt = `TASK:\n${task}`;
     let promptLoopCount = 0;
 
-    while (promptLoopCount < 3 && !specApproved) {
+    while (promptLoopCount < maxIterations && !specApproved) {
       promptLoopCount++;
       const iterHeader = `\n--- ITERATION ${promptLoopCount} ---\n`;
       
@@ -199,7 +202,7 @@ async function runPipeline(ws, task, config, mode = 1) {
     }
 
     if (!specApproved) {
-      send({ type: 'error', stage: 'architect', message: 'Failed to design a specification acceptable to the Supervisor after 3 iterations.' });
+      send({ type: 'error', stage: 'architect', message: `Failed to design a specification acceptable to the Supervisor after ${maxIterations} iterations.` });
       return;
     }
 
@@ -209,7 +212,7 @@ async function runPipeline(ws, task, config, mode = 1) {
     let coderPrompt = `SPECIFICATION:\n${spec}`;
     let code = '';
 
-    while (codeLoopCount < 3 && !codeApproved) {
+    while (codeLoopCount < maxIterations && !codeApproved) {
       codeLoopCount++;
       const iterHeader = `\n--- ITERATION ${codeLoopCount} ---\n`;
 
@@ -282,7 +285,7 @@ async function runPipeline(ws, task, config, mode = 1) {
     }
 
     if (!codeApproved) {
-      send({ type: 'error', stage: 'reviewer', message: 'Failed to write code that passes Supervisor checks after 3 iterations.' });
+      send({ type: 'error', stage: 'reviewer', message: `Failed to write code that passes Supervisor checks after ${maxIterations} iterations.` });
       return;
     }
 
@@ -354,6 +357,15 @@ async function runPipeline(ws, task, config, mode = 1) {
       send({ type: 'error', stage: 'reviewer', message: err.message });
       return;
     }
+  }
+
+  // Run graphify update . to keep the graph current
+  try {
+    const child = spawn('graphify', ['update', '.'], { stdio: 'ignore' });
+    await new Promise((resolve) => child.on('close', resolve));
+    send({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[Graphify] Codebase knowledge graph updated successfully.\x1b[0m\r\n` });
+  } catch (err) {
+    // Fail silently if not installed
   }
 
   const costRecords = computeCosts(records);

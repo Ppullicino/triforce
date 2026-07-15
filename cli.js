@@ -79,6 +79,27 @@ async function checkAndInstallDependencies(forceUpdate = false) {
   } else {
     console.log('✅ Antigravity CLI (agy) is installed.');
   }
+
+  // 4. Graphify (graphifyy)
+  const hasGraphify = checkCommand('graphify');
+  if (!hasGraphify || forceUpdate) {
+    const action = !hasGraphify ? 'Installing' : 'Updating';
+    console.log(`⚠️ ${action} Graphify via uv/pip...`);
+    try {
+      if (checkCommand('uv')) {
+        execSync('uv tool install --force graphifyy', { stdio: 'inherit' });
+      } else if (checkCommand('pipx')) {
+        execSync('pipx install --force graphifyy', { stdio: 'inherit' });
+      } else {
+        execSync('pip install --upgrade graphifyy', { stdio: 'inherit' });
+      }
+      console.log('✅ Graphify installed/updated successfully!');
+    } catch (err) {
+      console.error('❌ Failed to install/update Graphify:', err.message);
+    }
+  } else {
+    console.log('✅ Graphify is installed.');
+  }
 }
 
 async function setupWizard() {
@@ -140,12 +161,46 @@ async function setupWizard() {
   const defaultModeStr = await rl.question('Select default pipeline mode [1]: ');
   const defaultMode = defaultModeStr.trim() === '2' ? 2 : 1;
 
-  // Build model configuration mapping to local claude-cli
+  // Step 4/4: Configure Role Assignments & Max Iterations
+  console.log('\n[Step 4/4] Role Assignments & Loop Limits');
+  
+  const customRoles = await rl.question('Customize agent role assignments (Planner, Coder, Supervisor)? (y/n) [n]: ');
+  
   const config = {
+    maxIterations: 3,
     architect: { provider: 'claude-cli', model: 'claude-cli-default' },
     developer: { provider: 'claude-cli', model: 'claude-cli-default' },
     reviewer:  { provider: 'claude-cli', model: 'claude-cli-default' }
   };
+
+  const providers = {
+    1: { name: 'Local Claude Code CLI (Recommended)', provider: 'claude-cli', model: 'claude-cli-default' },
+    2: { name: 'Local Codex CLI', provider: 'codex-cli', model: 'codex-cli-default' },
+    3: { name: 'Local Antigravity CLI (agy)', provider: 'agy-cli', model: 'agy-cli-default' },
+    4: { name: 'Google Gemini API', provider: 'google', model: 'gemini-2.5-flash' },
+    5: { name: 'Anthropic API', provider: 'anthropic', model: 'claude-3-5-sonnet-latest' },
+    6: { name: 'OpenAI API', provider: 'openai', model: 'gpt-4o' }
+  };
+
+  const askRole = async (roleName, defaultChoice) => {
+    console.log(`\nSelect provider for ${roleName}:`);
+    for (const [key, val] of Object.entries(providers)) {
+      console.log(`  ${key}: ${val.name}`);
+    }
+    const choice = await rl.question(`Select [${defaultChoice}]: `);
+    const selected = providers[choice.trim()] || providers[defaultChoice];
+    return { provider: selected.provider, model: selected.model };
+  };
+
+  if (customRoles.toLowerCase().startsWith('y')) {
+    config.architect = await askRole('Planner / Architect', 1);
+    config.developer = await askRole('Coder / Developer', 1);
+    config.reviewer  = await askRole('Supervisor / Reviewer', 1);
+  }
+
+  const itersStr = await rl.question('\nEnter maximum loop iterations (cap) for feedback loop [3]: ');
+  const parsedIters = parseInt(itersStr.trim(), 10);
+  config.maxIterations = isNaN(parsedIters) ? 3 : parsedIters;
 
   await writeFile('./models.config.json', JSON.stringify(config, null, 2), 'utf8');
   console.log('\n✅ Configuration saved successfully to models.config.json.');
