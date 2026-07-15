@@ -4,512 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "cross_platform_client_plan.md"
-    },
-    {
-      "label": "Triforce Cross-Platform Client Plan",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "triforce cross-platform client plan"
-    },
-    {
-      "label": "Objective",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_objective",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "objective"
-    },
-    {
-      "label": "Agent handoff contract",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_agent_handoff_contract",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "agent handoff contract"
-    },
-    {
-      "label": "Current handoff",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_current_handoff",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "current handoff"
-    },
-    {
-      "label": "Product decisions",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L56",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_product_decisions",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "product decisions"
-    },
-    {
-      "label": "Step 1 \u2014 Monorepo and shared-client foundation",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L73",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_1_monorepo_and_shared_client_foundation",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 1 \u2014 monorepo and shared-client foundation"
-    },
-    {
-      "label": "Step 2 \u2014 Versioned server protocol and resumable run API",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L97",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_2_versioned_server_protocol_and_resumable_run_api",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 2 \u2014 versioned server protocol and resumable run api"
-    },
-    {
-      "label": "Step 3 \u2014 Shared connection, authentication, and host profiles",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L117",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_3_shared_connection_authentication_and_host_profiles",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 3 \u2014 shared connection, authentication, and host profiles"
-    },
-    {
-      "label": "Step 4 \u2014 Shared responsive Triforce interface",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L136",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_4_shared_responsive_triforce_interface",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 4 \u2014 shared responsive triforce interface"
-    },
-    {
-      "label": "Step 5 \u2014 Desktop shell for Windows and macOS",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L165",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_5_desktop_shell_for_windows_and_macos",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 5 \u2014 desktop shell for windows and macos"
-    },
-    {
-      "label": "Step 6 \u2014 Android container shell",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L180",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_6_android_container_shell",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 6 \u2014 android container shell"
-    },
-    {
-      "label": "Step 7 \u2014 Security, resilience, and compatibility hardening",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L199",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_7_security_resilience_and_compatibility_hardening",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 7 \u2014 security, resilience, and compatibility hardening"
-    },
-    {
-      "label": "Step 8 \u2014 Packaging, signing documentation, and CI artifacts",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L216",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_8_packaging_signing_documentation_and_ci_artifacts",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 8 \u2014 packaging, signing documentation, and ci artifacts"
-    },
-    {
-      "label": "Step 9 \u2014 End-to-end validation and release candidate",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L233",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_step_9_end_to_end_validation_and_release_candidate",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "step 9 \u2014 end-to-end validation and release candidate"
-    },
-    {
-      "label": "Per-step completion procedure",
-      "file_type": "document",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L251",
-      "_origin": "ast",
-      "id": "cross_platform_client_plan_per_step_completion_procedure",
-      "community": 19,
-      "community_name": "cli-input.test.js",
-      "norm_label": "per-step completion procedure"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "clients/desktop/README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "clients_desktop_readme",
-      "community": 39,
-      "community_name": "Triforce Desktop",
-      "norm_label": "readme.md"
-    },
-    {
-      "label": "Triforce Desktop",
-      "file_type": "document",
-      "source_file": "clients/desktop/README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "clients_desktop_readme_triforce_desktop",
-      "community": 39,
-      "community_name": "Triforce Desktop",
-      "norm_label": "triforce desktop"
-    },
-    {
-      "label": "Prerequisites",
-      "file_type": "document",
-      "source_file": "clients/desktop/README.md",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "clients_desktop_readme_prerequisites",
-      "community": 39,
-      "community_name": "Triforce Desktop",
-      "norm_label": "prerequisites"
-    },
-    {
-      "label": "Development",
-      "file_type": "document",
-      "source_file": "clients/desktop/README.md",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "clients_desktop_readme_development",
-      "community": 39,
-      "community_name": "Triforce Desktop",
-      "norm_label": "development"
-    },
-    {
-      "label": "package.json",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "clients_desktop_package",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "package.json"
-    },
-    {
-      "label": "name",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "clients_desktop_package_name",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "name"
-    },
-    {
-      "label": "version",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "clients_desktop_package_version",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "version"
-    },
-    {
-      "label": "private",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "clients_desktop_package_private",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "private"
-    },
-    {
-      "label": "type",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "clients_desktop_package_type",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "type"
-    },
-    {
-      "label": "scripts",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "clients_desktop_package_scripts",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "scripts"
-    },
-    {
-      "label": "tauri",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "clients_desktop_package_scripts_tauri",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "tauri"
-    },
-    {
-      "label": "dev",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "clients_desktop_package_scripts_dev",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "dev"
-    },
-    {
-      "label": "build",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "clients_desktop_package_scripts_build",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "build"
-    },
-    {
-      "label": "check",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "clients_desktop_package_scripts_check",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "check"
-    },
-    {
-      "label": "devDependencies",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L12",
-      "_origin": "ast",
-      "id": "clients_desktop_package_devdependencies",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "devdependencies"
-    },
-    {
-      "label": "@tauri-apps/cli",
-      "file_type": "code",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "clients_desktop_package_devdependencies_tauri_apps_cli",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "@tauri-apps/cli"
-    },
-    {
-      "label": "@tauri-apps/cli",
-      "file_type": "concept",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "tauri_apps_cli",
-      "community": 36,
-      "community_name": "package.json",
-      "norm_label": "@tauri-apps/cli"
-    },
-    {
-      "label": "build.rs",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/build.rs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_build",
-      "community": 40,
-      "community_name": "build.rs",
-      "norm_label": "build.rs"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/build.rs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_build_main",
-      "community": 40,
-      "community_name": "build.rs",
-      "norm_label": "main()"
-    },
-    {
-      "label": "default.json",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_capabilities_default",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "default.json"
-    },
-    {
-      "label": "$schema",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_capabilities_default_schema",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "$schema"
-    },
-    {
-      "label": "identifier",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_capabilities_default_identifier",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "identifier"
-    },
-    {
-      "label": "description",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_capabilities_default_description",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "description"
-    },
-    {
-      "label": "windows",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_capabilities_default_windows",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "windows"
-    },
-    {
-      "label": "main",
-      "file_type": "concept",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_main",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "main"
-    },
-    {
-      "label": "permissions",
-      "file_type": "code",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "clients_desktop_src_tauri_capabilities_default_permissions",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "permissions"
-    },
-    {
-      "label": "core:default",
-      "file_type": "concept",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "ref_core_default",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "core:default"
-    },
-    {
-      "label": "opener:allow-open-url",
-      "file_type": "concept",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "ref_opener_allow_open_url",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "opener:allow-open-url"
-    },
-    {
-      "label": "window-state:default",
-      "file_type": "concept",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "ref_window_state_default",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "window-state:default"
-    },
-    {
-      "label": "updater:default",
-      "file_type": "concept",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "ref_updater_default",
-      "community": 37,
-      "community_name": "default.json",
-      "norm_label": "updater:default"
-    },
-    {
       "label": "lib.rs",
       "file_type": "code",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
@@ -521,10 +15,21 @@
       "norm_label": "lib.rs"
     },
     {
+      "label": "smoke_test()",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/src/lib.rs",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_src_lib_smoke_test",
+      "community": 38,
+      "community_name": "lib.rs",
+      "norm_label": "smoke_test()"
+    },
+    {
       "label": "credential_get()",
       "file_type": "code",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L8",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "clients_desktop_src_tauri_src_lib_credential_get",
       "community": 38,
@@ -568,7 +73,7 @@
       "label": "credential_set()",
       "file_type": "code",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L20",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "clients_desktop_src_tauri_src_lib_credential_set",
       "community": 38,
@@ -579,7 +84,7 @@
       "label": "credential_delete()",
       "file_type": "code",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L31",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "clients_desktop_src_tauri_src_lib_credential_delete",
       "community": 38,
@@ -590,7 +95,7 @@
       "label": "run()",
       "file_type": "code",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L42",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "clients_desktop_src_tauri_src_lib_run",
       "community": 38,
@@ -601,7 +106,7 @@
       "label": "credential_namespace_is_application_specific()",
       "file_type": "code",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L89",
+      "source_location": "L94",
       "_origin": "ast",
       "id": "clients_desktop_src_tauri_src_lib_credential_namespace_is_application_specific",
       "community": 38,
@@ -636,10 +141,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf",
       "community": 35,
       "community_name": "files",
-      "norm_label": "tauri.conf.json"
+      "norm_label": "tauri.conf.json",
+      "id": "clients_desktop_src_tauri_tauri_conf"
     },
     {
       "label": "$schema",
@@ -647,10 +152,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_schema",
       "community": 35,
       "community_name": "files",
-      "norm_label": "$schema"
+      "norm_label": "$schema",
+      "id": "clients_desktop_src_tauri_tauri_conf_schema"
     },
     {
       "label": "productName",
@@ -658,10 +163,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_productname",
       "community": 35,
       "community_name": "files",
-      "norm_label": "productname"
+      "norm_label": "productname",
+      "id": "clients_desktop_src_tauri_tauri_conf_productname"
     },
     {
       "label": "version",
@@ -669,10 +174,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_version",
       "community": 35,
       "community_name": "files",
-      "norm_label": "version"
+      "norm_label": "version",
+      "id": "clients_desktop_src_tauri_tauri_conf_version"
     },
     {
       "label": "identifier",
@@ -680,10 +185,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_identifier",
       "community": 35,
       "community_name": "files",
-      "norm_label": "identifier"
+      "norm_label": "identifier",
+      "id": "clients_desktop_src_tauri_tauri_conf_identifier"
     },
     {
       "label": "build",
@@ -691,10 +196,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_build",
       "community": 35,
       "community_name": "files",
-      "norm_label": "build"
+      "norm_label": "build",
+      "id": "clients_desktop_src_tauri_tauri_conf_build"
     },
     {
       "label": "beforeDevCommand",
@@ -702,10 +207,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_build_beforedevcommand",
       "community": 35,
       "community_name": "files",
-      "norm_label": "beforedevcommand"
+      "norm_label": "beforedevcommand",
+      "id": "clients_desktop_src_tauri_tauri_conf_build_beforedevcommand"
     },
     {
       "label": "devUrl",
@@ -713,10 +218,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_build_devurl",
       "community": 35,
       "community_name": "files",
-      "norm_label": "devurl"
+      "norm_label": "devurl",
+      "id": "clients_desktop_src_tauri_tauri_conf_build_devurl"
     },
     {
       "label": "beforeBuildCommand",
@@ -724,10 +229,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_build_beforebuildcommand",
       "community": 35,
       "community_name": "files",
-      "norm_label": "beforebuildcommand"
+      "norm_label": "beforebuildcommand",
+      "id": "clients_desktop_src_tauri_tauri_conf_build_beforebuildcommand"
     },
     {
       "label": "frontendDist",
@@ -735,10 +240,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_build_frontenddist",
       "community": 35,
       "community_name": "files",
-      "norm_label": "frontenddist"
+      "norm_label": "frontenddist",
+      "id": "clients_desktop_src_tauri_tauri_conf_build_frontenddist"
     },
     {
       "label": "app",
@@ -746,10 +251,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_app",
       "community": 35,
       "community_name": "files",
-      "norm_label": "app"
+      "norm_label": "app",
+      "id": "clients_desktop_src_tauri_tauri_conf_app"
     },
     {
       "label": "windows",
@@ -757,10 +262,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_app_windows",
       "community": 35,
       "community_name": "files",
-      "norm_label": "windows"
+      "norm_label": "windows",
+      "id": "clients_desktop_src_tauri_tauri_conf_app_windows"
     },
     {
       "label": "security",
@@ -768,10 +273,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_app_security",
       "community": 35,
       "community_name": "files",
-      "norm_label": "security"
+      "norm_label": "security",
+      "id": "clients_desktop_src_tauri_tauri_conf_app_security"
     },
     {
       "label": "csp",
@@ -779,10 +284,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_security_csp",
       "community": 35,
       "community_name": "files",
-      "norm_label": "csp"
+      "norm_label": "csp",
+      "id": "clients_desktop_src_tauri_tauri_conf_security_csp"
     },
     {
       "label": "bundle",
@@ -790,10 +295,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_bundle",
       "community": 35,
       "community_name": "files",
-      "norm_label": "bundle"
+      "norm_label": "bundle",
+      "id": "clients_desktop_src_tauri_tauri_conf_bundle"
     },
     {
       "label": "active",
@@ -801,10 +306,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_bundle_active",
       "community": 35,
       "community_name": "files",
-      "norm_label": "active"
+      "norm_label": "active",
+      "id": "clients_desktop_src_tauri_tauri_conf_bundle_active"
     },
     {
       "label": "targets",
@@ -812,10 +317,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_bundle_targets",
       "community": 35,
       "community_name": "files",
-      "norm_label": "targets"
+      "norm_label": "targets",
+      "id": "clients_desktop_src_tauri_tauri_conf_bundle_targets"
     },
     {
       "label": "icon",
@@ -823,32 +328,65 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_bundle_icon",
       "community": 35,
       "community_name": "files",
-      "norm_label": "icon"
+      "norm_label": "icon",
+      "id": "clients_desktop_src_tauri_tauri_conf_bundle_icon"
     },
     {
-      "label": "../../../public/icons/icon-128x128.png",
+      "label": "icons/32x32.png",
       "file_type": "concept",
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "ref_public_icons_icon_128x128_png",
       "community": 35,
       "community_name": "files",
-      "norm_label": "../../../public/icons/icon-128x128.png"
+      "norm_label": "icons/32x32.png",
+      "id": "ref_icons_32x32_png"
     },
     {
-      "label": "../../../public/icons/icon-512x512.png",
+      "label": "icons/128x128.png",
       "file_type": "concept",
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "ref_public_icons_icon_512x512_png",
       "community": 35,
       "community_name": "files",
-      "norm_label": "../../../public/icons/icon-512x512.png"
+      "norm_label": "icons/128x128.png",
+      "id": "ref_icons_128x128_png"
+    },
+    {
+      "label": "icons/128x128@2x.png",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/tauri.conf.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "files",
+      "norm_label": "icons/128x128@2x.png",
+      "id": "ref_icons_128x128_2x_png"
+    },
+    {
+      "label": "icons/icon.icns",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/tauri.conf.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "files",
+      "norm_label": "icons/icon.icns",
+      "id": "ref_icons_icon_icns"
+    },
+    {
+      "label": "icons/icon.ico",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/tauri.conf.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "files",
+      "norm_label": "icons/icon.ico",
+      "id": "ref_icons_icon_ico"
     },
     {
       "label": "category",
@@ -856,10 +394,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_bundle_category",
       "community": 35,
       "community_name": "files",
-      "norm_label": "category"
+      "norm_label": "category",
+      "id": "clients_desktop_src_tauri_tauri_conf_bundle_category"
     },
     {
       "label": "shortDescription",
@@ -867,10 +405,10 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_bundle_shortdescription",
       "community": 35,
       "community_name": "files",
-      "norm_label": "shortdescription"
+      "norm_label": "shortdescription",
+      "id": "clients_desktop_src_tauri_tauri_conf_bundle_shortdescription"
     },
     {
       "label": "longDescription",
@@ -878,10 +416,516 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "clients_desktop_src_tauri_tauri_conf_bundle_longdescription",
       "community": 35,
       "community_name": "files",
-      "norm_label": "longdescription"
+      "norm_label": "longdescription",
+      "id": "clients_desktop_src_tauri_tauri_conf_bundle_longdescription"
+    },
+    {
+      "label": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "cross_platform_client_plan.md",
+      "id": "cross_platform_client_plan"
+    },
+    {
+      "label": "Triforce Cross-Platform Client Plan",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "triforce cross-platform client plan",
+      "id": "cross_platform_client_plan_triforce_cross_platform_client_plan"
+    },
+    {
+      "label": "Objective",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "objective",
+      "id": "cross_platform_client_plan_objective"
+    },
+    {
+      "label": "Agent handoff contract",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "agent handoff contract",
+      "id": "cross_platform_client_plan_agent_handoff_contract"
+    },
+    {
+      "label": "Current handoff",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L47",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "current handoff",
+      "id": "cross_platform_client_plan_current_handoff"
+    },
+    {
+      "label": "Product decisions",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "product decisions",
+      "id": "cross_platform_client_plan_product_decisions"
+    },
+    {
+      "label": "Step 1 \u2014 Monorepo and shared-client foundation",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L73",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 1 \u2014 monorepo and shared-client foundation",
+      "id": "cross_platform_client_plan_step_1_monorepo_and_shared_client_foundation"
+    },
+    {
+      "label": "Step 2 \u2014 Versioned server protocol and resumable run API",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L97",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 2 \u2014 versioned server protocol and resumable run api",
+      "id": "cross_platform_client_plan_step_2_versioned_server_protocol_and_resumable_run_api"
+    },
+    {
+      "label": "Step 3 \u2014 Shared connection, authentication, and host profiles",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L117",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 3 \u2014 shared connection, authentication, and host profiles",
+      "id": "cross_platform_client_plan_step_3_shared_connection_authentication_and_host_profiles"
+    },
+    {
+      "label": "Step 4 \u2014 Shared responsive Triforce interface",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L136",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 4 \u2014 shared responsive triforce interface",
+      "id": "cross_platform_client_plan_step_4_shared_responsive_triforce_interface"
+    },
+    {
+      "label": "Step 5 \u2014 Desktop shell for Windows and macOS",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L165",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 5 \u2014 desktop shell for windows and macos",
+      "id": "cross_platform_client_plan_step_5_desktop_shell_for_windows_and_macos"
+    },
+    {
+      "label": "Step 6 \u2014 Android container shell",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L180",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 6 \u2014 android container shell",
+      "id": "cross_platform_client_plan_step_6_android_container_shell"
+    },
+    {
+      "label": "Step 7 \u2014 Security, resilience, and compatibility hardening",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L199",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 7 \u2014 security, resilience, and compatibility hardening",
+      "id": "cross_platform_client_plan_step_7_security_resilience_and_compatibility_hardening"
+    },
+    {
+      "label": "Step 8 \u2014 Packaging, signing documentation, and CI artifacts",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L216",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 8 \u2014 packaging, signing documentation, and ci artifacts",
+      "id": "cross_platform_client_plan_step_8_packaging_signing_documentation_and_ci_artifacts"
+    },
+    {
+      "label": "Step 9 \u2014 End-to-end validation and release candidate",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L233",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "step 9 \u2014 end-to-end validation and release candidate",
+      "id": "cross_platform_client_plan_step_9_end_to_end_validation_and_release_candidate"
+    },
+    {
+      "label": "Per-step completion procedure",
+      "file_type": "document",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L251",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "cli-input.test.js",
+      "norm_label": "per-step completion procedure",
+      "id": "cross_platform_client_plan_per_step_completion_procedure"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "clients/desktop/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "Triforce Desktop",
+      "norm_label": "readme.md",
+      "id": "clients_desktop_readme"
+    },
+    {
+      "label": "Triforce Desktop",
+      "file_type": "document",
+      "source_file": "clients/desktop/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "Triforce Desktop",
+      "norm_label": "triforce desktop",
+      "id": "clients_desktop_readme_triforce_desktop"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "clients/desktop/README.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "Triforce Desktop",
+      "norm_label": "prerequisites",
+      "id": "clients_desktop_readme_prerequisites"
+    },
+    {
+      "label": "Development",
+      "file_type": "document",
+      "source_file": "clients/desktop/README.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "Triforce Desktop",
+      "norm_label": "development",
+      "id": "clients_desktop_readme_development"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "package.json",
+      "id": "clients_desktop_package"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "name",
+      "id": "clients_desktop_package_name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "version",
+      "id": "clients_desktop_package_version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "private",
+      "id": "clients_desktop_package_private"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "type",
+      "id": "clients_desktop_package_type"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "scripts",
+      "id": "clients_desktop_package_scripts"
+    },
+    {
+      "label": "tauri",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "tauri",
+      "id": "clients_desktop_package_scripts_tauri"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "dev",
+      "id": "clients_desktop_package_scripts_dev"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "build",
+      "id": "clients_desktop_package_scripts_build"
+    },
+    {
+      "label": "check",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "check",
+      "id": "clients_desktop_package_scripts_check"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "devdependencies",
+      "id": "clients_desktop_package_devdependencies"
+    },
+    {
+      "label": "@tauri-apps/cli",
+      "file_type": "code",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "@tauri-apps/cli",
+      "id": "clients_desktop_package_devdependencies_tauri_apps_cli"
+    },
+    {
+      "label": "@tauri-apps/cli",
+      "file_type": "concept",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "package.json",
+      "norm_label": "@tauri-apps/cli",
+      "id": "tauri_apps_cli"
+    },
+    {
+      "label": "build.rs",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/build.rs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "build.rs",
+      "norm_label": "build.rs",
+      "id": "clients_desktop_src_tauri_build"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/build.rs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "build.rs",
+      "norm_label": "main()",
+      "id": "clients_desktop_src_tauri_build_main"
+    },
+    {
+      "label": "default.json",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "default.json",
+      "id": "clients_desktop_src_tauri_capabilities_default"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "$schema",
+      "id": "clients_desktop_src_tauri_capabilities_default_schema"
+    },
+    {
+      "label": "identifier",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "identifier",
+      "id": "clients_desktop_src_tauri_capabilities_default_identifier"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "description",
+      "id": "clients_desktop_src_tauri_capabilities_default_description"
+    },
+    {
+      "label": "windows",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "windows",
+      "id": "clients_desktop_src_tauri_capabilities_default_windows"
+    },
+    {
+      "label": "main",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "main",
+      "id": "ref_main"
+    },
+    {
+      "label": "permissions",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "permissions",
+      "id": "clients_desktop_src_tauri_capabilities_default_permissions"
+    },
+    {
+      "label": "core:default",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "core:default",
+      "id": "ref_core_default"
+    },
+    {
+      "label": "opener:allow-open-url",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "opener:allow-open-url",
+      "id": "ref_opener_allow_open_url"
+    },
+    {
+      "label": "window-state:default",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "window-state:default",
+      "id": "ref_window_state_default"
+    },
+    {
+      "label": "updater:default",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "default.json",
+      "norm_label": "updater:default",
+      "id": "ref_updater_default"
     },
     {
       "label": "package.json",
@@ -889,10 +933,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "clients_shared_package",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "package.json"
+      "norm_label": "package.json",
+      "id": "clients_shared_package"
     },
     {
       "label": "name",
@@ -900,10 +944,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "clients_shared_package_name",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "name"
+      "norm_label": "name",
+      "id": "clients_shared_package_name"
     },
     {
       "label": "version",
@@ -911,10 +955,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "clients_shared_package_version",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "version"
+      "norm_label": "version",
+      "id": "clients_shared_package_version"
     },
     {
       "label": "private",
@@ -922,10 +966,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "clients_shared_package_private",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "private"
+      "norm_label": "private",
+      "id": "clients_shared_package_private"
     },
     {
       "label": "type",
@@ -933,10 +977,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "clients_shared_package_type",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "type"
+      "norm_label": "type",
+      "id": "clients_shared_package_type"
     },
     {
       "label": "scripts",
@@ -944,10 +988,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "clients_shared_package_scripts",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "scripts"
+      "norm_label": "scripts",
+      "id": "clients_shared_package_scripts"
     },
     {
       "label": "dev",
@@ -955,10 +999,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "clients_shared_package_scripts_dev",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "dev"
+      "norm_label": "dev",
+      "id": "clients_shared_package_scripts_dev"
     },
     {
       "label": "build",
@@ -966,10 +1010,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "clients_shared_package_scripts_build",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "build"
+      "norm_label": "build",
+      "id": "clients_shared_package_scripts_build"
     },
     {
       "label": "typecheck",
@@ -977,10 +1021,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "clients_shared_package_scripts_typecheck",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "typecheck"
+      "norm_label": "typecheck",
+      "id": "clients_shared_package_scripts_typecheck"
     },
     {
       "label": "lint",
@@ -988,10 +1032,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "clients_shared_package_scripts_lint",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "lint"
+      "norm_label": "lint",
+      "id": "clients_shared_package_scripts_lint"
     },
     {
       "label": "test",
@@ -999,10 +1043,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "clients_shared_package_scripts_test",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "test"
+      "norm_label": "test",
+      "id": "clients_shared_package_scripts_test"
     },
     {
       "label": "dependencies",
@@ -1010,10 +1054,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "clients_shared_package_dependencies",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "dependencies"
+      "norm_label": "dependencies",
+      "id": "clients_shared_package_dependencies"
     },
     {
       "label": "@tauri-apps/api",
@@ -1021,10 +1065,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "clients_shared_package_dependencies_tauri_apps_api",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "@tauri-apps/api"
+      "norm_label": "@tauri-apps/api",
+      "id": "clients_shared_package_dependencies_tauri_apps_api"
     },
     {
       "label": "@tauri-apps/api",
@@ -1032,10 +1076,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "tauri_apps_api",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "@tauri-apps/api"
+      "norm_label": "@tauri-apps/api",
+      "id": "tauri_apps_api"
     },
     {
       "label": "@tauri-apps/plugin-opener",
@@ -1043,10 +1087,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "clients_shared_package_dependencies_tauri_apps_plugin_opener",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "@tauri-apps/plugin-opener"
+      "norm_label": "@tauri-apps/plugin-opener",
+      "id": "clients_shared_package_dependencies_tauri_apps_plugin_opener"
     },
     {
       "label": "@tauri-apps/plugin-opener",
@@ -1054,10 +1098,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "tauri_apps_plugin_opener",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "@tauri-apps/plugin-opener"
+      "norm_label": "@tauri-apps/plugin-opener",
+      "id": "tauri_apps_plugin_opener"
     },
     {
       "label": "@triforce/protocol",
@@ -1065,10 +1109,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "clients_shared_package_dependencies_triforce_protocol",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "@triforce/protocol"
+      "norm_label": "@triforce/protocol",
+      "id": "clients_shared_package_dependencies_triforce_protocol"
     },
     {
       "label": "@triforce/protocol",
@@ -1076,10 +1120,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "triforce_protocol",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "@triforce/protocol"
+      "norm_label": "@triforce/protocol",
+      "id": "triforce_protocol"
     },
     {
       "label": "react",
@@ -1087,10 +1131,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L17",
       "_origin": "ast",
-      "id": "clients_shared_package_dependencies_react",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "react"
+      "norm_label": "react",
+      "id": "clients_shared_package_dependencies_react"
     },
     {
       "label": "react",
@@ -1098,10 +1142,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L17",
       "_origin": "ast",
-      "id": "react",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "react"
+      "norm_label": "react",
+      "id": "react"
     },
     {
       "label": "react-dom",
@@ -1109,10 +1153,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "clients_shared_package_dependencies_react_dom",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "react-dom"
+      "norm_label": "react-dom",
+      "id": "clients_shared_package_dependencies_react_dom"
     },
     {
       "label": "react-dom",
@@ -1120,10 +1164,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "react_dom",
       "community": 22,
       "community_name": "package.json",
-      "norm_label": "react-dom"
+      "norm_label": "react-dom",
+      "id": "react_dom"
     },
     {
       "label": "devDependencies",
@@ -1131,10 +1175,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "devdependencies"
+      "norm_label": "devdependencies",
+      "id": "clients_shared_package_devdependencies"
     },
     {
       "label": "@eslint/js",
@@ -1142,10 +1186,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_eslint_js",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@eslint/js"
+      "norm_label": "@eslint/js",
+      "id": "clients_shared_package_devdependencies_eslint_js"
     },
     {
       "label": "@eslint/js",
@@ -1153,10 +1197,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "id": "eslint_js",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@eslint/js"
+      "norm_label": "@eslint/js",
+      "id": "eslint_js"
     },
     {
       "label": "@testing-library/jest-dom",
@@ -1164,10 +1208,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_testing_library_jest_dom",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@testing-library/jest-dom"
+      "norm_label": "@testing-library/jest-dom",
+      "id": "clients_shared_package_devdependencies_testing_library_jest_dom"
     },
     {
       "label": "@testing-library/jest-dom",
@@ -1175,10 +1219,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "testing_library_jest_dom",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@testing-library/jest-dom"
+      "norm_label": "@testing-library/jest-dom",
+      "id": "testing_library_jest_dom"
     },
     {
       "label": "@testing-library/react",
@@ -1186,10 +1230,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_testing_library_react",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@testing-library/react"
+      "norm_label": "@testing-library/react",
+      "id": "clients_shared_package_devdependencies_testing_library_react"
     },
     {
       "label": "@testing-library/react",
@@ -1197,10 +1241,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "testing_library_react",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@testing-library/react"
+      "norm_label": "@testing-library/react",
+      "id": "testing_library_react"
     },
     {
       "label": "@types/react",
@@ -1208,10 +1252,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_types_react",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@types/react"
+      "norm_label": "@types/react",
+      "id": "clients_shared_package_devdependencies_types_react"
     },
     {
       "label": "@types/react",
@@ -1219,10 +1263,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "types_react",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@types/react"
+      "norm_label": "@types/react",
+      "id": "types_react"
     },
     {
       "label": "@types/react-dom",
@@ -1230,10 +1274,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_types_react_dom",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@types/react-dom"
+      "norm_label": "@types/react-dom",
+      "id": "clients_shared_package_devdependencies_types_react_dom"
     },
     {
       "label": "@types/react-dom",
@@ -1241,10 +1285,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "types_react_dom",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@types/react-dom"
+      "norm_label": "@types/react-dom",
+      "id": "types_react_dom"
     },
     {
       "label": "@types/node",
@@ -1252,10 +1296,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L26",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_types_node",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@types/node"
+      "norm_label": "@types/node",
+      "id": "clients_shared_package_devdependencies_types_node"
     },
     {
       "label": "@types/node",
@@ -1263,10 +1307,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L26",
       "_origin": "ast",
-      "id": "types_node",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@types/node"
+      "norm_label": "@types/node",
+      "id": "types_node"
     },
     {
       "label": "@vitejs/plugin-react",
@@ -1274,10 +1318,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L27",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_vitejs_plugin_react",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@vitejs/plugin-react"
+      "norm_label": "@vitejs/plugin-react",
+      "id": "clients_shared_package_devdependencies_vitejs_plugin_react"
     },
     {
       "label": "@vitejs/plugin-react",
@@ -1285,10 +1329,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L27",
       "_origin": "ast",
-      "id": "vitejs_plugin_react",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "@vitejs/plugin-react"
+      "norm_label": "@vitejs/plugin-react",
+      "id": "vitejs_plugin_react"
     },
     {
       "label": "eslint",
@@ -1296,10 +1340,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_eslint",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "eslint"
+      "norm_label": "eslint",
+      "id": "clients_shared_package_devdependencies_eslint"
     },
     {
       "label": "eslint",
@@ -1307,10 +1351,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "eslint",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "eslint"
+      "norm_label": "eslint",
+      "id": "eslint"
     },
     {
       "label": "eslint-plugin-react-hooks",
@@ -1318,10 +1362,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_eslint_plugin_react_hooks",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-hooks"
+      "norm_label": "eslint-plugin-react-hooks",
+      "id": "clients_shared_package_devdependencies_eslint_plugin_react_hooks"
     },
     {
       "label": "eslint-plugin-react-hooks",
@@ -1329,10 +1373,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "eslint_plugin_react_hooks",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-hooks"
+      "norm_label": "eslint-plugin-react-hooks",
+      "id": "eslint_plugin_react_hooks"
     },
     {
       "label": "eslint-plugin-react-refresh",
@@ -1340,10 +1384,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L30",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_eslint_plugin_react_refresh",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-refresh"
+      "norm_label": "eslint-plugin-react-refresh",
+      "id": "clients_shared_package_devdependencies_eslint_plugin_react_refresh"
     },
     {
       "label": "eslint-plugin-react-refresh",
@@ -1351,10 +1395,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L30",
       "_origin": "ast",
-      "id": "eslint_plugin_react_refresh",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "eslint-plugin-react-refresh"
+      "norm_label": "eslint-plugin-react-refresh",
+      "id": "eslint_plugin_react_refresh"
     },
     {
       "label": "globals",
@@ -1362,10 +1406,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L31",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_globals",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "globals"
+      "norm_label": "globals",
+      "id": "clients_shared_package_devdependencies_globals"
     },
     {
       "label": "globals",
@@ -1373,10 +1417,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L31",
       "_origin": "ast",
-      "id": "globals",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "globals"
+      "norm_label": "globals",
+      "id": "globals"
     },
     {
       "label": "jsdom",
@@ -1384,10 +1428,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_jsdom",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "jsdom"
+      "norm_label": "jsdom",
+      "id": "clients_shared_package_devdependencies_jsdom"
     },
     {
       "label": "jsdom",
@@ -1395,10 +1439,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "jsdom",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "jsdom"
+      "norm_label": "jsdom",
+      "id": "jsdom"
     },
     {
       "label": "typescript",
@@ -1406,10 +1450,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_typescript",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "typescript"
+      "norm_label": "typescript",
+      "id": "clients_shared_package_devdependencies_typescript"
     },
     {
       "label": "typescript",
@@ -1417,10 +1461,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "typescript",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "typescript"
+      "norm_label": "typescript",
+      "id": "typescript"
     },
     {
       "label": "typescript-eslint",
@@ -1428,10 +1472,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_typescript_eslint",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "typescript-eslint"
+      "norm_label": "typescript-eslint",
+      "id": "clients_shared_package_devdependencies_typescript_eslint"
     },
     {
       "label": "typescript-eslint",
@@ -1439,10 +1483,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "typescript_eslint",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "typescript-eslint"
+      "norm_label": "typescript-eslint",
+      "id": "typescript_eslint"
     },
     {
       "label": "vite",
@@ -1450,10 +1494,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L35",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_vite",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "vite"
+      "norm_label": "vite",
+      "id": "clients_shared_package_devdependencies_vite"
     },
     {
       "label": "vite",
@@ -1461,10 +1505,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L35",
       "_origin": "ast",
-      "id": "vite",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "vite"
+      "norm_label": "vite",
+      "id": "vite"
     },
     {
       "label": "vitest",
@@ -1472,10 +1516,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L36",
       "_origin": "ast",
-      "id": "clients_shared_package_devdependencies_vitest",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "vitest"
+      "norm_label": "vitest",
+      "id": "clients_shared_package_devdependencies_vitest"
     },
     {
       "label": "vitest",
@@ -1483,10 +1527,10 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L36",
       "_origin": "ast",
-      "id": "vitest",
       "community": 20,
       "community_name": "devDependencies",
-      "norm_label": "vitest"
+      "norm_label": "vitest",
+      "id": "vitest"
     },
     {
       "label": "App.tsx",
@@ -1494,10 +1538,10 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "clients_shared_src_app",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "app.tsx"
+      "norm_label": "app.tsx",
+      "id": "clients_shared_src_app"
     },
     {
       "label": "roles",
@@ -1505,10 +1549,10 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "clients_shared_src_app_roles",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "roles"
+      "norm_label": "roles",
+      "id": "clients_shared_src_app_roles"
     },
     {
       "label": "defaultConfig",
@@ -1516,10 +1560,10 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "clients_shared_src_app_defaultconfig",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "defaultconfig"
+      "norm_label": "defaultconfig",
+      "id": "clients_shared_src_app_defaultconfig"
     },
     {
       "label": "App()",
@@ -1527,10 +1571,10 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "clients_shared_src_app_app",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "app()"
+      "norm_label": "app()",
+      "id": "clients_shared_src_app_app"
     },
     {
       "label": "HostScreen()",
@@ -1538,10 +1582,10 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L59",
       "_origin": "ast",
-      "id": "clients_shared_src_app_hostscreen",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "hostscreen()"
+      "norm_label": "hostscreen()",
+      "id": "clients_shared_src_app_hostscreen"
     },
     {
       "label": "Dashboard()",
@@ -1549,10 +1593,10 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L82",
       "_origin": "ast",
-      "id": "clients_shared_src_app_dashboard",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "dashboard()"
+      "norm_label": "dashboard()",
+      "id": "clients_shared_src_app_dashboard"
     },
     {
       "label": "native-integration.ts",
@@ -1560,10 +1604,10 @@
       "source_file": "clients/shared/src/core/native-integration.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "clients_shared_src_core_native_integration",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "native-integration.ts"
+      "norm_label": "native-integration.ts",
+      "id": "clients_shared_src_core_native_integration"
     },
     {
       "label": "installNativeIntegration()",
@@ -1571,10 +1615,10 @@
       "source_file": "clients/shared/src/core/native-integration.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "clients_shared_src_core_native_integration_installnativeintegration",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "installnativeintegration()"
+      "norm_label": "installnativeintegration()",
+      "id": "clients_shared_src_core_native_integration_installnativeintegration"
     },
     {
       "label": "platform-credentials.test.ts",
@@ -1582,10 +1626,10 @@
       "source_file": "clients/shared/src/core/platform-credentials.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "clients_shared_src_core_platform_credentials_test",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "platform-credentials.test.ts"
+      "norm_label": "platform-credentials.test.ts",
+      "id": "clients_shared_src_core_platform_credentials_test"
     },
     {
       "label": "platform-credentials.ts",
@@ -1593,10 +1637,10 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "clients_shared_src_core_platform_credentials",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "platform-credentials.ts"
+      "norm_label": "platform-credentials.ts",
+      "id": "clients_shared_src_core_platform_credentials"
     },
     {
       "label": "TauriCredentialStorage",
@@ -1604,10 +1648,10 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "tauricredentialstorage"
+      "norm_label": "tauricredentialstorage",
+      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage"
     },
     {
       "label": ".get()",
@@ -1615,10 +1659,10 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_get",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": ".get()"
+      "norm_label": ".get()",
+      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_get"
     },
     {
       "label": ".set()",
@@ -1626,10 +1670,10 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_set",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": ".set()"
+      "norm_label": ".set()",
+      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_set"
     },
     {
       "label": ".delete()",
@@ -1637,10 +1681,10 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_delete",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": ".delete()"
+      "norm_label": ".delete()",
+      "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_delete"
     },
     {
       "label": "createCredentialStorage()",
@@ -1648,10 +1692,10 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "clients_shared_src_core_platform_credentials_createcredentialstorage",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "createcredentialstorage()"
+      "norm_label": "createcredentialstorage()",
+      "id": "clients_shared_src_core_platform_credentials_createcredentialstorage"
     },
     {
       "label": "main.tsx",
@@ -1659,10 +1703,10 @@
       "source_file": "clients/shared/src/main.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "clients_shared_src_main",
       "community": 43,
       "community_name": "App.tsx",
-      "norm_label": "main.tsx"
+      "norm_label": "main.tsx",
+      "id": "clients_shared_src_main"
     },
     {
       "label": "package.json",
@@ -1670,10 +1714,10 @@
       "source_file": "package.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "package",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "package.json"
+      "norm_label": "package.json",
+      "id": "package"
     },
     {
       "label": "name",
@@ -1681,10 +1725,10 @@
       "source_file": "package.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "package_name",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "name"
+      "norm_label": "name",
+      "id": "package_name"
     },
     {
       "label": "version",
@@ -1692,10 +1736,10 @@
       "source_file": "package.json",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "package_version",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "version"
+      "norm_label": "version",
+      "id": "package_version"
     },
     {
       "label": "description",
@@ -1703,10 +1747,10 @@
       "source_file": "package.json",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "package_description",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "description"
+      "norm_label": "description",
+      "id": "package_description"
     },
     {
       "label": "main",
@@ -1714,10 +1758,10 @@
       "source_file": "package.json",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "package_main",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "main"
+      "norm_label": "main",
+      "id": "package_main"
     },
     {
       "label": "type",
@@ -1725,10 +1769,10 @@
       "source_file": "package.json",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "package_type",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "type"
+      "norm_label": "type",
+      "id": "package_type"
     },
     {
       "label": "workspaces",
@@ -1736,10 +1780,10 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "package_workspaces",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "workspaces"
+      "norm_label": "workspaces",
+      "id": "package_workspaces"
     },
     {
       "label": "clients/shared",
@@ -1747,10 +1791,10 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "ref_clients_shared",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "clients/shared"
+      "norm_label": "clients/shared",
+      "id": "ref_clients_shared"
     },
     {
       "label": "clients/desktop",
@@ -1758,10 +1802,10 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "ref_clients_desktop",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "clients/desktop"
+      "norm_label": "clients/desktop",
+      "id": "ref_clients_desktop"
     },
     {
       "label": "packages/*",
@@ -1769,10 +1813,10 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "id": "ref_packages",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "packages/*"
+      "norm_label": "packages/*",
+      "id": "ref_packages"
     },
     {
       "label": "bin",
@@ -1780,10 +1824,10 @@
       "source_file": "package.json",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "package_bin",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "bin"
+      "norm_label": "bin",
+      "id": "package_bin"
     },
     {
       "label": "triforce",
@@ -1791,10 +1835,10 @@
       "source_file": "package.json",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "package_bin_triforce",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "triforce"
+      "norm_label": "triforce",
+      "id": "package_bin_triforce"
     },
     {
       "label": "files",
@@ -1802,10 +1846,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "package_files",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "files"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "files",
+      "id": "package_files"
     },
     {
       "label": "agent.js",
@@ -1813,10 +1857,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_agent_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "agent.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "agent.js",
+      "id": "ref_agent_js"
     },
     {
       "label": "cli.js",
@@ -1824,10 +1868,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_cli_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "cli.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "cli.js",
+      "id": "ref_cli_js"
     },
     {
       "label": "cli-input.js",
@@ -1835,10 +1879,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_cli_input_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "cli-input.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "cli-input.js",
+      "id": "ref_cli_input_js"
     },
     {
       "label": "models.config.json",
@@ -1846,10 +1890,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_models_config_json",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "models.config.json"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "models.config.json",
+      "id": "ref_models_config_json"
     },
     {
       "label": "orchestrator.js",
@@ -1857,10 +1901,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_orchestrator_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "orchestrator.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "orchestrator.js",
+      "id": "ref_orchestrator_js"
     },
     {
       "label": "public/",
@@ -1868,10 +1912,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_public",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "public/"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "public/",
+      "id": "ref_public"
     },
     {
       "label": "sandbox.js",
@@ -1879,10 +1923,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_sandbox_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "sandbox.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "sandbox.js",
+      "id": "ref_sandbox_js"
     },
     {
       "label": "server.js",
@@ -1890,10 +1934,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_server_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "server.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "server.js",
+      "id": "ref_server_js"
     },
     {
       "label": "usage.js",
@@ -1901,10 +1945,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_usage_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "usage.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "usage.js",
+      "id": "ref_usage_js"
     },
     {
       "label": "workspace.js",
@@ -1912,10 +1956,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_workspace_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "workspace.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "workspace.js",
+      "id": "ref_workspace_js"
     },
     {
       "label": "run-registry.js",
@@ -1923,10 +1967,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_run_registry_js",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "run-registry.js"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "run-registry.js",
+      "id": "ref_run_registry_js"
     },
     {
       "label": "packages/protocol/src/",
@@ -1934,10 +1978,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_packages_protocol_src",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "packages/protocol/src/"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "packages/protocol/src/",
+      "id": "ref_packages_protocol_src"
     },
     {
       "label": "RUNNING.md",
@@ -1945,10 +1989,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_running_md",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "running.md"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "running.md",
+      "id": "ref_running_md"
     },
     {
       "label": "install-service.sh",
@@ -1956,10 +2000,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_install_service_sh",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "install-service.sh"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "install-service.sh",
+      "id": "ref_install_service_sh"
     },
     {
       "label": "triforce.service",
@@ -1967,10 +2011,10 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "ref_triforce_service",
-      "community": 44,
-      "community_name": "files",
-      "norm_label": "triforce.service"
+      "community": 33,
+      "community_name": "scripts",
+      "norm_label": "triforce.service",
+      "id": "ref_triforce_service"
     },
     {
       "label": "scripts",
@@ -1978,10 +2022,10 @@
       "source_file": "package.json",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "package_scripts",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "scripts"
+      "norm_label": "scripts",
+      "id": "package_scripts"
     },
     {
       "label": "start",
@@ -1989,10 +2033,10 @@
       "source_file": "package.json",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "package_scripts_start",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "start"
+      "norm_label": "start",
+      "id": "package_scripts_start"
     },
     {
       "label": "cli",
@@ -2000,10 +2044,10 @@
       "source_file": "package.json",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "package_scripts_cli",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "cli"
+      "norm_label": "cli",
+      "id": "package_scripts_cli"
     },
     {
       "label": "test",
@@ -2011,10 +2055,10 @@
       "source_file": "package.json",
       "source_location": "L35",
       "_origin": "ast",
-      "id": "package_scripts_test",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "test"
+      "norm_label": "test",
+      "id": "package_scripts_test"
     },
     {
       "label": "test:server",
@@ -2022,10 +2066,10 @@
       "source_file": "package.json",
       "source_location": "L36",
       "_origin": "ast",
-      "id": "package_scripts_test_server",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "test:server"
+      "norm_label": "test:server",
+      "id": "package_scripts_test_server"
     },
     {
       "label": "build",
@@ -2033,10 +2077,10 @@
       "source_file": "package.json",
       "source_location": "L37",
       "_origin": "ast",
-      "id": "package_scripts_build",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "build"
+      "norm_label": "build",
+      "id": "package_scripts_build"
     },
     {
       "label": "typecheck",
@@ -2044,10 +2088,10 @@
       "source_file": "package.json",
       "source_location": "L38",
       "_origin": "ast",
-      "id": "package_scripts_typecheck",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "typecheck"
+      "norm_label": "typecheck",
+      "id": "package_scripts_typecheck"
     },
     {
       "label": "lint",
@@ -2055,10 +2099,10 @@
       "source_file": "package.json",
       "source_location": "L39",
       "_origin": "ast",
-      "id": "package_scripts_lint",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "lint"
+      "norm_label": "lint",
+      "id": "package_scripts_lint"
     },
     {
       "label": "dev:client",
@@ -2066,10 +2110,10 @@
       "source_file": "package.json",
       "source_location": "L40",
       "_origin": "ast",
-      "id": "package_scripts_dev_client",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "dev:client"
+      "norm_label": "dev:client",
+      "id": "package_scripts_dev_client"
     },
     {
       "label": "desktop:check",
@@ -2077,10 +2121,10 @@
       "source_file": "package.json",
       "source_location": "L41",
       "_origin": "ast",
-      "id": "package_scripts_desktop_check",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "desktop:check"
+      "norm_label": "desktop:check",
+      "id": "package_scripts_desktop_check"
     },
     {
       "label": "dependencies",
@@ -2088,10 +2132,10 @@
       "source_file": "package.json",
       "source_location": "L43",
       "_origin": "ast",
-      "id": "package_dependencies",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "dependencies"
+      "norm_label": "dependencies",
+      "id": "package_dependencies"
     },
     {
       "label": "@anthropic-ai/sdk",
@@ -2099,10 +2143,10 @@
       "source_file": "package.json",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "package_dependencies_anthropic_ai_sdk",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "@anthropic-ai/sdk"
+      "norm_label": "@anthropic-ai/sdk",
+      "id": "package_dependencies_anthropic_ai_sdk"
     },
     {
       "label": "@anthropic-ai/sdk",
@@ -2110,10 +2154,10 @@
       "source_file": "package.json",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "anthropic_ai_sdk",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "@anthropic-ai/sdk"
+      "norm_label": "@anthropic-ai/sdk",
+      "id": "anthropic_ai_sdk"
     },
     {
       "label": "@google/genai",
@@ -2121,10 +2165,10 @@
       "source_file": "package.json",
       "source_location": "L45",
       "_origin": "ast",
-      "id": "package_dependencies_google_genai",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "@google/genai"
+      "norm_label": "@google/genai",
+      "id": "package_dependencies_google_genai"
     },
     {
       "label": "@google/genai",
@@ -2132,10 +2176,10 @@
       "source_file": "package.json",
       "source_location": "L45",
       "_origin": "ast",
-      "id": "google_genai",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "@google/genai"
+      "norm_label": "@google/genai",
+      "id": "google_genai"
     },
     {
       "label": "dotenv",
@@ -2143,10 +2187,10 @@
       "source_file": "package.json",
       "source_location": "L46",
       "_origin": "ast",
-      "id": "package_dependencies_dotenv",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "dotenv"
+      "norm_label": "dotenv",
+      "id": "package_dependencies_dotenv"
     },
     {
       "label": "dotenv",
@@ -2154,10 +2198,10 @@
       "source_file": "package.json",
       "source_location": "L46",
       "_origin": "ast",
-      "id": "dotenv",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "dotenv"
+      "norm_label": "dotenv",
+      "id": "dotenv"
     },
     {
       "label": "express",
@@ -2165,10 +2209,10 @@
       "source_file": "package.json",
       "source_location": "L47",
       "_origin": "ast",
-      "id": "package_dependencies_express",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "express"
+      "norm_label": "express",
+      "id": "package_dependencies_express"
     },
     {
       "label": "express",
@@ -2176,10 +2220,10 @@
       "source_file": "package.json",
       "source_location": "L47",
       "_origin": "ast",
-      "id": "express",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "express"
+      "norm_label": "express",
+      "id": "express"
     },
     {
       "label": "openai",
@@ -2187,10 +2231,10 @@
       "source_file": "package.json",
       "source_location": "L48",
       "_origin": "ast",
-      "id": "package_dependencies_openai",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "openai"
+      "norm_label": "openai",
+      "id": "package_dependencies_openai"
     },
     {
       "label": "openai",
@@ -2198,10 +2242,10 @@
       "source_file": "package.json",
       "source_location": "L48",
       "_origin": "ast",
-      "id": "openai",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "openai"
+      "norm_label": "openai",
+      "id": "openai"
     },
     {
       "label": "ws",
@@ -2209,10 +2253,10 @@
       "source_file": "package.json",
       "source_location": "L49",
       "_origin": "ast",
-      "id": "package_dependencies_ws",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "ws"
+      "norm_label": "ws",
+      "id": "package_dependencies_ws"
     },
     {
       "label": "ws",
@@ -2220,10 +2264,10 @@
       "source_file": "package.json",
       "source_location": "L49",
       "_origin": "ast",
-      "id": "ws",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "ws"
+      "norm_label": "ws",
+      "id": "ws"
     },
     {
       "label": "zod",
@@ -2231,10 +2275,10 @@
       "source_file": "package.json",
       "source_location": "L50",
       "_origin": "ast",
-      "id": "package_dependencies_zod",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "zod"
+      "norm_label": "zod",
+      "id": "package_dependencies_zod"
     },
     {
       "label": "zod",
@@ -2242,10 +2286,10 @@
       "source_file": "package.json",
       "source_location": "L50",
       "_origin": "ast",
-      "id": "zod",
       "community": 1,
       "community_name": "dependencies",
-      "norm_label": "zod"
+      "norm_label": "zod",
+      "id": "zod"
     },
     {
       "label": "devDependencies",
@@ -2253,10 +2297,10 @@
       "source_file": "package.json",
       "source_location": "L52",
       "_origin": "ast",
-      "id": "package_devdependencies",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "devdependencies"
+      "norm_label": "devdependencies",
+      "id": "package_devdependencies"
     },
     {
       "label": "pngjs",
@@ -2264,10 +2308,10 @@
       "source_file": "package.json",
       "source_location": "L53",
       "_origin": "ast",
-      "id": "package_devdependencies_pngjs",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "pngjs"
+      "norm_label": "pngjs",
+      "id": "package_devdependencies_pngjs"
     },
     {
       "label": "pngjs",
@@ -2275,10 +2319,10 @@
       "source_file": "package.json",
       "source_location": "L53",
       "_origin": "ast",
-      "id": "pngjs",
       "community": 33,
       "community_name": "scripts",
-      "norm_label": "pngjs"
+      "norm_label": "pngjs",
+      "id": "pngjs"
     },
     {
       "label": "agent.js",
@@ -4571,8 +4615,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "index.js",
       "id": "packages_protocol_src_index"
     },
@@ -4582,8 +4626,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "agentroleschema",
       "id": "packages_protocol_src_index_agentroleschema"
     },
@@ -4593,8 +4637,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "pipelinemodeschema",
       "id": "packages_protocol_src_index_pipelinemodeschema"
     },
@@ -4604,8 +4648,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "agentconfigurationschema",
       "id": "packages_protocol_src_index_agentconfigurationschema"
     },
@@ -4615,8 +4659,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "pipelineconfigurationschema",
       "id": "packages_protocol_src_index_pipelineconfigurationschema"
     },
@@ -4626,8 +4670,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "runcommandschema",
       "id": "packages_protocol_src_index_runcommandschema"
     },
@@ -4637,8 +4681,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "subscribecommandschema",
       "id": "packages_protocol_src_index_subscribecommandschema"
     },
@@ -4648,8 +4692,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L30",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "capabilitiescommandschema",
       "id": "packages_protocol_src_index_capabilitiescommandschema"
     },
@@ -4659,8 +4703,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L34",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "clientcommandschema",
       "id": "packages_protocol_src_index_clientcommandschema"
     },
@@ -4670,8 +4714,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "servereventschema",
       "id": "packages_protocol_src_index_servereventschema"
     },
@@ -4681,8 +4725,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "validateclientcommand()",
       "id": "packages_protocol_src_index_validateclientcommand"
     },
@@ -4692,8 +4736,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L48",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "validateserverevent()",
       "id": "packages_protocol_src_index_validateserverevent"
     },
@@ -4703,8 +4747,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L53",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "iscompatibleprotocol()",
       "id": "packages_protocol_src_index_iscompatibleprotocol"
     },
@@ -4714,8 +4758,8 @@
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L58",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "capabilities",
       "id": "packages_protocol_src_index_capabilities"
     },
@@ -4725,8 +4769,8 @@
       "source_file": "packages/protocol/test/protocol.test.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "protocol.test.js",
       "id": "packages_protocol_test_protocol_test"
     },
@@ -4736,8 +4780,8 @@
       "source_file": "packages/protocol/test/protocol.test.js",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
+      "community": 26,
+      "community_name": "index.ts",
       "norm_label": "config",
       "id": "packages_protocol_test_protocol_test_config"
     },
@@ -6110,424 +6154,8 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan",
-      "target": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_agent_handoff_contract",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_current_handoff",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_objective",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L251",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_per_step_completion_procedure",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L56",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_product_decisions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L73",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_1_monorepo_and_shared_client_foundation",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L97",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_2_versioned_server_protocol_and_resumable_run_api",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L117",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_3_shared_connection_authentication_and_host_profiles",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L136",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_4_shared_responsive_triforce_interface",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L165",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_5_desktop_shell_for_windows_and_macos",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L180",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_6_android_container_shell",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L199",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_7_security_resilience_and_compatibility_hardening",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L216",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_8_packaging_signing_documentation_and_ci_artifacts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
-      "source_location": "L233",
-      "weight": 1.0,
-      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
-      "target": "cross_platform_client_plan_step_9_end_to_end_validation_and_release_candidate",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "clients_desktop_readme",
-      "target": "clients_desktop_readme_triforce_desktop",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/README.md",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "clients_desktop_readme_triforce_desktop",
-      "target": "clients_desktop_readme_development",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/README.md",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "clients_desktop_readme_triforce_desktop",
-      "target": "clients_desktop_readme_prerequisites",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "clients_desktop_package",
-      "target": "clients_desktop_package_devdependencies",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "clients_desktop_package",
-      "target": "clients_desktop_package_name",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "clients_desktop_package",
-      "target": "clients_desktop_package_private",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "clients_desktop_package",
-      "target": "clients_desktop_package_scripts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "clients_desktop_package",
-      "target": "clients_desktop_package_type",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "clients_desktop_package",
-      "target": "clients_desktop_package_version",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "clients_desktop_package_scripts",
-      "target": "clients_desktop_package_scripts_build",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "clients_desktop_package_scripts",
-      "target": "clients_desktop_package_scripts_check",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "clients_desktop_package_scripts",
-      "target": "clients_desktop_package_scripts_dev",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "clients_desktop_package_scripts",
-      "target": "clients_desktop_package_scripts_tauri",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "clients_desktop_package_devdependencies",
-      "target": "clients_desktop_package_devdependencies_tauri_apps_cli",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/package.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "context": "import",
-      "source": "clients_desktop_package_devdependencies_tauri_apps_cli",
-      "target": "tauri_apps_cli",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/build.rs",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "clients_desktop_src_tauri_build",
-      "target": "clients_desktop_src_tauri_build_main",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "clients_desktop_src_tauri_capabilities_default",
-      "target": "clients_desktop_src_tauri_capabilities_default_description",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "clients_desktop_src_tauri_capabilities_default",
-      "target": "clients_desktop_src_tauri_capabilities_default_identifier",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "clients_desktop_src_tauri_capabilities_default",
-      "target": "clients_desktop_src_tauri_capabilities_default_permissions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "clients_desktop_src_tauri_capabilities_default",
-      "target": "clients_desktop_src_tauri_capabilities_default_schema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "clients_desktop_src_tauri_capabilities_default",
-      "target": "clients_desktop_src_tauri_capabilities_default_windows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "source": "clients_desktop_src_tauri_capabilities_default_windows",
-      "target": "ref_main",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "context": "import",
-      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
-      "target": "ref_core_default",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "context": "import",
-      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
-      "target": "ref_opener_allow_open_url",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "context": "import",
-      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
-      "target": "ref_updater_default",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "context": "import",
-      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
-      "target": "ref_window_state_default",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L31",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "clients_desktop_src_tauri_src_lib",
       "target": "clients_desktop_src_tauri_src_lib_credential_delete",
@@ -6537,7 +6165,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L8",
+      "source_location": "L13",
       "weight": 1.0,
       "source": "clients_desktop_src_tauri_src_lib",
       "target": "clients_desktop_src_tauri_src_lib_credential_get",
@@ -6547,7 +6175,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L89",
+      "source_location": "L94",
       "weight": 1.0,
       "source": "clients_desktop_src_tauri_src_lib",
       "target": "clients_desktop_src_tauri_src_lib_credential_namespace_is_application_specific",
@@ -6557,7 +6185,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L20",
+      "source_location": "L25",
       "weight": 1.0,
       "source": "clients_desktop_src_tauri_src_lib",
       "target": "clients_desktop_src_tauri_src_lib_credential_set",
@@ -6567,17 +6195,27 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L42",
+      "source_location": "L47",
       "weight": 1.0,
       "source": "clients_desktop_src_tauri_src_lib",
       "target": "clients_desktop_src_tauri_src_lib_run",
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/src/lib.rs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_src_lib",
+      "target": "clients_desktop_src_tauri_src_lib_smoke_test",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L8",
+      "source_location": "L13",
       "weight": 1.0,
       "context": "generic_arg",
       "source": "clients_desktop_src_tauri_src_lib_credential_get",
@@ -6588,7 +6226,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L8",
+      "source_location": "L13",
       "weight": 1.0,
       "context": "return_type",
       "source": "clients_desktop_src_tauri_src_lib_credential_get",
@@ -6599,7 +6237,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L8",
+      "source_location": "L13",
       "weight": 1.0,
       "context": "generic_arg",
       "source": "clients_desktop_src_tauri_src_lib_credential_get",
@@ -6610,7 +6248,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L31",
+      "source_location": "L36",
       "weight": 1.0,
       "context": "generic_arg",
       "source": "clients_desktop_src_tauri_src_lib_credential_delete",
@@ -6621,7 +6259,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L20",
+      "source_location": "L25",
       "weight": 1.0,
       "context": "generic_arg",
       "source": "clients_desktop_src_tauri_src_lib_credential_set",
@@ -6632,7 +6270,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L31",
+      "source_location": "L36",
       "weight": 1.0,
       "context": "return_type",
       "source": "clients_desktop_src_tauri_src_lib_credential_delete",
@@ -6643,7 +6281,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
-      "source_location": "L20",
+      "source_location": "L25",
       "weight": 1.0,
       "context": "return_type",
       "source": "clients_desktop_src_tauri_src_lib_credential_set",
@@ -6666,9 +6304,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf",
-      "target": "clients_desktop_src_tauri_tauri_conf_app",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_app"
     },
     {
       "relation": "contains",
@@ -6676,9 +6314,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf",
-      "target": "clients_desktop_src_tauri_tauri_conf_build",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_build"
     },
     {
       "relation": "contains",
@@ -6686,9 +6324,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf",
-      "target": "clients_desktop_src_tauri_tauri_conf_bundle",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_bundle"
     },
     {
       "relation": "contains",
@@ -6696,9 +6334,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf",
-      "target": "clients_desktop_src_tauri_tauri_conf_identifier",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_identifier"
     },
     {
       "relation": "contains",
@@ -6706,9 +6344,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf",
-      "target": "clients_desktop_src_tauri_tauri_conf_productname",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_productname"
     },
     {
       "relation": "contains",
@@ -6716,9 +6354,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf",
-      "target": "clients_desktop_src_tauri_tauri_conf_schema",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_schema"
     },
     {
       "relation": "contains",
@@ -6726,9 +6364,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf",
-      "target": "clients_desktop_src_tauri_tauri_conf_version",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_version"
     },
     {
       "relation": "contains",
@@ -6736,9 +6374,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_build",
-      "target": "clients_desktop_src_tauri_tauri_conf_build_beforebuildcommand",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_build_beforebuildcommand"
     },
     {
       "relation": "contains",
@@ -6746,9 +6384,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_build",
-      "target": "clients_desktop_src_tauri_tauri_conf_build_beforedevcommand",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_build_beforedevcommand"
     },
     {
       "relation": "contains",
@@ -6756,9 +6394,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_build",
-      "target": "clients_desktop_src_tauri_tauri_conf_build_devurl",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_build_devurl"
     },
     {
       "relation": "contains",
@@ -6766,9 +6404,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_build",
-      "target": "clients_desktop_src_tauri_tauri_conf_build_frontenddist",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_build_frontenddist"
     },
     {
       "relation": "contains",
@@ -6776,9 +6414,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_app",
-      "target": "clients_desktop_src_tauri_tauri_conf_app_security",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_app_security"
     },
     {
       "relation": "contains",
@@ -6786,9 +6424,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_app",
-      "target": "clients_desktop_src_tauri_tauri_conf_app_windows",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_app_windows"
     },
     {
       "relation": "contains",
@@ -6796,9 +6434,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_app_security",
-      "target": "clients_desktop_src_tauri_tauri_conf_security_csp",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_security_csp"
     },
     {
       "relation": "contains",
@@ -6806,9 +6444,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle",
-      "target": "clients_desktop_src_tauri_tauri_conf_bundle_active",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_bundle_active"
     },
     {
       "relation": "contains",
@@ -6816,9 +6454,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle",
-      "target": "clients_desktop_src_tauri_tauri_conf_bundle_category",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_bundle_category"
     },
     {
       "relation": "contains",
@@ -6826,9 +6464,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle",
-      "target": "clients_desktop_src_tauri_tauri_conf_bundle_icon",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_bundle_icon"
     },
     {
       "relation": "contains",
@@ -6836,9 +6474,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle",
-      "target": "clients_desktop_src_tauri_tauri_conf_bundle_longdescription",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_bundle_longdescription"
     },
     {
       "relation": "contains",
@@ -6846,9 +6484,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle",
-      "target": "clients_desktop_src_tauri_tauri_conf_bundle_shortdescription",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_bundle_shortdescription"
     },
     {
       "relation": "contains",
@@ -6856,9 +6494,9 @@
       "source_file": "clients/desktop/src-tauri/tauri.conf.json",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle",
-      "target": "clients_desktop_src_tauri_tauri_conf_bundle_targets",
-      "confidence_score": 1.0
+      "target": "clients_desktop_src_tauri_tauri_conf_bundle_targets"
     },
     {
       "relation": "extends",
@@ -6867,9 +6505,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle_icon",
-      "target": "ref_public_icons_icon_128x128_png",
-      "confidence_score": 1.0
+      "target": "ref_icons_128x128_2x_png"
     },
     {
       "relation": "extends",
@@ -6878,9 +6516,458 @@
       "source_location": "L21",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_desktop_src_tauri_tauri_conf_bundle_icon",
-      "target": "ref_public_icons_icon_512x512_png",
-      "confidence_score": 1.0
+      "target": "ref_icons_128x128_png"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/tauri.conf.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_tauri_conf_bundle_icon",
+      "target": "ref_icons_32x32_png"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/tauri.conf.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_tauri_conf_bundle_icon",
+      "target": "ref_icons_icon_icns"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/tauri.conf.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_tauri_conf_bundle_icon",
+      "target": "ref_icons_icon_ico"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan",
+      "target": "cross_platform_client_plan_triforce_cross_platform_client_plan"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_agent_handoff_contract"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_current_handoff"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_objective"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L251",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_per_step_completion_procedure"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_product_decisions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_1_monorepo_and_shared_client_foundation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_2_versioned_server_protocol_and_resumable_run_api"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L117",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_3_shared_connection_authentication_and_host_profiles"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L136",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_4_shared_responsive_triforce_interface"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L165",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_5_desktop_shell_for_windows_and_macos"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L180",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_6_android_container_shell"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L199",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_7_security_resilience_and_compatibility_hardening"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L216",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_8_packaging_signing_documentation_and_ci_artifacts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
+      "source_location": "L233",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cross_platform_client_plan_triforce_cross_platform_client_plan",
+      "target": "cross_platform_client_plan_step_9_end_to_end_validation_and_release_candidate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_readme",
+      "target": "clients_desktop_readme_triforce_desktop"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/README.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_readme_triforce_desktop",
+      "target": "clients_desktop_readme_development"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_readme_triforce_desktop",
+      "target": "clients_desktop_readme_prerequisites"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package",
+      "target": "clients_desktop_package_devdependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package",
+      "target": "clients_desktop_package_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package",
+      "target": "clients_desktop_package_private"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package",
+      "target": "clients_desktop_package_scripts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package",
+      "target": "clients_desktop_package_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package",
+      "target": "clients_desktop_package_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package_scripts",
+      "target": "clients_desktop_package_scripts_build"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package_scripts",
+      "target": "clients_desktop_package_scripts_check"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package_scripts",
+      "target": "clients_desktop_package_scripts_dev"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package_scripts",
+      "target": "clients_desktop_package_scripts_tauri"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package_devdependencies",
+      "target": "clients_desktop_package_devdependencies_tauri_apps_cli"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_package_devdependencies_tauri_apps_cli",
+      "target": "tauri_apps_cli"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/build.rs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_build",
+      "target": "clients_desktop_src_tauri_build_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default",
+      "target": "clients_desktop_src_tauri_capabilities_default_description"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default",
+      "target": "clients_desktop_src_tauri_capabilities_default_identifier"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default",
+      "target": "clients_desktop_src_tauri_capabilities_default_permissions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default",
+      "target": "clients_desktop_src_tauri_capabilities_default_schema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default",
+      "target": "clients_desktop_src_tauri_capabilities_default_windows"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default_windows",
+      "target": "ref_main"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
+      "target": "ref_core_default"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
+      "target": "ref_opener_allow_open_url"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
+      "target": "ref_updater_default"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/capabilities/default.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "clients_desktop_src_tauri_capabilities_default_permissions",
+      "target": "ref_window_state_default"
     },
     {
       "relation": "contains",
@@ -6888,9 +6975,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package",
-      "target": "clients_shared_package_dependencies",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_dependencies"
     },
     {
       "relation": "contains",
@@ -6898,9 +6985,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package",
-      "target": "clients_shared_package_devdependencies",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies"
     },
     {
       "relation": "contains",
@@ -6908,9 +6995,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package",
-      "target": "clients_shared_package_name",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_name"
     },
     {
       "relation": "contains",
@@ -6918,9 +7005,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package",
-      "target": "clients_shared_package_private",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_private"
     },
     {
       "relation": "contains",
@@ -6928,9 +7015,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package",
-      "target": "clients_shared_package_scripts",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_scripts"
     },
     {
       "relation": "contains",
@@ -6938,9 +7025,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package",
-      "target": "clients_shared_package_type",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_type"
     },
     {
       "relation": "contains",
@@ -6948,9 +7035,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package",
-      "target": "clients_shared_package_version",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_version"
     },
     {
       "relation": "contains",
@@ -6958,9 +7045,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_scripts",
-      "target": "clients_shared_package_scripts_build",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_scripts_build"
     },
     {
       "relation": "contains",
@@ -6968,9 +7055,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_scripts",
-      "target": "clients_shared_package_scripts_dev",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_scripts_dev"
     },
     {
       "relation": "contains",
@@ -6978,9 +7065,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_scripts",
-      "target": "clients_shared_package_scripts_lint",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_scripts_lint"
     },
     {
       "relation": "contains",
@@ -6988,9 +7075,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_scripts",
-      "target": "clients_shared_package_scripts_test",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_scripts_test"
     },
     {
       "relation": "contains",
@@ -6998,9 +7085,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_scripts",
-      "target": "clients_shared_package_scripts_typecheck",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_scripts_typecheck"
     },
     {
       "relation": "contains",
@@ -7008,9 +7095,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies",
-      "target": "clients_shared_package_dependencies_react",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_dependencies_react"
     },
     {
       "relation": "contains",
@@ -7018,9 +7105,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies",
-      "target": "clients_shared_package_dependencies_react_dom",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_dependencies_react_dom"
     },
     {
       "relation": "contains",
@@ -7028,9 +7115,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies",
-      "target": "clients_shared_package_dependencies_tauri_apps_api",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_dependencies_tauri_apps_api"
     },
     {
       "relation": "contains",
@@ -7038,9 +7125,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies",
-      "target": "clients_shared_package_dependencies_tauri_apps_plugin_opener",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_dependencies_tauri_apps_plugin_opener"
     },
     {
       "relation": "contains",
@@ -7048,9 +7135,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies",
-      "target": "clients_shared_package_dependencies_triforce_protocol",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_dependencies_triforce_protocol"
     },
     {
       "relation": "imports",
@@ -7059,9 +7146,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies_tauri_apps_api",
-      "target": "tauri_apps_api",
-      "confidence_score": 1.0
+      "target": "tauri_apps_api"
     },
     {
       "relation": "imports",
@@ -7070,9 +7157,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies_tauri_apps_plugin_opener",
-      "target": "tauri_apps_plugin_opener",
-      "confidence_score": 1.0
+      "target": "tauri_apps_plugin_opener"
     },
     {
       "relation": "imports",
@@ -7081,9 +7168,9 @@
       "source_location": "L16",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies_triforce_protocol",
-      "target": "triforce_protocol",
-      "confidence_score": 1.0
+      "target": "triforce_protocol"
     },
     {
       "relation": "imports",
@@ -7092,9 +7179,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies_react",
-      "target": "react",
-      "confidence_score": 1.0
+      "target": "react"
     },
     {
       "relation": "imports",
@@ -7103,9 +7190,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_dependencies_react_dom",
-      "target": "react_dom",
-      "confidence_score": 1.0
+      "target": "react_dom"
     },
     {
       "relation": "contains",
@@ -7113,9 +7200,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_eslint",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_eslint"
     },
     {
       "relation": "contains",
@@ -7123,9 +7210,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_eslint_js",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_eslint_js"
     },
     {
       "relation": "contains",
@@ -7133,9 +7220,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_eslint_plugin_react_hooks",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_eslint_plugin_react_hooks"
     },
     {
       "relation": "contains",
@@ -7143,9 +7230,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_eslint_plugin_react_refresh",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_eslint_plugin_react_refresh"
     },
     {
       "relation": "contains",
@@ -7153,9 +7240,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_globals",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_globals"
     },
     {
       "relation": "contains",
@@ -7163,9 +7250,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_jsdom",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_jsdom"
     },
     {
       "relation": "contains",
@@ -7173,9 +7260,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_testing_library_jest_dom",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_testing_library_jest_dom"
     },
     {
       "relation": "contains",
@@ -7183,9 +7270,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_testing_library_react",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_testing_library_react"
     },
     {
       "relation": "contains",
@@ -7193,9 +7280,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_types_node",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_types_node"
     },
     {
       "relation": "contains",
@@ -7203,9 +7290,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_types_react",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_types_react"
     },
     {
       "relation": "contains",
@@ -7213,9 +7300,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_types_react_dom",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_types_react_dom"
     },
     {
       "relation": "contains",
@@ -7223,9 +7310,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_typescript",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_typescript"
     },
     {
       "relation": "contains",
@@ -7233,9 +7320,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_typescript_eslint",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_typescript_eslint"
     },
     {
       "relation": "contains",
@@ -7243,9 +7330,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_vite",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_vite"
     },
     {
       "relation": "contains",
@@ -7253,9 +7340,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_vitejs_plugin_react",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_vitejs_plugin_react"
     },
     {
       "relation": "contains",
@@ -7263,9 +7350,9 @@
       "source_file": "clients/shared/package.json",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies",
-      "target": "clients_shared_package_devdependencies_vitest",
-      "confidence_score": 1.0
+      "target": "clients_shared_package_devdependencies_vitest"
     },
     {
       "relation": "imports",
@@ -7274,9 +7361,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_eslint_js",
-      "target": "eslint_js",
-      "confidence_score": 1.0
+      "target": "eslint_js"
     },
     {
       "relation": "imports",
@@ -7285,9 +7372,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_testing_library_jest_dom",
-      "target": "testing_library_jest_dom",
-      "confidence_score": 1.0
+      "target": "testing_library_jest_dom"
     },
     {
       "relation": "imports",
@@ -7296,9 +7383,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_testing_library_react",
-      "target": "testing_library_react",
-      "confidence_score": 1.0
+      "target": "testing_library_react"
     },
     {
       "relation": "imports",
@@ -7307,9 +7394,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_types_react",
-      "target": "types_react",
-      "confidence_score": 1.0
+      "target": "types_react"
     },
     {
       "relation": "imports",
@@ -7318,9 +7405,9 @@
       "source_location": "L25",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_types_react_dom",
-      "target": "types_react_dom",
-      "confidence_score": 1.0
+      "target": "types_react_dom"
     },
     {
       "relation": "imports",
@@ -7329,9 +7416,9 @@
       "source_location": "L26",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_types_node",
-      "target": "types_node",
-      "confidence_score": 1.0
+      "target": "types_node"
     },
     {
       "relation": "imports",
@@ -7340,9 +7427,9 @@
       "source_location": "L27",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_vitejs_plugin_react",
-      "target": "vitejs_plugin_react",
-      "confidence_score": 1.0
+      "target": "vitejs_plugin_react"
     },
     {
       "relation": "imports",
@@ -7351,9 +7438,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_eslint",
-      "target": "eslint",
-      "confidence_score": 1.0
+      "target": "eslint"
     },
     {
       "relation": "imports",
@@ -7362,9 +7449,9 @@
       "source_location": "L29",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_eslint_plugin_react_hooks",
-      "target": "eslint_plugin_react_hooks",
-      "confidence_score": 1.0
+      "target": "eslint_plugin_react_hooks"
     },
     {
       "relation": "imports",
@@ -7373,9 +7460,9 @@
       "source_location": "L30",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_eslint_plugin_react_refresh",
-      "target": "eslint_plugin_react_refresh",
-      "confidence_score": 1.0
+      "target": "eslint_plugin_react_refresh"
     },
     {
       "relation": "imports",
@@ -7384,9 +7471,9 @@
       "source_location": "L31",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_globals",
-      "target": "globals",
-      "confidence_score": 1.0
+      "target": "globals"
     },
     {
       "relation": "imports",
@@ -7395,9 +7482,9 @@
       "source_location": "L32",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_jsdom",
-      "target": "jsdom",
-      "confidence_score": 1.0
+      "target": "jsdom"
     },
     {
       "relation": "imports",
@@ -7406,9 +7493,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_typescript",
-      "target": "typescript",
-      "confidence_score": 1.0
+      "target": "typescript"
     },
     {
       "relation": "imports",
@@ -7417,9 +7504,9 @@
       "source_location": "L34",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_typescript_eslint",
-      "target": "typescript_eslint",
-      "confidence_score": 1.0
+      "target": "typescript_eslint"
     },
     {
       "relation": "imports",
@@ -7428,9 +7515,9 @@
       "source_location": "L35",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_vite",
-      "target": "vite",
-      "confidence_score": 1.0
+      "target": "vite"
     },
     {
       "relation": "imports",
@@ -7439,9 +7526,9 @@
       "source_location": "L36",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "clients_shared_package_devdependencies_vitest",
-      "target": "vitest",
-      "confidence_score": 1.0
+      "target": "vitest"
     },
     {
       "relation": "contains",
@@ -7449,9 +7536,9 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_app",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_app_app"
     },
     {
       "relation": "contains",
@@ -7459,9 +7546,9 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_dashboard",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_app_dashboard"
     },
     {
       "relation": "contains",
@@ -7469,9 +7556,9 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_defaultconfig",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_app_defaultconfig"
     },
     {
       "relation": "contains",
@@ -7479,9 +7566,9 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_hostscreen",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_app_hostscreen"
     },
     {
       "relation": "contains",
@@ -7489,9 +7576,9 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_roles",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_app_roles"
     },
     {
       "relation": "imports_from",
@@ -7500,9 +7587,9 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_core_platform_credentials",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials"
     },
     {
       "relation": "imports",
@@ -7511,9 +7598,9 @@
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage"
     },
     {
       "relation": "imports_from",
@@ -7533,9 +7620,9 @@
       "source_file": "clients/shared/src/main.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_main",
-      "target": "clients_shared_src_app",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_app"
     },
     {
       "relation": "calls",
@@ -7566,9 +7653,9 @@
       "source_file": "clients/shared/src/main.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_main",
-      "target": "clients_shared_src_app_app",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_app_app"
     },
     {
       "relation": "contains",
@@ -7576,9 +7663,9 @@
       "source_file": "clients/shared/src/core/native-integration.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_native_integration",
-      "target": "clients_shared_src_core_native_integration_installnativeintegration",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_native_integration_installnativeintegration"
     },
     {
       "relation": "imports_from",
@@ -7587,9 +7674,9 @@
       "source_file": "clients/shared/src/main.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_main",
-      "target": "clients_shared_src_core_native_integration",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_native_integration"
     },
     {
       "relation": "imports",
@@ -7598,9 +7685,9 @@
       "source_file": "clients/shared/src/main.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_main",
-      "target": "clients_shared_src_core_native_integration_installnativeintegration",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_native_integration_installnativeintegration"
     },
     {
       "relation": "imports_from",
@@ -7609,9 +7696,9 @@
       "source_file": "clients/shared/src/core/platform-credentials.test.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_platform_credentials_test",
-      "target": "clients_shared_src_core_platform_credentials",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials"
     },
     {
       "relation": "imports",
@@ -7620,9 +7707,9 @@
       "source_file": "clients/shared/src/core/platform-credentials.test.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_platform_credentials_test",
-      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage"
     },
     {
       "relation": "contains",
@@ -7630,9 +7717,9 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_platform_credentials",
-      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage"
     },
     {
       "relation": "contains",
@@ -7640,9 +7727,9 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_platform_credentials",
-      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage"
     },
     {
       "relation": "method",
@@ -7650,9 +7737,9 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
-      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage_delete",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage_delete"
     },
     {
       "relation": "method",
@@ -7660,9 +7747,9 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
-      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage_get",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage_get"
     },
     {
       "relation": "method",
@@ -7670,9 +7757,9 @@
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
-      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage_set",
-      "confidence_score": 1.0
+      "target": "clients_shared_src_core_platform_credentials_tauricredentialstorage_set"
     },
     {
       "relation": "contains",
@@ -7680,9 +7767,9 @@
       "source_file": "package.json",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_bin",
-      "confidence_score": 1.0
+      "target": "package_bin"
     },
     {
       "relation": "contains",
@@ -7690,9 +7777,9 @@
       "source_file": "package.json",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_dependencies",
-      "confidence_score": 1.0
+      "target": "package_dependencies"
     },
     {
       "relation": "contains",
@@ -7700,9 +7787,9 @@
       "source_file": "package.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_description",
-      "confidence_score": 1.0
+      "target": "package_description"
     },
     {
       "relation": "contains",
@@ -7710,9 +7797,9 @@
       "source_file": "package.json",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_devdependencies",
-      "confidence_score": 1.0
+      "target": "package_devdependencies"
     },
     {
       "relation": "contains",
@@ -7720,9 +7807,9 @@
       "source_file": "package.json",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_files",
-      "confidence_score": 1.0
+      "target": "package_files"
     },
     {
       "relation": "contains",
@@ -7730,9 +7817,9 @@
       "source_file": "package.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_main",
-      "confidence_score": 1.0
+      "target": "package_main"
     },
     {
       "relation": "contains",
@@ -7740,9 +7827,9 @@
       "source_file": "package.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_name",
-      "confidence_score": 1.0
+      "target": "package_name"
     },
     {
       "relation": "contains",
@@ -7750,9 +7837,9 @@
       "source_file": "package.json",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_scripts",
-      "confidence_score": 1.0
+      "target": "package_scripts"
     },
     {
       "relation": "contains",
@@ -7760,9 +7847,9 @@
       "source_file": "package.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_type",
-      "confidence_score": 1.0
+      "target": "package_type"
     },
     {
       "relation": "contains",
@@ -7770,9 +7857,9 @@
       "source_file": "package.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_version",
-      "confidence_score": 1.0
+      "target": "package_version"
     },
     {
       "relation": "contains",
@@ -7780,9 +7867,9 @@
       "source_file": "package.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package",
-      "target": "package_workspaces",
-      "confidence_score": 1.0
+      "target": "package_workspaces"
     },
     {
       "relation": "extends",
@@ -7791,9 +7878,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_workspaces",
-      "target": "ref_clients_desktop",
-      "confidence_score": 1.0
+      "target": "ref_clients_desktop"
     },
     {
       "relation": "extends",
@@ -7802,9 +7889,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_workspaces",
-      "target": "ref_clients_shared",
-      "confidence_score": 1.0
+      "target": "ref_clients_shared"
     },
     {
       "relation": "extends",
@@ -7813,9 +7900,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_workspaces",
-      "target": "ref_packages",
-      "confidence_score": 1.0
+      "target": "ref_packages"
     },
     {
       "relation": "contains",
@@ -7823,9 +7910,9 @@
       "source_file": "package.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_bin",
-      "target": "package_bin_triforce",
-      "confidence_score": 1.0
+      "target": "package_bin_triforce"
     },
     {
       "relation": "extends",
@@ -7834,9 +7921,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_agent_js",
-      "confidence_score": 1.0
+      "target": "ref_agent_js"
     },
     {
       "relation": "extends",
@@ -7845,9 +7932,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_cli_input_js",
-      "confidence_score": 1.0
+      "target": "ref_cli_input_js"
     },
     {
       "relation": "extends",
@@ -7856,9 +7943,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_cli_js",
-      "confidence_score": 1.0
+      "target": "ref_cli_js"
     },
     {
       "relation": "extends",
@@ -7867,9 +7954,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_install_service_sh",
-      "confidence_score": 1.0
+      "target": "ref_install_service_sh"
     },
     {
       "relation": "extends",
@@ -7878,9 +7965,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_models_config_json",
-      "confidence_score": 1.0
+      "target": "ref_models_config_json"
     },
     {
       "relation": "extends",
@@ -7889,9 +7976,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_orchestrator_js",
-      "confidence_score": 1.0
+      "target": "ref_orchestrator_js"
     },
     {
       "relation": "extends",
@@ -7900,9 +7987,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_packages_protocol_src",
-      "confidence_score": 1.0
+      "target": "ref_packages_protocol_src"
     },
     {
       "relation": "extends",
@@ -7911,9 +7998,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_public",
-      "confidence_score": 1.0
+      "target": "ref_public"
     },
     {
       "relation": "extends",
@@ -7922,9 +8009,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_run_registry_js",
-      "confidence_score": 1.0
+      "target": "ref_run_registry_js"
     },
     {
       "relation": "extends",
@@ -7933,9 +8020,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_running_md",
-      "confidence_score": 1.0
+      "target": "ref_running_md"
     },
     {
       "relation": "extends",
@@ -7944,9 +8031,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_sandbox_js",
-      "confidence_score": 1.0
+      "target": "ref_sandbox_js"
     },
     {
       "relation": "extends",
@@ -7955,9 +8042,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_server_js",
-      "confidence_score": 1.0
+      "target": "ref_server_js"
     },
     {
       "relation": "extends",
@@ -7966,9 +8053,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_triforce_service",
-      "confidence_score": 1.0
+      "target": "ref_triforce_service"
     },
     {
       "relation": "extends",
@@ -7977,9 +8064,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_usage_js",
-      "confidence_score": 1.0
+      "target": "ref_usage_js"
     },
     {
       "relation": "extends",
@@ -7988,9 +8075,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_files",
-      "target": "ref_workspace_js",
-      "confidence_score": 1.0
+      "target": "ref_workspace_js"
     },
     {
       "relation": "contains",
@@ -7998,9 +8085,9 @@
       "source_file": "package.json",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_build",
-      "confidence_score": 1.0
+      "target": "package_scripts_build"
     },
     {
       "relation": "contains",
@@ -8008,9 +8095,9 @@
       "source_file": "package.json",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_cli",
-      "confidence_score": 1.0
+      "target": "package_scripts_cli"
     },
     {
       "relation": "contains",
@@ -8018,9 +8105,9 @@
       "source_file": "package.json",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_desktop_check",
-      "confidence_score": 1.0
+      "target": "package_scripts_desktop_check"
     },
     {
       "relation": "contains",
@@ -8028,9 +8115,9 @@
       "source_file": "package.json",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_dev_client",
-      "confidence_score": 1.0
+      "target": "package_scripts_dev_client"
     },
     {
       "relation": "contains",
@@ -8038,9 +8125,9 @@
       "source_file": "package.json",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_lint",
-      "confidence_score": 1.0
+      "target": "package_scripts_lint"
     },
     {
       "relation": "contains",
@@ -8048,9 +8135,9 @@
       "source_file": "package.json",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_start",
-      "confidence_score": 1.0
+      "target": "package_scripts_start"
     },
     {
       "relation": "contains",
@@ -8058,9 +8145,9 @@
       "source_file": "package.json",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_test",
-      "confidence_score": 1.0
+      "target": "package_scripts_test"
     },
     {
       "relation": "contains",
@@ -8068,9 +8155,9 @@
       "source_file": "package.json",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_test_server",
-      "confidence_score": 1.0
+      "target": "package_scripts_test_server"
     },
     {
       "relation": "contains",
@@ -8078,9 +8165,9 @@
       "source_file": "package.json",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_scripts",
-      "target": "package_scripts_typecheck",
-      "confidence_score": 1.0
+      "target": "package_scripts_typecheck"
     },
     {
       "relation": "contains",
@@ -8088,9 +8175,9 @@
       "source_file": "package.json",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_anthropic_ai_sdk",
-      "confidence_score": 1.0
+      "target": "package_dependencies_anthropic_ai_sdk"
     },
     {
       "relation": "contains",
@@ -8098,9 +8185,9 @@
       "source_file": "package.json",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_dotenv",
-      "confidence_score": 1.0
+      "target": "package_dependencies_dotenv"
     },
     {
       "relation": "contains",
@@ -8108,9 +8195,9 @@
       "source_file": "package.json",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_express",
-      "confidence_score": 1.0
+      "target": "package_dependencies_express"
     },
     {
       "relation": "contains",
@@ -8118,9 +8205,9 @@
       "source_file": "package.json",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_google_genai",
-      "confidence_score": 1.0
+      "target": "package_dependencies_google_genai"
     },
     {
       "relation": "contains",
@@ -8128,9 +8215,9 @@
       "source_file": "package.json",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_openai",
-      "confidence_score": 1.0
+      "target": "package_dependencies_openai"
     },
     {
       "relation": "contains",
@@ -8138,9 +8225,9 @@
       "source_file": "package.json",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_ws",
-      "confidence_score": 1.0
+      "target": "package_dependencies_ws"
     },
     {
       "relation": "contains",
@@ -8148,9 +8235,9 @@
       "source_file": "package.json",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_zod",
-      "confidence_score": 1.0
+      "target": "package_dependencies_zod"
     },
     {
       "relation": "imports",
@@ -8159,9 +8246,9 @@
       "source_location": "L44",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_dependencies_anthropic_ai_sdk",
-      "target": "anthropic_ai_sdk",
-      "confidence_score": 1.0
+      "target": "anthropic_ai_sdk"
     },
     {
       "relation": "imports",
@@ -8170,9 +8257,9 @@
       "source_location": "L45",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_dependencies_google_genai",
-      "target": "google_genai",
-      "confidence_score": 1.0
+      "target": "google_genai"
     },
     {
       "relation": "imports",
@@ -8181,9 +8268,9 @@
       "source_location": "L46",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_dependencies_dotenv",
-      "target": "dotenv",
-      "confidence_score": 1.0
+      "target": "dotenv"
     },
     {
       "relation": "imports",
@@ -8192,9 +8279,9 @@
       "source_location": "L47",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_dependencies_express",
-      "target": "express",
-      "confidence_score": 1.0
+      "target": "express"
     },
     {
       "relation": "imports",
@@ -8203,9 +8290,9 @@
       "source_location": "L48",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_dependencies_openai",
-      "target": "openai",
-      "confidence_score": 1.0
+      "target": "openai"
     },
     {
       "relation": "imports",
@@ -8214,9 +8301,9 @@
       "source_location": "L49",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_dependencies_ws",
-      "target": "ws",
-      "confidence_score": 1.0
+      "target": "ws"
     },
     {
       "relation": "imports",
@@ -8225,9 +8312,9 @@
       "source_location": "L50",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_dependencies_zod",
-      "target": "zod",
-      "confidence_score": 1.0
+      "target": "zod"
     },
     {
       "relation": "contains",
@@ -8235,9 +8322,9 @@
       "source_file": "package.json",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_devdependencies",
-      "target": "package_devdependencies_pngjs",
-      "confidence_score": 1.0
+      "target": "package_devdependencies_pngjs"
     },
     {
       "relation": "imports",
@@ -8246,9 +8333,9 @@
       "source_location": "L53",
       "weight": 1.0,
       "context": "import",
+      "confidence_score": 1.0,
       "source": "package_devdependencies_pngjs",
-      "target": "pngjs",
-      "confidence_score": 1.0
+      "target": "pngjs"
     },
     {
       "relation": "contains",
@@ -12995,5 +13082,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "aeb4749aa486e1b55548cfdbef7afaaeaa8e0a4e"
+  "built_at_commit": "1c0fcc30632650bb70b11ca0a18c5c35c0e56c28"
 }

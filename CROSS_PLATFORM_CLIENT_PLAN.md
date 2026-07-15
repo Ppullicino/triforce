@@ -38,7 +38,7 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 2 | Versioned server protocol and resumable run API | COMPLETE | `step-02:` | Protocol v1 schemas, capability/status APIs, stable run IDs, bounded replay registry; 25 server, 3 protocol, and 1 client tests pass. |
 | 3 | Shared connection, authentication, and host profiles | COMPLETE | `step-03:` | Host CRUD, strict URL normalization, separate credential adapters, body-based session auth, state/reconnect/replay core; 25 server, 10 client, 3 protocol tests pass. |
 | 4 | Shared responsive Triforce interface | COMPLETE | `step-04:` | Responsive host/task/run/history/settings/diagnostics UI, all modes, bounded stream reducer, accessibility; 25 server, 14 client, 3 protocol tests pass. |
-| 5 | Desktop shell for Windows and macOS | IN PROGRESS | `step-05:` | Tauri 2 shell, OS keyring commands, navigation/menu/window/updater hooks, and native-runner smoke workflow added; awaiting native workflow result. |
+| 5 | Desktop shell for Windows and macOS | COMPLETE | `step-05:` | Tauri 2 shell with Windows Credential Manager/macOS Keychain, restricted navigation, menus/window/updater hooks; Windows and macOS native tests, debug builds, server checks, and launch probes pass in Actions run 29442130327. |
 | 6 | Android container shell | NOT STARTED | `step-06:` | — |
 | 7 | Security, resilience, and compatibility hardening | NOT STARTED | `step-07:` | — |
 | 8 | Packaging, signing documentation, and CI artifacts | NOT STARTED | `step-08:` | — |
@@ -46,9 +46,9 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 
 ## Current handoff
 
-- Current step: Step 5 — desktop shell for Windows and macOS.
-- Next action: Push the Step 5 candidate, inspect Windows/macOS native workflow results,
-  fix any Tauri compile failures, and mark complete only after both runners pass.
+- Current step: Step 6 — Android container shell.
+- Next action: Scaffold the Kotlin Android project, hardened WebView/native credential
+  bridge, network policy, navigation/recovery behavior, and emulator build checks.
 - Known blockers: None.
 - Important constraint: Do not put provider API keys in any client. Clients receive
   only Triforce host URLs and Triforce authentication credentials.

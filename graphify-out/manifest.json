@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "CROSS_PLATFORM_CLIENT_PLAN.md": {
-    "mtime": 1784140236.6300437,
-    "ast_hash": "22b17c03a0752f69796fdaa8f878a76a",
+    "mtime": 1784141766.5373788,
+    "ast_hash": "b0e0dbdbeb7f094bd1eb42fbc156854f",
     "semantic_hash": ""
   },
   "clients/shared/eslint.config.js": {
@@ -355,13 +355,13 @@
     "semantic_hash": ""
   },
   "clients/desktop/src-tauri/src/lib.rs": {
-    "mtime": 1784140277.898352,
-    "ast_hash": "48c1f60c349658494fd7ddae5172fa6c",
+    "mtime": 1784141381.9246278,
+    "ast_hash": "7f8287d8e7e7ad449c3109d6c1dbddaf",
     "semantic_hash": ""
   },
   "clients/desktop/src-tauri/src/main.rs": {
-    "mtime": 1784140050.2381737,
-    "ast_hash": "48f3e91ae48351daa7298ab0cd63783c",
+    "mtime": 1784141381.9246278,
+    "ast_hash": "5294ff9b4461168fcee63a318516c2af",
     "semantic_hash": ""
   },
   "clients/desktop/src-tauri/tauri.conf.json": {
@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/desktop-smoke.yml": {
-    "mtime": 1784141096.6054244,
-    "ast_hash": "c0b7def7b3c15451e73749b8606586ab",
+    "mtime": 1784141381.9256277,
+    "ast_hash": "f822856bc8493dfd670747a78150db8a",
     "semantic_hash": ""
   },
   "clients/desktop/README.md": {

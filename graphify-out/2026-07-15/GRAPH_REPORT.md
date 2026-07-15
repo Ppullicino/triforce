@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 67 files · ~29,673 words
+- 67 files · ~35,674 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 554 nodes · 664 edges · 45 communities (35 shown, 10 thin omitted)
+- 558 nodes · 668 edges · 44 communities (34 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.73)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `aeb4749a`
+- Built from commit: `1c0fcc30`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -53,7 +53,6 @@
 - Triforce Desktop
 - index.js
 - App.tsx
-- files
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
@@ -82,7 +81,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (45 total, 10 thin omitted)
+## Communities (44 total, 10 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
@@ -149,8 +148,8 @@ Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
 ### Community 26 - "index.ts"
-Cohesion: 0.11
-Nodes (21): runSandboxed(), ALLOWED_MODELS, app, computeCosts(), __dirname, httpServer, latestUsage, RATES (+13 more)
+Cohesion: 0.07
+Nodes (35): agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema, pipelineModeSchema (+27 more)
 
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
@@ -161,16 +160,16 @@ Cohesion: 0.15
 Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, PipelineConfiguration, PipelineMode, RunCommand, ServerEvent (+4 more)
 
 ### Community 33 - "scripts"
-Cohesion: 0.08
-Nodes (24): bin, triforce, description, devDependencies, pngjs, main, name, scripts (+16 more)
+Cohesion: 0.05
+Nodes (40): bin, triforce, description, devDependencies, pngjs, files, main, name (+32 more)
 
 ### Community 34 - "server-protocol.test.js"
 Cohesion: 0.10
 Nodes (11): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+3 more)
 
 ### Community 35 - "files"
-Cohesion: 0.09
-Nodes (22): app, security, windows, build, beforeBuildCommand, beforeDevCommand, devUrl, frontendDist (+14 more)
+Cohesion: 0.08
+Nodes (25): app, security, windows, build, beforeBuildCommand, beforeDevCommand, devUrl, frontendDist (+17 more)
 
 ### Community 36 - "package.json"
 Cohesion: 0.15
@@ -181,7 +180,7 @@ Cohesion: 0.18
 Nodes (10): description, identifier, permissions, $schema, windows, core:default, main, opener:allow-open-url (+2 more)
 
 ### Community 38 - "lib.rs"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (6): credential_delete(), credential_get(), credential_set(), Option, Result, String
 
 ### Community 39 - "Triforce Desktop"
@@ -189,19 +188,15 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "index.js"
-Cohesion: 0.11
-Nodes (21): bounded(), emptyUsage, initialPipelineState(), mapStatus(), PipelineViewState, reducePipeline(), UsageItem, agentConfigurationSchema (+13 more)
+Cohesion: 0.36
+Nodes (7): bounded(), emptyUsage, initialPipelineState(), mapStatus(), PipelineViewState, reducePipeline(), UsageItem
 
 ### Community 43 - "App.tsx"
 Cohesion: 0.16
 Nodes (6): App(), defaultConfig, roles, installNativeIntegration(), createCredentialStorage(), TauriCredentialStorage
 
-### Community 44 - "files"
-Cohesion: 0.12
-Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
-
 ## Knowledge Gaps
-- **273 isolated node(s):** `Objective`, `Agent handoff contract`, `Current handoff`, `Product decisions`, `Step 1 — Monorepo and shared-client foundation` (+268 more)
+- **276 isolated node(s):** `$schema`, `productName`, `version`, `identifier`, `beforeDevCommand` (+271 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -209,11 +204,11 @@ Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.co
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `promptLoop()` connect `cli.js` to `package.json`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `normalizeHostUrl()` connect `server-protocol.test.js` to `package.json`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `Objective`, `Agent handoff contract`, `Current handoff` to the rest of the system?**
-  _273 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `$schema`, `productName`, `version` to the rest of the system?**
+  _276 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**

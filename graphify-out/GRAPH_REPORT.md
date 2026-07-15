@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 67 files · ~35,603 words
+- 67 files · ~35,676 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 557 nodes · 667 edges · 44 communities (34 shown, 10 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.73)
+- 558 nodes · 687 edges · 43 communities (33 shown, 10 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.74)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b5cf26fb`
+- Built from commit: `1c0fcc30`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -51,41 +51,40 @@
 - default.json
 - lib.rs
 - Triforce Desktop
-- index.js
 - App.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
 2. `files` - 16 edges
-3. `Triforce Cross-Platform Client Plan` - 15 edges
-4. `Agent` - 15 edges
+3. `Agent` - 15 edges
+4. `Triforce Cross-Platform Client Plan` - 15 edges
 5. `RunRegistry` - 14 edges
-6. `TriforceConnection` - 12 edges
+6. `TriforceConnection` - 13 edges
 7. `compilerOptions` - 12 edges
 8. `scripts` - 10 edges
 9. `main()` - 9 edges
 10. `runPipeline()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `runReviewer()` --calls--> `track()`  [EXTRACTED]
-  orchestrator.js → usage.js
-- `runInSandbox()` --calls--> `runSandboxed()`  [EXTRACTED]
-  server.js → sandbox.js
-- `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
-  cli.js → cli-input.js
 - `runInSandbox()` --calls--> `runSandboxed()`  [EXTRACTED]
   orchestrator.js → sandbox.js
+- `runReviewer()` --calls--> `track()`  [EXTRACTED]
+  orchestrator.js → usage.js
+- `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
+  cli.js → cli-input.js
 - `runArchitect()` --calls--> `track()`  [EXTRACTED]
+  orchestrator.js → usage.js
+- `runDeveloper()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (44 total, 10 thin omitted)
+## Communities (43 total, 10 thin omitted)
 
 ### Community 0 - "orchestrator.js"
-Cohesion: 0.18
-Nodes (17): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+9 more)
+Cohesion: 0.20
+Nodes (16): loadConfig(), main(), PROVIDER_ENV, runArchitect(), runDeveloper(), runInSandbox(), runReviewer(), runSandbox() (+8 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.13
@@ -149,7 +148,7 @@ Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, modu
 
 ### Community 26 - "index.ts"
 Cohesion: 0.07
-Nodes (34): agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema, pipelineModeSchema (+26 more)
+Nodes (35): agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema, pipelineModeSchema (+27 more)
 
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
@@ -164,8 +163,8 @@ Cohesion: 0.05
 Nodes (40): bin, triforce, description, devDependencies, pngjs, files, main, name (+32 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.10
-Nodes (11): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+3 more)
+Cohesion: 0.09
+Nodes (13): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+5 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -180,23 +179,19 @@ Cohesion: 0.18
 Nodes (10): description, identifier, permissions, $schema, windows, core:default, main, opener:allow-open-url (+2 more)
 
 ### Community 38 - "lib.rs"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (6): credential_delete(), credential_get(), credential_set(), Option, Result, String
 
 ### Community 39 - "Triforce Desktop"
 Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
-### Community 42 - "index.js"
-Cohesion: 0.36
-Nodes (7): bounded(), emptyUsage, initialPipelineState(), mapStatus(), PipelineViewState, reducePipeline(), UsageItem
-
 ### Community 43 - "App.tsx"
-Cohesion: 0.16
-Nodes (6): App(), defaultConfig, roles, installNativeIntegration(), createCredentialStorage(), TauriCredentialStorage
+Cohesion: 0.18
+Nodes (11): App(), defaultConfig, roles, installNativeIntegration(), bounded(), emptyUsage, initialPipelineState(), mapStatus() (+3 more)
 
 ## Knowledge Gaps
-- **276 isolated node(s):** `$schema`, `productName`, `version`, `identifier`, `beforeDevCommand` (+271 more)
+- **274 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+269 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -204,11 +199,11 @@ Nodes (6): App(), defaultConfig, roles, installNativeIntegration(), createCreden
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `promptLoop()` connect `cli.js` to `package.json`?**
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+- **Why does `Agent` connect `Agent` to `orchestrator.js`, `index.ts`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `normalizeHostUrl()` connect `server-protocol.test.js` to `package.json`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `$schema`, `productName`, `version` to the rest of the system?**
-  _276 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
+  _274 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
