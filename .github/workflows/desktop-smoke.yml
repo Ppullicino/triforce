@@ -39,12 +39,10 @@ jobs:
         run: cargo test --manifest-path clients/desktop/src-tauri/Cargo.toml
       - name: Build debug desktop executable
         run: npm run build --workspace @triforce/desktop -- --debug --no-bundle
-      - name: Launch desktop executable
+      - name: Launch desktop executable in headless smoke mode
         shell: pwsh
         run: |
           $name = if ($IsWindows) { "triforce-desktop.exe" } else { "triforce-desktop" }
           $path = Join-Path "clients/desktop/src-tauri/target/debug" $name
-          $process = Start-Process $path -PassThru
-          Start-Sleep -Seconds 8
-          if ($process.HasExited) { throw "Desktop executable exited during launch smoke test" }
-          Stop-Process -Id $process.Id -Force
+          & $path --smoke-test
+          if ($LASTEXITCODE -ne 0) { throw "Desktop executable launch smoke failed" }

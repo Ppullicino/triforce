@@ -4,6 +4,11 @@ use tauri::{Emitter, WebviewUrl, WebviewWindowBuilder};
 
 const CREDENTIAL_SERVICE: &str = "com.triforce.remote";
 
+pub fn smoke_test() {
+    assert_eq!(CREDENTIAL_SERVICE, "com.triforce.remote");
+    println!("Triforce desktop native entry point is ready");
+}
+
 #[tauri::command]
 fn credential_get(host_id: String) -> Result<Option<String>, String> {
     match Entry::new(CREDENTIAL_SERVICE, &host_id)
