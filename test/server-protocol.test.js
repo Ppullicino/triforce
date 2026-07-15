@@ -48,3 +48,43 @@ test('protects protocol discovery and negotiates WebSocket versions', async () =
     await once(child, 'exit').catch(() => {});
   }
 });
+
+test('allows native origins with header/protocol auth and rejects hostile WebSocket origins', async () => {
+  const { child, port } = await startServer();
+  const server = `http://127.0.0.1:${port}`;
+  const nativeOrigin = 'https://appassets.androidplatform.net';
+  try {
+    const preflight = await fetch(`${server}/api/session`, {
+      method: 'OPTIONS',
+      headers: { origin: nativeOrigin, 'access-control-request-headers': 'authorization, content-type' },
+    });
+    assert.equal(preflight.status, 204);
+    assert.equal(preflight.headers.get('access-control-allow-origin'), nativeOrigin);
+
+    const capabilities = await fetch(`${server}/api/capabilities`, {
+      headers: { origin: nativeOrigin, authorization: `Bearer ${token}` },
+    });
+    assert.equal(capabilities.status, 200);
+    assert.equal(capabilities.headers.get('access-control-allow-origin'), nativeOrigin);
+
+    const ws = new WebSocket(
+      `ws://127.0.0.1:${port}`,
+      ['triforce.v1', `triforce.auth.${encodeURIComponent(token)}`],
+      { headers: { origin: nativeOrigin } },
+    );
+    await once(ws, 'open');
+    assert.equal(ws.protocol, 'triforce.v1');
+    ws.close();
+
+    const hostile = new WebSocket(
+      `ws://127.0.0.1:${port}`,
+      ['triforce.v1', `triforce.auth.${encodeURIComponent(token)}`],
+      { headers: { origin: 'https://attacker.example' } },
+    );
+    await once(hostile, 'error');
+    assert.notEqual(hostile.readyState, WebSocket.OPEN);
+  } finally {
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+  }
+});

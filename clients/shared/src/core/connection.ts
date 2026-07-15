@@ -1,4 +1,4 @@
-import { PROTOCOL_VERSION, type PipelineConfiguration, type PipelineMode, type ServerEvent } from '@triforce/protocol';
+import { PROTOCOL_VERSION, validateServerEvent, type PipelineConfiguration, type PipelineMode, type ServerEvent } from '@triforce/protocol';
 import { normalizeHostUrl } from './host-url';
 
 export type ConnectionState = 'connecting' | 'connected' | 'unauthorized' | 'incompatible' | 'unreachable' | 'disconnected' | 'reconnecting';
@@ -14,7 +14,7 @@ interface SocketLike {
 
 export interface ConnectionOptions {
   fetch?: typeof fetch;
-  createSocket?: (url: string) => SocketLike;
+  createSocket?: (url: string, protocols?: string[]) => SocketLike;
   schedule?: (callback: () => void, delay: number) => ReturnType<typeof setTimeout>;
   maxReconnectAttempts?: number;
 }
@@ -26,16 +26,17 @@ export class TriforceConnection {
   private reconnectEnabled = false;
   private lastRunId: string | null = null;
   private lastEventId = 0;
+  private authToken: string | null = null;
   private readonly stateListeners = new Set<StateListener>();
   private readonly eventListeners = new Set<EventListener>();
   private readonly fetcher: typeof fetch;
-  private readonly createSocket: (url: string) => SocketLike;
+  private readonly createSocket: (url: string, protocols?: string[]) => SocketLike;
   private readonly schedule: (callback: () => void, delay: number) => ReturnType<typeof setTimeout>;
   private readonly maxReconnectAttempts: number;
 
   constructor(readonly serverUrl: string, options: ConnectionOptions = {}) {
     this.fetcher = options.fetch ?? fetch;
-    this.createSocket = options.createSocket ?? (url => new WebSocket(url) as unknown as SocketLike);
+    this.createSocket = options.createSocket ?? ((url, protocols) => new WebSocket(url, protocols) as unknown as SocketLike);
     this.schedule = options.schedule ?? setTimeout;
     this.maxReconnectAttempts = options.maxReconnectAttempts ?? 6;
   }
@@ -53,8 +54,10 @@ export class TriforceConnection {
         });
         if (login.status === 401) return this.transition('unauthorized');
         if (!login.ok) throw new Error(`Authentication failed (${login.status})`);
+        this.authToken = token;
       }
-      const response = await this.fetcher(`${host.apiUrl}/capabilities`, { credentials: 'include' });
+      const headers = this.authToken ? { authorization: `Bearer ${this.authToken}` } : undefined;
+      const response = await this.fetcher(`${host.apiUrl}/capabilities`, { credentials: 'include', headers });
       if (response.status === 401) return this.transition('unauthorized');
       if (!response.ok) throw new Error(`Server unavailable (${response.status})`);
       const info = await response.json() as { protocolMajor?: number };
@@ -79,7 +82,8 @@ export class TriforceConnection {
   }
 
   private openSocket(url: string) {
-    const socket = this.createSocket(url);
+    const protocols = this.authToken ? ['triforce.v1', `triforce.auth.${encodeURIComponent(this.authToken)}`] : ['triforce.v1'];
+    const socket = this.createSocket(url, protocols);
     this.socket = socket;
     socket.addEventListener('open', () => {
       this.reconnectAttempts = 0;
@@ -94,8 +98,14 @@ export class TriforceConnection {
 
   private handleMessage(event: MessageEvent) {
     let message: ServerEvent;
-    try { message = JSON.parse(String(event.data)) as ServerEvent; }
+    try {
+      const parsed = validateServerEvent(JSON.parse(String(event.data)));
+      if (!parsed.success) return;
+      message = parsed.data as ServerEvent;
+    }
     catch { return; }
+    if (typeof message.runId === 'string' && message.runId === this.lastRunId && typeof message.eventId === 'number' && message.eventId <= this.lastEventId) return;
+    if (typeof message.runId === 'string' && message.runId !== this.lastRunId) this.lastEventId = 0;
     if (typeof message.runId === 'string') this.lastRunId = message.runId;
     if (typeof message.eventId === 'number') this.lastEventId = Math.max(this.lastEventId, message.eventId);
     if (message.type === 'protocol_error' && message.code === 'INCOMPATIBLE_VERSION') this.transition('incompatible');

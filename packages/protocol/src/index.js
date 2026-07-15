@@ -37,6 +37,9 @@ export const serverEventSchema = z.object({
     'capabilities', 'cost', 'done', 'error', 'output', 'protocol_error', 'pty',
     'run_snapshot', 'run_started', 'run_state', 'sandbox', 'status', 'usage', 'workspace',
   ]),
+  runId: z.string().uuid().optional(),
+  eventId: z.number().int().nonnegative().optional(),
+  timestamp: z.string().datetime().optional(),
 }).loose();
 
 /** @param {unknown} value */

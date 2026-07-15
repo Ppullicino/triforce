@@ -12,16 +12,43 @@ class MockSocket extends EventTarget {
 
 test('authenticates with a request body and never puts the token in the URL', async () => {
   const socket = new MockSocket();
+  let socketProtocols: string[] | undefined;
   const fetcher = vi.fn()
     .mockResolvedValueOnce(new Response(null, { status: 204 }))
     .mockResolvedValueOnce(new Response(JSON.stringify({ protocolMajor: 1 }), { status: 200 }));
-  const connection = new TriforceConnection('https://host.example', { fetch: fetcher, createSocket: () => socket });
+  const connection = new TriforceConnection('https://host.example', { fetch: fetcher, createSocket: (_url, protocols) => { socketProtocols = protocols; return socket; } });
   await connection.connect('top-secret');
   expect(fetcher.mock.calls[0]?.[0]).toBe('https://host.example/api/session');
   expect(fetcher.mock.calls[0]?.[1]?.body).toBe(JSON.stringify({ token: 'top-secret' }));
+  expect(fetcher.mock.calls[1]?.[1]?.headers).toEqual({ authorization: 'Bearer top-secret' });
   expect(fetcher.mock.calls.flat().map(call => call[0]).join()).not.toContain('top-secret');
   socket.open();
   expect(connection.state).toBe('connected');
+  expect(socketProtocols).toEqual(['triforce.v1', 'triforce.auth.top-secret']);
+});
+
+test('drops malformed, duplicate, and out-of-order events without corrupting the replay cursor', async () => {
+  const socket = new MockSocket();
+  const resumed = new MockSocket();
+  const events: unknown[] = [];
+  const scheduled: Array<() => void> = [];
+  const sockets = [socket, resumed];
+  const connection = new TriforceConnection('https://host.example', {
+    fetch: vi.fn().mockResolvedValue(new Response(JSON.stringify({ protocolMajor: 1 }), { status: 200 })),
+    createSocket: () => sockets.shift()!,
+    schedule: callback => { scheduled.push(callback); return 1 as unknown as ReturnType<typeof setTimeout>; },
+  });
+  connection.onEvent(event => events.push(event));
+  await connection.connect(); socket.open();
+  const runId = crypto.randomUUID();
+  socket.message({ type: 'status', runId, eventId: 2 });
+  socket.message({ type: 'status', runId, eventId: 2 });
+  socket.message({ type: 'status', runId, eventId: 1 });
+  socket.message({ type: 'made_up', runId, eventId: 3 });
+  expect(events).toHaveLength(1);
+  socket.close(); scheduled[0]!();
+  resumed.open();
+  expect(resumed.sent.map(value => JSON.parse(value))).toContainEqual(expect.objectContaining({ type: 'subscribe', runId, afterEventId: 2 }));
 });
 
 test.each([[401, 'unauthorized'], [503, 'unreachable']])('maps HTTP %s to %s state', async (status, expected) => {

@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784139435.5505955,
-    "ast_hash": "24ef18b7078f5508878e617fd45fd731",
+    "mtime": 1784146379.7812653,
+    "ast_hash": "e592bb16c08d488439fb6dba5f1f0477",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -275,8 +275,8 @@
     "semantic_hash": ""
   },
   "packages/protocol/src/index.js": {
-    "mtime": 1784139356.4179566,
-    "ast_hash": "92579cc19bd3d405df59f4c02cc201f8",
+    "mtime": 1784146420.1365573,
+    "ast_hash": "86775a0601e93b2bd34cc3bbd26f3400",
     "semantic_hash": ""
   },
   "packages/protocol/test/protocol.test.js": {
@@ -295,18 +295,18 @@
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
-    "mtime": 1784139528.6530018,
-    "ast_hash": "1e4071dd890568b57883c1cf2d576fd8",
+    "mtime": 1784146420.1375575,
+    "ast_hash": "332822ef3641e25d54a71ac40a8d668d",
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.test.ts": {
-    "mtime": 1784139822.9810042,
-    "ast_hash": "a814727117f6582c2e097707a654c55d",
+    "mtime": 1784146425.9254558,
+    "ast_hash": "c32a79ed2120bee1f95ab21c7b927abb",
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.ts": {
-    "mtime": 1784139715.1708288,
-    "ast_hash": "a678193c3fb5f7e27a3d4a7e4a149851",
+    "mtime": 1784146379.7812653,
+    "ast_hash": "ad02b66186f55fd8aba28e4cd699bb12",
     "semantic_hash": ""
   },
   "clients/shared/src/core/host-url.ts": {

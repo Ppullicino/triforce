@@ -21,6 +21,13 @@ if (process.env.TRIFORCE_TRANSCRIPTS === '1') await mkdir(TRANSCRIPTS_DIR, { rec
 const AUTH_TOKEN = process.env.TRIFORCE_TOKEN || randomBytes(32).toString('hex');
 if (!process.env.TRIFORCE_TOKEN) console.warn(`TRIFORCE_TOKEN was not set; generated one-time token: ${AUTH_TOKEN}`);
 const runRegistry = new RunRegistry();
+const NATIVE_CLIENT_ORIGINS = new Set([
+  'https://appassets.androidplatform.net',
+  'tauri://localhost',
+  'http://tauri.localhost',
+  'https://tauri.localhost',
+  ...String(process.env.TRIFORCE_CLIENT_ORIGINS || '').split(',').map(value => value.trim()).filter(Boolean),
+]);
 
 const RATES = {
   'claude-sonnet-4-6': [3.00,  15.00],
@@ -466,6 +473,21 @@ async function runPipeline(ws, task, config, mode = 1) {
 
 // ── EXPRESS + HTTP SERVER ──
 const app = express();
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (!origin) return next();
+  if (!NATIVE_CLIENT_ORIGINS.has(origin)) {
+    if (req.method === 'OPTIONS') return res.status(403).end();
+    return next();
+  }
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
+  res.setHeader('Vary', 'Origin');
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  next();
+});
 app.use(express.json());
 
 function tokenMatches(value) {
@@ -476,6 +498,22 @@ function tokenMatches(value) {
 
 function cookieToken(req) {
   return req.headers.cookie?.split(';').map(v => v.trim()).find(v => v.startsWith('triforce_token='))?.slice('triforce_token='.length);
+}
+
+function bearerToken(req) {
+  const value = req.headers.authorization;
+  return typeof value === 'string' && value.startsWith('Bearer ') ? value.slice(7) : undefined;
+}
+
+function webSocketProtocolToken(req) {
+  const protocols = String(req.headers['sec-websocket-protocol'] || '').split(',').map(value => value.trim());
+  const encoded = protocols.find(value => value.startsWith('triforce.auth.'))?.slice('triforce.auth.'.length);
+  if (!encoded) return undefined;
+  try { return decodeURIComponent(encoded); } catch { return undefined; }
+}
+
+function requestIsAuthorized(req) {
+  return tokenMatches(cookieToken(req)) || tokenMatches(bearerToken(req));
 }
 
 function setSessionCookie(req, res) {
@@ -500,7 +538,7 @@ app.delete('/api/session', (_req, res) => {
   res.status(204).end();
 });
 
-app.use('/api', (req, res, next) => tokenMatches(cookieToken(req)) ? next() : res.status(401).json({ error: 'unauthorized' }));
+app.use('/api', (req, res, next) => requestIsAuthorized(req) ? next() : res.status(401).json({ error: 'unauthorized' }));
 
 // PWA-critical headers
 app.get('/sw.js', (req, res) => {
@@ -546,12 +584,17 @@ app.get('/api/runs/:runId', (req, res) => {
 });
 
 const httpServer = http.createServer(app);
-const wss = new WebSocketServer({ noServer: true });
+const wss = new WebSocketServer({
+  noServer: true,
+  handleProtocols: protocols => protocols.has('triforce.v1') ? 'triforce.v1' : false,
+});
 
 httpServer.on('upgrade', (req, socket, head) => {
   const origin = req.headers.origin;
   const expectedOrigin = `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}`;
-  if (!tokenMatches(cookieToken(req)) || (origin && origin !== expectedOrigin)) return socket.destroy();
+  const originAllowed = origin === expectedOrigin || NATIVE_CLIENT_ORIGINS.has(origin);
+  const authorized = requestIsAuthorized(req) || tokenMatches(webSocketProtocolToken(req));
+  if (!authorized || !originAllowed) return socket.destroy();
   wss.handleUpgrade(req, socket, head, ws => wss.emit('connection', ws, req));
 });
 
