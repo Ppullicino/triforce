@@ -48,5 +48,8 @@
   "46": "build.gradle.kts",
   "47": "settings.gradle.kts",
   "48": "workspace.js",
-  "49": "server-protocol.test.js"
+  "49": "server-protocol.test.js",
+  "50": "workspace.js",
+  "51": "cli-input.test.js",
+  "52": "server-protocol.test.js"
 }

@@ -2116,10 +2116,21 @@
       "norm_label": "roles"
     },
     {
-      "label": "defaultConfig",
+      "label": "connectionMessages",
       "file_type": "code",
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L9",
+      "_origin": "ast",
+      "id": "clients_shared_src_app_connectionmessages",
+      "community": 34,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "connectionmessages"
+    },
+    {
+      "label": "defaultConfig",
+      "file_type": "code",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "clients_shared_src_app_defaultconfig",
       "community": 34,
@@ -2130,7 +2141,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L15",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "clients_shared_src_app_app",
       "community": 34,
@@ -2141,7 +2152,7 @@
       "label": "HostScreen()",
       "file_type": "code",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L59",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "clients_shared_src_app_hostscreen",
       "community": 34,
@@ -2152,7 +2163,7 @@
       "label": "Dashboard()",
       "file_type": "code",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L82",
+      "source_location": "L89",
       "_origin": "ast",
       "id": "clients_shared_src_app_dashboard",
       "community": 34,
@@ -4000,8 +4011,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "package_files",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "files"
     },
     {
@@ -4011,8 +4022,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_agent_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "agent.js"
     },
     {
@@ -4022,8 +4033,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_cli_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "cli.js"
     },
     {
@@ -4033,8 +4044,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_cli_input_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "cli-input.js"
     },
     {
@@ -4044,8 +4055,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_models_config_json",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "models.config.json"
     },
     {
@@ -4055,8 +4066,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_orchestrator_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "orchestrator.js"
     },
     {
@@ -4066,8 +4077,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_public",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "public/"
     },
     {
@@ -4077,8 +4088,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_sandbox_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "sandbox.js"
     },
     {
@@ -4088,8 +4099,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_server_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "server.js"
     },
     {
@@ -4099,8 +4110,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_usage_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "usage.js"
     },
     {
@@ -4110,8 +4121,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_workspace_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "workspace.js"
     },
     {
@@ -4121,8 +4132,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_run_registry_js",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "run-registry.js"
     },
     {
@@ -4132,8 +4143,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_packages_protocol_src",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "packages/protocol/src/"
     },
     {
@@ -4143,8 +4154,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_running_md",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "running.md"
     },
     {
@@ -4154,8 +4165,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_install_service_sh",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "install-service.sh"
     },
     {
@@ -4165,8 +4176,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_triforce_service",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "triforce.service"
     },
     {
@@ -4286,8 +4297,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "package_dependencies",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "dependencies"
     },
     {
@@ -4297,8 +4308,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "package_dependencies_anthropic_ai_sdk",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "@anthropic-ai/sdk"
     },
     {
@@ -4308,8 +4319,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "anthropic_ai_sdk",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "@anthropic-ai/sdk"
     },
     {
@@ -4319,8 +4330,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "package_dependencies_google_genai",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "@google/genai"
     },
     {
@@ -4330,8 +4341,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "google_genai",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "@google/genai"
     },
     {
@@ -4341,8 +4352,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "package_dependencies_dotenv",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "dotenv"
     },
     {
@@ -4352,8 +4363,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "dotenv",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "dotenv"
     },
     {
@@ -4363,8 +4374,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "package_dependencies_express",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "express"
     },
     {
@@ -4374,8 +4385,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "express",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "express"
     },
     {
@@ -4385,8 +4396,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "package_dependencies_openai",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "openai"
     },
     {
@@ -4396,8 +4407,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "openai",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "openai"
     },
     {
@@ -4407,8 +4418,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "package_dependencies_ws",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "ws"
     },
     {
@@ -4418,8 +4429,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "ws",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "ws"
     },
     {
@@ -4429,8 +4440,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "package_dependencies_zod",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "zod"
     },
     {
@@ -4440,8 +4451,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "package_json_zod",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "zod"
     },
     {
@@ -9294,7 +9305,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L15",
+      "source_location": "L22",
       "weight": 1.0,
       "source": "clients_shared_src_app",
       "target": "clients_shared_src_app_app",
@@ -9304,7 +9315,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L82",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_app_connectionmessages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L89",
       "weight": 1.0,
       "source": "clients_shared_src_app",
       "target": "clients_shared_src_app_dashboard",
@@ -9314,7 +9335,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L9",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "clients_shared_src_app",
       "target": "clients_shared_src_app_defaultconfig",
@@ -9324,7 +9345,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L59",
+      "source_location": "L66",
       "weight": 1.0,
       "source": "clients_shared_src_app",
       "target": "clients_shared_src_app_hostscreen",
@@ -9511,7 +9532,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L23",
+      "source_location": "L30",
       "weight": 1.0,
       "source": "clients_shared_src_app_app",
       "target": "clients_shared_src_core_pipeline_initialpipelinestate"
@@ -9522,7 +9543,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L16",
+      "source_location": "L23",
       "weight": 1.0,
       "source": "clients_shared_src_app_app",
       "target": "clients_shared_src_core_platform_credentials_createcredentialstorage"
@@ -14737,5 +14758,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0e11db713f5abe1f69be735e0cdceb3d6cf2a2af"
+  "built_at_commit": "adf5daa28c092bd825c51adff214f3c22a7ca771"
 }

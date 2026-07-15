@@ -57,6 +57,17 @@ test.each([[401, 'unauthorized'], [503, 'unreachable']])('maps HTTP %s to %s sta
   expect(connection.state).toBe(expected);
 });
 
+test('stops before WebSocket setup when the server protocol major is incompatible', async () => {
+  const createSocket = vi.fn(() => new MockSocket());
+  const connection = new TriforceConnection('https://host.example', {
+    fetch: vi.fn().mockResolvedValue(new Response(JSON.stringify({ protocolMajor: 2 }), { status: 200 })),
+    createSocket,
+  });
+  await connection.connect();
+  expect(connection.state).toBe('incompatible');
+  expect(createSocket).not.toHaveBeenCalled();
+});
+
 test('reconnects with bounded backoff and resumes after the last event', async () => {
   const sockets: MockSocket[] = [];
   const scheduled: Array<() => void> = [];

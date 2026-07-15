@@ -6,6 +6,13 @@ import { initialPipelineState, reducePipeline, type PipelineViewState } from './
 import { createCredentialStorage } from './core/platform-credentials';
 
 const roles: AgentRole[] = ['architect', 'developer', 'reviewer'];
+const connectionMessages: Partial<Record<ConnectionState, string>> = {
+  connecting: 'Connecting…',
+  reconnecting: 'Connection interrupted. Reconnecting with bounded backoff…',
+  unauthorized: 'Authentication failed. Update the saved access token and try again.',
+  incompatible: `This server requires an incompatible protocol version. Client protocol: ${PROTOCOL_VERSION}.`,
+  unreachable: 'Unable to reach the server. Check its URL, network, and TLS certificate; certificate errors are never bypassed.',
+};
 const defaultConfig: PipelineConfiguration = {
   architect: { provider: 'anthropic', model: 'claude-sonnet-4-6' },
   developer: { provider: 'google', model: 'gemini-2.5-flash' },
@@ -70,7 +77,7 @@ function HostScreen({ hosts, preferredHostId, state, error, onAdd, onConnect, on
       <button type="submit">Add a Triforce host</button>
     </form>
     {error && <p className="error" role="alert">{error}</p>}
-    {state !== 'disconnected' && <p className={`connection ${state}`}>{state}</p>}
+    {state !== 'disconnected' && <p className={`connection ${state}`} role={state === 'unreachable' || state === 'unauthorized' || state === 'incompatible' ? 'alert' : 'status'}>{connectionMessages[state] ?? state}</p>}
     <ul className="host-list" aria-label="Saved Triforce hosts">{hosts.map(host => <li key={host.id}>
       <span><strong>{host.name}{host.id === preferredHostId && ' · Recent'}</strong><small>{host.url}{host.url.startsWith('http:') && ' · Insecure local development'}</small></span><span className="host-actions">
         <button type="button" onClick={() => onConnect(host)}>Connect</button>
