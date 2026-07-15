@@ -51,6 +51,8 @@ export class Agent {
         if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY is not set');
         return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
       case 'claude-cli':
+      case 'codex-cli':
+      case 'agy-cli':
         return null;
       default:
         throw new Error(`Unknown provider: "${this.provider}"`);
