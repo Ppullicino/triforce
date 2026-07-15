@@ -41,7 +41,7 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 5 | Desktop shell for Windows and macOS | COMPLETE | `step-05:` | Tauri 2 shell with Windows Credential Manager/macOS Keychain, restricted navigation, menus/window/updater hooks; Windows and macOS native tests, debug builds, server checks, and launch probes pass in Actions run 29442130327. |
 | 6 | Android container shell | COMPLETE | `step-06:` | Kotlin shell, packaged shared client, origin-scoped bridge, Keystore AES-GCM vault, hardened WebView/network policy; unit/lint/APK and API-29 install/launch smoke pass in Actions run 29446888732. |
 | 7 | Security, resilience, and compatibility hardening | COMPLETE | `step-07:` | Threat model/review log, native CORS + origin/auth enforcement, safe login/CSP, TLS/version diagnostics, validated ordered replay; 26 server, 18 client, 3 protocol tests and npm audits pass. |
-| 8 | Packaging, signing documentation, and CI artifacts | NOT STARTED | `step-08:` | — |
+| 8 | Packaging, signing documentation, and CI artifacts | IN PROGRESS | `step-08:` | Defining unified versioning, release artifacts/checksums, CI audits, and signing procedures. |
 | 9 | End-to-end validation and release candidate | NOT STARTED | `step-09:` | — |
 
 ## Current handoff
