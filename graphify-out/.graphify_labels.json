@@ -48,5 +48,8 @@
   "46": "build.gradle.kts",
   "47": "settings.gradle.kts",
   "48": "workspace.js",
-  "49": "server-protocol.test.js"
+  "49": "server-protocol.test.js",
+  "50": "sync-version.mjs",
+  "51": "Release Signing and Store Delivery",
+  "52": "Triforce Remote 0.1.0 Release Notes"
 }

@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784140050.2361739,
-    "ast_hash": "e737e6b232340ab41c05b567a37cd89c",
+    "mtime": 1784146838.3632126,
+    "ast_hash": "74b92931745d18630e5ab48532922f24",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/desktop-smoke.yml": {
-    "mtime": 1784141381.9256277,
-    "ast_hash": "f822856bc8493dfd670747a78150db8a",
+    "mtime": 1784146949.1992645,
+    "ast_hash": "aa24395a709ba429afee4f634e975c8f",
     "semantic_hash": ""
   },
   "clients/desktop/README.md": {
@@ -635,8 +635,8 @@
     "semantic_hash": ""
   },
   "clients/android/app/build.gradle.kts": {
-    "mtime": 1784142554.0613763,
-    "ast_hash": "21cac92b5d4cac16df230c298aa0dc75",
+    "mtime": 1784146838.3632126,
+    "ast_hash": "a030001cc081c0c460fefbf918dcc835",
     "semantic_hash": ""
   },
   "clients/android/app/src/androidTest/java/com/triforce/remote/MainActivitySecurityTest.kt": {
@@ -670,8 +670,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/android-smoke.yml": {
-    "mtime": 1784145363.088977,
-    "ast_hash": "0b53abe85fef92d5f523e01a565ce3c5",
+    "mtime": 1784146949.2002645,
+    "ast_hash": "f25f944736f2a9e4efeb6587bf97e525",
     "semantic_hash": ""
   },
   "clients/android/README.md": {
@@ -692,6 +692,26 @@
   "public/login.html": {
     "mtime": 1784146632.4778297,
     "ast_hash": "2be594f679b5446f3be1ccb0cdf5b14c",
+    "semantic_hash": ""
+  },
+  "scripts/sync-version.mjs": {
+    "mtime": 1784146986.6846056,
+    "ast_hash": "93fbd2d914933ae8e12b8d31a2f67d80",
+    "semantic_hash": ""
+  },
+  ".github/workflows/release-artifacts.yml": {
+    "mtime": 1784146958.1861064,
+    "ast_hash": "f59f5acbc6bb7a41abb0a4cfbb4a3612",
+    "semantic_hash": ""
+  },
+  "RELEASE_NOTES.md": {
+    "mtime": 1784146949.2002645,
+    "ast_hash": "572d5cff6718e52655db57610873a0c2",
+    "semantic_hash": ""
+  },
+  "SIGNING.md": {
+    "mtime": 1784146949.2002645,
+    "ast_hash": "3b424ce8ce1ca8e5fe23d33a1d4998ea",
     "semantic_hash": ""
   }
 }

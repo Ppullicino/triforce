@@ -1,0 +1,137 @@
+name: Release artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*']
+    paths:
+      - '.github/workflows/release-artifacts.yml'
+      - 'scripts/sync-version.mjs'
+      - 'SIGNING.md'
+      - 'RELEASE_NOTES.md'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'clients/**'
+      - 'packages/**'
+      - 'server.js'
+      - 'public/**'
+permissions:
+  contents: read
+
+concurrency:
+  group: release-artifacts-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run version:check
+      - run: npm test
+      - run: npm run typecheck && npm run lint && npm run build
+      - run: npm audit --omit=dev --audit-level=high
+      - name: Scan tracked source for common live-secret formats
+        run: |
+          if git grep -En 'BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|ghp_[A-Za-z0-9]{36}|sk-(live|proj)-[A-Za-z0-9_-]{20,}' -- ':!package-lock.json'; then
+            exit 1
+          fi
+
+  server:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+      - name: Pack server and checksum
+        run: |
+          mkdir artifacts
+          npm pack --pack-destination artifacts
+          cd artifacts
+          sha256sum *.tgz > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triforce-server-${{ steps.version.outputs.version }}
+          path: artifacts/
+
+  android:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 17 }
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '9.4.1' }
+      - run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - run: npm ci
+      - id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+      - run: gradle -p clients/android testDebugUnitTest lintDebug assembleDebug
+      - name: Stage APK and checksum
+        run: |
+          mkdir artifacts
+          cp clients/android/app/build/outputs/apk/debug/app-debug.apk "artifacts/triforce-android-${{ steps.version.outputs.version }}-debug.apk"
+          cd artifacts
+          sha256sum *.apk > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triforce-android-${{ steps.version.outputs.version }}
+          path: artifacts/
+
+  desktop:
+    needs: verify
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows
+          - os: macos-latest
+            platform: macos
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm ci
+      - id: version
+        shell: bash
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+      - run: cargo test --manifest-path clients/desktop/src-tauri/Cargo.toml
+      - run: npm run build --workspace @triforce/desktop
+      - name: Smoke and stage Windows installer
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          & clients/desktop/src-tauri/target/release/triforce-desktop.exe --smoke-test
+          New-Item -ItemType Directory artifacts
+          Get-ChildItem clients/desktop/src-tauri/target/release/bundle -Recurse -File -Include *.msi,*-setup.exe | Copy-Item -Destination artifacts
+          Get-ChildItem artifacts -File | Sort-Object Name | ForEach-Object { "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content artifacts/SHA256SUMS
+      - name: Smoke and stage macOS bundle
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          app="clients/desktop/src-tauri/target/release/bundle/macos/Triforce Remote.app"
+          "$app/Contents/MacOS/triforce-desktop" --smoke-test
+          mkdir artifacts
+          ditto -c -k --sequesterRsrc --keepParent "$app" "artifacts/triforce-macos-${{ steps.version.outputs.version }}.app.zip"
+          find clients/desktop/src-tauri/target/release/bundle/dmg -name '*.dmg' -exec cp {} artifacts/ \;
+          cd artifacts
+          shasum -a 256 * > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: triforce-${{ matrix.platform }}-${{ steps.version.outputs.version }}
+          path: artifacts/

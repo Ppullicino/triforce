@@ -31,6 +31,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: Install JavaScript dependencies
         run: npm ci
+      - name: Verify synchronized release version
+        run: npm run version:check
       - name: Verify shared client and protocol
         run: npm run test --workspace @triforce/client && npm run test --workspace @triforce/protocol && node --test test/server-protocol.test.js
       - name: Build shared client

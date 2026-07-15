@@ -37,8 +37,10 @@
     "build": "npm run build --workspace @triforce/protocol && npm run build --workspace @triforce/client",
     "typecheck": "npm run typecheck --workspace @triforce/protocol && npm run typecheck --workspace @triforce/client",
     "lint": "npm run lint --workspace @triforce/protocol && npm run lint --workspace @triforce/client",
-    "dev:client": "npm run dev --workspace @triforce/client"
-    ,"desktop:check": "npm run check --workspace @triforce/desktop"
+    "dev:client": "npm run dev --workspace @triforce/client",
+    "desktop:check": "npm run check --workspace @triforce/desktop",
+    "version:check": "node scripts/sync-version.mjs --check",
+    "version:sync": "node scripts/sync-version.mjs --write"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
