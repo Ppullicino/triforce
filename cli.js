@@ -77,10 +77,15 @@ async function checkAndInstallDependencies(forceUpdate = false) {
     const action = !hasAgy ? 'Installing' : 'Updating';
     console.log(`⚠️ ${action} Antigravity CLI (agy) to ~/.local/bin/agy...`);
     try {
+      const hasCurl = checkCommand('curl');
+      const downloadCmd = hasCurl
+        ? 'curl -fsSL https://antigravity.google/cli/releases/latest/agy-linux-amd64-v1.tar.gz -o agy-linux-amd64-v1.tar.gz'
+        : 'wget -q https://antigravity.google/cli/releases/latest/agy-linux-amd64-v1.tar.gz';
+
       const installCmd = `
         mkdir -p /tmp/agy-install && 
         cd /tmp/agy-install && 
-        wget -q https://antigravity.google/cli/releases/latest/agy-linux-amd64-v1.tar.gz && 
+        ${downloadCmd} && 
         tar -xzf agy-linux-amd64-v1.tar.gz && 
         mkdir -p ~/.local/bin && 
         mv agy ~/.local/bin/agy && 
@@ -102,8 +107,25 @@ async function checkAndInstallDependencies(forceUpdate = false) {
     const action = !hasGraphify ? 'Installing' : 'Updating';
     console.log(`⚠️ ${action} Graphify via uv/pip...`);
     try {
-      if (checkCommand('uv')) {
-        execSync('uv tool install --force graphifyy', { stdio: 'inherit' });
+      // If uv is not installed, install it locally to ~/.local/bin
+      if (!checkCommand('uv')) {
+        console.log('⚠️ uv is not installed. Attempting to install uv locally...');
+        try {
+          const uvInstallCmd = checkCommand('curl')
+            ? 'curl -LsSf https://astral.sh/uv/install.sh | sh'
+            : 'wget -qO- https://astral.sh/uv/install.sh | sh';
+          execSync(uvInstallCmd, { stdio: 'inherit' });
+        } catch (err) {
+          console.log('⚠️ Failed to install uv via installer:', err.message);
+        }
+      }
+
+      // Check if uv is now available (either in PATH or via resolveBinPath)
+      const uvPath = resolveBinPath('uv');
+      const hasLocalUv = existsSync(uvPath) || checkCommand('uv');
+
+      if (hasLocalUv) {
+        execSync(`${uvPath} tool install --force graphifyy`, { stdio: 'inherit' });
       } else if (checkCommand('pipx')) {
         execSync('pipx install --force graphifyy', { stdio: 'inherit' });
       } else {
