@@ -169,9 +169,9 @@ async function setupWizard() {
   // 1c: Antigravity CLI
   const authAgy = await rl.question('\nAuthenticate with Antigravity CLI (agy) now? (y/n) [y]: ');
   if (!authAgy.toLowerCase().startsWith('n')) {
-    console.log('\nRunning "agy login"... Please follow the instructions.');
+    console.log('\nVerifying Antigravity CLI session... (Follow instructions to sign in if prompted)');
     await new Promise((resolve) => {
-      const child = spawn(resolveBinPath('agy'), ['login'], { stdio: 'inherit' });
+      const child = spawn(resolveBinPath('agy'), ['-p', 'ping'], { stdio: 'inherit' });
       child.on('close', resolve);
     });
   }
@@ -253,7 +253,7 @@ function getNetworkIPs() {
 function startServer() {
   console.log('\nSpinning up the Triforce backend server...');
   const serverProcess = fork(join(__dirname, 'server.js'), [], {
-    stdio: ['inherit', 'pipe', 'pipe'],
+    stdio: ['inherit', 'pipe', 'pipe', 'ipc'],
     env: { ...process.env, PORT: '3000' }
   });
 
