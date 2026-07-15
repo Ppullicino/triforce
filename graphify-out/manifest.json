@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "CROSS_PLATFORM_CLIENT_PLAN.md": {
-    "mtime": 1784147759.697586,
-    "ast_hash": "326d5d9a7ab669ec322b5321b11e647b",
+    "mtime": 1784148866.451899,
+    "ast_hash": "c2f121d50b1006d073b07dc4d7f73d58",
     "semantic_hash": ""
   },
   "clients/shared/eslint.config.js": {
@@ -725,8 +725,8 @@
     "semantic_hash": ""
   },
   "RELEASE_CHECKLIST.md": {
-    "mtime": 1784147929.2350302,
-    "ast_hash": "5476b923d62420a063de7147a41e2510",
+    "mtime": 1784148866.452899,
+    "ast_hash": "822b3539382555ed445a7d75b096eee7",
     "semantic_hash": ""
   }
 }

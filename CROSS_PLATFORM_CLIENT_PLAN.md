@@ -42,13 +42,13 @@ Status values are `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, and `COMPLETE`.
 | 6 | Android container shell | COMPLETE | `step-06:` | Kotlin shell, packaged shared client, origin-scoped bridge, Keystore AES-GCM vault, hardened WebView/network policy; unit/lint/APK and API-29 install/launch smoke pass in Actions run 29446888732. |
 | 7 | Security, resilience, and compatibility hardening | COMPLETE | `step-07:` | Threat model/review log, native CORS + origin/auth enforcement, safe login/CSP, TLS/version diagnostics, validated ordered replay; 26 server, 18 client, 3 protocol tests and npm audits pass. |
 | 8 | Packaging, signing documentation, and CI artifacts | COMPLETE | `step-08:` | Root SemVer synchronization, audit/test matrix, signing/release docs, and checksummed server/Windows/macOS/Android artifacts all pass in Actions run 29448101313. |
-| 9 | End-to-end validation and release candidate | IN PROGRESS | `step-09:` | Building deterministic remote-mode/reconnect validation, representative platform matrix, operations docs, and RC checklist/tag. |
+| 9 | End-to-end validation and release candidate | COMPLETE | `step-09:` | Native-origin auth, all modes, reconnect/replay, failures, long output, security/accessibility and operations signed off; Android 29449122272, desktop 29449258067, release matrix 29449258088 pass; `v0.1.0-rc.1`. |
 
 ## Current handoff
 
-- Current step: Step 9 — end-to-end validation and release candidate.
-- Next action: Build the remote test harness and cross-platform validation matrix,
-  exercise authentication/run/reconnect/failure cases, finish operations docs, and tag RC1.
+- Current step: All planned steps are complete.
+- Next action: The owner may perform production signing/notarization and physical-device
+  store-channel acceptance before promoting `v0.1.0-rc.1` to a production release.
 - Known blockers: None.
 - Important constraint: Do not put provider API keys in any client. Clients receive
   only Triforce host URLs and Triforce authentication credentials.

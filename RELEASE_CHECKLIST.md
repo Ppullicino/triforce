@@ -1,17 +1,17 @@
 # 0.1.0-rc.1 Validation Record
 
-Validation date: 2026-07-15. Candidate commit/tag is recorded when the final tag is
-created. Automated entries use representative GitHub-hosted devices; production store
+Validation date: 2026-07-15. Candidate tag: `v0.1.0-rc.1`. Automated entries use
+representative GitHub-hosted devices; production store
 signing and physical-device acceptance remain owner release actions.
 
 ## Compatibility matrix
 
 | Surface | Representative environment | Required evidence | Result |
 |---|---|---|---|
-| Server/shared protocol | Node 22 on Ubuntu | Invalid auth, native Origins, protocol skew, modes 1/2/3, disconnect/replay | PASS — `remote-client-e2e.test.js` plus server suite |
-| Android | API-29 x86_64 emulator, target/compile API 36 | Unit/lint/APK, install, activity launch, live process, hardened WebView | PASS — Android smoke workflow |
-| Windows | GitHub `windows-latest` | Shared/server tests, Cargo tests, debug/release build, native launch, checksummed installers | PASS — Desktop smoke and release-artifact workflows |
-| macOS | GitHub `macos-latest` | Shared/server tests, Cargo tests, debug/release build, `.app` launch, checksummed ZIP/DMG | PASS — Desktop smoke and release-artifact workflows |
+| Server/shared protocol | Node 22 on Ubuntu | Invalid auth, native Origins, protocol skew, modes 1/2/3, disconnect/replay | PASS — release run 29449258088 |
+| Android | API-29 x86_64 emulator, target/compile API 36 | Unit/lint/APK, install, activity launch, live process, hardened WebView | PASS — Android run 29449122272 |
+| Windows | GitHub `windows-latest` | Shared/server tests, Cargo tests, debug/release build, native launch, checksummed installers | PASS — desktop 29449258067; release 29449258088 |
+| macOS | GitHub `macos-latest` | Shared/server tests, Cargo tests, debug/release build, `.app` launch, checksummed ZIP/DMG | PASS — desktop 29449258067; release 29449258088 |
 
 ## Functional and failure cases
 
