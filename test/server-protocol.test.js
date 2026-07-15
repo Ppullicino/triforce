@@ -27,6 +27,13 @@ test('protects protocol discovery and negotiates WebSocket versions', async () =
   const origin = `http://127.0.0.1:${port}`;
   try {
     assert.equal((await fetch(`${origin}/api/capabilities`)).status, 401);
+    const legacyLogin = await fetch(`${origin}/auth?token=${token}`, { redirect: 'manual' });
+    assert.equal(legacyLogin.status, 410);
+    assert.doesNotMatch(await legacyLogin.text(), new RegExp(token));
+    const loginPage = await fetch(`${origin}/login`);
+    assert.equal(loginPage.status, 200);
+    assert.equal(loginPage.headers.get('cache-control'), 'no-store');
+    assert.match(loginPage.headers.get('content-security-policy'), /script-src 'self'/);
     const login = await fetch(`${origin}/api/session`, {
       method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token }),
     });

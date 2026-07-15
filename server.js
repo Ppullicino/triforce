@@ -522,6 +522,9 @@ function setSessionCookie(req, res) {
 }
 
 app.get('/auth', (req, res) => {
+  if (process.env.TRIFORCE_ALLOW_URL_TOKEN_AUTH !== '1') {
+    return res.status(410).send('URL token authentication is disabled. Use /login.');
+  }
   if (!tokenMatches(req.query.token)) return res.status(401).send('Invalid token');
   setSessionCookie(req, res);
   res.redirect('/');
@@ -552,6 +555,11 @@ app.get('/manifest.json', (req, res) => {
 });
 
 app.use('/icons', express.static(join(__dirname, 'public/icons')));
+app.get('/login', (_req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Content-Security-Policy', "default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'");
+  res.sendFile('login.html', { root: join(__dirname, 'public') });
+});
 app.use(express.static(join(__dirname, 'public')));
 
 app.get('/api/usage', (req, res) => {

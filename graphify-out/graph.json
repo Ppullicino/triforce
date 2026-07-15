@@ -4000,8 +4000,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "package_files",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "files"
     },
     {
@@ -4011,8 +4011,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_agent_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "agent.js"
     },
     {
@@ -4022,8 +4022,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_cli_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "cli.js"
     },
     {
@@ -4033,8 +4033,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_cli_input_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "cli-input.js"
     },
     {
@@ -4044,8 +4044,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_models_config_json",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "models.config.json"
     },
     {
@@ -4055,8 +4055,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_orchestrator_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "orchestrator.js"
     },
     {
@@ -4066,8 +4066,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_public",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "public/"
     },
     {
@@ -4077,8 +4077,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_sandbox_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "sandbox.js"
     },
     {
@@ -4088,8 +4088,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_server_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "server.js"
     },
     {
@@ -4099,8 +4099,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_usage_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "usage.js"
     },
     {
@@ -4110,8 +4110,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_workspace_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "workspace.js"
     },
     {
@@ -4121,8 +4121,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_run_registry_js",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "run-registry.js"
     },
     {
@@ -4132,8 +4132,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_packages_protocol_src",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "packages/protocol/src/"
     },
     {
@@ -4143,8 +4143,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_running_md",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "running.md"
     },
     {
@@ -4154,8 +4154,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_install_service_sh",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "install-service.sh"
     },
     {
@@ -4165,8 +4165,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ref_triforce_service",
-      "community": 33,
-      "community_name": "scripts",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "triforce.service"
     },
     {
@@ -4286,8 +4286,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "package_dependencies",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "dependencies"
     },
     {
@@ -4297,8 +4297,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "package_dependencies_anthropic_ai_sdk",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@anthropic-ai/sdk"
     },
     {
@@ -4308,8 +4308,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "anthropic_ai_sdk",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@anthropic-ai/sdk"
     },
     {
@@ -4319,8 +4319,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "package_dependencies_google_genai",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@google/genai"
     },
     {
@@ -4330,8 +4330,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "google_genai",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "@google/genai"
     },
     {
@@ -4341,8 +4341,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "package_dependencies_dotenv",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "dotenv"
     },
     {
@@ -4352,8 +4352,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "dotenv",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "dotenv"
     },
     {
@@ -4363,8 +4363,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "package_dependencies_express",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "express"
     },
     {
@@ -4374,8 +4374,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "express",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "express"
     },
     {
@@ -4385,8 +4385,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "package_dependencies_openai",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "openai"
     },
     {
@@ -4396,8 +4396,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "openai",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "openai"
     },
     {
@@ -4407,8 +4407,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "package_dependencies_ws",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "ws"
     },
     {
@@ -4418,8 +4418,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "ws",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "ws"
     },
     {
@@ -4429,8 +4429,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "package_dependencies_zod",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "zod"
     },
     {
@@ -4440,8 +4440,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "package_json_zod",
-      "community": 42,
-      "community_name": "files",
+      "community": 33,
+      "community_name": "scripts",
       "norm_label": "zod"
     },
     {
@@ -5204,6 +5204,17 @@
       "norm_label": "src"
     },
     {
+      "label": "login.js",
+      "file_type": "code",
+      "source_file": "public/login.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "public_login",
+      "community": 49,
+      "community_name": "server-protocol.test.js",
+      "norm_label": "login.js"
+    },
+    {
       "label": "manifest.json",
       "file_type": "code",
       "source_file": "public/manifest.json",
@@ -5746,7 +5757,7 @@
       "label": "httpServer",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L586",
+      "source_location": "L594",
       "_origin": "ast",
       "id": "server_httpserver",
       "community": 26,
@@ -5757,7 +5768,7 @@
       "label": "wss",
       "file_type": "code",
       "source_file": "server.js",
-      "source_location": "L587",
+      "source_location": "L595",
       "_origin": "ast",
       "id": "server_wss",
       "community": 26,
@@ -6505,7 +6516,7 @@
       "label": "Systemd Service (Always-On)",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L13",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "running_systemd_service_always_on",
       "community": 4,
@@ -6516,7 +6527,7 @@
       "label": "One-time Install",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L15",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "running_one_time_install",
       "community": 4,
@@ -6527,7 +6538,7 @@
       "label": "Service Management",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "running_service_management",
       "community": 4,
@@ -6538,7 +6549,7 @@
       "label": "View Logs",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L44",
+      "source_location": "L45",
       "_origin": "ast",
       "id": "running_view_logs",
       "community": 4,
@@ -6549,7 +6560,7 @@
       "label": "PWA \u2014 Install as App",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L59",
+      "source_location": "L60",
       "_origin": "ast",
       "id": "running_pwa_install_as_app",
       "community": 4,
@@ -6560,7 +6571,7 @@
       "label": "Android (Chrome)",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "running_android_chrome",
       "community": 4,
@@ -6571,7 +6582,7 @@
       "label": "iPhone / iPad (Safari)",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L72",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "running_iphone_ipad_safari",
       "community": 4,
@@ -6582,7 +6593,7 @@
       "label": "Mac (Chrome or Edge)",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "_origin": "ast",
       "id": "running_mac_chrome_or_edge",
       "community": 4,
@@ -6593,12 +6604,78 @@
       "label": "Notes",
       "file_type": "document",
       "source_file": "RUNNING.md",
-      "source_location": "L91",
+      "source_location": "L92",
       "_origin": "ast",
       "id": "running_notes",
       "community": 4,
       "community_name": "Triforce \u2014 Running & Operations",
       "norm_label": "notes"
+    },
+    {
+      "label": "SECURITY_REVIEW.md",
+      "file_type": "document",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "security_review",
+      "community": 48,
+      "community_name": "workspace.js",
+      "norm_label": "security_review.md"
+    },
+    {
+      "label": "Remote Client Security Review",
+      "file_type": "document",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "security_review_remote_client_security_review",
+      "community": 48,
+      "community_name": "workspace.js",
+      "norm_label": "remote client security review"
+    },
+    {
+      "label": "Trust boundaries and assets",
+      "file_type": "document",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "security_review_trust_boundaries_and_assets",
+      "community": 48,
+      "community_name": "workspace.js",
+      "norm_label": "trust boundaries and assets"
+    },
+    {
+      "label": "Threat model and controls",
+      "file_type": "document",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "security_review_threat_model_and_controls",
+      "community": 48,
+      "community_name": "workspace.js",
+      "norm_label": "threat model and controls"
+    },
+    {
+      "label": "Compatibility and deployment rules",
+      "file_type": "document",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "security_review_compatibility_and_deployment_rules",
+      "community": 48,
+      "community_name": "workspace.js",
+      "norm_label": "compatibility and deployment rules"
+    },
+    {
+      "label": "Review log and verification",
+      "file_type": "document",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "security_review_review_log_and_verification",
+      "community": 48,
+      "community_name": "workspace.js",
+      "norm_label": "review log and verification"
     },
     {
       "label": "README.md",
@@ -13583,7 +13660,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L586",
+      "source_location": "L594",
       "weight": 1.0,
       "source": "server",
       "target": "server_httpserver",
@@ -13743,7 +13820,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "server.js",
-      "source_location": "L587",
+      "source_location": "L595",
       "weight": 1.0,
       "source": "server",
       "target": "server_wss",
@@ -14462,7 +14539,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L91",
+      "source_location": "L92",
       "weight": 1.0,
       "source": "running_triforce_running_operations",
       "target": "running_notes",
@@ -14472,7 +14549,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0,
       "source": "running_triforce_running_operations",
       "target": "running_pwa_install_as_app",
@@ -14482,7 +14559,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "source": "running_triforce_running_operations",
       "target": "running_systemd_service_always_on",
@@ -14492,7 +14569,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "running_systemd_service_always_on",
       "target": "running_one_time_install",
@@ -14502,7 +14579,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "source": "running_systemd_service_always_on",
       "target": "running_service_management",
@@ -14512,7 +14589,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0,
       "source": "running_systemd_service_always_on",
       "target": "running_view_logs",
@@ -14522,7 +14599,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0,
       "source": "running_pwa_install_as_app",
       "target": "running_android_chrome",
@@ -14532,7 +14609,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L72",
+      "source_location": "L73",
       "weight": 1.0,
       "source": "running_pwa_install_as_app",
       "target": "running_iphone_ipad_safari",
@@ -14542,10 +14619,60 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "RUNNING.md",
-      "source_location": "L81",
+      "source_location": "L82",
       "weight": 1.0,
       "source": "running_pwa_install_as_app",
       "target": "running_mac_chrome_or_edge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "security_review",
+      "target": "security_review_remote_client_security_review",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "security_review_remote_client_security_review",
+      "target": "security_review_compatibility_and_deployment_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "security_review_remote_client_security_review",
+      "target": "security_review_review_log_and_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "security_review_remote_client_security_review",
+      "target": "security_review_threat_model_and_controls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SECURITY_REVIEW.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "security_review_remote_client_security_review",
+      "target": "security_review_trust_boundaries_and_assets",
       "confidence_score": 1.0
     },
     {
@@ -14610,5 +14737,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5370457620a46f6719441783b1c09172dd54ee86"
+  "built_at_commit": "0e11db713f5abe1f69be735e0cdceb3d6cf2a2af"
 }

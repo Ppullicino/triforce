@@ -290,17 +290,17 @@ function startServer(authToken) {
 }
 
 function connectWebSocket(defaultMode, config, authToken) {
-  const ws = new WebSocket('ws://localhost:3000', { headers: { Cookie: `triforce_token=${authToken}` } });
+  const ws = new WebSocket('ws://localhost:3000', { headers: { Cookie: `triforce_token=${authToken}`, Origin: 'http://localhost:3000' } });
 
   ws.on('open', () => {
     activeSocket = ws;
     console.log('\n🚀 Connected to Triforce Server!');
-    console.log(`🌐 Visual Dashboard (Local):   http://localhost:3000/auth?token=${authToken}`);
+    console.log('🌐 Visual Dashboard (Local):   http://localhost:3000/login');
     
     try {
       const networkIPs = getNetworkIPs();
       for (const ip of networkIPs) {
-        console.log(`🌐 Visual Dashboard (Network): http://${ip}:3000/auth?token=${authToken}`);
+        console.log(`🌐 Visual Dashboard (Network): http://${ip}:3000/login`);
       }
     } catch (err) {}
 

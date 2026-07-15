@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 75 files · ~37,791 words
+- 77 files · ~38,969 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 608 nodes · 760 edges · 48 communities (36 shown, 12 thin omitted)
+- 615 nodes · 765 edges · 50 communities (38 shown, 12 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `53704576`
+- Built from commit: `0e11db71`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,6 +54,7 @@
 - files
 - App.tsx
 - Triforce Android
+- workspace.js
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
@@ -82,7 +83,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (48 total, 12 thin omitted)
+## Communities (50 total, 12 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
@@ -162,7 +163,7 @@ Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, P
 
 ### Community 33 - "scripts"
 Cohesion: 0.05
-Nodes (40): bin, triforce, description, devDependencies, pngjs, files, main, name (+32 more)
+Nodes (39): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, bin, triforce, dependencies (+31 more)
 
 ### Community 34 - "server-protocol.test.js"
 Cohesion: 0.05
@@ -189,11 +190,15 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "files"
-Cohesion: 0.13
-Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
+Cohesion: 0.12
+Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
+
+### Community 48 - "workspace.js"
+Cohesion: 0.33
+Nodes (5): Compatibility and deployment rules, Remote Client Security Review, Review log and verification, Threat model and controls, Trust boundaries and assets
 
 ## Knowledge Gaps
-- **278 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+273 more)
+- **282 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+277 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -205,7 +210,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `index.ts`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
-  _278 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _282 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**

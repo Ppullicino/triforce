@@ -46,5 +46,7 @@
   "44": "Triforce Android",
   "45": "build.gradle.kts",
   "46": "build.gradle.kts",
-  "47": "settings.gradle.kts"
+  "47": "settings.gradle.kts",
+  "48": "workspace.js",
+  "49": "server-protocol.test.js"
 }

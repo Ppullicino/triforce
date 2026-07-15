@@ -2,9 +2,10 @@
 
 ## Access
 
-The dashboard and WebSocket require the `TRIFORCE_TOKEN` stored in `.env`. Authenticate once with:
-
-`http://localhost:3000/auth?token=<TRIFORCE_TOKEN>`
+The dashboard and WebSocket require the `TRIFORCE_TOKEN` stored in `.env`. Open
+`http://localhost:3000/login` and enter the token there. The form sends it in a POST
+body; do not put it in a URL. Legacy `/auth?token=...` support is disabled unless an
+operator explicitly sets `TRIFORCE_ALLOW_URL_TOKEN_AUTH=1` during a migration.
 
 The authentication route sets an HTTP-only, same-site cookie and redirects to the dashboard. Do not expose port 3000 directly to an untrusted network; use an SSH tunnel or an authenticated TLS reverse proxy.
 
