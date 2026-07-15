@@ -33,10 +33,10 @@ for (const key of ['', 'clients/shared', 'clients/desktop', 'packages/protocol']
 if (write) await writeFile(lockUrl, `${JSON.stringify(lock, null, 2)}\n`);
 
 const textFiles = [
-  ['../clients/desktop/src-tauri/Cargo.toml', /^(version = ")[^"]+("$)/m, `$1${version}$2`, version],
-  ['../clients/desktop/src-tauri/Cargo.lock', /(\[\[package\]\]\nname = "triforce-desktop"\nversion = ")[^"]+("$)/m, `$1${version}$2`, version],
-  ['../clients/android/app/build.gradle.kts', /^(\s*versionName = ")[^"]+("$)/m, `$1${version}$2`, version],
-  ['../clients/android/app/build.gradle.kts', /^(\s*versionCode = )\d+$/m, `$1${androidCode}`, String(androidCode)],
+  ['../clients/desktop/src-tauri/Cargo.toml', /^(version = ")[^"]+("\r?$)/m, `$1${version}$2`, version],
+  ['../clients/desktop/src-tauri/Cargo.lock', /(\[\[package\]\]\r?\nname = "triforce-desktop"\r?\nversion = ")[^"]+("\r?$)/m, `$1${version}$2`, version],
+  ['../clients/android/app/build.gradle.kts', /^(\s*versionName = ")[^"]+("\r?$)/m, `$1${version}$2`, version],
+  ['../clients/android/app/build.gradle.kts', /^(\s*versionCode = )\d+\r?$/m, `$1${androidCode}`, String(androidCode)],
 ];
 for (const [relative, pattern, replacement, expected] of textFiles) {
   const url = new URL(relative, import.meta.url);

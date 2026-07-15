@@ -51,5 +51,9 @@
   "49": "server-protocol.test.js",
   "50": "sync-version.mjs",
   "51": "Release Signing and Store Delivery",
-  "52": "Triforce Remote 0.1.0 Release Notes"
+  "52": "Triforce Remote 0.1.0 Release Notes",
+  "53": "MockSocket",
+  "54": "TriforceConnection",
+  "55": "Triforce Remote Operations Guide",
+  "56": "0.1.0-rc.1 Validation Record"
 }

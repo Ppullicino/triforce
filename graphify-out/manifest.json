@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/desktop-smoke.yml": {
-    "mtime": 1784147929.2340302,
-    "ast_hash": "8116f3aa162b3da2e3ca65f0351894ba",
+    "mtime": 1784148086.8515787,
+    "ast_hash": "079d68767901d5b29f39a2d0a4ecc425",
     "semantic_hash": ""
   },
   "clients/desktop/README.md": {
@@ -695,8 +695,8 @@
     "semantic_hash": ""
   },
   "scripts/sync-version.mjs": {
-    "mtime": 1784146986.6846056,
-    "ast_hash": "93fbd2d914933ae8e12b8d31a2f67d80",
+    "mtime": 1784148086.8515787,
+    "ast_hash": "a37975d3e35789bc179a0c4830d72f16",
     "semantic_hash": ""
   },
   ".github/workflows/release-artifacts.yml": {
