@@ -15,6 +15,8 @@ let isRunning = false;
 let resolveRunPromise = null;
 let activeSocket = null;
 let promptStarted = false;
+let backendExited = false;
+let shuttingDown = false;
 
 import { existsSync } from 'node:fs';
 
@@ -263,10 +265,23 @@ function startServer(authToken) {
       process.stdout.write(data);
     }
   });
+
+  serverProcess.once('exit', (code, signal) => {
+    backendExited = true;
+    if (shuttingDown) return;
+    const detail = signal ? `signal ${signal}` : `exit code ${code}`;
+    console.error(`\n❌ Triforce backend exited unexpectedly (${detail}).`);
+    console.error('Review the backend error above, then reinstall or repair the Triforce package.');
+    process.exit(code && code > 0 ? code : 1);
+  });
   
   // Clean up server process when CLI exits
-  process.on('exit', () => serverProcess.kill());
+  process.on('exit', () => {
+    shuttingDown = true;
+    serverProcess.kill();
+  });
   process.on('SIGINT', () => {
+    shuttingDown = true;
     serverProcess.kill();
     process.exit(0);
   });
@@ -331,12 +346,14 @@ function connectWebSocket(defaultMode, config, authToken) {
       resolveRunPromise?.();
       resolveRunPromise = null;
     }
-    console.log('\nBackend connection lost. Retrying...');
-    setTimeout(() => connectWebSocket(defaultMode, config, authToken), 2000);
+    if (!backendExited) {
+      console.log('\nBackend connection lost. Retrying...');
+      setTimeout(() => connectWebSocket(defaultMode, config, authToken), 2000);
+    }
   });
 
-  ws.on('error', () => {
-    // Fail silently, ws close event will handle reconnection
+  ws.on('error', (err) => {
+    console.error(`\nBackend connection error: ${err.message}`);
   });
 }
 

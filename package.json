@@ -7,6 +7,19 @@
   "bin": {
     "triforce": "./cli.js"
   },
+  "files": [
+    "agent.js",
+    "cli.js",
+    "models.config.json",
+    "orchestrator.js",
+    "public/",
+    "sandbox.js",
+    "server.js",
+    "usage.js",
+    "RUNNING.md",
+    "install-service.sh",
+    "triforce.service"
+  ],
   "scripts": {
     "start": "node server.js",
     "cli": "node cli.js",
