@@ -1,16 +1,16 @@
-# Graph Report - triforce  (2026-07-16)
+# Graph Report - triforce  (2026-07-15)
 
 ## Corpus Check
-- 83 files · ~42,135 words
+- 83 files · ~42,074 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 659 nodes · 806 edges · 55 communities (43 shown, 12 thin omitted)
+- 658 nodes · 804 edges · 57 communities (44 shown, 13 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `513fc7b7`
+- Built from commit: `b3bb950b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -58,13 +58,15 @@
 - sync-version.mjs
 - Release Signing and Store Delivery
 - Triforce Remote 0.1.0 Release Notes
+- MockSocket
+- TriforceConnection
 - Triforce Remote Operations Guide
 - 0.1.0-rc.1 Validation Record
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
-2. `Agent` - 16 edges
-3. `files` - 16 edges
+2. `files` - 16 edges
+3. `Agent` - 15 edges
 4. `Triforce Cross-Platform Client Plan` - 15 edges
 5. `RunRegistry` - 14 edges
 6. `TriforceConnection` - 13 edges
@@ -88,7 +90,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (55 total, 12 thin omitted)
+## Communities (57 total, 13 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20
@@ -99,12 +101,12 @@ Cohesion: 0.11
 Nodes (12): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault, String, String, WebView (+4 more)
 
 ### Community 2 - "Agent"
-Cohesion: 0.19
+Cohesion: 0.20
 Nodes (8): Agent, delay(), firstTextBlock(), getErrorStatus(), isRetryableError(), resolveBinPath(), RETRYABLE_STATUSES, withTimeout()
 
 ### Community 3 - "package.json"
-Cohesion: 0.06
-Nodes (24): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, agentConfigurationSchema (+16 more)
+Cohesion: 0.07
+Nodes (30): App(), connectionMessages, defaultConfig, roles, ConnectionOptions, ConnectionState, EventListener, StateListener (+22 more)
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
@@ -171,8 +173,8 @@ Cohesion: 0.05
 Nodes (42): bin, triforce, description, devDependencies, pngjs, files, main, name (+34 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.05
-Nodes (32): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage (+24 more)
+Cohesion: 0.08
+Nodes (18): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+10 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -214,6 +216,10 @@ Nodes (6): Android, Apple, Desktop updater, Release Signing and Store Delivery, 
 Cohesion: 0.50
 Nodes (3): Compatibility, Migration and security changes, Triforce Remote 0.1.0 Release Notes
 
+### Community 53 - "MockSocket"
+Cohesion: 0.12
+Nodes (6): MockSocket, config, messages(), nativeOrigins, startServer(), startServer()
+
 ### Community 55 - "Triforce Remote Operations Guide"
 Cohesion: 0.29
 Nodes (6): Data and backup, Deployment and monitoring, Release ownership, Rollback and recovery, Triforce Remote Operations Guide, Upgrade
@@ -225,21 +231,21 @@ Nodes (5): 0.1.0-rc.1 Validation Record, Compatibility matrix, Functional and fa
 ## Knowledge Gaps
 - **311 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+306 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `promptLoop()` connect `cli.js` to `package.json`?**
+- **Why does `promptLoop()` connect `cli.js` to `MockSocket`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Why does `Agent` connect `Agent` to `orchestrator.js`, `index.ts`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
   _311 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.05893719806763285 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07195121951219512 - nodes in this community are weakly interconnected._
 - **Should `cli-input.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**

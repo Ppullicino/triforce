@@ -17,3 +17,28 @@ test('CLI output is collected into the provider result', async () => {
   });
   assert.equal(result.text, 'ok');
 });
+
+test('Codex CLI can run when Triforce starts outside a Git repository', () => {
+  const args = Agent.prototype._codexCLIArgs.call({
+    unsafePermissions: false,
+    systemPrompt: '',
+  });
+
+  assert.deepEqual(args, ['exec', '--skip-git-repo-check', '-']);
+});
+
+test('Codex CLI preserves configured permissions and system prompt', () => {
+  const args = Agent.prototype._codexCLIArgs.call({
+    unsafePermissions: true,
+    systemPrompt: 'Review carefully',
+  });
+
+  assert.deepEqual(args, [
+    'exec',
+    '--skip-git-repo-check',
+    '--dangerously-bypass-approvals-and-sandbox',
+    '-c',
+    'system_prompt="Review carefully"',
+    '-',
+  ]);
+});

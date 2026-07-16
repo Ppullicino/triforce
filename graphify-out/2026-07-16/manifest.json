@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "agent.js": {
-    "mtime": 1784190567.8399868,
-    "ast_hash": "b11aef1031c37f6323b5bc27f91b7599",
+    "mtime": 1784127510.6044054,
+    "ast_hash": "2d3c87f3a84d4ce0a701aa1765477d39",
     "semantic_hash": ""
   },
   "gen-icons.mjs": {
@@ -160,8 +160,8 @@
     "semantic_hash": ""
   },
   "test/agent.test.js": {
-    "mtime": 1784190567.8399868,
-    "ast_hash": "96e54d5368171949d319ee3f20de90a1",
+    "mtime": 1784127439.590504,
+    "ast_hash": "2d49dfed4a61b23077923fbd8d1fc732",
     "semantic_hash": ""
   },
   "sandbox.js": {

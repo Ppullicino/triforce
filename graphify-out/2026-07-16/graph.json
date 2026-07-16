@@ -202,21 +202,10 @@
       "norm_label": "._collectchild()"
     },
     {
-      "label": "._codexCLIArgs()",
-      "file_type": "code",
-      "source_file": "agent.js",
-      "source_location": "L227",
-      "_origin": "ast",
-      "id": "agent_agent_codexcliargs",
-      "community": 2,
-      "community_name": "Agent",
-      "norm_label": "._codexcliargs()"
-    },
-    {
       "label": "._callCodexCLI()",
       "file_type": "code",
       "source_file": "agent.js",
-      "source_location": "L237",
+      "source_location": "L227",
       "_origin": "ast",
       "id": "agent_agent_callcodexcli",
       "community": 2,
@@ -227,7 +216,7 @@
       "label": "._callAgyCLI()",
       "file_type": "code",
       "source_file": "agent.js",
-      "source_location": "L245",
+      "source_location": "L242",
       "_origin": "ast",
       "id": "agent_agent_callagycli",
       "community": 2,
@@ -2100,8 +2089,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "app.test.tsx"
     },
     {
@@ -2111,8 +2100,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "app.tsx"
     },
     {
@@ -2122,8 +2111,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_app_roles",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "roles"
     },
     {
@@ -2133,8 +2122,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "clients_shared_src_app_connectionmessages",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "connectionmessages"
     },
     {
@@ -2144,8 +2133,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "clients_shared_src_app_defaultconfig",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "defaultconfig"
     },
     {
@@ -2155,8 +2144,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "clients_shared_src_app_app",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "app()"
     },
     {
@@ -2166,8 +2155,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "clients_shared_src_app_hostscreen",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "hostscreen()"
     },
     {
@@ -2177,8 +2166,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "clients_shared_src_app_dashboard",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "dashboard()"
     },
     {
@@ -2188,8 +2177,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "connection.test.ts"
     },
     {
@@ -2199,8 +2188,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "mocksocket"
     },
     {
@@ -2210,8 +2199,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_send",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".send()"
     },
     {
@@ -2221,8 +2210,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_close",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".close()"
     },
     {
@@ -2232,8 +2221,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_open",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".open()"
     },
     {
@@ -2243,8 +2232,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_test_mocksocket_message",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".message()"
     },
     {
@@ -2298,8 +2287,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": "socketlike"
     },
     {
@@ -2309,8 +2298,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike_send",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".send()"
     },
     {
@@ -2320,8 +2309,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike_close",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".close()"
     },
     {
@@ -2331,8 +2320,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_socketlike_addeventlistener",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".addeventlistener()"
     },
     {
@@ -2353,8 +2342,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": "triforceconnection"
     },
     {
@@ -2364,8 +2353,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_constructor",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".constructor()"
     },
     {
@@ -2375,8 +2364,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_onstate",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".onstate()"
     },
     {
@@ -2386,8 +2375,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_onevent",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".onevent()"
     },
     {
@@ -2397,8 +2386,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_connect",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".connect()"
     },
     {
@@ -2408,8 +2397,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_disconnect",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".disconnect()"
     },
     {
@@ -2430,8 +2419,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_opensocket",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".opensocket()"
     },
     {
@@ -2441,8 +2430,8 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_handlemessage",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".handlemessage()"
     },
     {
@@ -2452,8 +2441,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_handleclose",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".handleclose()"
     },
     {
@@ -2463,8 +2452,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_triforceconnection_transition",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 54,
+      "community_name": "TriforceConnection",
       "norm_label": ".transition()"
     },
     {
@@ -2617,8 +2606,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_credentialstorage_get",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".get()"
     },
     {
@@ -2793,8 +2782,8 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_hostrepository_token",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": ".token()"
     },
     {
@@ -2815,8 +2804,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "native-integration.ts"
     },
     {
@@ -2826,8 +2815,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration_installnativeintegration",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "installnativeintegration()"
     },
     {
@@ -2837,8 +2826,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "pipeline.test.ts"
     },
     {
@@ -2848,8 +2837,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "pipeline.ts"
     },
     {
@@ -2859,8 +2848,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_usageitem",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "usageitem"
     },
     {
@@ -2870,8 +2859,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_pipelineviewstate",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "pipelineviewstate"
     },
     {
@@ -2881,8 +2870,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_emptyusage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "emptyusage"
     },
     {
@@ -2892,8 +2881,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_initialpipelinestate",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "initialpipelinestate()"
     },
     {
@@ -2903,8 +2892,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_reducepipeline",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "reducepipeline()"
     },
     {
@@ -2914,8 +2903,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_bounded",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "bounded()"
     },
     {
@@ -2925,8 +2914,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_mapstatus",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "mapstatus()"
     },
     {
@@ -3123,8 +3112,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_main",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 3,
+      "community_name": "package.json",
       "norm_label": "main.tsx"
     },
     {
@@ -6002,8 +5991,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "test_remote_client_e2e_test",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "remote-client-e2e.test.js"
     },
     {
@@ -6013,8 +6002,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "test_remote_client_e2e_test_nativeorigins",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "nativeorigins"
     },
     {
@@ -6024,8 +6013,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "test_remote_client_e2e_test_config",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "config"
     },
     {
@@ -6035,8 +6024,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "test_remote_client_e2e_test_startserver",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "startserver()"
     },
     {
@@ -6046,8 +6035,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "test_remote_client_e2e_test_nativesocket",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "nativesocket()"
     },
     {
@@ -6057,8 +6046,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "test_remote_client_e2e_test_messages",
-      "community": 3,
-      "community_name": "package.json",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "messages()"
     },
     {
@@ -6101,8 +6090,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "test_server_protocol_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "server-protocol.test.js"
     },
     {
@@ -6112,8 +6101,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "test_server_protocol_test_startserver",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 53,
+      "community_name": "MockSocket",
       "norm_label": "startserver()"
     },
     {
@@ -7380,7 +7369,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "agent.js",
-      "source_location": "L255",
+      "source_location": "L252",
       "weight": 1.0,
       "source": "agent_agent_callagycli",
       "target": "agent_resolvebinpath",
@@ -7402,7 +7391,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "agent.js",
-      "source_location": "L240",
+      "source_location": "L237",
       "weight": 1.0,
       "source": "agent_agent_callcodexcli",
       "target": "agent_resolvebinpath",
@@ -7488,7 +7477,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "agent.js",
-      "source_location": "L245",
+      "source_location": "L242",
       "weight": 1.0,
       "source": "agent_agent",
       "target": "agent_agent_callagycli",
@@ -7518,7 +7507,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "agent.js",
-      "source_location": "L237",
+      "source_location": "L227",
       "weight": 1.0,
       "source": "agent_agent",
       "target": "agent_agent_callcodexcli",
@@ -7552,16 +7541,6 @@
       "weight": 1.0,
       "source": "agent_agent",
       "target": "agent_agent_callprovider",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "agent.js",
-      "source_location": "L227",
-      "weight": 1.0,
-      "source": "agent_agent",
-      "target": "agent_agent_codexcliargs",
       "confidence_score": 1.0
     },
     {
@@ -7753,7 +7732,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "agent.js",
-      "source_location": "L256",
+      "source_location": "L253",
       "weight": 1.0,
       "source": "agent_agent_callagycli",
       "target": "agent_agent_collectchild",
@@ -7764,21 +7743,10 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "agent.js",
-      "source_location": "L241",
+      "source_location": "L238",
       "weight": 1.0,
       "source": "agent_agent_callcodexcli",
       "target": "agent_agent_collectchild",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "agent.js",
-      "source_location": "L240",
-      "weight": 1.0,
-      "source": "agent_agent_callcodexcli",
-      "target": "agent_agent_codexcliargs",
       "confidence_score": 1.0
     },
     {
@@ -15634,5 +15602,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "513fc7b7d1442fa9738f62295c034b9cbd063863"
+  "built_at_commit": "b3bb950b107babab66f031094a2295b879b6d885"
 }

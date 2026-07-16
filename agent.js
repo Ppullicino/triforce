@@ -224,17 +224,20 @@ export class Agent {
       else child.stdin.end();
   }
 
+  _codexCLIArgs() {
+    const args = ['exec', '--skip-git-repo-check'];
+    if (this.unsafePermissions) args.push('--dangerously-bypass-approvals-and-sandbox');
+    if (this.systemPrompt) {
+      args.push('-c', `system_prompt=${JSON.stringify(this.systemPrompt)}`);
+    }
+    args.push('-');
+    return args;
+  }
+
   async _callCodexCLI(userPrompt) {
     const { spawn } = await import('node:child_process');
     return new Promise((resolve, reject) => {
-      const args = ['exec'];
-      if (this.unsafePermissions) args.push('--dangerously-bypass-approvals-and-sandbox');
-      if (this.systemPrompt) {
-        args.push('-c', `system_prompt=${JSON.stringify(this.systemPrompt)}`);
-      }
-      args.push('-');
-
-      const child = spawn(resolveBinPath('codex'), args, { detached: process.platform !== 'win32' });
+      const child = spawn(resolveBinPath('codex'), this._codexCLIArgs(), { detached: process.platform !== 'win32' });
       this._collectChild(child, userPrompt, 'codex', resolve, reject);
     });
   }
