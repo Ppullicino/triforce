@@ -42,7 +42,9 @@ test('protects protocol discovery and negotiates WebSocket versions', async () =
     assert.doesNotMatch(login.url, new RegExp(token));
     const response = await fetch(`${origin}/api/capabilities`, { headers: { cookie: `triforce_token=${token}` } });
     assert.equal(response.status, 200);
-    assert.equal((await response.json()).protocolMajor, 1);
+    const body = await response.json();
+    assert.equal(body.protocolMajor, 1);
+    assert.equal(body.sandbox, 'systemd');
 
     const ws = new WebSocket(`ws://127.0.0.1:${port}`, { headers: { cookie: `triforce_token=${token}`, origin } });
     await once(ws, 'open');
@@ -127,6 +129,51 @@ test('allows native origins with header/protocol auth and rejects hostile WebSoc
     );
     await once(hostile, 'error');
     assert.notEqual(hostile.readyState, WebSocket.OPEN);
+  } finally {
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+  }
+});
+
+test('handles missing systemd-run capability and refuses runs', async () => {
+  const port = 31_000 + Math.floor(Math.random() * 10_000);
+  const child = spawn(process.execPath, ['server.js'], {
+    cwd: new URL('..', import.meta.url),
+    env: { ...process.env, PORT: String(port), TRIFORCE_TOKEN: token, PATH: '/dev/null' },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  let stderr = '';
+  child.stderr.on('data', data => { stderr += data; });
+  try {
+    await Promise.race([
+      once(child.stdout, 'data'),
+      once(child, 'exit').then(([code]) => { throw new Error(`server exited ${code}: ${stderr}`); }),
+    ]);
+
+    const origin = `http://127.0.0.1:${port}`;
+    const response = await fetch(`${origin}/api/capabilities`, { headers: { cookie: `triforce_token=${token}` } });
+    assert.equal(response.status, 200);
+    const body = await response.json();
+    assert.equal(body.sandbox, 'unavailable');
+
+    const ws = new WebSocket(`ws://127.0.0.1:${port}`, { headers: { cookie: `triforce_token=${token}`, origin } });
+    await once(ws, 'open');
+    ws.send(JSON.stringify({
+      type: 'run',
+      task: 'Build it',
+      config: {
+        architect: { provider: 'openai', model: 'gpt-4.1' },
+        developer: { provider: 'openai', model: 'gpt-4.1' },
+        reviewer: { provider: 'openai', model: 'gpt-4.1' },
+      },
+      mode: 1,
+    }));
+    const [raw] = await once(ws, 'message');
+    const msg = JSON.parse(raw);
+    assert.equal(msg.type, 'protocol_error');
+    assert.equal(msg.code, 'SANDBOX_UNAVAILABLE');
+    assert.match(msg.message, /systemd-run/);
+    ws.close();
   } finally {
     child.kill('SIGTERM');
     await once(child, 'exit').catch(() => {});

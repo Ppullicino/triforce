@@ -10,6 +10,7 @@ import { homedir } from 'node:os';
 import { RunRegistry } from './run-registry.js';
 import { capabilities, isCompatibleProtocol, validateClientCommand } from './packages/protocol/src/index.js';
 import { executePipeline } from './pipeline.js';
+import { execFile } from 'node:child_process';
 import { ALLOWED_MODELS, checkConfigForWarnings } from './models.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -19,6 +20,29 @@ if (process.env.TRIFORCE_TRANSCRIPTS === '1') await mkdir(TRANSCRIPTS_DIR, { rec
 const AUTH_TOKEN = process.env.TRIFORCE_TOKEN || randomBytes(32).toString('hex');
 if (!process.env.TRIFORCE_TOKEN) console.warn(`TRIFORCE_TOKEN was not set; generated one-time token: ${AUTH_TOKEN}`);
 const runRegistry = new RunRegistry();
+
+let serverCapabilities = {
+  ...capabilities,
+  sandbox: 'unavailable',
+};
+
+let sandboxStatus = 'unavailable';
+
+function probeSandbox() {
+  return new Promise((resolve) => {
+    try {
+      const child = execFile('systemd-run', ['--user', 'true'], { timeout: 2000 }, (error) => {
+        if (error) {
+          resolve('unavailable');
+        } else {
+          resolve('systemd');
+        }
+      });
+    } catch (err) {
+      resolve('unavailable');
+    }
+  });
+}
 const NATIVE_CLIENT_ORIGINS = new Set([
   'https://appassets.androidplatform.net',
   'tauri://localhost',
@@ -251,7 +275,7 @@ app.get('/api/config', async (req, res) => {
   }
 });
 
-app.get('/api/capabilities', (_req, res) => res.json(capabilities));
+app.get('/api/capabilities', (_req, res) => res.json(serverCapabilities));
 app.get('/api/runs', (_req, res) => res.json({ runs: runRegistry.list() }));
 app.get('/api/runs/:runId', (req, res) => {
   const run = runRegistry.get(req.params.runId);
@@ -292,10 +316,10 @@ wss.on('connection', (ws) => {
     }
     const command = parsed.data;
     if (command.protocolVersion && !isCompatibleProtocol(command.protocolVersion)) {
-      return ws.send(JSON.stringify({ type: 'protocol_error', code: 'INCOMPATIBLE_VERSION', message: `Server requires protocol major ${capabilities.protocolMajor}`, capabilities }));
+      return ws.send(JSON.stringify({ type: 'protocol_error', code: 'INCOMPATIBLE_VERSION', message: `Server requires protocol major ${serverCapabilities.protocolMajor}`, capabilities: serverCapabilities }));
     }
     if (command.type === 'capabilities') {
-      return ws.send(JSON.stringify({ type: 'capabilities', capabilities }));
+      return ws.send(JSON.stringify({ type: 'capabilities', capabilities: serverCapabilities }));
     }
     if (command.type === 'subscribe') {
       const run = runRegistry.get(command.runId);
@@ -311,6 +335,13 @@ wss.on('connection', (ws) => {
       return;
     }
     if (command.type === 'run') {
+      if (sandboxStatus === 'unavailable') {
+        return ws.send(JSON.stringify({
+          type: 'protocol_error',
+          code: 'SANDBOX_UNAVAILABLE',
+          message: 'Sandbox execution requires systemd-run (--user), which is unavailable on this host.',
+        }));
+      }
       try {
         const useValidationPipeline = process.env.NODE_ENV === 'test' && process.env.TRIFORCE_E2E_FAKE_PIPELINE === '1';
         const run = runRegistry.start(command, (pipelineSocket, signal) => useValidationPipeline
@@ -327,6 +358,8 @@ wss.on('connection', (ws) => {
 
 const PORT = process.env.PORT || 3000;
 runRegistry.load().then(async () => {
+  sandboxStatus = await probeSandbox();
+  serverCapabilities.sandbox = sandboxStatus;
   try {
     const rawConfig = await readFile(join(__dirname, 'models.config.json'), 'utf8');
     const configObj = JSON.parse(rawConfig);
