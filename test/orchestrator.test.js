@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 import { runArchitect, main } from '../orchestrator.js';
 import { executePipeline, parseVerdict, stripCodeFences } from '../pipeline.js';
 import { Agent } from '../agent.js';
+import { checkConfigForWarnings, getRates } from '../models.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -295,5 +296,47 @@ test('main() propagates Stage 2 failure and prints Stage 1 token usage summary',
     for (const key of Object.keys(originalEnv)) {
       process.env[key] = originalEnv[key];
     }
+  }
+});
+
+test('checkConfigForWarnings logs warning for missing models', () => {
+  const badConfig = {
+    architect: { provider: 'anthropic', model: 'claude-missing-model' },
+    developer: { provider: 'google', model: 'gemini-2.5-flash' },
+    reviewer: { provider: 'unknown-provider', model: 'gemini-2.5-flash' }
+  };
+
+  const warnings = [];
+  const originalWarn = console.warn;
+  console.warn = (msg) => { warnings.push(msg); };
+
+  try {
+    checkConfigForWarnings(badConfig);
+  } finally {
+    console.warn = originalWarn;
+  }
+
+  assert.equal(warnings.length, 2);
+  assert.match(warnings[0], /architect.*claude-missing-model/);
+  assert.match(warnings[1], /reviewer.*unknown-provider/);
+});
+
+test('getRates logs one-time warning for unknown models', () => {
+  const warnings = [];
+  const originalWarn = console.warn;
+  console.warn = (msg) => { warnings.push(msg); };
+
+  try {
+    const rates1 = getRates('completely-unknown-model');
+    assert.deepEqual(rates1, [0, 0]);
+    assert.equal(warnings.length, 1);
+    assert.match(warnings[0], /completely-unknown-model/);
+
+    const rates2 = getRates('completely-unknown-model');
+    assert.deepEqual(rates2, [0, 0]);
+    // should not have added any new warnings
+    assert.equal(warnings.length, 1);
+  } finally {
+    console.warn = originalWarn;
   }
 });

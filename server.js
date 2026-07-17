@@ -10,6 +10,7 @@ import { homedir } from 'node:os';
 import { RunRegistry } from './run-registry.js';
 import { capabilities, isCompatibleProtocol, validateClientCommand } from './packages/protocol/src/index.js';
 import { executePipeline } from './pipeline.js';
+import { ALLOWED_MODELS, checkConfigForWarnings } from './models.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TRANSCRIPTS_DIR = join(__dirname, 'transcripts');
@@ -26,20 +27,7 @@ const NATIVE_CLIENT_ORIGINS = new Set([
   ...String(process.env.TRIFORCE_CLIENT_ORIGINS || '').split(',').map(value => value.trim()).filter(Boolean),
 ]);
 
-const ALLOWED_MODELS = new Map([
-  ['anthropic', new Set(['claude-sonnet-4-6', 'claude-opus-4-7', 'claude-haiku-4-5', 'claude-3-5-sonnet-latest'])],
-  ['google', new Set(['gemini-2.5-flash', 'gemini-2.5-pro'])],
-  ['openai', new Set(['gpt-4o', 'gpt-4o-mini', 'gpt-4.1', 'gpt-4.1-mini'])],
-  ['claude-cli', new Set(['claude-cli-default'])],
-  ['codex-cli', new Set(['codex-cli-default'])],
-  ['agy-cli', new Set(['agy-cli-default'])],
-]);
 
-let latestUsage = {
-  architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
-  developer: { inputTokens: 0, outputTokens: 0, cost: 0 },
-  reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
-};
 
 async function runValidationPipeline(ws, task, _config, mode, signal) {
   const send = event => ws.send(JSON.stringify(event));
@@ -135,7 +123,6 @@ async function runPipeline(ws, task, config, mode = 1, signal) {
             send({ type: 'output', role, text });
           }
         } else if (event.type === 'usage') {
-          latestUsage = structuredClone(event.usage);
           send(event);
         } else if (event.type === 'cost') {
           send(event);
@@ -243,7 +230,8 @@ app.get('/login', (_req, res) => {
 app.use(express.static(join(__dirname, 'public')));
 
 app.get('/api/usage', (req, res) => {
-  const total = Object.values(latestUsage).reduce(
+  const usage = runRegistry.getLatestUsage();
+  const total = Object.values(usage).reduce(
     (acc, r) => ({
       inputTokens:  acc.inputTokens  + r.inputTokens,
       outputTokens: acc.outputTokens + r.outputTokens,
@@ -251,7 +239,7 @@ app.get('/api/usage', (req, res) => {
     }),
     { inputTokens: 0, outputTokens: 0, cost: 0 }
   );
-  res.json({ ...latestUsage, total });
+  res.json({ ...usage, total });
 });
 
 app.get('/api/config', async (req, res) => {
@@ -338,7 +326,14 @@ wss.on('connection', (ws) => {
 });
 
 const PORT = process.env.PORT || 3000;
-runRegistry.load().then(() => {
+runRegistry.load().then(async () => {
+  try {
+    const rawConfig = await readFile(join(__dirname, 'models.config.json'), 'utf8');
+    const configObj = JSON.parse(rawConfig);
+    checkConfigForWarnings(configObj);
+  } catch (err) {
+    // ignore if models.config.json is missing or invalid
+  }
   httpServer.listen(PORT, () => console.log(`Triforce server running on http://localhost:${PORT}`));
 }).catch(err => {
   console.error('Failed to load RunRegistry state:', err);

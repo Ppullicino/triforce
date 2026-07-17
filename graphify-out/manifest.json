@@ -30,13 +30,13 @@
     "semantic_hash": ""
   },
   "models.config.json": {
-    "mtime": 1779465544.0595083,
+    "mtime": 1784284294.9754434,
     "ast_hash": "32ed2522e959aed786512632b3d3cd33",
     "semantic_hash": ""
   },
   "orchestrator.js": {
-    "mtime": 1784282471.3645606,
-    "ast_hash": "f00f287aaaa6825bf082290ea514b069",
+    "mtime": 1784284201.8240442,
+    "ast_hash": "8780c306077e4453db322a9f44154afd",
     "semantic_hash": ""
   },
   "package.json": {
@@ -55,13 +55,13 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784282964.5858688,
-    "ast_hash": "6e4cb577961a72b698741d431f5a22b3",
+    "mtime": 1784284218.4317586,
+    "ast_hash": "f370dbd790205b3524c0c7969e41a791",
     "semantic_hash": ""
   },
   "usage.js": {
-    "mtime": 1779465540.8945642,
-    "ast_hash": "156b3917b3ce17b72abcfdf73a3d8c00",
+    "mtime": 1784284188.2092783,
+    "ast_hash": "abefa37019422da66817eeb155e8cf50",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
@@ -285,18 +285,18 @@
     "semantic_hash": ""
   },
   "run-registry.js": {
-    "mtime": 1784283017.1798947,
-    "ast_hash": "dc330c3173d0618056e8dd4df988068a",
+    "mtime": 1784284207.603945,
+    "ast_hash": "21d9a4a877ebeda0b2de45c3a1ddb964",
     "semantic_hash": ""
   },
   "test/run-registry.test.js": {
-    "mtime": 1784283011.140006,
-    "ast_hash": "e016dd3bb51e6ab5f42108127735e6c9",
+    "mtime": 1784284276.247765,
+    "ast_hash": "7008db96262385c5fcce5e47e7ffbd6a",
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
-    "mtime": 1784146637.4587424,
-    "ast_hash": "b41f11405fd7c8a393cd0a63a296ca1b",
+    "mtime": 1784284286.8155837,
+    "ast_hash": "b723d891ec15042ba7fb30c686728ba2",
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.test.ts": {
@@ -745,13 +745,18 @@
     "semantic_hash": ""
   },
   "test/orchestrator.test.js": {
-    "mtime": 1784282480.5173678,
-    "ast_hash": "6d3e888e75354fc9792281e62431dba3",
+    "mtime": 1784284235.1794708,
+    "ast_hash": "aac9e88d0dece34f1addec37ba0f9a61",
     "semantic_hash": ""
   },
   "pipeline.js": {
-    "mtime": 1784282923.000645,
-    "ast_hash": "c0ee57a79502d8be0fd5c55e27d8f58e",
+    "mtime": 1784284198.0081098,
+    "ast_hash": "1588112081df6502c41336f83d4be70a",
+    "semantic_hash": ""
+  },
+  "models.js": {
+    "mtime": 1784284185.6423225,
+    "ast_hash": "4e6a51e5ba59b72e772f428a2208ae06",
     "semantic_hash": ""
   }
 }

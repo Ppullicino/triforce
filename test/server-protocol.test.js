@@ -56,6 +56,43 @@ test('protects protocol discovery and negotiates WebSocket versions', async () =
   }
 });
 
+test('server startup logs a warning if models.config.json contains unknown model', async () => {
+  const { readFile, writeFile } = await import('node:fs/promises');
+  const { join } = await import('node:path');
+  const configPath = join(import.meta.dirname, '../models.config.json');
+  const originalConfig = await readFile(configPath, 'utf8');
+  const badConfig = {
+    architect: { provider: 'anthropic', model: 'claude-unknown-model' },
+    developer: { provider: 'google', model: 'gemini-2.5-flash' },
+    reviewer: { provider: 'google', model: 'gemini-2.5-flash' }
+  };
+  await writeFile(configPath, JSON.stringify(badConfig), 'utf8');
+
+  try {
+    const port = 32_000 + Math.floor(Math.random() * 8_000);
+    const child = spawn(process.execPath, ['server.js'], {
+      cwd: join(import.meta.dirname, '..'),
+      env: { ...process.env, PORT: String(port), TRIFORCE_TOKEN: token },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+
+    let stderr = '';
+    child.stderr.on('data', data => { stderr += data; });
+    
+    await Promise.race([
+      once(child.stdout, 'data'),
+      once(child, 'exit').then(([code]) => { throw new Error(`exited ${code}`); }),
+    ]);
+
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+
+    assert.match(stderr, /Warning: Configuration entry for "architect" uses model "claude-unknown-model" \(provider "anthropic"\) which is missing from the catalog\./);
+  } finally {
+    await writeFile(configPath, originalConfig, 'utf8');
+  }
+});
+
 test('allows native origins with header/protocol auth and rejects hostile WebSocket origins', async () => {
   const { child, port } = await startServer();
   const server = `http://127.0.0.1:${port}`;

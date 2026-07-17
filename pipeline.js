@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
 import { Agent } from './agent.js';
 import { runSandboxed } from './sandbox.js';
+import { getRates } from './models.js';
 import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest } from './workspace.js';
 import { track } from './usage.js';
 
@@ -28,20 +29,7 @@ export const SYSTEM_PROMPTS_WORKSPACE = {
   reviewer: 'You are the Workspace Reviewer in Triforce. Review the requested task, architecture plan, generated file manifest, and isolated test output. Return exactly VERDICT: PASS or VERDICT: FAIL followed by FEEDBACK: with concise, actionable details. PASS only when the generated project satisfies the task and its tests exited successfully.',
 };
 
-export const RATES = {
-  'claude-sonnet-4-6': [3.00,  15.00],
-  'claude-opus-4-7':   [15.00, 75.00],
-  'claude-haiku-4-5':  [0.80,  4.00],
-  'gemini-2.5-flash':  [0.15,  0.60],
-  'gemini-2.5-pro':    [1.25,  10.00],
-  'gpt-4o':            [2.50,  10.00],
-  'gpt-4o-mini':       [0.15,  0.60],
-  'gpt-4.1':           [2.00,  8.00],
-  'gpt-4.1-mini':      [0.40,  1.60],
-  'claude-cli-default': [0.00, 0.00],
-  'codex-cli-default': [0.00, 0.00],
-  'agy-cli-default':   [0.00, 0.00],
-};
+
 
 export function stripCodeFences(text) {
   if (typeof text !== 'string') return '';
@@ -129,7 +117,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
   const trackUsage = (role, model, usage) => {
     records.push({ role, model, ...usage });
     track(role, model, usage); // update usage.js records
-    const [inRate, outRate] = RATES[model] ?? [0, 0];
+    const [inRate, outRate] = getRates(model);
     const itemCost = (usage.inputTokens / 1e6) * inRate + (usage.outputTokens / 1e6) * outRate;
     sessionUsage[role] = {
       inputTokens:  sessionUsage[role].inputTokens + usage.inputTokens,
@@ -461,7 +449,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     }
 
     const costRecords = records.map(({ role, model, inputTokens, outputTokens }) => {
-      const [inRate, outRate] = RATES[model] ?? [0, 0];
+      const [inRate, outRate] = getRates(model);
       const cost = (inputTokens / 1e6) * inRate + (outputTokens / 1e6) * outRate;
       return { role, model, inputTokens, outputTokens, cost };
     });
@@ -477,7 +465,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     }
     
     const costRecords = records.map(({ role, model, inputTokens, outputTokens }) => {
-      const [inRate, outRate] = RATES[model] ?? [0, 0];
+      const [inRate, outRate] = getRates(model);
       const cost = (inputTokens / 1e6) * inRate + (outputTokens / 1e6) * outRate;
       return { role, model, inputTokens, outputTokens, cost };
     });

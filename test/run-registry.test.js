@@ -67,6 +67,14 @@ test('RunRegistry persistence, crash recovery, index restoration, and subscribe 
 
   const run2 = registry2.start({ task: 'second task', config: {}, mode: 1 }, async ws => {
     ws.send(JSON.stringify({ type: 'status', stage: 'developer', label: 'running dev' }));
+    ws.send(JSON.stringify({
+      type: 'usage',
+      usage: {
+        architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
+        developer: { inputTokens: 10, outputTokens: 20, cost: 0.1 },
+        reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
+      }
+    }));
     await new Promise(resolve => { release2 = resolve; });
     ws.send(JSON.stringify({ type: 'done', passed: true }));
   });
@@ -88,6 +96,10 @@ test('RunRegistry persistence, crash recovery, index restoration, and subscribe 
   const restoredRun2 = registry3.get(run2.id);
   assert.ok(restoredRun2, 'run2 should be restored');
   assert.equal(restoredRun2.status, 'completed', 'completed run should remain completed');
+
+  const restoredUsage = registry3.getLatestUsage();
+  assert.equal(restoredUsage.developer.inputTokens, 10);
+  assert.equal(restoredUsage.developer.outputTokens, 20);
 
   const list = registry3.list();
   assert.equal(list.length, 2);

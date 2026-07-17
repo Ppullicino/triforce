@@ -4,6 +4,7 @@ import { pathToFileURL, fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { track, printSummary } from './usage.js';
 import { executePipeline } from './pipeline.js';
+import { checkConfigForWarnings } from './models.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_TASK = `Create a JavaScript function that takes an array of numbers, removes duplicates, sorts them in ascending order, and returns the result. Include a test that proves it works.`;
@@ -49,6 +50,7 @@ export async function main() {
   const startTime = Date.now();
   try {
     const config = await loadConfig();
+    checkConfigForWarnings(config);
     validateApiKeys(config);
     const taskArgs = process.argv.slice(2).filter((arg, i, args) => arg !== '--mode' && args[i - 1] !== '--mode');
     const TASK = taskArgs.join(' ').trim() || DEFAULT_TASK;

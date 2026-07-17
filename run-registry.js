@@ -101,6 +101,9 @@ export class RunRegistry {
           const lines = content.split('\n').filter(Boolean);
           for (const line of lines) {
             const event = JSON.parse(line);
+            if (event.type === 'usage') {
+              run.usage = event.usage;
+            }
             const bytes = Buffer.byteLength(line);
             if (bytes <= this.maxEventBytes) {
               run.events.push({ event, raw: line, bytes });
@@ -191,8 +194,23 @@ export class RunRegistry {
     };
   }
 
+  getLatestUsage() {
+    const sortedRuns = [...this.runs.values()].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    for (const r of sortedRuns) {
+      if (r.usage) {
+        return r.usage;
+      }
+    }
+    return {
+      architect: { inputTokens: 0, outputTokens: 0, cost: 0 },
+      developer: { inputTokens: 0, outputTokens: 0, cost: 0 },
+      reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
+    };
+  }
+
   publish(run, event) {
     if (event.type === 'error') run.hasError = true;
+    if (event.type === 'usage') run.usage = event.usage;
     const enriched = { ...event, runId: run.id, eventId: run.nextEventId++, timestamp: new Date().toISOString() };
     const raw = JSON.stringify(enriched);
     const bytes = Buffer.byteLength(raw);
