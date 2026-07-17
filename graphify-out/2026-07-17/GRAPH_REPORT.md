@@ -1,16 +1,16 @@
-# Graph Report - triforce  (2026-07-17)
+# Graph Report - triforce  (2026-07-16)
 
 ## Corpus Check
-- 86 files · ~42,943 words
+- 83 files · ~42,135 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 662 nodes · 806 edges · 58 communities (46 shown, 12 thin omitted)
+- 659 nodes · 806 edges · 55 communities (43 shown, 12 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `febf8e20`
+- Built from commit: `513fc7b7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -88,7 +88,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (58 total, 12 thin omitted)
+## Communities (55 total, 12 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.20

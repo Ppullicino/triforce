@@ -728,20 +728,5 @@
     "mtime": 1784148866.452899,
     "ast_hash": "822b3539382555ed445a7d75b096eee7",
     "semantic_hash": ""
-  },
-  "AGY_WORKER_PROMPT.md": {
-    "mtime": 1784278106.8030252,
-    "ast_hash": "54cc724dd7bf6d0668ef548d04b92549",
-    "semantic_hash": ""
-  },
-  "CLAUDE_WORKER_PROMPT.md": {
-    "mtime": 1784278095.1032345,
-    "ast_hash": "54c486705fc196761ef307d40d9fdbb9",
-    "semantic_hash": ""
-  },
-  "CODEX_WORKER_PROMPT.md": {
-    "mtime": 1784278100.7571335,
-    "ast_hash": "317b00f72cddf6021b6219678cc269ae",
-    "semantic_hash": ""
   }
 }

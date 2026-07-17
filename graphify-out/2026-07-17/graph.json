@@ -6315,17 +6315,6 @@
       "norm_label": "cross-platform client roadmap"
     },
     {
-      "label": "AGY_WORKER_PROMPT.md",
-      "file_type": "document",
-      "source_file": "AGY_WORKER_PROMPT.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agy_worker_prompt",
-      "community": 53,
-      "community_name": "AGY_WORKER_PROMPT.md",
-      "norm_label": "agy_worker_prompt.md"
-    },
-    {
       "label": "CLAUDE.md",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -6346,17 +6335,6 @@
       "community": 11,
       "community_name": "CLAUDE.md",
       "norm_label": "graphify"
-    },
-    {
-      "label": "CLAUDE_WORKER_PROMPT.md",
-      "file_type": "document",
-      "source_file": "CLAUDE_WORKER_PROMPT.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "claude_worker_prompt",
-      "community": 54,
-      "community_name": "CLAUDE_WORKER_PROMPT.md",
-      "norm_label": "claude_worker_prompt.md"
     },
     {
       "label": "CLIENT_ARCHITECTURE.md",
@@ -6434,17 +6412,6 @@
       "community": 27,
       "community_name": "Client Architecture and Development",
       "norm_label": "commands"
-    },
-    {
-      "label": "CODEX_WORKER_PROMPT.md",
-      "file_type": "document",
-      "source_file": "CODEX_WORKER_PROMPT.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "codex_worker_prompt",
-      "community": 57,
-      "community_name": "CODEX_WORKER_PROMPT.md",
-      "norm_label": "codex_worker_prompt.md"
     },
     {
       "label": "CROSS_PLATFORM_CLIENT_PLAN.md",
@@ -15667,5 +15634,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "febf8e201b3f597324c57332a38cfb0281cedbaa"
+  "built_at_commit": "513fc7b7d1442fa9738f62295c034b9cbd063863"
 }
