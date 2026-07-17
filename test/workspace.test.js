@@ -96,3 +96,22 @@ for (const [label, content] of [
     }
   });
 }
+
+test('runWorkspaceTest aborts immediately on signal abort', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'triforce-workspaces-abort-'));
+  try {
+    const manifest = parseWorkspaceManifest(JSON.stringify({
+      files: [{ path: 'test.js', content: "setTimeout(() => {}, 60000);" }],
+      testFile: 'test.js',
+    }));
+    const workspace = await createWorkspace(manifest, root);
+    const controller = new AbortController();
+    const p = runWorkspaceTest(workspace, { packageRoot: join(import.meta.dirname, '..'), signal: controller.signal });
+    controller.abort();
+    await assert.rejects(p, err => {
+      return err.name === 'AbortError';
+    });
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});

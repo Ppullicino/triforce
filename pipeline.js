@@ -106,7 +106,16 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     workspacesDir,
     packageRoot = __dirname,
     dependencyRoot,
+    signal,
   } = options;
+
+  const checkAbort = () => {
+    if (signal?.aborted) {
+      const err = new Error('The operation was aborted');
+      err.name = 'AbortError';
+      throw err;
+    }
+  };
 
   const maxIterations = Math.min(10, Math.max(1, Number.parseInt(config.maxIterations ?? 3, 10) || 3));
 
@@ -149,9 +158,10 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
 
   try {
     if (mode === 3) {
+      checkAbort();
       onEvent({ type: 'status', stage: 'architect', label: 'Stage 1: Workspace Architect' });
       const architect = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
-      const { text: plan, usage: planUsage } = await architect.call(task);
+      const { text: plan, usage: planUsage } = await architect.call(task, signal);
       trackUsage('architect', config.architect.model, planUsage);
       runLog.architect = plan;
       onEvent({ type: 'output', role: 'architect', text: plan, iteration: 1 });
@@ -163,8 +173,9 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       let approved = false;
 
       for (let iteration = 1; iteration <= maxIterations && !approved; iteration++) {
+        checkAbort();
         onEvent({ type: 'status', stage: 'developer', label: `Stage 2: Workspace Coder (${iteration})` });
-        const { text, usage } = await coder.call(coderPrompt);
+        const { text, usage } = await coder.call(coderPrompt, signal);
         trackUsage('developer', config.developer.model, usage);
         runLog.developer = text;
         onEvent({ type: 'output', role: 'developer', text, iteration });
@@ -177,13 +188,17 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
           onEvent({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files });
           onEvent({ type: 'pty', role: 'developer', data: `\r\n\x1b[32m[Workspace] Wrote ${workspace.files.length} files to ${workspace.directory}\x1b[0m\r\n` });
           onEvent({ type: 'status', stage: 'sandbox', label: `Stage 3: Workspace Tests (${iteration})` });
+          checkAbort();
           result = await runWorkspaceTest(workspace, {
             packageRoot,
             onOutput: (value, kind) => onEvent({ type: 'pty', role: 'developer', data: kind === 'stderr' ? `\x1b[31m${value}\x1b[0m` : value }),
+            signal,
           });
         } catch (err) {
+          if (err.name === 'AbortError') throw err;
           result = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
         }
+        checkAbort();
         onEvent({ type: 'sandbox', ...result });
 
         const summary = [
@@ -197,7 +212,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         
         onEvent({ type: 'status', stage: 'reviewer', label: `Stage 4: Workspace Review (${iteration})` });
         const reviewPrompt = `TASK:\n${task}\n\nPLAN:\n${plan}\n\nGENERATED MANIFEST:\n${text}\n\nTEST RESULTS:\n${summary}`;
-        const { text: review, usage: reviewUsage } = await reviewer.call(reviewPrompt);
+        const { text: review, usage: reviewUsage } = await reviewer.call(reviewPrompt, signal);
         trackUsage('reviewer', config.reviewer.model, reviewUsage);
         runLog.reviewer += `\n--- ITERATION ${iteration} ---\n${review}\n`;
         onEvent({ type: 'output', role: 'reviewer', text: review, iteration });
@@ -237,12 +252,13 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       let promptLoopCount = 0;
 
       while (promptLoopCount < maxIterations && !specApproved) {
+        checkAbort();
         promptLoopCount++;
         const iterHeader = `\n--- ITERATION ${promptLoopCount} ---\n`;
         
         // Call Prompt Designer
         onEvent({ type: 'pty', role: 'architect', data: `\r\n\x1b[35m[Iteration ${promptLoopCount}] Running Prompt Designer...\x1b[0m\r\n` });
-        const { text, usage } = await designerAgent.call(designerPrompt);
+        const { text, usage } = await designerAgent.call(designerPrompt, signal);
         trackUsage('architect', config.architect.model, usage);
         spec = text;
         runLog.architect += iterHeader + text + '\n';
@@ -250,10 +266,11 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         await logTranscript('architect', runHeader + iterHeader + text + '\n');
 
         // Call Supervisor for Prompt Check
+        checkAbort();
         onEvent({ type: 'status', stage: 'reviewer', label: `Stage 4: Supervisor (Prompt Check ${promptLoopCount})` });
         onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[35m[Iteration ${promptLoopCount}] Running Supervisor (Prompt Check)...\x1b[0m\r\n` });
         
-        const { text: supervisorResult, usage: checkUsage } = await promptSupervisor.call(`SPECIFICATION TO REVIEW:\n${spec}`);
+        const { text: supervisorResult, usage: checkUsage } = await promptSupervisor.call(`SPECIFICATION TO REVIEW:\n${spec}`, signal);
         trackUsage('reviewer', config.reviewer.model, checkUsage);
         runLog.reviewer += iterHeader + '[Prompt Check]\n' + supervisorResult + '\n';
         onEvent({ type: 'output', role: 'reviewer', text: supervisorResult, iteration: promptLoopCount, label: 'Prompt Check' });
@@ -292,13 +309,14 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       let code = '';
 
       while (codeLoopCount < maxIterations && !codeApproved) {
+        checkAbort();
         codeLoopCount++;
         const iterHeader = `\n--- ITERATION ${codeLoopCount} ---\n`;
 
         // Call Coder (Developer)
         onEvent({ type: 'status', stage: 'developer', label: `Stage 2: Coder (Iteration ${codeLoopCount})` });
         onEvent({ type: 'pty', role: 'developer', data: `\r\n\x1b[35m[Iteration ${codeLoopCount}] Running Coder...\x1b[0m\r\n` });
-        const { text, usage } = await coderAgent.call(coderPrompt);
+        const { text, usage } = await coderAgent.call(coderPrompt, signal);
         trackUsage('developer', config.developer.model, usage);
         code = stripCodeFences(text);
         runLog.developer += iterHeader + code + '\n';
@@ -306,6 +324,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         await logTranscript('developer', runHeader + iterHeader + code + '\n');
 
         // Run Sandbox
+        checkAbort();
         onEvent({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
         let sandboxResult;
         try {
@@ -314,13 +333,16 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
             onOutput: (text, kind) => {
               const data = kind === 'stderr' ? `\x1b[31m${text}\x1b[0m` : text;
               onEvent({ type: 'pty', role: 'developer', data });
-            }
+            },
+            signal,
           });
           const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
           await logTranscript('developer', sandboxLog);
         } catch (err) {
+          if (err.name === 'AbortError') throw err;
           sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
         }
+        checkAbort();
         onEvent({ type: 'sandbox', ...sandboxResult });
 
         // Call Supervisor for Code Check
@@ -335,7 +357,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         ].filter(Boolean).join('\n');
 
         const prompt = `SPECIFICATION:\n${spec}\n\nCODE GENERATED:\n${code}\n\nSANDBOX RUN RESULTS:\n${executionSummary}`;
-        const { text: supervisorResult, usage: checkUsage } = await codeSupervisor.call(prompt);
+        const { text: supervisorResult, usage: checkUsage } = await codeSupervisor.call(prompt, signal);
         trackUsage('reviewer', config.reviewer.model, checkUsage);
         runLog.reviewer += iterHeader + '[Code Check]\n' + supervisorResult + '\n';
         onEvent({ type: 'output', role: 'reviewer', text: supervisorResult, iteration: codeLoopCount, label: 'Code Check' });
@@ -367,24 +389,27 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       }
     } else {
       // ── Mode 1: Sequential Pipeline ──
+      checkAbort();
       onEvent({ type: 'status', stage: 'architect', label: 'Stage 1: Claude Code' });
       const architect = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
-      const { text: plan, usage: planUsage } = await architect.call(task);
+      const { text: plan, usage: planUsage } = await architect.call(task, signal);
       trackUsage('architect', config.architect.model, planUsage);
       runLog.architect = plan;
       onEvent({ type: 'output', role: 'architect', text: plan, iteration: 1 });
       await logTranscript('architect', runHeader + plan + '\n');
 
+      checkAbort();
       onEvent({ type: 'status', stage: 'developer', label: 'Stage 2: Codex' });
       const developer = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS.developer });
       const prompt = `TASK:\n${task}\n\nPLAN:\n${plan}`;
-      const { text: coderResult, usage: coderUsage } = await developer.call(prompt);
+      const { text: coderResult, usage: coderUsage } = await developer.call(prompt, signal);
       trackUsage('developer', config.developer.model, coderUsage);
       const code = stripCodeFences(coderResult);
       runLog.developer = code;
       onEvent({ type: 'output', role: 'developer', text: code, iteration: 1 });
       await logTranscript('developer', runHeader + code + '\n');
 
+      checkAbort();
       onEvent({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
       let sandboxResult;
       try {
@@ -393,13 +418,16 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
           onOutput: (text, kind) => {
             const data = kind === 'stderr' ? `\x1b[31m${text}\x1b[0m` : text;
             onEvent({ type: 'pty', role: 'developer', data });
-          }
+          },
+          signal,
         });
         const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
         await logTranscript('developer', sandboxLog);
       } catch (err) {
+        if (err.name === 'AbortError') throw err;
         sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
       }
+      checkAbort();
       onEvent({ type: 'sandbox', ...sandboxResult });
 
       onEvent({ type: 'status', stage: 'reviewer', label: 'Stage 4: Antigravity' });
@@ -412,7 +440,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       ].filter(Boolean).join('\n');
 
       const reviewPrompt = `TASK:\n${task}\n\nARCHITECT PLAN:\n${runLog.architect}\n\nCODE:\n${runLog.developer}\n\nEXECUTION RESULTS:\n${executionSummary}`;
-      const { text: reviewText, usage: reviewerUsage } = await reviewer.call(reviewPrompt);
+      const { text: reviewText, usage: reviewerUsage } = await reviewer.call(reviewPrompt, signal);
       trackUsage('reviewer', config.reviewer.model, reviewerUsage);
       runLog.reviewer = reviewText;
       pipelinePassed = sandboxResult.exitCode === 0 && !sandboxResult.timedOut && !/\bFAIL\b/i.test(reviewText);
@@ -444,7 +472,9 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     onEvent({ type: 'done', elapsed, passed: pipelinePassed, completedWorkspaceDir });
 
   } catch (err) {
-    onEvent({ type: 'error', stage: 'architect', message: err.message });
+    if (err.name !== 'AbortError') {
+      onEvent({ type: 'error', stage: 'architect', message: err.message });
+    }
     
     const costRecords = records.map(({ role, model, inputTokens, outputTokens }) => {
       const [inRate, outRate] = RATES[model] ?? [0, 0];

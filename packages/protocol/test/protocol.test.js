@@ -7,6 +7,7 @@ const config = Object.fromEntries(['architect', 'developer', 'reviewer'].map(rol
 test('validates run and replay commands', () => {
   assert.equal(validateClientCommand({ type: 'run', task: 'Build it', config, mode: 3 }).success, true);
   assert.equal(validateClientCommand({ type: 'subscribe', runId: crypto.randomUUID(), afterEventId: 4 }).success, true);
+  assert.equal(validateClientCommand({ type: 'cancel', runId: crypto.randomUUID() }).success, true);
 });
 
 test('rejects malformed commands and incompatible major versions', () => {

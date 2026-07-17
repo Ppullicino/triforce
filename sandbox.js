@@ -6,7 +6,7 @@ import { randomBytes } from 'node:crypto';
 
 const MAX_OUTPUT_BYTES = Number(process.env.SANDBOX_MAX_OUTPUT_BYTES) || 2 * 1024 * 1024;
 
-export async function runSandboxed(code, { timeoutMs = 10000, onOutput = () => {} } = {}) {
+export async function runSandboxed(code, { timeoutMs = 10000, onOutput = () => {}, signal } = {}) {
   if (typeof code !== 'string') throw new TypeError('Sandbox code must be a string');
   if (Buffer.byteLength(code) > 1024 * 1024) throw new Error('Generated code exceeds 1 MiB limit');
 
@@ -34,14 +34,36 @@ export async function runSandboxed(code, { timeoutMs = 10000, onOutput = () => {
     let stdout = '', stderr = '', bytes = 0, timedOut = false, settled = false;
     const cleanup = async () => { await rm(workDir, { recursive: true, force: true }); };
     const killTree = () => { spawn('/usr/bin/systemctl', ['--user', 'kill', '--kill-whom=all', unit], { stdio: 'ignore' }); };
+    
+    let onAbort;
     const finish = async (fn, value) => {
       if (settled) return;
       settled = true;
       clearTimeout(timer);
+      if (signal && onAbort) signal.removeEventListener('abort', onAbort);
       await cleanup();
       fn(value);
     };
+    
     const timer = setTimeout(() => { timedOut = true; killTree(); }, timeoutMs);
+
+    if (signal) {
+      if (signal.aborted) {
+        killTree();
+        const err = new Error('The operation was aborted');
+        err.name = 'AbortError';
+        finish(reject, err);
+        return;
+      }
+      onAbort = () => {
+        killTree();
+        const err = new Error('The operation was aborted');
+        err.name = 'AbortError';
+        finish(reject, err);
+      };
+      signal.addEventListener('abort', onAbort);
+    }
+
     const collect = (stream, data, kind) => {
       bytes += data.length;
       if (bytes > MAX_OUTPUT_BYTES) {

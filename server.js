@@ -41,10 +41,36 @@ let latestUsage = {
   reviewer:  { inputTokens: 0, outputTokens: 0, cost: 0 },
 };
 
-async function runValidationPipeline(ws, task, _config, mode) {
+async function runValidationPipeline(ws, task, _config, mode, signal) {
   const send = event => ws.send(JSON.stringify(event));
   send({ type: 'status', stage: 'architect', label: `Validating mode ${mode}` });
-  await new Promise(resolve => setTimeout(resolve, 75));
+  
+  if (signal?.aborted) {
+    const err = new Error('The operation was aborted');
+    err.name = 'AbortError';
+    throw err;
+  }
+  
+  await new Promise((resolve, reject) => {
+    const onAbort = () => {
+      clearTimeout(timeoutId);
+      const err = new Error('The operation was aborted');
+      err.name = 'AbortError';
+      reject(err);
+    };
+    const timeoutId = setTimeout(() => {
+      if (signal) signal.removeEventListener('abort', onAbort);
+      resolve();
+    }, 75);
+    if (signal) signal.addEventListener('abort', onAbort);
+  });
+  
+  if (signal?.aborted) {
+    const err = new Error('The operation was aborted');
+    err.name = 'AbortError';
+    throw err;
+  }
+
   for (const role of ['architect', 'developer', 'reviewer']) {
     send({ type: 'output', role, text: `${role} completed ${task} in mode ${mode}` });
   }
@@ -60,7 +86,7 @@ async function runValidationPipeline(ws, task, _config, mode) {
  * Mode 2 (Cooperative Loop): Run a prompt designer specification loop and coder loop, where the
  *        Supervisor checks the specification/code and requests corrections in up to 3 iterative loops.
  */
-async function runPipeline(ws, task, config, mode = 1) {
+async function runPipeline(ws, task, config, mode = 1, signal) {
   if (typeof task !== 'string' || !task.trim() || task.length > 50000) throw new Error('Task must be 1-50000 characters');
   if (!config || typeof config !== 'object') throw new Error('Invalid pipeline configuration');
   const maxIterations = Math.min(10, Math.max(1, Number.parseInt(config.maxIterations ?? 3, 10) || 3));
@@ -82,6 +108,7 @@ async function runPipeline(ws, task, config, mode = 1) {
         workspacesDir: WORKSPACES_DIR,
         packageRoot: __dirname,
         dependencyRoot: join(__dirname, 'node_modules'),
+        signal,
       },
       (event) => {
         if (ws.readyState !== 1) return;
@@ -270,7 +297,7 @@ wss.on('connection', (ws) => {
     let msg;
     try { msg = JSON.parse(raw); } catch { return; }
 
-    if (!['run', 'subscribe', 'capabilities'].includes(msg.type)) return;
+    if (!['run', 'subscribe', 'capabilities', 'cancel'].includes(msg.type)) return;
     const parsed = validateClientCommand(msg);
     if (!parsed.success) {
       return ws.send(JSON.stringify({ type: 'protocol_error', code: 'INVALID_COMMAND', message: parsed.error.issues[0]?.message || 'Invalid command' }));
@@ -288,12 +315,19 @@ wss.on('connection', (ws) => {
       unsubscribe.add(runRegistry.subscribe(run, ws, command.afterEventId));
       return;
     }
+    if (command.type === 'cancel') {
+      const success = runRegistry.cancel(command.runId);
+      if (!success) {
+        return ws.send(JSON.stringify({ type: 'protocol_error', code: 'RUN_NOT_FOUND', message: 'Run not found or not running' }));
+      }
+      return;
+    }
     if (command.type === 'run') {
       try {
         const useValidationPipeline = process.env.NODE_ENV === 'test' && process.env.TRIFORCE_E2E_FAKE_PIPELINE === '1';
-        const run = runRegistry.start(command, pipelineSocket => useValidationPipeline
-          ? runValidationPipeline(pipelineSocket, command.task, command.config, command.mode)
-          : runPipeline(pipelineSocket, command.task, command.config, command.mode));
+        const run = runRegistry.start(command, (pipelineSocket, signal) => useValidationPipeline
+          ? runValidationPipeline(pipelineSocket, command.task, command.config, command.mode, signal)
+          : runPipeline(pipelineSocket, command.task, command.config, command.mode, signal));
         ws.send(JSON.stringify({ type: 'run_started', run: runRegistry.snapshot(run) }));
         unsubscribe.add(runRegistry.subscribe(run, ws));
       } catch (err) {

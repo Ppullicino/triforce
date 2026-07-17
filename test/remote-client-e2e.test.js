@@ -108,3 +108,37 @@ test('all pipeline modes complete and a disconnected client recovers the authori
     await once(server.child, 'exit').catch(() => {});
   }
 });
+
+test('pipeline run cancellation aborts execution and frees registry for new runs', async () => {
+  const server = await startServer();
+  try {
+    const socket = nativeSocket(server.port);
+    const stream = messages(socket);
+    await once(socket, 'open');
+
+    // 1. Start a run
+    socket.send(JSON.stringify({ type: 'run', protocolVersion: '1.1.0', task: 'cancel-me', config, mode: 1 }));
+    const started = await stream.waitFor(message => message.type === 'run_started' && message.run?.task === 'cancel-me');
+    const runId = started.run.id;
+
+    // 2. Send cancellation command
+    socket.send(JSON.stringify({ type: 'cancel', protocolVersion: '1.1.0', runId }));
+
+    // 3. Receive run_state: cancelled within 2s
+    const cancelledState = await stream.waitFor(
+      message => message.type === 'run_state' && message.runId === runId && message.status === 'cancelled',
+      2000
+    );
+    assert.ok(cancelledState);
+
+    // 4. Start a new run immediately to verify registry is free
+    socket.send(JSON.stringify({ type: 'run', protocolVersion: '1.1.0', task: 'new-run', config, mode: 1 }));
+    const started2 = await stream.waitFor(message => message.type === 'run_started' && message.run?.task === 'new-run');
+    assert.ok(started2.run.id);
+
+    socket.close();
+  } finally {
+    server.child.kill('SIGTERM');
+    await once(server.child, 'exit').catch(() => {});
+  }
+});

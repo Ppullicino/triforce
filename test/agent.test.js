@@ -156,3 +156,44 @@ test('terminal errors (400, auth) still fail fast with no retries', async () => 
   await assert.rejects(agent.call('test'), /Bad Request/);
   assert.equal(callCount, 1);
 });
+
+test('_collectChild aborts and kills child process on signal abort', async () => {
+  const controller = new AbortController();
+  const child = spawn(process.execPath, ['-e', "setTimeout(() => {}, 60000)"], {
+    detached: process.platform !== 'win32',
+  });
+
+  const p = new Promise((resolve, reject) => {
+    Agent.prototype._collectChild(child, null, 'node', resolve, reject, 30000, controller.signal);
+  });
+
+  controller.abort();
+
+  await assert.rejects(p, err => {
+    return err.name === 'AbortError';
+  });
+});
+
+test('Agent.call rejects immediately on abort during retry backoff sleep', async () => {
+  const agent = new Agent({ provider: 'claude-cli', model: 'claude-cli-default' });
+  const controller = new AbortController();
+  
+  let callCount = 0;
+  agent._callProvider = async () => {
+    callCount++;
+    const err = new Error('rate limit');
+    err.status = 429;
+    throw err;
+  };
+
+  const p = agent.call('test', controller.signal);
+
+  await new Promise(resolve => setTimeout(resolve, 50));
+  controller.abort();
+
+  await assert.rejects(p, err => {
+    return err.name === 'AbortError';
+  });
+  
+  assert.equal(callCount, 1);
+});

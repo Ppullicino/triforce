@@ -112,3 +112,39 @@ test('RunRegistry persistence, crash recovery, index restoration, and subscribe 
   await registry1.flush();
   await fs.rm(tmpDir, { recursive: true, force: true });
 });
+
+test('RunRegistry cancellation and active run release', async () => {
+  const tmpDir = join(os.tmpdir(), `triforce-test-cancel-${randomUUID()}`);
+  const registry = new RunRegistry({ runsDir: tmpDir });
+  
+  let abortSignalReceived;
+  let pipelinePromiseReleased;
+  const run = registry.start({ task: 'cancel task', config: {}, mode: 1 }, async (ws, signal) => {
+    ws.send(JSON.stringify({ type: 'status', stage: 'architect', label: 'planning' }));
+    abortSignalReceived = signal;
+    await new Promise(resolve => { pipelinePromiseReleased = resolve; });
+  });
+
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(registry.activeRun.id, run.id);
+  assert.ok(abortSignalReceived);
+  assert.equal(abortSignalReceived.aborted, false);
+
+  const success = registry.cancel(run.id);
+  assert.ok(success);
+  assert.equal(abortSignalReceived.aborted, true);
+
+  pipelinePromiseReleased();
+  await run.completion;
+
+  assert.equal(run.status, 'cancelled');
+  assert.equal(registry.activeRun, null, 'active run should be cleared');
+
+  // Verify that we can start a new run immediately
+  const run2 = registry.start({ task: 'second task', config: {}, mode: 1 }, async () => {});
+  assert.equal(registry.activeRun.id, run2.id);
+
+  await run2.completion;
+  await registry.flush();
+  await fs.rm(tmpDir, { recursive: true, force: true });
+});

@@ -44,6 +44,7 @@ function getErrorStatus(err) {
 }
 
 function isRetryableError(err) {
+  if (err?.name === 'AbortError') return false;
   return RETRYABLE_STATUSES.has(getErrorStatus(err)) || ['ECONNRESET', 'ETIMEDOUT', 'EAI_AGAIN'].includes(err?.code);
 }
 
@@ -134,7 +135,7 @@ export class Agent {
     }
   }
 
-  async call(userPrompt) {
+  async call(userPrompt, signal) {
     const startTime = Date.now();
     let lastErr;
     const maxRetries = process.env.TRIFORCE_MAX_RETRIES !== undefined
@@ -145,6 +146,12 @@ export class Agent {
       : Infinity;
 
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      if (signal?.aborted) {
+        const err = new Error('The operation was aborted');
+        err.name = 'AbortError';
+        throw err;
+      }
+
       const elapsed = Date.now() - startTime;
       if (elapsed >= PROVIDER_TIMEOUT_MS) {
         throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
@@ -166,7 +173,24 @@ export class Agent {
         
         const sleepTime = Math.min(waitMs, remaining);
         console.warn(`  [retry ${attempt}/${maxRetries}] waiting ${Math.round(sleepTime)}ms...`);
-        await delay(sleepTime);
+        
+        if (signal) {
+          await new Promise((resolve, reject) => {
+            const onAbort = () => {
+              clearTimeout(timeoutId);
+              const err = new Error('The operation was aborted');
+              err.name = 'AbortError';
+              reject(err);
+            };
+            const timeoutId = setTimeout(() => {
+              signal.removeEventListener('abort', onAbort);
+              resolve();
+            }, sleepTime);
+            signal.addEventListener('abort', onAbort);
+          });
+        } else {
+          await delay(sleepTime);
+        }
         
         if (Date.now() - startTime >= PROVIDER_TIMEOUT_MS) {
           throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
@@ -178,7 +202,7 @@ export class Agent {
         if (remainingTimeout <= 0) {
           throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
         }
-        const providerCall = this._callProvider(userPrompt);
+        const providerCall = this._callProvider(userPrompt, signal);
         return CLI_PROVIDERS.has(this.provider)
           ? await providerCall
           : await withTimeout(providerCall, remainingTimeout);
@@ -193,36 +217,36 @@ export class Agent {
     throw lastErr;
   }
 
-  async _callProvider(userPrompt) {
+  async _callProvider(userPrompt, signal) {
     switch (this.provider) {
-      case 'anthropic':  return this._callAnthropic(userPrompt);
-      case 'google':     return this._callGoogle(userPrompt);
-      case 'openai':     return this._callOpenAI(userPrompt);
-      case 'claude-cli': return this._callClaudeCLI(userPrompt);
-      case 'codex-cli':  return this._callCodexCLI(userPrompt);
-      case 'agy-cli':    return this._callAgyCLI(userPrompt);
+      case 'anthropic':  return this._callAnthropic(userPrompt, signal);
+      case 'google':     return this._callGoogle(userPrompt, signal);
+      case 'openai':     return this._callOpenAI(userPrompt, signal);
+      case 'claude-cli': return this._callClaudeCLI(userPrompt, signal);
+      case 'codex-cli':  return this._callCodexCLI(userPrompt, signal);
+      case 'agy-cli':    return this._callAgyCLI(userPrompt, signal);
     }
   }
 
-  async _callAnthropic(userPrompt) {
+  async _callAnthropic(userPrompt, signal) {
     const msg = await this._client.messages.create({
       model: this.model,
       max_tokens: 8096,
       system: this.systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
-    });
+    }, { signal });
     return {
       text: firstTextBlock(msg.content),
       usage: { inputTokens: msg.usage.input_tokens, outputTokens: msg.usage.output_tokens },
     };
   }
 
-  async _callGoogle(userPrompt) {
+  async _callGoogle(userPrompt, signal) {
     const response = await this._client.models.generateContent({
       model: this.model,
       config: { systemInstruction: this.systemPrompt },
       contents: userPrompt,
-    });
+    }, { signal });
     return {
       text: response.text || (() => { throw new Error('Google returned no text content'); })(),
       usage: {
@@ -232,14 +256,14 @@ export class Agent {
     };
   }
 
-  async _callOpenAI(userPrompt) {
+  async _callOpenAI(userPrompt, signal) {
     const completion = await this._client.chat.completions.create({
       model: this.model,
       messages: [
         { role: 'system', content: this.systemPrompt },
         { role: 'user',   content: userPrompt },
       ],
-    });
+    }, { signal });
     return {
       text: completion.choices?.[0]?.message?.content || (() => { throw new Error('OpenAI returned no text content'); })(),
       usage: {
@@ -249,7 +273,7 @@ export class Agent {
     };
   }
 
-  async _callClaudeCLI(userPrompt) {
+  async _callClaudeCLI(userPrompt, signal) {
     const { spawn } = await import('node:child_process');
     return new Promise((resolve, reject) => {
       const args = [];
@@ -260,11 +284,11 @@ export class Agent {
       if (this.unsafePermissions) args.push('--permission-mode', 'bypassPermissions');
 
       const child = spawn(resolveBinPath('claude'), args, { detached: process.platform !== 'win32' });
-      this._collectChild(child, userPrompt, 'claude', resolve, reject);
+      this._collectChild(child, userPrompt, 'claude', resolve, reject, PROVIDER_TIMEOUT_MS, signal);
     });
   }
 
-  _collectChild(child, stdin, label, resolve, reject, timeoutMs = PROVIDER_TIMEOUT_MS) {
+  _collectChild(child, stdin, label, resolve, reject, timeoutMs = PROVIDER_TIMEOUT_MS, signal) {
       let stdout = '', stderr = '', settled = false, outputBytes = 0;
       const killTree = () => {
         if (child.pid == null) return;
@@ -273,16 +297,38 @@ export class Agent {
           else child.kill('SIGKILL');
         } catch { try { child.kill('SIGKILL'); } catch {} }
       };
-      const finish = (fn, value) => {
+      
+      let onAbort;
+      let finish = (fn, value) => {
         if (settled) return;
         settled = true;
         clearTimeout(timer);
+        if (signal && onAbort) signal.removeEventListener('abort', onAbort);
         fn(value);
       };
+      
       const timer = setTimeout(() => {
         killTree();
         finish(reject, new Error(`${label} CLI timed out after ${timeoutMs}ms`));
       }, timeoutMs);
+
+      if (signal) {
+        if (signal.aborted) {
+          killTree();
+          const err = new Error('The operation was aborted');
+          err.name = 'AbortError';
+          finish(reject, err);
+          return;
+        }
+        onAbort = () => {
+          killTree();
+          const err = new Error('The operation was aborted');
+          err.name = 'AbortError';
+          finish(reject, err);
+        };
+        signal.addEventListener('abort', onAbort);
+      }
+
       const collect = (target, data) => {
         outputBytes += data.length;
         if (outputBytes > MAX_PROVIDER_OUTPUT_BYTES) {
@@ -336,15 +382,15 @@ export class Agent {
     return args;
   }
 
-  async _callCodexCLI(userPrompt) {
+  async _callCodexCLI(userPrompt, signal) {
     const { spawn } = await import('node:child_process');
     return new Promise((resolve, reject) => {
       const child = spawn(resolveBinPath('codex'), this._codexCLIArgs(), { detached: process.platform !== 'win32' });
-      this._collectChild(child, userPrompt, 'codex', resolve, reject);
+      this._collectChild(child, userPrompt, 'codex', resolve, reject, PROVIDER_TIMEOUT_MS, signal);
     });
   }
 
-  async _callAgyCLI(userPrompt) {
+  async _callAgyCLI(userPrompt, signal) {
     const { spawn } = await import('node:child_process');
     return new Promise((resolve, reject) => {
       const fullPrompt = this.systemPrompt 
@@ -355,7 +401,7 @@ export class Agent {
       args.push('-p', fullPrompt);
 
       const child = spawn(resolveBinPath('agy'), args, { detached: process.platform !== 'win32' });
-      this._collectChild(child, null, 'agy', resolve, reject);
+      this._collectChild(child, null, 'agy', resolve, reject, PROVIDER_TIMEOUT_MS, signal);
     });
   }
 }

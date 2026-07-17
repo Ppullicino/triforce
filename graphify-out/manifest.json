@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "agent.js": {
-    "mtime": 1784281367.8072357,
-    "ast_hash": "164bff0749c07b0cc98317dd9c0fbd3e",
+    "mtime": 1784282866.5297081,
+    "ast_hash": "ca7fbbb13b280b8e021aec4add8bb441",
     "semantic_hash": ""
   },
   "gen-icons.mjs": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784282662.7946503,
-    "ast_hash": "507462a2a0cca1132ee8228462288f47",
+    "mtime": 1784282964.5858688,
+    "ast_hash": "6e4cb577961a72b698741d431f5a22b3",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -155,18 +155,18 @@
     "semantic_hash": ""
   },
   "test/sandbox.test.js": {
-    "mtime": 1784127242.5134788,
-    "ast_hash": "bdc6cc45c5441ed6f38b3cbe0bbd0917",
+    "mtime": 1784282997.6102562,
+    "ast_hash": "fc2f21c50fa52afe5e57446bbd522f9c",
     "semantic_hash": ""
   },
   "test/agent.test.js": {
-    "mtime": 1784281395.5568151,
-    "ast_hash": "9be1b5ada9306c851af725cd5d6bf0ce",
+    "mtime": 1784282986.4704626,
+    "ast_hash": "d9c353043719983303224bb900b8a9d1",
     "semantic_hash": ""
   },
   "sandbox.js": {
-    "mtime": 1784127233.7226086,
-    "ast_hash": "49d669870c2de970a6d03b7a7984d25e",
+    "mtime": 1784282879.7164588,
+    "ast_hash": "86e30b935b618b72b2c7596baae2bec1",
     "semantic_hash": ""
   },
   "test/package.test.js": {
@@ -185,13 +185,13 @@
     "semantic_hash": ""
   },
   "test/workspace.test.js": {
-    "mtime": 1784131646.921399,
-    "ast_hash": "4e571089a9fac9956be558c6258350bc",
+    "mtime": 1784283005.4871106,
+    "ast_hash": "fccb615389c2d228b75b3df84ac82d8b",
     "semantic_hash": ""
   },
   "workspace.js": {
-    "mtime": 1784131646.9203992,
-    "ast_hash": "8762653acbea6779ef220370d35d368e",
+    "mtime": 1784282882.8034005,
+    "ast_hash": "d8883af42afa3fd2d691cc1c00fb5876",
     "semantic_hash": ""
   },
   "CROSS_PLATFORM_CLIENT_PLAN.md": {
@@ -275,23 +275,23 @@
     "semantic_hash": ""
   },
   "packages/protocol/src/index.js": {
-    "mtime": 1784146420.1365573,
-    "ast_hash": "86775a0601e93b2bd34cc3bbd26f3400",
+    "mtime": 1784282815.42468,
+    "ast_hash": "22b0eb29838cea38933057ded12dc3d8",
     "semantic_hash": ""
   },
   "packages/protocol/test/protocol.test.js": {
-    "mtime": 1784139356.4179566,
-    "ast_hash": "2a12c173cb63e651db75654874db8c70",
+    "mtime": 1784282817.106648,
+    "ast_hash": "ae3035da31013b12249b8dfc9785a239",
     "semantic_hash": ""
   },
   "run-registry.js": {
-    "mtime": 1784282659.1407228,
-    "ast_hash": "0086d6b3d2d2b6f7b505016e4a041de7",
+    "mtime": 1784283017.1798947,
+    "ast_hash": "dc330c3173d0618056e8dd4df988068a",
     "semantic_hash": ""
   },
   "test/run-registry.test.js": {
-    "mtime": 1784282690.4761033,
-    "ast_hash": "68a430aa206a3b2c95fa89024f494f20",
+    "mtime": 1784283011.140006,
+    "ast_hash": "e016dd3bb51e6ab5f42108127735e6c9",
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
@@ -715,8 +715,8 @@
     "semantic_hash": ""
   },
   "test/remote-client-e2e.test.js": {
-    "mtime": 1784147865.4500031,
-    "ast_hash": "89c182d6396139d11ef39f0a244a95aa",
+    "mtime": 1784283026.268727,
+    "ast_hash": "3dc5bc78c4847d5338e1952994a4a7f7",
     "semantic_hash": ""
   },
   "OPERATIONS.md": {
@@ -750,8 +750,8 @@
     "semantic_hash": ""
   },
   "pipeline.js": {
-    "mtime": 1784282427.2654989,
-    "ast_hash": "d324b3113b2310b7b41f7abd4b0a42bf",
+    "mtime": 1784282923.000645,
+    "ast_hash": "c0ee57a79502d8be0fd5c55e27d8f58e",
     "semantic_hash": ""
   }
 }

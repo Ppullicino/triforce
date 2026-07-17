@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const PROTOCOL_VERSION = '1.0.0';
+export const PROTOCOL_VERSION = '1.1.0';
 export const PROTOCOL_MAJOR = 1;
 export const agentRoleSchema = z.enum(['architect', 'developer', 'reviewer']);
 export const pipelineModeSchema = z.union([z.literal(1), z.literal(2), z.literal(3)]);
@@ -31,7 +31,12 @@ export const capabilitiesCommandSchema = z.object({
   type: z.literal('capabilities'),
   protocolVersion: z.string(),
 });
-export const clientCommandSchema = z.discriminatedUnion('type', [runCommandSchema, subscribeCommandSchema, capabilitiesCommandSchema]);
+export const cancelCommandSchema = z.object({
+  type: z.literal('cancel'),
+  runId: z.string().uuid(),
+  protocolVersion: z.string().optional(),
+});
+export const clientCommandSchema = z.discriminatedUnion('type', [runCommandSchema, subscribeCommandSchema, capabilitiesCommandSchema, cancelCommandSchema]);
 export const serverEventSchema = z.object({
   type: z.enum([
     'capabilities', 'cost', 'done', 'error', 'output', 'protocol_error', 'pty',
@@ -61,6 +66,6 @@ export function isCompatibleProtocol(version) {
 export const capabilities = Object.freeze({
   protocolVersion: PROTOCOL_VERSION,
   protocolMajor: PROTOCOL_MAJOR,
-  features: ['run-ids', 'event-replay', 'run-status', 'bounded-event-buffer'],
+  features: ['run-ids', 'event-replay', 'run-status', 'bounded-event-buffer', 'cancellation'],
   limits: { taskCharacters: 50_000, websocketMessageBytes: 1024 * 1024 },
 });

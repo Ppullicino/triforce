@@ -61,7 +61,7 @@ export async function createWorkspace(manifest, root, { dependencyRoot } = {}) {
   }
 }
 
-export function runWorkspaceTest(workspace, { packageRoot, timeoutMs = 30000, onOutput = () => {} } = {}) {
+export function runWorkspaceTest(workspace, { packageRoot, timeoutMs = 30000, onOutput = () => {}, signal } = {}) {
   const nodeRoot = dirname(dirname(process.execPath));
   const unit = `triforce-workspace-${process.pid}-${randomBytes(5).toString('hex')}`;
   const testPath = join(workspace.directory, workspace.testFile);
@@ -82,13 +82,40 @@ export function runWorkspaceTest(workspace, { packageRoot, timeoutMs = 30000, on
     const child = spawn('/usr/bin/systemd-run', args, { stdio: ['ignore', 'pipe', 'pipe'] });
     let stdout = '', stderr = '', bytes = 0, timedOut = false, settled = false;
     const kill = () => spawn('/usr/bin/systemctl', ['--user', 'kill', '--kill-whom=all', unit], { stdio: 'ignore' });
+    
+    let onAbort;
+    const finish = (fn, value) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      if (signal && onAbort) signal.removeEventListener('abort', onAbort);
+      fn(value);
+    };
+    
     const timer = setTimeout(() => { timedOut = true; kill(); }, timeoutMs);
+
+    if (signal) {
+      if (signal.aborted) {
+        kill();
+        const err = new Error('The operation was aborted');
+        err.name = 'AbortError';
+        finish(reject, err);
+        return;
+      }
+      onAbort = () => {
+        kill();
+        const err = new Error('The operation was aborted');
+        err.name = 'AbortError';
+        finish(reject, err);
+      };
+      signal.addEventListener('abort', onAbort);
+    }
+
     const collect = (current, data, kind) => {
       bytes += data.length;
       if (bytes > MAX_OUTPUT_BYTES) { kill(); return current; }
       const value = data.toString(); onOutput(value, kind); return current + value;
     };
-    const finish = (fn, value) => { if (settled) return; settled = true; clearTimeout(timer); fn(value); };
     child.stdout.on('data', data => { stdout = collect(stdout, data, 'stdout'); });
     child.stderr.on('data', data => { stderr = collect(stderr, data, 'stderr'); });
     child.once('error', err => finish(reject, new Error(`Unable to start workspace test: ${err.message}`)));

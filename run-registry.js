@@ -152,22 +152,34 @@ export class RunRegistry {
   start(input, execute) {
     if (this.activeRun) throw new Error('Another terminal or browser pipeline is already running');
     const now = new Date().toISOString();
+    const controller = new AbortController();
     const run = {
       id: randomUUID(), task: input.task, config: input.config, mode: input.mode,
       status: 'running', createdAt: now, updatedAt: now,
       events: [], eventBytes: 0, nextEventId: 1, droppedEvents: 0,
       subscribers: new Set(), completion: null, hasError: false,
       writeQueue: Promise.resolve(),
+      controller,
     };
     this.runs.set(run.id, run);
     this.saveIndex();
     this.pruneRuns();
     run.completion = Promise.resolve()
-      .then(() => execute(this.socketFor(run)))
-      .then(() => this.finish(run, run.hasError ? 'failed' : 'completed'))
+      .then(() => execute(this.socketFor(run), controller.signal))
+      .then(() => {
+        if (controller.signal.aborted) {
+          this.finish(run, 'cancelled');
+        } else {
+          this.finish(run, run.hasError ? 'failed' : 'completed');
+        }
+      })
       .catch(error => {
-        this.publish(run, { type: 'error', stage: 'architect', message: error.message });
-        this.finish(run, 'failed');
+        if (error.name === 'AbortError' || controller.signal.aborted) {
+          this.finish(run, 'cancelled');
+        } else {
+          this.publish(run, { type: 'error', stage: 'architect', message: error.message });
+          this.finish(run, 'failed');
+        }
       });
     return run;
   }
@@ -226,6 +238,15 @@ export class RunRegistry {
     run.updatedAt = new Date().toISOString();
     this.publish(run, { type: 'run_state', status });
     this.saveIndex();
+  }
+
+  cancel(runId) {
+    const run = this.get(runId);
+    if (!run || run.status !== 'running') return false;
+    if (run.controller) {
+      run.controller.abort();
+    }
+    return true;
   }
 
   pruneRuns() {

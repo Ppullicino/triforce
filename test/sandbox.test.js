@@ -33,3 +33,12 @@ test('terminates runaway programs', async () => {
   const result = await runSandboxed('setInterval(() => {}, 1000)', { timeoutMs: 500 });
   assert.equal(result.timedOut, true);
 });
+
+test('runSandboxed aborts immediately on signal abort', async () => {
+  const controller = new AbortController();
+  const p = runSandboxed('setInterval(() => {}, 1000)', { timeoutMs: 10000, signal: controller.signal });
+  controller.abort();
+  await assert.rejects(p, err => {
+    return err.name === 'AbortError';
+  });
+});
