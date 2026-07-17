@@ -78,3 +78,81 @@ test('Codex CLI preserves configured permissions and system prompt', () => {
     '-',
   ]);
 });
+
+test('a stubbed 429 with Retry-After: 2 waits ~2s', async () => {
+  const agent = new Agent({ provider: 'claude-cli', model: 'claude-cli-default' });
+  let callCount = 0;
+  agent._callProvider = async () => {
+    callCount++;
+    if (callCount === 1) {
+      const err = new Error('Rate limit exceeded');
+      err.status = 429;
+      err.headers = { 'retry-after': '2' };
+      throw err;
+    }
+    return { text: 'success', usage: { inputTokens: 0, outputTokens: 0 } };
+  };
+
+  const start = Date.now();
+  const res = await agent.call('test');
+  const duration = Date.now() - start;
+  
+  assert.equal(res.text, 'success');
+  assert.equal(callCount, 2);
+  assert.ok(duration >= 1900 && duration < 5000, `Expected duration around 2s, got ${duration}ms`);
+});
+
+test('a fake CLI exiting 1 with "rate limit" on stderr is classified as retryable 429', async () => {
+  const agent = new Agent({ provider: 'claude-cli', model: 'claude-cli-default' });
+  const child = spawn(process.execPath, ['-e', "process.stderr.write('rate limit exceeded'); process.exit(1)"], {
+    detached: process.platform !== 'win32',
+  });
+
+  let error;
+  try {
+    await new Promise((resolve, reject) => {
+      agent._collectChild(child, null, 'node', resolve, reject);
+    });
+  } catch (err) {
+    error = err;
+  }
+
+  assert.ok(error, 'expected promise to reject');
+  assert.equal(error.status, 429);
+});
+
+test('agent.call retries on retryable errors and succeeds on second attempt', async () => {
+  const agent = new Agent({ provider: 'claude-cli', model: 'claude-cli-default' });
+  let callCount = 0;
+  agent._callProvider = async () => {
+    callCount++;
+    if (callCount === 1) {
+      const err = new Error('rate limit');
+      err.status = 429;
+      throw err;
+    }
+    return { text: 'success', usage: { inputTokens: 0, outputTokens: 0 } };
+  };
+
+  const start = Date.now();
+  process.env.TRIFORCE_BACKOFF_CAP_MS = '10';
+  const res = await agent.call('test');
+  delete process.env.TRIFORCE_BACKOFF_CAP_MS;
+
+  assert.equal(res.text, 'success');
+  assert.equal(callCount, 2);
+});
+
+test('terminal errors (400, auth) still fail fast with no retries', async () => {
+  const agent = new Agent({ provider: 'claude-cli', model: 'claude-cli-default' });
+  let callCount = 0;
+  agent._callProvider = async () => {
+    callCount++;
+    const err = new Error('Bad Request');
+    err.status = 400;
+    throw err;
+  };
+
+  await assert.rejects(agent.call('test'), /Bad Request/);
+  assert.equal(callCount, 1);
+});

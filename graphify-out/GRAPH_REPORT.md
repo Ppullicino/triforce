@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-17)
 
 ## Corpus Check
-- 88 files · ~42,591 words
+- 88 files · ~43,246 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 662 nodes · 803 edges · 60 communities (48 shown, 12 thin omitted)
+- 663 nodes · 805 edges · 60 communities (47 shown, 13 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `98493d76`
+- Built from commit: `6ab95b7a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -89,7 +89,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (60 total, 12 thin omitted)
+## Communities (60 total, 13 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.12
@@ -100,8 +100,8 @@ Cohesion: 0.11
 Nodes (12): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault, String, String, WebView (+4 more)
 
 ### Community 2 - "Agent"
-Cohesion: 0.18
-Nodes (9): Agent, CLI_PROVIDERS, delay(), firstTextBlock(), getErrorStatus(), isRetryableError(), resolveBinPath(), RETRYABLE_STATUSES (+1 more)
+Cohesion: 0.17
+Nodes (10): Agent, CLI_PROVIDERS, delay(), firstTextBlock(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), resolveBinPath() (+2 more)
 
 ### Community 3 - "package.json"
 Cohesion: 0.12
@@ -155,10 +155,6 @@ Nodes (14): compilerOptions, allowJs, checkJs, declaration, declarationMap, modu
 Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
-### Community 26 - "index.ts"
-Cohesion: 0.08
-Nodes (28): agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema, pipelineModeSchema (+20 more)
-
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
 Nodes (6): Client Architecture and Development, Commands, Hosts, credentials, and connections, Packages, Protocol and run recovery, Shared interface
@@ -172,8 +168,8 @@ Cohesion: 0.05
 Nodes (42): bin, triforce, description, devDependencies, pngjs, files, main, name (+34 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.08
-Nodes (18): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+10 more)
+Cohesion: 0.06
+Nodes (30): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage (+22 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -196,8 +192,8 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "files"
-Cohesion: 0.08
-Nodes (18): App(), connectionMessages, defaultConfig, roles, ConnectionOptions, ConnectionState, EventListener, SocketLike (+10 more)
+Cohesion: 0.07
+Nodes (32): ConnectionOptions, ConnectionState, EventListener, StateListener, agentConfigurationSchema, agentRoleSchema, capabilities, capabilitiesCommandSchema (+24 more)
 
 ### Community 48 - "workspace.js"
 Cohesion: 0.33
@@ -230,14 +226,14 @@ Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependenc
 ## Knowledge Gaps
 - **312 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+307 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `promptLoop()` connect `cli.js` to `package.json`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `TriforceConnection` connect `files` to `files`, `package.json`?**
+- **Why does `TriforceConnection` connect `index.ts` to `files`, `server-protocol.test.js`, `package.json`, `files`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
   _312 weakly-connected nodes found - possible documentation gaps or missing edges._

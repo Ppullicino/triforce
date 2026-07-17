@@ -20,18 +20,66 @@ function resolveBinPath(cmd) {
 }
 
 const RETRYABLE_STATUSES = new Set([408, 429, 500, 502, 503, 504]);
-const MAX_RETRIES = 3;
 const BASE_DELAY_MS = 1000;
 const PROVIDER_TIMEOUT_MS = Number(process.env.PROVIDER_TIMEOUT_MS) || 120000;
 const MAX_PROVIDER_OUTPUT_BYTES = Number(process.env.MAX_PROVIDER_OUTPUT_BYTES) || 10 * 1024 * 1024;
 const CLI_PROVIDERS = new Set(['claude-cli', 'codex-cli', 'agy-cli']);
 
 function getErrorStatus(err) {
-  return err?.status ?? err?.statusCode ?? err?.error?.status ?? null;
+  const status = err?.status ?? err?.statusCode ?? err?.error?.status ?? err?.error?.code ?? err?.code ?? null;
+  if (status !== null) {
+    if (typeof status === 'string' && status.toUpperCase() === 'RESOURCE_EXHAUSTED') {
+      return 429;
+    }
+    if (typeof status === 'string' || typeof status === 'number') {
+      const parsed = parseInt(status, 10);
+      if (!isNaN(parsed)) return parsed;
+    }
+  }
+  const msg = (err?.message || '').toLowerCase();
+  if (msg.includes('429') || msg.includes('rate limit') || msg.includes('overloaded') || msg.includes('resource_exhausted')) {
+    return 429;
+  }
+  return null;
 }
 
 function isRetryableError(err) {
   return RETRYABLE_STATUSES.has(getErrorStatus(err)) || ['ECONNRESET', 'ETIMEDOUT', 'EAI_AGAIN'].includes(err?.code);
+}
+
+function getRetryAfterMs(err) {
+  const headers = err?.headers || err?.response?.headers;
+  let retryAfterValue = null;
+  
+  if (headers) {
+    if (typeof headers.get === 'function') {
+      retryAfterValue = headers.get('retry-after') || headers.get('Retry-After') || headers.get('x-retry-after');
+    } else {
+      for (const key of Object.keys(headers)) {
+        if (key.toLowerCase() === 'retry-after' || key.toLowerCase() === 'x-retry-after') {
+          retryAfterValue = headers[key];
+          break;
+        }
+      }
+    }
+  }
+
+  if (retryAfterValue === null || retryAfterValue === undefined) {
+    retryAfterValue = err?.retryAfter ?? err?.retryAfterSeconds ?? null;
+  }
+
+  if (retryAfterValue !== null && retryAfterValue !== undefined) {
+    const parsed = Number(retryAfterValue);
+    if (!isNaN(parsed)) {
+      return parsed * 1000;
+    }
+    const dateMs = Date.parse(retryAfterValue);
+    if (!isNaN(dateMs)) {
+      const waitMs = dateMs - Date.now();
+      return waitMs > 0 ? waitMs : 0;
+    }
+  }
+  return null;
 }
 
 function firstTextBlock(content) {
@@ -87,18 +135,53 @@ export class Agent {
   }
 
   async call(userPrompt) {
+    const startTime = Date.now();
     let lastErr;
-    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
-      if (attempt > 0) {
-        const backoff = BASE_DELAY_MS * 2 ** (attempt - 1) + Math.random() * 500;
-        console.warn(`  [retry ${attempt}/${MAX_RETRIES}] waiting ${Math.round(backoff)}ms...`);
-        await delay(backoff);
+    const maxRetries = process.env.TRIFORCE_MAX_RETRIES !== undefined
+      ? parseInt(process.env.TRIFORCE_MAX_RETRIES, 10)
+      : 3;
+    const backoffCap = process.env.TRIFORCE_BACKOFF_CAP_MS !== undefined
+      ? parseInt(process.env.TRIFORCE_BACKOFF_CAP_MS, 10)
+      : Infinity;
+
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      const elapsed = Date.now() - startTime;
+      if (elapsed >= PROVIDER_TIMEOUT_MS) {
+        throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
       }
+
+      if (attempt > 0) {
+        let waitMs = getRetryAfterMs(lastErr);
+        if (waitMs === null) {
+          waitMs = BASE_DELAY_MS * 2 ** (attempt - 1) + Math.random() * 500;
+          if (waitMs > backoffCap) {
+            waitMs = backoffCap;
+          }
+        }
+        
+        const remaining = PROVIDER_TIMEOUT_MS - (Date.now() - startTime);
+        if (remaining <= 0) {
+          throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
+        }
+        
+        const sleepTime = Math.min(waitMs, remaining);
+        console.warn(`  [retry ${attempt}/${maxRetries}] waiting ${Math.round(sleepTime)}ms...`);
+        await delay(sleepTime);
+        
+        if (Date.now() - startTime >= PROVIDER_TIMEOUT_MS) {
+          throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
+        }
+      }
+
       try {
+        const remainingTimeout = PROVIDER_TIMEOUT_MS - (Date.now() - startTime);
+        if (remainingTimeout <= 0) {
+          throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
+        }
         const providerCall = this._callProvider(userPrompt);
         return CLI_PROVIDERS.has(this.provider)
           ? await providerCall
-          : await withTimeout(providerCall, PROVIDER_TIMEOUT_MS);
+          : await withTimeout(providerCall, remainingTimeout);
       } catch (err) {
         if (isRetryableError(err)) {
           lastErr = err;
@@ -220,7 +303,17 @@ export class Agent {
 
       child.on('close', (code) => {
         if (code !== 0) {
-          finish(reject, new Error(`${label} CLI exited with code ${code}. Stderr: ${stderr}`));
+          const err = new Error(`${label} CLI exited with code ${code}. Stderr: ${stderr}`);
+          const lowerStderr = stderr.toLowerCase();
+          if (
+            lowerStderr.includes('rate limit') ||
+            lowerStderr.includes('429') ||
+            lowerStderr.includes('overloaded') ||
+            lowerStderr.includes('usage limit')
+          ) {
+            err.status = 429;
+          }
+          finish(reject, err);
         } else {
           finish(resolve, {
             text: stdout.trim(),
