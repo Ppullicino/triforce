@@ -3821,7 +3821,7 @@
       "label": "runArchitect()",
       "file_type": "code",
       "source_file": "orchestrator.js",
-      "source_location": "L33",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "orchestrator_runarchitect",
       "community": 0,
@@ -3832,7 +3832,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "orchestrator.js",
-      "source_location": "L49",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "orchestrator_main",
       "community": 0,
@@ -12229,7 +12229,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "orchestrator.js",
-      "source_location": "L49",
+      "source_location": "L48",
       "weight": 1.0,
       "source": "orchestrator",
       "target": "orchestrator_main",
@@ -12249,7 +12249,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "orchestrator.js",
-      "source_location": "L33",
+      "source_location": "L32",
       "weight": 1.0,
       "source": "orchestrator",
       "target": "orchestrator_runarchitect",
@@ -12359,7 +12359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "orchestrator.js",
-      "source_location": "L36",
+      "source_location": "L35",
       "weight": 1.0,
       "source": "orchestrator_runarchitect",
       "target": "usage_track"
@@ -12379,22 +12379,33 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "orchestrator.js",
-      "source_location": "L63",
+      "source_location": "L62",
       "weight": 1.0,
       "source": "orchestrator_main",
-      "target": "pipeline_executepipeline",
-      "confidence_score": 1.0
+      "target": "pipeline_executepipeline"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "orchestrator.js",
-      "source_location": "L106",
+      "source_location": "L101",
       "weight": 1.0,
       "source": "orchestrator_main",
-      "target": "usage_printsummary",
+      "target": "usage_printsummary"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "test_orchestrator_test",
+      "target": "orchestrator_main",
       "confidence_score": 1.0
     },
     {
@@ -15723,5 +15734,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "09450634a295e0fc0e123439965573f4c465b350"
+  "built_at_commit": "ef0fdb76614a22d528146d14672594c2dd0ab7ae"
 }

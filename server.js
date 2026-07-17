@@ -120,7 +120,7 @@ async function runPipeline(ws, task, config, mode = 1) {
       }
     );
   } catch (err) {
-    send({ type: 'error', stage: 'architect', message: err.message });
+    console.error(`Pipeline execution failed: ${err.message}`);
   }
 }
 

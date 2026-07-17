@@ -2,7 +2,7 @@
   "0": "orchestrator.js",
   "1": "dependencies",
   "2": "Agent",
-  "3": "MockSocket",
+  "3": "remote-client-e2e.test.js",
   "4": "Triforce — Running & Operations",
   "5": "index.js",
   "6": "manifest.json",
@@ -25,7 +25,7 @@
   "23": "package.json",
   "24": "compilerOptions",
   "25": "compilerOptions",
-  "26": "TriforceConnection",
+  "26": "workspace.js",
   "27": "Client Architecture and Development",
   "28": "tsconfig.json",
   "29": "eslint.config.js",
@@ -59,6 +59,6 @@
   "57": "CODEX_WORKER_PROMPT.md",
   "58": "usage.js",
   "59": ".call",
-  "60": "workspace.js",
+  "60": "usage.js",
   "61": "sandbox.js"
 }

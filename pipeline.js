@@ -455,5 +455,6 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     onEvent({ type: 'cost', records: costRecords, total });
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
     onEvent({ type: 'done', elapsed, passed: false });
+    throw err;
   }
 }

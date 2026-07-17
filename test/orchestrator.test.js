@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-import { runArchitect } from '../orchestrator.js';
+import { runArchitect, main } from '../orchestrator.js';
 import { executePipeline, parseVerdict, stripCodeFences } from '../pipeline.js';
 import { Agent } from '../agent.js';
 
@@ -245,5 +245,55 @@ test('executePipeline Mode 2 handles unparseable supervisor prompt check and emi
     assert.ok(parseWarningEvent, 'should emit a [Parse Warning] pty event');
   } finally {
     Agent.prototype.call = originalCall;
+  }
+});
+
+test('main() propagates Stage 2 failure and prints Stage 1 token usage summary', async () => {
+  const originalArgv = process.argv;
+  const originalCall = Agent.prototype.call;
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+  process.argv = ['node', 'orchestrator.js', 'some task', '--mode', '1'];
+  
+  const originalEnv = { ...process.env };
+  process.env.ANTHROPIC_API_KEY = 'stub';
+  process.env.GEMINI_API_KEY = 'stub';
+  process.env.OPENAI_API_KEY = 'stub';
+
+  let callCount = 0;
+  Agent.prototype.call = async function(prompt) {
+    callCount++;
+    if (callCount === 1) {
+      return { text: '1. do step', usage: { inputTokens: 55, outputTokens: 99 } };
+    }
+    throw new Error('Bad OpenAI API key');
+  };
+
+  const logs = [];
+  console.log = (...args) => {
+    logs.push(args.join(' '));
+  };
+  console.error = () => {};
+
+  try {
+    await assert.rejects(main(), /Bad OpenAI API key/);
+    
+    const summaryLogged = logs.some(line => line.includes('=== TOKEN USAGE ==='));
+    const architectLogged = logs.some(line => line.includes('architect') && line.includes('in=55') && line.includes('out=99'));
+    assert.ok(summaryLogged, 'should print token usage summary');
+    assert.ok(architectLogged, 'should print Stage 1 token usage spend');
+  } finally {
+    process.argv = originalArgv;
+    Agent.prototype.call = originalCall;
+    console.log = originalConsoleLog;
+    console.error = originalConsoleError;
+    // Restore process.env properties
+    for (const key of Object.keys(process.env)) {
+      if (!(key in originalEnv)) delete process.env[key];
+    }
+    for (const key of Object.keys(originalEnv)) {
+      process.env[key] = originalEnv[key];
+    }
   }
 });

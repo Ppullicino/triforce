@@ -24,8 +24,7 @@ function validateApiKeys(config) {
   for (const provider of needed) {
     const envVar = PROVIDER_ENV[provider];
     if (envVar && !process.env[envVar]) {
-      console.error(`ERROR: ${envVar} is not set (required for provider "${provider}")`);
-      process.exit(1);
+      throw new Error(`${envVar} is not set (required for provider "${provider}")`);
     }
   }
 }
@@ -46,20 +45,20 @@ export async function runArchitect(agent, task) {
  *        and compiled sandbox code, requesting revisions on failure (max 3 loops).
  * Mode 3 (Workspace Loop): Multi-file project workspace test loop.
  */
-async function main() {
+export async function main() {
   const startTime = Date.now();
-  const config = await loadConfig();
-  validateApiKeys(config);
-  const taskArgs = process.argv.slice(2).filter((arg, i, args) => arg !== '--mode' && args[i - 1] !== '--mode');
-  const TASK = taskArgs.join(' ').trim() || DEFAULT_TASK;
-
-  const modeArgIdx = process.argv.indexOf('--mode');
-  const mode = modeArgIdx !== -1 ? parseInt(process.argv[modeArgIdx + 1], 10) : 1;
-
-  console.log(`TRIFORCE PHASE 1 — Starting pipeline in MODE ${mode}...`);
-  console.log(`Task: ${TASK}`);
-
   try {
+    const config = await loadConfig();
+    validateApiKeys(config);
+    const taskArgs = process.argv.slice(2).filter((arg, i, args) => arg !== '--mode' && args[i - 1] !== '--mode');
+    const TASK = taskArgs.join(' ').trim() || DEFAULT_TASK;
+
+    const modeArgIdx = process.argv.indexOf('--mode');
+    const mode = modeArgIdx !== -1 ? parseInt(process.argv[modeArgIdx + 1], 10) : 1;
+
+    console.log(`TRIFORCE PHASE 1 — Starting pipeline in MODE ${mode}...`);
+    console.log(`Task: ${TASK}`);
+
     await executePipeline(
       TASK,
       config,
@@ -92,20 +91,23 @@ async function main() {
             break;
           case 'error':
             console.error(`\nERROR: ${event.message}`);
-            process.exit(1);
+            break;
         }
       }
     );
+
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
+    console.log(`\n=== TRIFORCE PHASE 1 COMPLETE === (${elapsed}s)`);
+    printSummary();
   } catch (err) {
     console.error(`\nPIPELINE FAILED: ${err.message}`);
-    process.exit(1);
+    printSummary();
+    throw err;
   }
-
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
-  console.log(`\n=== TRIFORCE PHASE 1 COMPLETE === (${elapsed}s)`);
-  printSummary();
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main();
+  main().catch(() => {
+    process.exit(1);
+  });
 }

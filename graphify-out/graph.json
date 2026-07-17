@@ -4,6 +4,83 @@
   "graph": {},
   "nodes": [
     {
+      "label": "orchestrator.js",
+      "file_type": "code",
+      "source_file": "orchestrator.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "orchestrator",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "orchestrator.js"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "orchestrator.js",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "orchestrator_dirname",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "PROVIDER_ENV",
+      "file_type": "code",
+      "source_file": "orchestrator.js",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "orchestrator_provider_env",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "provider_env"
+    },
+    {
+      "label": "loadConfig()",
+      "file_type": "code",
+      "source_file": "orchestrator.js",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "orchestrator_loadconfig",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "loadconfig()"
+    },
+    {
+      "label": "validateApiKeys()",
+      "file_type": "code",
+      "source_file": "orchestrator.js",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "orchestrator_validateapikeys",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "validateapikeys()"
+    },
+    {
+      "label": "runArchitect()",
+      "file_type": "code",
+      "source_file": "orchestrator.js",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "orchestrator_runarchitect",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "runarchitect()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "orchestrator.js",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "orchestrator_main",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "main()"
+    },
+    {
       "label": "pipeline.js",
       "file_type": "code",
       "source_file": "pipeline.js",
@@ -101,6 +178,204 @@
       "community": 0,
       "community_name": "orchestrator.js",
       "norm_label": "executepipeline()"
+    },
+    {
+      "label": "server.js",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "server",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "server.js"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "server_dirname",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "TRANSCRIPTS_DIR",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "server_transcripts_dir",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "transcripts_dir"
+    },
+    {
+      "label": "runRegistry",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "server_runregistry",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "runregistry"
+    },
+    {
+      "label": "NATIVE_CLIENT_ORIGINS",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "server_native_client_origins",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "native_client_origins"
+    },
+    {
+      "label": "ALLOWED_MODELS",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "server_allowed_models",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "allowed_models"
+    },
+    {
+      "label": "latestUsage",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "server_latestusage",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "latestusage"
+    },
+    {
+      "label": "runValidationPipeline()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "server_runvalidationpipeline",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "runvalidationpipeline()"
+    },
+    {
+      "label": "runPipeline()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "server_runpipeline",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "runpipeline()"
+    },
+    {
+      "label": "app",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L128",
+      "_origin": "ast",
+      "id": "server_app",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "app"
+    },
+    {
+      "label": "tokenMatches()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L146",
+      "_origin": "ast",
+      "id": "server_tokenmatches",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "tokenmatches()"
+    },
+    {
+      "label": "cookieToken()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L152",
+      "_origin": "ast",
+      "id": "server_cookietoken",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "cookietoken()"
+    },
+    {
+      "label": "bearerToken()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L156",
+      "_origin": "ast",
+      "id": "server_bearertoken",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "bearertoken()"
+    },
+    {
+      "label": "webSocketProtocolToken()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L161",
+      "_origin": "ast",
+      "id": "server_websocketprotocoltoken",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "websocketprotocoltoken()"
+    },
+    {
+      "label": "requestIsAuthorized()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L168",
+      "_origin": "ast",
+      "id": "server_requestisauthorized",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "requestisauthorized()"
+    },
+    {
+      "label": "setSessionCookie()",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L172",
+      "_origin": "ast",
+      "id": "server_setsessioncookie",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "setsessioncookie()"
+    },
+    {
+      "label": "httpServer",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L247",
+      "_origin": "ast",
+      "id": "server_httpserver",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "httpserver"
+    },
+    {
+      "label": "wss",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L248",
+      "_origin": "ast",
+      "id": "server_wss",
+      "community": 0,
+      "community_name": "orchestrator.js",
+      "norm_label": "wss"
     },
     {
       "label": "orchestrator.test.js",
@@ -2352,8 +2627,8 @@
       "source_file": "clients/shared/src/core/connection.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "MockSocket",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "connection.test.ts",
       "id": "clients_shared_src_core_connection_test"
     },
@@ -2363,8 +2638,8 @@
       "source_file": "clients/shared/src/core/connection.test.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "MockSocket",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "mocksocket",
       "id": "clients_shared_src_core_connection_test_mocksocket"
     },
@@ -2374,8 +2649,8 @@
       "source_file": "clients/shared/src/core/connection.test.ts",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "MockSocket",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".send()",
       "id": "clients_shared_src_core_connection_test_mocksocket_send"
     },
@@ -2385,8 +2660,8 @@
       "source_file": "clients/shared/src/core/connection.test.ts",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "MockSocket",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".close()",
       "id": "clients_shared_src_core_connection_test_mocksocket_close"
     },
@@ -2396,8 +2671,8 @@
       "source_file": "clients/shared/src/core/connection.test.ts",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "MockSocket",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".open()",
       "id": "clients_shared_src_core_connection_test_mocksocket_open"
     },
@@ -2407,8 +2682,8 @@
       "source_file": "clients/shared/src/core/connection.test.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "MockSocket",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".message()",
       "id": "clients_shared_src_core_connection_test_mocksocket_message"
     },
@@ -2462,8 +2737,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "socketlike",
       "id": "clients_shared_src_core_connection_socketlike"
     },
@@ -2473,8 +2748,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".send()",
       "id": "clients_shared_src_core_connection_socketlike_send"
     },
@@ -2484,8 +2759,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".close()",
       "id": "clients_shared_src_core_connection_socketlike_close"
     },
@@ -2495,8 +2770,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".addeventlistener()",
       "id": "clients_shared_src_core_connection_socketlike_addeventlistener"
     },
@@ -2517,8 +2792,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "triforceconnection",
       "id": "clients_shared_src_core_connection_triforceconnection"
     },
@@ -2528,8 +2803,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".constructor()",
       "id": "clients_shared_src_core_connection_triforceconnection_constructor"
     },
@@ -2539,8 +2814,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L44",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".onstate()",
       "id": "clients_shared_src_core_connection_triforceconnection_onstate"
     },
@@ -2550,8 +2825,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".onevent()",
       "id": "clients_shared_src_core_connection_triforceconnection_onevent"
     },
@@ -2561,8 +2836,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".connect()",
       "id": "clients_shared_src_core_connection_triforceconnection_connect"
     },
@@ -2572,8 +2847,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L72",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".disconnect()",
       "id": "clients_shared_src_core_connection_triforceconnection_disconnect"
     },
@@ -2594,8 +2869,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L84",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".opensocket()",
       "id": "clients_shared_src_core_connection_triforceconnection_opensocket"
     },
@@ -2605,8 +2880,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L99",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".handlemessage()",
       "id": "clients_shared_src_core_connection_triforceconnection_handlemessage"
     },
@@ -2616,8 +2891,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L115",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".handleclose()",
       "id": "clients_shared_src_core_connection_triforceconnection_handleclose"
     },
@@ -2627,8 +2902,8 @@
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L123",
       "_origin": "ast",
-      "community": 26,
-      "community_name": "TriforceConnection",
+      "community": 42,
+      "community_name": "files",
       "norm_label": ".transition()",
       "id": "clients_shared_src_core_connection_triforceconnection_transition"
     },
@@ -2782,7 +3057,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": ".get()",
       "id": "clients_shared_src_core_hosts_credentialstorage_get"
     },
@@ -2958,7 +3233,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": ".token()",
       "id": "clients_shared_src_core_hosts_hostrepository_token"
     },
@@ -3904,83 +4179,6 @@
       "community_name": "install-service.sh",
       "norm_label": "install-service.sh script",
       "id": "install_service_sh__entry"
-    },
-    {
-      "label": "orchestrator.js",
-      "file_type": "code",
-      "source_file": "orchestrator.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
-      "norm_label": "orchestrator.js",
-      "id": "orchestrator"
-    },
-    {
-      "label": "__dirname",
-      "file_type": "code",
-      "source_file": "orchestrator.js",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
-      "norm_label": "__dirname",
-      "id": "orchestrator_dirname"
-    },
-    {
-      "label": "PROVIDER_ENV",
-      "file_type": "code",
-      "source_file": "orchestrator.js",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
-      "norm_label": "provider_env",
-      "id": "orchestrator_provider_env"
-    },
-    {
-      "label": "loadConfig()",
-      "file_type": "code",
-      "source_file": "orchestrator.js",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
-      "norm_label": "loadconfig()",
-      "id": "orchestrator_loadconfig"
-    },
-    {
-      "label": "validateApiKeys()",
-      "file_type": "code",
-      "source_file": "orchestrator.js",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
-      "norm_label": "validateapikeys()",
-      "id": "orchestrator_validateapikeys"
-    },
-    {
-      "label": "runArchitect()",
-      "file_type": "code",
-      "source_file": "orchestrator.js",
-      "source_location": "L33",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
-      "norm_label": "runarchitect()",
-      "id": "orchestrator_runarchitect"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "orchestrator.js",
-      "source_location": "L49",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
-      "norm_label": "main()",
-      "id": "orchestrator_main"
     },
     {
       "label": "package.json",
@@ -5754,204 +5952,6 @@
       "id": "scripts_sync_version_textfiles"
     },
     {
-      "label": "server.js",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "server.js",
-      "id": "server"
-    },
-    {
-      "label": "__dirname",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L14",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "__dirname",
-      "id": "server_dirname"
-    },
-    {
-      "label": "TRANSCRIPTS_DIR",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L15",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "transcripts_dir",
-      "id": "server_transcripts_dir"
-    },
-    {
-      "label": "runRegistry",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L20",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "runregistry",
-      "id": "server_runregistry"
-    },
-    {
-      "label": "NATIVE_CLIENT_ORIGINS",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L21",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "native_client_origins",
-      "id": "server_native_client_origins"
-    },
-    {
-      "label": "ALLOWED_MODELS",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L29",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "allowed_models",
-      "id": "server_allowed_models"
-    },
-    {
-      "label": "latestUsage",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L38",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "latestusage",
-      "id": "server_latestusage"
-    },
-    {
-      "label": "runValidationPipeline()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L44",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "runvalidationpipeline()",
-      "id": "server_runvalidationpipeline"
-    },
-    {
-      "label": "runPipeline()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L63",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "runpipeline()",
-      "id": "server_runpipeline"
-    },
-    {
-      "label": "app",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L128",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "app",
-      "id": "server_app"
-    },
-    {
-      "label": "tokenMatches()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L146",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "tokenmatches()",
-      "id": "server_tokenmatches"
-    },
-    {
-      "label": "cookieToken()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L152",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "cookietoken()",
-      "id": "server_cookietoken"
-    },
-    {
-      "label": "bearerToken()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L156",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "bearertoken()",
-      "id": "server_bearertoken"
-    },
-    {
-      "label": "webSocketProtocolToken()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L161",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "websocketprotocoltoken()",
-      "id": "server_websocketprotocoltoken"
-    },
-    {
-      "label": "requestIsAuthorized()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L168",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "requestisauthorized()",
-      "id": "server_requestisauthorized"
-    },
-    {
-      "label": "setSessionCookie()",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L172",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "setsessioncookie()",
-      "id": "server_setsessioncookie"
-    },
-    {
-      "label": "httpServer",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L247",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "httpserver",
-      "id": "server_httpserver"
-    },
-    {
-      "label": "wss",
-      "file_type": "code",
-      "source_file": "server.js",
-      "source_location": "L248",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "files",
-      "norm_label": "wss",
-      "id": "server_wss"
-    },
-    {
       "label": "agent.test.js",
       "file_type": "code",
       "source_file": "test/agent.test.js",
@@ -6024,7 +6024,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": "remote-client-e2e.test.js",
       "id": "test_remote_client_e2e_test"
     },
@@ -6035,7 +6035,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": "nativeorigins",
       "id": "test_remote_client_e2e_test_nativeorigins"
     },
@@ -6046,7 +6046,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": "config",
       "id": "test_remote_client_e2e_test_config"
     },
@@ -6057,7 +6057,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": "startserver()",
       "id": "test_remote_client_e2e_test_startserver"
     },
@@ -6068,7 +6068,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": "nativesocket()",
       "id": "test_remote_client_e2e_test_nativesocket"
     },
@@ -6078,8 +6078,8 @@
       "source_file": "test/remote-client-e2e.test.js",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "MockSocket",
+      "community": 42,
+      "community_name": "files",
       "norm_label": "messages()",
       "id": "test_remote_client_e2e_test_messages"
     },
@@ -6123,7 +6123,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": "server-protocol.test.js",
       "id": "test_server_protocol_test"
     },
@@ -6134,7 +6134,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "community": 3,
-      "community_name": "MockSocket",
+      "community_name": "remote-client-e2e.test.js",
       "norm_label": "startserver()",
       "id": "test_server_protocol_test_startserver"
     },
@@ -6144,7 +6144,7 @@
       "source_file": "test/workspace.test.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 60,
+      "community": 26,
       "community_name": "workspace.js",
       "norm_label": "workspace.test.js",
       "id": "test_workspace_test"
@@ -6155,8 +6155,8 @@
       "source_file": "usage.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
+      "community": 60,
+      "community_name": "usage.js",
       "norm_label": "usage.js",
       "id": "usage"
     },
@@ -6166,8 +6166,8 @@
       "source_file": "usage.js",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
+      "community": 60,
+      "community_name": "usage.js",
       "norm_label": "rates",
       "id": "usage_rates"
     },
@@ -6177,8 +6177,8 @@
       "source_file": "usage.js",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
+      "community": 60,
+      "community_name": "usage.js",
       "norm_label": "records",
       "id": "usage_records"
     },
@@ -6188,8 +6188,8 @@
       "source_file": "usage.js",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
+      "community": 60,
+      "community_name": "usage.js",
       "norm_label": "track()",
       "id": "usage_track"
     },
@@ -6199,8 +6199,8 @@
       "source_file": "usage.js",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "orchestrator.js",
+      "community": 60,
+      "community_name": "usage.js",
       "norm_label": "printsummary()",
       "id": "usage_printsummary"
     },
@@ -6210,7 +6210,7 @@
       "source_file": "workspace.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 60,
+      "community": 26,
       "community_name": "workspace.js",
       "norm_label": "workspace.js",
       "id": "workspace"
@@ -6221,7 +6221,7 @@
       "source_file": "workspace.js",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 60,
+      "community": 26,
       "community_name": "workspace.js",
       "norm_label": "safepath()",
       "id": "workspace_safepath"
@@ -6232,7 +6232,7 @@
       "source_file": "workspace.js",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 60,
+      "community": 26,
       "community_name": "workspace.js",
       "norm_label": "parseworkspacemanifest()",
       "id": "workspace_parseworkspacemanifest"
@@ -6243,7 +6243,7 @@
       "source_file": "workspace.js",
       "source_location": "L44",
       "_origin": "ast",
-      "community": 60,
+      "community": 26,
       "community_name": "workspace.js",
       "norm_label": "createworkspace()",
       "id": "workspace_createworkspace"
@@ -6254,7 +6254,7 @@
       "source_file": "workspace.js",
       "source_location": "L64",
       "_origin": "ast",
-      "community": 60,
+      "community": 26,
       "community_name": "workspace.js",
       "norm_label": "runworkspacetest()",
       "id": "workspace_runworkspacetest"
@@ -7318,15 +7318,152 @@
   ],
   "links": [
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "orchestrator_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "orchestrator_loadconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "orchestrator_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "orchestrator_provider_env",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "orchestrator_runarchitect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "orchestrator_validateapikeys",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "orchestrator.js",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator",
-      "target": "pipeline"
+      "target": "pipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "orchestrator",
+      "target": "pipeline_executepipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "test_orchestrator_test",
+      "target": "orchestrator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "orchestrator_main",
+      "target": "orchestrator_loadconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "orchestrator.js",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "orchestrator_main",
+      "target": "orchestrator_validateapikeys",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "test_orchestrator_test",
+      "target": "orchestrator_runarchitect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "orchestrator.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "orchestrator_main",
+      "target": "pipeline_executepipeline"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "test_orchestrator_test",
+      "target": "orchestrator_main",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7415,9 +7552,9 @@
       "source_file": "server.js",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "server",
-      "target": "pipeline"
+      "target": "pipeline",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7478,34 +7615,12 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "pipeline_executepipeline"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L63",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator_main",
-      "target": "pipeline_executepipeline"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "server.js",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "server",
-      "target": "pipeline_executepipeline"
+      "target": "pipeline_executepipeline",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -7514,9 +7629,9 @@
       "source_file": "server.js",
       "source_location": "L77",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "server_runpipeline",
-      "target": "pipeline_executepipeline"
+      "target": "pipeline_executepipeline",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -7527,6 +7642,220 @@
       "weight": 1.0,
       "source": "test_orchestrator_test",
       "target": "pipeline_executepipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_allowed_models",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_bearertoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_cookietoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L247",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_httpserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_latestusage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_native_client_origins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_requestisauthorized",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_runpipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_runregistry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_runvalidationpipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L172",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_setsessioncookie",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_tokenmatches",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_transcripts_dir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L161",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_websocketprotocoltoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L248",
+      "weight": 1.0,
+      "source": "server",
+      "target": "server_wss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "server_runpipeline",
+      "target": "server_allowed_models"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "server_requestisauthorized",
+      "target": "server_tokenmatches",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "server_requestisauthorized",
+      "target": "server_cookietoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "server_requestisauthorized",
+      "target": "server_bearertoken",
       "confidence_score": 1.0
     },
     {
@@ -12385,143 +12714,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "orchestrator_dirname"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "orchestrator_loadconfig"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "orchestrator_main"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "orchestrator_provider_env"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "orchestrator_runarchitect"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "orchestrator_validateapikeys"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "usage"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "usage_printsummary"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator",
-      "target": "usage_track"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L51",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator_main",
-      "target": "orchestrator_loadconfig"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L52",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator_main",
-      "target": "orchestrator_validateapikeys"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "orchestrator.js",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "orchestrator_runarchitect",
-      "target": "usage_track"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "orchestrator.js",
-      "source_location": "L106",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "orchestrator_main",
-      "target": "usage_printsummary"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "package.json",
       "source_location": "L12",
       "weight": 1.0,
@@ -13591,17 +13783,6 @@
       "target": "packages_protocol_src_index"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "packages_protocol_src_index"
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -13610,17 +13791,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "packages_protocol_test_protocol_test",
-      "target": "packages_protocol_src_index_validateclientcommand"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
       "target": "packages_protocol_src_index_validateclientcommand"
     },
     {
@@ -13644,28 +13814,6 @@
       "confidence_score": 1.0,
       "source": "packages_protocol_test_protocol_test",
       "target": "packages_protocol_src_index_iscompatibleprotocol"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "packages_protocol_src_index_iscompatibleprotocol"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "packages_protocol_src_index_capabilities"
     },
     {
       "relation": "contains",
@@ -13932,17 +14080,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "run_registry"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "test/run-registry.test.js",
       "source_location": "L3",
       "weight": 1.0,
@@ -14059,17 +14196,6 @@
       "confidence_score": 1.0,
       "source": "run_registry_runregistry",
       "target": "run_registry_runregistry_subscribe"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "run_registry_runregistry"
     },
     {
       "relation": "imports",
@@ -14281,220 +14407,6 @@
       "confidence_score": 1.0,
       "source": "scripts_sync_version",
       "target": "scripts_sync_version_write"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_allowed_models"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L128",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_app"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L156",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_bearertoken"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L152",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_cookietoken"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_dirname"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L247",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_httpserver"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L38",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_latestusage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_native_client_origins"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L168",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_requestisauthorized"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L63",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_runpipeline"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_runregistry"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L44",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_runvalidationpipeline"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L172",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_setsessioncookie"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L146",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_tokenmatches"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_transcripts_dir"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L161",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_websocketprotocoltoken"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L248",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server",
-      "target": "server_wss"
-    },
-    {
-      "relation": "references",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server.js",
-      "source_location": "L69",
-      "weight": 1.0,
-      "source": "server_runpipeline",
-      "target": "server_allowed_models"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L169",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_requestisauthorized",
-      "target": "server_tokenmatches"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L169",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_requestisauthorized",
-      "target": "server_cookietoken"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "server.js",
-      "source_location": "L169",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "server_requestisauthorized",
-      "target": "server_bearertoken"
     },
     {
       "relation": "contains",
@@ -15503,5 +15415,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8a7cfdc760eb732f6776eb00010efe7c18b5ab8a"
+  "built_at_commit": "3deec41dea3cb8bc4d2b7dbc0c146c91a67b9b88"
 }
