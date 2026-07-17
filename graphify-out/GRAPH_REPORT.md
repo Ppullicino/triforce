@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-17)
 
 ## Corpus Check
-- 88 files · ~43,246 words
+- 88 files · ~44,016 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 663 nodes · 805 edges · 60 communities (47 shown, 13 thin omitted)
+- 664 nodes · 789 edges · 62 communities (48 shown, 14 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6ab95b7a`
+- Built from commit: `8a7cfdc7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,7 +18,7 @@
 - orchestrator.js
 - dependencies
 - Agent
-- package.json
+- MockSocket
 - Triforce — Running & Operations
 - manifest.json
 - gen-icons.mjs
@@ -40,7 +40,7 @@
 - package.json
 - compilerOptions
 - compilerOptions
-- index.ts
+- TriforceConnection
 - Client Architecture and Development
 - tsconfig.json
 - index.d.ts
@@ -61,39 +61,41 @@
 - Triforce Remote Operations Guide
 - 0.1.0-rc.1 Validation Record
 - usage.js
+- workspace.js
+- sandbox.js
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
-2. `Agent` - 16 edges
-3. `files` - 16 edges
-4. `Triforce Cross-Platform Client Plan` - 15 edges
+2. `files` - 16 edges
+3. `Triforce Cross-Platform Client Plan` - 15 edges
+4. `Agent` - 14 edges
 5. `RunRegistry` - 14 edges
 6. `TriforceConnection` - 13 edges
-7. `executePipeline()` - 13 edges
-8. `scripts` - 12 edges
-9. `compilerOptions` - 12 edges
-10. `CredentialVault` - 9 edges
+7. `scripts` - 12 edges
+8. `compilerOptions` - 12 edges
+9. `CredentialVault` - 9 edges
+10. `executePipeline()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `runPipeline()` --calls--> `executePipeline()`  [EXTRACTED]
   server.js → pipeline.js
+- `main()` --calls--> `executePipeline()`  [EXTRACTED]
+  orchestrator.js → pipeline.js
 - `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
   cli.js → cli-input.js
 - `runArchitect()` --calls--> `track()`  [EXTRACTED]
   orchestrator.js → usage.js
-- `main()` --calls--> `executePipeline()`  [EXTRACTED]
-  orchestrator.js → pipeline.js
 - `main()` --calls--> `printSummary()`  [EXTRACTED]
   orchestrator.js → usage.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (60 total, 13 thin omitted)
+## Communities (62 total, 14 thin omitted)
 
 ### Community 0 - "orchestrator.js"
-Cohesion: 0.12
-Nodes (23): __dirname, loadConfig(), main(), PROVIDER_ENV, runArchitect(), validateApiKeys(), __dirname, executePipeline() (+15 more)
+Cohesion: 0.13
+Nodes (19): __dirname, loadConfig(), main(), PROVIDER_ENV, runArchitect(), validateApiKeys(), __dirname, executePipeline() (+11 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.11
@@ -103,7 +105,7 @@ Nodes (12): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault,
 Cohesion: 0.17
 Nodes (10): Agent, CLI_PROVIDERS, delay(), firstTextBlock(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), resolveBinPath() (+2 more)
 
-### Community 3 - "package.json"
+### Community 3 - "MockSocket"
 Cohesion: 0.12
 Nodes (6): MockSocket, config, messages(), nativeOrigins, startServer(), startServer()
 
@@ -223,25 +225,29 @@ Nodes (5): 0.1.0-rc.1 Validation Record, Compatibility matrix, Functional and fa
 Cohesion: 0.13
 Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
 
+### Community 60 - "workspace.js"
+Cohesion: 0.60
+Nodes (4): createWorkspace(), parseWorkspaceManifest(), runWorkspaceTest(), safePath()
+
 ## Knowledge Gaps
-- **312 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+307 more)
+- **312 isolated node(s):** `__dirname`, `SYSTEM_PROMPTS`, `SYSTEM_PROMPTS_MODE2`, `SYSTEM_PROMPTS_WORKSPACE`, `RATES` (+307 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `promptLoop()` connect `cli.js` to `package.json`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `TriforceConnection` connect `index.ts` to `files`, `server-protocol.test.js`, `package.json`, `files`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
+- **Why does `promptLoop()` connect `cli.js` to `MockSocket`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `TriforceConnection` connect `TriforceConnection` to `files`, `server-protocol.test.js`, `MockSocket`, `files`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **What connects `__dirname`, `SYSTEM_PROMPTS`, `SYSTEM_PROMPTS_MODE2` to the rest of the system?**
   _312 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `orchestrator.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.11895161290322581 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13043478260869565 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
-- **Should `package.json` be split into smaller, more focused modules?**
+- **Should `MockSocket` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `cli-input.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._

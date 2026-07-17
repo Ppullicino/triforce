@@ -44,10 +44,61 @@ export const RATES = {
 };
 
 export function stripCodeFences(text) {
-  return text
-    .replace(/^```(?:javascript|js)?\n?/gm, '')
-    .replace(/^```\n?/gm, '')
-    .trim();
+  if (typeof text !== 'string') return '';
+  let cleaned = text.trim();
+  
+  const leadingFence = /^\s*```(?:javascript|js|json)?\s*\n/i;
+  const leadingMatch = cleaned.match(leadingFence);
+  if (leadingMatch) {
+    cleaned = cleaned.substring(leadingMatch[0].length);
+  }
+  
+  const trailingFence = /\n\s*```\s*$/;
+  const trailingMatch = cleaned.match(trailingFence);
+  if (trailingMatch) {
+    cleaned = cleaned.substring(0, cleaned.length - trailingMatch[0].length);
+  }
+  
+  if (cleaned.startsWith('```') && cleaned.endsWith('```')) {
+    cleaned = cleaned.slice(3, -3).trim();
+  }
+
+  return cleaned.trim();
+}
+
+export function parseVerdict(text, allowedSet) {
+  if (typeof text !== 'string') {
+    return { verdict: null, feedback: '', parsed: false };
+  }
+
+  const verdictRegex = /(?:[\[\*_]+VERDICT[\]\*_]+\s*(?::|=|\bis\b)?\s*[\[\*_]*([a-zA-Z]+)[\]\*_]*|[\[\*_]*VERDICT[\]\*_]*\s*(?::|=|\bis\b)\s*[\[\*_]*([a-zA-Z]+)[\]\*_]*)/i;
+  const match = text.match(verdictRegex);
+  if (!match) {
+    return { verdict: null, feedback: '', parsed: false };
+  }
+
+  const verdict = (match[1] || match[2]).toUpperCase();
+  
+  if (allowedSet && !allowedSet.has(verdict)) {
+    return { verdict: null, feedback: '', parsed: false };
+  }
+
+  const feedbackRegex = /(?:[\[\*_]*FEEDBACK[\]\*_]*\s*(?::|=|\bis\b)?\s*([\s\S]*))/i;
+  const feedbackMatch = text.match(feedbackRegex);
+  
+  let feedback = '';
+  if (feedbackMatch) {
+    feedback = feedbackMatch[1].trim();
+    if (feedback.startsWith('**') && feedback.endsWith('**')) {
+      feedback = feedback.slice(2, -2).trim();
+    } else if (feedback.startsWith('*') && feedback.endsWith('*')) {
+      feedback = feedback.slice(1, -1).trim();
+    } else if (feedback.startsWith('[') && feedback.endsWith(']')) {
+      feedback = feedback.slice(1, -1).trim();
+    }
+  }
+
+  return { verdict, feedback, parsed: true };
 }
 
 export async function executePipeline(task, config, mode = 1, options = {}, onEvent = () => {}) {
@@ -151,14 +202,20 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         runLog.reviewer += `\n--- ITERATION ${iteration} ---\n${review}\n`;
         onEvent({ type: 'output', role: 'reviewer', text: review, iteration });
         await logTranscript('reviewer', runHeader + runLog.reviewer);
-        approved = /VERDICT:\s*PASS/i.test(review) && result.exitCode === 0 && !result.timedOut;
+        const allowedVerdicts = new Set(['PASS', 'FAIL']);
+        const parsedResult = parseVerdict(review, allowedVerdicts);
+        if (!parsedResult.parsed) {
+          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] Failed to parse workspace review verdict: "${review}"\x1b[0m\r\n` });
+          await logTranscript('reviewer', `\n[PARSE FAILURE] Failed to parse verdict from workspace review:\n${review}\n`);
+        }
+        approved = parsedResult.verdict === 'PASS' && result.exitCode === 0 && !result.timedOut;
         if (approved) {
           pipelinePassed = true;
           completedWorkspaceDir = workspace.directory;
           onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[PASS] Project preserved at ${workspace.directory}\x1b[0m\r\n` });
         } else {
           pipelinePassed = false;
-          const feedback = review.match(/FEEDBACK:\s*([\s\S]+)/i)?.[1]?.trim() || summary;
+          const feedback = parsedResult.feedback || summary;
           coderPrompt = `TASK:\n${task}\n\nARCHITECTURE PLAN:\n${plan}\n\nPREVIOUS ATTEMPT RESULTS:\n${summary}\n\nREVIEWER FEEDBACK:\n${feedback}\n\nReturn a complete corrected workspace JSON manifest.`;
         }
       }
@@ -203,14 +260,18 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         await logTranscript('reviewer', runHeader + iterHeader + '[Prompt Check]\n' + supervisorResult + '\n');
 
         // Parse verdict
-        const verdictMatch = supervisorResult.match(/VERDICT:\s*(\w+)/i);
-        const verdict = verdictMatch ? verdictMatch[1].toUpperCase() : 'FIX';
+        const allowedVerdicts = new Set(['GREENLIGHT', 'FIX']);
+        const parsedResult = parseVerdict(supervisorResult, allowedVerdicts);
+        if (!parsedResult.parsed) {
+          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] Failed to parse supervisor prompt verdict: "${supervisorResult}"\x1b[0m\r\n` });
+          await logTranscript('reviewer', `\n[PARSE FAILURE] Failed to parse verdict from supervisor prompt review:\n${supervisorResult}\n`);
+        }
+        const verdict = parsedResult.verdict || 'FIX';
         if (verdict === 'GREENLIGHT') {
           specApproved = true;
           onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[GREENLIGHT] Specification approved by Supervisor.\x1b[0m\r\n` });
         } else {
-          const feedbackMatch = supervisorResult.match(/FEEDBACK:\s*([\s\S]+)/i);
-          const feedback = feedbackMatch ? feedbackMatch[1].trim() : 'Please refine the specification.';
+          const feedback = parsedResult.feedback || 'Please refine the specification.';
           onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[FIX] Supervisor requested refinement.\x1b[0m\r\n` });
           
           // Update Prompt Designer's next prompt with feedback
@@ -281,15 +342,19 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         await logTranscript('reviewer', runHeader + iterHeader + '[Code Check]\n' + supervisorResult + '\n');
 
         // Parse verdict
-        const verdictMatch = supervisorResult.match(/VERDICT:\s*(\w+)/i);
-        const verdict = verdictMatch ? verdictMatch[1].toUpperCase() : 'FAIL';
+        const allowedVerdicts = new Set(['PASS', 'FAIL']);
+        const parsedResult = parseVerdict(supervisorResult, allowedVerdicts);
+        if (!parsedResult.parsed) {
+          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] Failed to parse supervisor code verdict: "${supervisorResult}"\x1b[0m\r\n` });
+          await logTranscript('reviewer', `\n[PARSE FAILURE] Failed to parse verdict from supervisor code review:\n${supervisorResult}\n`);
+        }
+        const verdict = parsedResult.verdict || 'FAIL';
         if (verdict === 'PASS' && sandboxResult.exitCode === 0 && !sandboxResult.timedOut) {
           codeApproved = true;
           onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[PASS] Code approved by Supervisor.\x1b[0m\r\n` });
         } else {
           pipelinePassed = false;
-          const feedbackMatch = supervisorResult.match(/FEEDBACK:\s*([\s\S]+)/i);
-          const feedback = feedbackMatch ? feedbackMatch[1].trim() : 'Please fix the code.';
+          const feedback = parsedResult.feedback || 'Please fix the code.';
           onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[FAIL] Supervisor flagged code issues.\x1b[0m\r\n` });
 
           // Update Coder's prompt with feedback and sandbox results

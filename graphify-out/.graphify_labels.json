@@ -2,7 +2,7 @@
   "0": "orchestrator.js",
   "1": "dependencies",
   "2": "Agent",
-  "3": "package.json",
+  "3": "MockSocket",
   "4": "Triforce — Running & Operations",
   "5": "index.js",
   "6": "manifest.json",
@@ -25,7 +25,7 @@
   "23": "package.json",
   "24": "compilerOptions",
   "25": "compilerOptions",
-  "26": "index.ts",
+  "26": "TriforceConnection",
   "27": "Client Architecture and Development",
   "28": "tsconfig.json",
   "29": "eslint.config.js",
@@ -58,5 +58,7 @@
   "56": "0.1.0-rc.1 Validation Record",
   "57": "CODEX_WORKER_PROMPT.md",
   "58": "usage.js",
-  "59": ".call"
+  "59": ".call",
+  "60": "workspace.js",
+  "61": "sandbox.js"
 }
