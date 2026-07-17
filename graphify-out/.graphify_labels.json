@@ -25,7 +25,6 @@
   "23": "package.json",
   "24": "compilerOptions",
   "25": "compilerOptions",
-  "26": "workspace.js",
   "27": "Client Architecture and Development",
   "28": "tsconfig.json",
   "29": "eslint.config.js",
@@ -58,7 +57,5 @@
   "56": "0.1.0-rc.1 Validation Record",
   "57": "CODEX_WORKER_PROMPT.md",
   "58": "usage.js",
-  "59": ".call",
-  "60": "usage.js",
-  "61": "sandbox.js"
+  "59": ".call"
 }

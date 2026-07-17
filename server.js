@@ -304,4 +304,9 @@ wss.on('connection', (ws) => {
 });
 
 const PORT = process.env.PORT || 3000;
-httpServer.listen(PORT, () => console.log(`Triforce server running on http://localhost:${PORT}`));
+runRegistry.load().then(() => {
+  httpServer.listen(PORT, () => console.log(`Triforce server running on http://localhost:${PORT}`));
+}).catch(err => {
+  console.error('Failed to load RunRegistry state:', err);
+  process.exit(1);
+});

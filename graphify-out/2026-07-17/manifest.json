@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784282423.584578,
-    "ast_hash": "0ba7829f9bdf425693b37faece71e98f",
+    "mtime": 1784282662.7946503,
+    "ast_hash": "507462a2a0cca1132ee8228462288f47",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -285,13 +285,13 @@
     "semantic_hash": ""
   },
   "run-registry.js": {
-    "mtime": 1784139250.414791,
-    "ast_hash": "3fdf6b52d9d3ab46c3b2621387dd1b08",
+    "mtime": 1784282659.1407228,
+    "ast_hash": "0086d6b3d2d2b6f7b505016e4a041de7",
     "semantic_hash": ""
   },
   "test/run-registry.test.js": {
-    "mtime": 1784139203.0956147,
-    "ast_hash": "fd3b24b3a549dd6d6585b9a42d8748b0",
+    "mtime": 1784282690.4761033,
+    "ast_hash": "68a430aa206a3b2c95fa89024f494f20",
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
