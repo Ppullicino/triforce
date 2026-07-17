@@ -14,7 +14,7 @@ Generated: 2026-07-17 by Lead Architect pass (graphify-oriented scan of orchestr
 ---
 
 ### [CORE-001]
-- [Status]: PENDING
+- [Status]: COMPLETED
 - [Dependency]: NONE
 - [Objective]: Fix the Mode 1 CLI crash in `orchestrator.js`. `runArchitect()` (line ~57) references `TASK`, but `TASK` is a `const` local to `main()` (line ~109). Running `node orchestrator.js` in Mode 1 throws `ReferenceError: TASK is not defined` at Stage 1. Refactor `runArchitect(agent, task)` to accept the task as a parameter and pass it from `main()`.
 - [Identified Pitfalls]: Do not "fix" it by hoisting TASK to module scope — argv parsing must stay inside main(). Mode 2 does not call runArchitect, so a Mode 2 smoke test will NOT catch a regression here; test Mode 1 explicitly.
@@ -132,4 +132,4 @@ Rules for workers:
 
 ## EXECUTION LOG
 
-(no entries yet)
+- 2026-07-17 — CORE-001: Updated `runArchitect(agent, task)` and its Mode 1 caller so CLI task parsing remains local to `main()`; made the helper importable without executing the CLI and added `test/orchestrator.test.js` with a stub Agent asserting the Stage 1 task handoff. Evidence: `node --test test/orchestrator.test.js` (1/1 passed); `npm run test:server` (31/31 passed). Deviations: none.

@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { readFile } from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
 import { Agent } from './agent.js';
 import { track, printSummary } from './usage.js';
 import { runSandboxed } from './sandbox.js';
@@ -52,9 +53,9 @@ function validateApiKeys(config) {
   }
 }
 
-async function runArchitect(agent) {
+export async function runArchitect(agent, task) {
   console.log(`\n=== STAGE 1: CLAUDE CODE (${agent.provider}/${agent.model}) ===`);
-  const { text, usage } = await agent.call(TASK);
+  const { text, usage } = await agent.call(task);
   track('architect', agent.model, usage);
   console.log(text);
   return text;
@@ -271,7 +272,7 @@ async function main() {
 
     let plan;
     try {
-      plan = await runArchitect(agents.architect);
+      plan = await runArchitect(agents.architect, TASK);
     } catch (err) {
       console.error(`\nSTAGE 1 FAILED: ${err.message}`);
       process.exit(1);
@@ -325,4 +326,6 @@ async function main() {
   printSummary();
 }
 
-main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main();
+}
