@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-17)
 
 ## Corpus Check
-- 89 files · ~47,389 words
+- 89 files · ~48,134 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 680 nodes · 856 edges · 60 communities (47 shown, 13 thin omitted)
+- 683 nodes · 865 edges · 60 communities (47 shown, 13 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.73)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `46a5f1c8`
+- Built from commit: `1ddf5715`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -65,9 +65,9 @@
 ## God Nodes (most connected - your core abstractions)
 1. `RunRegistry` - 19 edges
 2. `compilerOptions` - 17 edges
-3. `Agent` - 16 edges
-4. `files` - 16 edges
-5. `executePipeline()` - 16 edges
+3. `executePipeline()` - 17 edges
+4. `Agent` - 16 edges
+5. `files` - 16 edges
 6. `Triforce Cross-Platform Client Plan` - 15 edges
 7. `TriforceConnection` - 13 edges
 8. `scripts` - 12 edges
@@ -93,7 +93,7 @@
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.10
-Nodes (34): ALLOWED_MODELS, checkConfigForWarnings(), getRates(), hasRates(), RATES, warnedModels, __dirname, loadConfig() (+26 more)
+Nodes (37): ALLOWED_MODELS, checkConfigForWarnings(), getRates(), hasRates(), RATES, warnedModels, __dirname, loadConfig() (+29 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.11
@@ -238,7 +238,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
   _313 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `orchestrator.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.10465116279069768 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09805735430157261 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
 - **Should `remote-client-e2e.test.js` be split into smaller, more focused modules?**

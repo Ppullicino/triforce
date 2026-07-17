@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, readdir, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest } from '../workspace.js';
+import { createWorkspace, gcWorkspaces, parseWorkspaceManifest, runWorkspaceTest } from '../workspace.js';
 
 test('parses and materializes a multi-file workspace', async () => {
   const root = await mkdtemp(join(tmpdir(), 'triforce-workspaces-test-'));
@@ -113,6 +113,88 @@ test('runWorkspaceTest aborts immediately on signal abort', async () => {
     });
   } finally {
     await rm(root, { recursive: true, force: true });
+  }
+});
+
+function fakeWorkspaceName(index) {
+  const timestamp = new Date(Date.UTC(2026, 0, 1, 0, index, 0)).toISOString().replaceAll(':', '-');
+  return `${timestamp}-${index.toString(16).padStart(10, '0')}`;
+}
+
+async function makeFakeWorkspaces(root, count) {
+  const names = [];
+  for (let i = 0; i < count; i++) {
+    const name = fakeWorkspaceName(i);
+    await mkdir(join(root, name), { recursive: true });
+    await writeFile(join(root, name, 'app.js'), `// workspace ${i}\n`);
+    names.push(name);
+  }
+  return names; // oldest first
+}
+
+test('gcWorkspaces keeps the newest N and skips foreign directory names', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'triforce-workspaces-gc-'));
+  try {
+    const names = await makeFakeWorkspaces(root, 25);
+    await mkdir(join(root, 'my-manual-dir'));
+    const { removed, kept } = await gcWorkspaces(root, { keep: 20 });
+    assert.equal(removed.length, 5);
+    assert.deepEqual(removed.sort(), names.slice(0, 5).sort());
+    assert.equal(kept.length, 20);
+    const remaining = await readdir(root);
+    assert.ok(remaining.includes('my-manual-dir'));
+    for (const name of names.slice(5)) assert.ok(remaining.includes(name));
+    for (const name of names.slice(0, 5)) assert.ok(!remaining.includes(name));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('gcWorkspaces never deletes the protected just-completed workspace regardless of age', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'triforce-workspaces-gc-protect-'));
+  try {
+    const names = await makeFakeWorkspaces(root, 25);
+    const oldest = join(root, names[0]);
+    const { removed } = await gcWorkspaces(root, { keep: 20, protect: [oldest] });
+    assert.equal(removed.length, 4);
+    const remaining = await readdir(root);
+    assert.ok(remaining.includes(names[0]));
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('gcWorkspaces reads TRIFORCE_WORKSPACE_KEEP and tolerates a missing root', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'triforce-workspaces-gc-env-'));
+  const previous = process.env.TRIFORCE_WORKSPACE_KEEP;
+  try {
+    await makeFakeWorkspaces(root, 5);
+    process.env.TRIFORCE_WORKSPACE_KEEP = '2';
+    const { removed, kept } = await gcWorkspaces(root);
+    assert.equal(kept.length, 2);
+    assert.equal(removed.length, 3);
+    const missing = await gcWorkspaces(join(root, 'does-not-exist'));
+    assert.deepEqual(missing, { removed: [], kept: [] });
+  } finally {
+    if (previous === undefined) delete process.env.TRIFORCE_WORKSPACE_KEEP;
+    else process.env.TRIFORCE_WORKSPACE_KEEP = previous;
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('gcWorkspaces never follows symlinks out of the workspace root', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'triforce-workspaces-gc-symlink-'));
+  const outside = await mkdtemp(join(tmpdir(), 'triforce-workspaces-gc-outside-'));
+  try {
+    await writeFile(join(outside, 'precious.txt'), 'keep me\n');
+    const names = await makeFakeWorkspaces(root, 3);
+    await symlink(outside, join(root, fakeWorkspaceName(59)), 'dir');
+    const { removed } = await gcWorkspaces(root, { keep: 0 });
+    assert.deepEqual(removed.sort(), names.sort());
+    assert.equal(await readFile(join(outside, 'precious.txt'), 'utf8'), 'keep me\n');
+  } finally {
+    await rm(root, { recursive: true, force: true });
+    await rm(outside, { recursive: true, force: true });
   }
 });
 

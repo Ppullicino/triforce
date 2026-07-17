@@ -1,4 +1,4 @@
-import { mkdir, rm, symlink, writeFile, readdir } from 'node:fs/promises';
+import { mkdir, rm, symlink, writeFile, readdir, realpath } from 'node:fs/promises';
 import { dirname, isAbsolute, join, normalize, sep } from 'node:path';
 import { spawn, execFile } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
@@ -81,6 +81,59 @@ async function cleanWorkspaceDirectory(directory) {
     const fullPath = join(directory, entry.name);
     await rm(fullPath, { recursive: true, force: true });
   }
+}
+
+// Matches directory names produced by createWorkspace: ISO timestamp with ':' → '-', then '-' + 5 random bytes as hex.
+const WORKSPACE_DIR_PATTERN = /^\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}\.\d{3}Z-[0-9a-f]{10}$/;
+
+export const DEFAULT_WORKSPACE_KEEP = 20;
+
+export async function gcWorkspaces(root, { keep, protect = [] } = {}) {
+  const removed = [];
+  const kept = [];
+  if (typeof root !== 'string' || !root) return { removed, kept };
+  const configured = Number.parseInt(keep ?? process.env.TRIFORCE_WORKSPACE_KEEP ?? '', 10);
+  const keepCount = Number.isInteger(configured) && configured >= 0 ? configured : DEFAULT_WORKSPACE_KEEP;
+
+  let rootReal;
+  let entries;
+  try {
+    rootReal = await realpath(root);
+    entries = await readdir(rootReal, { withFileTypes: true });
+  } catch {
+    return { removed, kept }; // root missing or unreadable — nothing to collect
+  }
+
+  const protectedPaths = new Set();
+  for (const path of protect) {
+    if (!path) continue;
+    try { protectedPaths.add(await realpath(path)); } catch { /* already gone */ }
+  }
+
+  // Only real directories (never symlinks) whose names we generated; newest first (ISO names sort lexicographically).
+  const candidates = entries
+    .filter(entry => entry.isDirectory() && WORKSPACE_DIR_PATTERN.test(entry.name))
+    .map(entry => entry.name)
+    .sort()
+    .reverse();
+
+  for (const [index, name] of candidates.entries()) {
+    const fullPath = join(rootReal, name);
+    let real;
+    try { real = await realpath(fullPath); } catch { continue; }
+    if (real !== fullPath || !real.startsWith(rootReal + sep)) continue; // resolves outside WORKSPACES_DIR — never touch
+    if (index < keepCount || protectedPaths.has(real)) {
+      kept.push(name);
+      continue;
+    }
+    try {
+      await rm(real, { recursive: true, force: true });
+      removed.push(name);
+    } catch (err) {
+      console.warn(`Warning: failed to remove old workspace ${name}: ${err.message}`);
+    }
+  }
+  return { removed, kept };
 }
 
 export async function getWorkspaceDiff(workspace) {

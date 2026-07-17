@@ -6,7 +6,7 @@ import { randomBytes } from 'node:crypto';
 import { Agent } from './agent.js';
 import { runSandboxed } from './sandbox.js';
 import { getRates } from './models.js';
-import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest, getWorkspaceDiff } from './workspace.js';
+import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest, getWorkspaceDiff, gcWorkspaces } from './workspace.js';
 import { track } from './usage.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -143,6 +143,15 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
   let pipelinePassed = true;
   const startTime = Date.now();
   let completedWorkspaceDir = null;
+  let activeWorkspaceDir = null;
+
+  const collectOldWorkspaces = async () => {
+    if (mode !== 3 || !workspacesDir) return;
+    try {
+      const { removed } = await gcWorkspaces(workspacesDir, { protect: activeWorkspaceDir ? [activeWorkspaceDir] : [] });
+      if (removed.length) onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[33m[Workspace GC] Removed ${removed.length} old workspace(s).\x1b[0m\r\n` });
+    } catch { /* retention must never fail the pipeline */ }
+  };
 
   try {
     if (mode === 3) {
@@ -174,6 +183,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         try {
           manifest = parseWorkspaceManifest(text);
           workspace = await createWorkspace(manifest, workspacesDir, { dependencyRoot, existingWorkspace: workspace, iteration });
+          activeWorkspaceDir = workspace.directory;
           onEvent({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files });
           onEvent({ type: 'pty', role: 'developer', data: `\r\n\x1b[32m[Workspace] Wrote ${workspace.files.length} files to ${workspace.directory}\x1b[0m\r\n` });
           onEvent({ type: 'status', stage: 'sandbox', label: `Stage 3: Workspace Tests (${iteration})` });
@@ -464,6 +474,8 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     const total = costRecords.reduce((sum, r) => sum + r.cost, 0);
     onEvent({ type: 'cost', records: costRecords, total });
 
+    await collectOldWorkspaces();
+
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
     onEvent({ type: 'done', elapsed, passed: pipelinePassed, completedWorkspaceDir });
 
@@ -479,6 +491,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     });
     const total = costRecords.reduce((sum, r) => sum + r.cost, 0);
     onEvent({ type: 'cost', records: costRecords, total });
+    await collectOldWorkspaces();
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
     onEvent({ type: 'done', elapsed, passed: false });
     throw err;

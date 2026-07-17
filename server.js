@@ -12,6 +12,7 @@ import { capabilities, isCompatibleProtocol, validateClientCommand } from './pac
 import { executePipeline } from './pipeline.js';
 import { execFile } from 'node:child_process';
 import { ALLOWED_MODELS, checkConfigForWarnings } from './models.js';
+import { gcWorkspaces } from './workspace.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TRANSCRIPTS_DIR = join(__dirname, 'transcripts');
@@ -366,6 +367,12 @@ runRegistry.load().then(async () => {
     checkConfigForWarnings(configObj);
   } catch (err) {
     // ignore if models.config.json is missing or invalid
+  }
+  try {
+    const { removed } = await gcWorkspaces(WORKSPACES_DIR);
+    if (removed.length) console.log(`Workspace GC: removed ${removed.length} old workspace(s) from ${WORKSPACES_DIR}`);
+  } catch (err) {
+    console.warn(`Workspace GC failed at startup: ${err.message}`);
   }
   httpServer.listen(PORT, () => console.log(`Triforce server running on http://localhost:${PORT}`));
 }).catch(err => {
