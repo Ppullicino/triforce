@@ -28,7 +28,7 @@ Generated: 2026-07-17 by Lead Architect pass (graphify-oriented scan of orchestr
 - [Acceptance Criteria]: A test in `test/agent.test.js` spawns a fake CLI (e.g. `node -e 'process.exit(1)'`) with a large stdin payload and asserts the promise rejects with the CLI error instead of the process dying on EPIPE. Timeout kills the child exactly once (no double-settle warnings).
 
 ### [CORE-003]
-- [Status]: PENDING
+- [Status]: COMPLETED
 - [Dependency]: CORE-001
 - [Objective]: Extract the duplicated pipeline logic into a shared module (e.g. `pipeline.js`). Modes 1 and 2 are implemented twice — once in `orchestrator.js` (console transport) and once in `server.js` `runPipeline()` (WebSocket transport) — with duplicated SYSTEM_PROMPTS, verdict parsing, and executionSummary construction; Mode 3 (workspace) exists only in server.js. Unify behind an event-emitter/callback transport so orchestrator.js and server.js become thin adapters, and Mode 3 becomes available from the CLI.
 - [Identified Pitfalls]: server.js sends incremental `runLog.*` accumulations while orchestrator prints per-iteration — the shared module must emit granular events and let each transport decide accumulation. Keep `maxIterations` clamping (1..10) from server.js as the canonical behavior (orchestrator hardcodes 3). Preserve transcript logging (TRIFORCE_TRANSCRIPTS=1) semantics.
@@ -134,3 +134,4 @@ Rules for workers:
 
 - 2026-07-17 — CORE-001: Updated `runArchitect(agent, task)` and its Mode 1 caller so CLI task parsing remains local to `main()`; made the helper importable without executing the CLI and added `test/orchestrator.test.js` with a stub Agent asserting the Stage 1 task handoff. Evidence: `node --test test/orchestrator.test.js` (1/1 passed); `npm run test:server` (31/31 passed). Deviations: none.
 - 2026-07-17 — CORE-002: Hardened CLI child collection by consuming stdin stream errors before writes, guarding tree kills when spawn provides no PID, retaining platform-specific/idempotent kill and output-cap behavior, and making `_collectChild` the sole CLI timeout owner. Added large-stdin early-exit and exactly-once timeout-kill tests in `test/agent.test.js`. Evidence: `node --test test/agent.test.js` (6/6 passed); `npm run test:server` (33/33 passed). Deviations: none.
+- 2026-07-17 — CORE-003: Extracted duplicated pipeline logic, loops, and prompts from `orchestrator.js` and `server.js` into a new shared module `pipeline.js` with unified event-emitter/callback-based executePipeline function. Refactored `orchestrator.js` and `server.js` to act as thin adapters, and made Mode 3 (workspace) runnable from the CLI. Added E2E mock tests in `test/orchestrator.test.js` validating Mode 1 & 2 execution. Evidence: `npm run test:server` (35/35 passed). Deviations: none.
