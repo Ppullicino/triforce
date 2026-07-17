@@ -57,13 +57,14 @@ const NATIVE_CLIENT_ORIGINS = new Set([
 async function runValidationPipeline(ws, task, _config, mode, signal) {
   const send = event => ws.send(JSON.stringify(event));
   send({ type: 'status', stage: 'architect', label: `Validating mode ${mode}` });
-  
+
   if (signal?.aborted) {
     const err = new Error('The operation was aborted');
     err.name = 'AbortError';
     throw err;
   }
-  
+
+  const fakeDurationMs = Number.parseInt(process.env.TRIFORCE_E2E_FAKE_PIPELINE_DELAY_MS ?? '', 10) || 75;
   await new Promise((resolve, reject) => {
     const onAbort = () => {
       clearTimeout(timeoutId);
@@ -74,7 +75,7 @@ async function runValidationPipeline(ws, task, _config, mode, signal) {
     const timeoutId = setTimeout(() => {
       if (signal) signal.removeEventListener('abort', onAbort);
       resolve();
-    }, 75);
+    }, fakeDurationMs);
     if (signal) signal.addEventListener('abort', onAbort);
   });
   
@@ -291,6 +292,7 @@ const wss = new WebSocketServer({
 });
 
 httpServer.on('upgrade', (req, socket, head) => {
+  if (shuttingDown) return socket.destroy();
   const origin = req.headers.origin;
   const expectedOrigin = `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}`;
   const originAllowed = origin === expectedOrigin || NATIVE_CLIENT_ORIGINS.has(origin);
@@ -336,6 +338,13 @@ wss.on('connection', (ws) => {
       return;
     }
     if (command.type === 'run') {
+      if (shuttingDown) {
+        return ws.send(JSON.stringify({
+          type: 'protocol_error',
+          code: 'SERVER_SHUTTING_DOWN',
+          message: 'Server is shutting down and no longer accepts run commands.',
+        }));
+      }
       if (sandboxStatus === 'unavailable') {
         return ws.send(JSON.stringify({
           type: 'protocol_error',
@@ -358,6 +367,65 @@ wss.on('connection', (ws) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+// ── GRACEFUL SHUTDOWN ──
+// Grace must stay below the unit's stop timeout (TimeoutStopSec=30 in triforce.service) or systemd SIGKILLs us mid-flush.
+const SHUTDOWN_GRACE_MS = (() => {
+  const parsed = Number.parseInt(process.env.TRIFORCE_SHUTDOWN_GRACE_MS ?? '', 10);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : 10_000;
+})();
+
+let shuttingDown = false;
+
+function killLingeringSandboxUnits() {
+  const prefixes = [`triforce-sandbox-${process.pid}-`, `triforce-workspace-${process.pid}-`];
+  return new Promise(resolve => {
+    execFile('systemctl', ['--user', 'list-units', '--plain', '--no-legend', 'triforce-*'], { timeout: 2000 }, (err, stdout) => {
+      if (err || !stdout) return resolve();
+      const units = stdout.split('\n')
+        .map(line => line.trim().split(/\s+/)[0])
+        .filter(name => prefixes.some(prefix => name?.startsWith(prefix)));
+      let pending = units.length;
+      if (!pending) return resolve();
+      for (const unit of units) {
+        console.warn(`Shutdown: killing lingering sandbox unit ${unit}`);
+        execFile('systemctl', ['--user', 'kill', '--kill-whom=all', unit], { timeout: 2000 }, () => { if (--pending === 0) resolve(); });
+      }
+    });
+  });
+}
+
+async function shutdown(signalName) {
+  if (shuttingDown) {
+    console.warn(`Received ${signalName} during shutdown; forcing exit.`);
+    process.exit(1);
+  }
+  shuttingDown = true;
+  console.log(`Received ${signalName}; shutting down (grace ${SHUTDOWN_GRACE_MS}ms)...`);
+  setTimeout(() => {
+    console.error('Graceful shutdown exceeded its deadline; forcing exit.');
+    process.exit(1);
+  }, SHUTDOWN_GRACE_MS + 5000).unref();
+
+  const active = runRegistry.activeRun;
+  if (active) {
+    runRegistry.cancel(active.id);
+    await Promise.race([
+      active.completion,
+      new Promise(resolve => setTimeout(resolve, SHUTDOWN_GRACE_MS)),
+    ]);
+  }
+  await killLingeringSandboxUnits();
+  await runRegistry.flush();
+  for (const client of wss.clients) client.terminate();
+  httpServer.closeIdleConnections?.();
+  await new Promise(resolve => httpServer.close(resolve));
+  process.exit(0);
+}
+
+process.on('SIGTERM', () => { shutdown('SIGTERM'); });
+process.on('SIGINT', () => { shutdown('SIGINT'); });
+
 runRegistry.load().then(async () => {
   sandboxStatus = await probeSandbox();
   serverCapabilities.sandbox = sandboxStatus;

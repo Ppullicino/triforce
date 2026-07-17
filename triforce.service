@@ -10,6 +10,8 @@ WorkingDirectory=@WORKDIR@
 ExecStart=@NODE@ server.js
 Restart=always
 RestartSec=5
+# Must exceed TRIFORCE_SHUTDOWN_GRACE_MS (default 10s) + flush margin; systemd SIGKILLs after this.
+TimeoutStopSec=30
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=triforce

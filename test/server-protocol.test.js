@@ -135,6 +135,88 @@ test('allows native origins with header/protocol auth and rejects hostile WebSoc
   }
 });
 
+test('gracefully shuts down on SIGTERM, cancelling and persisting the active run', async () => {
+  const { mkdtemp, readFile, rm } = await import('node:fs/promises');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const { execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const execFileAsync = promisify(execFile);
+
+  const graceMs = 5000;
+  const runsDir = await mkdtemp(join(tmpdir(), 'triforce-shutdown-runs-'));
+  const port = 33_000 + Math.floor(Math.random() * 7_000);
+  const child = spawn(process.execPath, ['server.js'], {
+    cwd: new URL('..', import.meta.url),
+    env: {
+      ...process.env,
+      PORT: String(port),
+      TRIFORCE_TOKEN: token,
+      NODE_ENV: 'test',
+      TRIFORCE_E2E_FAKE_PIPELINE: '1',
+      TRIFORCE_E2E_FAKE_PIPELINE_DELAY_MS: '60000',
+      TRIFORCE_RUNS_DIR: runsDir,
+      TRIFORCE_SHUTDOWN_GRACE_MS: String(graceMs),
+    },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  let stderr = '';
+  child.stderr.on('data', data => { stderr += data; });
+  try {
+    await Promise.race([
+      once(child.stdout, 'data'),
+      once(child, 'exit').then(([code]) => { throw new Error(`server exited ${code}: ${stderr}`); }),
+    ]);
+
+    const origin = `http://127.0.0.1:${port}`;
+    const ws = new WebSocket(`ws://127.0.0.1:${port}`, { headers: { cookie: `triforce_token=${token}`, origin } });
+    ws.on('error', () => {});
+    await once(ws, 'open');
+    ws.send(JSON.stringify({
+      type: 'run',
+      task: 'long-running fake pipeline for shutdown test',
+      config: {
+        architect: { provider: 'openai', model: 'gpt-4.1' },
+        developer: { provider: 'openai', model: 'gpt-4.1' },
+        reviewer: { provider: 'openai', model: 'gpt-4.1' },
+      },
+      mode: 1,
+    }));
+    let runId;
+    while (!runId) {
+      const [raw] = await once(ws, 'message');
+      const msg = JSON.parse(raw);
+      if (msg.type === 'run_started') runId = msg.run.id;
+      if (msg.type === 'protocol_error' || msg.type === 'error') throw new Error(`run failed to start: ${raw}`);
+    }
+
+    const started = Date.now();
+    child.kill('SIGTERM');
+    const [code] = await once(child, 'exit');
+    const elapsed = Date.now() - started;
+    assert.equal(code, 0, `expected clean exit, stderr: ${stderr}`);
+    assert.ok(elapsed < graceMs + 4000, `shutdown took ${elapsed}ms, beyond the grace period`);
+
+    const index = JSON.parse(await readFile(join(runsDir, 'index.json'), 'utf8'));
+    const persisted = index.runs.find(run => run.id === runId);
+    assert.ok(persisted, 'active run missing from persisted index');
+    assert.equal(persisted.status, 'cancelled');
+    const jsonl = await readFile(join(runsDir, `${runId}.jsonl`), 'utf8');
+    assert.match(jsonl, /"type":"run_state"[^\n]*"status":"cancelled"/);
+
+    const units = await execFileAsync('systemctl', ['--user', 'list-units', 'triforce-sandbox-*', '--plain', '--no-legend'])
+      .then(result => result.stdout)
+      .catch(() => '');
+    assert.equal(units.trim(), '', `orphaned sandbox units remain: ${units}`);
+  } finally {
+    if (child.exitCode === null && child.signalCode === null) {
+      child.kill('SIGKILL');
+      await once(child, 'exit').catch(() => {});
+    }
+    await rm(runsDir, { recursive: true, force: true });
+  }
+});
+
 test('handles missing systemd-run capability and refuses runs', async () => {
   const port = 31_000 + Math.floor(Math.random() * 10_000);
   const child = spawn(process.execPath, ['server.js'], {
