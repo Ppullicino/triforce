@@ -24,6 +24,7 @@ const MAX_RETRIES = 3;
 const BASE_DELAY_MS = 1000;
 const PROVIDER_TIMEOUT_MS = Number(process.env.PROVIDER_TIMEOUT_MS) || 120000;
 const MAX_PROVIDER_OUTPUT_BYTES = Number(process.env.MAX_PROVIDER_OUTPUT_BYTES) || 10 * 1024 * 1024;
+const CLI_PROVIDERS = new Set(['claude-cli', 'codex-cli', 'agy-cli']);
 
 function getErrorStatus(err) {
   return err?.status ?? err?.statusCode ?? err?.error?.status ?? null;
@@ -94,7 +95,10 @@ export class Agent {
         await delay(backoff);
       }
       try {
-        return await withTimeout(this._callProvider(userPrompt), PROVIDER_TIMEOUT_MS);
+        const providerCall = this._callProvider(userPrompt);
+        return CLI_PROVIDERS.has(this.provider)
+          ? await providerCall
+          : await withTimeout(providerCall, PROVIDER_TIMEOUT_MS);
       } catch (err) {
         if (isRetryableError(err)) {
           lastErr = err;
@@ -177,9 +181,10 @@ export class Agent {
     });
   }
 
-  _collectChild(child, stdin, label, resolve, reject) {
+  _collectChild(child, stdin, label, resolve, reject, timeoutMs = PROVIDER_TIMEOUT_MS) {
       let stdout = '', stderr = '', settled = false, outputBytes = 0;
       const killTree = () => {
+        if (child.pid == null) return;
         try {
           if (process.platform !== 'win32') process.kill(-child.pid, 'SIGKILL');
           else child.kill('SIGKILL');
@@ -193,8 +198,8 @@ export class Agent {
       };
       const timer = setTimeout(() => {
         killTree();
-        finish(reject, new Error(`${label} CLI timed out after ${PROVIDER_TIMEOUT_MS}ms`));
-      }, PROVIDER_TIMEOUT_MS);
+        finish(reject, new Error(`${label} CLI timed out after ${timeoutMs}ms`));
+      }, timeoutMs);
       const collect = (target, data) => {
         outputBytes += data.length;
         if (outputBytes > MAX_PROVIDER_OUTPUT_BYTES) {
@@ -208,6 +213,10 @@ export class Agent {
       child.stdout.on('data', data => { stdout = collect(stdout, data); });
       child.stderr.on('data', data => { stderr = collect(stderr, data); });
       child.on('error', err => finish(reject, new Error(`Failed to start ${label} CLI: ${err.message}`)));
+      // A CLI may exit before consuming its input. Its close event carries the
+      // useful exit code and stderr; consuming the stream error prevents EPIPE
+      // from becoming an uncaught process-level error.
+      child.stdin.on('error', () => {});
 
       child.on('close', (code) => {
         if (code !== 0) {

@@ -21,7 +21,7 @@ Generated: 2026-07-17 by Lead Architect pass (graphify-oriented scan of orchestr
 - [Acceptance Criteria]: `node orchestrator.js "trivial task" --mode 1` reaches Stage 2 without ReferenceError (provider errors are acceptable if keys are absent). Add/extend a unit test in `test/` that imports or exercises the stage-1 path with a stubbed Agent.
 
 ### [CORE-002]
-- [Status]: PENDING
+- [Status]: COMPLETED
 - [Dependency]: NONE
 - [Objective]: Harden child-process IPC in `agent.js` `_collectChild()` / CLI callers. (a) Attach a `child.stdin.on('error')` handler before `child.stdin.end(stdin)` — a CLI that exits before draining stdin emits EPIPE, which is currently an unhandled 'error' event that crashes the whole orchestrator. (b) Guard `killTree()` when `child.pid` is undefined (spawn failure). (c) Make `_collectChild`'s timer the single timeout owner for CLI providers — `Agent.call()` additionally wraps CLI calls in `withTimeout()`, producing two racing timers of the same duration where the outer one rejects without killing the child.
 - [Identified Pitfalls]: `detached: true` is only set on non-win32; `process.kill(-pid)` fails on Windows — keep the existing platform branch. Killing after `finish()` settled must stay idempotent (`settled` flag). Do not remove the output-byte cap logic while refactoring.
@@ -133,3 +133,4 @@ Rules for workers:
 ## EXECUTION LOG
 
 - 2026-07-17 — CORE-001: Updated `runArchitect(agent, task)` and its Mode 1 caller so CLI task parsing remains local to `main()`; made the helper importable without executing the CLI and added `test/orchestrator.test.js` with a stub Agent asserting the Stage 1 task handoff. Evidence: `node --test test/orchestrator.test.js` (1/1 passed); `npm run test:server` (31/31 passed). Deviations: none.
+- 2026-07-17 — CORE-002: Hardened CLI child collection by consuming stdin stream errors before writes, guarding tree kills when spawn provides no PID, retaining platform-specific/idempotent kill and output-cap behavior, and making `_collectChild` the sole CLI timeout owner. Added large-stdin early-exit and exactly-once timeout-kill tests in `test/agent.test.js`. Evidence: `node --test test/agent.test.js` (6/6 passed); `npm run test:server` (33/33 passed). Deviations: none.
