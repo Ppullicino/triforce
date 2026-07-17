@@ -58,9 +58,5 @@
   "56": "0.1.0-rc.1 Validation Record",
   "57": "CODEX_WORKER_PROMPT.md",
   "58": "usage.js",
-  "59": ".call",
-  "60": "sandbox.js",
-  "61": "platform-credentials.ts",
-  "62": "CredentialStorage",
-  "63": "connection.ts"
+  "59": ".call"
 }

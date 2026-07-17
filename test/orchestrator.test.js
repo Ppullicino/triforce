@@ -87,6 +87,40 @@ test('executePipeline Mode 1 executes all stages and completes successfully', as
   }
 });
 
+test('executePipeline cost records surface usageUnknown only for unknown CLI usage', async () => {
+  const originalCall = Agent.prototype.call;
+  Agent.prototype.call = async function(prompt) {
+    if (this.systemPrompt.includes('Architect')) {
+      return { text: '1. plan', usage: { inputTokens: 12, outputTokens: 34 } };
+    }
+    if (this.systemPrompt.includes('Developer')) {
+      return { text: 'console.log("hello")', usage: { inputTokens: 0, outputTokens: 0, usageUnknown: true } };
+    }
+    return { text: 'VERDICT: PASS\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
+  };
+
+  try {
+    const events = [];
+    const config = {
+      architect: { provider: 'claude-cli', model: 'claude-cli-default' },
+      developer: { provider: 'agy-cli', model: 'agy-cli-default' },
+      reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
+    };
+
+    await executePipeline('some task', config, 1, { packageRoot: join(__dirname, '..') }, event => events.push(event));
+
+    const costEvent = events.find(e => e.type === 'cost');
+    assert.ok(costEvent, 'emits cost event');
+    const architectRecord = costEvent.records.find(r => r.role === 'architect');
+    const developerRecord = costEvent.records.find(r => r.role === 'developer');
+    assert.ok(architectRecord.inputTokens > 0 && architectRecord.outputTokens > 0, 'known usage has non-zero tokens');
+    assert.ok(!('usageUnknown' in architectRecord), 'known usage carries no usageUnknown flag');
+    assert.equal(developerRecord.usageUnknown, true, 'unknown CLI usage is flagged in cost records');
+  } finally {
+    Agent.prototype.call = originalCall;
+  }
+});
+
 test('executePipeline Mode 2 executes loops and completes successfully', async () => {
   const originalCall = Agent.prototype.call;
   Agent.prototype.call = async function(prompt) {

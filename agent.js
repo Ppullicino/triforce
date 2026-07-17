@@ -83,6 +83,50 @@ function getRetryAfterMs(err) {
   return null;
 }
 
+const UNKNOWN_USAGE = () => ({ inputTokens: 0, outputTokens: 0, usageUnknown: true });
+
+// claude -p --output-format json emits one envelope: {"type":"result","result":"...","usage":{input_tokens,cache_*_input_tokens,output_tokens}}.
+export function parseClaudeJsonEnvelope(stdout) {
+  const envelope = JSON.parse(stdout);
+  if (typeof envelope?.result !== 'string') return null;
+  const usage = envelope.usage;
+  if (!usage || (usage.input_tokens == null && usage.output_tokens == null)) {
+    return { text: envelope.result.trim(), usage: UNKNOWN_USAGE() };
+  }
+  // Cache tokens are real billed input; folding them in beats reporting only the tiny uncached remainder.
+  const inputTokens = (Number(usage.input_tokens) || 0)
+    + (Number(usage.cache_creation_input_tokens) || 0)
+    + (Number(usage.cache_read_input_tokens) || 0);
+  return { text: envelope.result.trim(), usage: { inputTokens, outputTokens: Number(usage.output_tokens) || 0 } };
+}
+
+// codex exec --json emits a JSONL event stream; the agent message and token usage arrive in separate events.
+export function parseCodexJsonl(stdout) {
+  let text = null;
+  let usage = null;
+  for (const line of stdout.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('{')) continue;
+    let event;
+    try { event = JSON.parse(trimmed); } catch { continue; }
+    const item = event?.item;
+    if (typeof item?.text === 'string' && (item.item_type === 'agent_message' || item.type === 'agent_message')) {
+      text = item.text;
+    }
+    const eventUsage = event?.usage ?? event?.msg?.info?.total_token_usage;
+    if (eventUsage && (eventUsage.input_tokens != null || eventUsage.output_tokens != null)) {
+      usage = eventUsage;
+    }
+  }
+  if (text === null) return null;
+  return {
+    text: text.trim(),
+    usage: usage
+      ? { inputTokens: Number(usage.input_tokens) || 0, outputTokens: Number(usage.output_tokens) || 0 }
+      : UNKNOWN_USAGE(),
+  };
+}
+
 function firstTextBlock(content) {
   const block = content?.find?.(item => item?.type === 'text' && typeof item.text === 'string');
   if (!block) throw new Error('Provider returned no text content');
@@ -280,15 +324,15 @@ export class Agent {
       if (this.systemPrompt) {
         args.push('--system-prompt', this.systemPrompt);
       }
-      args.push('-p');
+      args.push('-p', '--output-format', 'json');
       if (this.unsafePermissions) args.push('--permission-mode', 'bypassPermissions');
 
       const child = spawn(resolveBinPath('claude'), args, { detached: process.platform !== 'win32' });
-      this._collectChild(child, userPrompt, 'claude', resolve, reject, PROVIDER_TIMEOUT_MS, signal);
+      this._collectChild(child, userPrompt, 'claude', resolve, reject, PROVIDER_TIMEOUT_MS, signal, parseClaudeJsonEnvelope);
     });
   }
 
-  _collectChild(child, stdin, label, resolve, reject, timeoutMs = PROVIDER_TIMEOUT_MS, signal) {
+  _collectChild(child, stdin, label, resolve, reject, timeoutMs = PROVIDER_TIMEOUT_MS, signal, parseOutput) {
       let stdout = '', stderr = '', settled = false, outputBytes = 0;
       const killTree = () => {
         if (child.pid == null) return;
@@ -361,10 +405,16 @@ export class Agent {
           }
           finish(reject, err);
         } else {
-          finish(resolve, {
-            text: stdout.trim(),
-            usage: { inputTokens: 0, outputTokens: 0 },
-          });
+          // stdout is already capped by MAX_PROVIDER_OUTPUT_BYTES during collection, so parsing here is bounded.
+          let result = null;
+          if (parseOutput) {
+            try { result = parseOutput(stdout); } catch { result = null; }
+          }
+          if (!result || typeof result.text !== 'string') {
+            // Plain-text CLI (agy) or unexpected structured output: token counts are unknowable.
+            result = { text: stdout.trim(), usage: { inputTokens: 0, outputTokens: 0, usageUnknown: true } };
+          }
+          finish(resolve, result);
         }
       });
 
@@ -373,7 +423,7 @@ export class Agent {
   }
 
   _codexCLIArgs() {
-    const args = ['exec', '--skip-git-repo-check'];
+    const args = ['exec', '--skip-git-repo-check', '--json'];
     if (this.unsafePermissions) args.push('--dangerously-bypass-approvals-and-sandbox');
     if (this.systemPrompt) {
       args.push('-c', `system_prompt=${JSON.stringify(this.systemPrompt)}`);
@@ -386,7 +436,7 @@ export class Agent {
     const { spawn } = await import('node:child_process');
     return new Promise((resolve, reject) => {
       const child = spawn(resolveBinPath('codex'), this._codexCLIArgs(), { detached: process.platform !== 'win32' });
-      this._collectChild(child, userPrompt, 'codex', resolve, reject, PROVIDER_TIMEOUT_MS, signal);
+      this._collectChild(child, userPrompt, 'codex', resolve, reject, PROVIDER_TIMEOUT_MS, signal, parseCodexJsonl);
     });
   }
 

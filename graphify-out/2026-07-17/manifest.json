@@ -30,7 +30,7 @@
     "semantic_hash": ""
   },
   "models.config.json": {
-    "mtime": 1784285850.6810422,
+    "mtime": 1784286503.7002726,
     "ast_hash": "32ed2522e959aed786512632b3d3cd33",
     "semantic_hash": ""
   },
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1784285801.1299448,
-    "ast_hash": "e41e645273983cf20b54094771406ff5",
+    "mtime": 1784286065.4661496,
+    "ast_hash": "aa85ecb2ee41d4bd2e23da447b4c66a3",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
-    "mtime": 1784284782.787485,
-    "ast_hash": "1b5b8d673e9aa76c9a7ec0aa5afb8414",
+    "mtime": 1784286489.9555187,
+    "ast_hash": "de01a4d7d77c31ee85f3cbdbce5388b0",
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.test.ts": {

@@ -466,10 +466,10 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       // Fail silently if not installed
     }
 
-    const costRecords = records.map(({ role, model, inputTokens, outputTokens }) => {
+    const costRecords = records.map(({ role, model, inputTokens, outputTokens, usageUnknown }) => {
       const [inRate, outRate] = getRates(model);
       const cost = (inputTokens / 1e6) * inRate + (outputTokens / 1e6) * outRate;
-      return { role, model, inputTokens, outputTokens, cost };
+      return { role, model, inputTokens, outputTokens, cost, ...(usageUnknown ? { usageUnknown: true } : {}) };
     });
     const total = costRecords.reduce((sum, r) => sum + r.cost, 0);
     onEvent({ type: 'cost', records: costRecords, total });
@@ -484,10 +484,10 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       onEvent({ type: 'error', stage: 'architect', message: err.message });
     }
     
-    const costRecords = records.map(({ role, model, inputTokens, outputTokens }) => {
+    const costRecords = records.map(({ role, model, inputTokens, outputTokens, usageUnknown }) => {
       const [inRate, outRate] = getRates(model);
       const cost = (inputTokens / 1e6) * inRate + (outputTokens / 1e6) * outRate;
-      return { role, model, inputTokens, outputTokens, cost };
+      return { role, model, inputTokens, outputTokens, cost, ...(usageUnknown ? { usageUnknown: true } : {}) };
     });
     const total = costRecords.reduce((sum, r) => sum + r.cost, 0);
     onEvent({ type: 'cost', records: costRecords, total });

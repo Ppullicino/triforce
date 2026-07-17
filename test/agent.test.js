@@ -60,7 +60,7 @@ test('Codex CLI can run when Triforce starts outside a Git repository', () => {
     systemPrompt: '',
   });
 
-  assert.deepEqual(args, ['exec', '--skip-git-repo-check', '-']);
+  assert.deepEqual(args, ['exec', '--skip-git-repo-check', '--json', '-']);
 });
 
 test('Codex CLI preserves configured permissions and system prompt', () => {
@@ -72,6 +72,7 @@ test('Codex CLI preserves configured permissions and system prompt', () => {
   assert.deepEqual(args, [
     'exec',
     '--skip-git-repo-check',
+    '--json',
     '--dangerously-bypass-approvals-and-sandbox',
     '-c',
     'system_prompt="Review carefully"',
@@ -155,6 +156,64 @@ test('terminal errors (400, auth) still fail fast with no retries', async () => 
 
   await assert.rejects(agent.call('test'), /Bad Request/);
   assert.equal(callCount, 1);
+});
+
+async function withStubCli(name, script, run) {
+  const { mkdtemp, writeFile, rm } = await import('node:fs/promises');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const dir = await mkdtemp(join(tmpdir(), 'triforce-cli-stub-'));
+  const previousPath = process.env.PATH;
+  try {
+    await writeFile(join(dir, name), `#!/bin/sh\n${script}\n`, { mode: 0o755 });
+    process.env.PATH = `${dir}:${previousPath}`;
+    return await run();
+  } finally {
+    process.env.PATH = previousPath;
+    await rm(dir, { recursive: true, force: true });
+  }
+}
+
+test('stubbed claude CLI emitting a JSON envelope yields real token usage', async () => {
+  const envelope = '{"type":"result","result":"hello from stub","usage":{"input_tokens":12,"cache_read_input_tokens":3,"output_tokens":34}}';
+  const result = await withStubCli('claude', `cat > /dev/null\necho '${envelope}'`, () => {
+    const agent = new Agent({ provider: 'claude-cli', model: 'claude-cli-default' });
+    return agent._callClaudeCLI('hi');
+  });
+  assert.equal(result.text, 'hello from stub');
+  assert.deepEqual(result.usage, { inputTokens: 15, outputTokens: 34 });
+});
+
+test('stubbed plain-text claude CLI still succeeds and flags usage as unknown', async () => {
+  const result = await withStubCli('claude', `cat > /dev/null\necho 'plain response'`, () => {
+    const agent = new Agent({ provider: 'claude-cli', model: 'claude-cli-default' });
+    return agent._callClaudeCLI('hi');
+  });
+  assert.equal(result.text, 'plain response');
+  assert.deepEqual(result.usage, { inputTokens: 0, outputTokens: 0, usageUnknown: true });
+});
+
+test('stubbed codex CLI JSONL event stream yields message text and token usage', async () => {
+  const script = [
+    'cat > /dev/null',
+    `echo '{"type":"item.completed","item":{"item_type":"agent_message","text":"codex says hi"}}'`,
+    `echo '{"type":"turn.completed","usage":{"input_tokens":100,"cached_input_tokens":0,"output_tokens":7}}'`,
+  ].join('\n');
+  const result = await withStubCli('codex', script, () => {
+    const agent = new Agent({ provider: 'codex-cli', model: 'codex-cli-default' });
+    return agent._callCodexCLI('hi');
+  });
+  assert.equal(result.text, 'codex says hi');
+  assert.deepEqual(result.usage, { inputTokens: 100, outputTokens: 7 });
+});
+
+test('agy CLI (no structured output) resolves with usageUnknown zeros', async () => {
+  const result = await withStubCli('agy', `echo 'agy answer'`, () => {
+    const agent = new Agent({ provider: 'agy-cli', model: 'agy-cli-default' });
+    return agent._callAgyCLI('hi');
+  });
+  assert.equal(result.text, 'agy answer');
+  assert.deepEqual(result.usage, { inputTokens: 0, outputTokens: 0, usageUnknown: true });
 });
 
 test('_collectChild aborts and kills child process on signal abort', async () => {
