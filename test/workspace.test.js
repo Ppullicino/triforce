@@ -115,3 +115,47 @@ test('runWorkspaceTest aborts immediately on signal abort', async () => {
     await rm(root, { recursive: true, force: true });
   }
 });
+
+test('createWorkspace initializes git repository, commits each iteration, and supports diffing', async () => {
+  const { execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const execFileAsync = promisify(execFile);
+  const { checkGit, getWorkspaceDiff } = await import('../workspace.js');
+
+  const root = await mkdtemp(join(tmpdir(), 'triforce-workspaces-git-test-'));
+  try {
+    const isGit = await checkGit();
+    if (!isGit) {
+      console.warn('Skipping git workspace test: git is not available on this host');
+      return;
+    }
+
+    const manifest1 = parseWorkspaceManifest(JSON.stringify({
+      files: [{ path: 'app.js', content: 'console.log("v1");\n' }],
+      testFile: 'app.js',
+    }));
+
+    const workspace = await createWorkspace(manifest1, root, { iteration: 1 });
+    assert.deepEqual(workspace.files, ['app.js']);
+
+    const log1 = await execFileAsync('git', ['log', '--oneline'], { cwd: workspace.directory });
+    assert.match(log1.stdout, /iteration-1/);
+    assert.match(log1.stdout, /initial commit/);
+
+    const manifest2 = parseWorkspaceManifest(JSON.stringify({
+      files: [{ path: 'app.js', content: 'console.log("v2");\n' }],
+      testFile: 'app.js',
+    }));
+    const workspace2 = await createWorkspace(manifest2, root, { existingWorkspace: workspace, iteration: 2 });
+    assert.equal(workspace2.directory, workspace.directory);
+
+    const log2 = await execFileAsync('git', ['log', '--oneline'], { cwd: workspace.directory });
+    assert.match(log2.stdout, /iteration-2/);
+
+    const diff = await getWorkspaceDiff(workspace);
+    assert.match(diff, /-console\.log\("v1"\);/);
+    assert.match(diff, /\+console\.log\("v2"\);/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});

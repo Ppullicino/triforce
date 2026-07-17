@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-17)
 
 ## Corpus Check
-- 89 files · ~46,379 words
+- 89 files · ~47,114 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 673 nodes · 840 edges · 60 communities (47 shown, 13 thin omitted)
+- 678 nodes · 854 edges · 59 communities (47 shown, 12 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.73)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7e80503b`
+- Built from commit: `54564f3f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,7 +40,6 @@
 - package.json
 - compilerOptions
 - compilerOptions
-- TriforceConnection
 - Client Architecture and Development
 - tsconfig.json
 - index.d.ts
@@ -67,7 +66,7 @@
 2. `compilerOptions` - 17 edges
 3. `Agent` - 16 edges
 4. `files` - 16 edges
-5. `executePipeline()` - 15 edges
+5. `executePipeline()` - 16 edges
 6. `Triforce Cross-Platform Client Plan` - 15 edges
 7. `TriforceConnection` - 13 edges
 8. `scripts` - 12 edges
@@ -89,11 +88,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (60 total, 13 thin omitted)
+## Communities (59 total, 12 thin omitted)
 
 ### Community 0 - "orchestrator.js"
-Cohesion: 0.11
-Nodes (29): ALLOWED_MODELS, checkConfigForWarnings(), getRates(), hasRates(), RATES, warnedModels, __dirname, loadConfig() (+21 more)
+Cohesion: 0.07
+Nodes (45): ALLOWED_MODELS, checkConfigForWarnings(), getRates(), hasRates(), RATES, warnedModels, __dirname, loadConfig() (+37 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.11
@@ -104,8 +103,8 @@ Cohesion: 0.17
 Nodes (10): Agent, CLI_PROVIDERS, delay(), firstTextBlock(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), resolveBinPath() (+2 more)
 
 ### Community 3 - "remote-client-e2e.test.js"
-Cohesion: 0.12
-Nodes (6): MockSocket, config, messages(), nativeOrigins, startServer(), startServer()
+Cohesion: 0.22
+Nodes (4): config, nativeOrigins, startServer(), startServer()
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
@@ -192,8 +191,8 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "files"
-Cohesion: 0.07
-Nodes (30): ConnectionOptions, ConnectionState, EventListener, StateListener, agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities (+22 more)
+Cohesion: 0.06
+Nodes (23): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, agentConfigurationSchema (+15 more)
 
 ### Community 48 - "workspace.js"
 Cohesion: 0.33
@@ -226,22 +225,22 @@ Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependenc
 ## Knowledge Gaps
 - **312 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+307 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `promptLoop()` connect `cli.js` to `remote-client-e2e.test.js`?**
+- **Why does `promptLoop()` connect `cli.js` to `files`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `RunRegistry` connect `files` to `files`?**
+- **Why does `RunRegistry` connect `files` to `orchestrator.js`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
   _312 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `orchestrator.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.11470985155195682 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07130333138515488 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
-- **Should `remote-client-e2e.test.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `cli-input.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Should `devDependencies` be split into smaller, more focused modules?**
+  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._

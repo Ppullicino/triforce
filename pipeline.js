@@ -6,7 +6,7 @@ import { randomBytes } from 'node:crypto';
 import { Agent } from './agent.js';
 import { runSandboxed } from './sandbox.js';
 import { getRates } from './models.js';
-import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest } from './workspace.js';
+import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest, getWorkspaceDiff } from './workspace.js';
 import { track } from './usage.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -159,6 +159,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
       const reviewer = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS_WORKSPACE.reviewer });
       let coderPrompt = `TASK:\n${task}\n\nARCHITECTURE PLAN:\n${plan}`;
       let approved = false;
+      let workspace = null;
 
       for (let iteration = 1; iteration <= maxIterations && !approved; iteration++) {
         checkAbort();
@@ -169,10 +170,10 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         onEvent({ type: 'output', role: 'developer', text, iteration });
         await logTranscript('developer', runHeader + `\n--- ITERATION ${iteration} ---\n` + text + '\n');
 
-        let manifest, workspace, result;
+        let manifest, result;
         try {
           manifest = parseWorkspaceManifest(text);
-          workspace = await createWorkspace(manifest, workspacesDir, { dependencyRoot });
+          workspace = await createWorkspace(manifest, workspacesDir, { dependencyRoot, existingWorkspace: workspace, iteration });
           onEvent({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files });
           onEvent({ type: 'pty', role: 'developer', data: `\r\n\x1b[32m[Workspace] Wrote ${workspace.files.length} files to ${workspace.directory}\x1b[0m\r\n` });
           onEvent({ type: 'status', stage: 'sandbox', label: `Stage 3: Workspace Tests (${iteration})` });
@@ -199,7 +200,14 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
         ].filter(Boolean).join('\n');
         
         onEvent({ type: 'status', stage: 'reviewer', label: `Stage 4: Workspace Review (${iteration})` });
-        const reviewPrompt = `TASK:\n${task}\n\nPLAN:\n${plan}\n\nGENERATED MANIFEST:\n${text}\n\nTEST RESULTS:\n${summary}`;
+        let reviewPrompt = `TASK:\n${task}\n\nPLAN:\n${plan}\n\nGENERATED MANIFEST:\n${text}\n\nTEST RESULTS:\n${summary}`;
+        if (iteration > 1) {
+          const diffText = await getWorkspaceDiff(workspace);
+          if (diffText) {
+            const boundedDiff = diffText.length > 20480 ? diffText.substring(0, 20480) + '\n... [diff truncated] ...' : diffText;
+            reviewPrompt += `\n\nGIT DIFF OF LAST ITERATION:\n\`\`\`diff\n${boundedDiff}\n\`\`\``;
+          }
+        }
         const { text: review, usage: reviewUsage } = await reviewer.call(reviewPrompt, signal);
         trackUsage('reviewer', config.reviewer.model, reviewUsage);
         runLog.reviewer += `\n--- ITERATION ${iteration} ---\n${review}\n`;

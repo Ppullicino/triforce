@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-07-17)
 
 ## Corpus Check
-- 88 files · ~46,089 words
+- 89 files · ~46,581 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 669 nodes · 813 edges · 60 communities (47 shown, 13 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.7)
+- 673 nodes · 819 edges · 62 communities (49 shown, 13 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7e80503b`
+- Built from commit: `54564f3f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -61,39 +61,40 @@
 - Triforce Remote Operations Guide
 - 0.1.0-rc.1 Validation Record
 - usage.js
+- sandbox.js
 
 ## God Nodes (most connected - your core abstractions)
-1. `RunRegistry` - 18 edges
+1. `RunRegistry` - 19 edges
 2. `compilerOptions` - 17 edges
-3. `Agent` - 16 edges
-4. `files` - 16 edges
-5. `Triforce Cross-Platform Client Plan` - 15 edges
-6. `executePipeline()` - 13 edges
-7. `TriforceConnection` - 13 edges
-8. `scripts` - 12 edges
-9. `compilerOptions` - 12 edges
+3. `files` - 16 edges
+4. `Triforce Cross-Platform Client Plan` - 15 edges
+5. `Agent` - 14 edges
+6. `TriforceConnection` - 13 edges
+7. `scripts` - 12 edges
+8. `compilerOptions` - 12 edges
+9. `executePipeline()` - 10 edges
 10. `CredentialVault` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `runPipeline()` --calls--> `executePipeline()`  [EXTRACTED]
-  server.js → pipeline.js
-- `main()` --calls--> `executePipeline()`  [EXTRACTED]
-  orchestrator.js → pipeline.js
-- `executePipeline()` --calls--> `runSandboxed()`  [EXTRACTED]
-  pipeline.js → sandbox.js
-- `executePipeline()` --calls--> `createWorkspace()`  [EXTRACTED]
-  pipeline.js → workspace.js
-- `executePipeline()` --calls--> `parseWorkspaceManifest()`  [EXTRACTED]
-  pipeline.js → workspace.js
+- `runPipeline()` --references--> `ALLOWED_MODELS`  [EXTRACTED]
+  server.js → models.js
+- `executePipeline()` --calls--> `getRates()`  [EXTRACTED]
+  pipeline.js → models.js
+- `printSummary()` --calls--> `getRates()`  [EXTRACTED]
+  usage.js → models.js
+- `printSummary()` --calls--> `hasRates()`  [EXTRACTED]
+  usage.js → models.js
+- `main()` --calls--> `checkConfigForWarnings()`  [EXTRACTED]
+  orchestrator.js → models.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (60 total, 13 thin omitted)
+## Communities (62 total, 13 thin omitted)
 
 ### Community 0 - "orchestrator.js"
-Cohesion: 0.12
-Nodes (24): __dirname, loadConfig(), main(), PROVIDER_ENV, runArchitect(), validateApiKeys(), __dirname, executePipeline() (+16 more)
+Cohesion: 0.09
+Nodes (35): ALLOWED_MODELS, checkConfigForWarnings(), getRates(), hasRates(), RATES, warnedModels, __dirname, loadConfig() (+27 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.11
@@ -102,6 +103,10 @@ Nodes (12): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault,
 ### Community 2 - "Agent"
 Cohesion: 0.17
 Nodes (10): Agent, CLI_PROVIDERS, delay(), firstTextBlock(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), resolveBinPath() (+2 more)
+
+### Community 3 - "remote-client-e2e.test.js"
+Cohesion: 0.29
+Nodes (3): config, nativeOrigins, startServer()
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
@@ -152,8 +157,8 @@ Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
 ### Community 26 - "TriforceConnection"
-Cohesion: 0.11
-Nodes (7): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection
+Cohesion: 0.60
+Nodes (4): createWorkspace(), parseWorkspaceManifest(), runWorkspaceTest(), safePath()
 
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
@@ -168,8 +173,8 @@ Cohesion: 0.05
 Nodes (42): bin, triforce, description, devDependencies, pngjs, files, main, name (+34 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.05
-Nodes (31): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage (+23 more)
+Cohesion: 0.06
+Nodes (30): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage (+22 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -192,8 +197,8 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "files"
-Cohesion: 0.07
-Nodes (29): agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+21 more)
+Cohesion: 0.06
+Nodes (23): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, agentConfigurationSchema (+15 more)
 
 ### Community 48 - "workspace.js"
 Cohesion: 0.33
@@ -224,21 +229,21 @@ Cohesion: 0.13
 Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
 
 ## Knowledge Gaps
-- **313 isolated node(s):** `agentRoleSchema`, `pipelineModeSchema`, `agentConfigurationSchema`, `pipelineConfigurationSchema`, `runCommandSchema` (+308 more)
+- **313 isolated node(s):** `RATES`, `warnedModels`, `__dirname`, `PROVIDER_ENV`, `__dirname` (+308 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `promptLoop()` connect `cli.js` to `TriforceConnection`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `RunRegistry` connect `files` to `files`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `agentRoleSchema`, `pipelineModeSchema`, `agentConfigurationSchema` to the rest of the system?**
+- **Why does `promptLoop()` connect `cli.js` to `files`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `TriforceConnection` connect `files` to `server-protocol.test.js`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **What connects `RATES`, `warnedModels`, `__dirname` to the rest of the system?**
   _313 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `orchestrator.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.11553030303030302 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08686868686868687 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
 - **Should `cli-input.test.js` be split into smaller, more focused modules?**

@@ -1,7 +1,10 @@
-import { mkdir, rm, symlink, writeFile } from 'node:fs/promises';
+import { mkdir, rm, symlink, writeFile, readdir } from 'node:fs/promises';
 import { dirname, isAbsolute, join, normalize, sep } from 'node:path';
-import { spawn } from 'node:child_process';
+import { spawn, execFile } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
+import { promisify } from 'node:util';
+
+const execFileAsync = promisify(execFile);
 
 const MAX_FILES = 80;
 const MAX_FILE_BYTES = 512 * 1024;
@@ -41,23 +44,104 @@ export function parseWorkspaceManifest(text) {
   return { files, testFile };
 }
 
-export async function createWorkspace(manifest, root, { dependencyRoot } = {}) {
-  await mkdir(root, { recursive: true, mode: 0o700 });
-  const id = `${new Date().toISOString().replaceAll(':', '-')}-${randomBytes(5).toString('hex')}`;
-  const directory = join(root, id);
-  await mkdir(directory, { mode: 0o700 });
+let gitAvailable = null;
+export async function checkGit() {
+  if (gitAvailable !== null) return gitAvailable;
   try {
-    if (dependencyRoot) await symlink(dependencyRoot, join(directory, 'node_modules'), 'dir');
+    await execFileAsync('git', ['--version']);
+    gitAvailable = true;
+  } catch (err) {
+    gitAvailable = false;
+    console.warn('Warning: git binary is not available. Git workspace history tracking will be disabled.');
+  }
+  return gitAvailable;
+}
+
+export async function runGit(cwd, args) {
+  const { stdout } = await execFileAsync('git', [
+    '-c', 'user.email=agent@triforce.local',
+    '-c', 'user.name=Triforce Agent',
+    ...args
+  ], {
+    cwd,
+    env: {
+      ...process.env,
+      GIT_CONFIG_GLOBAL: '/dev/null',
+    }
+  });
+  return stdout;
+}
+
+async function cleanWorkspaceDirectory(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.name === '.git' || entry.name === 'node_modules') {
+      continue;
+    }
+    const fullPath = join(directory, entry.name);
+    await rm(fullPath, { recursive: true, force: true });
+  }
+}
+
+export async function getWorkspaceDiff(workspace) {
+  const isGit = await checkGit();
+  if (!isGit || !workspace || !workspace.directory) return '';
+  try {
+    const diffText = await runGit(workspace.directory, ['diff', 'HEAD~1', 'HEAD']);
+    return diffText;
+  } catch (err) {
+    return '';
+  }
+}
+
+export async function createWorkspace(manifest, root, { dependencyRoot, existingWorkspace, iteration = 1 } = {}) {
+  const isGit = await checkGit();
+  if (existingWorkspace) {
+    const directory = existingWorkspace.directory;
+    await cleanWorkspaceDirectory(directory);
     for (const file of manifest.files) {
       const target = join(directory, file.path);
       if (target !== directory && !target.startsWith(directory + sep)) throw new Error(`Workspace path escapes project: ${file.path}`);
       await mkdir(dirname(target), { recursive: true, mode: 0o700 });
-      await writeFile(target, file.content, { encoding: 'utf8', mode: 0o600, flag: 'wx' });
+      await writeFile(target, file.content, { encoding: 'utf8', mode: 0o600 });
     }
-    return { id, directory, testFile: manifest.testFile, files: manifest.files.map(file => file.path) };
-  } catch (err) {
-    await rm(directory, { recursive: true, force: true });
-    throw err;
+    if (isGit) {
+      try {
+        await runGit(directory, ['add', '-A']);
+        await runGit(directory, ['commit', '--allow-empty', '-m', `iteration-${iteration}`]);
+      } catch (err) {
+        console.warn(`Warning: failed to commit git iteration-${iteration}: ${err.message}`);
+      }
+    }
+    return { ...existingWorkspace, files: manifest.files.map(file => file.path) };
+  } else {
+    await mkdir(root, { recursive: true, mode: 0o700 });
+    const id = `${new Date().toISOString().replaceAll(':', '-')}-${randomBytes(5).toString('hex')}`;
+    const directory = join(root, id);
+    await mkdir(directory, { mode: 0o700 });
+    try {
+      if (dependencyRoot) await symlink(dependencyRoot, join(directory, 'node_modules'), 'dir');
+      for (const file of manifest.files) {
+        const target = join(directory, file.path);
+        if (target !== directory && !target.startsWith(directory + sep)) throw new Error(`Workspace path escapes project: ${file.path}`);
+        await mkdir(dirname(target), { recursive: true, mode: 0o700 });
+        await writeFile(target, file.content, { encoding: 'utf8', mode: 0o600, flag: 'wx' });
+      }
+      if (isGit) {
+        try {
+          await runGit(directory, ['init']);
+          await runGit(directory, ['commit', '--allow-empty', '-m', 'initial commit']);
+          await runGit(directory, ['add', '-A']);
+          await runGit(directory, ['commit', '-m', 'iteration-1']);
+        } catch (err) {
+          console.warn(`Warning: failed to initialize git repository: ${err.message}`);
+        }
+      }
+      return { id, directory, testFile: manifest.testFile, files: manifest.files.map(file => file.path) };
+    } catch (err) {
+      await rm(directory, { recursive: true, force: true });
+      throw err;
+    }
   }
 }
 
