@@ -25,12 +25,12 @@
     "semantic_hash": ""
   },
   "install-service.sh": {
-    "mtime": 1784127313.0274284,
-    "ast_hash": "639535b4e10e3f34140162f954ada1b8",
+    "mtime": 1787303228.460848,
+    "ast_hash": "7a56e4fa8ad13233427244ecce050a27",
     "semantic_hash": ""
   },
   "models.config.json": {
-    "mtime": 1787300784.5164576,
+    "mtime": 1787303259.4912233,
     "ast_hash": "32ed2522e959aed786512632b3d3cd33",
     "semantic_hash": ""
   },
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "RUNNING.md": {
-    "mtime": 1784146516.230871,
-    "ast_hash": "968ed92fec0e278ca51234ccce3be0a2",
+    "mtime": 1787303296.5284774,
+    "ast_hash": "9d511fb38c6502abd0a2a170aedf51d6",
     "semantic_hash": ""
   },
   "public/index.html": {
@@ -757,6 +757,16 @@
   "models.js": {
     "mtime": 1787300732.0065253,
     "ast_hash": "a691416713f016a025cdbc3b4a9a499a",
+    "semantic_hash": ""
+  },
+  "run-smoke-test.mjs": {
+    "mtime": 1787302596.8645442,
+    "ast_hash": "e8f63eda747ea1eb0a1c091d61c83e6a",
+    "semantic_hash": ""
+  },
+  "test/install-service.test.js": {
+    "mtime": 1787303244.9635158,
+    "ast_hash": "9b236e531ea9488611341d9bcdb82dc3",
     "semantic_hash": ""
   }
 }

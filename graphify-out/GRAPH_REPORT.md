@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-08-21)
 
 ## Corpus Check
-- 89 files · ~49,710 words
+- 91 files · ~50,524 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 691 nodes · 879 edges · 59 communities (47 shown, 12 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.69)
+- 697 nodes · 881 edges · 62 communities (49 shown, 13 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.67)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f7e5dafa`
+- Built from commit: `a7a0678b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -60,6 +60,8 @@
 - Triforce Remote Operations Guide
 - 0.1.0-rc.1 Validation Record
 - usage.js
+- run-smoke-test.mjs
+- install-service.test.js
 
 ## God Nodes (most connected - your core abstractions)
 1. `RunRegistry` - 19 edges
@@ -88,11 +90,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (59 total, 12 thin omitted)
+## Communities (62 total, 13 thin omitted)
 
 ### Community 0 - "orchestrator.js"
-Cohesion: 0.10
-Nodes (37): ALLOWED_MODELS, checkConfigForWarnings(), getRates(), hasRates(), RATES, warnedModels, __dirname, loadConfig() (+29 more)
+Cohesion: 0.09
+Nodes (38): ALLOWED_MODELS, checkConfigForWarnings(), getCatalog(), getRates(), hasRates(), RATES, warnedModels, __dirname (+30 more)
 
 ### Community 1 - "dependencies"
 Cohesion: 0.11
@@ -115,8 +117,8 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ### Community 15 - "cli.js"
-Cohesion: 0.11
-Nodes (19): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), checkCodexLogin(), connectWebSocket(), __dirname, getNetworkIPs(), readTask() (+11 more)
+Cohesion: 0.22
+Nodes (14): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), checkCodexLogin(), connectWebSocket(), __dirname, getNetworkIPs(), readTask() (+6 more)
 
 ### Community 16 - "2026-07-15"
 Cohesion: 0.20
@@ -151,8 +153,8 @@ Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
 ### Community 26 - "sandbox.js"
-Cohesion: 0.11
-Nodes (9): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, normalizeHostUrl() (+1 more)
+Cohesion: 0.06
+Nodes (34): ConnectionOptions, ConnectionState, EventListener, StateListener, agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities (+26 more)
 
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
@@ -167,8 +169,8 @@ Cohesion: 0.05
 Nodes (42): bin, triforce, description, devDependencies, pngjs, files, main, name (+34 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.06
-Nodes (29): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, BrowserHostStorage, CredentialStorage, HostProfile (+21 more)
+Cohesion: 0.05
+Nodes (30): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage (+22 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -191,8 +193,8 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "files"
-Cohesion: 0.07
-Nodes (30): getCatalog(), agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol() (+22 more)
+Cohesion: 0.10
+Nodes (6): SocketLike, MockSocket, TriforceConnection, config, messages(), nativeOrigins
 
 ### Community 48 - "workspace.js"
 Cohesion: 0.33
@@ -222,25 +224,29 @@ Nodes (5): 0.1.0-rc.1 Validation Record, Compatibility matrix, Functional and fa
 Cohesion: 0.13
 Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
 
+### Community 60 - "run-smoke-test.mjs"
+Cohesion: 0.50
+Nodes (3): config, token, ws
+
 ## Knowledge Gaps
-- **314 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+309 more)
+- **318 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+313 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `MockSocket` connect `sandbox.js` to `cli.js`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `RunRegistry` connect `files` to `files`?**
+- **Why does `promptLoop()` connect `cli.js` to `files`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `RunRegistry` connect `files` to `sandbox.js`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
-  _314 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _318 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `orchestrator.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.09805735430157261 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09485815602836879 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
 - **Should `Agent` be split into smaller, more focused modules?**
   _Cohesion score 0.1455026455026455 - nodes in this community are weakly interconnected._
-- **Should `cli.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.10837438423645321 - nodes in this community are weakly interconnected._
+- **Should `cli-input.test.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

@@ -2,6 +2,7 @@
   "0": "orchestrator.js",
   "1": "dependencies",
   "2": "Agent",
+  "3": "server-protocol.test.js",
   "4": "Triforce — Running & Operations",
   "5": "index.js",
   "6": "manifest.json",
@@ -57,5 +58,7 @@
   "56": "0.1.0-rc.1 Validation Record",
   "57": "CODEX_WORKER_PROMPT.md",
   "58": "usage.js",
-  "59": ".call"
+  "59": ".call",
+  "60": "run-smoke-test.mjs",
+  "61": "install-service.test.js"
 }
