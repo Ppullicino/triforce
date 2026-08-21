@@ -1,16 +1,16 @@
-# Graph Report - triforce  (2026-07-17)
+# Graph Report - triforce  (2026-08-21)
 
 ## Corpus Check
-- 89 files · ~49,550 words
+- 89 files · ~49,710 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 690 nodes · 877 edges · 60 communities (47 shown, 13 thin omitted)
+- 691 nodes · 879 edges · 59 communities (47 shown, 12 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.69)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cd79b199`
+- Built from commit: `f7e5dafa`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,7 +18,6 @@
 - orchestrator.js
 - dependencies
 - Agent
-- remote-client-e2e.test.js
 - Triforce — Running & Operations
 - manifest.json
 - gen-icons.mjs
@@ -89,7 +88,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (60 total, 13 thin omitted)
+## Communities (59 total, 12 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.10
@@ -102,10 +101,6 @@ Nodes (12): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault,
 ### Community 2 - "Agent"
 Cohesion: 0.15
 Nodes (13): Agent, CLI_PROVIDERS, delay(), firstTextBlock(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), parseClaudeJsonEnvelope() (+5 more)
-
-### Community 3 - "remote-client-e2e.test.js"
-Cohesion: 0.12
-Nodes (6): MockSocket, config, messages(), nativeOrigins, startServer(), startServer()
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
@@ -120,8 +115,8 @@ Cohesion: 0.28
 Nodes (8): BG, edgeFunction(), GOLD, inTriangle(), makeIcon(), maskBuf, SHARDS, SIZES
 
 ### Community 15 - "cli.js"
-Cohesion: 0.22
-Nodes (14): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), checkCodexLogin(), connectWebSocket(), __dirname, getNetworkIPs(), readTask() (+6 more)
+Cohesion: 0.11
+Nodes (19): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), checkCodexLogin(), connectWebSocket(), __dirname, getNetworkIPs(), readTask() (+11 more)
 
 ### Community 16 - "2026-07-15"
 Cohesion: 0.20
@@ -155,6 +150,10 @@ Nodes (14): compilerOptions, allowJs, checkJs, declaration, declarationMap, modu
 Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
+### Community 26 - "sandbox.js"
+Cohesion: 0.11
+Nodes (9): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, normalizeHostUrl() (+1 more)
+
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
 Nodes (6): Client Architecture and Development, Commands, Hosts, credentials, and connections, Packages, Protocol and run recovery, Shared interface
@@ -169,7 +168,7 @@ Nodes (42): bin, triforce, description, devDependencies, pngjs, files, main, nam
 
 ### Community 34 - "server-protocol.test.js"
 Cohesion: 0.06
-Nodes (30): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage (+22 more)
+Nodes (29): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, BrowserHostStorage, CredentialStorage, HostProfile (+21 more)
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -192,8 +191,8 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "files"
-Cohesion: 0.06
-Nodes (34): ConnectionOptions, ConnectionState, EventListener, StateListener, agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities (+26 more)
+Cohesion: 0.07
+Nodes (30): getCatalog(), agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol() (+22 more)
 
 ### Community 48 - "workspace.js"
 Cohesion: 0.33
@@ -226,13 +225,13 @@ Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependenc
 ## Knowledge Gaps
 - **314 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+309 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `promptLoop()` connect `cli.js` to `remote-client-e2e.test.js`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `MockSocket` connect `sandbox.js` to `cli.js`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Why does `RunRegistry` connect `files` to `files`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
@@ -243,5 +242,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
 - **Should `Agent` be split into smaller, more focused modules?**
   _Cohesion score 0.1455026455026455 - nodes in this community are weakly interconnected._
-- **Should `remote-client-e2e.test.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Should `cli.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.10837438423645321 - nodes in this community are weakly interconnected._

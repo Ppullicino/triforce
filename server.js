@@ -11,7 +11,7 @@ import { RunRegistry } from './run-registry.js';
 import { capabilities, isCompatibleProtocol, validateClientCommand } from './packages/protocol/src/index.js';
 import { executePipeline } from './pipeline.js';
 import { execFile } from 'node:child_process';
-import { ALLOWED_MODELS, checkConfigForWarnings } from './models.js';
+import { ALLOWED_MODELS, checkConfigForWarnings, getCatalog } from './models.js';
 import { gcWorkspaces } from './workspace.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -277,6 +277,7 @@ app.get('/api/config', async (req, res) => {
   }
 });
 
+app.get('/api/catalog', (_req, res) => res.json(getCatalog()));
 app.get('/api/capabilities', (_req, res) => res.json(serverCapabilities));
 app.get('/api/runs', (_req, res) => res.json({ runs: runRegistry.list() }));
 app.get('/api/runs/:runId', (req, res) => {

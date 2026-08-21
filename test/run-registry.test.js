@@ -107,6 +107,9 @@ test('RunRegistry persistence, crash recovery, index restoration, and subscribe 
   const snapshot2 = list.find(r => r.id === run2.id);
   assert.equal(snapshot1.status, 'failed');
   assert.equal(snapshot2.status, 'completed');
+  assert.equal(snapshot1.usage, null, 'run without usage events exposes usage: null');
+  assert.equal(snapshot2.usage.developer.inputTokens, 10, 'restored snapshot carries per-run usage');
+  assert.equal(snapshot2.usage.developer.cost, 0.1);
 
   const clientSocket1 = socket();
   registry3.subscribe(restoredRun2, clientSocket1, 1);

@@ -39,6 +39,7 @@ export class RunRegistry {
       id: run.id, task: run.task, mode: run.mode, status: run.status,
       createdAt: run.createdAt, updatedAt: run.updatedAt,
       lastEventId: run.nextEventId - 1, droppedEvents: run.droppedEvents,
+      usage: run.usage ?? null,
     };
   }
 

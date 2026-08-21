@@ -23,6 +23,14 @@ export const RATES = {
   'agy-cli-default':   [0.00, 0.00],
 };
 
+export function getCatalog() {
+  const providers = {};
+  for (const [provider, models] of ALLOWED_MODELS) {
+    providers[provider] = [...models];
+  }
+  return { providers, rates: { ...RATES } };
+}
+
 const warnedModels = new Set();
 
 export function getRates(model) {

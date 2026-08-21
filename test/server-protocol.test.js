@@ -58,6 +58,33 @@ test('protects protocol discovery and negotiates WebSocket versions', async () =
   }
 });
 
+test('serves the model catalog behind authorization', async () => {
+  const { child, port } = await startServer();
+  const origin = `http://127.0.0.1:${port}`;
+  try {
+    assert.equal((await fetch(`${origin}/api/catalog`)).status, 401);
+
+    const response = await fetch(`${origin}/api/catalog`, { headers: { cookie: `triforce_token=${token}` } });
+    assert.equal(response.status, 200);
+    const catalog = await response.json();
+
+    const { ALLOWED_MODELS, RATES } = await import('../models.js');
+    assert.deepEqual(Object.keys(catalog.providers).sort(), [...ALLOWED_MODELS.keys()].sort());
+    for (const [provider, models] of ALLOWED_MODELS) {
+      assert.deepEqual(catalog.providers[provider], [...models], `provider ${provider} models match allowlist`);
+    }
+    assert.deepEqual(catalog.rates, RATES);
+    for (const models of Object.values(catalog.providers)) {
+      for (const model of models) {
+        assert.ok(Array.isArray(catalog.rates[model]), `model ${model} has display rates`);
+      }
+    }
+  } finally {
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+  }
+});
+
 test('server startup logs a warning if models.config.json contains unknown model', async () => {
   const { readFile, writeFile } = await import('node:fs/promises');
   const { join } = await import('node:path');
