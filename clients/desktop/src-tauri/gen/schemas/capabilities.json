@@ -1,0 +1,1 @@
+{"desktop-default":{"identifier":"desktop-default","description":"Minimum desktop permissions for window state and external links","local":true,"windows":["main"],"permissions":["core:default","opener:allow-open-url","window-state:default","updater:default"]}}

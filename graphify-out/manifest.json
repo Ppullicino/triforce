@@ -30,7 +30,7 @@
     "semantic_hash": ""
   },
   "models.config.json": {
-    "mtime": 1787303259.4912233,
+    "mtime": 1787582043.725454,
     "ast_hash": "32ed2522e959aed786512632b3d3cd33",
     "semantic_hash": ""
   },
@@ -170,8 +170,8 @@
     "semantic_hash": ""
   },
   "test/package.test.js": {
-    "mtime": 1784139356.4189565,
-    "ast_hash": "62c219b8a71f0b0d6e21533ca54ce598",
+    "mtime": 1787582600.5789697,
+    "ast_hash": "cf02bc815c361885d09e809bbd620fde",
     "semantic_hash": ""
   },
   "cli-input.js": {
@@ -759,14 +759,29 @@
     "ast_hash": "a691416713f016a025cdbc3b4a9a499a",
     "semantic_hash": ""
   },
-  "run-smoke-test.mjs": {
-    "mtime": 1787302596.8645442,
-    "ast_hash": "e8f63eda747ea1eb0a1c091d61c83e6a",
-    "semantic_hash": ""
-  },
   "test/install-service.test.js": {
     "mtime": 1787303244.9635158,
     "ast_hash": "9b236e531ea9488611341d9bcdb82dc3",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/gen/schemas/acl-manifests.json": {
+    "mtime": 1787582003.1293,
+    "ast_hash": "e76133306dc50c29047a5a41a1048d15",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/gen/schemas/capabilities.json": {
+    "mtime": 1787582003.1392999,
+    "ast_hash": "3da0e56404c5f605cf90788898fed8aa",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/gen/schemas/desktop-schema.json": {
+    "mtime": 1787582003.1383,
+    "ast_hash": "9852074f29093195d84a93b4e85e3999",
+    "semantic_hash": ""
+  },
+  "clients/desktop/src-tauri/gen/schemas/linux-schema.json": {
+    "mtime": 1787582003.1383,
+    "ast_hash": "9852074f29093195d84a93b4e85e3999",
     "semantic_hash": ""
   }
 }

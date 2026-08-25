@@ -1,16 +1,16 @@
-# Graph Report - triforce  (2026-08-21)
+# Graph Report - triforce  (2026-08-24)
 
 ## Corpus Check
-- 91 files · ~50,524 words
+- 94 files · ~74,759 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 697 nodes · 881 edges · 62 communities (49 shown, 13 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.67)
+- 843 nodes · 1036 edges · 81 communities (67 shown, 14 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.69)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a7a0678b`
+- Built from commit: `a928bb83`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,6 +18,7 @@
 - orchestrator.js
 - dependencies
 - Agent
+- server-protocol.test.js
 - Triforce — Running & Operations
 - manifest.json
 - gen-icons.mjs
@@ -60,8 +61,27 @@
 - Triforce Remote Operations Guide
 - 0.1.0-rc.1 Validation Record
 - usage.js
-- run-smoke-test.mjs
+- App.tsx
 - install-service.test.js
+- platform-credentials.ts
+- CredentialStorage
+- connection.ts
+- definitions
+- definitions
+- properties
+- properties
+- permissions
+- permissions
+- webviews
+- CapabilityRemote
+- CapabilityRemote
+- webviews
+- Capability
+- Capability
+- desktop-schema.json
+- linux-schema.json
+- description
+- description
 
 ## God Nodes (most connected - your core abstractions)
 1. `RunRegistry` - 19 edges
@@ -90,7 +110,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (62 total, 13 thin omitted)
+## Communities (81 total, 14 thin omitted)
 
 ### Community 0 - "orchestrator.js"
 Cohesion: 0.09
@@ -153,8 +173,8 @@ Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
 ### Community 26 - "sandbox.js"
-Cohesion: 0.06
-Nodes (34): ConnectionOptions, ConnectionState, EventListener, StateListener, agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities (+26 more)
+Cohesion: 0.07
+Nodes (30): agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+22 more)
 
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
@@ -169,8 +189,8 @@ Cohesion: 0.05
 Nodes (42): bin, triforce, description, devDependencies, pngjs, files, main, name (+34 more)
 
 ### Community 34 - "server-protocol.test.js"
-Cohesion: 0.05
-Nodes (30): App(), connectionMessages, defaultConfig, roles, NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage (+22 more)
+Cohesion: 0.16
+Nodes (8): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, HostProfile, HostRepository, HostStorage, isHostProfile(), MemoryHostStorage
 
 ### Community 35 - "files"
 Cohesion: 0.08
@@ -224,24 +244,100 @@ Nodes (5): 0.1.0-rc.1 Validation Record, Compatibility matrix, Functional and fa
 Cohesion: 0.13
 Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
 
-### Community 60 - "run-smoke-test.mjs"
+### Community 60 - "App.tsx"
+Cohesion: 0.19
+Nodes (11): App(), connectionMessages, defaultConfig, roles, bounded(), emptyUsage, initialPipelineState(), mapStatus() (+3 more)
+
+### Community 62 - "platform-credentials.ts"
+Cohesion: 0.21
+Nodes (8): installNativeIntegration(), AndroidBridge, AndroidCredentialStorage, androidRequest(), createCredentialStorage(), handleAndroidCredentialResponse(), pending, Window
+
+### Community 63 - "CredentialStorage"
+Cohesion: 0.20
+Nodes (3): CredentialStorage, MemoryCredentialStorage, TauriCredentialStorage
+
+### Community 64 - "connection.ts"
+Cohesion: 0.40
+Nodes (4): ConnectionOptions, ConnectionState, EventListener, StateListener
+
+### Community 65 - "definitions"
+Cohesion: 0.12
+Nodes (16): anyOf, description, definitions, Application, Number, PermissionEntry, Target, Value (+8 more)
+
+### Community 66 - "definitions"
+Cohesion: 0.12
+Nodes (16): anyOf, description, definitions, Application, Number, PermissionEntry, Target, Value (+8 more)
+
+### Community 67 - "properties"
+Cohesion: 0.15
+Nodes (13): properties, Identifier, description, oneOf, type, default, description, type (+5 more)
+
+### Community 68 - "properties"
+Cohesion: 0.15
+Nodes (13): properties, Identifier, description, oneOf, type, default, description, type (+5 more)
+
+### Community 69 - "permissions"
+Cohesion: 0.17
+Nodes (12): $ref, array, null, description, items, type, uniqueItems, description (+4 more)
+
+### Community 70 - "permissions"
+Cohesion: 0.17
+Nodes (12): $ref, array, null, description, items, type, uniqueItems, description (+4 more)
+
+### Community 71 - "webviews"
+Cohesion: 0.20
+Nodes (10): type, webviews, windows, items, description, items, type, description (+2 more)
+
+### Community 72 - "CapabilityRemote"
+Cohesion: 0.20
+Nodes (10): description, properties, required, type, CapabilityRemote, urls, urls, description (+2 more)
+
+### Community 73 - "CapabilityRemote"
+Cohesion: 0.22
+Nodes (9): description, properties, required, type, CapabilityRemote, urls, urls, description (+1 more)
+
+### Community 74 - "webviews"
+Cohesion: 0.22
+Nodes (9): type, webviews, windows, description, items, type, description, items (+1 more)
+
+### Community 75 - "Capability"
+Cohesion: 0.33
+Nodes (6): description, required, type, Capability, identifier, permissions
+
+### Community 76 - "Capability"
+Cohesion: 0.33
+Nodes (6): description, required, type, Capability, identifier, permissions
+
+### Community 77 - "desktop-schema.json"
+Cohesion: 0.40
+Nodes (4): anyOf, description, $schema, title
+
+### Community 78 - "linux-schema.json"
+Cohesion: 0.40
+Nodes (4): anyOf, description, $schema, title
+
+### Community 79 - "description"
 Cohesion: 0.50
-Nodes (3): config, token, ws
+Nodes (4): default, description, type, description
+
+### Community 80 - "description"
+Cohesion: 0.50
+Nodes (4): default, description, type, description
 
 ## Knowledge Gaps
-- **318 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+313 more)
+- **401 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+396 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `promptLoop()` connect `cli.js` to `files`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **Why does `RunRegistry` connect `files` to `sandbox.js`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `rl`, `__dirname`, `name` to the rest of the system?**
-  _318 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _401 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `orchestrator.js` be split into smaller, more focused modules?**
   _Cohesion score 0.09485815602836879 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**

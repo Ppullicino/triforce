@@ -13,7 +13,9 @@ test('npm package contains every backend runtime module', async () => {
     cwd: projectRoot,
     maxBuffer: 1024 * 1024,
   });
-  const [manifest] = JSON.parse(stdout);
+  // npm <=11 emits an array of manifests; npm >=12 emits an object keyed by package name.
+  const parsed = JSON.parse(stdout);
+  const [manifest] = Array.isArray(parsed) ? parsed : Object.values(parsed);
   const files = new Set(manifest.files.map(file => file.path));
 
   for (const required of ['agent.js', 'cli-input.js', 'run-registry.js', 'sandbox.js', 'server.js', 'workspace.js', 'packages/protocol/src/index.js']) {

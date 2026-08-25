@@ -1115,6 +1115,1656 @@
       "norm_label": "updater:default"
     },
     {
+      "label": "desktop-schema.json",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema",
+      "community": 77,
+      "community_name": "desktop-schema.json",
+      "norm_label": "desktop-schema.json"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_schema",
+      "community": 77,
+      "community_name": "desktop-schema.json",
+      "norm_label": "$schema"
+    },
+    {
+      "label": "title",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_title",
+      "community": 77,
+      "community_name": "desktop-schema.json",
+      "norm_label": "title"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description",
+      "community": 77,
+      "community_name": "desktop-schema.json",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_anyof",
+      "community": 77,
+      "community_name": "desktop-schema.json",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "definitions",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "definitions"
+    },
+    {
+      "label": "Capability",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capability",
+      "community": 75,
+      "community_name": "Capability",
+      "norm_label": "capability"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_description",
+      "community": 75,
+      "community_name": "Capability",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_type",
+      "community": 75,
+      "community_name": "Capability",
+      "norm_label": "type"
+    },
+    {
+      "label": "required",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_required",
+      "community": 75,
+      "community_name": "Capability",
+      "norm_label": "required"
+    },
+    {
+      "label": "identifier",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_identifier",
+      "community": 75,
+      "community_name": "Capability",
+      "norm_label": "identifier"
+    },
+    {
+      "label": "permissions",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_permissions",
+      "community": 75,
+      "community_name": "Capability",
+      "norm_label": "permissions"
+    },
+    {
+      "label": "properties",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "properties"
+    },
+    {
+      "label": "identifier",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_identifier",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "identifier"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_identifier_description",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_identifier_type",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "type"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_description",
+      "community": 79,
+      "community_name": "description",
+      "norm_label": "description"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description_description",
+      "community": 79,
+      "community_name": "description",
+      "norm_label": "description"
+    },
+    {
+      "label": "default",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description_default",
+      "community": 79,
+      "community_name": "description",
+      "norm_label": "default"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description_type",
+      "community": 79,
+      "community_name": "description",
+      "norm_label": "type"
+    },
+    {
+      "label": "remote",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_remote",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "remote"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_remote_description",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_remote_anyof",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "local",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_local",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "local"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_local_description",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "description"
+    },
+    {
+      "label": "default",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_local_default",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "default"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_local_type",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "type"
+    },
+    {
+      "label": "windows",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_windows",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "windows"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_windows_description",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_windows_type",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_windows_items",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "items"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_items_type",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "type"
+    },
+    {
+      "label": "webviews",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_webviews",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "webviews"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_webviews_description",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_webviews_type",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_webviews_items",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "items"
+    },
+    {
+      "label": "permissions",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_permissions",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "permissions"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L87",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_description",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_type",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L89",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_items",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "items"
+    },
+    {
+      "label": "$ref",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_items_ref",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "$ref"
+    },
+    {
+      "label": "uniqueItems",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_uniqueitems",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "uniqueitems"
+    },
+    {
+      "label": "platforms",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L94",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_platforms",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "platforms"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_description",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_type",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "type"
+    },
+    {
+      "label": "array",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_array",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "array"
+    },
+    {
+      "label": "null",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_null",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "null"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_items",
+      "community": 69,
+      "community_name": "permissions",
+      "norm_label": "items"
+    },
+    {
+      "label": "CapabilityRemote",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capabilityremote",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "capabilityremote"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_description",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_type",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "type"
+    },
+    {
+      "label": "required",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_required",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "required"
+    },
+    {
+      "label": "urls",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_urls",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "urls"
+    },
+    {
+      "label": "properties",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_properties",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "properties"
+    },
+    {
+      "label": "urls",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_urls",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "urls"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_urls_description",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_urls_type",
+      "community": 73,
+      "community_name": "CapabilityRemote",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_urls_items",
+      "community": 71,
+      "community_name": "webviews",
+      "norm_label": "items"
+    },
+    {
+      "label": "PermissionEntry",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_permissionentry",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "permissionentry"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissionentry_description",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L124",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissionentry_anyof",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "Identifier",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L344",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_identifier",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "identifier"
+    },
+    {
+      "label": "oneOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L346",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_identifier_oneof",
+      "community": 67,
+      "community_name": "properties",
+      "norm_label": "oneof"
+    },
+    {
+      "label": "Value",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2509",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_value",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "value"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2510",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_value_description",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2511",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_value_anyof",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "Number",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2548",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_number",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "number"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2549",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_number_description",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2550",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_number_anyof",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "Target",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2563",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_target",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "target"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2564",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_target_description",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "oneOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2565",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_target_oneof",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "oneof"
+    },
+    {
+      "label": "Application",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2603",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_application",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "application"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2604",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_application_description",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2605",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_application_anyof",
+      "community": 65,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "linux-schema.json",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema",
+      "community": 78,
+      "community_name": "linux-schema.json",
+      "norm_label": "linux-schema.json"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_schema",
+      "community": 78,
+      "community_name": "linux-schema.json",
+      "norm_label": "$schema"
+    },
+    {
+      "label": "title",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_title",
+      "community": 78,
+      "community_name": "linux-schema.json",
+      "norm_label": "title"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_description",
+      "community": 78,
+      "community_name": "linux-schema.json",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_anyof",
+      "community": 78,
+      "community_name": "linux-schema.json",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "definitions",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "definitions"
+    },
+    {
+      "label": "Capability",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capability",
+      "community": 76,
+      "community_name": "Capability",
+      "norm_label": "capability"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_description",
+      "community": 76,
+      "community_name": "Capability",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_type",
+      "community": 76,
+      "community_name": "Capability",
+      "norm_label": "type"
+    },
+    {
+      "label": "required",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_required",
+      "community": 76,
+      "community_name": "Capability",
+      "norm_label": "required"
+    },
+    {
+      "label": "identifier",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_identifier",
+      "community": 76,
+      "community_name": "Capability",
+      "norm_label": "identifier"
+    },
+    {
+      "label": "permissions",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_permissions",
+      "community": 76,
+      "community_name": "Capability",
+      "norm_label": "permissions"
+    },
+    {
+      "label": "properties",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "properties"
+    },
+    {
+      "label": "identifier",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_identifier",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "identifier"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_identifier_description",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_identifier_type",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "type"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_description",
+      "community": 80,
+      "community_name": "description",
+      "norm_label": "description"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_description_description",
+      "community": 80,
+      "community_name": "description",
+      "norm_label": "description"
+    },
+    {
+      "label": "default",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_description_default",
+      "community": 80,
+      "community_name": "description",
+      "norm_label": "default"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_description_type",
+      "community": 80,
+      "community_name": "description",
+      "norm_label": "type"
+    },
+    {
+      "label": "remote",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_remote",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "remote"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_remote_description",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_remote_anyof",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "local",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_local",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "local"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_local_description",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "description"
+    },
+    {
+      "label": "default",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_local_default",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "default"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_local_type",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "type"
+    },
+    {
+      "label": "windows",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_windows",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "windows"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_windows_description",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_windows_type",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_windows_items",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "items"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_items_type",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "type"
+    },
+    {
+      "label": "webviews",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_webviews",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "webviews"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_webviews_description",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_webviews_type",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_webviews_items",
+      "community": 74,
+      "community_name": "webviews",
+      "norm_label": "items"
+    },
+    {
+      "label": "permissions",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_permissions",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "permissions"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L87",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_description",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_type",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L89",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_items",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "items"
+    },
+    {
+      "label": "$ref",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_items_ref",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "$ref"
+    },
+    {
+      "label": "uniqueItems",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_uniqueitems",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "uniqueitems"
+    },
+    {
+      "label": "platforms",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L94",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_platforms",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "platforms"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_description",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_type",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "type"
+    },
+    {
+      "label": "array",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_array",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "array"
+    },
+    {
+      "label": "null",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_null",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "null"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_items",
+      "community": 70,
+      "community_name": "permissions",
+      "norm_label": "items"
+    },
+    {
+      "label": "CapabilityRemote",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capabilityremote",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "capabilityremote"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_description",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_type",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "type"
+    },
+    {
+      "label": "required",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_required",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "required"
+    },
+    {
+      "label": "urls",
+      "file_type": "concept",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_urls",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "urls"
+    },
+    {
+      "label": "properties",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_properties",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "properties"
+    },
+    {
+      "label": "urls",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_urls",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "urls"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_urls_description",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "description"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_urls_type",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "type"
+    },
+    {
+      "label": "items",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_urls_items",
+      "community": 72,
+      "community_name": "CapabilityRemote",
+      "norm_label": "items"
+    },
+    {
+      "label": "PermissionEntry",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_permissionentry",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "permissionentry"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissionentry_description",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L124",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissionentry_anyof",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "Identifier",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L344",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_identifier",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "identifier"
+    },
+    {
+      "label": "oneOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L346",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_identifier_oneof",
+      "community": 68,
+      "community_name": "properties",
+      "norm_label": "oneof"
+    },
+    {
+      "label": "Value",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2509",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_value",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "value"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2510",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_value_description",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2511",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_value_anyof",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "Number",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2548",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_number",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "number"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2549",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_number_description",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2550",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_number_anyof",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
+      "label": "Target",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2563",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_target",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "target"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2564",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_target_description",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "oneOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2565",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_target_oneof",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "oneof"
+    },
+    {
+      "label": "Application",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2603",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_application",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "application"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2604",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_application_description",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "description"
+    },
+    {
+      "label": "anyOf",
+      "file_type": "code",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2605",
+      "_origin": "ast",
+      "id": "clients_desktop_src_tauri_gen_schemas_linux_schema_application_anyof",
+      "community": 66,
+      "community_name": "definitions",
+      "norm_label": "anyof"
+    },
+    {
       "label": "lib.rs",
       "file_type": "code",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
@@ -2155,8 +3805,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "app.test.tsx"
     },
     {
@@ -2166,8 +3816,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_app",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "app.tsx"
     },
     {
@@ -2177,8 +3827,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "clients_shared_src_app_roles",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "roles"
     },
     {
@@ -2188,8 +3838,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "clients_shared_src_app_connectionmessages",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "connectionmessages"
     },
     {
@@ -2199,8 +3849,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "clients_shared_src_app_defaultconfig",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "defaultconfig"
     },
     {
@@ -2210,8 +3860,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "clients_shared_src_app_app",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "app()"
     },
     {
@@ -2221,8 +3871,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "clients_shared_src_app_hostscreen",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "hostscreen()"
     },
     {
@@ -2232,8 +3882,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "clients_shared_src_app_dashboard",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "dashboard()"
     },
     {
@@ -2309,8 +3959,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection",
-      "community": 26,
-      "community_name": "sandbox.js",
+      "community": 64,
+      "community_name": "connection.ts",
       "norm_label": "connection.ts"
     },
     {
@@ -2320,8 +3970,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_connectionstate",
-      "community": 26,
-      "community_name": "sandbox.js",
+      "community": 64,
+      "community_name": "connection.ts",
       "norm_label": "connectionstate"
     },
     {
@@ -2331,8 +3981,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_statelistener",
-      "community": 26,
-      "community_name": "sandbox.js",
+      "community": 64,
+      "community_name": "connection.ts",
       "norm_label": "statelistener"
     },
     {
@@ -2342,8 +3992,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_eventlistener",
-      "community": 26,
-      "community_name": "sandbox.js",
+      "community": 64,
+      "community_name": "connection.ts",
       "norm_label": "eventlistener"
     },
     {
@@ -2397,8 +4047,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "clients_shared_src_core_connection_connectionoptions",
-      "community": 26,
-      "community_name": "sandbox.js",
+      "community": 64,
+      "community_name": "connection.ts",
       "norm_label": "connectionoptions"
     },
     {
@@ -2661,8 +4311,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_credentialstorage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": "credentialstorage"
     },
     {
@@ -2672,7 +4322,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_credentialstorage_get",
-      "community": 34,
+      "community": 3,
       "community_name": "server-protocol.test.js",
       "norm_label": ".get()"
     },
@@ -2683,8 +4333,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_credentialstorage_set",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": ".set()"
     },
     {
@@ -2749,8 +4399,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_memorycredentialstorage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": "memorycredentialstorage"
     },
     {
@@ -2760,8 +4410,8 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_memorycredentialstorage_get",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": ".get()"
     },
     {
@@ -2771,8 +4421,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_memorycredentialstorage_set",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": ".set()"
     },
     {
@@ -2782,8 +4432,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_memorycredentialstorage_delete",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": ".delete()"
     },
     {
@@ -2848,7 +4498,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "clients_shared_src_core_hosts_hostrepository_token",
-      "community": 34,
+      "community": 3,
       "community_name": "server-protocol.test.js",
       "norm_label": ".token()"
     },
@@ -2870,8 +4520,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "native-integration.ts"
     },
     {
@@ -2881,8 +4531,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_native_integration_installnativeintegration",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "installnativeintegration()"
     },
     {
@@ -2892,8 +4542,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "pipeline.test.ts"
     },
     {
@@ -2903,8 +4553,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "pipeline.ts"
     },
     {
@@ -2914,8 +4564,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_usageitem",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "usageitem"
     },
     {
@@ -2925,8 +4575,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_pipelineviewstate",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "pipelineviewstate"
     },
     {
@@ -2936,8 +4586,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_emptyusage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "emptyusage"
     },
     {
@@ -2947,8 +4597,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_initialpipelinestate",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "initialpipelinestate()"
     },
     {
@@ -2958,8 +4608,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_reducepipeline",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "reducepipeline()"
     },
     {
@@ -2969,8 +4619,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_bounded",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "bounded()"
     },
     {
@@ -2980,8 +4630,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "clients_shared_src_core_pipeline_mapstatus",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 60,
+      "community_name": "App.tsx",
       "norm_label": "mapstatus()"
     },
     {
@@ -2991,8 +4641,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_test",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "platform-credentials.test.ts"
     },
     {
@@ -3002,8 +4652,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "platform-credentials.ts"
     },
     {
@@ -3013,8 +4663,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": "tauricredentialstorage"
     },
     {
@@ -3024,8 +4674,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_get",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": ".get()"
     },
     {
@@ -3035,8 +4685,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_set",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": ".set()"
     },
     {
@@ -3046,8 +4696,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_tauricredentialstorage_delete",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 63,
+      "community_name": "CredentialStorage",
       "norm_label": ".delete()"
     },
     {
@@ -3057,8 +4707,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_androidbridge",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "androidbridge"
     },
     {
@@ -3068,8 +4718,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_androidbridge_postmessage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": ".postmessage()"
     },
     {
@@ -3079,8 +4729,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_pending",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "pending"
     },
     {
@@ -3090,8 +4740,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "androidcredentialstorage"
     },
     {
@@ -3101,8 +4751,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage_get",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": ".get()"
     },
     {
@@ -3112,8 +4762,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage_set",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": ".set()"
     },
     {
@@ -3123,8 +4773,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_androidcredentialstorage_delete",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": ".delete()"
     },
     {
@@ -3134,8 +4784,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_handleandroidcredentialresponse",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "handleandroidcredentialresponse()"
     },
     {
@@ -3145,8 +4795,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_androidrequest",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "androidrequest()"
     },
     {
@@ -3156,8 +4806,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_createcredentialstorage",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "createcredentialstorage()"
     },
     {
@@ -3167,8 +4817,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "clients_shared_src_core_platform_credentials_window",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "window"
     },
     {
@@ -3178,8 +4828,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_shared_src_main",
-      "community": 34,
-      "community_name": "server-protocol.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "norm_label": "main.tsx"
     },
     {
@@ -5765,50 +7415,6 @@
       "norm_label": ".flush()"
     },
     {
-      "label": "run-smoke-test.mjs",
-      "file_type": "code",
-      "source_file": "run-smoke-test.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "run_smoke_test",
-      "community": 60,
-      "community_name": "run-smoke-test.mjs",
-      "norm_label": "run-smoke-test.mjs"
-    },
-    {
-      "label": "token",
-      "file_type": "code",
-      "source_file": "run-smoke-test.mjs",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "run_smoke_test_token",
-      "community": 60,
-      "community_name": "run-smoke-test.mjs",
-      "norm_label": "token"
-    },
-    {
-      "label": "config",
-      "file_type": "code",
-      "source_file": "run-smoke-test.mjs",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "run_smoke_test_config",
-      "community": 60,
-      "community_name": "run-smoke-test.mjs",
-      "norm_label": "config"
-    },
-    {
-      "label": "ws",
-      "file_type": "code",
-      "source_file": "run-smoke-test.mjs",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "run_smoke_test_ws",
-      "community": 60,
-      "community_name": "run-smoke-test.mjs",
-      "norm_label": "ws"
-    },
-    {
       "label": "sandbox.js",
       "file_type": "code",
       "source_file": "sandbox.js",
@@ -6343,8 +7949,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "test_remote_client_e2e_test_startserver",
-      "community": 42,
-      "community_name": "files",
+      "community": 3,
+      "community_name": "server-protocol.test.js",
       "norm_label": "startserver()"
     },
     {
@@ -9336,6 +10942,1576 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_title",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2603",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_application",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capability",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capabilityremote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L344",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_identifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2548",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_number",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_permissionentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2563",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_target",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2509",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_value",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_required",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_identifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_required",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_permissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_identifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_local",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_permissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_platforms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_remote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_webviews",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_windows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_identifier_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_identifier_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L345",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_identifier_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_description",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_description",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_description",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_description_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_remote",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_remote_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_remote",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_remote_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_local",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_local_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_local",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_local_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_local",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_local_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_windows",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_windows_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_windows",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_windows_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_windows",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_windows_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_windows_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_items_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_urls_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_items_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_webviews_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_items_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_webviews",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_webviews_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_webviews",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_webviews_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_webviews",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_webviews_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_uniqueitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissions_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_items_ref",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_items_ref",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_platforms",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_platforms",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_platforms",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L96",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_type",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_array",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L96",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_platforms_type",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_null",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_properties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L109",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_required",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_json_ref_urls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_urls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_urls",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_urls_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_urls",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_urls_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_properties_urls",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_urls_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_permissionentry",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissionentry_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_permissionentry",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_permissionentry_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L346",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_identifier_oneof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2511",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_value",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_value_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2510",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_value",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_value_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2550",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_number",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_number_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2549",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_number",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_number_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2564",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_target",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_target_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2565",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_target",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_target_oneof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2605",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_application",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_application_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "source_location": "L2604",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_desktop_schema_definitions_application",
+      "target": "clients_desktop_src_tauri_gen_schemas_desktop_schema_application_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_title",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2603",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_application",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capability",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capabilityremote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L344",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_identifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2548",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_number",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_permissionentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2563",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_target",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2509",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_value",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capability",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_required",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_identifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_required",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_permissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_identifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_local",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_permissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_platforms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_remote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_webviews",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capability_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_windows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_identifier_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_identifier_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L345",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_identifier_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_description",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_description_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_description",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_description_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_description",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_description_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_remote",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_remote_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_remote",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_remote_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_local",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_local_default",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_local",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_local_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_local",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_local_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_windows",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_windows_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_windows",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_windows_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_windows",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_windows_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_windows_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_items_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_urls_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_items_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_webviews_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_items_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_webviews",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_webviews_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_webviews",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_webviews_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_webviews",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_webviews_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_permissions",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_uniqueitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissions_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_items_ref",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_items",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_items_ref",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_platforms",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_platforms",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_platforms",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L96",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_type",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_array",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L96",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_platforms_type",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_null",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_properties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_capabilityremote",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L109",
+      "weight": 1.0,
+      "context": "import",
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_required",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_json_ref_urls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_capabilityremote_properties",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_urls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_urls",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_urls_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_urls",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_urls_items",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_properties_urls",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_urls_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_permissionentry",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissionentry_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_permissionentry",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_permissionentry_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L346",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_identifier",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_identifier_oneof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2511",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_value",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_value_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2510",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_value",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_value_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2550",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_number",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_number_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2549",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_number",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_number_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2564",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_target",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_target_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2565",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_target",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_target_oneof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2605",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_application",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_application_anyof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "clients/desktop/src-tauri/gen/schemas/linux-schema.json",
+      "source_location": "L2604",
+      "weight": 1.0,
+      "source": "clients_desktop_src_tauri_gen_schemas_linux_schema_definitions_application",
+      "target": "clients_desktop_src_tauri_gen_schemas_linux_schema_application_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "clients/desktop/src-tauri/src/lib.rs",
       "source_location": "L36",
       "weight": 1.0,
@@ -11667,6 +14843,28 @@
       "source": "clients_shared_src_core_hosts_hostrepository",
       "target": "clients_shared_src_core_hosts_hostrepository_upsert",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "test/remote-client-e2e.test.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "test_remote_client_e2e_test_startserver",
+      "target": "clients_shared_src_core_hosts_hostrepository_token"
+    },
+    {
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "test/server-protocol.test.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "test_server_protocol_test_startserver",
+      "target": "clients_shared_src_core_hosts_hostrepository_token"
     },
     {
       "relation": "contains",
@@ -15227,36 +18425,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "run-smoke-test.mjs",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "run_smoke_test",
-      "target": "run_smoke_test_config",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "run-smoke-test.mjs",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "run_smoke_test",
-      "target": "run_smoke_test_token",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "run-smoke-test.mjs",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "run_smoke_test",
-      "target": "run_smoke_test_ws",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "sandbox.js",
       "source_location": "L9",
       "weight": 1.0,
@@ -16848,5 +20016,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a7a0678bc032562568adbcd06c3074a4df2d44ac"
+  "built_at_commit": "a928bb832c892cd1799cb38345aba46e9dbe63a9"
 }

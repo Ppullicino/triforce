@@ -1,5 +1,5 @@
 {
-  "name": "triforce",
+  "name": "@ppullicino/triforce",
   "version": "0.1.0",
   "description": "Multi-agent development orchestrator",
   "main": "orchestrator.js",
