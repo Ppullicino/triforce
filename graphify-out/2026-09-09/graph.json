@@ -3755,6 +3755,28 @@
       "source_location": "L28"
     },
     {
+      "id": "clients_shared_package_devdependencies_eslint_js",
+      "label": "@eslint/js",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@eslint/js",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "clients_shared_package_devdependencies_eslint_plugin_react_hooks",
+      "label": "eslint-plugin-react-hooks",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "eslint-plugin-react-hooks",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L29"
+    },
+    {
       "id": "clients_shared_package_devdependencies_eslint_plugin_react_refresh",
       "label": "eslint-plugin-react-refresh",
       "_origin": "ast",
@@ -3764,6 +3786,17 @@
       "norm_label": "eslint-plugin-react-refresh",
       "source_file": "clients/shared/package.json",
       "source_location": "L30"
+    },
+    {
+      "id": "clients_shared_package_devdependencies_globals",
+      "label": "globals",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "globals",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L31"
     },
     {
       "id": "clients_shared_package_devdependencies_jsdom",
@@ -3777,6 +3810,39 @@
       "source_location": "L32"
     },
     {
+      "id": "clients_shared_package_devdependencies_testing_library_jest_dom",
+      "label": "@testing-library/jest-dom",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@testing-library/jest-dom",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "clients_shared_package_devdependencies_testing_library_react",
+      "label": "@testing-library/react",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@testing-library/react",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "clients_shared_package_devdependencies_types_node",
+      "label": "@types/node",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/node",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L26"
+    },
+    {
       "id": "clients_shared_package_devdependencies_types_react",
       "label": "@types/react",
       "_origin": "ast",
@@ -3786,6 +3852,17 @@
       "norm_label": "@types/react",
       "source_file": "clients/shared/package.json",
       "source_location": "L24"
+    },
+    {
+      "id": "clients_shared_package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react-dom",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L25"
     },
     {
       "id": "clients_shared_package_devdependencies_typescript",
@@ -3799,6 +3876,17 @@
       "source_location": "L33"
     },
     {
+      "id": "clients_shared_package_devdependencies_typescript_eslint",
+      "label": "typescript-eslint",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "typescript-eslint",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L34"
+    },
+    {
       "id": "clients_shared_package_devdependencies_vite",
       "label": "vite",
       "_origin": "ast",
@@ -3808,6 +3896,17 @@
       "norm_label": "vite",
       "source_file": "clients/shared/package.json",
       "source_location": "L35"
+    },
+    {
+      "id": "clients_shared_package_devdependencies_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L27"
     },
     {
       "id": "clients_shared_package_devdependencies_vitest",
@@ -3843,6 +3942,28 @@
       "source_location": "L28"
     },
     {
+      "id": "eslint_js",
+      "label": "@eslint/js",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@eslint/js",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "eslint_plugin_react_hooks",
+      "label": "eslint-plugin-react-hooks",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "eslint-plugin-react-hooks",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L29"
+    },
+    {
       "id": "eslint_plugin_react_refresh",
       "label": "eslint-plugin-react-refresh",
       "_origin": "ast",
@@ -3852,6 +3973,17 @@
       "norm_label": "eslint-plugin-react-refresh",
       "source_file": "clients/shared/package.json",
       "source_location": "L30"
+    },
+    {
+      "id": "globals",
+      "label": "globals",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "globals",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L31"
     },
     {
       "id": "jsdom",
@@ -3865,6 +3997,39 @@
       "source_location": "L32"
     },
     {
+      "id": "testing_library_jest_dom",
+      "label": "@testing-library/jest-dom",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@testing-library/jest-dom",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "testing_library_react",
+      "label": "@testing-library/react",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@testing-library/react",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "types_node",
+      "label": "@types/node",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@types/node",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L26"
+    },
+    {
       "id": "types_react",
       "label": "@types/react",
       "_origin": "ast",
@@ -3876,6 +4041,28 @@
       "source_location": "L24"
     },
     {
+      "id": "types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@types/react-dom",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "typescript_eslint",
+      "label": "typescript-eslint",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "typescript-eslint",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L34"
+    },
+    {
       "id": "vite",
       "label": "vite",
       "_origin": "ast",
@@ -3885,6 +4072,17 @@
       "norm_label": "vite",
       "source_file": "clients/shared/package.json",
       "source_location": "L35"
+    },
+    {
+      "id": "vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L27"
     },
     {
       "id": "vitest",
@@ -4195,11 +4393,22 @@
       "source_location": "L18"
     },
     {
+      "id": "clients_shared_package",
+      "label": "shared/package.json",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "shared/package.json",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L1"
+    },
+    {
       "id": "clients_shared_package_dependencies",
       "label": "dependencies",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "code",
       "norm_label": "dependencies",
       "source_file": "clients/shared/package.json",
@@ -4210,7 +4419,7 @@
       "label": "react",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "code",
       "norm_label": "react",
       "source_file": "clients/shared/package.json",
@@ -4221,7 +4430,7 @@
       "label": "react-dom",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "code",
       "norm_label": "react-dom",
       "source_file": "clients/shared/package.json",
@@ -4232,7 +4441,7 @@
       "label": "@tauri-apps/api",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "code",
       "norm_label": "@tauri-apps/api",
       "source_file": "clients/shared/package.json",
@@ -4243,7 +4452,7 @@
       "label": "@tauri-apps/plugin-opener",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "code",
       "norm_label": "@tauri-apps/plugin-opener",
       "source_file": "clients/shared/package.json",
@@ -4254,18 +4463,128 @@
       "label": "@triforce/protocol",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "code",
       "norm_label": "@triforce/protocol",
       "source_file": "clients/shared/package.json",
       "source_location": "L16"
     },
     {
+      "id": "clients_shared_package_name",
+      "label": "name",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "name",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "clients_shared_package_private",
+      "label": "private",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "private",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "clients_shared_package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "clients_shared_package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "clients_shared_package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "clients_shared_package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "clients_shared_package_scripts_test",
+      "label": "test",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "test",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "clients_shared_package_scripts_typecheck",
+      "label": "typecheck",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "typecheck",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "clients_shared_package_type",
+      "label": "type",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "type",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "clients_shared_package_version",
+      "label": "version",
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "shared/package.json",
+      "file_type": "code",
+      "norm_label": "version",
+      "source_file": "clients/shared/package.json",
+      "source_location": "L3"
+    },
+    {
       "id": "react",
       "label": "react",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "concept",
       "norm_label": "react",
       "source_file": "clients/shared/package.json",
@@ -4276,7 +4595,7 @@
       "label": "react-dom",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "concept",
       "norm_label": "react-dom",
       "source_file": "clients/shared/package.json",
@@ -4287,7 +4606,7 @@
       "label": "@tauri-apps/api",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "concept",
       "norm_label": "@tauri-apps/api",
       "source_file": "clients/shared/package.json",
@@ -4298,7 +4617,7 @@
       "label": "@tauri-apps/plugin-opener",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "concept",
       "norm_label": "@tauri-apps/plugin-opener",
       "source_file": "clients/shared/package.json",
@@ -4309,7 +4628,7 @@
       "label": "@triforce/protocol",
       "_origin": "ast",
       "community": 22,
-      "community_name": "dependencies",
+      "community_name": "shared/package.json",
       "file_type": "concept",
       "norm_label": "@triforce/protocol",
       "source_file": "clients/shared/package.json",
@@ -9617,193 +9936,6 @@
       "version": "0.1.0"
     },
     {
-      "id": "clients_shared_package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 84,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "clients_shared_package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 84,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "clients_shared_package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 84,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "clients_shared_package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 84,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "clients_shared_package_scripts_test",
-      "label": "test",
-      "_origin": "ast",
-      "community": 84,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "test",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "clients_shared_package_scripts_typecheck",
-      "label": "typecheck",
-      "_origin": "ast",
-      "community": 84,
-      "community_name": "scripts",
-      "file_type": "code",
-      "norm_label": "typecheck",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "clients_shared_package",
-      "label": "shared/package.json",
-      "_origin": "ast",
-      "community": 86,
-      "community_name": "shared/package.json",
-      "file_type": "code",
-      "norm_label": "shared/package.json",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L1"
-    },
-    {
-      "id": "clients_shared_package_name",
-      "label": "name",
-      "_origin": "ast",
-      "community": 86,
-      "community_name": "shared/package.json",
-      "file_type": "code",
-      "norm_label": "name",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "clients_shared_package_private",
-      "label": "private",
-      "_origin": "ast",
-      "community": 86,
-      "community_name": "shared/package.json",
-      "file_type": "code",
-      "norm_label": "private",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "clients_shared_package_type",
-      "label": "type",
-      "_origin": "ast",
-      "community": 86,
-      "community_name": "shared/package.json",
-      "file_type": "code",
-      "norm_label": "type",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L5"
-    },
-    {
-      "id": "clients_shared_package_version",
-      "label": "version",
-      "_origin": "ast",
-      "community": 86,
-      "community_name": "shared/package.json",
-      "file_type": "code",
-      "norm_label": "version",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L3"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_eslint_js",
-      "label": "@eslint/js",
-      "_origin": "ast",
-      "community": 87,
-      "community_name": "@eslint/js",
-      "file_type": "code",
-      "norm_label": "@eslint/js",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "eslint_js",
-      "label": "@eslint/js",
-      "_origin": "ast",
-      "community": 87,
-      "community_name": "@eslint/js",
-      "file_type": "concept",
-      "norm_label": "@eslint/js",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_eslint_plugin_react_hooks",
-      "label": "eslint-plugin-react-hooks",
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "eslint-plugin-react-hooks",
-      "file_type": "code",
-      "norm_label": "eslint-plugin-react-hooks",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "eslint_plugin_react_hooks",
-      "label": "eslint-plugin-react-hooks",
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "eslint-plugin-react-hooks",
-      "file_type": "concept",
-      "norm_label": "eslint-plugin-react-hooks",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_globals",
-      "label": "globals",
-      "_origin": "ast",
-      "community": 89,
-      "community_name": "globals",
-      "file_type": "code",
-      "norm_label": "globals",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L31"
-    },
-    {
-      "id": "globals",
-      "label": "globals",
-      "_origin": "ast",
-      "community": 89,
-      "community_name": "globals",
-      "file_type": "concept",
-      "norm_label": "globals",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L31"
-    },
-    {
       "id": "agents_rules_graphify",
       "label": "rules/graphify.md",
       "_origin": "ast",
@@ -9832,138 +9964,6 @@
       "source_location": "L6"
     },
     {
-      "id": "clients_shared_package_devdependencies_testing_library_jest_dom",
-      "label": "@testing-library/jest-dom",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "@testing-library/jest-dom",
-      "file_type": "code",
-      "norm_label": "@testing-library/jest-dom",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "testing_library_jest_dom",
-      "label": "@testing-library/jest-dom",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "@testing-library/jest-dom",
-      "file_type": "concept",
-      "norm_label": "@testing-library/jest-dom",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_testing_library_react",
-      "label": "@testing-library/react",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "@testing-library/react",
-      "file_type": "code",
-      "norm_label": "@testing-library/react",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "testing_library_react",
-      "label": "@testing-library/react",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "@testing-library/react",
-      "file_type": "concept",
-      "norm_label": "@testing-library/react",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_types_node",
-      "label": "@types/node",
-      "_origin": "ast",
-      "community": 92,
-      "community_name": "@types/node",
-      "file_type": "code",
-      "norm_label": "@types/node",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "types_node",
-      "label": "@types/node",
-      "_origin": "ast",
-      "community": 92,
-      "community_name": "@types/node",
-      "file_type": "concept",
-      "norm_label": "@types/node",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_types_react_dom",
-      "label": "@types/react-dom",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "@types/react-dom",
-      "file_type": "code",
-      "norm_label": "@types/react-dom",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "types_react_dom",
-      "label": "@types/react-dom",
-      "_origin": "ast",
-      "community": 93,
-      "community_name": "@types/react-dom",
-      "file_type": "concept",
-      "norm_label": "@types/react-dom",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_typescript_eslint",
-      "label": "typescript-eslint",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "typescript-eslint",
-      "file_type": "code",
-      "norm_label": "typescript-eslint",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L34"
-    },
-    {
-      "id": "typescript_eslint",
-      "label": "typescript-eslint",
-      "_origin": "ast",
-      "community": 94,
-      "community_name": "typescript-eslint",
-      "file_type": "concept",
-      "norm_label": "typescript-eslint",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L34"
-    },
-    {
-      "id": "clients_shared_package_devdependencies_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "@vitejs/plugin-react",
-      "file_type": "code",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L27"
-    },
-    {
-      "id": "vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 95,
-      "community_name": "@vitejs/plugin-react",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "clients/shared/package.json",
-      "source_location": "L27"
-    },
-    {
       "id": "docker",
       "label": "DOCKER.md",
       "_origin": "ast",
@@ -9976,52 +9976,16 @@
       "source_location": "L1"
     },
     {
-      "id": "docker_1_set_an_access_token",
-      "label": "1. Set an access token",
+      "id": "docker_authentication_log_in_once_on_the_host",
+      "label": "Authentication \u2014 log in once, on the host",
       "_origin": "ast",
       "community": 96,
       "community_name": "Running Triforce in Docker",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. set an access token",
+      "norm_label": "authentication \u2014 log in once, on the host",
       "source_file": "DOCKER.md",
       "source_location": "L20"
-    },
-    {
-      "id": "docker_2_build",
-      "label": "2. Build",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Running Triforce in Docker",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. build",
-      "source_file": "DOCKER.md",
-      "source_location": "L28"
-    },
-    {
-      "id": "docker_3_log_in_to_the_three_accounts_one_time",
-      "label": "3. Log in to the three accounts (one time)",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Running Triforce in Docker",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. log in to the three accounts (one time)",
-      "source_file": "DOCKER.md",
-      "source_location": "L34"
-    },
-    {
-      "id": "docker_4_run_the_server",
-      "label": "4. Run the server",
-      "_origin": "ast",
-      "community": 96,
-      "community_name": "Running Triforce in Docker",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. run the server",
-      "source_file": "DOCKER.md",
-      "source_location": "L59"
     },
     {
       "id": "docker_limitation",
@@ -10046,6 +10010,18 @@
       "norm_label": "manage",
       "source_file": "DOCKER.md",
       "source_location": "L68"
+    },
+    {
+      "id": "docker_run",
+      "label": "Run",
+      "_origin": "ast",
+      "community": 96,
+      "community_name": "Running Triforce in Docker",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "run",
+      "source_file": "DOCKER.md",
+      "source_location": "L57"
     },
     {
       "id": "docker_running_triforce_in_docker",
@@ -18372,7 +18348,7 @@
     },
     {
       "source": "docker_running_triforce_in_docker",
-      "target": "docker_1_set_an_access_token",
+      "target": "docker_authentication_log_in_once_on_the_host",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -18383,35 +18359,13 @@
     },
     {
       "source": "docker_running_triforce_in_docker",
-      "target": "docker_2_build",
+      "target": "docker_run",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DOCKER.md",
-      "source_location": "L28",
-      "weight": 1.0
-    },
-    {
-      "source": "docker_running_triforce_in_docker",
-      "target": "docker_3_log_in_to_the_three_accounts_one_time",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "DOCKER.md",
-      "source_location": "L34",
-      "weight": 1.0
-    },
-    {
-      "source": "docker_running_triforce_in_docker",
-      "target": "docker_4_run_the_server",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "DOCKER.md",
-      "source_location": "L59",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -22434,5 +22388,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1696f4905ddfd9d763eac8b1aede7c95359964a3"
+  "built_at_commit": "2368758dd024921f62ae3e06b66f8d77a032d173"
 }

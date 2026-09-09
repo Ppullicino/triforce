@@ -1,7 +1,7 @@
 # Graph Report - triforce  (2026-09-09)
 
 ## Corpus Check
-- 96 files · ~77,847 words
+- 96 files · ~77,868 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2368758d`
+- Built from commit: `6062e4cc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -339,7 +339,7 @@ Nodes (4): workspaces, clients/desktop, clients/shared, packages/*
 
 ### Community 96 - "Running Triforce in Docker"
 Cohesion: 0.33
-Nodes (5): Authentication — log in once, on the host, Limitation, Manage, Run, Running Triforce in Docker
+Nodes (5): Authentication — log in inside the container, Limitation, Manage, Run, Running Triforce in Docker
 
 ## Knowledge Gaps
 - **420 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+415 more)
