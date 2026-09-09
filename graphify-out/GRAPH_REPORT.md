@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-09-09)
 
 ## Corpus Check
-- 94 files · ~74,388 words
+- 95 files · ~77,262 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 848 nodes · 1061 edges · 84 communities (54 shown, 16 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 16 edges (avg confidence: 0.82)
+- 870 nodes · 1082 edges · 96 communities (57 shown, 25 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 16 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3353244b`
+- Built from commit: `827a659e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -36,7 +36,7 @@
 - Triforce Cross-Platform Client Plan
 - devDependencies
 - compilerOptions
-- shared/package.json
+- dependencies
 - protocol/package.json
 - compilerOptions
 - compilerOptions
@@ -45,7 +45,7 @@
 - shared/tsconfig.json
 - index.d.ts
 - files
-- hosts.ts
+- Triforce — Three‑Mode Redesign Plan
 - tauri.conf.json
 - desktop/package.json
 - default.json
@@ -64,8 +64,8 @@
 - App.tsx
 - install-service.test.js
 - platform-credentials.ts
-- CredentialStorage
-- HostRepository
+- TriforceConnection
+- pipeline.ts
 - definitions
 - definitions
 - properties
@@ -83,8 +83,20 @@
 - description
 - description
 - workspaces
-- main.tsx
+- App
 - triforce-desktop
+- scripts
+- MockSocket
+- shared/package.json
+- @eslint/js
+- eslint-plugin-react-hooks
+- globals
+- @testing-library/jest-dom
+- @testing-library/react
+- @types/node
+- @types/react-dom
+- typescript-eslint
+- @vitejs/plugin-react
 
 ## God Nodes (most connected - your core abstractions)
 1. `RunRegistry` - 19 edges
@@ -94,9 +106,9 @@
 5. `Triforce Cross-Platform Client Plan` - 15 edges
 6. `Agent` - 14 edges
 7. `TriforceConnection` - 14 edges
-8. `scripts` - 12 edges
-9. `compilerOptions` - 12 edges
-10. `CredentialVault` - 9 edges
+8. `Triforce — Three‑Mode Redesign Plan` - 13 edges
+9. `scripts` - 12 edges
+10. `compilerOptions` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `executePipeline()` --calls--> `Agent`  [EXTRACTED]
@@ -105,15 +117,15 @@
   server.js → pipeline.js
 - `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
   cli.js → cli-input.js
+- `App()` --indirect_call--> `initialPipelineState()`  [INFERRED]
+  clients/shared/src/App.tsx → clients/shared/src/core/pipeline.ts
 - `executePipeline()` --calls--> `getRates()`  [EXTRACTED]
   pipeline.js → models.js
-- `printSummary()` --calls--> `getRates()`  [EXTRACTED]
-  usage.js → models.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (84 total, 16 thin omitted)
+## Communities (96 total, 25 thin omitted)
 
 ### Community 0 - "server.js"
 Cohesion: 0.06
@@ -156,16 +168,16 @@ Cohesion: 0.12
 Nodes (15): Agent handoff contract, Current handoff, Objective, Per-step completion procedure, Product decisions, Step 1 — Monorepo and shared-client foundation, Step 2 — Versioned server protocol and resumable run API, Step 3 — Shared connection, authentication, and host profiles (+7 more)
 
 ### Community 20 - "devDependencies"
-Cohesion: 0.06
-Nodes (33): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, jsdom, @testing-library/jest-dom (+25 more)
+Cohesion: 0.13
+Nodes (15): devDependencies, eslint, eslint-plugin-react-refresh, jsdom, @types/react, typescript, vite, vitest (+7 more)
 
 ### Community 21 - "compilerOptions"
 Cohesion: 0.07
 Nodes (26): compilerOptions, allowJs, allowSyntheticDefaultImports, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx, lib (+18 more)
 
-### Community 22 - "shared/package.json"
-Cohesion: 0.09
-Nodes (21): dependencies, react, react-dom, @tauri-apps/api, @tauri-apps/plugin-opener, @triforce/protocol, name, private (+13 more)
+### Community 22 - "dependencies"
+Cohesion: 0.18
+Nodes (11): dependencies, react, react-dom, @tauri-apps/api, @tauri-apps/plugin-opener, @triforce/protocol, react, react-dom (+3 more)
 
 ### Community 23 - "protocol/package.json"
 Cohesion: 0.10
@@ -195,9 +207,9 @@ Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, P
 Cohesion: 0.12
 Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
 
-### Community 34 - "hosts.ts"
-Cohesion: 0.23
-Nodes (7): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, HostProfile, HostStorage, isHostProfile(), MemoryHostStorage
+### Community 34 - "Triforce — Three‑Mode Redesign Plan"
+Cohesion: 0.09
+Nodes (21): 10. Phased delivery, 11. Open questions / risks, 12. Graphify maintenance, 1. Vision, 2. The three modes, 3. Filesystem navigator (new capability, shared by all modes), 4. First‑run / onboarding, 5. Architecture impact (graph map) (+13 more)
 
 ### Community 35 - "tauri.conf.json"
 Cohesion: 0.08
@@ -220,8 +232,8 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "index.js"
-Cohesion: 0.06
-Nodes (24): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, agentConfigurationSchema (+16 more)
+Cohesion: 0.13
+Nodes (16): agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+8 more)
 
 ### Community 48 - "Remote Client Security Review"
 Cohesion: 0.33
@@ -253,15 +265,15 @@ Nodes (9): dotenv, express, dependencies, dotenv, express, ws, zod, zod (+1 more
 
 ### Community 60 - "App.tsx"
 Cohesion: 0.16
-Nodes (13): App(), connectHost(), connectionMessages, Dashboard(), defaultConfig, roles, bounded(), emptyUsage (+5 more)
+Nodes (10): connectionMessages, Dashboard(), defaultConfig, roles, ConnectionOptions, ConnectionState, EventListener, StateListener (+2 more)
 
 ### Community 62 - "platform-credentials.ts"
-Cohesion: 0.20
-Nodes (8): MemoryCredentialStorage, AndroidBridge, AndroidCredentialStorage, androidRequest(), createCredentialStorage(), handleAndroidCredentialResponse(), pending, Window
+Cohesion: 0.06
+Nodes (22): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+14 more)
 
-### Community 63 - "CredentialStorage"
-Cohesion: 0.13
-Nodes (6): CredentialStorage, TauriCredentialStorage, config, nativeOrigins, startServer(), startServer()
+### Community 64 - "pipeline.ts"
+Cohesion: 0.43
+Nodes (6): bounded(), emptyUsage, initialPipelineState(), mapStatus(), reducePipeline(), UsageItem
 
 ### Community 65 - "definitions"
 Cohesion: 0.12
@@ -331,22 +343,34 @@ Nodes (4): default, description, type, description
 Cohesion: 0.50
 Nodes (4): workspaces, clients/desktop, clients/shared, packages/*
 
+### Community 82 - "App"
+Cohesion: 0.33
+Nodes (3): App(), connectHost(), installNativeIntegration()
+
+### Community 84 - "scripts"
+Cohesion: 0.33
+Nodes (6): scripts, build, dev, lint, test, typecheck
+
+### Community 86 - "shared/package.json"
+Cohesion: 0.40
+Nodes (4): name, private, type, version
+
 ## Knowledge Gaps
-- **400 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+395 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 480 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **416 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+411 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 497 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **25 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RunRegistry` connect `RunRegistry` to `server.js`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Why does `executePipeline()` connect `server.js` to `agent.js`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `TriforceConnection` connect `index.js` to `App.tsx`?**
+- **Why does `TriforceConnection` connect `TriforceConnection` to `App`, `App.tsx`, `MockSocket`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `RETRYABLE_STATUSES`, `rl`, `__dirname` to the rest of the system?**
-  _400 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _416 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.06105834464043419 - nodes in this community are weakly interconnected._
 - **Should `MainActivity.kt` be split into smaller, more focused modules?**
