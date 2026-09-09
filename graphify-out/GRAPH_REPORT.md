@@ -1,71 +1,71 @@
-# Graph Report - triforce  (2026-08-24)
+# Graph Report - triforce  (2026-09-09)
 
 ## Corpus Check
-- 94 files · ~74,759 words
+- 94 files · ~74,388 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 843 nodes · 1036 edges · 81 communities (67 shown, 14 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.69)
+- 848 nodes · 1061 edges · 84 communities (54 shown, 16 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 16 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a928bb83`
+- Built from commit: `3353244b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- orchestrator.js
-- dependencies
-- Agent
-- server-protocol.test.js
+- server.js
+- MainActivity.kt
+- agent.js
+- scripts
 - Triforce — Running & Operations
 - manifest.json
 - gen-icons.mjs
 - AGENTS.md
-- graphify.md
-- graphify.md
+- rules/graphify.md
+- workflows/graphify.md
 - CLAUDE.md
 - install-service.sh
 - sw.js
 - triforce-phase0-prompt.md
 - cli.js
 - 2026-07-15
-- sandbox.test.js
-- files
-- cli-input.test.js
+- package.test.js
+- RunRegistry
+- Triforce Cross-Platform Client Plan
 - devDependencies
 - compilerOptions
-- package.json
-- package.json
+- shared/package.json
+- protocol/package.json
 - compilerOptions
 - compilerOptions
-- sandbox.js
+- package.json
 - Client Architecture and Development
-- tsconfig.json
+- shared/tsconfig.json
 - index.d.ts
-- scripts
-- server-protocol.test.js
 - files
-- package.json
+- hosts.ts
+- tauri.conf.json
+- desktop/package.json
 - default.json
 - lib.rs
 - Triforce Desktop
-- files
-- App.tsx
+- index.js
+- NetworkPolicyTest
 - Triforce Android
-- workspace.js
+- Remote Client Security Review
 - sync-version.mjs
 - Release Signing and Store Delivery
 - Triforce Remote 0.1.0 Release Notes
 - Triforce Remote Operations Guide
 - 0.1.0-rc.1 Validation Record
-- usage.js
+- dependencies
 - App.tsx
 - install-service.test.js
 - platform-credentials.ts
 - CredentialStorage
-- connection.ts
+- HostRepository
 - definitions
 - definitions
 - properties
@@ -82,47 +82,54 @@
 - linux-schema.json
 - description
 - description
+- workspaces
+- main.tsx
+- triforce-desktop
 
 ## God Nodes (most connected - your core abstractions)
 1. `RunRegistry` - 19 edges
-2. `compilerOptions` - 17 edges
-3. `executePipeline()` - 17 edges
-4. `Agent` - 16 edges
-5. `files` - 16 edges
-6. `Triforce Cross-Platform Client Plan` - 15 edges
-7. `TriforceConnection` - 13 edges
+2. `executePipeline()` - 18 edges
+3. `compilerOptions` - 17 edges
+4. `files` - 16 edges
+5. `Triforce Cross-Platform Client Plan` - 15 edges
+6. `Agent` - 14 edges
+7. `TriforceConnection` - 14 edges
 8. `scripts` - 12 edges
 9. `compilerOptions` - 12 edges
 10. `CredentialVault` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `executePipeline()` --calls--> `Agent`  [EXTRACTED]
+  pipeline.js → agent.js
+- `runPipeline()` --calls--> `executePipeline()`  [EXTRACTED]
+  server.js → pipeline.js
 - `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
   cli.js → cli-input.js
-- `runPipeline()` --references--> `ALLOWED_MODELS`  [EXTRACTED]
-  server.js → models.js
 - `executePipeline()` --calls--> `getRates()`  [EXTRACTED]
   pipeline.js → models.js
 - `printSummary()` --calls--> `getRates()`  [EXTRACTED]
-  usage.js → models.js
-- `printSummary()` --calls--> `hasRates()`  [EXTRACTED]
   usage.js → models.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (81 total, 14 thin omitted)
+## Communities (84 total, 16 thin omitted)
 
-### Community 0 - "orchestrator.js"
-Cohesion: 0.09
-Nodes (38): ALLOWED_MODELS, checkConfigForWarnings(), getCatalog(), getRates(), hasRates(), RATES, warnedModels, __dirname (+30 more)
+### Community 0 - "server.js"
+Cohesion: 0.06
+Nodes (52): ALLOWED_MODELS, checkConfigForWarnings(), getCatalog(), getRates(), hasRates(), RATES, warnedModels, __dirname (+44 more)
 
-### Community 1 - "dependencies"
+### Community 1 - "MainActivity.kt"
 Cohesion: 0.11
-Nodes (12): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault, String, String, WebView (+4 more)
+Nodes (16): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault, WebView, MainActivity, OnBackPressedCallback (+8 more)
 
-### Community 2 - "Agent"
-Cohesion: 0.15
-Nodes (13): Agent, CLI_PROVIDERS, delay(), firstTextBlock(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), parseClaudeJsonEnvelope() (+5 more)
+### Community 2 - "agent.js"
+Cohesion: 0.13
+Nodes (10): Agent, delay(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), parseClaudeJsonEnvelope(), parseCodexJsonl(), resolveBinPath() (+2 more)
+
+### Community 3 - "scripts"
+Cohesion: 0.17
+Nodes (12): scripts, build, cli, desktop:check, dev:client, lint, start, test (+4 more)
 
 ### Community 4 - "Triforce — Running & Operations"
 Cohesion: 0.17
@@ -144,7 +151,7 @@ Nodes (14): checkAgyLogin(), checkAndInstallDependencies(), checkClaudeLogin(), 
 Cohesion: 0.20
 Nodes (9): 2026-07-15, 2026-07-15 Mode Synchronization Follow-up, Automated regression coverage, Code Review Fix Log, Dependencies, deployment, and operations, Original Finding Resolution Index, Pipeline correctness and configuration, Provider process and response reliability (+1 more)
 
-### Community 19 - "cli-input.test.js"
+### Community 19 - "Triforce Cross-Platform Client Plan"
 Cohesion: 0.12
 Nodes (15): Agent handoff contract, Current handoff, Objective, Per-step completion procedure, Product decisions, Step 1 — Monorepo and shared-client foundation, Step 2 — Versioned server protocol and resumable run API, Step 3 — Shared connection, authentication, and host profiles (+7 more)
 
@@ -156,13 +163,13 @@ Nodes (33): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, esli
 Cohesion: 0.07
 Nodes (26): compilerOptions, allowJs, allowSyntheticDefaultImports, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx, lib (+18 more)
 
-### Community 22 - "package.json"
+### Community 22 - "shared/package.json"
 Cohesion: 0.09
 Nodes (21): dependencies, react, react-dom, @tauri-apps/api, @tauri-apps/plugin-opener, @triforce/protocol, name, private (+13 more)
 
-### Community 23 - "package.json"
-Cohesion: 0.09
-Nodes (21): dependencies, zod, devDependencies, typescript, exports, files, import, src (+13 more)
+### Community 23 - "protocol/package.json"
+Cohesion: 0.10
+Nodes (19): dependencies, zod, devDependencies, typescript, exports, files, src, typescript (+11 more)
 
 ### Community 24 - "compilerOptions"
 Cohesion: 0.13
@@ -172,9 +179,9 @@ Nodes (14): compilerOptions, allowJs, checkJs, declaration, declarationMap, modu
 Cohesion: 0.18
 Nodes (10): compilerOptions, allowImportingTsExtensions, composite, module, moduleResolution, noEmit, skipLibCheck, include (+2 more)
 
-### Community 26 - "sandbox.js"
-Cohesion: 0.07
-Nodes (30): agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+22 more)
+### Community 26 - "package.json"
+Cohesion: 0.18
+Nodes (10): bin, triforce, description, devDependencies, pngjs, main, name, type (+2 more)
 
 ### Community 27 - "Client Architecture and Development"
 Cohesion: 0.29
@@ -184,19 +191,19 @@ Nodes (6): Client Architecture and Development, Commands, Hosts, credentials, an
 Cohesion: 0.15
 Nodes (12): AgentConfiguration, AgentRole, CapabilitiesCommand, ClientCommand, PipelineConfiguration, PipelineMode, RunCommand, ServerEvent (+4 more)
 
-### Community 33 - "scripts"
-Cohesion: 0.05
-Nodes (42): bin, triforce, description, devDependencies, pngjs, files, main, name (+34 more)
+### Community 33 - "files"
+Cohesion: 0.12
+Nodes (16): files, agent.js, cli-input.js, cli.js, install-service.sh, models.config.json, orchestrator.js, packages/protocol/src/ (+8 more)
 
-### Community 34 - "server-protocol.test.js"
-Cohesion: 0.16
-Nodes (8): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, HostProfile, HostRepository, HostStorage, isHostProfile(), MemoryHostStorage
+### Community 34 - "hosts.ts"
+Cohesion: 0.23
+Nodes (7): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, HostProfile, HostStorage, isHostProfile(), MemoryHostStorage
 
-### Community 35 - "files"
+### Community 35 - "tauri.conf.json"
 Cohesion: 0.08
 Nodes (25): app, security, windows, build, beforeBuildCommand, beforeDevCommand, devUrl, frontendDist (+17 more)
 
-### Community 36 - "package.json"
+### Community 36 - "desktop/package.json"
 Cohesion: 0.15
 Nodes (12): devDependencies, @tauri-apps/cli, name, private, scripts, build, check, dev (+4 more)
 
@@ -206,17 +213,17 @@ Nodes (10): description, identifier, permissions, $schema, windows, core:default
 
 ### Community 38 - "lib.rs"
 Cohesion: 0.29
-Nodes (6): credential_delete(), credential_get(), credential_set(), String, Option, Result
+Nodes (6): credential_delete(), credential_get(), credential_set(), Option, Result, String
 
 ### Community 39 - "Triforce Desktop"
 Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
-### Community 42 - "files"
-Cohesion: 0.10
-Nodes (6): SocketLike, MockSocket, TriforceConnection, config, messages(), nativeOrigins
+### Community 42 - "index.js"
+Cohesion: 0.06
+Nodes (24): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, agentConfigurationSchema (+16 more)
 
-### Community 48 - "workspace.js"
+### Community 48 - "Remote Client Security Review"
 Cohesion: 0.33
 Nodes (5): Compatibility and deployment rules, Remote Client Security Review, Review log and verification, Threat model and controls, Trust boundaries and assets
 
@@ -240,25 +247,21 @@ Nodes (6): Data and backup, Deployment and monitoring, Release ownership, Rollba
 Cohesion: 0.33
 Nodes (5): 0.1.0-rc.1 Validation Record, Compatibility matrix, Functional and failure cases, Operations and release, Security and accessibility sign-off
 
-### Community 58 - "usage.js"
-Cohesion: 0.13
-Nodes (15): @anthropic-ai/sdk, dotenv, express, @google/genai, openai, dependencies, @anthropic-ai/sdk, dotenv (+7 more)
+### Community 58 - "dependencies"
+Cohesion: 0.22
+Nodes (9): dotenv, express, dependencies, dotenv, express, ws, zod, zod (+1 more)
 
 ### Community 60 - "App.tsx"
-Cohesion: 0.19
-Nodes (11): App(), connectionMessages, defaultConfig, roles, bounded(), emptyUsage, initialPipelineState(), mapStatus() (+3 more)
+Cohesion: 0.16
+Nodes (13): App(), connectHost(), connectionMessages, Dashboard(), defaultConfig, roles, bounded(), emptyUsage (+5 more)
 
 ### Community 62 - "platform-credentials.ts"
-Cohesion: 0.21
-Nodes (8): installNativeIntegration(), AndroidBridge, AndroidCredentialStorage, androidRequest(), createCredentialStorage(), handleAndroidCredentialResponse(), pending, Window
+Cohesion: 0.20
+Nodes (8): MemoryCredentialStorage, AndroidBridge, AndroidCredentialStorage, androidRequest(), createCredentialStorage(), handleAndroidCredentialResponse(), pending, Window
 
 ### Community 63 - "CredentialStorage"
-Cohesion: 0.20
-Nodes (3): CredentialStorage, MemoryCredentialStorage, TauriCredentialStorage
-
-### Community 64 - "connection.ts"
-Cohesion: 0.40
-Nodes (4): ConnectionOptions, ConnectionState, EventListener, StateListener
+Cohesion: 0.13
+Nodes (6): CredentialStorage, TauriCredentialStorage, config, nativeOrigins, startServer(), startServer()
 
 ### Community 65 - "definitions"
 Cohesion: 0.12
@@ -289,16 +292,16 @@ Cohesion: 0.20
 Nodes (10): type, webviews, windows, items, description, items, type, description (+2 more)
 
 ### Community 72 - "CapabilityRemote"
-Cohesion: 0.20
-Nodes (10): description, properties, required, type, CapabilityRemote, urls, urls, description (+2 more)
+Cohesion: 0.22
+Nodes (9): description, properties, required, type, CapabilityRemote, urls, urls, description (+1 more)
 
 ### Community 73 - "CapabilityRemote"
 Cohesion: 0.22
 Nodes (9): description, properties, required, type, CapabilityRemote, urls, urls, description (+1 more)
 
 ### Community 74 - "webviews"
-Cohesion: 0.22
-Nodes (9): type, webviews, windows, description, items, type, description, items (+1 more)
+Cohesion: 0.20
+Nodes (10): type, webviews, windows, items, description, items, type, description (+2 more)
 
 ### Community 75 - "Capability"
 Cohesion: 0.33
@@ -324,25 +327,29 @@ Nodes (4): default, description, type, description
 Cohesion: 0.50
 Nodes (4): default, description, type, description
 
+### Community 81 - "workspaces"
+Cohesion: 0.50
+Nodes (4): workspaces, clients/desktop, clients/shared, packages/*
+
 ## Knowledge Gaps
-- **401 isolated node(s):** `rl`, `__dirname`, `name`, `version`, `private` (+396 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **400 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+395 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 480 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `promptLoop()` connect `cli.js` to `files`?**
+- **Why does `RunRegistry` connect `RunRegistry` to `server.js`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `RunRegistry` connect `files` to `sandbox.js`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **What connects `rl`, `__dirname`, `name` to the rest of the system?**
-  _401 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `orchestrator.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.09485815602836879 - nodes in this community are weakly interconnected._
-- **Should `dependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected._
-- **Should `Agent` be split into smaller, more focused modules?**
-  _Cohesion score 0.1455026455026455 - nodes in this community are weakly interconnected._
-- **Should `cli-input.test.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Why does `executePipeline()` connect `server.js` to `agent.js`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+- **Why does `TriforceConnection` connect `index.js` to `App.tsx`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **What connects `RETRYABLE_STATUSES`, `rl`, `__dirname` to the rest of the system?**
+  _400 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `server.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.06105834464043419 - nodes in this community are weakly interconnected._
+- **Should `MainActivity.kt` be split into smaller, more focused modules?**
+  _Cohesion score 0.10793650793650794 - nodes in this community are weakly interconnected._
+- **Should `agent.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.1349206349206349 - nodes in this community are weakly interconnected._
