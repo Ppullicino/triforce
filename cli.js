@@ -195,10 +195,7 @@ async function setupWizard() {
   const providers = {
     1: { name: 'Local Claude Code CLI (Recommended)', provider: 'claude-cli', model: 'claude-cli-default' },
     2: { name: 'Local Codex CLI', provider: 'codex-cli', model: 'codex-cli-default' },
-    3: { name: 'Local Antigravity CLI (agy)', provider: 'agy-cli', model: 'agy-cli-default' },
-    4: { name: 'Google Gemini API', provider: 'google', model: 'gemini-2.5-flash' },
-    5: { name: 'Anthropic API', provider: 'anthropic', model: 'claude-3-5-sonnet-latest' },
-    6: { name: 'OpenAI API', provider: 'openai', model: 'gpt-4o' }
+    3: { name: 'Local Antigravity CLI (agy)', provider: 'agy-cli', model: 'agy-cli-default' }
   };
 
   const askRole = async (roleName, defaultChoice) => {

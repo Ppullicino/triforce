@@ -1,5 +1,5 @@
 {
-  "architect": { "provider": "anthropic", "model": "claude-sonnet-4-6" },
-  "developer": { "provider": "google",    "model": "gemini-2.5-flash" },
-  "reviewer":  { "provider": "google",    "model": "gemini-2.5-flash" }
+  "architect": { "provider": "claude-cli", "model": "claude-cli-default" },
+  "developer": { "provider": "codex-cli",  "model": "codex-cli-default" },
+  "reviewer":  { "provider": "agy-cli",    "model": "agy-cli-default" }
 }

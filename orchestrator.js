@@ -9,25 +9,9 @@ import { checkConfigForWarnings } from './models.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_TASK = `Create a JavaScript function that takes an array of numbers, removes duplicates, sorts them in ascending order, and returns the result. Include a test that proves it works.`;
 
-const PROVIDER_ENV = {
-  anthropic: 'ANTHROPIC_API_KEY',
-  google:    'GEMINI_API_KEY',
-  openai:    'OPENAI_API_KEY',
-};
-
 async function loadConfig() {
   const raw = await readFile(new URL('./models.config.json', import.meta.url), 'utf8');
   return JSON.parse(raw);
-}
-
-function validateApiKeys(config) {
-  const needed = new Set(Object.values(config).map(c => c.provider));
-  for (const provider of needed) {
-    const envVar = PROVIDER_ENV[provider];
-    if (envVar && !process.env[envVar]) {
-      throw new Error(`${envVar} is not set (required for provider "${provider}")`);
-    }
-  }
 }
 
 export async function runArchitect(agent, task) {
@@ -51,7 +35,6 @@ export async function main() {
   try {
     const config = await loadConfig();
     checkConfigForWarnings(config);
-    validateApiKeys(config);
     const taskArgs = process.argv.slice(2).filter((arg, i, args) => arg !== '--mode' && args[i - 1] !== '--mode');
     const TASK = taskArgs.join(' ').trim() || DEFAULT_TASK;
 

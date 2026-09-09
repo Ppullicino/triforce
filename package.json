@@ -43,11 +43,8 @@
     "version:sync": "node scripts/sync-version.mjs --write"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
-    "@google/genai": "^2.6.0",
     "dotenv": "^16.0.0",
     "express": "^5.2.1",
-    "openai": "^6.39.0",
     "ws": "^8.21.0",
     "zod": "^4.0.0"
   },

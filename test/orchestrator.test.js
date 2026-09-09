@@ -55,9 +55,9 @@ test('executePipeline Mode 1 executes all stages and completes successfully', as
   try {
     const events = [];
     const config = {
-      architect: { provider: 'google', model: 'gemini-2.5-flash' },
-      developer: { provider: 'google', model: 'gemini-2.5-flash' },
-      reviewer: { provider: 'google', model: 'gemini-2.5-flash' },
+      architect: { provider: 'claude-cli', model: 'claude-cli-default' },
+      developer: { provider: 'claude-cli', model: 'claude-cli-default' },
+      reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
     };
 
     await executePipeline(
@@ -142,9 +142,9 @@ test('executePipeline Mode 2 executes loops and completes successfully', async (
   try {
     const events = [];
     const config = {
-      architect: { provider: 'google', model: 'gemini-2.5-flash' },
-      developer: { provider: 'google', model: 'gemini-2.5-flash' },
-      reviewer: { provider: 'google', model: 'gemini-2.5-flash' },
+      architect: { provider: 'claude-cli', model: 'claude-cli-default' },
+      developer: { provider: 'claude-cli', model: 'claude-cli-default' },
+      reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
       maxIterations: 2,
     };
 
@@ -290,11 +290,8 @@ test('main() propagates Stage 2 failure and prints Stage 1 token usage summary',
   const originalConsoleError = console.error;
 
   process.argv = ['node', 'orchestrator.js', 'some task', '--mode', '1'];
-  
+
   const originalEnv = { ...process.env };
-  process.env.ANTHROPIC_API_KEY = 'stub';
-  process.env.GEMINI_API_KEY = 'stub';
-  process.env.OPENAI_API_KEY = 'stub';
 
   let callCount = 0;
   Agent.prototype.call = async function(prompt) {
@@ -302,7 +299,7 @@ test('main() propagates Stage 2 failure and prints Stage 1 token usage summary',
     if (callCount === 1) {
       return { text: '1. do step', usage: { inputTokens: 55, outputTokens: 99 } };
     }
-    throw new Error('Bad OpenAI API key');
+    throw new Error('Simulated Stage 2 provider failure');
   };
 
   const logs = [];
@@ -312,7 +309,7 @@ test('main() propagates Stage 2 failure and prints Stage 1 token usage summary',
   console.error = () => {};
 
   try {
-    await assert.rejects(main(), /Bad OpenAI API key/);
+    await assert.rejects(main(), /Simulated Stage 2 provider failure/);
     
     const summaryLogged = logs.some(line => line.includes('=== TOKEN USAGE ==='));
     const architectLogged = logs.some(line => line.includes('architect') && line.includes('in=55') && line.includes('out=99'));
@@ -335,8 +332,8 @@ test('main() propagates Stage 2 failure and prints Stage 1 token usage summary',
 
 test('checkConfigForWarnings logs warning for missing models', () => {
   const badConfig = {
-    architect: { provider: 'anthropic', model: 'claude-missing-model' },
-    developer: { provider: 'google', model: 'gemini-2.5-flash' },
+    architect: { provider: 'claude-cli', model: 'claude-missing-model' },
+    developer: { provider: 'codex-cli', model: 'codex-cli-default' },
     reviewer: { provider: 'unknown-provider', model: 'gemini-2.5-flash' }
   };
 

@@ -1,6 +1,3 @@
-import Anthropic from '@anthropic-ai/sdk';
-import { GoogleGenAI } from '@google/genai';
-import OpenAI from 'openai';
 import os from 'node:os';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -23,7 +20,6 @@ const RETRYABLE_STATUSES = new Set([408, 429, 500, 502, 503, 504]);
 const BASE_DELAY_MS = 1000;
 const PROVIDER_TIMEOUT_MS = Number(process.env.PROVIDER_TIMEOUT_MS) || 120000;
 const MAX_PROVIDER_OUTPUT_BYTES = Number(process.env.MAX_PROVIDER_OUTPUT_BYTES) || 10 * 1024 * 1024;
-const CLI_PROVIDERS = new Set(['claude-cli', 'codex-cli', 'agy-cli']);
 
 function getErrorStatus(err) {
   const status = err?.status ?? err?.statusCode ?? err?.error?.status ?? err?.error?.code ?? err?.code ?? null;
@@ -127,27 +123,8 @@ export function parseCodexJsonl(stdout) {
   };
 }
 
-function firstTextBlock(content) {
-  const block = content?.find?.(item => item?.type === 'text' && typeof item.text === 'string');
-  if (!block) throw new Error('Provider returned no text content');
-  return block.text;
-}
-
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function withTimeout(promise, ms) {
-  let timer;
-  const timeout = new Promise((_, reject) => {
-    timer = setTimeout(() => {
-      const error = new Error(`Provider call timed out after ${ms}ms`);
-      error.code = 'ETIMEDOUT';
-      reject(error);
-    }, ms);
-  });
-  try { return await Promise.race([promise, timeout]); }
-  finally { clearTimeout(timer); }
 }
 
 export class Agent {
@@ -161,15 +138,6 @@ export class Agent {
 
   _initClient() {
     switch (this.provider) {
-      case 'anthropic':
-        if (!process.env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY is not set');
-        return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      case 'google':
-        if (!process.env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is not set');
-        return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-      case 'openai':
-        if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY is not set');
-        return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
       case 'claude-cli':
       case 'codex-cli':
       case 'agy-cli':
@@ -246,10 +214,7 @@ export class Agent {
         if (remainingTimeout <= 0) {
           throw lastErr || new Error(`Provider call exceeded total wall-clock timeout of ${PROVIDER_TIMEOUT_MS}ms`);
         }
-        const providerCall = this._callProvider(userPrompt, signal);
-        return CLI_PROVIDERS.has(this.provider)
-          ? await providerCall
-          : await withTimeout(providerCall, remainingTimeout);
+        return await this._callProvider(userPrompt, signal);
       } catch (err) {
         if (isRetryableError(err)) {
           lastErr = err;
@@ -263,58 +228,10 @@ export class Agent {
 
   async _callProvider(userPrompt, signal) {
     switch (this.provider) {
-      case 'anthropic':  return this._callAnthropic(userPrompt, signal);
-      case 'google':     return this._callGoogle(userPrompt, signal);
-      case 'openai':     return this._callOpenAI(userPrompt, signal);
       case 'claude-cli': return this._callClaudeCLI(userPrompt, signal);
       case 'codex-cli':  return this._callCodexCLI(userPrompt, signal);
       case 'agy-cli':    return this._callAgyCLI(userPrompt, signal);
     }
-  }
-
-  async _callAnthropic(userPrompt, signal) {
-    const msg = await this._client.messages.create({
-      model: this.model,
-      max_tokens: 8096,
-      system: this.systemPrompt,
-      messages: [{ role: 'user', content: userPrompt }],
-    }, { signal });
-    return {
-      text: firstTextBlock(msg.content),
-      usage: { inputTokens: msg.usage.input_tokens, outputTokens: msg.usage.output_tokens },
-    };
-  }
-
-  async _callGoogle(userPrompt, signal) {
-    const response = await this._client.models.generateContent({
-      model: this.model,
-      config: { systemInstruction: this.systemPrompt },
-      contents: userPrompt,
-    }, { signal });
-    return {
-      text: response.text || (() => { throw new Error('Google returned no text content'); })(),
-      usage: {
-        inputTokens: response.usageMetadata?.promptTokenCount ?? 0,
-        outputTokens: response.usageMetadata?.candidatesTokenCount ?? 0,
-      },
-    };
-  }
-
-  async _callOpenAI(userPrompt, signal) {
-    const completion = await this._client.chat.completions.create({
-      model: this.model,
-      messages: [
-        { role: 'system', content: this.systemPrompt },
-        { role: 'user',   content: userPrompt },
-      ],
-    }, { signal });
-    return {
-      text: completion.choices?.[0]?.message?.content || (() => { throw new Error('OpenAI returned no text content'); })(),
-      usage: {
-        inputTokens: completion.usage?.prompt_tokens ?? 0,
-        outputTokens: completion.usage?.completion_tokens ?? 0,
-      },
-    };
   }
 
   async _callClaudeCLI(userPrompt, signal) {

@@ -91,9 +91,9 @@ test('server startup logs a warning if models.config.json contains unknown model
   const configPath = join(import.meta.dirname, '../models.config.json');
   const originalConfig = await readFile(configPath, 'utf8');
   const badConfig = {
-    architect: { provider: 'anthropic', model: 'claude-unknown-model' },
-    developer: { provider: 'google', model: 'gemini-2.5-flash' },
-    reviewer: { provider: 'google', model: 'gemini-2.5-flash' }
+    architect: { provider: 'claude-cli', model: 'claude-unknown-model' },
+    developer: { provider: 'codex-cli', model: 'codex-cli-default' },
+    reviewer: { provider: 'codex-cli', model: 'codex-cli-default' }
   };
   await writeFile(configPath, JSON.stringify(badConfig), 'utf8');
 
@@ -116,7 +116,7 @@ test('server startup logs a warning if models.config.json contains unknown model
     child.kill('SIGTERM');
     await once(child, 'exit').catch(() => {});
 
-    assert.match(stderr, /Warning: Configuration entry for "architect" uses model "claude-unknown-model" \(provider "anthropic"\) which is missing from the catalog\./);
+    assert.match(stderr, /Warning: Configuration entry for "architect" uses model "claude-unknown-model" \(provider "claude-cli"\) which is missing from the catalog\./);
   } finally {
     await writeFile(configPath, originalConfig, 'utf8');
   }
@@ -203,9 +203,9 @@ test('gracefully shuts down on SIGTERM, cancelling and persisting the active run
       type: 'run',
       task: 'long-running fake pipeline for shutdown test',
       config: {
-        architect: { provider: 'openai', model: 'gpt-4.1' },
-        developer: { provider: 'openai', model: 'gpt-4.1' },
-        reviewer: { provider: 'openai', model: 'gpt-4.1' },
+        architect: { provider: 'claude-cli', model: 'claude-cli-default' },
+        developer: { provider: 'claude-cli', model: 'claude-cli-default' },
+        reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
       },
       mode: 1,
     }));
@@ -271,9 +271,9 @@ test('handles missing systemd-run capability and refuses runs', async () => {
       type: 'run',
       task: 'Build it',
       config: {
-        architect: { provider: 'openai', model: 'gpt-4.1' },
-        developer: { provider: 'openai', model: 'gpt-4.1' },
-        reviewer: { provider: 'openai', model: 'gpt-4.1' },
+        architect: { provider: 'claude-cli', model: 'claude-cli-default' },
+        developer: { provider: 'claude-cli', model: 'claude-cli-default' },
+        reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
       },
       mode: 1,
     }));
