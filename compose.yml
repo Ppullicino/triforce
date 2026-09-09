@@ -1,0 +1,28 @@
+# Triforce in Docker. See DOCKER.md for the login walk-through.
+#
+# TRIFORCE_TOKEN is read from a .env file in this directory (or the shell environment):
+#   echo "TRIFORCE_TOKEN=$(openssl rand -hex 24)" >> .env
+
+services:
+  triforce:
+    build: .
+    image: triforce-local
+    ports:
+      - "3100:3000"
+    # .env in this directory is picked up automatically. If TRIFORCE_TOKEN is unset
+    # the server generates a one-time token and prints it to the log on startup.
+    environment:
+      PORT: "3000"
+      NODE_ENV: production
+      TRIFORCE_TOKEN: "${TRIFORCE_TOKEN:-}"
+    volumes:
+      # The project itself (server code, public/, models.config.json).
+      - ./:/app
+      # Persists ~/.claude, ~/.codex and the agy credential/config dirs across
+      # rebuilds and restarts. The three CLI binaries live in /usr/local, so this
+      # volume never shadows them.
+      - triforce-home:/home/node
+    restart: unless-stopped
+
+volumes:
+  triforce-home:

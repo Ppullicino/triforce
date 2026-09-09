@@ -1,0 +1,13 @@
+# The image installs deps itself and mounts the project at runtime, so keep the
+# build context tiny.
+.git
+node_modules
+graphify-out
+clients
+transcripts
+generated-projects
+dist
+coverage
+target
+*.local
+*.tsbuildinfo
