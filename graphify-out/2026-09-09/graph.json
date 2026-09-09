@@ -9976,14 +9976,14 @@
       "source_location": "L1"
     },
     {
-      "id": "docker_authentication_log_in_once_on_the_host",
-      "label": "Authentication \u2014 log in once, on the host",
+      "id": "docker_authentication_log_in_inside_the_container",
+      "label": "Authentication \u2014 log in inside the container",
       "_origin": "ast",
       "community": 96,
       "community_name": "Running Triforce in Docker",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "authentication \u2014 log in once, on the host",
+      "norm_label": "authentication \u2014 log in inside the container",
       "source_file": "DOCKER.md",
       "source_location": "L20"
     },
@@ -10009,7 +10009,7 @@
       "node_kind": "heading",
       "norm_label": "manage",
       "source_file": "DOCKER.md",
-      "source_location": "L68"
+      "source_location": "L74"
     },
     {
       "id": "docker_run",
@@ -10021,7 +10021,7 @@
       "node_kind": "heading",
       "norm_label": "run",
       "source_file": "DOCKER.md",
-      "source_location": "L57"
+      "source_location": "L63"
     },
     {
       "id": "docker_running_triforce_in_docker",
@@ -18348,7 +18348,7 @@
     },
     {
       "source": "docker_running_triforce_in_docker",
-      "target": "docker_authentication_log_in_once_on_the_host",
+      "target": "docker_authentication_log_in_inside_the_container",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -18365,7 +18365,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DOCKER.md",
-      "source_location": "L57",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -18376,7 +18376,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "DOCKER.md",
-      "source_location": "L68",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -22388,5 +22388,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2368758dd024921f62ae3e06b66f8d77a032d173"
+  "built_at_commit": "6062e4cc559aece264ecb2a196c6937b38225280"
 }

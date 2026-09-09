@@ -5752,7 +5752,7 @@
       "node_kind": "heading",
       "norm_label": "10. phased delivery",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L288"
+      "source_location": "L319"
     },
     {
       "id": "triforce_modes_plan_11_open_questions_risks",
@@ -5764,7 +5764,7 @@
       "node_kind": "heading",
       "norm_label": "11. open questions / risks",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L302"
+      "source_location": "L333"
     },
     {
       "id": "triforce_modes_plan_12_graphify_maintenance",
@@ -5776,7 +5776,7 @@
       "node_kind": "heading",
       "norm_label": "12. graphify maintenance",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L322"
+      "source_location": "L353"
     },
     {
       "id": "triforce_modes_plan_1_vision",
@@ -5812,7 +5812,7 @@
       "node_kind": "heading",
       "norm_label": "3. filesystem navigator (new capability, shared by all modes)",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L103"
+      "source_location": "L134"
     },
     {
       "id": "triforce_modes_plan_4_first_run_onboarding",
@@ -5824,7 +5824,7 @@
       "node_kind": "heading",
       "norm_label": "4. first\u2010run / onboarding",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L137"
+      "source_location": "L168"
     },
     {
       "id": "triforce_modes_plan_5_architecture_impact_graph_map",
@@ -5836,7 +5836,7 @@
       "node_kind": "heading",
       "norm_label": "5. architecture impact (graph map)",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L159"
+      "source_location": "L190"
     },
     {
       "id": "triforce_modes_plan_6_data_persistence",
@@ -5848,7 +5848,7 @@
       "node_kind": "heading",
       "norm_label": "6. data & persistence",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L195"
+      "source_location": "L226"
     },
     {
       "id": "triforce_modes_plan_7_protocol_changes_concrete",
@@ -5860,7 +5860,7 @@
       "node_kind": "heading",
       "norm_label": "7. protocol changes (concrete)",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L214"
+      "source_location": "L245"
     },
     {
       "id": "triforce_modes_plan_8_security_trust_boundaries",
@@ -5872,7 +5872,7 @@
       "node_kind": "heading",
       "norm_label": "8. security & trust boundaries",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L248"
+      "source_location": "L279"
     },
     {
       "id": "triforce_modes_plan_9_migration",
@@ -5884,7 +5884,7 @@
       "node_kind": "heading",
       "norm_label": "9. migration",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L273"
+      "source_location": "L304"
     },
     {
       "id": "triforce_modes_plan_god_node_community_note",
@@ -5896,7 +5896,7 @@
       "node_kind": "heading",
       "norm_label": "god\u2010node / community note",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L185"
+      "source_location": "L216"
     },
     {
       "id": "triforce_modes_plan_locked_decisions_from_design_review",
@@ -5911,14 +5911,14 @@
       "source_location": "L22"
     },
     {
-      "id": "triforce_modes_plan_mode_1_structured_build_designer_coder_supervisor",
-      "label": "Mode 1 \u2014 structured build (designer \u2192 coder \u2192 supervisor)",
+      "id": "triforce_modes_plan_mode_1_structured_build_prompt_designer_supervisor_coder_supervisor",
+      "label": "Mode 1 \u2014 structured build (Prompt Designer \u2192 Supervisor \u2192 Coder \u2192 Supervisor)",
       "_origin": "ast",
       "community": 34,
       "community_name": "Triforce \u2014 Three\u2011Mode Redesign Plan",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "mode 1 \u2014 structured build (designer \u2192 coder \u2192 supervisor)",
+      "norm_label": "mode 1 \u2014 structured build (prompt designer \u2192 supervisor \u2192 coder \u2192 supervisor)",
       "source_file": "TRIFORCE_MODES_PLAN.md",
       "source_location": "L38"
     },
@@ -5932,7 +5932,7 @@
       "node_kind": "heading",
       "norm_label": "mode 2 \u2014 credit extender (router + deliberation)",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L61"
+      "source_location": "L92"
     },
     {
       "id": "triforce_modes_plan_mode_3_verified_chat",
@@ -5944,7 +5944,7 @@
       "node_kind": "heading",
       "norm_label": "mode 3 \u2014 verified chat",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L83"
+      "source_location": "L114"
     },
     {
       "id": "triforce_modes_plan_security_model_see_also_9",
@@ -5956,7 +5956,7 @@
       "node_kind": "heading",
       "norm_label": "security model (see also \u00a79)",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L126"
+      "source_location": "L157"
     },
     {
       "id": "triforce_modes_plan_server_api_new_fs_command_family_on_the_websocket_or_rest_under_api_fs",
@@ -5968,7 +5968,7 @@
       "node_kind": "heading",
       "norm_label": "server api (new `fs` command family on the websocket, or rest under `/api/fs`)",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L108"
+      "source_location": "L139"
     },
     {
       "id": "triforce_modes_plan_triforce_three_mode_redesign_plan",
@@ -5992,7 +5992,7 @@
       "node_kind": "heading",
       "norm_label": "ui",
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L118"
+      "source_location": "L149"
     },
     {
       "id": "clients_desktop_src_tauri_tauri_conf",
@@ -20746,7 +20746,18 @@
     },
     {
       "source": "triforce_modes_plan_2_the_three_modes",
-      "target": "triforce_modes_plan_mode_1_structured_build_designer_coder_supervisor",
+      "target": "triforce_modes_plan_mode_3_verified_chat",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "TRIFORCE_MODES_PLAN.md",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "triforce_modes_plan_2_the_three_modes",
+      "target": "triforce_modes_plan_mode_1_structured_build_prompt_designer_supervisor_coder_supervisor",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -20763,18 +20774,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L61",
-      "weight": 1.0
-    },
-    {
-      "source": "triforce_modes_plan_2_the_three_modes",
-      "target": "triforce_modes_plan_mode_3_verified_chat",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L83",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -20785,7 +20785,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L108",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -20796,7 +20796,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L118",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -20807,7 +20807,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L126",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -20818,18 +20818,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L185",
-      "weight": 1.0
-    },
-    {
-      "source": "triforce_modes_plan_triforce_three_mode_redesign_plan",
-      "target": "triforce_modes_plan_3_filesystem_navigator_new_capability_shared_by_all_modes",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L103",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -20845,13 +20834,24 @@
     },
     {
       "source": "triforce_modes_plan_triforce_three_mode_redesign_plan",
+      "target": "triforce_modes_plan_3_filesystem_navigator_new_capability_shared_by_all_modes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "TRIFORCE_MODES_PLAN.md",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "triforce_modes_plan_triforce_three_mode_redesign_plan",
       "target": "triforce_modes_plan_4_first_run_onboarding",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L137",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -20862,7 +20862,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L159",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -20873,7 +20873,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L195",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -20884,7 +20884,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L214",
+      "source_location": "L245",
       "weight": 1.0
     },
     {
@@ -20895,7 +20895,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L248",
+      "source_location": "L279",
       "weight": 1.0
     },
     {
@@ -20906,7 +20906,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L273",
+      "source_location": "L304",
       "weight": 1.0
     },
     {
@@ -20917,7 +20917,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L288",
+      "source_location": "L319",
       "weight": 1.0
     },
     {
@@ -20928,7 +20928,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L302",
+      "source_location": "L333",
       "weight": 1.0
     },
     {
@@ -20939,7 +20939,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "TRIFORCE_MODES_PLAN.md",
-      "source_location": "L322",
+      "source_location": "L353",
       "weight": 1.0
     },
     {
@@ -22388,5 +22388,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6062e4cc559aece264ecb2a196c6937b38225280"
+  "built_at_commit": "d2e63c7d9e651f90d313f810e572fe460f697dba"
 }
