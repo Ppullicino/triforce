@@ -17,48 +17,48 @@ Mode 2 pipeline execution is unavailable (`/api/capabilities` reports
 `sandbox: "unavailable"`). Use Docker for: CLI login, the dashboard, and chat‑style
 use. Run on a systemd host for full pipeline runs.
 
-## 1. Set an access token
+## Authentication — log in once, on the host
+
+`compose.yml` mounts the host user's CLI credential dirs into the container, so you
+authenticate **once, on the host**, and the container reuses it:
+
+| CLI | Host paths mounted |
+| --- | --- |
+| claude | `~/.claude`, `~/.claude.json` |
+| codex | `~/.codex` |
+| agy | `~/.gemini` (holds `antigravity-cli/antigravity-oauth-token`) |
+
+The container runs as uid 1000 (matching the host user), so the mounts are
+read‑write and OAuth token refreshes are shared.
+
+On the host, in a normal terminal:
 
 ```bash
-echo "TRIFORCE_TOKEN=$(openssl rand -hex 24)" >> .env
+claude auth login          # skip if already logged in
+codex login --device-auth
+agy -p ping                # triggers sign-in if needed
 ```
 
-`.env` is git‑ignored. Compose reads `TRIFORCE_TOKEN` from it automatically.
-
-## 2. Build
+Verify:
 
 ```bash
+claude auth status ; codex login status ; agy -p "say ok"
+```
+
+**Caveat:** the container's `claude` / `codex` / `agy` then share live state with any
+host Claude Code / Antigravity session (same files, same user). Fine for a single
+operator; avoid heavy concurrent `agy` use on host and container at the same time.
+
+> Prefer full isolation instead? Replace the four credential bind mounts in
+> `compose.yml` with a named volume (`- triforce-home:/home/node`) and run the
+> logins inside the container in a real terminal:
+> `docker compose run --rm -it triforce sh -lc 'claude auth login && codex login --device-auth && agy -p ping'`.
+
+## Run
+
+```bash
+echo "TRIFORCE_TOKEN=$(openssl rand -hex 24)" >> .env   # .env is git-ignored
 docker compose build
-```
-
-## 3. Log in to the three accounts (one time)
-
-```bash
-docker compose run --rm triforce sh -lc '
-  claude auth login &&
-  codex login --device-auth &&
-  agy -p ping
-'
-```
-
-Each CLI prints a URL (and, for Codex, a device code). Open it in your normal
-browser, approve, and paste anything it asks back into the terminal. The logins are
-written into the `triforce-home` volume and survive rebuilds and restarts.
-
-Prefer Triforce's guided wizard? `docker compose run --rm triforce node cli.js` and
-answer `y` to "re‑run the configuration setup"; answer `y` to "remote/headless VM?"
-so Codex uses device‑auth. (It also starts a server afterwards — Ctrl‑C once you are
-logged in.)
-
-Check status any time:
-
-```bash
-docker compose run --rm triforce sh -lc 'claude auth status; codex login status; agy -p ping'
-```
-
-## 4. Run the server
-
-```bash
 docker compose up -d
 ```
 
@@ -70,6 +70,5 @@ On the LAN: `http://<this-host-ip>:3100/login`.
 ```bash
 docker compose logs -f            # tail logs
 docker compose restart            # reload after code changes
-docker compose down               # stop (image + login volume kept)
-docker volume rm triforce_triforce-home   # wipe stored logins
+docker compose down               # stop
 ```
