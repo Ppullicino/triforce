@@ -18,17 +18,12 @@ services:
     volumes:
       # The project itself (server code, public/, models.config.json).
       - ./:/app
-      # Reuse the host user's CLI logins so you authenticate once, on the host.
-      # The container runs as uid 1000, matching the host user, so these are
-      # read-write and token refreshes are shared.
-      #   claude -> ~/.claude + ~/.claude.json
-      #   codex  -> ~/.codex/auth.json
-      #   agy    -> ~/.gemini/antigravity-cli/
-      # Caveat: the container's claude/codex/agy then share live state with any
-      # host Claude Code / Antigravity session (same files, same user). Fine for a
-      # single operator; avoid heavy concurrent agy use on host + container.
-      - ${HOME}/.claude:/home/node/.claude
-      - ${HOME}/.claude.json:/home/node/.claude.json
-      - ${HOME}/.codex:/home/node/.codex
-      - ${HOME}/.gemini:/home/node/.gemini
+      # Self-contained CLI credentials. Authenticate once inside the container
+      # (see DOCKER.md); logins persist here across rebuilds and restarts, with
+      # no dependency on the host user's ~/.claude, ~/.codex or ~/.gemini.
+      # The three CLI binaries live in /usr/local, so this volume never shadows them.
+      - triforce-home:/home/node
     restart: unless-stopped
+
+volumes:
+  triforce-home:

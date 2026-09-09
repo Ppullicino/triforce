@@ -17,42 +17,48 @@ Mode 2 pipeline execution is unavailable (`/api/capabilities` reports
 `sandbox: "unavailable"`). Use Docker for: CLI login, the dashboard, and chat‑style
 use. Run on a systemd host for full pipeline runs.
 
-## Authentication — log in once, on the host
+## Authentication — log in inside the container
 
-`compose.yml` mounts the host user's CLI credential dirs into the container, so you
-authenticate **once, on the host**, and the container reuses it:
+`compose.yml` gives the container a self-contained credential volume
+(`triforce-home` on `/home/node`) with no dependency on the host user's
+`~/.claude` / `~/.codex` / `~/.gemini`. You authenticate once, **inside the
+container, from a real terminal** (a TTY is required — this will hang if run
+through a non-interactive wrapper).
 
-| CLI | Host paths mounted |
-| --- | --- |
-| claude | `~/.claude`, `~/.claude.json` |
-| codex | `~/.codex` |
-| agy | `~/.gemini` (holds `antigravity-cli/antigravity-oauth-token`) |
-
-The container runs as uid 1000 (matching the host user), so the mounts are
-read‑write and OAuth token refreshes are shared.
-
-On the host, in a normal terminal:
+With the stack running (`docker compose up -d`):
 
 ```bash
-claude auth login          # skip if already logged in
-codex login --device-auth
-agy -p ping                # triggers sign-in if needed
+docker compose exec triforce claude auth login
+docker compose exec triforce codex login --device-auth
+docker compose exec triforce agy -p ping
 ```
+
+| CLI | Flow |
+| --- | --- |
+| `claude auth login` | prints a URL → approve in your browser → it shows a code → paste it back at the `Paste code here >` prompt. |
+| `codex login --device-auth` | prints a URL + short code → enter the code on the page → it polls and finishes on its own (no paste-back). |
+| `agy -p ping` | opens a browser / prints a sign-in URL on first use → follow it → then it answers `ping`. |
 
 Verify:
 
 ```bash
-claude auth status ; codex login status ; agy -p "say ok"
+docker compose exec triforce sh -lc 'claude auth status; codex login status; agy -p "say ok"'
 ```
 
-**Caveat:** the container's `claude` / `codex` / `agy` then share live state with any
-host Claude Code / Antigravity session (same files, same user). Fine for a single
-operator; avoid heavy concurrent `agy` use on host and container at the same time.
+Logins persist in the `triforce-home` volume across rebuilds and restarts.
+`docker volume rm triforce_triforce-home` wipes them.
 
-> Prefer full isolation instead? Replace the four credential bind mounts in
-> `compose.yml` with a named volume (`- triforce-home:/home/node`) and run the
-> logins inside the container in a real terminal:
-> `docker compose run --rm -it triforce sh -lc 'claude auth login && codex login --device-auth && agy -p ping'`.
+> Prefer to reuse the host's existing logins instead of logging in again? Replace
+> the `- triforce-home:/home/node` line in `compose.yml` with:
+> ```yaml
+>       - ${HOME}/.claude:/home/node/.claude
+>       - ${HOME}/.claude.json:/home/node/.claude.json
+>       - ${HOME}/.codex:/home/node/.codex
+>       - ${HOME}/.gemini:/home/node/.gemini
+> ```
+> The container runs as uid 1000, so these are read-write and token refresh is
+> shared — but the container then shares live state with any host Claude Code /
+> Antigravity session.
 
 ## Run
 
