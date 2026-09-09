@@ -1,16 +1,16 @@
 # Graph Report - triforce  (2026-09-09)
 
 ## Corpus Check
-- 96 files · ~77,737 words
+- 96 files · ~77,847 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 878 nodes · 1089 edges · 97 communities (58 shown, 25 thin omitted)
+- 876 nodes · 1087 edges · 86 communities (56 shown, 16 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 16 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1696f490`
+- Built from commit: `2368758d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -36,7 +36,7 @@
 - Triforce Cross-Platform Client Plan
 - devDependencies
 - compilerOptions
-- dependencies
+- shared/package.json
 - protocol/package.json
 - compilerOptions
 - compilerOptions
@@ -85,18 +85,7 @@
 - workspaces
 - main.tsx
 - triforce-desktop
-- scripts
 - HostRepository
-- shared/package.json
-- @eslint/js
-- eslint-plugin-react-hooks
-- globals
-- @testing-library/jest-dom
-- @testing-library/react
-- @types/node
-- @types/react-dom
-- typescript-eslint
-- @vitejs/plugin-react
 - Running Triforce in Docker
 
 ## God Nodes (most connected - your core abstractions)
@@ -126,7 +115,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (97 total, 25 thin omitted)
+## Communities (86 total, 16 thin omitted)
 
 ### Community 0 - "server.js"
 Cohesion: 0.06
@@ -169,16 +158,16 @@ Cohesion: 0.12
 Nodes (15): Agent handoff contract, Current handoff, Objective, Per-step completion procedure, Product decisions, Step 1 — Monorepo and shared-client foundation, Step 2 — Versioned server protocol and resumable run API, Step 3 — Shared connection, authentication, and host profiles (+7 more)
 
 ### Community 20 - "devDependencies"
-Cohesion: 0.13
-Nodes (15): devDependencies, eslint, eslint-plugin-react-refresh, jsdom, @types/react, typescript, vite, vitest (+7 more)
+Cohesion: 0.06
+Nodes (33): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, jsdom, @testing-library/jest-dom (+25 more)
 
 ### Community 21 - "compilerOptions"
 Cohesion: 0.07
 Nodes (26): compilerOptions, allowJs, allowSyntheticDefaultImports, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx, lib (+18 more)
 
-### Community 22 - "dependencies"
-Cohesion: 0.18
-Nodes (11): dependencies, react, react-dom, @tauri-apps/api, @tauri-apps/plugin-opener, @triforce/protocol, react, react-dom (+3 more)
+### Community 22 - "shared/package.json"
+Cohesion: 0.09
+Nodes (21): dependencies, react, react-dom, @tauri-apps/api, @tauri-apps/plugin-opener, @triforce/protocol, name, private (+13 more)
 
 ### Community 23 - "protocol/package.json"
 Cohesion: 0.10
@@ -348,22 +337,14 @@ Nodes (4): default, description, type, description
 Cohesion: 0.50
 Nodes (4): workspaces, clients/desktop, clients/shared, packages/*
 
-### Community 84 - "scripts"
-Cohesion: 0.33
-Nodes (6): scripts, build, dev, lint, test, typecheck
-
-### Community 86 - "shared/package.json"
-Cohesion: 0.40
-Nodes (4): name, private, type, version
-
 ### Community 96 - "Running Triforce in Docker"
-Cohesion: 0.25
-Nodes (7): 1. Set an access token, 2. Build, 3. Log in to the three accounts (one time), 4. Run the server, Limitation, Manage, Running Triforce in Docker
+Cohesion: 0.33
+Nodes (5): Authentication — log in once, on the host, Limitation, Manage, Run, Running Triforce in Docker
 
 ## Knowledge Gaps
-- **422 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+417 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 504 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **25 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **420 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+415 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 502 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -375,7 +356,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `TriforceConnection` connect `index.js` to `App.tsx`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `RETRYABLE_STATUSES`, `rl`, `__dirname` to the rest of the system?**
-  _422 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _420 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.06105834464043419 - nodes in this community are weakly interconnected._
 - **Should `MainActivity.kt` be split into smaller, more focused modules?**

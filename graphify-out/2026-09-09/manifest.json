@@ -946,5 +946,17 @@
     "seen": 1788958499.861624,
     "ast_hash": "6cb10bf25239217918325ae329641d68",
     "semantic_hash": ""
+  },
+  "DOCKER.md": {
+    "mtime": 1788958990.1112235,
+    "seen": 1788959108.4868243,
+    "ast_hash": "a7475785b77362b5578b0188f24f8349",
+    "semantic_hash": ""
+  },
+  "compose.yml": {
+    "mtime": 1788959007.0508497,
+    "seen": 1788959108.4868398,
+    "ast_hash": "29ff39e6ce8cdb610216bfe9b01b72d8",
+    "semantic_hash": ""
   }
 }
