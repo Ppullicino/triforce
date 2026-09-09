@@ -62,8 +62,8 @@
   "60": "App.tsx",
   "61": "install-service.test.js",
   "62": "platform-credentials.ts",
-  "63": "TriforceConnection",
-  "64": "pipeline.ts",
+  "63": "hosts.ts",
+  "64": "CredentialStorage",
   "65": "definitions",
   "66": "definitions",
   "67": "properties",
@@ -81,10 +81,10 @@
   "79": "description",
   "80": "description",
   "81": "workspaces",
-  "82": "App",
+  "82": "main.tsx",
   "83": "triforce-desktop",
   "84": "scripts",
-  "85": "MockSocket",
+  "85": "HostRepository",
   "86": "shared/package.json",
   "87": "@eslint/js",
   "88": "eslint-plugin-react-hooks",
@@ -94,5 +94,6 @@
   "92": "@types/node",
   "93": "@types/react-dom",
   "94": "typescript-eslint",
-  "95": "@vitejs/plugin-react"
+  "95": "@vitejs/plugin-react",
+  "96": "Running Triforce in Docker"
 }
