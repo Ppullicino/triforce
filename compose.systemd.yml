@@ -1,0 +1,35 @@
+# Triforce with a working systemd sandbox. Run instead of compose.yml (not alongside
+# -- same port). See DOCKER.md "systemd mode".
+#
+#   echo "TRIFORCE_TOKEN=$(openssl rand -hex 24)" >> .env
+#   docker compose -f compose.systemd.yml up -d
+#
+# privileged + tmpfs on /run are required for systemd as PID 1. The host must be
+# cgroup v2 (this one is). No host paths beyond the project dir are bind-mounted.
+
+name: triforce-systemd
+
+services:
+  triforce:
+    build:
+      context: .
+      dockerfile: Dockerfile.systemd
+    image: triforce-systemd
+    privileged: true
+    ports:
+      - "3100:3000"
+    environment:
+      TRIFORCE_TOKEN: "${TRIFORCE_TOKEN:-}"
+    volumes:
+      - ./:/app
+      # CLI credentials for the `triforce` user (uid 1000). Isolated from the host.
+      - triforce-systemd-home:/home/triforce
+    tmpfs:
+      - /run
+      - /run/lock
+    stop_signal: SIGRTMIN+3
+    stop_grace_period: 20s
+    restart: unless-stopped
+
+volumes:
+  triforce-systemd-home:

@@ -1,0 +1,21 @@
+# systemd *user* service for the `triforce` account. Installed at
+# /etc/systemd/user/triforce.service in the image. Running the server as a user
+# service (not a system service) gives it XDG_RUNTIME_DIR + DBUS_SESSION_BUS_ADDRESS
+# for the user bus, which is what `systemd-run --user` in sandbox.js needs.
+[Unit]
+Description=Triforce server
+After=basic.target
+
+[Service]
+Type=simple
+WorkingDirectory=/app
+Environment=PORT=3000
+Environment=NODE_ENV=production
+# TRIFORCE_TOKEN comes from /app/.env or a drop-in written by the entrypoint.
+EnvironmentFile=-/app/.env
+ExecStart=/usr/local/bin/node /app/server.js
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

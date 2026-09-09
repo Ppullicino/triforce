@@ -1,0 +1,58 @@
+# Triforce with a working systemd sandbox.
+#
+# Boots systemd as PID 1 so `systemd-run --user` (sandbox.js) and the workspace
+# test runner function inside the container. Needs `privileged: true` and a tmpfs
+# on /run -- see compose.systemd.yml. Heavier than Dockerfile; use it when you need
+# Mode 1/2 pipeline runs to actually execute.
+
+FROM debian:12-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV container=docker
+
+# systemd + a user session bus + the tools the model CLIs and workspace runner need.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      systemd systemd-sysv dbus dbus-user-session \
+      curl ca-certificates git xz-utils procps \
+ && rm -rf /var/lib/apt/lists/*
+
+# Drop container-hostile units so boot is quiet and fast.
+RUN systemctl mask \
+      systemd-udevd.service systemd-udevd-kernel.socket systemd-udevd-control.socket \
+      systemd-modules-load.service sys-kernel-config.mount sys-kernel-debug.mount \
+      systemd-firstboot.service systemd-networkd.service systemd-resolved.service \
+      getty.target console-getty.service \
+    2>/dev/null || true
+
+# Node 22 from the official tarball (Debian 12's own package is too old).
+ARG NODE_VERSION=22.14.0
+RUN curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" -o /tmp/node.tar.xz \
+ && tar -xJf /tmp/node.tar.xz -C /usr/local --strip-components=1 \
+ && rm /tmp/node.tar.xz \
+ && node --version && npm --version
+
+# The three model CLIs, in /usr/local so the home volume never shadows them.
+RUN npm install -g @anthropic-ai/claude-code @openai/codex
+RUN curl -fsSL https://antigravity.google/cli/install.sh -o /tmp/agy-install.sh \
+ && bash /tmp/agy-install.sh --dir /usr/local/bin \
+ && rm -f /tmp/agy-install.sh \
+ && agy --version || true
+
+# Unprivileged account for the server + sandbox; uid 1000 matches the host project owner.
+RUN useradd --create-home --uid 1000 --shell /bin/bash triforce \
+ && mkdir -p /var/lib/systemd/linger && touch /var/lib/systemd/linger/triforce
+
+# Server runs as a systemd *user* service (see the unit for why). Unit + enable
+# symlink live in /etc so they are not shadowed by the /home/triforce volume.
+COPY docker/triforce.service /etc/systemd/user/triforce.service
+RUN mkdir -p /etc/systemd/user/default.target.wants \
+ && ln -sf ../triforce.service /etc/systemd/user/default.target.wants/triforce.service
+
+COPY docker/entrypoint.sh /usr/local/bin/triforce-entrypoint
+RUN chmod +x /usr/local/bin/triforce-entrypoint
+
+WORKDIR /app
+EXPOSE 3000
+STOPSIGNAL SIGRTMIN+3
+CMD ["/usr/local/bin/triforce-entrypoint"]

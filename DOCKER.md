@@ -10,12 +10,22 @@
 
 Triforce's own setup wizard only *checks* for these; the image installs them.
 
-## Limitation
+## Two images
 
-The container has **no systemd**, so the generated‑code sandbox used by Mode 1 and
-Mode 2 pipeline execution is unavailable (`/api/capabilities` reports
-`sandbox: "unavailable"`). Use Docker for: CLI login, the dashboard, and chat‑style
-use. Run on a systemd host for full pipeline runs.
+| | `Dockerfile` + `compose.yml` | `Dockerfile.systemd` + `compose.systemd.yml` |
+| --- | --- | --- |
+| Base | `node:22-bookworm-slim` | `debian:12` booting systemd as PID 1 |
+| Privileges | unprivileged | **`privileged: true`** + tmpfs on `/run` |
+| `/api/capabilities` sandbox | `unavailable` | **`systemd`** |
+| Mode 1/2 pipeline runs (execute generated code) | ✗ rejected `SANDBOX_UNAVAILABLE` | ✓ works |
+| Good for | CLI login, dashboard, chat-style use | full pipeline runs |
+
+Run **one** of them (both use port 3100). The rest of this file covers the plain
+image; jump to [systemd mode](#systemd-mode) for the other.
+
+The plain container has no systemd, so the generated-code sandbox is unavailable
+(`/api/capabilities` → `sandbox: "unavailable"`) and Mode 1/2 runs are rejected before
+they start.
 
 ## Authentication — log in inside the container
 
@@ -77,4 +87,53 @@ On the LAN: `http://<this-host-ip>:3100/login`.
 docker compose logs -f            # tail logs
 docker compose restart            # reload after code changes
 docker compose down               # stop
+```
+
+---
+
+## systemd mode
+
+`Dockerfile.systemd` boots systemd as PID 1 so `systemd-run --user` (used by
+`sandbox.js` and the workspace test runner) works inside the container. The server
+runs as a systemd **user** service of the `triforce` account (uid 1000), which is
+what gives it the user bus that `systemd-run --user` needs.
+
+Requirements: a **cgroup v2** host (check: `stat -fc %T /sys/fs/cgroup` →
+`cgroup2fs`) and `privileged: true` (set in `compose.systemd.yml`). No host paths
+beyond the project directory are bind-mounted.
+
+### Run
+
+```bash
+echo "TRIFORCE_TOKEN=$(openssl rand -hex 24)" >> .env    # if not already set
+docker compose down                                       # stop the plain stack (same port)
+docker compose -f compose.systemd.yml up -d
+```
+
+Confirm the sandbox is live:
+
+```bash
+curl -s -b "triforce_token=$(grep -oP 'TRIFORCE_TOKEN=\K.*' .env)" \
+  http://localhost:3100/api/capabilities
+# ... "sandbox":"systemd"
+```
+
+### Log in to the three CLIs (one time, real terminal)
+
+```bash
+docker compose -f compose.systemd.yml exec -u triforce triforce bash -lc 'claude auth login'
+docker compose -f compose.systemd.yml exec -u triforce triforce bash -lc 'codex login --device-auth'
+docker compose -f compose.systemd.yml exec -u triforce triforce bash -lc 'agy -p ping'
+```
+
+Same flows as [above](#authentication--log-in-inside-the-container): URL + paste for
+claude, device code for codex, first-use sign-in for agy. Logins persist in the
+`triforce-systemd-home` volume.
+
+### Manage
+
+```bash
+docker compose -f compose.systemd.yml logs -f
+docker compose -f compose.systemd.yml exec triforce journalctl -u user@1000.service -n 50
+docker compose -f compose.systemd.yml down            # SIGRTMIN+3 -> clean systemd shutdown
 ```
