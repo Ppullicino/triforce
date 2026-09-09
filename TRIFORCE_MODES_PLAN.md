@@ -35,28 +35,59 @@ a one‑line purpose below.
 
 ## 2. The three modes
 
-### Mode 1 — structured build (designer → coder → supervisor)
+### Mode 1 — structured build (Prompt Designer → Supervisor → Coder → Supervisor)
 
 **Purpose:** turn a task into working, test‑passing changes inside a chosen project,
 under an iterative review loop.
 
-- Pipeline = today's Mode 2 cooperative loop, generalised to multi‑file projects:
-  1. **Designer** produces a spec from the task + selected folder context.
-  2. **Supervisor (prompt check)** greenlights or revises the spec.
-  3. **Coder** writes/edits files in a workspace copy of the selected folder.
-  4. Declared test file runs in the sandbox (`runWorkspaceTest`).
-  5. **Supervisor (code check)** returns `PASS` / `FIX` with feedback; loop up to
-     `maxIterations` (cap 10).
+**Three named positions**, each with its own model dropdown in the UI (see below):
+**Prompt Designer**, **Coder**, **Supervisor**. This replaces today's
+architect / developer / reviewer labels (and the `SEQUENTIAL` mode name). Any of the
+three CLIs can be assigned to any position.
+
+**The loop** (anchored throughout to the human's original prompt, which defines the
+scope):
+
+1. Human enters the original task/prompt + selects a working folder.
+2. **Prompt Designer** turns it into an implementation prompt/spec.
+3. **Supervisor** reviews that prompt *against the original human prompt's scope* —
+   is it in scope, complete, unambiguous? Returns `APPROVE` or `REVISE` + notes.
+4. If `REVISE`: back to the **Prompt Designer**, which refines the prompt; return to
+   step 3. Loop until the Supervisor approves (cap `maxPromptIterations`).
+5. The approved prompt goes to the **Coder**, which writes/edits files in a workspace
+   copy of the selected folder.
+6. The declared test file runs in the sandbox (`runWorkspaceTest`).
+7. **Supervisor** assesses the code *against the original prompt + approved spec* and
+   returns `PASS` or `FIX` + specific fixes.
+8. If `FIX`: back to the **Coder** with the feedback + sandbox output; return to
+   step 6. Loop until `PASS` (cap `maxCodeIterations`, default from `maxIterations`,
+   hard cap 10).
+
 - Working set: a **copy** of the selected folder created with `createWorkspace()`
   under `TRIFORCE_WORKSPACE_ROOT`. Dependencies exposed read‑only. Generated paths
   validated by `safePath()`.
 - Output: `getWorkspaceDiff()` unified diff streamed to the client + an **Apply**
   action (see §3) that writes the diff back to the real folder (git‑aware: refuse or
   branch if the real folder is a dirty git tree, configurable).
-- Reuses `SYSTEM_PROMPTS_MODE2` + `SYSTEM_PROMPTS_WORKSPACE`, merged into one
-  `SYSTEM_PROMPTS_BUILD` set.
-- Role→model assignment stays user‑configurable (`models.config.json`,
-  per‑role provider/model selects in the UI).
+- Engine = today's Mode 2 cooperative loop (`SYSTEM_PROMPTS_MODE2`: `designer`,
+  `supervisorPromptCheck`, `coder`, `supervisorCodeCheck`) generalised to multi‑file
+  projects via `SYSTEM_PROMPTS_WORKSPACE`; the two merge into one `SYSTEM_PROMPTS_BUILD`
+  set. The Supervisor's system prompt is given the verbatim original human prompt in
+  both review stages so its scope judgement is stable.
+
+**UI changes** (`public/index.html`):
+
+- Triangle labels `lbl0/1/2` and `.shard-label.{architect,developer,reviewer}` →
+  **Prompt Designer** / **Coder** / **Supervisor**.
+- Per‑position model dropdowns already exist (`prov-architect`/`mod-architect`,
+  `…-developer`, `…-reviewer`) — rename the ids/labels to `prompt-designer` /
+  `coder` / `supervisor` and keep the provider→model rebuild logic.
+- Summary‑card role text is currently hard‑coded (`CLAUDE CODE`, `CODEX`,
+  `ANTIGRAVITY`) — drive it from the assigned model instead.
+- `config` keys sent on `run`: `promptDesigner` / `coder` / `supervisor`
+  (keep accepting the old `architect`/`developer`/`reviewer` names as aliases for
+  one release).
+- `models.config.json` gains the new key names; old files still load via the alias.
 
 ### Mode 2 — credit extender (router + deliberation)
 
