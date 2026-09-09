@@ -3,8 +3,41 @@
 Status: proposal / way‑forward. Supersedes the current Mode 1/2/3 semantics
 (sequential handoff, cooperative loop, workspace loop).
 
-Related docs: `RUNNING.md`, `CLIENT_ARCHITECTURE.md`, `CROSS_PLATFORM_CLIENT_PLAN.md`,
-`SECURITY_REVIEW.md`, `OPERATIONS.md`.
+Related docs: `RUNNING.md`, `DOCKER.md`, `CLIENT_ARCHITECTURE.md`,
+`CROSS_PLATFORM_CLIENT_PLAN.md`, `SECURITY_REVIEW.md`, `OPERATIONS.md`.
+
+---
+
+## 0. Current state (branch `remove-api-key-providers`)
+
+Work landed on this branch, in order:
+
+1. **CLI‑only providers.** The hosted API providers (`anthropic`, `google`,
+   `openai`) are removed from `agent.js`, `models.js`, `orchestrator.js`,
+   `package.json`, `cli.js`, `public/index.html` and the tests. Only
+   `claude-cli` / `codex-cli` / `agy-cli` remain; `models.config.json` defaults to
+   claude‑cli (architect) + codex‑cli (developer) + agy‑cli (reviewer). No provider
+   API keys are read anywhere.
+2. **Docker packaging.** Two images:
+   - `Dockerfile` + `compose.yml` — `node:22-slim`, the three CLIs baked in,
+     unprivileged. No systemd, so `/api/capabilities` reports
+     `sandbox: "unavailable"` and Mode 1/2 runs are rejected. Good for login, the
+     dashboard, chat‑style use.
+   - `Dockerfile.systemd` + `compose.systemd.yml` — `debian:12` booting systemd as
+     PID 1; the server runs as a systemd **user** service of the `triforce` account
+     so `systemd-run --user` works. `privileged: true` + tmpfs on `/run`; cgroup‑v2
+     host required. Verified: `/api/capabilities` → `sandbox: "systemd"` and real
+     sandboxed exec works. This is the current way to run pipelines in a container.
+   - Full detail + login walk‑throughs in `DOCKER.md`.
+3. **This plan**, including the Mode 1 position rename (§2).
+
+Not yet built: the three‑mode redesign itself (§2), the filesystem navigator (§3),
+`triforce init` onboarding (§4). The dashboard still shows the old
+architect/developer/reviewer triangle.
+
+Where run data lands: `~/.local/share/triforce/runs/` and `.../workspaces/` — inside
+the container that is the `triforce-systemd-home` (or `triforce-home`) named volume;
+transcripts (opt‑in) go to `./transcripts/` in the bind‑mounted project dir.
 
 ---
 

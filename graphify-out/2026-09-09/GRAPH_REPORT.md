@@ -1,23 +1,23 @@
 # Graph Report - triforce  (2026-09-09)
 
 ## Corpus Check
-- 96 files · ~78,122 words
+- 97 files · ~78,618 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 876 nodes · 1087 edges · 86 communities (56 shown, 16 thin omitted)
+- 882 nodes · 1092 edges · 87 communities (56 shown, 17 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 16 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d2e63c7d`
+- Built from commit: `a266ae63`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- server.js
+- pipeline.js
 - MainActivity.kt
-- agent.js
+- server.js
 - scripts
 - Triforce — Running & Operations
 - manifest.json
@@ -64,8 +64,8 @@
 - App.tsx
 - install-service.test.js
 - platform-credentials.ts
-- hosts.ts
-- CredentialStorage
+- TriforceConnection
+- pipeline.ts
 - definitions
 - definitions
 - properties
@@ -83,9 +83,10 @@
 - description
 - description
 - workspaces
-- main.tsx
+- App
 - triforce-desktop
-- HostRepository
+- MockSocket
+- entrypoint.sh
 - Running Triforce in Docker
 
 ## God Nodes (most connected - your core abstractions)
@@ -101,33 +102,33 @@
 10. `compilerOptions` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `executePipeline()` --calls--> `Agent`  [EXTRACTED]
-  pipeline.js → agent.js
 - `runPipeline()` --calls--> `executePipeline()`  [EXTRACTED]
   server.js → pipeline.js
+- `executePipeline()` --calls--> `Agent`  [EXTRACTED]
+  pipeline.js → agent.js
 - `promptLoop()` --calls--> `readTask()`  [EXTRACTED]
   cli.js → cli-input.js
+- `App()` --indirect_call--> `initialPipelineState()`  [INFERRED]
+  clients/shared/src/App.tsx → clients/shared/src/core/pipeline.ts
 - `executePipeline()` --calls--> `getRates()`  [EXTRACTED]
   pipeline.js → models.js
-- `printSummary()` --calls--> `getRates()`  [EXTRACTED]
-  usage.js → models.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (86 total, 16 thin omitted)
+## Communities (87 total, 17 thin omitted)
 
-### Community 0 - "server.js"
+### Community 0 - "pipeline.js"
 Cohesion: 0.06
-Nodes (52): ALLOWED_MODELS, checkConfigForWarnings(), getCatalog(), getRates(), hasRates(), RATES, warnedModels, __dirname (+44 more)
+Nodes (44): Agent, delay(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), parseClaudeJsonEnvelope(), parseCodexJsonl(), resolveBinPath() (+36 more)
 
 ### Community 1 - "MainActivity.kt"
 Cohesion: 0.11
 Nodes (16): android, Bundle, WebView, MainActivitySecurityTest, CredentialVault, WebView, MainActivity, OnBackPressedCallback (+8 more)
 
-### Community 2 - "agent.js"
-Cohesion: 0.13
-Nodes (10): Agent, delay(), getErrorStatus(), getRetryAfterMs(), isRetryableError(), parseClaudeJsonEnvelope(), parseCodexJsonl(), resolveBinPath() (+2 more)
+### Community 2 - "server.js"
+Cohesion: 0.10
+Nodes (18): ALLOWED_MODELS, getCatalog(), app, bearerToken(), cookieToken(), __dirname, httpServer, killLingeringSandboxUnits() (+10 more)
 
 ### Community 3 - "scripts"
 Cohesion: 0.17
@@ -222,8 +223,8 @@ Cohesion: 0.50
 Nodes (3): Development, Prerequisites, Triforce Desktop
 
 ### Community 42 - "index.js"
-Cohesion: 0.06
-Nodes (24): ConnectionOptions, ConnectionState, EventListener, SocketLike, StateListener, MockSocket, TriforceConnection, agentConfigurationSchema (+16 more)
+Cohesion: 0.13
+Nodes (16): agentConfigurationSchema, agentRoleSchema, cancelCommandSchema, capabilities, capabilitiesCommandSchema, clientCommandSchema, isCompatibleProtocol(), pipelineConfigurationSchema (+8 more)
 
 ### Community 48 - "Remote Client Security Review"
 Cohesion: 0.33
@@ -255,19 +256,15 @@ Nodes (9): dotenv, express, dependencies, dotenv, express, ws, zod, zod (+1 more
 
 ### Community 60 - "App.tsx"
 Cohesion: 0.16
-Nodes (13): App(), connectHost(), connectionMessages, Dashboard(), defaultConfig, roles, bounded(), emptyUsage (+5 more)
+Nodes (10): connectionMessages, Dashboard(), defaultConfig, roles, ConnectionOptions, ConnectionState, EventListener, StateListener (+2 more)
 
 ### Community 62 - "platform-credentials.ts"
-Cohesion: 0.20
-Nodes (8): MemoryCredentialStorage, AndroidBridge, AndroidCredentialStorage, androidRequest(), createCredentialStorage(), handleAndroidCredentialResponse(), pending, Window
+Cohesion: 0.06
+Nodes (22): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, CredentialStorage, HostProfile, HostRepository, HostStorage, isHostProfile() (+14 more)
 
-### Community 63 - "hosts.ts"
-Cohesion: 0.23
-Nodes (7): NormalizedHostUrl, normalizeHostUrl(), BrowserHostStorage, HostProfile, HostStorage, isHostProfile(), MemoryHostStorage
-
-### Community 64 - "CredentialStorage"
-Cohesion: 0.13
-Nodes (6): CredentialStorage, TauriCredentialStorage, config, nativeOrigins, startServer(), startServer()
+### Community 64 - "pipeline.ts"
+Cohesion: 0.43
+Nodes (6): bounded(), emptyUsage, initialPipelineState(), mapStatus(), reducePipeline(), UsageItem
 
 ### Community 65 - "definitions"
 Cohesion: 0.12
@@ -337,29 +334,33 @@ Nodes (4): default, description, type, description
 Cohesion: 0.50
 Nodes (4): workspaces, clients/desktop, clients/shared, packages/*
 
-### Community 96 - "Running Triforce in Docker"
+### Community 82 - "App"
 Cohesion: 0.33
-Nodes (5): Authentication — log in inside the container, Limitation, Manage, Run, Running Triforce in Docker
+Nodes (3): App(), connectHost(), installNativeIntegration()
+
+### Community 96 - "Running Triforce in Docker"
+Cohesion: 0.20
+Nodes (9): Authentication — log in inside the container, Log in to the three CLIs (one time, real terminal), Manage, Manage, Run, Run, Running Triforce in Docker, systemd mode (+1 more)
 
 ## Knowledge Gaps
-- **420 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+415 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 502 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **424 isolated node(s):** `RETRYABLE_STATUSES`, `rl`, `__dirname`, `name`, `version` (+419 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 507 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RunRegistry` connect `RunRegistry` to `server.js`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `executePipeline()` connect `server.js` to `agent.js`?**
+- **Why does `executePipeline()` connect `pipeline.js` to `server.js`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `TriforceConnection` connect `index.js` to `App.tsx`?**
+- **Why does `TriforceConnection` connect `TriforceConnection` to `App`, `App.tsx`, `MockSocket`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `RETRYABLE_STATUSES`, `rl`, `__dirname` to the rest of the system?**
-  _420 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `server.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.06105834464043419 - nodes in this community are weakly interconnected._
+  _424 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `pipeline.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.06259780907668232 - nodes in this community are weakly interconnected._
 - **Should `MainActivity.kt` be split into smaller, more focused modules?**
   _Cohesion score 0.10793650793650794 - nodes in this community are weakly interconnected._
-- **Should `agent.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.1349206349206349 - nodes in this community are weakly interconnected._
+- **Should `server.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.10276679841897234 - nodes in this community are weakly interconnected._

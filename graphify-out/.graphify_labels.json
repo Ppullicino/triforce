@@ -1,7 +1,7 @@
 {
-  "0": "pipeline.js",
+  "0": "server.js",
   "1": "MainActivity.kt",
-  "2": "server.js",
+  "2": "agent.js",
   "3": "scripts",
   "4": "Triforce — Running & Operations",
   "5": "responsive.test.ts",
@@ -62,8 +62,8 @@
   "60": "App.tsx",
   "61": "install-service.test.js",
   "62": "platform-credentials.ts",
-  "63": "TriforceConnection",
-  "64": "pipeline.ts",
+  "63": "hosts.ts",
+  "64": "CredentialStorage",
   "65": "definitions",
   "66": "definitions",
   "67": "properties",
@@ -81,9 +81,9 @@
   "79": "description",
   "80": "description",
   "81": "workspaces",
-  "82": "App",
+  "82": "main.tsx",
   "83": "triforce-desktop",
-  "84": "MockSocket",
+  "84": "HostRepository",
   "85": "entrypoint.sh",
   "96": "Running Triforce in Docker"
 }

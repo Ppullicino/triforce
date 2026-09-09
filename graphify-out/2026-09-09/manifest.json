@@ -948,15 +948,27 @@
     "semantic_hash": ""
   },
   "DOCKER.md": {
-    "mtime": 1788966728.753806,
-    "seen": 1788966737.2080157,
-    "ast_hash": "101d10b43c982993e18d9118d0a731fb",
+    "mtime": 1788967896.298209,
+    "seen": 1788967909.6331387,
+    "ast_hash": "b4a6c155abaf53ab6059d7f704f84caf",
     "semantic_hash": ""
   },
   "compose.yml": {
     "mtime": 1788966697.5164595,
     "seen": 1788966737.208031,
     "ast_hash": "e50758fd7c8ed4f857f02f9c2bb88b12",
+    "semantic_hash": ""
+  },
+  "docker/entrypoint.sh": {
+    "mtime": 1788967738.0905588,
+    "seen": 1788967909.6330884,
+    "ast_hash": "f9dec5a86f82b9e924960edac1453d6c",
+    "semantic_hash": ""
+  },
+  "compose.systemd.yml": {
+    "mtime": 1788967759.3811076,
+    "seen": 1788967909.6331527,
+    "ast_hash": "ffc456a54fd5c1a97269512061aafe73",
     "semantic_hash": ""
   }
 }
