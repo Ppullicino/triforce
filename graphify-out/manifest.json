@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "models.config.json": {
-    "mtime": 1789026379.567008,
-    "seen": 1789026414.4545677,
+    "mtime": 1789026662.3379893,
+    "seen": 1789026721.909535,
     "ast_hash": "1eabf143d14555356485ded8fdd6defe",
     "semantic_hash": ""
   },
@@ -42,9 +42,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1789026202.2687821,
-    "seen": 1789026414.4545708,
-    "ast_hash": "62afe2900c0112fde30d2b7fd439fc03",
+    "mtime": 1789026644.1523764,
+    "seen": 1789026721.9095387,
+    "ast_hash": "4258b78dbc6c32157ead92d62f60bfb4",
     "semantic_hash": ""
   },
   "public/manifest.json": {
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1789025886.9624953,
-    "seen": 1789026414.4545853,
-    "ast_hash": "27960be0ca5f12c1306e9362cb491c7f",
+    "mtime": 1789026540.245588,
+    "seen": 1789026721.9095557,
+    "ast_hash": "316a527ddc856a0cfd077e41dbca733a",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -102,9 +102,9 @@
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1789026349.6586447,
-    "seen": 1789026414.4546325,
-    "ast_hash": "d513bbde6d474778147fe88e459dbc69",
+    "mtime": 1789026599.019337,
+    "seen": 1789026721.9096112,
+    "ast_hash": "79a50569dcfb09d8665217fd04ae7280",
     "semantic_hash": ""
   },
   "triforce-phase0-prompt.md": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "test/package.test.js": {
-    "mtime": 1789026206.2006984,
-    "seen": 1789026414.4545925,
-    "ast_hash": "b03d38f972b9c02361c270c6c64428ae",
+    "mtime": 1789026644.1563764,
+    "seen": 1789026721.9095662,
+    "ast_hash": "0fd77c62b78c3672050887a9d0b99a45",
     "semantic_hash": ""
   },
   "cli-input.js": {
@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
-    "mtime": 1789026145.7389855,
-    "seen": 1789026414.4545977,
-    "ast_hash": "5fac94f8b281588ffb1f7409f3213293",
+    "mtime": 1789026655.25914,
+    "seen": 1789026721.9095721,
+    "ast_hash": "91aeed04572ecffd67bef0b2f3088bab",
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.test.ts": {
@@ -1029,6 +1029,18 @@
     "mtime": 1789026101.426929,
     "seen": 1789026414.4545894,
     "ast_hash": "918fee2b22815600de33b5c9fedaddef",
+    "semantic_hash": ""
+  },
+  "credit-extender.js": {
+    "mtime": 1789026519.7680237,
+    "seen": 1789026721.909528,
+    "ast_hash": "071f7cdcc64cd2d4819212fa0d29bac0",
+    "semantic_hash": ""
+  },
+  "test/credit-extender.test.js": {
+    "mtime": 1789026633.7995968,
+    "seen": 1789026721.9095607,
+    "ast_hash": "649cb57cea9d28ac9419bc0ffb470630",
     "semantic_hash": ""
   }
 }

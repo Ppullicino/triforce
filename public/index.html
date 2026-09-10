@@ -1186,28 +1186,26 @@
   </div>
 </header>
 
-<div class="usage-bar" id="usageBar">
+<div class="usage-bar" id="usageBar" title="Per-CLI subscription headroom">
   <div class="ub-providers">
-    <div class="ub-provider" id="ubProvAnthro">
+    <div class="ub-provider" id="ubCliWrap0">
       <span class="ub-prov-name anthro">CLAUDE</span>
-      <div class="ub-track"><div class="ub-fill anthro" id="ubFillAnthro"></div></div>
-      <span class="ub-prov-cost anthro" id="ubCostAnthro">$0.0000</span>
+      <div class="ub-track"><div class="ub-fill anthro" id="ubFill0"></div></div>
+      <span class="ub-prov-cost anthro" id="ubHead0">—</span>
     </div>
-    <div class="ub-provider" id="ubProvOAI">
-      <span class="ub-prov-name openai">GPT</span>
-      <div class="ub-track"><div class="ub-fill openai" id="ubFillOAI"></div></div>
-      <span class="ub-prov-cost openai" id="ubCostOAI">$0.0000</span>
+    <div class="ub-provider" id="ubCliWrap1">
+      <span class="ub-prov-name openai">CODEX</span>
+      <div class="ub-track"><div class="ub-fill openai" id="ubFill1"></div></div>
+      <span class="ub-prov-cost openai" id="ubHead1">—</span>
     </div>
-    <div class="ub-provider" id="ubProvGoogle">
-      <span class="ub-prov-name google">GEMINI</span>
-      <div class="ub-track"><div class="ub-fill google" id="ubFillGoogle"></div></div>
-      <span class="ub-prov-cost google" id="ubCostGoogle">$0.0000</span>
+    <div class="ub-provider" id="ubCliWrap2">
+      <span class="ub-prov-name google">AGY</span>
+      <div class="ub-track"><div class="ub-fill google" id="ubFill2"></div></div>
+      <span class="ub-prov-cost google" id="ubHead2">—</span>
     </div>
   </div>
   <div class="ub-total">
-    <span class="ub-total-cost" id="ubTotalCost">$0.0000</span>
-    <span class="ub-total-sep">·</span>
-    <span class="ub-total-tokens" id="ubTotalTokens">0t</span>
+    <span class="ub-total-cost" id="ubTotalCost">headroom</span>
   </div>
 </div>
 
@@ -2009,7 +2007,7 @@
           outputTokens: acc.outputTokens + (item.outputTokens || 0),
           cost: acc.cost + (item.cost || 0),
         }), { inputTokens: 0, outputTokens: 0, cost: 0 });
-        updateUsageBar({ ...event.usage, total });
+        updateUsageBar(event.usage);
         break;
       }
 
@@ -2025,7 +2023,7 @@
         stxt.textContent = `COMPLETE · ${event.elapsed}s`;
         pipelineRunning = false;
         stopUsagePoll();
-        fetch('/api/usage').then(r => r.json()).then(updateUsageBar).catch(() => {});
+        pollLedger();
         populateSummaryCards(passed);
         setTimeout(() => doFlash(() => showCompleteState()), 1500);
         break;
@@ -2076,61 +2074,47 @@
     ws.send(JSON.stringify({ type: 'run', task, config, mode: selectedMode }));
   }
 
-  // ── USAGE BAR ──
-  const ubTotalCost  = document.getElementById('ubTotalCost');
-  const ubTotalTkns  = document.getElementById('ubTotalTokens');
+  // ── PER-CLI HEADROOM BAR (subscription ledger) ──
+  const CLI_SLOTS = [
+    ['claude-cli', 'ubCliWrap0', 'ubFill0', 'ubHead0'],
+    ['codex-cli',  'ubCliWrap1', 'ubFill1', 'ubHead1'],
+    ['agy-cli',    'ubCliWrap2', 'ubFill2', 'ubHead2'],
+  ];
 
-  const PROVIDER_MAP = { anthropic: 'Anthro', openai: 'OAI', google: 'Google' };
-
-  function fmtTokens(n) {
-    if (!n) return '—';
-    return (n >= 1000 ? (n / 1000).toFixed(1) + 'k' : n.toLocaleString()) + 't';
-  }
-
-  function updateUsageBar(data) {
-    // Aggregate cost + tokens by provider using current role→provider selections
-    const provCost = { anthropic: 0, openai: 0, google: 0 };
-    const provTok  = { anthropic: 0, openai: 0, google: 0 };
-    for (const role of ROLES) {
-      const prov    = agentData[role].provider || document.getElementById(`prov-${role}`).value;
-      const roleD   = data[role];
-      if (!roleD) continue;
-      provCost[prov] = (provCost[prov] || 0) + (roleD.cost || 0);
-      provTok[prov]  = (provTok[prov]  || 0) + (roleD.inputTokens || 0) + (roleD.outputTokens || 0);
-    }
-
-    const map = [
-      ['anthropic', 'ubProvAnthro', 'ubFillAnthro', 'ubCostAnthro'],
-      ['openai',    'ubProvOAI',    'ubFillOAI',    'ubCostOAI'],
-      ['google',    'ubProvGoogle', 'ubFillGoogle',  'ubCostGoogle'],
-    ];
-    for (const [prov, wrapId, fillId, costId] of map) {
-      const cost = provCost[prov] || 0;
-      const pct  = Math.min((cost / MONTHLY_BUDGET) * 100, 100);
+  function updateLedgerBar(ledger) {
+    if (!ledger) return;
+    for (const [cli, wrapId, fillId, headId] of CLI_SLOTS) {
+      const info = ledger[cli] || { headroom: 1, cooling: false };
+      const pct = Math.round(Math.max(0, Math.min(1, info.headroom)) * 100);
       document.getElementById(fillId).style.width = pct + '%';
-      document.getElementById(costId).textContent = '$' + cost.toFixed(4);
-      document.getElementById(wrapId).classList.toggle('active', cost > 0);
+      document.getElementById(headId).textContent = info.cooling
+        ? 'cooldown ' + Math.ceil((info.cooldownRemainingMs || 0) / 1000) + 's'
+        : pct + '%';
+      document.getElementById(wrapId).classList.toggle('active', !info.cooling && pct < 100);
+      document.getElementById(wrapId).style.opacity = info.cooling ? '0.55' : '1';
     }
-
-    const totalC = data.total?.cost || 0;
-    const totalT = (data.total?.inputTokens || 0) + (data.total?.outputTokens || 0);
-    ubTotalCost.textContent = '$' + totalC.toFixed(4);
-    ubTotalTkns.textContent = fmtTokens(totalT);
+  }
+  // Back-compat alias: `usage` events during a run pass a per-CLI map straight through.
+  function updateUsageBar(data) {
+    if (data && (data['claude-cli'] || data['codex-cli'] || data['agy-cli'])) updateLedgerBar(data);
   }
 
   let usagePollTimer = null;
+  async function pollLedger() {
+    try {
+      const { ledger } = await fetch('/api/ledger').then(r => r.json());
+      updateLedgerBar(ledger);
+    } catch {}
+  }
   function startUsagePoll() {
     if (usagePollTimer) return;
-    usagePollTimer = setInterval(async () => {
-      try {
-        const data = await fetch('/api/usage').then(r => r.json());
-        updateUsageBar(data);
-      } catch {}
-    }, 3000);
+    pollLedger();
+    usagePollTimer = setInterval(pollLedger, 3000);
   }
   function stopUsagePoll() {
     clearInterval(usagePollTimer);
     usagePollTimer = null;
+    pollLedger();
   }
 
   // ── INIT ──
@@ -2150,6 +2134,8 @@
   createTerminals();
   connectWS();
   setMode(1);
+  pollLedger();
+  setInterval(() => { if (!usagePollTimer) pollLedger(); }, 15000);
 
   // ── SERVICE WORKER + PWA INSTALL ──
   let deferredInstallPrompt = null;

@@ -732,162 +732,6 @@
       "source_location": "L5"
     },
     {
-      "id": "folder_context_readfoldercontext",
-      "label": "readFolderContext()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "readfoldercontext()",
-      "source_file": "folder-context.js",
-      "source_location": "L28"
-    },
-    {
-      "id": "folder_context_withinroot",
-      "label": "withinRoot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "withinroot()",
-      "source_file": "folder-context.js",
-      "source_location": "L18"
-    },
-    {
-      "id": "models_checkconfigforwarnings",
-      "label": "checkConfigForWarnings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "checkconfigforwarnings()",
-      "source_file": "models.js",
-      "source_location": "L38"
-    },
-    {
-      "id": "models_getcatalog",
-      "label": "getCatalog()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "getcatalog()",
-      "source_file": "models.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "models_getrates",
-      "label": "getRates()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "getrates()",
-      "source_file": "models.js",
-      "source_location": "L23"
-    },
-    {
-      "id": "models_hasrates",
-      "label": "hasRates()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "hasrates()",
-      "source_file": "models.js",
-      "source_location": "L34"
-    },
-    {
-      "id": "orchestrator_loadconfig",
-      "label": "loadConfig()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "loadconfig()",
-      "source_file": "orchestrator.js",
-      "source_location": "L12"
-    },
-    {
-      "id": "orchestrator_main",
-      "label": "main()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "main()",
-      "source_file": "orchestrator.js",
-      "source_location": "L33"
-    },
-    {
-      "id": "orchestrator_runarchitect",
-      "label": "runArchitect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "runarchitect()",
-      "source_file": "orchestrator.js",
-      "source_location": "L17"
-    },
-    {
-      "id": "pipeline_executepipeline",
-      "label": "executePipeline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "executepipeline()",
-      "source_file": "pipeline.js",
-      "source_location": "L92"
-    },
-    {
-      "id": "pipeline_parseverdict",
-      "label": "parseVerdict()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "parseverdict()",
-      "source_file": "pipeline.js",
-      "source_location": "L57"
-    },
-    {
-      "id": "pipeline_stripcodefences",
-      "label": "stripCodeFences()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "stripcodefences()",
-      "source_file": "pipeline.js",
-      "source_location": "L34"
-    },
-    {
-      "id": "sandbox_runsandboxed",
-      "label": "runSandboxed()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "runsandboxed()",
-      "source_file": "sandbox.js",
-      "source_location": "L9"
-    },
-    {
       "id": "server_bearertoken",
       "label": "bearerToken()",
       "_callable": true,
@@ -897,7 +741,7 @@
       "file_type": "code",
       "norm_label": "bearertoken()",
       "source_file": "server.js",
-      "source_location": "L211"
+      "source_location": "L192"
     },
     {
       "id": "server_cookietoken",
@@ -909,7 +753,7 @@
       "file_type": "code",
       "norm_label": "cookietoken()",
       "source_file": "server.js",
-      "source_location": "L207"
+      "source_location": "L188"
     },
     {
       "id": "server_killlingeringsandboxunits",
@@ -921,7 +765,7 @@
       "file_type": "code",
       "norm_label": "killlingeringsandboxunits()",
       "source_file": "server.js",
-      "source_location": "L432"
+      "source_location": "L466"
     },
     {
       "id": "server_probesandbox",
@@ -933,7 +777,7 @@
       "file_type": "code",
       "norm_label": "probesandbox()",
       "source_file": "server.js",
-      "source_location": "L47"
+      "source_location": "L52"
     },
     {
       "id": "server_requestisauthorized",
@@ -945,19 +789,7 @@
       "file_type": "code",
       "norm_label": "requestisauthorized()",
       "source_file": "server.js",
-      "source_location": "L223"
-    },
-    {
-      "id": "server_runpipeline",
-      "label": "runPipeline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "runpipeline()",
-      "source_file": "server.js",
-      "source_location": "L118"
+      "source_location": "L204"
     },
     {
       "id": "server_runvalidationpipeline",
@@ -969,7 +801,7 @@
       "file_type": "code",
       "norm_label": "runvalidationpipeline()",
       "source_file": "server.js",
-      "source_location": "L72"
+      "source_location": "L77"
     },
     {
       "id": "server_setsessioncookie",
@@ -981,7 +813,7 @@
       "file_type": "code",
       "norm_label": "setsessioncookie()",
       "source_file": "server.js",
-      "source_location": "L227"
+      "source_location": "L208"
     },
     {
       "id": "server_shutdown",
@@ -993,7 +825,7 @@
       "file_type": "code",
       "norm_label": "shutdown()",
       "source_file": "server.js",
-      "source_location": "L450"
+      "source_location": "L484"
     },
     {
       "id": "server_tokenmatches",
@@ -1005,7 +837,7 @@
       "file_type": "code",
       "norm_label": "tokenmatches()",
       "source_file": "server.js",
-      "source_location": "L201"
+      "source_location": "L182"
     },
     {
       "id": "server_websocketprotocoltoken",
@@ -1017,175 +849,7 @@
       "file_type": "code",
       "norm_label": "websocketprotocoltoken()",
       "source_file": "server.js",
-      "source_location": "L216"
-    },
-    {
-      "id": "test_orchestrator_test_call",
-      "label": "call()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "call()",
-      "source_file": "test/orchestrator.test.js",
-      "source_location": "L19"
-    },
-    {
-      "id": "test_workspace_test_fakeworkspacename",
-      "label": "fakeWorkspaceName()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "fakeworkspacename()",
-      "source_file": "test/workspace.test.js",
-      "source_location": "L119"
-    },
-    {
-      "id": "test_workspace_test_makefakeworkspaces",
-      "label": "makeFakeWorkspaces()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "makefakeworkspaces()",
-      "source_file": "test/workspace.test.js",
-      "source_location": "L124"
-    },
-    {
-      "id": "usage_printsummary",
-      "label": "printSummary()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "printsummary()",
-      "source_file": "usage.js",
-      "source_location": "L9"
-    },
-    {
-      "id": "usage_track",
-      "label": "track()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "track()",
-      "source_file": "usage.js",
-      "source_location": "L5"
-    },
-    {
-      "id": "workspace_checkgit",
-      "label": "checkGit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "checkgit()",
-      "source_file": "workspace.js",
-      "source_location": "L48"
-    },
-    {
-      "id": "workspace_cleanworkspacedirectory",
-      "label": "cleanWorkspaceDirectory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "cleanworkspacedirectory()",
-      "source_file": "workspace.js",
-      "source_location": "L75"
-    },
-    {
-      "id": "workspace_createworkspace",
-      "label": "createWorkspace()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "createworkspace()",
-      "source_file": "workspace.js",
-      "source_location": "L150"
-    },
-    {
-      "id": "workspace_gcworkspaces",
-      "label": "gcWorkspaces()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "gcworkspaces()",
-      "source_file": "workspace.js",
-      "source_location": "L91"
-    },
-    {
-      "id": "workspace_getworkspacediff",
-      "label": "getWorkspaceDiff()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "getworkspacediff()",
-      "source_file": "workspace.js",
-      "source_location": "L139"
-    },
-    {
-      "id": "workspace_parseworkspacemanifest",
-      "label": "parseWorkspaceManifest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "parseworkspacemanifest()",
-      "source_file": "workspace.js",
-      "source_location": "L22"
-    },
-    {
-      "id": "workspace_rungit",
-      "label": "runGit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "rungit()",
-      "source_file": "workspace.js",
-      "source_location": "L60"
-    },
-    {
-      "id": "workspace_runworkspacetest",
-      "label": "runWorkspaceTest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "runworkspacetest()",
-      "source_file": "workspace.js",
-      "source_location": "L201"
-    },
-    {
-      "id": "workspace_safepath",
-      "label": "safePath()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "safepath()",
-      "source_file": "workspace.js",
-      "source_location": "L14"
+      "source_location": "L197"
     },
     {
       "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_credentialsroundtripthroughandroidkeystore",
@@ -2124,18 +1788,6 @@
       "source_location": "L168"
     },
     {
-      "id": "packages_protocol_src_index_normalizepipelineconfig",
-      "label": "normalizePipelineConfig()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
-      "file_type": "code",
-      "norm_label": "normalizepipelineconfig()",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L57"
-    },
-    {
       "id": "packages_protocol_src_index_validateclientcommand",
       "label": "validateClientCommand()",
       "_callable": true,
@@ -2181,7 +1833,7 @@
       "file_type": "code",
       "norm_label": ".call()",
       "source_file": "test/orchestrator.test.js",
-      "source_location": "L42"
+      "source_location": "L65"
     },
     {
       "id": "clients_shared_src_app_app",
@@ -2520,6 +2172,18 @@
       "source_location": "L8"
     },
     {
+      "id": "clients_shared_src_core_native_integration_installnativeintegration",
+      "label": "installNativeIntegration()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "installnativeintegration()",
+      "source_file": "clients/shared/src/core/native-integration.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "clients_shared_src_core_platform_credentials_androidbridge_postmessage",
       "label": ".postMessage()",
       "_callable": true,
@@ -2697,7 +2361,7 @@
       "file_type": "code",
       "norm_label": "bounded()",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L50"
+      "source_location": "L54"
     },
     {
       "id": "clients_shared_src_core_pipeline_initialpipelinestate",
@@ -2709,7 +2373,7 @@
       "file_type": "code",
       "norm_label": "initialpipelinestate()",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L20"
+      "source_location": "L22"
     },
     {
       "id": "clients_shared_src_core_pipeline_mapstatus",
@@ -2721,7 +2385,7 @@
       "file_type": "code",
       "norm_label": "mapstatus()",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L51"
+      "source_location": "L55"
     },
     {
       "id": "clients_shared_src_core_pipeline_reducepipeline",
@@ -2733,7 +2397,7 @@
       "file_type": "code",
       "norm_label": "reducepipeline()",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "clients_shared_src_app_dashboard",
@@ -2757,7 +2421,7 @@
       "file_type": "code",
       "norm_label": "submit()",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L113"
+      "source_location": "L114"
     },
     {
       "id": "clients_shared_src_app_dashboard_submitchat",
@@ -2769,7 +2433,7 @@
       "file_type": "code",
       "norm_label": "submitchat()",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L114"
+      "source_location": "L115"
     },
     {
       "id": "gen_icons_edgefunction",
@@ -3168,6 +2832,18 @@
       "source_location": "L7"
     },
     {
+      "id": "clients_shared_src_core_connection_triforceconnection_apply",
+      "label": ".apply()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".apply()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L100"
+    },
+    {
       "id": "clients_shared_src_core_connection_triforceconnection_chat",
       "label": ".chat()",
       "_callable": true,
@@ -3216,6 +2892,54 @@
       "source_location": "L72"
     },
     {
+      "id": "clients_shared_src_core_connection_triforceconnection_fslist",
+      "label": ".fsList()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".fslist()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L96"
+    },
+    {
+      "id": "clients_shared_src_core_connection_triforceconnection_fsroots",
+      "label": ".fsRoots()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".fsroots()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L95"
+    },
+    {
+      "id": "clients_shared_src_core_connection_triforceconnection_fsselectworking",
+      "label": ".fsSelectWorking()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".fsselectworking()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L98"
+    },
+    {
+      "id": "clients_shared_src_core_connection_triforceconnection_fsstat",
+      "label": ".fsStat()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".fsstat()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L97"
+    },
+    {
       "id": "clients_shared_src_core_connection_triforceconnection_handleclose",
       "label": ".handleClose()",
       "_callable": true,
@@ -3225,7 +2949,7 @@
       "file_type": "code",
       "norm_label": ".handleclose()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L121"
+      "source_location": "L135"
     },
     {
       "id": "clients_shared_src_core_connection_triforceconnection_handlemessage",
@@ -3237,7 +2961,7 @@
       "file_type": "code",
       "norm_label": ".handlemessage()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L105"
+      "source_location": "L119"
     },
     {
       "id": "clients_shared_src_core_connection_triforceconnection_onevent",
@@ -3273,7 +2997,7 @@
       "file_type": "code",
       "norm_label": ".opensocket()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L90"
+      "source_location": "L104"
     },
     {
       "id": "clients_shared_src_core_connection_triforceconnection_run",
@@ -3288,6 +3012,18 @@
       "source_location": "L79"
     },
     {
+      "id": "clients_shared_src_core_connection_triforceconnection_send",
+      "label": ".send()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".send()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L91"
+    },
+    {
       "id": "clients_shared_src_core_connection_triforceconnection_transition",
       "label": ".transition()",
       "_callable": true,
@@ -3297,184 +3033,559 @@
       "file_type": "code",
       "norm_label": ".transition()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L129"
+      "source_location": "L143"
     },
     {
-      "id": "clients_shared_src_core_native_integration_installnativeintegration",
-      "label": "installNativeIntegration()",
+      "id": "test_workspace_test_fakeworkspacename",
+      "label": "fakeWorkspaceName()",
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "main.tsx",
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "installnativeintegration()",
-      "source_file": "clients/shared/src/core/native-integration.ts",
-      "source_location": "L4"
+      "norm_label": "fakeworkspacename()",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L119"
     },
     {
-      "id": "folder_context",
-      "label": "folder-context.js",
+      "id": "test_workspace_test_makefakeworkspaces",
+      "label": "makeFakeWorkspaces()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "folder-context.js",
-      "source_file": "folder-context.js",
-      "source_location": "L1"
+      "norm_label": "makefakeworkspaces()",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L124"
     },
     {
-      "id": "folder_context_skip_dir",
-      "label": "SKIP_DIR",
+      "id": "test_workspace_test_realproject",
+      "label": "realProject()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "skip_dir",
-      "source_file": "folder-context.js",
-      "source_location": "L13"
+      "norm_label": "realproject()",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L251"
     },
     {
-      "id": "folder_context_text_ext",
-      "label": "TEXT_EXT",
+      "id": "workspace_applydiff",
+      "label": "applyDiff()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "text_ext",
-      "source_file": "folder-context.js",
-      "source_location": "L8"
+      "norm_label": "applydiff()",
+      "source_file": "workspace.js",
+      "source_location": "L278"
     },
     {
-      "id": "models",
-      "label": "models.js",
+      "id": "workspace_checkgit",
+      "label": "checkGit()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "models.js",
-      "source_file": "models.js",
-      "source_location": "L1"
+      "norm_label": "checkgit()",
+      "source_file": "workspace.js",
+      "source_location": "L48"
     },
     {
-      "id": "models_allowed_models",
-      "label": "ALLOWED_MODELS",
+      "id": "workspace_cleanworkspacedirectory",
+      "label": "cleanWorkspaceDirectory()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "allowed_models",
-      "source_file": "models.js",
-      "source_location": "L1"
+      "norm_label": "cleanworkspacedirectory()",
+      "source_file": "workspace.js",
+      "source_location": "L75"
     },
     {
-      "id": "models_rates",
-      "label": "RATES",
+      "id": "workspace_createworkspace",
+      "label": "createWorkspace()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "rates",
-      "source_file": "models.js",
-      "source_location": "L7"
+      "norm_label": "createworkspace()",
+      "source_file": "workspace.js",
+      "source_location": "L343"
     },
     {
-      "id": "models_warnedmodels",
-      "label": "warnedModels",
+      "id": "workspace_createworkspacefromdir",
+      "label": "createWorkspaceFromDir()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "warnedmodels",
-      "source_file": "models.js",
-      "source_location": "L21"
+      "norm_label": "createworkspacefromdir()",
+      "source_file": "workspace.js",
+      "source_location": "L255"
     },
     {
-      "id": "orchestrator",
-      "label": "orchestrator.js",
+      "id": "workspace_gcworkspaces",
+      "label": "gcWorkspaces()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "orchestrator.js",
-      "source_file": "orchestrator.js",
-      "source_location": "L1"
+      "norm_label": "gcworkspaces()",
+      "source_file": "workspace.js",
+      "source_location": "L91"
     },
     {
-      "id": "orchestrator_dirname",
-      "label": "__dirname",
+      "id": "workspace_getworkspacediff",
+      "label": "getWorkspaceDiff()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "__dirname",
-      "source_file": "orchestrator.js",
-      "source_location": "L9"
+      "norm_label": "getworkspacediff()",
+      "source_file": "workspace.js",
+      "source_location": "L139"
     },
     {
-      "id": "pipeline",
-      "label": "pipeline.js",
+      "id": "workspace_gitignorematch",
+      "label": "gitignoreMatch()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "pipeline.js",
-      "source_file": "pipeline.js",
-      "source_location": "L1"
+      "norm_label": "gitignorematch()",
+      "source_file": "workspace.js",
+      "source_location": "L168"
     },
     {
-      "id": "pipeline_dirname",
-      "label": "__dirname",
+      "id": "workspace_hashtree",
+      "label": "hashTree()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "__dirname",
-      "source_file": "pipeline.js",
-      "source_location": "L12"
+      "norm_label": "hashtree()",
+      "source_file": "workspace.js",
+      "source_location": "L245"
     },
     {
-      "id": "pipeline_system_prompts",
-      "label": "SYSTEM_PROMPTS",
+      "id": "workspace_isbinary",
+      "label": "isBinary()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "system_prompts",
-      "source_file": "pipeline.js",
+      "norm_label": "isbinary()",
+      "source_file": "workspace.js",
+      "source_location": "L188"
+    },
+    {
+      "id": "workspace_parsegitignore",
+      "label": "parseGitignore()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "parsegitignore()",
+      "source_file": "workspace.js",
+      "source_location": "L155"
+    },
+    {
+      "id": "workspace_parseworkspacemanifest",
+      "label": "parseWorkspaceManifest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "parseworkspacemanifest()",
+      "source_file": "workspace.js",
+      "source_location": "L22"
+    },
+    {
+      "id": "workspace_rungit",
+      "label": "runGit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "rungit()",
+      "source_file": "workspace.js",
+      "source_location": "L60"
+    },
+    {
+      "id": "workspace_runworkspacetest",
+      "label": "runWorkspaceTest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "runworkspacetest()",
+      "source_file": "workspace.js",
+      "source_location": "L394"
+    },
+    {
+      "id": "workspace_safepath",
+      "label": "safePath()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "safepath()",
+      "source_file": "workspace.js",
       "source_location": "L14"
     },
     {
-      "id": "pipeline_system_prompts_mode2",
-      "label": "SYSTEM_PROMPTS_MODE2",
+      "id": "workspace_snapshotdir",
+      "label": "snapshotDir()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 86,
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "system_prompts_mode2",
-      "source_file": "pipeline.js",
-      "source_location": "L20"
+      "norm_label": "snapshotdir()",
+      "source_file": "workspace.js",
+      "source_location": "L202"
     },
     {
-      "id": "pipeline_system_prompts_workspace",
-      "label": "SYSTEM_PROMPTS_WORKSPACE",
+      "id": "models_checkconfigforwarnings",
+      "label": "checkConfigForWarnings()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
       "file_type": "code",
-      "norm_label": "system_prompts_workspace",
-      "source_file": "pipeline.js",
-      "source_location": "L27"
+      "norm_label": "checkconfigforwarnings()",
+      "source_file": "models.js",
+      "source_location": "L38"
     },
     {
-      "id": "sandbox",
-      "label": "sandbox.js",
+      "id": "orchestrator_loadconfig",
+      "label": "loadConfig()",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
       "file_type": "code",
-      "norm_label": "sandbox.js",
+      "norm_label": "loadconfig()",
+      "source_file": "orchestrator.js",
+      "source_location": "L12"
+    },
+    {
+      "id": "orchestrator_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "orchestrator.js",
+      "source_location": "L33"
+    },
+    {
+      "id": "orchestrator_runarchitect",
+      "label": "runArchitect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "runarchitect()",
+      "source_file": "orchestrator.js",
+      "source_location": "L17"
+    },
+    {
+      "id": "packages_protocol_src_index_normalizepipelineconfig",
+      "label": "normalizePipelineConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "normalizepipelineconfig()",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L57"
+    },
+    {
+      "id": "pipeline_executepipeline",
+      "label": "executePipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "executepipeline()",
+      "source_file": "pipeline.js",
+      "source_location": "L102"
+    },
+    {
+      "id": "pipeline_parseverdict",
+      "label": "parseVerdict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "parseverdict()",
+      "source_file": "pipeline.js",
+      "source_location": "L67"
+    },
+    {
+      "id": "pipeline_stripcodefences",
+      "label": "stripCodeFences()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "stripcodefences()",
+      "source_file": "pipeline.js",
+      "source_location": "L44"
+    },
+    {
+      "id": "server_runpipeline",
+      "label": "runPipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "runpipeline()",
+      "source_file": "server.js",
+      "source_location": "L121"
+    },
+    {
+      "id": "test_orchestrator_test_buildconfig",
+      "label": "buildConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "buildconfig()",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L54"
+    },
+    {
+      "id": "test_orchestrator_test_call",
+      "label": "call()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "call()",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L19"
+    },
+    {
+      "id": "test_orchestrator_test_tmpworkspacesdir",
+      "label": "tmpWorkspacesDir()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "tmpworkspacesdir()",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L48"
+    },
+    {
+      "id": "usage_track",
+      "label": "track()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "track()",
+      "source_file": "usage.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "fs_browser_confinepath",
+      "label": "confinePath()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "confinepath()",
+      "source_file": "fs-browser.js",
+      "source_location": "L56"
+    },
+    {
+      "id": "fs_browser_describe",
+      "label": "describe()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "describe()",
+      "source_file": "fs-browser.js",
+      "source_location": "L81"
+    },
+    {
+      "id": "fs_browser_list",
+      "label": "list()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "list()",
+      "source_file": "fs-browser.js",
+      "source_location": "L97"
+    },
+    {
+      "id": "fs_browser_lookstextual",
+      "label": "looksTextual()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "lookstextual()",
+      "source_file": "fs-browser.js",
+      "source_location": "L129"
+    },
+    {
+      "id": "fs_browser_readbudgeted",
+      "label": "readBudgeted()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "readbudgeted()",
+      "source_file": "fs-browser.js",
+      "source_location": "L140"
+    },
+    {
+      "id": "fs_browser_roots",
+      "label": "roots()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "roots()",
+      "source_file": "fs-browser.js",
+      "source_location": "L34"
+    },
+    {
+      "id": "fs_browser_statentry",
+      "label": "statEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "statentry()",
+      "source_file": "fs-browser.js",
+      "source_location": "L114"
+    },
+    {
+      "id": "fs_browser_underroot",
+      "label": "underRoot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "underroot()",
+      "source_file": "fs-browser.js",
+      "source_location": "L44"
+    },
+    {
+      "id": "test_fs_browser_test_fixture",
+      "label": "fixture()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "fixture()",
+      "source_file": "test/fs-browser.test.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "models_getcatalog",
+      "label": "getCatalog()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "getcatalog()",
+      "source_file": "models.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "models_getrates",
+      "label": "getRates()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "getrates()",
+      "source_file": "models.js",
+      "source_location": "L23"
+    },
+    {
+      "id": "models_hasrates",
+      "label": "hasRates()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "hasrates()",
+      "source_file": "models.js",
+      "source_location": "L34"
+    },
+    {
+      "id": "usage_printsummary",
+      "label": "printSummary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "printsummary()",
+      "source_file": "usage.js",
+      "source_location": "L9"
+    },
+    {
+      "id": "sandbox_runsandboxed",
+      "label": "runSandboxed()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "runsandboxed()",
       "source_file": "sandbox.js",
-      "source_location": "L1"
+      "source_location": "L9"
     },
     {
       "id": "server",
@@ -3496,7 +3607,7 @@
       "file_type": "code",
       "norm_label": "app",
       "source_file": "server.js",
-      "source_location": "L183"
+      "source_location": "L164"
     },
     {
       "id": "server_chathistories",
@@ -3507,7 +3618,7 @@
       "file_type": "code",
       "norm_label": "chathistories",
       "source_file": "server.js",
-      "source_location": "L36"
+      "source_location": "L37"
     },
     {
       "id": "server_dirname",
@@ -3518,7 +3629,7 @@
       "file_type": "code",
       "norm_label": "__dirname",
       "source_file": "server.js",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "server_fs_roots",
@@ -3529,7 +3640,7 @@
       "file_type": "code",
       "norm_label": "fs_roots",
       "source_file": "server.js",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "server_httpserver",
@@ -3540,7 +3651,7 @@
       "file_type": "code",
       "norm_label": "httpserver",
       "source_file": "server.js",
-      "source_location": "L305"
+      "source_location": "L286"
     },
     {
       "id": "server_ledger",
@@ -3551,7 +3662,7 @@
       "file_type": "code",
       "norm_label": "ledger",
       "source_file": "server.js",
-      "source_location": "L31"
+      "source_location": "L32"
     },
     {
       "id": "server_native_client_origins",
@@ -3562,7 +3673,18 @@
       "file_type": "code",
       "norm_label": "native_client_origins",
       "source_file": "server.js",
-      "source_location": "L62"
+      "source_location": "L67"
+    },
+    {
+      "id": "server_runcontexts",
+      "label": "runContexts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "runcontexts",
+      "source_file": "server.js",
+      "source_location": "L41"
     },
     {
       "id": "server_runregistry",
@@ -3573,7 +3695,7 @@
       "file_type": "code",
       "norm_label": "runregistry",
       "source_file": "server.js",
-      "source_location": "L32"
+      "source_location": "L33"
     },
     {
       "id": "server_servercapabilities",
@@ -3584,7 +3706,7 @@
       "file_type": "code",
       "norm_label": "servercapabilities",
       "source_file": "server.js",
-      "source_location": "L39"
+      "source_location": "L44"
     },
     {
       "id": "server_shutdown_grace_ms",
@@ -3595,7 +3717,7 @@
       "file_type": "code",
       "norm_label": "shutdown_grace_ms",
       "source_file": "server.js",
-      "source_location": "L425"
+      "source_location": "L459"
     },
     {
       "id": "server_transcripts_dir",
@@ -3606,7 +3728,7 @@
       "file_type": "code",
       "norm_label": "transcripts_dir",
       "source_file": "server.js",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "server_wss",
@@ -3617,106 +3739,7 @@
       "file_type": "code",
       "norm_label": "wss",
       "source_file": "server.js",
-      "source_location": "L306"
-    },
-    {
-      "id": "test_orchestrator_test",
-      "label": "orchestrator.test.js",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "orchestrator.test.js",
-      "source_file": "test/orchestrator.test.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_orchestrator_test_dirname",
-      "label": "__dirname",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "__dirname",
-      "source_file": "test/orchestrator.test.js",
-      "source_location": "L11"
-    },
-    {
-      "id": "test_sandbox_test",
-      "label": "sandbox.test.js",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "sandbox.test.js",
-      "source_file": "test/sandbox.test.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_workspace_test",
-      "label": "workspace.test.js",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "workspace.test.js",
-      "source_file": "test/workspace.test.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "usage",
-      "label": "usage.js",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "usage.js",
-      "source_file": "usage.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "usage_records",
-      "label": "records",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "records",
-      "source_file": "usage.js",
-      "source_location": "L3"
-    },
-    {
-      "id": "workspace",
-      "label": "workspace.js",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "workspace.js",
-      "source_file": "workspace.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "workspace_default_workspace_keep",
-      "label": "DEFAULT_WORKSPACE_KEEP",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "default_workspace_keep",
-      "source_file": "workspace.js",
-      "source_location": "L89"
-    },
-    {
-      "id": "workspace_execfileasync",
-      "label": "execFileAsync",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "server.js",
-      "file_type": "code",
-      "norm_label": "execfileasync",
-      "source_file": "workspace.js",
-      "source_location": "L7"
+      "source_location": "L287"
     },
     {
       "id": "android",
@@ -6015,7 +6038,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
-      "source_location": "L53"
+      "source_location": "L55"
     },
     {
       "id": "package_devdependencies_pngjs",
@@ -6026,7 +6049,7 @@
       "file_type": "code",
       "norm_label": "pngjs",
       "source_file": "package.json",
-      "source_location": "L54"
+      "source_location": "L56"
     },
     {
       "id": "package_main",
@@ -6081,7 +6104,7 @@
       "file_type": "concept",
       "norm_label": "pngjs",
       "source_file": "package.json",
-      "source_location": "L54"
+      "source_location": "L56"
     },
     {
       "id": "client_architecture",
@@ -6220,7 +6243,7 @@
       "file_type": "code",
       "norm_label": "scripts",
       "source_file": "package.json",
-      "source_location": "L34"
+      "source_location": "L36"
     },
     {
       "id": "package_scripts_build",
@@ -6231,7 +6254,7 @@
       "file_type": "code",
       "norm_label": "build",
       "source_file": "package.json",
-      "source_location": "L39"
+      "source_location": "L41"
     },
     {
       "id": "package_scripts_cli",
@@ -6242,7 +6265,7 @@
       "file_type": "code",
       "norm_label": "cli",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L38"
     },
     {
       "id": "package_scripts_desktop_check",
@@ -6253,7 +6276,7 @@
       "file_type": "code",
       "norm_label": "desktop:check",
       "source_file": "package.json",
-      "source_location": "L43"
+      "source_location": "L45"
     },
     {
       "id": "package_scripts_dev_client",
@@ -6264,7 +6287,7 @@
       "file_type": "code",
       "norm_label": "dev:client",
       "source_file": "package.json",
-      "source_location": "L42"
+      "source_location": "L44"
     },
     {
       "id": "package_scripts_lint",
@@ -6275,7 +6298,7 @@
       "file_type": "code",
       "norm_label": "lint",
       "source_file": "package.json",
-      "source_location": "L41"
+      "source_location": "L43"
     },
     {
       "id": "package_scripts_start",
@@ -6286,7 +6309,7 @@
       "file_type": "code",
       "norm_label": "start",
       "source_file": "package.json",
-      "source_location": "L35"
+      "source_location": "L37"
     },
     {
       "id": "package_scripts_test",
@@ -6297,7 +6320,7 @@
       "file_type": "code",
       "norm_label": "test",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L39"
     },
     {
       "id": "package_scripts_test_server",
@@ -6308,7 +6331,7 @@
       "file_type": "code",
       "norm_label": "test:server",
       "source_file": "package.json",
-      "source_location": "L38"
+      "source_location": "L40"
     },
     {
       "id": "package_scripts_typecheck",
@@ -6319,7 +6342,7 @@
       "file_type": "code",
       "norm_label": "typecheck",
       "source_file": "package.json",
-      "source_location": "L40"
+      "source_location": "L42"
     },
     {
       "id": "package_scripts_version_check",
@@ -6330,7 +6353,7 @@
       "file_type": "code",
       "norm_label": "version:check",
       "source_file": "package.json",
-      "source_location": "L44"
+      "source_location": "L46"
     },
     {
       "id": "package_scripts_version_sync",
@@ -6341,7 +6364,7 @@
       "file_type": "code",
       "norm_label": "version:sync",
       "source_file": "package.json",
-      "source_location": "L45"
+      "source_location": "L47"
     },
     {
       "id": "clients_shared_src_test_setup",
@@ -6417,6 +6440,17 @@
       "community_name": "files",
       "file_type": "concept",
       "norm_label": "cli.js",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_fs_browser_js",
+      "label": "fs-browser.js",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "files",
+      "file_type": "concept",
+      "norm_label": "fs-browser.js",
       "source_file": "package.json",
       "source_location": "L15"
     },
@@ -6560,6 +6594,17 @@
       "community_name": "files",
       "file_type": "concept",
       "norm_label": "usage.js",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_verified_chat_js",
+      "label": "verified-chat.js",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "files",
+      "file_type": "concept",
+      "norm_label": "verified-chat.js",
       "source_file": "package.json",
       "source_location": "L15"
     },
@@ -8616,7 +8661,7 @@
       "file_type": "code",
       "norm_label": "dependencies",
       "source_file": "package.json",
-      "source_location": "L47"
+      "source_location": "L49"
     },
     {
       "id": "package_dependencies_dotenv",
@@ -8627,7 +8672,7 @@
       "file_type": "code",
       "norm_label": "dotenv",
       "source_file": "package.json",
-      "source_location": "L48"
+      "source_location": "L50"
     },
     {
       "id": "package_dependencies_express",
@@ -8638,7 +8683,7 @@
       "file_type": "code",
       "norm_label": "express",
       "source_file": "package.json",
-      "source_location": "L49"
+      "source_location": "L51"
     },
     {
       "id": "package_dependencies_ws",
@@ -8649,7 +8694,7 @@
       "file_type": "code",
       "norm_label": "ws",
       "source_file": "package.json",
-      "source_location": "L50"
+      "source_location": "L52"
     },
     {
       "id": "package_dependencies_zod",
@@ -8660,7 +8705,7 @@
       "file_type": "code",
       "norm_label": "zod",
       "source_file": "package.json",
-      "source_location": "L51"
+      "source_location": "L53"
     },
     {
       "id": "dotenv",
@@ -8671,7 +8716,7 @@
       "file_type": "concept",
       "norm_label": "dotenv",
       "source_file": "package.json",
-      "source_location": "L48"
+      "source_location": "L50"
     },
     {
       "id": "express",
@@ -8682,7 +8727,7 @@
       "file_type": "concept",
       "norm_label": "express",
       "source_file": "package.json",
-      "source_location": "L49"
+      "source_location": "L51"
     },
     {
       "id": "package_json_zod",
@@ -8693,7 +8738,7 @@
       "file_type": "concept",
       "norm_label": "zod",
       "source_file": "package.json",
-      "source_location": "L51"
+      "source_location": "L53"
     },
     {
       "id": "ws",
@@ -8704,7 +8749,7 @@
       "file_type": "concept",
       "norm_label": "ws",
       "source_file": "package.json",
-      "source_location": "L50"
+      "source_location": "L52"
     },
     {
       "id": "public_manifest",
@@ -8949,6 +8994,17 @@
       "source_location": "L1"
     },
     {
+      "id": "clients_shared_src_core_native_integration",
+      "label": "native-integration.ts",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "native-integration.ts",
+      "source_file": "clients/shared/src/core/native-integration.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "clients_shared_src_core_platform_credentials",
       "label": "platform-credentials.ts",
       "_origin": "ast",
@@ -8979,6 +9035,17 @@
       "file_type": "code",
       "norm_label": "platform-credentials.test.ts",
       "source_file": "clients/shared/src/core/platform-credentials.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "clients_shared_src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "clients/shared/src/main.tsx",
       "source_location": "L1"
     },
     {
@@ -9034,7 +9101,7 @@
       "file_type": "code",
       "norm_label": "emptyusage",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L19"
+      "source_location": "L21"
     },
     {
       "id": "clients_shared_src_core_pipeline_test",
@@ -10987,26 +11054,70 @@
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_core_native_integration",
-      "label": "native-integration.ts",
+      "id": "test_workspace_test",
+      "label": "workspace.test.js",
       "_origin": "ast",
       "community": 86,
-      "community_name": "main.tsx",
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "native-integration.ts",
-      "source_file": "clients/shared/src/core/native-integration.ts",
+      "norm_label": "workspace.test.js",
+      "source_file": "test/workspace.test.js",
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_main",
-      "label": "main.tsx",
+      "id": "test_workspace_test_exec",
+      "label": "_exec",
       "_origin": "ast",
       "community": 86,
-      "community_name": "main.tsx",
+      "community_name": "workspace.js",
       "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "clients/shared/src/main.tsx",
+      "norm_label": "_exec",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L249"
+    },
+    {
+      "id": "workspace",
+      "label": "workspace.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "workspace.js",
+      "source_file": "workspace.js",
       "source_location": "L1"
+    },
+    {
+      "id": "workspace_default_workspace_keep",
+      "label": "DEFAULT_WORKSPACE_KEEP",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "default_workspace_keep",
+      "source_file": "workspace.js",
+      "source_location": "L89"
+    },
+    {
+      "id": "workspace_execfileasync",
+      "label": "execFileAsync",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "execfileasync",
+      "source_file": "workspace.js",
+      "source_location": "L7"
+    },
+    {
+      "id": "workspace_snapshot_skip_dirs",
+      "label": "SNAPSHOT_SKIP_DIRS",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "workspace.js",
+      "file_type": "code",
+      "norm_label": "snapshot_skip_dirs",
+      "source_file": "workspace.js",
+      "source_location": "L152"
     },
     {
       "id": "clients_shared_src_core_connection",
@@ -11029,6 +11140,127 @@
       "norm_label": "protocol_version",
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L3"
+    },
+    {
+      "id": "orchestrator",
+      "label": "orchestrator.js",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "orchestrator.js",
+      "source_file": "orchestrator.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "orchestrator_dirname",
+      "label": "__dirname",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "__dirname",
+      "source_file": "orchestrator.js",
+      "source_location": "L9"
+    },
+    {
+      "id": "test_orchestrator_test",
+      "label": "orchestrator.test.js",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "orchestrator.test.js",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_orchestrator_test_build_manifest",
+      "label": "BUILD_MANIFEST",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "build_manifest",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "test_orchestrator_test_dirname",
+      "label": "__dirname",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "__dirname",
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L11"
+    },
+    {
+      "id": "fs_browser",
+      "label": "fs-browser.js",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "fs-browser.js",
+      "source_file": "fs-browser.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "fs_browser_always_text_files",
+      "label": "ALWAYS_TEXT_FILES",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "always_text_files",
+      "source_file": "fs-browser.js",
+      "source_location": "L27"
+    },
+    {
+      "id": "fs_browser_deny_names",
+      "label": "DENY_NAMES",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "deny_names",
+      "source_file": "fs-browser.js",
+      "source_location": "L11"
+    },
+    {
+      "id": "fs_browser_skip_dirs",
+      "label": "SKIP_DIRS",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "skip_dirs",
+      "source_file": "fs-browser.js",
+      "source_location": "L19"
+    },
+    {
+      "id": "fs_browser_text_ext",
+      "label": "TEXT_EXT",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "text_ext",
+      "source_file": "fs-browser.js",
+      "source_location": "L21"
+    },
+    {
+      "id": "test_fs_browser_test",
+      "label": "fs-browser.test.js",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "fs-browser.js",
+      "file_type": "code",
+      "norm_label": "fs-browser.test.js",
+      "source_file": "test/fs-browser.test.js",
+      "source_location": "L1"
     },
     {
       "id": "agents_rules_graphify",
@@ -11057,6 +11289,160 @@
       "norm_label": "graphify",
       "source_file": ".agents/rules/graphify.md",
       "source_location": "L6"
+    },
+    {
+      "id": "models",
+      "label": "models.js",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "models.js",
+      "source_file": "models.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "models_allowed_models",
+      "label": "ALLOWED_MODELS",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "allowed_models",
+      "source_file": "models.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "models_rates",
+      "label": "RATES",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "rates",
+      "source_file": "models.js",
+      "source_location": "L7"
+    },
+    {
+      "id": "models_warnedmodels",
+      "label": "warnedModels",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "warnedmodels",
+      "source_file": "models.js",
+      "source_location": "L21"
+    },
+    {
+      "id": "usage",
+      "label": "usage.js",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "usage.js",
+      "source_file": "usage.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "usage_records",
+      "label": "records",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "models.js",
+      "file_type": "code",
+      "norm_label": "records",
+      "source_file": "usage.js",
+      "source_location": "L3"
+    },
+    {
+      "id": "pipeline",
+      "label": "pipeline.js",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "pipeline.js",
+      "source_file": "pipeline.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "pipeline_dirname",
+      "label": "__dirname",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "__dirname",
+      "source_file": "pipeline.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "pipeline_system_prompts",
+      "label": "SYSTEM_PROMPTS",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts",
+      "source_file": "pipeline.js",
+      "source_location": "L15"
+    },
+    {
+      "id": "pipeline_system_prompts_build",
+      "label": "SYSTEM_PROMPTS_BUILD",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts_build",
+      "source_file": "pipeline.js",
+      "source_location": "L35"
+    },
+    {
+      "id": "pipeline_system_prompts_mode2",
+      "label": "SYSTEM_PROMPTS_MODE2",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts_mode2",
+      "source_file": "pipeline.js",
+      "source_location": "L21"
+    },
+    {
+      "id": "pipeline_system_prompts_workspace",
+      "label": "SYSTEM_PROMPTS_WORKSPACE",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts_workspace",
+      "source_file": "pipeline.js",
+      "source_location": "L28"
+    },
+    {
+      "id": "sandbox",
+      "label": "sandbox.js",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "sandbox.js",
+      "source_file": "sandbox.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_sandbox_test",
+      "label": "sandbox.test.js",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "sandbox.test.js",
+      "source_file": "test/sandbox.test.js",
+      "source_location": "L1"
     },
     {
       "id": "docker",
@@ -11829,6 +12215,18 @@
       "weight": 1.0
     },
     {
+      "source": "clients_shared_src_core_connection_triforceconnection_apply",
+      "target": "clients_shared_src_core_connection_triforceconnection_send",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
       "source": "clients_shared_src_core_connection_triforceconnection_connect",
       "target": "clients_shared_src_core_host_url_normalizehosturl",
       "relation": "calls",
@@ -11877,6 +12275,54 @@
       "weight": 1.0
     },
     {
+      "source": "clients_shared_src_core_connection_triforceconnection_fslist",
+      "target": "clients_shared_src_core_connection_triforceconnection_send",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection_fsroots",
+      "target": "clients_shared_src_core_connection_triforceconnection_send",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection_fsselectworking",
+      "target": "clients_shared_src_core_connection_triforceconnection_send",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection_fsstat",
+      "target": "clients_shared_src_core_connection_triforceconnection_send",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
       "source": "clients_shared_src_core_connection_triforceconnection_handleclose",
       "target": "clients_shared_src_core_connection_triforceconnection_transition",
       "relation": "calls",
@@ -11885,7 +12331,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L123",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -11897,7 +12343,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L126",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -11909,7 +12355,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L108",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -11921,19 +12367,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L117",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
-      "target": "clients_shared_src_core_connection_triforceconnection_handlemessage",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L100",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -11945,7 +12379,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L94",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -11957,19 +12391,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L96",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
       "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
-      "target": "clients_shared_src_core_connection_socketlike_send",
+      "target": "clients_shared_src_core_connection_triforceconnection_send",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L97",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
+      "target": "clients_shared_src_core_connection_triforceconnection_handlemessage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -11993,7 +12439,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -12005,7 +12451,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -12017,7 +12463,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -12129,15 +12575,123 @@
       "weight": 1.0
     },
     {
-      "source": "folder_context_readfoldercontext",
-      "target": "folder_context_withinroot",
+      "source": "fs_browser_confinepath",
+      "target": "fs_browser_underroot",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "folder-context.js",
-      "source_location": "L43",
+      "source_file": "fs-browser.js",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_list",
+      "target": "fs_browser_describe",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_list",
+      "target": "fs_browser_roots",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_list",
+      "target": "fs_browser_confinepath",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_readbudgeted",
+      "target": "fs_browser_roots",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_readbudgeted",
+      "target": "fs_browser_confinepath",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_readbudgeted",
+      "target": "fs_browser_underroot",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L160",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_readbudgeted",
+      "target": "fs_browser_lookstextual",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_statentry",
+      "target": "fs_browser_roots",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser_statentry",
+      "target": "fs_browser_confinepath",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "fs-browser.js",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -12233,7 +12787,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L119",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -12245,7 +12799,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L120",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -12257,7 +12811,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L151",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline_executepipeline",
+      "target": "packages_protocol_src_index_normalizepipelineconfig",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "pipeline.js",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -12269,55 +12835,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L160",
-      "weight": 1.0
-    },
-    {
-      "source": "pipeline_executepipeline",
-      "target": "workspace_parseworkspacemanifest",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "pipeline.js",
-      "source_location": "L184",
-      "weight": 1.0
-    },
-    {
-      "source": "pipeline_executepipeline",
-      "target": "workspace_createworkspace",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "pipeline.js",
-      "source_location": "L185",
-      "weight": 1.0
-    },
-    {
-      "source": "pipeline_executepipeline",
-      "target": "workspace_runworkspacetest",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "pipeline.js",
-      "source_location": "L191",
-      "weight": 1.0
-    },
-    {
-      "source": "pipeline_executepipeline",
-      "target": "workspace_getworkspacediff",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "pipeline.js",
-      "source_location": "L215",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -12329,31 +12847,67 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L227",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
       "source": "pipeline_executepipeline",
-      "target": "pipeline_stripcodefences",
+      "target": "workspace_createworkspacefromdir",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L327",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
       "source": "pipeline_executepipeline",
-      "target": "sandbox_runsandboxed",
+      "target": "workspace_parseworkspacemanifest",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L337",
+      "source_location": "L248",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline_executepipeline",
+      "target": "workspace_createworkspace",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "pipeline.js",
+      "source_location": "L249",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline_executepipeline",
+      "target": "workspace_runworkspacetest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "pipeline.js",
+      "source_location": "L254",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline_executepipeline",
+      "target": "workspace_getworkspacediff",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "pipeline.js",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -12557,7 +13111,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L224",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -12569,7 +13123,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L224",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -12581,7 +13135,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L224",
+      "source_location": "L205",
+      "weight": 1.0
+    },
+    {
+      "source": "server_runpipeline",
+      "target": "packages_protocol_src_index_normalizepipelineconfig",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "server.js",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -12593,7 +13159,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L132",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -12605,7 +13171,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L470",
+      "source_location": "L504",
       "weight": 1.0
     },
     {
@@ -12993,6 +13559,66 @@
       "weight": 1.0
     },
     {
+      "source": "workspace_applydiff",
+      "target": "workspace_safepath",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L281",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_applydiff",
+      "target": "workspace_hashtree",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L285",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_applydiff",
+      "target": "workspace_checkgit",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L300",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_applydiff",
+      "target": "workspace_rungit",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L303",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_applydiff",
+      "target": "workspace_snapshotdir",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L314",
+      "weight": 1.0
+    },
+    {
       "source": "workspace_checkgit",
       "target": "workspace_execfileasync",
       "relation": "calls",
@@ -13013,7 +13639,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "workspace.js",
-      "source_location": "L151",
+      "source_location": "L344",
       "weight": 1.0
     },
     {
@@ -13025,7 +13651,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "workspace.js",
-      "source_location": "L154",
+      "source_location": "L347",
       "weight": 1.0
     },
     {
@@ -13037,7 +13663,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "workspace.js",
-      "source_location": "L163",
+      "source_location": "L356",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_createworkspacefromdir",
+      "target": "workspace_snapshotdir",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L256",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_createworkspacefromdir",
+      "target": "workspace_createworkspace",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -13065,6 +13715,18 @@
       "weight": 1.0
     },
     {
+      "source": "workspace_hashtree",
+      "target": "workspace_snapshotdir",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L246",
+      "weight": 1.0
+    },
+    {
       "source": "workspace_parseworkspacemanifest",
       "target": "workspace_safepath",
       "relation": "calls",
@@ -13086,6 +13748,42 @@
       "context": "call",
       "source_file": "workspace.js",
       "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_snapshotdir",
+      "target": "workspace_parsegitignore",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_snapshotdir",
+      "target": "workspace_gitignorematch",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_snapshotdir",
+      "target": "workspace_isbinary",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "workspace.js",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -13750,6 +14448,18 @@
     },
     {
       "source": "package_files",
+      "target": "ref_fs_browser_js",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "package_files",
       "target": "ref_install_service_sh",
       "relation": "extends",
       "_origin": "ast",
@@ -13895,6 +14605,18 @@
     {
       "source": "package_files",
       "target": "ref_usage_js",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "package_files",
+      "target": "ref_verified_chat_js",
       "relation": "extends",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14777,7 +15499,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -14789,7 +15511,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -14801,7 +15523,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L50",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -14813,7 +15535,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L51",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -14825,7 +15547,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L54",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -14938,6 +15660,18 @@
     },
     {
       "source": "pipeline",
+      "target": "packages_protocol_src_index_normalizepipelineconfig",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pipeline.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline",
       "target": "agent_agent",
       "relation": "imports",
       "_origin": "ast",
@@ -14975,6 +15709,18 @@
     {
       "source": "pipeline",
       "target": "workspace_createworkspace",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pipeline.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline",
+      "target": "workspace_createworkspacefromdir",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15082,6 +15828,18 @@
     },
     {
       "source": "server",
+      "target": "packages_protocol_src_index_normalizepipelineconfig",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
       "target": "packages_protocol_src_index_validateclientcommand",
       "relation": "imports",
       "_origin": "ast",
@@ -15118,14 +15876,26 @@
     },
     {
       "source": "server",
-      "target": "folder_context_readfoldercontext",
+      "target": "workspace_applydiff",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L15",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "workspace_createworkspacefromdir",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -15137,7 +15907,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -15149,7 +15919,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -15161,7 +15931,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -15173,7 +15943,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -15450,6 +16220,54 @@
       "context": "import",
       "source_file": "test/verified-chat.test.js",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "test_workspace_test",
+      "target": "workspace_applydiff",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L246",
+      "weight": 1.0
+    },
+    {
+      "source": "test_workspace_test",
+      "target": "workspace_createworkspacefromdir",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L246",
+      "weight": 1.0
+    },
+    {
+      "source": "test_workspace_test",
+      "target": "workspace_hashtree",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L246",
+      "weight": 1.0
+    },
+    {
+      "source": "test_workspace_test",
+      "target": "workspace_snapshotdir",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/workspace.test.js",
+      "source_location": "L246",
       "weight": 1.0
     },
     {
@@ -15913,6 +16731,18 @@
     },
     {
       "source": "pipeline",
+      "target": "packages_protocol_src_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pipeline.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline",
       "target": "agent",
       "relation": "imports_from",
       "_origin": "ast",
@@ -16021,7 +16851,7 @@
     },
     {
       "source": "server",
-      "target": "folder_context",
+      "target": "fs_browser",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16040,7 +16870,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -16052,7 +16882,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -16089,6 +16919,18 @@
       "context": "import",
       "source_file": "test/cli-input.test.js",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "test_fs_browser_test",
+      "target": "fs_browser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/fs-browser.test.js",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -16208,7 +17050,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "test/workspace.test.js",
-      "source_location": "L6",
+      "source_location": "L246",
       "weight": 1.0
     },
     {
@@ -19612,7 +20454,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L113",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -19623,7 +20465,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L114",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -19909,7 +20751,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -19920,7 +20762,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -19931,7 +20773,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -19964,7 +20806,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L50",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -19975,7 +20817,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L51",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -20650,47 +21492,135 @@
       "weight": 1.0
     },
     {
-      "source": "folder_context",
-      "target": "folder_context_skip_dir",
+      "source": "fs_browser",
+      "target": "fs_browser_deny_names",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "folder-context.js",
-      "source_location": "L13",
+      "source_file": "fs-browser.js",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
-      "source": "folder_context",
-      "target": "folder_context_withinroot",
+      "source": "fs_browser",
+      "target": "fs_browser_statentry",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "folder-context.js",
-      "source_location": "L18",
+      "source_file": "fs-browser.js",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
-      "source": "folder_context",
-      "target": "folder_context_readfoldercontext",
+      "source": "fs_browser",
+      "target": "fs_browser_lookstextual",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "folder-context.js",
-      "source_location": "L28",
+      "source_file": "fs-browser.js",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
-      "source": "folder_context",
-      "target": "folder_context_text_ext",
+      "source": "fs_browser",
+      "target": "fs_browser_readbudgeted",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "folder-context.js",
-      "source_location": "L8",
+      "source_file": "fs-browser.js",
+      "source_location": "L140",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_skip_dirs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_text_ext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_always_text_files",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_roots",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_underroot",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_confinepath",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_describe",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "fs_browser",
+      "target": "fs_browser_list",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fs-browser.js",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -21031,7 +21961,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -21053,7 +21983,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -21075,7 +22005,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L53",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -21119,7 +22049,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L48",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -21130,7 +22060,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -21141,7 +22071,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L50",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -21152,7 +22082,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L51",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -21163,7 +22093,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L54",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -21174,7 +22104,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -21185,7 +22115,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -21196,7 +22126,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -21207,7 +22137,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -21218,7 +22148,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -21229,7 +22159,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -21240,7 +22170,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L41",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -21251,7 +22181,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L42",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -21262,7 +22192,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L43",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -21273,7 +22203,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L44",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -21284,7 +22214,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L45",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -22125,13 +23055,24 @@
     },
     {
       "source": "pipeline",
+      "target": "pipeline_executepipeline",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pipeline.js",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline",
       "target": "pipeline_dirname",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "pipeline.js",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -22142,7 +23083,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "pipeline.js",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -22153,7 +23094,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "pipeline.js",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -22164,7 +23105,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "pipeline.js",
-      "source_location": "L27",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline_system_prompts_build",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pipeline.js",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -22175,7 +23127,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "pipeline.js",
-      "source_location": "L34",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -22186,18 +23138,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "pipeline.js",
-      "source_location": "L57",
-      "weight": 1.0
-    },
-    {
-      "source": "pipeline",
-      "target": "pipeline_executepipeline",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "pipeline.js",
-      "source_location": "L92",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -22890,7 +23831,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L118",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -22901,18 +23842,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L183",
-      "weight": 1.0
-    },
-    {
-      "source": "server",
-      "target": "server_dirname",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server.js",
-      "source_location": "L20",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -22923,7 +23853,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L201",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -22934,18 +23864,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L207",
-      "weight": 1.0
-    },
-    {
-      "source": "server",
-      "target": "server_transcripts_dir",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server.js",
-      "source_location": "L21",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -22956,7 +23875,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L211",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -22967,7 +23886,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L216",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
@@ -22978,7 +23897,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L223",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -22989,18 +23908,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L227",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
       "source": "server",
-      "target": "server_fs_roots",
+      "target": "server_dirname",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L28",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "server_transcripts_dir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -23011,7 +23941,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L305",
+      "source_location": "L286",
       "weight": 1.0
     },
     {
@@ -23022,7 +23952,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L306",
+      "source_location": "L287",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "server_fs_roots",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -23033,7 +23974,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L31",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -23044,7 +23985,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -23055,7 +23996,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L36",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "server_runcontexts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -23066,7 +24018,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L39",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -23077,7 +24029,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L425",
+      "source_location": "L459",
       "weight": 1.0
     },
     {
@@ -23088,7 +24040,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L432",
+      "source_location": "L466",
       "weight": 1.0
     },
     {
@@ -23099,7 +24051,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L450",
+      "source_location": "L484",
       "weight": 1.0
     },
     {
@@ -23110,7 +24062,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L47",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -23121,7 +24073,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L62",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -23132,7 +24084,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L72",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -23246,6 +24198,17 @@
       "weight": 1.0
     },
     {
+      "source": "test_fs_browser_test",
+      "target": "test_fs_browser_test_fixture",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/fs-browser.test.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
       "source": "test_install_service_test",
       "target": "test_install_service_test_execfileasync",
       "relation": "contains",
@@ -23276,6 +24239,39 @@
       "confidence_score": 1.0,
       "source_file": "test/orchestrator.test.js",
       "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "test_orchestrator_test",
+      "target": "test_orchestrator_test_build_manifest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "test_orchestrator_test",
+      "target": "test_orchestrator_test_tmpworkspacesdir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "test_orchestrator_test",
+      "target": "test_orchestrator_test_buildconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/orchestrator.test.js",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -23474,6 +24470,28 @@
       "confidence_score": 1.0,
       "source_file": "test/workspace.test.js",
       "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "test_workspace_test",
+      "target": "test_workspace_test_exec",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/workspace.test.js",
+      "source_location": "L249",
+      "weight": 1.0
+    },
+    {
+      "source": "test_workspace_test",
+      "target": "test_workspace_test_realproject",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/workspace.test.js",
+      "source_location": "L251",
       "weight": 1.0
     },
     {
@@ -23863,24 +24881,57 @@
     },
     {
       "source": "workspace",
-      "target": "workspace_createworkspace",
+      "target": "workspace_snapshot_skip_dirs",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "workspace.js",
-      "source_location": "L150",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
       "source": "workspace",
-      "target": "workspace_runworkspacetest",
+      "target": "workspace_parsegitignore",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "workspace.js",
-      "source_location": "L201",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_gitignorematch",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_isbinary",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_snapshotdir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -23892,6 +24943,61 @@
       "confidence_score": 1.0,
       "source_file": "workspace.js",
       "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_hashtree",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L245",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_createworkspacefromdir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L255",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_applydiff",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L278",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_createworkspace",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L343",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace",
+      "target": "workspace_runworkspacetest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "workspace.js",
+      "source_location": "L394",
       "weight": 1.0
     },
     {
@@ -23995,6 +25101,24 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "test/agent.test.js"
+    },
+    {
+      "source": "test_orchestrator_test",
+      "target": "node_os",
+      "relation": "dynamic_import",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/orchestrator.test.js"
+    },
+    {
+      "source": "test_orchestrator_test",
+      "target": "promises",
+      "relation": "dynamic_import",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/orchestrator.test.js"
     },
     {
       "source": "test_server_protocol_test",
@@ -24477,13 +25601,35 @@
     },
     {
       "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_apply",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_opensocket",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
       "target": "clients_shared_src_core_connection_triforceconnection_handlemessage",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L105",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -24494,7 +25640,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L121",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -24505,7 +25651,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L129",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -24587,13 +25733,57 @@
     },
     {
       "source": "clients_shared_src_core_connection_triforceconnection",
-      "target": "clients_shared_src_core_connection_triforceconnection_opensocket",
+      "target": "clients_shared_src_core_connection_triforceconnection_send",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L90",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_fsroots",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_fslist",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_fsstat",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_fsselectworking",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -25316,7 +26506,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "pipeline.js",
-      "source_location": "L161",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -25429,5 +26619,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "67ecd4260b9efcf6329312bde9e3cc6db2fc05a3"
+  "built_at_commit": "8f2400d26a5cbce491dec9a7b514b643501de948"
 }
