@@ -62,8 +62,8 @@
   "60": "App.tsx",
   "61": "install-service.test.js",
   "62": "platform-credentials.ts",
-  "63": "hosts.ts",
-  "64": "remote-client-e2e.test.js",
+  "63": "pipeline.ts",
+  "64": "Dashboard",
   "65": "definitions",
   "66": "definitions",
   "67": "properties",
@@ -85,10 +85,7 @@
   "83": "triforce-desktop",
   "84": "TriforceConnection",
   "85": "entrypoint.sh",
-  "86": "protocol.test.js",
+  "86": "main.tsx",
   "87": "connection.ts",
-  "88": "MockSocket",
-  "89": "BrowserHostStorage",
-  "90": "SocketLike",
   "96": "Running Triforce in Docker"
 }

@@ -1176,9 +1176,9 @@
     <span class="logo-sub">MULTI-AGENT PIPELINE</span>
   </div>
   <div class="mode-toggle">
-    <button id="btn-mode1" class="mode-btn active" onclick="setMode(1)"><span class="mode-lbl-full">MODE 1: </span>SEQUENTIAL</button>
-    <button id="btn-mode2" class="mode-btn" onclick="setMode(2)"><span class="mode-lbl-full">MODE 2: </span>COOPERATIVE</button>
-    <button id="btn-mode3" class="mode-btn" onclick="setMode(3)"><span class="mode-lbl-full">MODE 3: </span>WORKSPACE</button>
+    <button id="btn-mode1" class="mode-btn active" onclick="setMode(1)"><span class="mode-lbl-full">MODE 1: </span>BUILD</button>
+    <button id="btn-mode2" class="mode-btn" onclick="setMode(2)"><span class="mode-lbl-full">MODE 2: </span>CREDIT</button>
+    <button id="btn-mode3" class="mode-btn" onclick="setMode(3)"><span class="mode-lbl-full">MODE 3: </span>CHAT</button>
   </div>
   <div class="status">
     <div class="sdot" id="sdot"></div>
@@ -1426,6 +1426,43 @@
 
 <div class="flash" id="flash"></div>
 
+<style>
+  #chatPanel { position: fixed; inset: 96px 0 0 0; display: none; flex-direction: column;
+    background: var(--bg, #0a0800); z-index: 40; padding: 16px clamp(12px, 6vw, 120px) 0; }
+  #chatPanel.show { display: flex; }
+  #chatLog { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 16px; }
+  .chat-msg { max-width: 760px; border: 1px solid rgba(210,158,52,.25); border-radius: 8px; padding: 9px 12px;
+    font-size: 13px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+  .chat-msg .cm-tag { display: block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    opacity: .6; margin-bottom: 4px; }
+  .chat-msg.user { align-self: flex-end; border-color: rgba(79,195,247,.4); background: rgba(79,195,247,.06); }
+  .chat-msg.draft { opacity: .8; }
+  .chat-msg.check { border-style: dashed; }
+  .chat-msg.check.disagree { border-color: rgba(229,115,115,.5); }
+  .chat-msg.final { border-color: var(--gold-bright, #f5c451); background: rgba(210,158,52,.08); }
+  .chat-msg.system { align-self: center; border: none; opacity: .5; font-size: 11px; }
+  .chat-delib { align-self: center; font-size: 11px; letter-spacing: .08em; opacity: .6; }
+  #chatForm { display: flex; gap: 8px; padding: 12px 0 16px; border-top: 1px solid rgba(210,158,52,.15); }
+  #chatInput { flex: 1; resize: none; background: rgba(255,255,255,.04); color: inherit;
+    border: 1px solid rgba(210,158,52,.3); border-radius: 6px; padding: 9px 11px; font: inherit; font-size: 13px; }
+  #chatSend { padding: 0 18px; border: 1px solid var(--gold-bright, #f5c451); background: transparent;
+    color: var(--gold-bright, #f5c451); border-radius: 6px; cursor: pointer; letter-spacing: .1em; font-size: 12px; }
+  #chatSend:disabled { opacity: .4; cursor: default; }
+  #chatOpts { display: flex; gap: 14px; align-items: center; font-size: 11px; opacity: .7; padding-bottom: 6px; }
+</style>
+
+<div id="chatPanel">
+  <div id="chatLog"></div>
+  <div id="chatOpts">
+    <label><input type="checkbox" id="chatFast"> fast (1 checker)</label>
+    <span id="chatStatus"></span>
+  </div>
+  <form id="chatForm">
+    <textarea id="chatInput" rows="2" placeholder="Ask anything — every answer is cross-checked by all three CLIs…"></textarea>
+    <button type="submit" id="chatSend">SEND</button>
+  </form>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5/lib/xterm.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10/lib/addon-fit.js"></script>
 <script>
@@ -1563,13 +1600,20 @@
     document.getElementById('btn-mode2').classList.toggle('active', mode === 2);
     document.getElementById('btn-mode3').classList.toggle('active', mode === 3);
     
+    // Mode 3 (verified chat) swaps the triangle view for the chat panel.
+    const chatPanel = document.getElementById('chatPanel');
+    if (chatPanel) {
+      chatPanel.classList.toggle('show', mode === 3);
+      document.body.classList.toggle('chat-mode', mode === 3);
+    }
+
     // Update role labels dynamically
-    const labels = mode === 2
+    const labels = mode === 1
       ? ['PROMPT DESIGNER', 'CODER', 'SUPERVISOR']
-      : mode === 3
-        ? ['WORKSPACE ARCHITECT', 'PROJECT CODER', 'PROJECT REVIEWER']
-        : ['CLAUDE CODE', 'CODEX', 'ANTIGRAVITY'];
-      
+      : mode === 2
+        ? ['ROUTER', 'DELIBERATION', 'RECONCILE']
+        : ['DRAFTER', 'CHECKERS', 'RECONCILER'];
+
     // 1. Shard labels on the 3D Triforce SVG
     document.querySelector('#lbl0 .sl-name').textContent = labels[0];
     document.querySelector('#lbl1 .sl-name').textContent = labels[1];
@@ -1838,6 +1882,7 @@
 
   // ── EVENT HANDLER ──
   function handleEvent(event) {
+    if (selectedMode === 3) { chatHandleEvent(event); return; }
     switch (event.type) {
 
       case 'status': {
@@ -2237,6 +2282,86 @@
     window.addEventListener('resize', resize);
     resize();
     requestAnimationFrame(draw);
+  })();
+
+  // ── MODE 3: VERIFIED CHAT ──
+  (function () {
+    const log = document.getElementById('chatLog');
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('chatSend');
+    const fast = document.getElementById('chatFast');
+    const statusEl = document.getElementById('chatStatus');
+    let conversationId = null;
+    let busy = false;
+
+    function append(cls, tag, text) {
+      const el = document.createElement('div');
+      el.className = 'chat-msg ' + cls;
+      const t = document.createElement('span');
+      t.className = 'cm-tag';
+      t.textContent = tag;
+      el.appendChild(t);
+      el.appendChild(document.createTextNode(text || ''));
+      log.appendChild(el);
+      log.scrollTop = log.scrollHeight;
+      return el;
+    }
+
+    function setBusy(v) {
+      busy = v;
+      sendBtn.disabled = v;
+      statusEl.textContent = v ? 'thinking…' : '';
+    }
+
+    window.chatHandleEvent = function (event) {
+      switch (event.type) {
+        case 'run_started':
+          if (event.conversationId) conversationId = event.conversationId;
+          break;
+        case 'status':
+          if (event.label) statusEl.textContent = event.label + '…';
+          break;
+        case 'chat_message':
+          if (event.role === 'draft') append('draft', 'draft · ' + (event.cli || ''), event.text);
+          else if (event.role === 'check') append('check ' + (event.assessment === 'DISAGREE' ? 'disagree' : ''), 'check · ' + (event.cli || '') + ' · ' + (event.assessment || ''), event.text);
+          else if (event.role === 'final') append('final', 'final · ' + (event.cli || ''), event.text);
+          else append('system', 'note', event.text);
+          break;
+        case 'deliberation': {
+          const cc = event.crossChecked ? (event.agreement + ' agree') : 'not cross-checked';
+          const el = document.createElement('div');
+          el.className = 'chat-delib';
+          el.textContent = '— ' + cc + ' —';
+          log.appendChild(el);
+          break;
+        }
+        case 'error':
+          append('system', 'error', event.message || 'chat failed');
+          setBusy(false);
+          break;
+        case 'run_state':
+          if (['completed', 'failed', 'cancelled'].includes(event.status)) setBusy(false);
+          break;
+        case 'done':
+          setBusy(false);
+          break;
+      }
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const message = input.value.trim();
+      if (!message || busy) return;
+      if (!ws || ws.readyState !== 1) { statusEl.textContent = 'no connection'; return; }
+      append('user', 'you', message);
+      input.value = '';
+      setBusy(true);
+      ws.send(JSON.stringify({ type: 'chat', message, fast: fast.checked, ...(conversationId ? { conversationId } : {}) }));
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
+    });
   })();
 </script>
 </body>

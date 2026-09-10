@@ -3,6 +3,7 @@ import { type FormEvent, useEffect, useMemo, useState } from 'react';
 import { TriforceConnection, type ConnectionState } from './core/connection';
 import { BrowserHostStorage, HostRepository, type HostProfile } from './core/hosts';
 import { initialPipelineState, reducePipeline, type PipelineViewState } from './core/pipeline';
+import { appendUserMessage, initialChatState, reduceChat, type ChatState } from './core/chat';
 import { createCredentialStorage } from './core/platform-credentials';
 
 const roles: AgentRole[] = ['architect', 'developer', 'reviewer'];
@@ -31,6 +32,7 @@ export function App() {
   const [activeHost, setActiveHost] = useState<HostProfile | null>(null);
   const [preferredHostId, setPreferredHostId] = useState(() => localStorage.getItem('triforce.selected-host.v1'));
   const [pipeline, setPipeline] = useState<PipelineViewState>(initialPipelineState);
+  const [chat, setChat] = useState<ChatState>(initialChatState);
   const [history, setHistory] = useState<PipelineViewState[]>([]);
   const [screen, setScreen] = useState<'run' | 'history' | 'settings' | 'diagnostics'>('run');
   useEffect(() => { void repository.list().then(setHosts); }, [repository]);
@@ -48,11 +50,14 @@ export function App() {
     connection?.disconnect();
     const next = new TriforceConnection(host.url);
     next.onState(setConnectionState);
-    next.onEvent(event => setPipeline(current => {
-      const updated = reducePipeline(current, event);
-      if (updated.status !== current.status && ['completed', 'failed'].includes(updated.status)) setHistory(items => [updated, ...items].slice(0, 50));
-      return updated;
-    }));
+    next.onEvent(event => {
+      setPipeline(current => {
+        const updated = reducePipeline(current, event);
+        if (updated.status !== current.status && ['completed', 'failed'].includes(updated.status)) setHistory(items => [updated, ...items].slice(0, 50));
+        return updated;
+      });
+      setChat(current => reduceChat(current, event));
+    });
     setConnection(next); setActiveHost(host); setPreferredHostId(host.id); localStorage.setItem('triforce.selected-host.v1', host.id);
     await next.connect(await repository.token(host.id) ?? undefined);
   }
@@ -62,7 +67,13 @@ export function App() {
       onDelete={async id => { await repository.delete(id); setHosts(await repository.list()); }} />;
   }
 
+  const sendChat = (message: string) => {
+    setChat(current => appendUserMessage(current, message));
+    connection.chat(message, chat.conversationId ? { conversationId: chat.conversationId } : {});
+  };
+
   return <Dashboard host={activeHost} connection={connection} connectionState={connectionState} pipeline={pipeline}
+    chat={chat} onSendChat={sendChat}
     history={history} screen={screen} setScreen={setScreen} onSwitch={() => { connection.disconnect(); localStorage.removeItem('triforce.selected-host.v1'); setPreferredHostId(null); setActiveHost(null); }} />;
 }
 
@@ -89,15 +100,19 @@ function HostScreen({ hosts, preferredHostId, state, error, onAdd, onConnect, on
   </section></main>;
 }
 
-function Dashboard({ host, connection, connectionState, pipeline, history, screen, setScreen, onSwitch }: {
+function Dashboard({ host, connection, connectionState, pipeline, chat, onSendChat, history, screen, setScreen, onSwitch }: {
   host: HostProfile; connection: TriforceConnection; connectionState: ConnectionState; pipeline: PipelineViewState;
+  chat: ChatState; onSendChat: (message: string) => void;
   history: PipelineViewState[]; screen: string; setScreen: (screen: 'run' | 'history' | 'settings' | 'diagnostics') => void; onSwitch: () => void;
 }) {
   const [mode, setMode] = useState<PipelineMode>(1);
   const [config, setConfig] = useState(defaultConfig);
   const [task, setTask] = useState('');
+  const [chatDraft, setChatDraft] = useState('');
   const [activeRole, setActiveRole] = useState<AgentRole>('architect');
   function submit(event: FormEvent) { event.preventDefault(); connection.run(task, config, mode); setTask(''); }
+  function submitChat(event: FormEvent) { event.preventDefault(); const m = chatDraft.trim(); if (!m || chat.status === 'thinking') return; onSendChat(m); setChatDraft(''); }
+  const modeLabels = ['Build', 'Credit', 'Chat'];
   const totalCost = roles.reduce((sum, role) => sum + (pipeline.usage[role]?.cost ?? 0), 0);
 
   return <main className="app-frame">
@@ -105,17 +120,38 @@ function Dashboard({ host, connection, connectionState, pipeline, history, scree
       <nav aria-label="Application"><button onClick={() => setScreen('run')}>Run</button><button onClick={() => setScreen('history')}>History</button><button onClick={() => setScreen('settings')}>Settings</button><button onClick={() => setScreen('diagnostics')}>Diagnostics</button></nav>
       <button className="quiet" onClick={onSwitch}>Switch host</button></header>
     {screen === 'run' && <div className="workspace-view">
-      <section className="composer"><form onSubmit={submit}>
-        <label htmlFor="task">What should your agents build?</label><textarea id="task" value={task} onChange={event => setTask(event.target.value)} required rows={4} />
-        <div className="mode-row" aria-label="Pipeline mode">{([1, 2, 3] as PipelineMode[]).map(value => <button key={value} type="button" aria-pressed={mode === value} onClick={() => setMode(value)}>Mode {value}</button>)}</div>
-        <button type="submit" disabled={pipeline.status === 'running'}>{pipeline.status === 'running' ? 'Pipeline running…' : 'Launch pipeline'}</button>
-      </form><div className="run-meta"><span>{pipeline.label || 'Ready'}</span><span>${totalCost.toFixed(4)}</span>{pipeline.error && <span className="error">{pipeline.error}</span>}</div>
+      <section className="composer">
+        <div className="mode-row" aria-label="Pipeline mode">{([1, 2, 3] as PipelineMode[]).map(value => <button key={value} type="button" aria-pressed={mode === value} onClick={() => setMode(value)}>{modeLabels[value - 1]}</button>)}</div>
+        {mode === 3
+          ? <form onSubmit={submitChat}>
+              <label htmlFor="chat-input">Ask anything — every answer is drafted, cross-checked by all three CLIs, then reconciled.</label>
+              <textarea id="chat-input" value={chatDraft} onChange={event => setChatDraft(event.target.value)} rows={3} />
+              <button type="submit" disabled={chat.status === 'thinking'}>{chat.status === 'thinking' ? (chat.label || 'Thinking…') : 'Send'}</button>
+            </form>
+          : <form onSubmit={submit}>
+              <label htmlFor="task">What should your agents build?</label><textarea id="task" value={task} onChange={event => setTask(event.target.value)} required rows={4} />
+              <button type="submit" disabled={pipeline.status === 'running'}>{pipeline.status === 'running' ? 'Pipeline running…' : 'Launch pipeline'}</button>
+            </form>}
+        <div className="run-meta">
+          {mode === 3
+            ? <><span>{chat.status === 'thinking' ? (chat.label || 'Thinking…') : chat.status}</span>{chat.lastAgreement && <span>{chat.crossChecked ? `${chat.lastAgreement} agree` : 'not cross-checked'}</span>}</>
+            : <><span>{pipeline.label || 'Ready'}</span><span>${totalCost.toFixed(4)}</span>{pipeline.error && <span className="error">{pipeline.error}</span>}</>}
+        </div>
       </section>
-      <section className="results" aria-live="polite"><div className="role-tabs" role="tablist">{roles.map(role => <button role="tab" aria-selected={activeRole === role} key={role} onClick={() => setActiveRole(role)}>{role}</button>)}</div>
-        <article className="agent-output"><h2>{activeRole}</h2><pre>{pipeline.outputs[activeRole] || 'Waiting for agent output…'}</pre></article>
-        <article className="terminal"><h2>Sandbox terminal</h2><pre>{pipeline.terminal || 'No terminal output yet.'}</pre></article>
-        {pipeline.workspace && <article className="artifact"><h2>Workspace</h2><pre>{JSON.stringify(pipeline.workspace, null, 2)}</pre></article>}
-      </section></div>}
+      {mode === 3
+        ? <section className="results chat" aria-live="polite">
+            {chat.messages.length === 0 && <p>No messages yet.</p>}
+            {chat.messages.map((m, index) => <article className={`chat-msg ${m.role}`} key={index}>
+              <h2>{m.role === 'user' ? 'You' : `${m.role}${m.cli ? ` · ${m.cli}` : ''}${m.assessment ? ` · ${m.assessment}` : ''}`}</h2>
+              <pre>{m.text}</pre>
+            </article>)}
+          </section>
+        : <section className="results" aria-live="polite"><div className="role-tabs" role="tablist">{roles.map(role => <button role="tab" aria-selected={activeRole === role} key={role} onClick={() => setActiveRole(role)}>{role}</button>)}</div>
+            <article className="agent-output"><h2>{activeRole}</h2><pre>{pipeline.outputs[activeRole] || 'Waiting for agent output…'}</pre></article>
+            <article className="terminal"><h2>Sandbox terminal</h2><pre>{pipeline.terminal || 'No terminal output yet.'}</pre></article>
+            {pipeline.workspace && <article className="artifact"><h2>Workspace</h2><pre>{JSON.stringify(pipeline.workspace, null, 2)}</pre></article>}
+          </section>}
+    </div>}
     {screen === 'history' && <section className="page"><h1>Run history</h1>{history.length ? history.map((run, index) => <article className="history-card" key={`${run.runId}-${index}`}><strong>{run.status}</strong><span>{run.runId}</span><span>{run.elapsed ?? 0}s</span></article>) : <p>No completed runs this session.</p>}</section>}
     {screen === 'settings' && <section className="page"><h1>Agent settings</h1><div className="settings-grid">{roles.map(role => <fieldset key={role}><legend>{role}</legend><label>Provider<input value={config[role].provider} onChange={event => setConfig(current => ({ ...current, [role]: { ...current[role], provider: event.target.value } }))} /></label><label>Model<input value={config[role].model} onChange={event => setConfig(current => ({ ...current, [role]: { ...current[role], model: event.target.value } }))} /></label></fieldset>)}</div></section>}
     {screen === 'diagnostics' && <section className="page"><h1>Diagnostics</h1><dl><dt>Server</dt><dd>{host.url}</dd><dt>Connection</dt><dd>{connectionState}</dd><dt>Protocol</dt><dd>{PROTOCOL_VERSION}</dd><dt>Run ID</dt><dd>{pipeline.runId ?? 'none'}</dd><dt>Buffered terminal</dt><dd>{pipeline.terminal.length.toLocaleString()} characters</dd></dl></section>}

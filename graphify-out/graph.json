@@ -92,7 +92,7 @@
       "file_type": "code",
       "norm_label": "agent",
       "source_file": "agent.js",
-      "source_location": "L130"
+      "source_location": "L141"
     },
     {
       "id": "packages_protocol_src_index_d_agentconfiguration",
@@ -391,33 +391,72 @@
       "file_type": "code",
       "norm_label": "buildtriad",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
-      "id": "clients_shared_src_core_pipeline_pipelineviewstate",
-      "label": "PipelineViewState",
+      "id": "clients_shared_src_core_chat_chatentry",
+      "label": "ChatEntry",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "pipelineviewstate",
-      "source_file": "clients/shared/src/core/pipeline.ts",
+      "norm_label": "chatentry",
+      "source_file": "clients/shared/src/core/chat.ts",
       "source_location": "L5"
     },
     {
-      "id": "clients_shared_src_core_pipeline_usageitem",
-      "label": "UsageItem",
+      "id": "clients_shared_src_core_chat_chatrole",
+      "label": "ChatRole",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "usageitem",
-      "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L4"
+      "norm_label": "chatrole",
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "clients_shared_src_core_chat_chatstate",
+      "label": "ChatState",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 60,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "chatstate",
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "clients_shared_src_core_host_url_normalizedhosturl",
+      "label": "NormalizedHostUrl",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "normalizedhosturl",
+      "source_file": "clients/shared/src/core/host-url.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_browserhoststorage",
+      "label": "BrowserHostStorage",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "browserhoststorage",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L22"
     },
     {
       "id": "clients_shared_src_core_hosts_credentialstorage",
@@ -433,6 +472,45 @@
       "source_location": "L16"
     },
     {
+      "id": "clients_shared_src_core_hosts_hostprofile",
+      "label": "HostProfile",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "hostprofile",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hostrepository",
+      "label": "HostRepository",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "hostrepository",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hoststorage",
+      "label": "HostStorage",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "hoststorage",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L11"
+    },
+    {
       "id": "clients_shared_src_core_hosts_memorycredentialstorage",
       "label": "MemoryCredentialStorage",
       "_callable": true,
@@ -444,6 +522,19 @@
       "norm_label": "memorycredentialstorage",
       "source_file": "clients/shared/src/core/hosts.ts",
       "source_location": "L31"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_test_memoryhoststorage",
+      "label": "MemoryHostStorage",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "memoryhoststorage",
+      "source_file": "clients/shared/src/core/hosts.test.ts",
+      "source_location": "L5"
     },
     {
       "id": "clients_shared_src_core_platform_credentials_androidbridge",
@@ -498,69 +589,30 @@
       "source_location": "L42"
     },
     {
-      "id": "clients_shared_src_core_host_url_normalizedhosturl",
-      "label": "NormalizedHostUrl",
+      "id": "clients_shared_src_core_pipeline_pipelineviewstate",
+      "label": "PipelineViewState",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 63,
-      "community_name": "hosts.ts",
+      "community_name": "pipeline.ts",
       "file_type": "code",
-      "norm_label": "normalizedhosturl",
-      "source_file": "clients/shared/src/core/host-url.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hostprofile",
-      "label": "HostProfile",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "hostprofile",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hostrepository",
-      "label": "HostRepository",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "hostrepository",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hoststorage",
-      "label": "HostStorage",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "hoststorage",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_test_memoryhoststorage",
-      "label": "MemoryHostStorage",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "memoryhoststorage",
-      "source_file": "clients/shared/src/core/hosts.test.ts",
+      "norm_label": "pipelineviewstate",
+      "source_file": "clients/shared/src/core/pipeline.ts",
       "source_location": "L5"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline_usageitem",
+      "label": "UsageItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "usageitem",
+      "source_file": "clients/shared/src/core/pipeline.ts",
+      "source_location": "L4"
     },
     {
       "id": "router_nocapacityerror",
@@ -587,6 +639,32 @@
       "norm_label": "subscriptionledger",
       "source_file": "subscription-ledger.js",
       "source_location": "L26"
+    },
+    {
+      "id": "clients_shared_src_core_connection_socketlike",
+      "label": "SocketLike",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": "socketlike",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "clients_shared_src_core_connection_test_mocksocket",
+      "label": "MockSocket",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": "mocksocket",
+      "source_file": "clients/shared/src/core/connection.test.ts",
+      "source_location": "L4"
     },
     {
       "id": "clients_shared_src_core_connection_triforceconnection",
@@ -654,43 +732,28 @@
       "source_location": "L5"
     },
     {
-      "id": "clients_shared_src_core_connection_test_mocksocket",
-      "label": "MockSocket",
+      "id": "folder_context_readfoldercontext",
+      "label": "readFolderContext()",
       "_callable": true,
-      "_callable_class": true,
       "_origin": "ast",
-      "community": 88,
-      "community_name": "MockSocket",
+      "community": 0,
+      "community_name": "server.js",
       "file_type": "code",
-      "norm_label": "mocksocket",
-      "source_file": "clients/shared/src/core/connection.test.ts",
-      "source_location": "L4"
+      "norm_label": "readfoldercontext()",
+      "source_file": "folder-context.js",
+      "source_location": "L28"
     },
     {
-      "id": "clients_shared_src_core_hosts_browserhoststorage",
-      "label": "BrowserHostStorage",
+      "id": "folder_context_withinroot",
+      "label": "withinRoot()",
       "_callable": true,
-      "_callable_class": true,
       "_origin": "ast",
-      "community": 89,
-      "community_name": "BrowserHostStorage",
+      "community": 0,
+      "community_name": "server.js",
       "file_type": "code",
-      "norm_label": "browserhoststorage",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L22"
-    },
-    {
-      "id": "clients_shared_src_core_connection_socketlike",
-      "label": "SocketLike",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "SocketLike",
-      "file_type": "code",
-      "norm_label": "socketlike",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L8"
+      "norm_label": "withinroot()",
+      "source_file": "folder-context.js",
+      "source_location": "L18"
     },
     {
       "id": "models_checkconfigforwarnings",
@@ -834,7 +897,7 @@
       "file_type": "code",
       "norm_label": "bearertoken()",
       "source_file": "server.js",
-      "source_location": "L204"
+      "source_location": "L211"
     },
     {
       "id": "server_cookietoken",
@@ -846,7 +909,7 @@
       "file_type": "code",
       "norm_label": "cookietoken()",
       "source_file": "server.js",
-      "source_location": "L200"
+      "source_location": "L207"
     },
     {
       "id": "server_killlingeringsandboxunits",
@@ -858,7 +921,7 @@
       "file_type": "code",
       "norm_label": "killlingeringsandboxunits()",
       "source_file": "server.js",
-      "source_location": "L390"
+      "source_location": "L432"
     },
     {
       "id": "server_probesandbox",
@@ -870,7 +933,7 @@
       "file_type": "code",
       "norm_label": "probesandbox()",
       "source_file": "server.js",
-      "source_location": "L40"
+      "source_location": "L47"
     },
     {
       "id": "server_requestisauthorized",
@@ -882,7 +945,7 @@
       "file_type": "code",
       "norm_label": "requestisauthorized()",
       "source_file": "server.js",
-      "source_location": "L216"
+      "source_location": "L223"
     },
     {
       "id": "server_runpipeline",
@@ -894,7 +957,7 @@
       "file_type": "code",
       "norm_label": "runpipeline()",
       "source_file": "server.js",
-      "source_location": "L111"
+      "source_location": "L118"
     },
     {
       "id": "server_runvalidationpipeline",
@@ -906,7 +969,7 @@
       "file_type": "code",
       "norm_label": "runvalidationpipeline()",
       "source_file": "server.js",
-      "source_location": "L65"
+      "source_location": "L72"
     },
     {
       "id": "server_setsessioncookie",
@@ -918,7 +981,7 @@
       "file_type": "code",
       "norm_label": "setsessioncookie()",
       "source_file": "server.js",
-      "source_location": "L220"
+      "source_location": "L227"
     },
     {
       "id": "server_shutdown",
@@ -930,7 +993,7 @@
       "file_type": "code",
       "norm_label": "shutdown()",
       "source_file": "server.js",
-      "source_location": "L408"
+      "source_location": "L450"
     },
     {
       "id": "server_tokenmatches",
@@ -942,7 +1005,7 @@
       "file_type": "code",
       "norm_label": "tokenmatches()",
       "source_file": "server.js",
-      "source_location": "L194"
+      "source_location": "L201"
     },
     {
       "id": "server_websocketprotocoltoken",
@@ -954,7 +1017,7 @@
       "file_type": "code",
       "norm_label": "websocketprotocoltoken()",
       "source_file": "server.js",
-      "source_location": "L209"
+      "source_location": "L216"
     },
     {
       "id": "test_orchestrator_test_call",
@@ -1710,7 +1773,7 @@
       "file_type": "code",
       "norm_label": ".call()",
       "source_file": "agent.js",
-      "source_location": "L150"
+      "source_location": "L161"
     },
     {
       "id": "agent_agent_callagycli",
@@ -1722,7 +1785,7 @@
       "file_type": "code",
       "norm_label": "._callagycli()",
       "source_file": "agent.js",
-      "source_location": "L360"
+      "source_location": "L371"
     },
     {
       "id": "agent_agent_callclaudecli",
@@ -1734,7 +1797,7 @@
       "file_type": "code",
       "norm_label": "._callclaudecli()",
       "source_file": "agent.js",
-      "source_location": "L237"
+      "source_location": "L248"
     },
     {
       "id": "agent_agent_callcodexcli",
@@ -1746,7 +1809,7 @@
       "file_type": "code",
       "norm_label": "._callcodexcli()",
       "source_file": "agent.js",
-      "source_location": "L352"
+      "source_location": "L363"
     },
     {
       "id": "agent_agent_callprovider",
@@ -1758,7 +1821,7 @@
       "file_type": "code",
       "norm_label": "._callprovider()",
       "source_file": "agent.js",
-      "source_location": "L229"
+      "source_location": "L240"
     },
     {
       "id": "agent_agent_codexcliargs",
@@ -1770,7 +1833,7 @@
       "file_type": "code",
       "norm_label": "._codexcliargs()",
       "source_file": "agent.js",
-      "source_location": "L342"
+      "source_location": "L353"
     },
     {
       "id": "agent_agent_collectchild",
@@ -1782,7 +1845,7 @@
       "file_type": "code",
       "norm_label": "._collectchild()",
       "source_file": "agent.js",
-      "source_location": "L252"
+      "source_location": "L263"
     },
     {
       "id": "agent_agent_constructor",
@@ -1794,7 +1857,7 @@
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "agent.js",
-      "source_location": "L131"
+      "source_location": "L142"
     },
     {
       "id": "agent_agent_initclient",
@@ -1806,7 +1869,19 @@
       "file_type": "code",
       "norm_label": "._initclient()",
       "source_file": "agent.js",
-      "source_location": "L139"
+      "source_location": "L150"
+    },
+    {
+      "id": "agent_ask",
+      "label": "ask()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "ask()",
+      "source_file": "agent.js",
+      "source_location": "L136"
     },
     {
       "id": "agent_delay",
@@ -1917,6 +1992,174 @@
       "source_location": "L161"
     },
     {
+      "id": "test_verified_chat_test_collect",
+      "label": "collect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "collect()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L27"
+    },
+    {
+      "id": "test_verified_chat_test_notelimit",
+      "label": "noteLimit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "notelimit()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L143"
+    },
+    {
+      "id": "test_verified_chat_test_record",
+      "label": "record()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "record()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L90"
+    },
+    {
+      "id": "test_verified_chat_test_scriptedask",
+      "label": "scriptedAsk()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "scriptedask()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L6"
+    },
+    {
+      "id": "verified_chat_cliagentconfig",
+      "label": "cliAgentConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "cliagentconfig()",
+      "source_file": "verified-chat.js",
+      "source_location": "L17"
+    },
+    {
+      "id": "verified_chat_normalizepool",
+      "label": "normalizePool()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "normalizepool()",
+      "source_file": "verified-chat.js",
+      "source_location": "L21"
+    },
+    {
+      "id": "verified_chat_parseassessment",
+      "label": "parseAssessment()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "parseassessment()",
+      "source_file": "verified-chat.js",
+      "source_location": "L38"
+    },
+    {
+      "id": "verified_chat_renderhistory",
+      "label": "renderHistory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "renderhistory()",
+      "source_file": "verified-chat.js",
+      "source_location": "L30"
+    },
+    {
+      "id": "verified_chat_runverifiedchat",
+      "label": "runVerifiedChat()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "runverifiedchat()",
+      "source_file": "verified-chat.js",
+      "source_location": "L61"
+    },
+    {
+      "id": "verified_chat_tokensof",
+      "label": "tokensOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "tokensof()",
+      "source_file": "verified-chat.js",
+      "source_location": "L43"
+    },
+    {
+      "id": "packages_protocol_src_index_iscompatibleprotocol",
+      "label": "isCompatibleProtocol()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "iscompatibleprotocol()",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L168"
+    },
+    {
+      "id": "packages_protocol_src_index_normalizepipelineconfig",
+      "label": "normalizePipelineConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "normalizepipelineconfig()",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L57"
+    },
+    {
+      "id": "packages_protocol_src_index_validateclientcommand",
+      "label": "validateClientCommand()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "validateclientcommand()",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L158"
+    },
+    {
+      "id": "packages_protocol_src_index_validateserverevent",
+      "label": "validateServerEvent()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "validateserverevent()",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L163"
+    },
+    {
       "id": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest_networkpolicytest_cleartextisdeniedexceptforemulatorloopback",
       "label": ".cleartextIsDeniedExceptForEmulatorLoopback()",
       "_callable": true,
@@ -1950,7 +2193,7 @@
       "file_type": "code",
       "norm_label": "app()",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L25"
+      "source_location": "L26"
     },
     {
       "id": "clients_shared_src_app_app_addhost",
@@ -1962,7 +2205,7 @@
       "file_type": "code",
       "norm_label": "addhost()",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L38"
+      "source_location": "L40"
     },
     {
       "id": "clients_shared_src_app_app_connecthost",
@@ -1974,31 +2217,7 @@
       "file_type": "code",
       "norm_label": "connecthost()",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L47"
-    },
-    {
-      "id": "clients_shared_src_app_dashboard",
-      "label": "Dashboard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "dashboard()",
-      "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L92"
-    },
-    {
-      "id": "clients_shared_src_app_dashboard_submit",
-      "label": "submit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "submit()",
-      "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L100"
+      "source_location": "L49"
     },
     {
       "id": "clients_shared_src_app_hostscreen",
@@ -2010,67 +2229,103 @@
       "file_type": "code",
       "norm_label": "hostscreen()",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L69"
+      "source_location": "L80"
     },
     {
-      "id": "clients_shared_src_core_native_integration_installnativeintegration",
-      "label": "installNativeIntegration()",
+      "id": "clients_shared_src_core_chat_appendusermessage",
+      "label": "appendUserMessage()",
       "_callable": true,
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "installnativeintegration()",
-      "source_file": "clients/shared/src/core/native-integration.ts",
-      "source_location": "L4"
+      "norm_label": "appendusermessage()",
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L26"
     },
     {
-      "id": "clients_shared_src_core_pipeline_bounded",
-      "label": "bounded()",
+      "id": "clients_shared_src_core_chat_initialchatstate",
+      "label": "initialChatState()",
       "_callable": true,
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "bounded()",
-      "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L50"
+      "norm_label": "initialchatstate()",
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L21"
     },
     {
-      "id": "clients_shared_src_core_pipeline_initialpipelinestate",
-      "label": "initialPipelineState()",
+      "id": "clients_shared_src_core_chat_reducechat",
+      "label": "reduceChat()",
       "_callable": true,
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "initialpipelinestate()",
-      "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L20"
+      "norm_label": "reducechat()",
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L30"
     },
     {
-      "id": "clients_shared_src_core_pipeline_mapstatus",
-      "label": "mapStatus()",
+      "id": "clients_shared_src_core_chat_test_ev",
+      "label": "ev()",
       "_callable": true,
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "mapstatus()",
-      "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L51"
+      "norm_label": "ev()",
+      "source_file": "clients/shared/src/core/chat.test.ts",
+      "source_location": "L5"
     },
     {
-      "id": "clients_shared_src_core_pipeline_reducepipeline",
-      "label": "reducePipeline()",
+      "id": "clients_shared_src_core_host_url_normalizehosturl",
+      "label": "normalizeHostUrl()",
       "_callable": true,
       "_origin": "ast",
-      "community": 60,
-      "community_name": "App.tsx",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
-      "norm_label": "reducepipeline()",
-      "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L29"
+      "norm_label": "normalizehosturl()",
+      "source_file": "clients/shared/src/core/host-url.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_browserhoststorage_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_browserhoststorage_load",
+      "label": ".load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".load()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_browserhoststorage_save",
+      "label": ".save()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".save()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L28"
     },
     {
       "id": "clients_shared_src_core_hosts_credentialstorage_delete",
@@ -2085,6 +2340,18 @@
       "source_location": "L19"
     },
     {
+      "id": "clients_shared_src_core_hosts_credentialstorage_get",
+      "label": ".get()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".get()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L17"
+    },
+    {
       "id": "clients_shared_src_core_hosts_credentialstorage_set",
       "label": ".set()",
       "_callable": true,
@@ -2095,6 +2362,102 @@
       "norm_label": ".set()",
       "source_file": "clients/shared/src/core/hosts.ts",
       "source_location": "L18"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hostrepository_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hostrepository_delete",
+      "label": ".delete()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".delete()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hostrepository_list",
+      "label": ".list()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".list()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L40"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hostrepository_token",
+      "label": ".token()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".token()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hostrepository_upsert",
+      "label": ".upsert()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".upsert()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hoststorage_load",
+      "label": ".load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".load()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_hoststorage_save",
+      "label": ".save()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".save()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_ishostprofile",
+      "label": "isHostProfile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "ishostprofile()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L67"
     },
     {
       "id": "clients_shared_src_core_hosts_memorycredentialstorage_delete",
@@ -2131,6 +2494,30 @@
       "norm_label": ".set()",
       "source_file": "clients/shared/src/core/hosts.ts",
       "source_location": "L34"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_test_memoryhoststorage_load",
+      "label": ".load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".load()",
+      "source_file": "clients/shared/src/core/hosts.test.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_test_memoryhoststorage_save",
+      "label": ".save()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": ".save()",
+      "source_file": "clients/shared/src/core/hosts.test.ts",
+      "source_location": "L8"
     },
     {
       "id": "clients_shared_src_core_platform_credentials_androidbridge_postmessage",
@@ -2253,144 +2640,12 @@
       "source_location": "L6"
     },
     {
-      "id": "clients_shared_src_core_host_url_normalizehosturl",
-      "label": "normalizeHostUrl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "normalizehosturl()",
-      "source_file": "clients/shared/src/core/host-url.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hostrepository_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L39"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hostrepository_delete",
-      "label": ".delete()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".delete()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L59"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hostrepository_list",
-      "label": ".list()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".list()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L40"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hostrepository_upsert",
-      "label": ".upsert()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".upsert()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L42"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hoststorage_load",
-      "label": ".load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".load()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hoststorage_save",
-      "label": ".save()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".save()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_test_memoryhoststorage_load",
-      "label": ".load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".load()",
-      "source_file": "clients/shared/src/core/hosts.test.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_test_memoryhoststorage_save",
-      "label": ".save()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": ".save()",
-      "source_file": "clients/shared/src/core/hosts.test.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_credentialstorage_get",
-      "label": ".get()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
-      "file_type": "code",
-      "norm_label": ".get()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_hostrepository_token",
-      "label": ".token()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
-      "file_type": "code",
-      "norm_label": ".token()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L64"
-    },
-    {
       "id": "test_remote_client_e2e_test_messages",
       "label": "messages()",
       "_callable": true,
       "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
       "norm_label": "messages()",
       "source_file": "test/remote-client-e2e.test.js",
@@ -2401,8 +2656,8 @@
       "label": "nativeSocket()",
       "_callable": true,
       "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
       "norm_label": "nativesocket()",
       "source_file": "test/remote-client-e2e.test.js",
@@ -2413,8 +2668,8 @@
       "label": "startServer()",
       "_callable": true,
       "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
       "norm_label": "startserver()",
       "source_file": "test/remote-client-e2e.test.js",
@@ -2425,12 +2680,96 @@
       "label": "startServer()",
       "_callable": true,
       "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
       "norm_label": "startserver()",
       "source_file": "test/server-protocol.test.js",
       "source_location": "L9"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline_bounded",
+      "label": "bounded()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "bounded()",
+      "source_file": "clients/shared/src/core/pipeline.ts",
+      "source_location": "L50"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline_initialpipelinestate",
+      "label": "initialPipelineState()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "initialpipelinestate()",
+      "source_file": "clients/shared/src/core/pipeline.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline_mapstatus",
+      "label": "mapStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "mapstatus()",
+      "source_file": "clients/shared/src/core/pipeline.ts",
+      "source_location": "L51"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline_reducepipeline",
+      "label": "reducePipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "reducepipeline()",
+      "source_file": "clients/shared/src/core/pipeline.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "clients_shared_src_app_dashboard",
+      "label": "Dashboard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "Dashboard",
+      "file_type": "code",
+      "norm_label": "dashboard()",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L103"
+    },
+    {
+      "id": "clients_shared_src_app_dashboard_submit",
+      "label": "submit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "Dashboard",
+      "file_type": "code",
+      "norm_label": "submit()",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L113"
+    },
+    {
+      "id": "clients_shared_src_app_dashboard_submitchat",
+      "label": "submitChat()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "Dashboard",
+      "file_type": "code",
+      "norm_label": "submitchat()",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L114"
     },
     {
       "id": "gen_icons_edgefunction",
@@ -2745,6 +3084,102 @@
       "source_location": "L9"
     },
     {
+      "id": "clients_shared_src_core_connection_socketlike_addeventlistener",
+      "label": ".addEventListener()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".addeventlistener()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "clients_shared_src_core_connection_socketlike_close",
+      "label": ".close()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".close()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "clients_shared_src_core_connection_socketlike_send",
+      "label": ".send()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".send()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "clients_shared_src_core_connection_test_mocksocket_close",
+      "label": ".close()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".close()",
+      "source_file": "clients/shared/src/core/connection.test.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "clients_shared_src_core_connection_test_mocksocket_message",
+      "label": ".message()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".message()",
+      "source_file": "clients/shared/src/core/connection.test.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "clients_shared_src_core_connection_test_mocksocket_open",
+      "label": ".open()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".open()",
+      "source_file": "clients/shared/src/core/connection.test.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "clients_shared_src_core_connection_test_mocksocket_send",
+      "label": ".send()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".send()",
+      "source_file": "clients/shared/src/core/connection.test.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "clients_shared_src_core_connection_triforceconnection_chat",
+      "label": ".chat()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": ".chat()",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L85"
+    },
+    {
       "id": "clients_shared_src_core_connection_triforceconnection_connect",
       "label": ".connect()",
       "_callable": true,
@@ -2790,7 +3225,7 @@
       "file_type": "code",
       "norm_label": ".handleclose()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L115"
+      "source_location": "L121"
     },
     {
       "id": "clients_shared_src_core_connection_triforceconnection_handlemessage",
@@ -2802,7 +3237,7 @@
       "file_type": "code",
       "norm_label": ".handlemessage()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L99"
+      "source_location": "L105"
     },
     {
       "id": "clients_shared_src_core_connection_triforceconnection_onevent",
@@ -2838,7 +3273,7 @@
       "file_type": "code",
       "norm_label": ".opensocket()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L84"
+      "source_location": "L90"
     },
     {
       "id": "clients_shared_src_core_connection_triforceconnection_run",
@@ -2862,187 +3297,52 @@
       "file_type": "code",
       "norm_label": ".transition()",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L123"
+      "source_location": "L129"
     },
     {
-      "id": "packages_protocol_src_index_iscompatibleprotocol",
-      "label": "isCompatibleProtocol()",
+      "id": "clients_shared_src_core_native_integration_installnativeintegration",
+      "label": "installNativeIntegration()",
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "protocol.test.js",
+      "community_name": "main.tsx",
       "file_type": "code",
-      "norm_label": "iscompatibleprotocol()",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L168"
+      "norm_label": "installnativeintegration()",
+      "source_file": "clients/shared/src/core/native-integration.ts",
+      "source_location": "L4"
     },
     {
-      "id": "packages_protocol_src_index_normalizepipelineconfig",
-      "label": "normalizePipelineConfig()",
-      "_callable": true,
+      "id": "folder_context",
+      "label": "folder-context.js",
       "_origin": "ast",
-      "community": 86,
-      "community_name": "protocol.test.js",
+      "community": 0,
+      "community_name": "server.js",
       "file_type": "code",
-      "norm_label": "normalizepipelineconfig()",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L57"
+      "norm_label": "folder-context.js",
+      "source_file": "folder-context.js",
+      "source_location": "L1"
     },
     {
-      "id": "packages_protocol_src_index_validateclientcommand",
-      "label": "validateClientCommand()",
-      "_callable": true,
+      "id": "folder_context_skip_dir",
+      "label": "SKIP_DIR",
       "_origin": "ast",
-      "community": 86,
-      "community_name": "protocol.test.js",
+      "community": 0,
+      "community_name": "server.js",
       "file_type": "code",
-      "norm_label": "validateclientcommand()",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L158"
+      "norm_label": "skip_dir",
+      "source_file": "folder-context.js",
+      "source_location": "L13"
     },
     {
-      "id": "packages_protocol_src_index_validateserverevent",
-      "label": "validateServerEvent()",
-      "_callable": true,
+      "id": "folder_context_text_ext",
+      "label": "TEXT_EXT",
       "_origin": "ast",
-      "community": 87,
-      "community_name": "connection.ts",
+      "community": 0,
+      "community_name": "server.js",
       "file_type": "code",
-      "norm_label": "validateserverevent()",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L163"
-    },
-    {
-      "id": "clients_shared_src_core_connection_test_mocksocket_close",
-      "label": ".close()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "MockSocket",
-      "file_type": "code",
-      "norm_label": ".close()",
-      "source_file": "clients/shared/src/core/connection.test.ts",
+      "norm_label": "text_ext",
+      "source_file": "folder-context.js",
       "source_location": "L8"
-    },
-    {
-      "id": "clients_shared_src_core_connection_test_mocksocket_message",
-      "label": ".message()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "MockSocket",
-      "file_type": "code",
-      "norm_label": ".message()",
-      "source_file": "clients/shared/src/core/connection.test.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "clients_shared_src_core_connection_test_mocksocket_open",
-      "label": ".open()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "MockSocket",
-      "file_type": "code",
-      "norm_label": ".open()",
-      "source_file": "clients/shared/src/core/connection.test.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "clients_shared_src_core_connection_test_mocksocket_send",
-      "label": ".send()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "MockSocket",
-      "file_type": "code",
-      "norm_label": ".send()",
-      "source_file": "clients/shared/src/core/connection.test.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_browserhoststorage_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 89,
-      "community_name": "BrowserHostStorage",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L23"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_browserhoststorage_load",
-      "label": ".load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 89,
-      "community_name": "BrowserHostStorage",
-      "file_type": "code",
-      "norm_label": ".load()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_browserhoststorage_save",
-      "label": ".save()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 89,
-      "community_name": "BrowserHostStorage",
-      "file_type": "code",
-      "norm_label": ".save()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_ishostprofile",
-      "label": "isHostProfile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 89,
-      "community_name": "BrowserHostStorage",
-      "file_type": "code",
-      "norm_label": "ishostprofile()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L67"
-    },
-    {
-      "id": "clients_shared_src_core_connection_socketlike_addeventlistener",
-      "label": ".addEventListener()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "SocketLike",
-      "file_type": "code",
-      "norm_label": ".addeventlistener()",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "clients_shared_src_core_connection_socketlike_close",
-      "label": ".close()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "SocketLike",
-      "file_type": "code",
-      "norm_label": ".close()",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "clients_shared_src_core_connection_socketlike_send",
-      "label": ".send()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "SocketLike",
-      "file_type": "code",
-      "norm_label": ".send()",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L10"
     },
     {
       "id": "models",
@@ -3196,7 +3496,18 @@
       "file_type": "code",
       "norm_label": "app",
       "source_file": "server.js",
-      "source_location": "L176"
+      "source_location": "L183"
+    },
+    {
+      "id": "server_chathistories",
+      "label": "chatHistories",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "chathistories",
+      "source_file": "server.js",
+      "source_location": "L36"
     },
     {
       "id": "server_dirname",
@@ -3207,7 +3518,7 @@
       "file_type": "code",
       "norm_label": "__dirname",
       "source_file": "server.js",
-      "source_location": "L18"
+      "source_location": "L20"
     },
     {
       "id": "server_fs_roots",
@@ -3218,7 +3529,7 @@
       "file_type": "code",
       "norm_label": "fs_roots",
       "source_file": "server.js",
-      "source_location": "L26"
+      "source_location": "L28"
     },
     {
       "id": "server_httpserver",
@@ -3229,7 +3540,7 @@
       "file_type": "code",
       "norm_label": "httpserver",
       "source_file": "server.js",
-      "source_location": "L298"
+      "source_location": "L305"
     },
     {
       "id": "server_ledger",
@@ -3240,7 +3551,7 @@
       "file_type": "code",
       "norm_label": "ledger",
       "source_file": "server.js",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "server_native_client_origins",
@@ -3251,7 +3562,7 @@
       "file_type": "code",
       "norm_label": "native_client_origins",
       "source_file": "server.js",
-      "source_location": "L55"
+      "source_location": "L62"
     },
     {
       "id": "server_runregistry",
@@ -3262,7 +3573,7 @@
       "file_type": "code",
       "norm_label": "runregistry",
       "source_file": "server.js",
-      "source_location": "L30"
+      "source_location": "L32"
     },
     {
       "id": "server_servercapabilities",
@@ -3273,7 +3584,7 @@
       "file_type": "code",
       "norm_label": "servercapabilities",
       "source_file": "server.js",
-      "source_location": "L32"
+      "source_location": "L39"
     },
     {
       "id": "server_shutdown_grace_ms",
@@ -3284,7 +3595,7 @@
       "file_type": "code",
       "norm_label": "shutdown_grace_ms",
       "source_file": "server.js",
-      "source_location": "L383"
+      "source_location": "L425"
     },
     {
       "id": "server_transcripts_dir",
@@ -3295,7 +3606,7 @@
       "file_type": "code",
       "norm_label": "transcripts_dir",
       "source_file": "server.js",
-      "source_location": "L19"
+      "source_location": "L21"
     },
     {
       "id": "server_wss",
@@ -3306,7 +3617,7 @@
       "file_type": "code",
       "norm_label": "wss",
       "source_file": "server.js",
-      "source_location": "L299"
+      "source_location": "L306"
     },
     {
       "id": "test_orchestrator_test",
@@ -4209,6 +4520,39 @@
       "norm_label": "server-protocol.test.js",
       "source_file": "test/server-protocol.test.js",
       "source_location": "L1"
+    },
+    {
+      "id": "test_verified_chat_test",
+      "label": "verified-chat.test.js",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "verified-chat.test.js",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "verified_chat",
+      "label": "verified-chat.js",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "verified-chat.js",
+      "source_file": "verified-chat.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "verified_chat_chat_prompts",
+      "label": "CHAT_PROMPTS",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "agent.js",
+      "file_type": "code",
+      "norm_label": "chat_prompts",
+      "source_file": "verified-chat.js",
+      "source_location": "L8"
     },
     {
       "id": "clients_shared_package_devdependencies",
@@ -7469,6 +7813,17 @@
       "source_location": "L85"
     },
     {
+      "id": "packages_protocol_src_index_capabilities",
+      "label": "capabilities",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "capabilities",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L173"
+    },
+    {
       "id": "packages_protocol_src_index_capabilitiescommandschema",
       "label": "capabilitiesCommandSchema",
       "_origin": "ast",
@@ -7632,6 +7987,28 @@
       "norm_label": "subscribecommandschema",
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L75"
+    },
+    {
+      "id": "packages_protocol_test_protocol_test",
+      "label": "protocol.test.js",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "protocol.test.js",
+      "source_file": "packages/protocol/test/protocol.test.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "packages_protocol_test_protocol_test_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "packages/protocol/test/protocol.test.js",
+      "source_location": "L8"
     },
     {
       "id": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest",
@@ -8459,7 +8836,7 @@
       "file_type": "code",
       "norm_label": "connectionmessages",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "clients_shared_src_app_defaultconfig",
@@ -8470,7 +8847,7 @@
       "file_type": "code",
       "norm_label": "defaultconfig",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "clients_shared_src_app_roles",
@@ -8481,7 +8858,7 @@
       "file_type": "code",
       "norm_label": "roles",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "clients_shared_src_app_test",
@@ -8495,58 +8872,25 @@
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_core_native_integration",
-      "label": "native-integration.ts",
+      "id": "clients_shared_src_core_chat",
+      "label": "chat.ts",
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "native-integration.ts",
-      "source_file": "clients/shared/src/core/native-integration.ts",
+      "norm_label": "chat.ts",
+      "source_file": "clients/shared/src/core/chat.ts",
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_core_pipeline",
-      "label": "pipeline.ts",
+      "id": "clients_shared_src_core_chat_test",
+      "label": "chat.test.ts",
       "_origin": "ast",
       "community": 60,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "pipeline.ts",
-      "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "clients_shared_src_core_pipeline_emptyusage",
-      "label": "emptyUsage",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "emptyusage",
-      "source_file": "clients/shared/src/core/pipeline.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "clients_shared_src_core_pipeline_test",
-      "label": "pipeline.test.ts",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "pipeline.test.ts",
-      "source_file": "clients/shared/src/core/pipeline.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "clients_shared_src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "clients/shared/src/main.tsx",
+      "norm_label": "chat.test.ts",
+      "source_file": "clients/shared/src/core/chat.test.ts",
       "source_location": "L1"
     },
     {
@@ -8570,6 +8914,39 @@
       "norm_label": "execfileasync",
       "source_file": "test/install-service.test.js",
       "source_location": "L10"
+    },
+    {
+      "id": "clients_shared_src_core_host_url",
+      "label": "host-url.ts",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "host-url.ts",
+      "source_file": "clients/shared/src/core/host-url.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "clients_shared_src_core_hosts",
+      "label": "hosts.ts",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "hosts.ts",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "clients_shared_src_core_hosts_test",
+      "label": "hosts.test.ts",
+      "_origin": "ast",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
+      "file_type": "code",
+      "norm_label": "hosts.test.ts",
+      "source_file": "clients/shared/src/core/hosts.test.ts",
+      "source_location": "L1"
     },
     {
       "id": "clients_shared_src_core_platform_credentials",
@@ -8605,44 +8982,11 @@
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_core_host_url",
-      "label": "host-url.ts",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "host-url.ts",
-      "source_file": "clients/shared/src/core/host-url.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "clients_shared_src_core_hosts",
-      "label": "hosts.ts",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "hosts.ts",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_test",
-      "label": "hosts.test.ts",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "hosts.ts",
-      "file_type": "code",
-      "norm_label": "hosts.test.ts",
-      "source_file": "clients/shared/src/core/hosts.test.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "test_remote_client_e2e_test",
       "label": "remote-client-e2e.test.js",
       "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
       "norm_label": "remote-client-e2e.test.js",
       "source_file": "test/remote-client-e2e.test.js",
@@ -8652,8 +8996,8 @@
       "id": "test_remote_client_e2e_test_config",
       "label": "config",
       "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
       "norm_label": "config",
       "source_file": "test/remote-client-e2e.test.js",
@@ -8663,12 +9007,45 @@
       "id": "test_remote_client_e2e_test_nativeorigins",
       "label": "nativeOrigins",
       "_origin": "ast",
-      "community": 64,
-      "community_name": "remote-client-e2e.test.js",
+      "community": 62,
+      "community_name": "platform-credentials.ts",
       "file_type": "code",
       "norm_label": "nativeorigins",
       "source_file": "test/remote-client-e2e.test.js",
       "source_location": "L8"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline",
+      "label": "pipeline.ts",
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "pipeline.ts",
+      "source_file": "clients/shared/src/core/pipeline.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline_emptyusage",
+      "label": "emptyUsage",
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "emptyusage",
+      "source_file": "clients/shared/src/core/pipeline.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "clients_shared_src_core_pipeline_test",
+      "label": "pipeline.test.ts",
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "pipeline.ts",
+      "file_type": "code",
+      "norm_label": "pipeline.test.ts",
+      "source_file": "clients/shared/src/core/pipeline.test.ts",
+      "source_location": "L1"
     },
     {
       "id": "clients_desktop_src_tauri_gen_schemas_desktop_schema_application_anyof",
@@ -10569,6 +10946,17 @@
       "version": "0.1.0"
     },
     {
+      "id": "clients_shared_src_core_connection_test",
+      "label": "connection.test.ts",
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "TriforceConnection",
+      "file_type": "code",
+      "norm_label": "connection.test.ts",
+      "source_file": "clients/shared/src/core/connection.test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "docker_entrypoint",
       "label": "entrypoint.sh",
       "_origin": "ast",
@@ -10599,48 +10987,26 @@
       "source_location": "L1"
     },
     {
-      "id": "packages_protocol_src_index_capabilities",
-      "label": "capabilities",
+      "id": "clients_shared_src_core_native_integration",
+      "label": "native-integration.ts",
       "_origin": "ast",
       "community": 86,
-      "community_name": "protocol.test.js",
+      "community_name": "main.tsx",
       "file_type": "code",
-      "norm_label": "capabilities",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L173"
-    },
-    {
-      "id": "packages_protocol_src_index_protocol_version",
-      "label": "PROTOCOL_VERSION",
-      "_origin": "ast",
-      "community": 86,
-      "community_name": "protocol.test.js",
-      "file_type": "code",
-      "norm_label": "protocol_version",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L3"
-    },
-    {
-      "id": "packages_protocol_test_protocol_test",
-      "label": "protocol.test.js",
-      "_origin": "ast",
-      "community": 86,
-      "community_name": "protocol.test.js",
-      "file_type": "code",
-      "norm_label": "protocol.test.js",
-      "source_file": "packages/protocol/test/protocol.test.js",
+      "norm_label": "native-integration.ts",
+      "source_file": "clients/shared/src/core/native-integration.ts",
       "source_location": "L1"
     },
     {
-      "id": "packages_protocol_test_protocol_test_config",
-      "label": "config",
+      "id": "clients_shared_src_main",
+      "label": "main.tsx",
       "_origin": "ast",
       "community": 86,
-      "community_name": "protocol.test.js",
+      "community_name": "main.tsx",
       "file_type": "code",
-      "norm_label": "config",
-      "source_file": "packages/protocol/test/protocol.test.js",
-      "source_location": "L8"
+      "norm_label": "main.tsx",
+      "source_file": "clients/shared/src/main.tsx",
+      "source_location": "L1"
     },
     {
       "id": "clients_shared_src_core_connection",
@@ -10654,15 +11020,15 @@
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_core_connection_test",
-      "label": "connection.test.ts",
+      "id": "packages_protocol_src_index_protocol_version",
+      "label": "PROTOCOL_VERSION",
       "_origin": "ast",
-      "community": 88,
-      "community_name": "MockSocket",
+      "community": 87,
+      "community_name": "connection.ts",
       "file_type": "code",
-      "norm_label": "connection.test.ts",
-      "source_file": "clients/shared/src/core/connection.test.ts",
-      "source_location": "L1"
+      "norm_label": "protocol_version",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L3"
     },
     {
       "id": "agents_rules_graphify",
@@ -10823,7 +11189,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L173",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -10835,7 +11201,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L204",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -10847,7 +11213,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L217",
+      "source_location": "L228",
       "weight": 1.0
     },
     {
@@ -10859,7 +11225,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L219",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -10871,7 +11237,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L370",
+      "source_location": "L381",
       "weight": 1.0
     },
     {
@@ -10883,7 +11249,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L371",
+      "source_location": "L382",
       "weight": 1.0
     },
     {
@@ -10895,7 +11261,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L247",
+      "source_location": "L258",
       "weight": 1.0
     },
     {
@@ -10907,7 +11273,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L248",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -10919,7 +11285,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L355",
+      "source_location": "L366",
       "weight": 1.0
     },
     {
@@ -10931,7 +11297,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L355",
+      "source_location": "L366",
       "weight": 1.0
     },
     {
@@ -10943,7 +11309,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L356",
+      "source_location": "L367",
       "weight": 1.0
     },
     {
@@ -10955,7 +11321,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L231",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -10967,7 +11333,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L232",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -10979,7 +11345,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L233",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -10991,7 +11357,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "agent.js",
-      "source_location": "L136",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "agent_ask",
+      "target": "agent_agent",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "agent.js",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "agent_ask",
+      "target": "agent_agent_call",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "agent.js",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -11363,7 +11753,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -11375,7 +11765,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -11387,7 +11777,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L26",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app_app",
+      "target": "clients_shared_src_core_chat_appendusermessage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -11399,7 +11801,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -11411,7 +11813,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L52",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app_app_connecthost",
+      "target": "clients_shared_src_core_chat_reducechat",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -11471,7 +11885,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L117",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -11483,7 +11897,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L120",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -11495,7 +11909,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L102",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -11507,43 +11921,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L111",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
-      "target": "clients_shared_src_core_connection_socketlike_addeventlistener",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L88",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
-      "target": "clients_shared_src_core_connection_triforceconnection_transition",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L90",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
-      "target": "clients_shared_src_core_connection_socketlike_send",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L91",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -11555,7 +11933,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
+      "target": "clients_shared_src_core_connection_socketlike_addeventlistener",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
+      "target": "clients_shared_src_core_connection_triforceconnection_transition",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection_opensocket",
+      "target": "clients_shared_src_core_connection_socketlike_send",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -11712,6 +12126,18 @@
       "context": "call",
       "source_file": "clients/shared/src/core/platform-credentials.ts",
       "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "folder_context_readfoldercontext",
+      "target": "folder_context_withinroot",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "folder-context.js",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -12131,7 +12557,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L217",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -12143,7 +12569,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L217",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -12155,7 +12581,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L217",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -12167,7 +12593,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L125",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -12179,7 +12605,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L428",
+      "source_location": "L470",
       "weight": 1.0
     },
     {
@@ -12492,6 +12918,78 @@
       "context": "call",
       "source_file": "usage.js",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat_runverifiedchat",
+      "target": "agent_ask",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "verified-chat.js",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat_runverifiedchat",
+      "target": "verified_chat_cliagentconfig",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "verified-chat.js",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat_runverifiedchat",
+      "target": "verified_chat_parseassessment",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "verified-chat.js",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat_runverifiedchat",
+      "target": "verified_chat_normalizepool",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "verified-chat.js",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat_runverifiedchat",
+      "target": "verified_chat_tokensof",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "verified-chat.js",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat_runverifiedchat",
+      "target": "verified_chat_renderhistory",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "verified-chat.js",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -13876,7 +14374,7 @@
     },
     {
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage",
+      "target": "clients_shared_src_core_chat_appendusermessage",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13884,6 +14382,54 @@
       "context": "import",
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_core_chat_chatstate",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_core_chat_initialchatstate",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_core_chat_reducechat",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_core_platform_credentials_createcredentialstorage",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -13896,6 +14442,42 @@
       "context": "import",
       "source_file": "clients/shared/src/App.test.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat_test",
+      "target": "clients_shared_src_core_chat_appendusermessage",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/core/chat.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat_test",
+      "target": "clients_shared_src_core_chat_initialchatstate",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/core/chat.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat_test",
+      "target": "clients_shared_src_core_chat_reducechat",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/core/chat.test.ts",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -14524,7 +15106,19 @@
     },
     {
       "source": "server",
-      "target": "models_allowed_models",
+      "target": "verified_chat_runverifiedchat",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "folder_context_readfoldercontext",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14532,6 +15126,18 @@
       "context": "import",
       "source_file": "server.js",
       "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "models_allowed_models",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -14543,7 +15149,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -14555,7 +15161,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -14567,7 +15173,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -14823,6 +15429,30 @@
       "weight": 1.0
     },
     {
+      "source": "test_verified_chat_test",
+      "target": "verified_chat_chat_prompts",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "test_verified_chat_test",
+      "target": "verified_chat_runverifiedchat",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "test_workspace_test",
       "target": "workspace_createworkspace",
       "relation": "imports",
@@ -14895,6 +15525,30 @@
       "weight": 1.0
     },
     {
+      "source": "verified_chat",
+      "target": "agent_ask",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "verified-chat.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "router_cli_ids",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "verified-chat.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "cli",
       "target": "cli_input",
       "relation": "imports_from",
@@ -14956,7 +15610,7 @@
     },
     {
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_core_platform_credentials",
+      "target": "clients_shared_src_core_chat",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14964,6 +15618,18 @@
       "context": "import",
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_core_platform_credentials",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -14976,6 +15642,44 @@
       "context": "import",
       "source_file": "clients/shared/src/App.test.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat",
+      "target": "packages_protocol_src_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L1",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat_test",
+      "target": "clients_shared_src_core_chat",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/core/chat.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat_test",
+      "target": "packages_protocol_src_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "clients/shared/src/core/chat.test.ts",
+      "source_location": "L3",
+      "type_only": true,
       "weight": 1.0
     },
     {
@@ -15305,7 +16009,19 @@
     },
     {
       "source": "server",
-      "target": "models",
+      "target": "verified_chat",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "folder_context",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15317,6 +16033,18 @@
     },
     {
       "source": "server",
+      "target": "models",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
       "target": "workspace",
       "relation": "imports_from",
       "_origin": "ast",
@@ -15324,7 +16052,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -15460,6 +16188,18 @@
       "weight": 1.0
     },
     {
+      "source": "test_verified_chat_test",
+      "target": "verified_chat",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "test_workspace_test",
       "target": "workspace",
       "relation": "imports_from",
@@ -15481,6 +16221,30 @@
       "context": "import",
       "source_file": "usage.js",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "agent",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "verified-chat.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "router",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "verified-chat.js",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -15795,13 +16559,24 @@
     },
     {
       "source": "agent",
+      "target": "agent_ask",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "agent.js",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "agent",
       "target": "agent_agent",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L130",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -18732,68 +19507,13 @@
     },
     {
       "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_buildtriad",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L18",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_defaultconfig",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_app",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_hostscreen",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L69",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_app",
-      "target": "clients_shared_src_app_roles",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_app",
       "target": "clients_shared_src_app_connectionmessages",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -18804,7 +19524,62 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L92",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_app_buildtriad",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_app_defaultconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_app_app",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_app_hostscreen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app",
+      "target": "clients_shared_src_app_roles",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -18815,7 +19590,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L38",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -18826,7 +19601,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L47",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -18837,7 +19612,95 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L100",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app_dashboard",
+      "target": "clients_shared_src_app_dashboard_submitchat",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat",
+      "target": "clients_shared_src_core_chat_chatstate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat",
+      "target": "clients_shared_src_core_chat_initialchatstate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat",
+      "target": "clients_shared_src_core_chat_appendusermessage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat",
+      "target": "clients_shared_src_core_chat_chatrole",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat",
+      "target": "clients_shared_src_core_chat_reducechat",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat",
+      "target": "clients_shared_src_core_chat_chatentry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/chat.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_chat_test",
+      "target": "clients_shared_src_core_chat_test_ev",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/chat.test.ts",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -19784,6 +20647,50 @@
       "confidence_score": 1.0,
       "source_file": "DOCKER.md",
       "source_location": "L133",
+      "weight": 1.0
+    },
+    {
+      "source": "folder_context",
+      "target": "folder_context_skip_dir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "folder-context.js",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "folder_context",
+      "target": "folder_context_withinroot",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "folder-context.js",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "folder_context",
+      "target": "folder_context_readfoldercontext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "folder-context.js",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "folder_context",
+      "target": "folder_context_text_ext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "folder-context.js",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -21983,7 +22890,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L111",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -21994,7 +22901,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L176",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -22005,18 +22912,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L18",
-      "weight": 1.0
-    },
-    {
-      "source": "server",
-      "target": "server_transcripts_dir",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server.js",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -22027,7 +22923,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L194",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -22038,7 +22934,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L200",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "server_transcripts_dir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -22049,7 +22956,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L204",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -22060,7 +22967,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L209",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -22071,7 +22978,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L216",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -22082,7 +22989,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L220",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -22093,18 +23000,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
-      "source": "server",
-      "target": "server_ledger",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server.js",
-      "source_location": "L29",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -22115,7 +23011,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L298",
+      "source_location": "L305",
       "weight": 1.0
     },
     {
@@ -22126,7 +23022,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L299",
+      "source_location": "L306",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "server_ledger",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -22137,7 +23044,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L30",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "server_chathistories",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -22148,7 +23066,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L32",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -22159,7 +23077,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L383",
+      "source_location": "L425",
       "weight": 1.0
     },
     {
@@ -22170,18 +23088,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L390",
-      "weight": 1.0
-    },
-    {
-      "source": "server",
-      "target": "server_probesandbox",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server.js",
-      "source_location": "L40",
+      "source_location": "L432",
       "weight": 1.0
     },
     {
@@ -22192,7 +23099,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L408",
+      "source_location": "L450",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
+      "target": "server_probesandbox",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server.js",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -22203,7 +23121,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L55",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -22214,7 +23132,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L65",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -22490,6 +23408,50 @@
       "confidence_score": 1.0,
       "source_file": "test/subscription-ledger.test.js",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "test_verified_chat_test",
+      "target": "test_verified_chat_test_record",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "test_verified_chat_test",
+      "target": "test_verified_chat_test_notelimit",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
+      "source": "test_verified_chat_test",
+      "target": "test_verified_chat_test_collect",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "test_verified_chat_test",
+      "target": "test_verified_chat_test_scriptedask",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -22801,6 +23763,83 @@
       "weight": 1.0
     },
     {
+      "source": "verified_chat",
+      "target": "verified_chat_cliagentconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verified-chat.js",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "verified_chat_normalizepool",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verified-chat.js",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "verified_chat_renderhistory",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verified-chat.js",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "verified_chat_parseassessment",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verified-chat.js",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "verified_chat_tokensof",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verified-chat.js",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "verified_chat_runverifiedchat",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verified-chat.js",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "verified_chat",
+      "target": "verified_chat_chat_prompts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verified-chat.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
       "source": "workspace",
       "target": "workspace_getworkspacediff",
       "relation": "contains",
@@ -23070,7 +24109,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L131",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -23081,7 +24120,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L139",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -23092,7 +24131,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L150",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -23103,7 +24142,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L229",
+      "source_location": "L240",
       "weight": 1.0
     },
     {
@@ -23114,7 +24153,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L237",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
@@ -23125,7 +24164,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L252",
+      "source_location": "L263",
       "weight": 1.0
     },
     {
@@ -23136,7 +24175,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L342",
+      "source_location": "L353",
       "weight": 1.0
     },
     {
@@ -23147,7 +24186,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L352",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -23158,7 +24197,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "agent.js",
-      "source_location": "L360",
+      "source_location": "L371",
       "weight": 1.0
     },
     {
@@ -23438,13 +24477,24 @@
     },
     {
       "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_handlemessage",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
       "target": "clients_shared_src_core_connection_triforceconnection_handleclose",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L115",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -23455,7 +24505,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L123",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -23526,24 +24576,24 @@
     },
     {
       "source": "clients_shared_src_core_connection_triforceconnection",
+      "target": "clients_shared_src_core_connection_triforceconnection_chat",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "clients/shared/src/core/connection.ts",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_core_connection_triforceconnection",
       "target": "clients_shared_src_core_connection_triforceconnection_opensocket",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L84",
-      "weight": 1.0
-    },
-    {
-      "source": "clients_shared_src_core_connection_triforceconnection",
-      "target": "clients_shared_src_core_connection_triforceconnection_handlemessage",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "clients/shared/src/core/connection.ts",
-      "source_location": "L99",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -24278,7 +25328,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "agent.js",
-      "source_location": "L248",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -24290,7 +25340,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "agent.js",
-      "source_location": "L356",
+      "source_location": "L367",
       "weight": 1.0
     },
     {
@@ -24302,7 +25352,19 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "clients/shared/src/App.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "clients_shared_src_app_app",
+      "target": "clients_shared_src_core_chat_initialchatstate",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "clients/shared/src/App.tsx",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -24367,5 +25429,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "398df59d616f173c49e6ad04e817857d2acae641"
+  "built_at_commit": "67ecd4260b9efcf6329312bde9e3cc6db2fc05a3"
 }

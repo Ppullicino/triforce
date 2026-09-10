@@ -81,6 +81,12 @@ export class TriforceConnection {
     this.socket.send(JSON.stringify({ type: 'run', protocolVersion: PROTOCOL_VERSION, task, config, mode }));
   }
 
+  /** Mode 3 — verified chat. Send one message; the server drafts, cross-checks and reconciles. */
+  chat(message: string, options: { conversationId?: string; folder?: string; fast?: boolean; deliberate?: boolean } = {}) {
+    if (!this.socket || this.state !== 'connected') throw new Error('Connect to a Triforce host first');
+    this.socket.send(JSON.stringify({ type: 'chat', protocolVersion: PROTOCOL_VERSION, message, ...options }));
+  }
+
   private openSocket(url: string) {
     const protocols = this.authToken ? ['triforce.v1', `triforce.auth.${encodeURIComponent(this.authToken)}`] : ['triforce.v1'];
     const socket = this.createSocket(url, protocols);
