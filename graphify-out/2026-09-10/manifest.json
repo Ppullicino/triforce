@@ -12,9 +12,9 @@
     "semantic_hash": ""
   },
   "agent.js": {
-    "mtime": 1789024593.779076,
-    "seen": 1789024727.422055,
-    "ast_hash": "affa63cbe3aba5641b717d166aaa7f42",
+    "mtime": 1789024876.2450504,
+    "seen": 1789025387.3488314,
+    "ast_hash": "28efe2612c9a836d20f9e10d678994e3",
     "semantic_hash": ""
   },
   "gen-icons.mjs": {
@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "models.config.json": {
-    "mtime": 1789024685.0891328,
-    "seen": 1789024727.4221132,
+    "mtime": 1789025298.9580245,
+    "seen": 1789025387.3488898,
     "ast_hash": "1eabf143d14555356485ded8fdd6defe",
     "semantic_hash": ""
   },
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "server.js": {
-    "mtime": 1789024593.780076,
-    "seen": 1789024727.4221356,
-    "ast_hash": "c56781df816b919077ccf2690a0dfebb",
+    "mtime": 1789024981.2788053,
+    "seen": 1789025387.3489087,
+    "ast_hash": "7eae9af06dba3c1a265036162650c606",
     "semantic_hash": ""
   },
   "usage.js": {
@@ -102,9 +102,9 @@
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1788955806.2658854,
-    "seen": 1788956022.6928737,
-    "ast_hash": "afb27a108f5189d3639f620da5a86c12",
+    "mtime": 1789025159.2560048,
+    "seen": 1789025387.348977,
+    "ast_hash": "90d71332d0dfd994c1bde6fa465810d2",
     "semantic_hash": ""
   },
   "triforce-phase0-prompt.md": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "clients/shared/src/App.tsx": {
-    "mtime": 1789024661.5236342,
-    "seen": 1789024727.4220874,
-    "ast_hash": "0c4b84f6619a6c94bca9af9aee62b132",
+    "mtime": 1789025263.297785,
+    "seen": 1789025387.3488622,
+    "ast_hash": "b741f75001e5118c4a6f431fa2cbd5b9",
     "semantic_hash": ""
   },
   "clients/shared/src/main.tsx": {
@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "test/server-protocol.test.js": {
-    "mtime": 1789024593.780076,
-    "seen": 1789024727.4221492,
-    "ast_hash": "e1621a6c0190c7b86846d3ab7e1e33bc",
+    "mtime": 1789025065.9649963,
+    "seen": 1789025387.348921,
+    "ast_hash": "4d07a6966b56c95913ea4fc03eaaf515",
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.test.ts": {
@@ -360,9 +360,9 @@
     "semantic_hash": ""
   },
   "clients/shared/src/core/connection.ts": {
-    "mtime": 1788511604.909215,
-    "seen": 1788956022.6928065,
-    "ast_hash": "ad02b66186f55fd8aba28e4cd699bb12",
+    "mtime": 1789025177.3846178,
+    "seen": 1789025387.3488674,
+    "ast_hash": "4db44fa7acba2a6463db53dbc0fa3d0d",
     "semantic_hash": ""
   },
   "clients/shared/src/core/host-url.ts": {
@@ -993,6 +993,36 @@
     "mtime": 1789024430.3695552,
     "seen": 1789024727.4221501,
     "ast_hash": "000a3cd7e40517322561ccdbe5e259ca",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/chat.test.ts": {
+    "mtime": 1789025206.6559932,
+    "seen": 1789025387.3488638,
+    "ast_hash": "4a575c0e3bbc24c68933dbbc6e986587",
+    "semantic_hash": ""
+  },
+  "clients/shared/src/core/chat.ts": {
+    "mtime": 1789025196.076219,
+    "seen": 1789025387.348865,
+    "ast_hash": "03fc579dbd5fdd818d0c334838a66f3c",
+    "semantic_hash": ""
+  },
+  "folder-context.js": {
+    "mtime": 1789024957.276318,
+    "seen": 1789025387.3488865,
+    "ast_hash": "a993c228f0b55e0026b563fab8b3ef4a",
+    "semantic_hash": ""
+  },
+  "test/verified-chat.test.js": {
+    "mtime": 1789025041.106527,
+    "seen": 1789025387.3489232,
+    "ast_hash": "300eda16aecec3661e517755eb1968e8",
+    "semantic_hash": ""
+  },
+  "verified-chat.js": {
+    "mtime": 1789024914.6412294,
+    "seen": 1789025387.3489268,
+    "ast_hash": "e465d335e0a9c3b130f65005e6e771c2",
     "semantic_hash": ""
   }
 }

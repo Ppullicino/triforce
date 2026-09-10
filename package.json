@@ -16,7 +16,7 @@
     "agent.js",
     "cli.js",
     "cli-input.js",
-    "folder-context.js",
+    "fs-browser.js",
     "models.config.json",
     "orchestrator.js",
     "public/",

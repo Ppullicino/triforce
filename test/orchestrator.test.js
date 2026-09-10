@@ -37,42 +37,53 @@ test('runArchitect passes the Mode 1 task to the architect agent', async () => {
   assert.deepEqual(calls, [task]);
 });
 
-test('executePipeline Mode 1 executes all stages and completes successfully', async () => {
+const BUILD_MANIFEST = JSON.stringify({
+  files: [
+    { path: 'index.js', content: 'export const two = 1 + 1;\n' },
+    { path: 'test.js', content: "import { two } from './index.js';\nif (two !== 2) process.exit(1);\n" },
+  ],
+  testFile: 'test.js',
+});
+
+async function tmpWorkspacesDir() {
+  const { mkdtemp } = await import('node:fs/promises');
+  const { tmpdir } = await import('node:os');
+  return mkdtemp(join(tmpdir(), 'triforce-build-test-'));
+}
+
+function buildConfig(extra = {}) {
+  return {
+    promptDesigner: { provider: 'claude-cli', model: 'claude-cli-default' },
+    coder: { provider: 'claude-cli', model: 'claude-cli-default' },
+    supervisor: { provider: 'claude-cli', model: 'claude-cli-default' },
+    ...extra,
+  };
+}
+
+test('executePipeline Mode 1 runs the structured-build loop and completes successfully', async () => {
   const originalCall = Agent.prototype.call;
-  Agent.prototype.call = async function(prompt) {
-    if (this.systemPrompt.includes('Architect')) {
-      return { text: '1. plan', usage: { inputTokens: 5, outputTokens: 10 } };
-    }
-    if (this.systemPrompt.includes('Developer')) {
-      return { text: 'console.log("hello")', usage: { inputTokens: 10, outputTokens: 20 } };
-    }
-    if (this.systemPrompt.includes('Reviewer')) {
-      return { text: 'VERDICT: PASS\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
-    }
+  Agent.prototype.call = async function() {
+    const p = this.systemPrompt;
+    if (p.includes('Prompt Designer')) return { text: 'SPEC: expose two = 2', usage: { inputTokens: 5, outputTokens: 10 } };
+    if (p.includes('reviewing an implementation spec')) return { text: 'VERDICT: APPROVE\nFEEDBACK: ok', usage: { inputTokens: 3, outputTokens: 2 } };
+    if (p.includes('You are the Coder')) return { text: BUILD_MANIFEST, usage: { inputTokens: 10, outputTokens: 20 } };
+    if (p.includes('reviewing generated code')) return { text: 'VERDICT: PASS\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
     return { text: 'default', usage: { inputTokens: 1, outputTokens: 1 } };
   };
 
+  const workspacesDir = await tmpWorkspacesDir();
   try {
     const events = [];
-    const config = {
-      architect: { provider: 'claude-cli', model: 'claude-cli-default' },
-      developer: { provider: 'claude-cli', model: 'claude-cli-default' },
-      reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
-    };
-
     await executePipeline(
       'some task',
-      config,
+      buildConfig(),
       1,
-      {
-        packageRoot: join(__dirname, '..'),
-      },
-      (event) => {
-        events.push(event);
-      }
+      { packageRoot: join(__dirname, '..'), workspacesDir, dependencyRoot: join(__dirname, '..', 'node_modules') },
+      (event) => { events.push(event); }
     );
 
     const types = events.map(e => e.type);
+    assert.ok(types.includes('diff'), 'emits diff events');
     assert.ok(types.includes('status'), 'emits status events');
     assert.ok(types.includes('output'), 'emits output events');
     assert.ok(types.includes('sandbox'), 'emits sandbox result');
@@ -84,86 +95,71 @@ test('executePipeline Mode 1 executes all stages and completes successfully', as
     assert.equal(doneEvent.passed, true, 'pipeline finishes successfully');
   } finally {
     Agent.prototype.call = originalCall;
+    await import('node:fs/promises').then(fs => fs.rm(workspacesDir, { recursive: true, force: true }));
   }
 });
 
 test('executePipeline cost records surface usageUnknown only for unknown CLI usage', async () => {
   const originalCall = Agent.prototype.call;
-  Agent.prototype.call = async function(prompt) {
-    if (this.systemPrompt.includes('Architect')) {
-      return { text: '1. plan', usage: { inputTokens: 12, outputTokens: 34 } };
-    }
-    if (this.systemPrompt.includes('Developer')) {
-      return { text: 'console.log("hello")', usage: { inputTokens: 0, outputTokens: 0, usageUnknown: true } };
-    }
-    return { text: 'VERDICT: PASS\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
+  Agent.prototype.call = async function() {
+    const p = this.systemPrompt;
+    if (p.includes('Prompt Designer')) return { text: 'spec', usage: { inputTokens: 12, outputTokens: 34 } };
+    if (p.includes('reviewing an implementation spec')) return { text: 'VERDICT: APPROVE', usage: { inputTokens: 0, outputTokens: 0, usageUnknown: true } };
+    if (p.includes('You are the Coder')) return { text: BUILD_MANIFEST, usage: { inputTokens: 10, outputTokens: 20 } };
+    if (p.includes('reviewing generated code')) return { text: 'VERDICT: PASS', usage: { inputTokens: 15, outputTokens: 5 } };
+    return { text: 'default', usage: { inputTokens: 1, outputTokens: 1 } };
   };
 
+  const workspacesDir = await tmpWorkspacesDir();
   try {
     const events = [];
-    const config = {
-      architect: { provider: 'claude-cli', model: 'claude-cli-default' },
-      developer: { provider: 'agy-cli', model: 'agy-cli-default' },
-      reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
-    };
-
-    await executePipeline('some task', config, 1, { packageRoot: join(__dirname, '..') }, event => events.push(event));
+    // promptDesigner -> tracked as 'architect' (known usage); supervisor prompt-check -> 'reviewer' (usageUnknown)
+    await executePipeline('some task', buildConfig({ supervisor: { provider: 'agy-cli', model: 'agy-cli-default' } }), 1,
+      { packageRoot: join(__dirname, '..'), workspacesDir, dependencyRoot: join(__dirname, '..', 'node_modules') },
+      event => events.push(event));
 
     const costEvent = events.find(e => e.type === 'cost');
     assert.ok(costEvent, 'emits cost event');
     const architectRecord = costEvent.records.find(r => r.role === 'architect');
-    const developerRecord = costEvent.records.find(r => r.role === 'developer');
+    const reviewerRecord = costEvent.records.find(r => r.role === 'reviewer' && r.usageUnknown);
     assert.ok(architectRecord.inputTokens > 0 && architectRecord.outputTokens > 0, 'known usage has non-zero tokens');
     assert.ok(!('usageUnknown' in architectRecord), 'known usage carries no usageUnknown flag');
-    assert.equal(developerRecord.usageUnknown, true, 'unknown CLI usage is flagged in cost records');
+    assert.ok(reviewerRecord, 'unknown CLI usage is flagged in cost records');
   } finally {
     Agent.prototype.call = originalCall;
+    await import('node:fs/promises').then(fs => fs.rm(workspacesDir, { recursive: true, force: true }));
   }
 });
 
-test('executePipeline Mode 2 executes loops and completes successfully', async () => {
+test('executePipeline Mode 1 loops the Coder until the Supervisor passes', async () => {
   const originalCall = Agent.prototype.call;
-  Agent.prototype.call = async function(prompt) {
-    if (this.systemPrompt.includes('Designer')) {
-      return { text: 'spec', usage: { inputTokens: 5, outputTokens: 10 } };
+  let coderCalls = 0;
+  Agent.prototype.call = async function() {
+    const p = this.systemPrompt;
+    if (p.includes('Prompt Designer')) return { text: 'spec', usage: { inputTokens: 5, outputTokens: 10 } };
+    if (p.includes('reviewing an implementation spec')) return { text: 'VERDICT: APPROVE', usage: { inputTokens: 3, outputTokens: 2 } };
+    if (p.includes('You are the Coder')) {
+      coderCalls++;
+      return { text: BUILD_MANIFEST, usage: { inputTokens: 10, outputTokens: 20 } };
     }
-    if (this.systemPrompt.includes('Coder')) {
-      return { text: 'console.log("hello")', usage: { inputTokens: 10, outputTokens: 20 } };
-    }
-    if (this.systemPrompt.includes('Supervisor')) {
-      if (prompt.includes('SPECIFICATION TO REVIEW')) {
-        return { text: 'VERDICT: GREENLIGHT\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
-      }
-      return { text: 'VERDICT: PASS\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
+    if (p.includes('reviewing generated code')) {
+      return { text: coderCalls >= 2 ? 'VERDICT: PASS' : 'VERDICT: FAIL\nFEEDBACK: try again', usage: { inputTokens: 15, outputTokens: 5 } };
     }
     return { text: 'default', usage: { inputTokens: 1, outputTokens: 1 } };
   };
 
+  const workspacesDir = await tmpWorkspacesDir();
   try {
     const events = [];
-    const config = {
-      architect: { provider: 'claude-cli', model: 'claude-cli-default' },
-      developer: { provider: 'claude-cli', model: 'claude-cli-default' },
-      reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
-      maxIterations: 2,
-    };
+    await executePipeline('some task', buildConfig({ maxIterations: 3 }), 1,
+      { packageRoot: join(__dirname, '..'), workspacesDir, dependencyRoot: join(__dirname, '..', 'node_modules') },
+      event => events.push(event));
 
-    await executePipeline(
-      'some task',
-      config,
-      2,
-      {
-        packageRoot: join(__dirname, '..'),
-      },
-      (event) => {
-        events.push(event);
-      }
-    );
-
-    const doneEvent = events.find(e => e.type === 'done');
-    assert.equal(doneEvent.passed, true, 'mode 2 pipeline finishes successfully');
+    assert.ok(coderCalls >= 2, 'Coder was re-run after a FAIL verdict');
+    assert.equal(events.find(e => e.type === 'done').passed, true, 'build eventually passes');
   } finally {
     Agent.prototype.call = originalCall;
+    await import('node:fs/promises').then(fs => fs.rm(workspacesDir, { recursive: true, force: true }));
   }
 });
 
@@ -229,57 +225,35 @@ test('stripCodeFences only strips leading and trailing fences, leaving inline fe
   assert.equal(result, codeWithInlineFences);
 });
 
-test('executePipeline Mode 2 handles unparseable supervisor prompt check and emits event', async () => {
+test('executePipeline Mode 1 emits a [Parse Warning] when a Supervisor verdict is unparseable', async () => {
   const originalCall = Agent.prototype.call;
-  let supervisorCallCount = 0;
-  Agent.prototype.call = async function(prompt) {
-    if (this.systemPrompt.includes('Designer')) {
-      return { text: 'spec', usage: { inputTokens: 5, outputTokens: 10 } };
+  let promptChecks = 0;
+  Agent.prototype.call = async function() {
+    const p = this.systemPrompt;
+    if (p.includes('Prompt Designer')) return { text: 'spec', usage: { inputTokens: 5, outputTokens: 10 } };
+    if (p.includes('reviewing an implementation spec')) {
+      promptChecks++;
+      return promptChecks === 1
+        ? { text: 'No verdict here, just random chat.', usage: { inputTokens: 15, outputTokens: 5 } }
+        : { text: 'VERDICT: APPROVE\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
     }
-    if (this.systemPrompt.includes('Coder')) {
-      return { text: 'console.log("hello")', usage: { inputTokens: 10, outputTokens: 20 } };
-    }
-    if (this.systemPrompt.includes('Supervisor')) {
-      if (prompt.includes('SPECIFICATION TO REVIEW')) {
-        supervisorCallCount++;
-        if (supervisorCallCount === 1) {
-          return { text: 'No verdict here, just random chat.', usage: { inputTokens: 15, outputTokens: 5 } };
-        }
-        return { text: 'VERDICT: GREENLIGHT\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
-      }
-      return { text: 'VERDICT: PASS\nFEEDBACK: ok', usage: { inputTokens: 15, outputTokens: 5 } };
-    }
+    if (p.includes('You are the Coder')) return { text: BUILD_MANIFEST, usage: { inputTokens: 10, outputTokens: 20 } };
+    if (p.includes('reviewing generated code')) return { text: 'VERDICT: PASS', usage: { inputTokens: 15, outputTokens: 5 } };
     return { text: 'default', usage: { inputTokens: 1, outputTokens: 1 } };
   };
 
+  const workspacesDir = await tmpWorkspacesDir();
   try {
     const events = [];
-    const config = {
-      architect: { provider: 'claude-cli', model: 'claude-cli-default' },
-      developer: { provider: 'claude-cli', model: 'claude-cli-default' },
-      reviewer: { provider: 'claude-cli', model: 'claude-cli-default' },
-      maxIterations: 3,
-    };
+    await executePipeline('some task', buildConfig({ maxIterations: 3 }), 1,
+      { packageRoot: join(__dirname, '..'), workspacesDir, dependencyRoot: join(__dirname, '..', 'node_modules') },
+      event => events.push(event));
 
-    await executePipeline(
-      'some task',
-      config,
-      2,
-      {
-        packageRoot: join(__dirname, '..'),
-      },
-      (event) => {
-        events.push(event);
-      }
-    );
-
-    const doneEvent = events.find(e => e.type === 'done');
-    assert.equal(doneEvent.passed, true, 'mode 2 pipeline finishes successfully');
-    
-    const parseWarningEvent = events.find(e => e.type === 'pty' && e.data.includes('[Parse Warning]'));
-    assert.ok(parseWarningEvent, 'should emit a [Parse Warning] pty event');
+    assert.equal(events.find(e => e.type === 'done').passed, true, 'pipeline still finishes after re-designing the spec');
+    assert.ok(events.some(e => e.type === 'pty' && e.data.includes('[Parse Warning]')), 'emits a [Parse Warning] pty event');
   } finally {
     Agent.prototype.call = originalCall;
+    await import('node:fs/promises').then(fs => fs.rm(workspacesDir, { recursive: true, force: true }));
   }
 });
 

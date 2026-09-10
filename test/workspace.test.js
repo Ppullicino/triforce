@@ -241,3 +241,99 @@ test('createWorkspace initializes git repository, commits each iteration, and su
     await rm(root, { recursive: true, force: true });
   }
 });
+
+// ── Real-folder snapshot / apply (protocol 1.2 filesystem navigator) ──
+import { snapshotDir, hashTree, createWorkspaceFromDir, applyDiff } from '../workspace.js';
+import { execFile as _execFile } from 'node:child_process';
+import { promisify as _promisify } from 'node:util';
+const _exec = _promisify(_execFile);
+
+async function realProject() {
+  const dir = await mkdtemp(join(tmpdir(), 'triforce-realproj-'));
+  await mkdir(join(dir, 'src'), { recursive: true });
+  await writeFile(join(dir, 'src', 'index.js'), 'export const n = 1;\n');
+  await writeFile(join(dir, 'package.json'), '{"name":"p","type":"module"}\n');
+  await writeFile(join(dir, '.gitignore'), 'ignored.txt\nbuild/\n');
+  await writeFile(join(dir, 'ignored.txt'), 'do not snapshot me\n');
+  await mkdir(join(dir, 'build'), { recursive: true });
+  await writeFile(join(dir, 'build', 'out.js'), 'nope\n');
+  await mkdir(join(dir, 'node_modules'), { recursive: true });
+  await writeFile(join(dir, 'node_modules', 'x.js'), 'vendor\n');
+  return dir;
+}
+
+test('snapshotDir honours .gitignore and skips vendored dirs; hashTree matches', async () => {
+  const dir = await realProject();
+  try {
+    const snap = await snapshotDir(dir);
+    const paths = snap.files.map(f => f.path).sort();
+    assert.deepEqual(paths, ['.gitignore', 'package.json', 'src/index.js']);
+    assert.ok(!paths.includes('ignored.txt'), '.gitignore file entry excluded');
+    assert.ok(!paths.some(p => p.startsWith('build/')), 'ignored dir excluded');
+    assert.ok(!paths.some(p => p.startsWith('node_modules/')), 'node_modules excluded');
+    const tree = await hashTree(dir);
+    assert.equal(tree['src/index.js'], snap.hashes['src/index.js']);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('createWorkspaceFromDir seeds a workspace copy and synthesizes a smoke test', async () => {
+  const dir = await realProject();
+  const root = await mkdtemp(join(tmpdir(), 'triforce-ws-'));
+  try {
+    const ws = await createWorkspaceFromDir(dir, root, {});
+    assert.equal(await readFile(join(ws.directory, 'src', 'index.js'), 'utf8'), 'export const n = 1;\n');
+    assert.equal(ws.testFile, 'triforce.smoke.test.js');
+    assert.ok(ws.files.includes('triforce.smoke.test.js'));
+    assert.ok(ws.snapshot.hashes['src/index.js']);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('applyDiff writes changed files back and refuses when the real folder drifted', async () => {
+  const dir = await realProject();
+  const root = await mkdtemp(join(tmpdir(), 'triforce-ws-'));
+  try {
+    const ws = await createWorkspaceFromDir(dir, root, {});
+    // simulate the run editing a file + adding one, inside the workspace copy
+    await writeFile(join(ws.directory, 'src', 'index.js'), 'export const n = 2;\n');
+    await writeFile(join(ws.directory, 'src', 'extra.js'), 'export const e = 9;\n');
+
+    const ok = await applyDiff(ws.directory, dir, { snapshot: ws.snapshot, gitPolicy: 'force' });
+    assert.deepEqual(ok.applied.sort(), ['src/extra.js', 'src/index.js']);
+    assert.equal(await readFile(join(dir, 'src', 'index.js'), 'utf8'), 'export const n = 2;\n');
+    assert.equal(await readFile(join(dir, 'src', 'extra.js'), 'utf8'), 'export const e = 9;\n');
+
+    // now the real folder no longer matches the snapshot -> a second apply is refused
+    const refused = await applyDiff(ws.directory, dir, { snapshot: ws.snapshot, gitPolicy: 'force' });
+    assert.match(refused.reason, /changed since snapshot/);
+    assert.deepEqual(refused.applied, []);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('applyDiff into a dirty git tree creates a branch under the branch policy', async () => {
+  const dir = await realProject();
+  const root = await mkdtemp(join(tmpdir(), 'triforce-ws-'));
+  try {
+    await _exec('git', ['-c', 'user.email=t@t', '-c', 'user.name=t', 'init'], { cwd: dir });
+    await _exec('git', ['-c', 'user.email=t@t', '-c', 'user.name=t', 'add', '-A'], { cwd: dir });
+    await _exec('git', ['-c', 'user.email=t@t', '-c', 'user.name=t', 'commit', '-m', 'init'], { cwd: dir });
+    await writeFile(join(dir, 'dirty.txt'), 'uncommitted\n'); // dirty tree
+
+    const ws = await createWorkspaceFromDir(dir, root, {});
+    await writeFile(join(ws.directory, 'src', 'index.js'), 'export const n = 3;\n');
+    const res = await applyDiff(ws.directory, dir, { snapshot: ws.snapshot, gitPolicy: 'branch' });
+    assert.match(res.branch, /^triforce\/apply-/);
+    const branchName = (await _exec('git', ['rev-parse', '--abbrev-ref', 'HEAD'], { cwd: dir })).stdout.trim();
+    assert.equal(branchName, res.branch);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+    await rm(root, { recursive: true, force: true });
+  }
+});

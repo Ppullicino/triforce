@@ -108,6 +108,7 @@ function Dashboard({ host, connection, connectionState, pipeline, chat, onSendCh
   const [mode, setMode] = useState<PipelineMode>(1);
   const [config, setConfig] = useState(defaultConfig);
   const [task, setTask] = useState('');
+  const [folder, setFolder] = useState('');
   const [chatDraft, setChatDraft] = useState('');
   const [activeRole, setActiveRole] = useState<AgentRole>('architect');
   function submit(event: FormEvent) { event.preventDefault(); connection.run(task, config, mode); setTask(''); }
@@ -130,6 +131,10 @@ function Dashboard({ host, connection, connectionState, pipeline, chat, onSendCh
             </form>
           : <form onSubmit={submit}>
               <label htmlFor="task">What should your agents build?</label><textarea id="task" value={task} onChange={event => setTask(event.target.value)} required rows={4} />
+              <div className="folder-row">
+                <input aria-label="Working folder" placeholder="/path/to/project (optional)" value={folder} onChange={event => setFolder(event.target.value)} />
+                <button type="button" onClick={() => folder.trim() && connection.fsSelectWorking(folder.trim())}>Use folder</button>
+              </div>
               <button type="submit" disabled={pipeline.status === 'running'}>{pipeline.status === 'running' ? 'Pipeline running…' : 'Launch pipeline'}</button>
             </form>}
         <div className="run-meta">
@@ -149,6 +154,10 @@ function Dashboard({ host, connection, connectionState, pipeline, chat, onSendCh
         : <section className="results" aria-live="polite"><div className="role-tabs" role="tablist">{roles.map(role => <button role="tab" aria-selected={activeRole === role} key={role} onClick={() => setActiveRole(role)}>{role}</button>)}</div>
             <article className="agent-output"><h2>{activeRole}</h2><pre>{pipeline.outputs[activeRole] || 'Waiting for agent output…'}</pre></article>
             <article className="terminal"><h2>Sandbox terminal</h2><pre>{pipeline.terminal || 'No terminal output yet.'}</pre></article>
+            {pipeline.diff && <article className="artifact"><h2>Diff</h2><pre>{pipeline.diff}</pre>
+              {pipeline.status === 'completed' && pipeline.runId && <button type="button" onClick={() => connection.apply(pipeline.runId as string)}>Apply to folder</button>}
+              {pipeline.applyResult && <p className={pipeline.applyResult.ok ? '' : 'error'}>{pipeline.applyResult.ok ? `Applied ${(pipeline.applyResult.applied as string[] | undefined)?.length ?? 0} file(s)${pipeline.applyResult.branch ? ` on ${pipeline.applyResult.branch}` : ''}` : `Apply blocked: ${String(pipeline.applyResult.reason ?? '')}`}</p>}
+            </article>}
             {pipeline.workspace && <article className="artifact"><h2>Workspace</h2><pre>{JSON.stringify(pipeline.workspace, null, 2)}</pre></article>}
           </section>}
     </div>}

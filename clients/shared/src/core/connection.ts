@@ -87,6 +87,20 @@ export class TriforceConnection {
     this.socket.send(JSON.stringify({ type: 'chat', protocolVersion: PROTOCOL_VERSION, message, ...options }));
   }
 
+  /** Filesystem navigator (protocol 1.2). Replies arrive as `fs_list` events. */
+  private send(payload: Record<string, unknown>) {
+    if (!this.socket || this.state !== 'connected') throw new Error('Connect to a Triforce host first');
+    this.socket.send(JSON.stringify({ protocolVersion: PROTOCOL_VERSION, ...payload }));
+  }
+  fsRoots() { this.send({ type: 'fs.roots' }); }
+  fsList(path: string) { this.send({ type: 'fs.list', path }); }
+  fsStat(path: string) { this.send({ type: 'fs.stat', path }); }
+  fsSelectWorking(path: string) { this.send({ type: 'fs.selectWorking', path }); }
+  /** Write a completed run's reviewed diff back to the real folder. Reply: `apply_result`. */
+  apply(runId: string, scope: 'all' | 'files' = 'all', paths?: string[]) {
+    this.send({ type: 'apply', runId, scope, ...(paths ? { paths } : {}) });
+  }
+
   private openSocket(url: string) {
     const protocols = this.authToken ? ['triforce.v1', `triforce.auth.${encodeURIComponent(this.authToken)}`] : ['triforce.v1'];
     const socket = this.createSocket(url, protocols);
