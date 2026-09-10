@@ -12,6 +12,7 @@ import { SubscriptionLedger } from './subscription-ledger.js';
 import { capabilities, isCompatibleProtocol, normalizePipelineConfig, validateClientCommand } from './packages/protocol/src/index.js';
 import { executePipeline } from './pipeline.js';
 import { runVerifiedChat } from './verified-chat.js';
+import { runCreditExtender } from './credit-extender.js';
 import * as fsBrowser from './fs-browser.js';
 import { applyDiff, createWorkspaceFromDir } from './workspace.js';
 import { execFile } from 'node:child_process';
@@ -430,15 +431,28 @@ wss.on('connection', (ws) => {
       }
       try {
         const useValidationPipeline = process.env.NODE_ENV === 'test' && process.env.TRIFORCE_E2E_FAKE_PIPELINE === '1';
+        const creditMode = command.mode === 2 && !useValidationPipeline;
         let seed = null;
         if (workingDir && !useValidationPipeline) {
           seed = await createWorkspaceFromDir(workingDir, WORKSPACES_DIR, { dependencyRoot: join(__dirname, 'node_modules') });
         }
         const selectedFolder = workingDir;
-        const run = runRegistry.start(command, (pipelineSocket, signal) => useValidationPipeline
-          ? runValidationPipeline(pipelineSocket, command.task, command.config, command.mode, signal)
-          : runPipeline(pipelineSocket, command.task, command.config, command.mode, signal, selectedFolder,
-              seed ? { id: seed.id, directory: seed.directory, testFile: seed.testFile, files: seed.files } : null));
+        const seededWs = seed ? { id: seed.id, directory: seed.directory, testFile: seed.testFile, files: seed.files } : null;
+        const run = runRegistry.start(
+          { ...command, kind: creditMode ? 'credit' : 'build' },
+          (pipelineSocket, signal) => {
+            if (useValidationPipeline) return runValidationPipeline(pipelineSocket, command.task, command.config, command.mode, signal);
+            if (creditMode) {
+              return runCreditExtender(command.task, {
+                config: normalizePipelineConfig(command.config), pool: command.config?.pool, deliberate: command.config?.deliberate,
+                signal, ledger, workspacesDir: WORKSPACES_DIR, packageRoot: __dirname,
+                dependencyRoot: join(__dirname, 'node_modules'), workingDir: selectedFolder || undefined, seededWorkspace: seededWs || undefined,
+              }, event => { if (pipelineSocket.readyState === 1) pipelineSocket.send(JSON.stringify(event)); }).catch(err => {
+                if (err.name !== 'AbortError') pipelineSocket.send(JSON.stringify({ type: 'error', stage: 'architect', message: err.message }));
+              });
+            }
+            return runPipeline(pipelineSocket, command.task, command.config, command.mode, signal, selectedFolder, seededWs);
+          });
         if (seed) {
           runContexts.set(run.id, { workspaceDir: seed.directory, realDir: selectedFolder, snapshot: seed.snapshot });
           while (runContexts.size > 50) runContexts.delete(runContexts.keys().next().value);

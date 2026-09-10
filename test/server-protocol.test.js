@@ -110,6 +110,41 @@ test('exposes the per-CLI subscription ledger behind authorization', async () =>
   }
 });
 
+test('a mode:2 run starts a kind:credit session', async () => {
+  const { child, port } = await startServer();
+  const origin = `http://127.0.0.1:${port}`;
+  try {
+    const ws = new WebSocket(`ws://127.0.0.1:${port}`, { headers: { cookie: `triforce_token=${token}`, origin } });
+    ws.on('error', () => {});
+    await once(ws, 'open');
+    ws.send(JSON.stringify({
+      type: 'run', mode: 2, task: 'explain what a promise is',
+      config: { pool: ['claude-cli', 'agy-cli'], deliberate: true },
+    }));
+    let started;
+    while (!started) {
+      const [raw] = await once(ws, 'message');
+      const msg = JSON.parse(raw);
+      if (msg.type === 'run_started') started = msg;
+      else if (msg.type === 'protocol_error') throw new Error(`mode 2 run rejected: ${raw}`);
+    }
+    assert.equal(started.run.kind, 'credit');
+    assert.equal(started.run.mode, 2);
+
+    let sawEngineEvent = false;
+    for (let i = 0; i < 40 && !sawEngineEvent; i++) {
+      const [raw] = await once(ws, 'message');
+      const msg = JSON.parse(raw);
+      if (msg.runId === started.run.id && ['route', 'error', 'run_state', 'chat_message'].includes(msg.type)) sawEngineEvent = true;
+    }
+    assert.ok(sawEngineEvent, 'credit-extender emits engine events');
+    ws.close();
+  } finally {
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+  }
+});
+
 test('serves the filesystem navigator confined to fsRoots and reports apply for unknown runs', async () => {
   const { child, port } = await startServer();
   const origin = `http://127.0.0.1:${port}`;
