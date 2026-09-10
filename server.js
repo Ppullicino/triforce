@@ -3,7 +3,7 @@ import express from 'express';
 import http from 'http';
 import { WebSocketServer } from 'ws';
 import { readFile, mkdir } from 'node:fs/promises';
-import { randomBytes, timingSafeEqual } from 'node:crypto';
+import { randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { homedir } from 'node:os';
@@ -11,6 +11,8 @@ import { RunRegistry } from './run-registry.js';
 import { SubscriptionLedger } from './subscription-ledger.js';
 import { capabilities, isCompatibleProtocol, validateClientCommand } from './packages/protocol/src/index.js';
 import { executePipeline } from './pipeline.js';
+import { runVerifiedChat } from './verified-chat.js';
+import { readFolderContext } from './folder-context.js';
 import { execFile } from 'node:child_process';
 import { ALLOWED_MODELS, checkConfigForWarnings, getCatalog } from './models.js';
 import { gcWorkspaces } from './workspace.js';
@@ -28,6 +30,11 @@ const FS_ROOTS = String(process.env.TRIFORCE_FS_ROOTS || homedir())
 
 const ledger = new SubscriptionLedger();
 const runRegistry = new RunRegistry({ ledger });
+
+// Mode 3 conversation memory (in-process; the per-run jsonl is the durable
+// transcript for reconnect/replay of the current turn).
+const chatHistories = new Map();
+const CHAT_HISTORY_MAX_MESSAGES = 40;
 
 let serverCapabilities = {
   ...capabilities,
@@ -322,7 +329,7 @@ wss.on('connection', (ws) => {
     let msg;
     try { msg = JSON.parse(raw); } catch { return; }
 
-    if (!['run', 'subscribe', 'capabilities', 'cancel'].includes(msg.type)) return;
+    if (!['run', 'subscribe', 'capabilities', 'cancel', 'chat'].includes(msg.type)) return;
     const parsed = validateClientCommand(msg);
     if (!parsed.success) {
       return ws.send(JSON.stringify({ type: 'protocol_error', code: 'INVALID_COMMAND', message: parsed.error.issues[0]?.message || 'Invalid command' }));
@@ -344,6 +351,41 @@ wss.on('connection', (ws) => {
       const success = runRegistry.cancel(command.runId);
       if (!success) {
         return ws.send(JSON.stringify({ type: 'protocol_error', code: 'RUN_NOT_FOUND', message: 'Run not found or not running' }));
+      }
+      return;
+    }
+    if (command.type === 'chat') {
+      if (shuttingDown) {
+        return ws.send(JSON.stringify({
+          type: 'protocol_error', code: 'SERVER_SHUTTING_DOWN',
+          message: 'Server is shutting down and no longer accepts chat commands.',
+        }));
+      }
+      const conversationId = command.conversationId || randomUUID();
+      const history = chatHistories.get(conversationId) ?? [];
+      let folderContext = '';
+      if (command.folder) {
+        folderContext = await readFolderContext(command.folder, FS_ROOTS).catch(() => '');
+      }
+      try {
+        const run = runRegistry.start(
+          { task: command.message, config: {}, mode: 3, kind: 'chat' },
+          async (pipelineSocket, signal) => {
+            const result = await runVerifiedChat(command.message, {
+              history, folderContext, pool: command.pool, fast: command.fast,
+              deliberate: command.deliberate, signal, ledger, conversationId,
+            }, event => { if (pipelineSocket.readyState === 1) pipelineSocket.send(JSON.stringify(event)); });
+            const next = [
+              ...history,
+              { role: 'user', text: command.message },
+              { role: 'assistant', text: result.final },
+            ].slice(-CHAT_HISTORY_MAX_MESSAGES);
+            chatHistories.set(conversationId, next);
+          });
+        ws.send(JSON.stringify({ type: 'run_started', run: runRegistry.snapshot(run), conversationId }));
+        unsubscribe.add(runRegistry.subscribe(run, ws));
+      } catch (err) {
+        ws.send(JSON.stringify({ type: 'error', stage: 'architect', message: err.message }));
       }
       return;
     }

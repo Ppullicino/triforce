@@ -110,6 +110,47 @@ test('exposes the per-CLI subscription ledger behind authorization', async () =>
   }
 });
 
+test('accepts a verified-chat command, starting a kind:chat session with a conversation id', async () => {
+  const { child, port } = await startServer();
+  const origin = `http://127.0.0.1:${port}`;
+  try {
+    const ws = new WebSocket(`ws://127.0.0.1:${port}`, { headers: { cookie: `triforce_token=${token}`, origin } });
+    ws.on('error', () => {});
+    await once(ws, 'open');
+
+    // empty message is rejected by the protocol schema
+    ws.send(JSON.stringify({ type: 'chat', message: '' }));
+    const [badRaw] = await once(ws, 'message');
+    assert.equal(JSON.parse(badRaw).type, 'protocol_error');
+
+    ws.send(JSON.stringify({ type: 'chat', message: 'hello there', fast: true }));
+    let started;
+    while (!started) {
+      const [raw] = await once(ws, 'message');
+      const msg = JSON.parse(raw);
+      if (msg.type === 'run_started') started = msg;
+      else if (msg.type === 'protocol_error') throw new Error(`chat rejected: ${raw}`);
+    }
+    assert.match(started.conversationId, /^[0-9a-f-]{36}$/);
+    assert.equal(started.run.kind, 'chat');
+    assert.equal(started.run.mode, 3);
+
+    // The engine runs (no CLI is logged in under test, so it ends in an error
+    // event for this run) — prove events are flowing for the started run.
+    let sawRunEvent = false;
+    for (let i = 0; i < 40 && !sawRunEvent; i++) {
+      const [raw] = await once(ws, 'message');
+      const msg = JSON.parse(raw);
+      if (msg.runId === started.run.id && ['chat_message', 'error', 'run_state', 'status'].includes(msg.type)) sawRunEvent = true;
+    }
+    assert.ok(sawRunEvent, 'expected engine events for the chat run');
+    ws.close();
+  } finally {
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+  }
+});
+
 test('server startup logs a warning if models.config.json contains unknown model', async () => {
   const { readFile, writeFile } = await import('node:fs/promises');
   const { join } = await import('node:path');

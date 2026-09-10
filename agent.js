@@ -127,6 +127,17 @@ function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/**
+ * One-shot convenience: build an Agent for a single (system, prompt) exchange and
+ * return { text, usage }. Used by the router / deliberation / verified-chat paths.
+ * Retry/backoff behaviour is unchanged (Agent.call handles it).
+ * @param {{ provider: string, model: string, system?: string, prompt: string, signal?: AbortSignal }} opts
+ */
+export async function ask({ provider, model, system, prompt, signal }) {
+  const agent = new Agent({ provider, model, systemPrompt: system });
+  return agent.call(prompt, signal);
+}
+
 export class Agent {
   constructor({ provider, model, systemPrompt, unsafePermissions = false }) {
     this.provider = provider;
