@@ -7,11 +7,12 @@ import { join } from 'node:path';
 const OPEN = 1;
 
 export class RunRegistry {
-  constructor({ maxRuns = 50, maxEventsPerRun = 600, maxEventBytes = 2 * 1024 * 1024, runsDir } = {}) {
+  constructor({ maxRuns = 50, maxEventsPerRun = 600, maxEventBytes = 2 * 1024 * 1024, runsDir, ledger } = {}) {
     this.maxRuns = maxRuns;
     this.maxEventsPerRun = maxEventsPerRun;
     this.maxEventBytes = maxEventBytes;
-    
+    this.ledger = ledger || null;
+
     this.runsDir = runsDir || process.env.TRIFORCE_RUNS_DIR;
     if (!this.runsDir) {
       if (process.env.NODE_ENV === 'test') {
@@ -36,11 +37,16 @@ export class RunRegistry {
 
   snapshot(run) {
     return {
-      id: run.id, task: run.task, mode: run.mode, status: run.status,
+      id: run.id, task: run.task, mode: run.mode, kind: run.kind ?? 'build', status: run.status,
       createdAt: run.createdAt, updatedAt: run.updatedAt,
       lastEventId: run.nextEventId - 1, droppedEvents: run.droppedEvents,
       usage: run.usage ?? null,
     };
+  }
+
+  /** Per-CLI subscription headroom, or null when no ledger is attached. */
+  getLedgerSnapshot() {
+    return this.ledger?.snapshot?.() ?? null;
   }
 
   async load() {
@@ -63,6 +69,7 @@ export class RunRegistry {
         task: runData.task,
         config: runData.config,
         mode: runData.mode,
+        kind: runData.kind ?? 'build',
         status: runData.status,
         createdAt: runData.createdAt,
         updatedAt: runData.updatedAt,
@@ -139,6 +146,7 @@ export class RunRegistry {
       task: run.task,
       config: run.config,
       mode: run.mode,
+      kind: run.kind ?? 'build',
       status: run.status,
       createdAt: run.createdAt,
       updatedAt: run.updatedAt,
@@ -159,6 +167,7 @@ export class RunRegistry {
     const controller = new AbortController();
     const run = {
       id: randomUUID(), task: input.task, config: input.config, mode: input.mode,
+      kind: input.kind ?? 'build',
       status: 'running', createdAt: now, updatedAt: now,
       events: [], eventBytes: 0, nextEventId: 1, droppedEvents: 0,
       subscribers: new Set(), completion: null, hasError: false,

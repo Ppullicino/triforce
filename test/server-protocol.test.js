@@ -44,6 +44,12 @@ test('protects protocol discovery and negotiates WebSocket versions', async () =
     assert.equal(response.status, 200);
     const body = await response.json();
     assert.equal(body.protocolMajor, 1);
+    assert.equal(body.protocolVersion, '1.2.0');
+    assert.deepEqual(body.modes, [1, 2, 3]);
+    assert.ok(Array.isArray(body.fsRoots) && body.fsRoots.length >= 1, 'capabilities advertises fsRoots');
+    for (const feature of ['filesystem', 'deliberation', 'apply', 'verified-chat']) {
+      assert.ok(body.features.includes(feature), `capabilities advertises ${feature}`);
+    }
     assert.equal(body.sandbox, 'systemd');
 
     const ws = new WebSocket(`ws://127.0.0.1:${port}`, { headers: { cookie: `triforce_token=${token}`, origin } });
@@ -78,6 +84,25 @@ test('serves the model catalog behind authorization', async () => {
       for (const model of models) {
         assert.ok(Array.isArray(catalog.rates[model]), `model ${model} has display rates`);
       }
+    }
+  } finally {
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+  }
+});
+
+test('exposes the per-CLI subscription ledger behind authorization', async () => {
+  const { child, port } = await startServer();
+  const origin = `http://127.0.0.1:${port}`;
+  try {
+    assert.equal((await fetch(`${origin}/api/ledger`)).status, 401);
+    const res = await fetch(`${origin}/api/ledger`, { headers: { cookie: `triforce_token=${token}` } });
+    assert.equal(res.status, 200);
+    const { ledger } = await res.json();
+    assert.deepEqual(Object.keys(ledger).sort(), ['agy-cli', 'claude-cli', 'codex-cli']);
+    for (const cli of Object.values(ledger)) {
+      assert.equal(typeof cli.headroom, 'number');
+      assert.equal(typeof cli.cooling, 'boolean');
     }
   } finally {
     child.kill('SIGTERM');
