@@ -46,6 +46,25 @@ new clients.
 closures with bounded exponential backoff. It records the active run and highest
 event ID, then sends a replay subscription after reconnecting.
 
+## Modes and the filesystem navigator (protocol 1.2)
+
+The `run` command's `mode` keeps values `1|2|3` but the semantics were redefined:
+Mode 1 is the **structured build** loop (Prompt Designer ↔ Supervisor ↔ Coder ↔
+Supervisor, anchored to the verbatim original prompt, emitting `diff` events),
+Mode 2 is the roleless **credit extender** (a router picks the best CLI per step,
+fails over on `429` / usage-limit, and deliberates across CLIs for questions —
+`route` / `deliberation` events), and Mode 3 is **verified chat** via a dedicated
+`chat` command (draft → cross-check → reconcile; `chat_message` events; never
+writes or executes).
+
+A server-side rooted filesystem navigator (`fs.roots` / `fs.list` / `fs.stat` /
+`fs.selectWorking`, confined to `TRIFORCE_FS_ROOTS`) lets the client pick a real
+working folder. A run seeds a sandboxed workspace copy from a `.gitignore`-aware
+snapshot; the reviewed diff is written back only by an explicit `apply` command,
+which re-checks the folder is unchanged since the snapshot and applies into a
+fresh git branch by default (`apply_result` event). The dashboard's dollar-cost
+bar is replaced by a per-CLI subscription **headroom** bar from `GET /api/ledger`.
+
 ## Shared interface
 
 The shared React interface contains host setup, task composition, all three pipeline

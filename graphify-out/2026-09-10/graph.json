@@ -82,17 +82,17 @@
       "source_location": "L9"
     },
     {
-      "id": "agent_agent",
-      "label": "Agent",
+      "id": "clients_shared_src_core_hosts_browserhoststorage",
+      "label": "BrowserHostStorage",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "agent.js",
+      "community_name": "BrowserHostStorage",
       "file_type": "code",
-      "norm_label": "agent",
-      "source_file": "agent.js",
-      "source_location": "L141"
+      "norm_label": "browserhoststorage",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L22"
     },
     {
       "id": "packages_protocol_src_index_d_agentconfiguration",
@@ -446,19 +446,6 @@
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_core_hosts_browserhoststorage",
-      "label": "BrowserHostStorage",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": "browserhoststorage",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L22"
-    },
-    {
       "id": "clients_shared_src_core_hosts_credentialstorage",
       "label": "CredentialStorage",
       "_callable": true,
@@ -615,19 +602,6 @@
       "source_location": "L4"
     },
     {
-      "id": "router_nocapacityerror",
-      "label": "NoCapacityError",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "nocapacityerror",
-      "source_file": "router.js",
-      "source_location": "L7"
-    },
-    {
       "id": "subscription_ledger_subscriptionledger",
       "label": "SubscriptionLedger",
       "_callable": true,
@@ -678,6 +652,32 @@
       "norm_label": "triforceconnection",
       "source_file": "clients/shared/src/core/connection.ts",
       "source_location": "L22"
+    },
+    {
+      "id": "agent_agent",
+      "label": "Agent",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "agent",
+      "source_file": "agent.js",
+      "source_location": "L141"
+    },
+    {
+      "id": "router_nocapacityerror",
+      "label": "NoCapacityError",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "nocapacityerror",
+      "source_file": "router.js",
+      "source_location": "L7"
     },
     {
       "id": "clients_shared_src_core_connection_connectionoptions",
@@ -741,7 +741,7 @@
       "file_type": "code",
       "norm_label": "bearertoken()",
       "source_file": "server.js",
-      "source_location": "L192"
+      "source_location": "L193"
     },
     {
       "id": "server_cookietoken",
@@ -753,7 +753,7 @@
       "file_type": "code",
       "norm_label": "cookietoken()",
       "source_file": "server.js",
-      "source_location": "L188"
+      "source_location": "L189"
     },
     {
       "id": "server_killlingeringsandboxunits",
@@ -765,7 +765,7 @@
       "file_type": "code",
       "norm_label": "killlingeringsandboxunits()",
       "source_file": "server.js",
-      "source_location": "L466"
+      "source_location": "L480"
     },
     {
       "id": "server_probesandbox",
@@ -777,7 +777,7 @@
       "file_type": "code",
       "norm_label": "probesandbox()",
       "source_file": "server.js",
-      "source_location": "L52"
+      "source_location": "L53"
     },
     {
       "id": "server_requestisauthorized",
@@ -789,7 +789,7 @@
       "file_type": "code",
       "norm_label": "requestisauthorized()",
       "source_file": "server.js",
-      "source_location": "L204"
+      "source_location": "L205"
     },
     {
       "id": "server_runvalidationpipeline",
@@ -801,7 +801,7 @@
       "file_type": "code",
       "norm_label": "runvalidationpipeline()",
       "source_file": "server.js",
-      "source_location": "L77"
+      "source_location": "L78"
     },
     {
       "id": "server_setsessioncookie",
@@ -813,7 +813,7 @@
       "file_type": "code",
       "norm_label": "setsessioncookie()",
       "source_file": "server.js",
-      "source_location": "L208"
+      "source_location": "L209"
     },
     {
       "id": "server_shutdown",
@@ -825,7 +825,7 @@
       "file_type": "code",
       "norm_label": "shutdown()",
       "source_file": "server.js",
-      "source_location": "L484"
+      "source_location": "L498"
     },
     {
       "id": "server_tokenmatches",
@@ -837,7 +837,7 @@
       "file_type": "code",
       "norm_label": "tokenmatches()",
       "source_file": "server.js",
-      "source_location": "L182"
+      "source_location": "L183"
     },
     {
       "id": "server_websocketprotocoltoken",
@@ -849,7 +849,127 @@
       "file_type": "code",
       "norm_label": "websocketprotocoltoken()",
       "source_file": "server.js",
-      "source_location": "L197"
+      "source_location": "L198"
+    },
+    {
+      "id": "test_verified_chat_test_collect",
+      "label": "collect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "collect()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L27"
+    },
+    {
+      "id": "test_verified_chat_test_notelimit",
+      "label": "noteLimit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "notelimit()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L143"
+    },
+    {
+      "id": "test_verified_chat_test_record",
+      "label": "record()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "record()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L90"
+    },
+    {
+      "id": "test_verified_chat_test_scriptedask",
+      "label": "scriptedAsk()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "scriptedask()",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L6"
+    },
+    {
+      "id": "verified_chat_cliagentconfig",
+      "label": "cliAgentConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "cliagentconfig()",
+      "source_file": "verified-chat.js",
+      "source_location": "L17"
+    },
+    {
+      "id": "verified_chat_normalizepool",
+      "label": "normalizePool()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "normalizepool()",
+      "source_file": "verified-chat.js",
+      "source_location": "L21"
+    },
+    {
+      "id": "verified_chat_parseassessment",
+      "label": "parseAssessment()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "parseassessment()",
+      "source_file": "verified-chat.js",
+      "source_location": "L38"
+    },
+    {
+      "id": "verified_chat_renderhistory",
+      "label": "renderHistory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "renderhistory()",
+      "source_file": "verified-chat.js",
+      "source_location": "L30"
+    },
+    {
+      "id": "verified_chat_runverifiedchat",
+      "label": "runVerifiedChat()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "runverifiedchat()",
+      "source_file": "verified-chat.js",
+      "source_location": "L61"
+    },
+    {
+      "id": "verified_chat_tokensof",
+      "label": "tokensOf()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "tokensof()",
+      "source_file": "verified-chat.js",
+      "source_location": "L43"
     },
     {
       "id": "clients_android_app_src_androidtest_java_com_triforce_remote_mainactivitysecuritytest_mainactivitysecuritytest_credentialsroundtripthroughandroidkeystore",
@@ -1428,352 +1548,52 @@
       "source_location": "L9"
     },
     {
-      "id": "agent_agent_call",
-      "label": ".call()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": ".call()",
-      "source_file": "agent.js",
-      "source_location": "L161"
-    },
-    {
-      "id": "agent_agent_callagycli",
-      "label": "._callAgyCLI()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "._callagycli()",
-      "source_file": "agent.js",
-      "source_location": "L371"
-    },
-    {
-      "id": "agent_agent_callclaudecli",
-      "label": "._callClaudeCLI()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "._callclaudecli()",
-      "source_file": "agent.js",
-      "source_location": "L248"
-    },
-    {
-      "id": "agent_agent_callcodexcli",
-      "label": "._callCodexCLI()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "._callcodexcli()",
-      "source_file": "agent.js",
-      "source_location": "L363"
-    },
-    {
-      "id": "agent_agent_callprovider",
-      "label": "._callProvider()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "._callprovider()",
-      "source_file": "agent.js",
-      "source_location": "L240"
-    },
-    {
-      "id": "agent_agent_codexcliargs",
-      "label": "._codexCLIArgs()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "._codexcliargs()",
-      "source_file": "agent.js",
-      "source_location": "L353"
-    },
-    {
-      "id": "agent_agent_collectchild",
-      "label": "._collectChild()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "._collectchild()",
-      "source_file": "agent.js",
-      "source_location": "L263"
-    },
-    {
-      "id": "agent_agent_constructor",
+      "id": "clients_shared_src_core_hosts_browserhoststorage_constructor",
       "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "agent.js",
+      "community_name": "BrowserHostStorage",
       "file_type": "code",
       "norm_label": ".constructor()",
-      "source_file": "agent.js",
-      "source_location": "L142"
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L23"
     },
     {
-      "id": "agent_agent_initclient",
-      "label": "._initClient()",
+      "id": "clients_shared_src_core_hosts_browserhoststorage_load",
+      "label": ".load()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "agent.js",
+      "community_name": "BrowserHostStorage",
       "file_type": "code",
-      "norm_label": "._initclient()",
-      "source_file": "agent.js",
-      "source_location": "L150"
-    },
-    {
-      "id": "agent_ask",
-      "label": "ask()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "ask()",
-      "source_file": "agent.js",
-      "source_location": "L136"
-    },
-    {
-      "id": "agent_delay",
-      "label": "delay()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "delay()",
-      "source_file": "agent.js",
-      "source_location": "L126"
-    },
-    {
-      "id": "agent_geterrorstatus",
-      "label": "getErrorStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "geterrorstatus()",
-      "source_file": "agent.js",
+      "norm_label": ".load()",
+      "source_file": "clients/shared/src/core/hosts.ts",
       "source_location": "L24"
     },
     {
-      "id": "agent_getretryafterms",
-      "label": "getRetryAfterMs()",
+      "id": "clients_shared_src_core_hosts_browserhoststorage_save",
+      "label": ".save()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "agent.js",
+      "community_name": "BrowserHostStorage",
       "file_type": "code",
-      "norm_label": "getretryafterms()",
-      "source_file": "agent.js",
-      "source_location": "L47"
+      "norm_label": ".save()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L28"
     },
     {
-      "id": "agent_isretryableerror",
-      "label": "isRetryableError()",
+      "id": "clients_shared_src_core_hosts_ishostprofile",
+      "label": "isHostProfile()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
-      "community_name": "agent.js",
+      "community_name": "BrowserHostStorage",
       "file_type": "code",
-      "norm_label": "isretryableerror()",
-      "source_file": "agent.js",
-      "source_location": "L42"
-    },
-    {
-      "id": "agent_parseclaudejsonenvelope",
-      "label": "parseClaudeJsonEnvelope()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "parseclaudejsonenvelope()",
-      "source_file": "agent.js",
-      "source_location": "L85"
-    },
-    {
-      "id": "agent_parsecodexjsonl",
-      "label": "parseCodexJsonl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "parsecodexjsonl()",
-      "source_file": "agent.js",
-      "source_location": "L100"
-    },
-    {
-      "id": "agent_resolvebinpath",
-      "label": "resolveBinPath()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "resolvebinpath()",
-      "source_file": "agent.js",
-      "source_location": "L6"
-    },
-    {
-      "id": "agent_unknown_usage",
-      "label": "UNKNOWN_USAGE()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "unknown_usage()",
-      "source_file": "agent.js",
-      "source_location": "L82"
-    },
-    {
-      "id": "test_agent_test_withstubcli",
-      "label": "withStubCli()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "withstubcli()",
-      "source_file": "test/agent.test.js",
-      "source_location": "L161"
-    },
-    {
-      "id": "test_verified_chat_test_collect",
-      "label": "collect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "collect()",
-      "source_file": "test/verified-chat.test.js",
-      "source_location": "L27"
-    },
-    {
-      "id": "test_verified_chat_test_notelimit",
-      "label": "noteLimit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "notelimit()",
-      "source_file": "test/verified-chat.test.js",
-      "source_location": "L143"
-    },
-    {
-      "id": "test_verified_chat_test_record",
-      "label": "record()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "record()",
-      "source_file": "test/verified-chat.test.js",
-      "source_location": "L90"
-    },
-    {
-      "id": "test_verified_chat_test_scriptedask",
-      "label": "scriptedAsk()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "scriptedask()",
-      "source_file": "test/verified-chat.test.js",
-      "source_location": "L6"
-    },
-    {
-      "id": "verified_chat_cliagentconfig",
-      "label": "cliAgentConfig()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "cliagentconfig()",
-      "source_file": "verified-chat.js",
-      "source_location": "L17"
-    },
-    {
-      "id": "verified_chat_normalizepool",
-      "label": "normalizePool()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "normalizepool()",
-      "source_file": "verified-chat.js",
-      "source_location": "L21"
-    },
-    {
-      "id": "verified_chat_parseassessment",
-      "label": "parseAssessment()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "parseassessment()",
-      "source_file": "verified-chat.js",
-      "source_location": "L38"
-    },
-    {
-      "id": "verified_chat_renderhistory",
-      "label": "renderHistory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "renderhistory()",
-      "source_file": "verified-chat.js",
-      "source_location": "L30"
-    },
-    {
-      "id": "verified_chat_runverifiedchat",
-      "label": "runVerifiedChat()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "runverifiedchat()",
-      "source_file": "verified-chat.js",
-      "source_location": "L61"
-    },
-    {
-      "id": "verified_chat_tokensof",
-      "label": "tokensOf()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "tokensof()",
-      "source_file": "verified-chat.js",
-      "source_location": "L43"
+      "norm_label": "ishostprofile()",
+      "source_file": "clients/shared/src/core/hosts.ts",
+      "source_location": "L67"
     },
     {
       "id": "packages_protocol_src_index_iscompatibleprotocol",
@@ -1798,18 +1618,6 @@
       "norm_label": "validateclientcommand()",
       "source_file": "packages/protocol/src/index.js",
       "source_location": "L158"
-    },
-    {
-      "id": "packages_protocol_src_index_validateserverevent",
-      "label": "validateServerEvent()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "index.js",
-      "file_type": "code",
-      "norm_label": "validateserverevent()",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L163"
     },
     {
       "id": "clients_android_app_src_test_java_com_triforce_remote_networkpolicytest_networkpolicytest_cleartextisdeniedexceptforemulatorloopback",
@@ -1944,42 +1752,6 @@
       "source_location": "L9"
     },
     {
-      "id": "clients_shared_src_core_hosts_browserhoststorage_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L23"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_browserhoststorage_load",
-      "label": ".load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": ".load()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "clients_shared_src_core_hosts_browserhoststorage_save",
-      "label": ".save()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": ".save()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L28"
-    },
-    {
       "id": "clients_shared_src_core_hosts_credentialstorage_delete",
       "label": ".delete()",
       "_callable": true,
@@ -2100,18 +1872,6 @@
       "source_location": "L13"
     },
     {
-      "id": "clients_shared_src_core_hosts_ishostprofile",
-      "label": "isHostProfile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": "ishostprofile()",
-      "source_file": "clients/shared/src/core/hosts.ts",
-      "source_location": "L67"
-    },
-    {
       "id": "clients_shared_src_core_hosts_memorycredentialstorage_delete",
       "label": ".delete()",
       "_callable": true,
@@ -2170,18 +1930,6 @@
       "norm_label": ".save()",
       "source_file": "clients/shared/src/core/hosts.test.ts",
       "source_location": "L8"
-    },
-    {
-      "id": "clients_shared_src_core_native_integration_installnativeintegration",
-      "label": "installNativeIntegration()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": "installnativeintegration()",
-      "source_file": "clients/shared/src/core/native-integration.ts",
-      "source_location": "L4"
     },
     {
       "id": "clients_shared_src_core_platform_credentials_androidbridge_postmessage",
@@ -2405,7 +2153,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 64,
-      "community_name": "Dashboard",
+      "community_name": "main.tsx",
       "file_type": "code",
       "norm_label": "dashboard()",
       "source_file": "clients/shared/src/App.tsx",
@@ -2417,7 +2165,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 64,
-      "community_name": "Dashboard",
+      "community_name": "main.tsx",
       "file_type": "code",
       "norm_label": "submit()",
       "source_file": "clients/shared/src/App.tsx",
@@ -2429,11 +2177,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 64,
-      "community_name": "Dashboard",
+      "community_name": "main.tsx",
       "file_type": "code",
       "norm_label": "submitchat()",
       "source_file": "clients/shared/src/App.tsx",
       "source_location": "L115"
+    },
+    {
+      "id": "clients_shared_src_core_native_integration_installnativeintegration",
+      "label": "installNativeIntegration()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "main.tsx",
+      "file_type": "code",
+      "norm_label": "installnativeintegration()",
+      "source_file": "clients/shared/src/core/native-integration.ts",
+      "source_location": "L4"
     },
     {
       "id": "gen_icons_edgefunction",
@@ -2470,78 +2230,6 @@
       "norm_label": "makeicon()",
       "source_file": "gen-icons.mjs",
       "source_location": "L33"
-    },
-    {
-      "id": "router_classifytask",
-      "label": "classifyTask()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "classifytask()",
-      "source_file": "router.js",
-      "source_location": "L38"
-    },
-    {
-      "id": "router_loadrouterhints",
-      "label": "loadRouterHints()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "loadrouterhints()",
-      "source_file": "router.js",
-      "source_location": "L49"
-    },
-    {
-      "id": "router_nocapacityerror_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "router.js",
-      "source_location": "L8"
-    },
-    {
-      "id": "router_orderedcandidates",
-      "label": "orderedCandidates()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "orderedcandidates()",
-      "source_file": "router.js",
-      "source_location": "L62"
-    },
-    {
-      "id": "router_pickcli",
-      "label": "pickCli()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "pickcli()",
-      "source_file": "router.js",
-      "source_location": "L87"
-    },
-    {
-      "id": "router_pickpool",
-      "label": "pickPool()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "pickpool()",
-      "source_file": "router.js",
-      "source_location": "L102"
     },
     {
       "id": "subscription_ledger_emptycli",
@@ -2722,18 +2410,6 @@
       "norm_label": ".snapshot()",
       "source_file": "subscription-ledger.js",
       "source_location": "L148"
-    },
-    {
-      "id": "test_router_test_coolingset",
-      "label": "coolingSet()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "coolingset()",
-      "source_file": "test/router.test.js",
-      "source_location": "L8"
     },
     {
       "id": "test_subscription_ledger_test_clockledger",
@@ -3036,12 +2712,480 @@
       "source_location": "L143"
     },
     {
+      "id": "agent_agent_call",
+      "label": ".call()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": ".call()",
+      "source_file": "agent.js",
+      "source_location": "L161"
+    },
+    {
+      "id": "agent_agent_callagycli",
+      "label": "._callAgyCLI()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "._callagycli()",
+      "source_file": "agent.js",
+      "source_location": "L371"
+    },
+    {
+      "id": "agent_agent_callclaudecli",
+      "label": "._callClaudeCLI()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "._callclaudecli()",
+      "source_file": "agent.js",
+      "source_location": "L248"
+    },
+    {
+      "id": "agent_agent_callcodexcli",
+      "label": "._callCodexCLI()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "._callcodexcli()",
+      "source_file": "agent.js",
+      "source_location": "L363"
+    },
+    {
+      "id": "agent_agent_callprovider",
+      "label": "._callProvider()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "._callprovider()",
+      "source_file": "agent.js",
+      "source_location": "L240"
+    },
+    {
+      "id": "agent_agent_codexcliargs",
+      "label": "._codexCLIArgs()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "._codexcliargs()",
+      "source_file": "agent.js",
+      "source_location": "L353"
+    },
+    {
+      "id": "agent_agent_collectchild",
+      "label": "._collectChild()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "._collectchild()",
+      "source_file": "agent.js",
+      "source_location": "L263"
+    },
+    {
+      "id": "agent_agent_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "agent.js",
+      "source_location": "L142"
+    },
+    {
+      "id": "agent_agent_initclient",
+      "label": "._initClient()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "._initclient()",
+      "source_file": "agent.js",
+      "source_location": "L150"
+    },
+    {
+      "id": "agent_ask",
+      "label": "ask()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "ask()",
+      "source_file": "agent.js",
+      "source_location": "L136"
+    },
+    {
+      "id": "agent_delay",
+      "label": "delay()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "delay()",
+      "source_file": "agent.js",
+      "source_location": "L126"
+    },
+    {
+      "id": "agent_geterrorstatus",
+      "label": "getErrorStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "geterrorstatus()",
+      "source_file": "agent.js",
+      "source_location": "L24"
+    },
+    {
+      "id": "agent_getretryafterms",
+      "label": "getRetryAfterMs()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "getretryafterms()",
+      "source_file": "agent.js",
+      "source_location": "L47"
+    },
+    {
+      "id": "agent_isretryableerror",
+      "label": "isRetryableError()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "isretryableerror()",
+      "source_file": "agent.js",
+      "source_location": "L42"
+    },
+    {
+      "id": "agent_parseclaudejsonenvelope",
+      "label": "parseClaudeJsonEnvelope()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "parseclaudejsonenvelope()",
+      "source_file": "agent.js",
+      "source_location": "L85"
+    },
+    {
+      "id": "agent_parsecodexjsonl",
+      "label": "parseCodexJsonl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "parsecodexjsonl()",
+      "source_file": "agent.js",
+      "source_location": "L100"
+    },
+    {
+      "id": "agent_resolvebinpath",
+      "label": "resolveBinPath()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "resolvebinpath()",
+      "source_file": "agent.js",
+      "source_location": "L6"
+    },
+    {
+      "id": "agent_unknown_usage",
+      "label": "UNKNOWN_USAGE()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "unknown_usage()",
+      "source_file": "agent.js",
+      "source_location": "L82"
+    },
+    {
+      "id": "credit_extender_cliagentconfig",
+      "label": "cliAgentConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "cliagentconfig()",
+      "source_file": "credit-extender.js",
+      "source_location": "L22"
+    },
+    {
+      "id": "credit_extender_iscapacitysignal",
+      "label": "isCapacitySignal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "iscapacitysignal()",
+      "source_file": "credit-extender.js",
+      "source_location": "L34"
+    },
+    {
+      "id": "credit_extender_normalizepool",
+      "label": "normalizePool()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "normalizepool()",
+      "source_file": "credit-extender.js",
+      "source_location": "L26"
+    },
+    {
+      "id": "credit_extender_runcreditextender",
+      "label": "runCreditExtender()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "runcreditextender()",
+      "source_file": "credit-extender.js",
+      "source_location": "L54"
+    },
+    {
+      "id": "credit_extender_runcreditextender_routedask",
+      "label": "routedAsk()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "routedask()",
+      "source_file": "credit-extender.js",
+      "source_location": "L80"
+    },
+    {
+      "id": "packages_protocol_src_index_normalizepipelineconfig",
+      "label": "normalizePipelineConfig()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "normalizepipelineconfig()",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L57"
+    },
+    {
+      "id": "pipeline_executepipeline",
+      "label": "executePipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "executepipeline()",
+      "source_file": "pipeline.js",
+      "source_location": "L102"
+    },
+    {
+      "id": "pipeline_parseverdict",
+      "label": "parseVerdict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "parseverdict()",
+      "source_file": "pipeline.js",
+      "source_location": "L67"
+    },
+    {
+      "id": "pipeline_stripcodefences",
+      "label": "stripCodeFences()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "stripcodefences()",
+      "source_file": "pipeline.js",
+      "source_location": "L44"
+    },
+    {
+      "id": "router_classifytask",
+      "label": "classifyTask()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "classifytask()",
+      "source_file": "router.js",
+      "source_location": "L38"
+    },
+    {
+      "id": "router_loadrouterhints",
+      "label": "loadRouterHints()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "loadrouterhints()",
+      "source_file": "router.js",
+      "source_location": "L49"
+    },
+    {
+      "id": "router_nocapacityerror_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "router.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "router_orderedcandidates",
+      "label": "orderedCandidates()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "orderedcandidates()",
+      "source_file": "router.js",
+      "source_location": "L62"
+    },
+    {
+      "id": "router_pickcli",
+      "label": "pickCli()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "pickcli()",
+      "source_file": "router.js",
+      "source_location": "L87"
+    },
+    {
+      "id": "router_pickpool",
+      "label": "pickPool()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "pickpool()",
+      "source_file": "router.js",
+      "source_location": "L102"
+    },
+    {
+      "id": "sandbox_runsandboxed",
+      "label": "runSandboxed()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "runsandboxed()",
+      "source_file": "sandbox.js",
+      "source_location": "L9"
+    },
+    {
+      "id": "server_runpipeline",
+      "label": "runPipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "runpipeline()",
+      "source_file": "server.js",
+      "source_location": "L122"
+    },
+    {
+      "id": "test_credit_extender_test_collect",
+      "label": "collect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "collect()",
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L19"
+    },
+    {
+      "id": "test_credit_extender_test_e429",
+      "label": "e429()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "e429()",
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L20"
+    },
+    {
+      "id": "test_credit_extender_test_fakeledger",
+      "label": "fakeLedger()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "fakeledger()",
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "test_router_test_coolingset",
+      "label": "coolingSet()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "coolingset()",
+      "source_file": "test/router.test.js",
+      "source_location": "L8"
+    },
+    {
       "id": "test_workspace_test_fakeworkspacename",
       "label": "fakeWorkspaceName()",
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "fakeworkspacename()",
       "source_file": "test/workspace.test.js",
@@ -3053,7 +3197,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "makefakeworkspaces()",
       "source_file": "test/workspace.test.js",
@@ -3065,7 +3209,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "realproject()",
       "source_file": "test/workspace.test.js",
@@ -3077,7 +3221,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "applydiff()",
       "source_file": "workspace.js",
@@ -3089,7 +3233,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "checkgit()",
       "source_file": "workspace.js",
@@ -3101,7 +3245,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "cleanworkspacedirectory()",
       "source_file": "workspace.js",
@@ -3113,7 +3257,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "createworkspace()",
       "source_file": "workspace.js",
@@ -3125,7 +3269,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "createworkspacefromdir()",
       "source_file": "workspace.js",
@@ -3137,7 +3281,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "gcworkspaces()",
       "source_file": "workspace.js",
@@ -3149,7 +3293,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "getworkspacediff()",
       "source_file": "workspace.js",
@@ -3161,7 +3305,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "gitignorematch()",
       "source_file": "workspace.js",
@@ -3173,7 +3317,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "hashtree()",
       "source_file": "workspace.js",
@@ -3185,7 +3329,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "isbinary()",
       "source_file": "workspace.js",
@@ -3197,7 +3341,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "parsegitignore()",
       "source_file": "workspace.js",
@@ -3209,7 +3353,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "parseworkspacemanifest()",
       "source_file": "workspace.js",
@@ -3221,7 +3365,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "rungit()",
       "source_file": "workspace.js",
@@ -3233,7 +3377,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "runworkspacetest()",
       "source_file": "workspace.js",
@@ -3245,7 +3389,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "safepath()",
       "source_file": "workspace.js",
@@ -3257,11 +3401,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "snapshotdir()",
       "source_file": "workspace.js",
       "source_location": "L202"
+    },
+    {
+      "id": "packages_protocol_src_index_validateserverevent",
+      "label": "validateServerEvent()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "connection.ts",
+      "file_type": "code",
+      "norm_label": "validateserverevent()",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L163"
     },
     {
       "id": "models_checkconfigforwarnings",
@@ -3274,6 +3430,42 @@
       "norm_label": "checkconfigforwarnings()",
       "source_file": "models.js",
       "source_location": "L38"
+    },
+    {
+      "id": "models_getcatalog",
+      "label": "getCatalog()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "getcatalog()",
+      "source_file": "models.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "models_getrates",
+      "label": "getRates()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "getrates()",
+      "source_file": "models.js",
+      "source_location": "L23"
+    },
+    {
+      "id": "models_hasrates",
+      "label": "hasRates()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "hasrates()",
+      "source_file": "models.js",
+      "source_location": "L34"
     },
     {
       "id": "orchestrator_loadconfig",
@@ -3312,64 +3504,16 @@
       "source_location": "L17"
     },
     {
-      "id": "packages_protocol_src_index_normalizepipelineconfig",
-      "label": "normalizePipelineConfig()",
+      "id": "test_agent_test_withstubcli",
+      "label": "withStubCli()",
       "_callable": true,
       "_origin": "ast",
       "community": 88,
       "community_name": "orchestrator.test.js",
       "file_type": "code",
-      "norm_label": "normalizepipelineconfig()",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L57"
-    },
-    {
-      "id": "pipeline_executepipeline",
-      "label": "executePipeline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "orchestrator.test.js",
-      "file_type": "code",
-      "norm_label": "executepipeline()",
-      "source_file": "pipeline.js",
-      "source_location": "L102"
-    },
-    {
-      "id": "pipeline_parseverdict",
-      "label": "parseVerdict()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "orchestrator.test.js",
-      "file_type": "code",
-      "norm_label": "parseverdict()",
-      "source_file": "pipeline.js",
-      "source_location": "L67"
-    },
-    {
-      "id": "pipeline_stripcodefences",
-      "label": "stripCodeFences()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "orchestrator.test.js",
-      "file_type": "code",
-      "norm_label": "stripcodefences()",
-      "source_file": "pipeline.js",
-      "source_location": "L44"
-    },
-    {
-      "id": "server_runpipeline",
-      "label": "runPipeline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 88,
-      "community_name": "orchestrator.test.js",
-      "file_type": "code",
-      "norm_label": "runpipeline()",
-      "source_file": "server.js",
-      "source_location": "L121"
+      "norm_label": "withstubcli()",
+      "source_file": "test/agent.test.js",
+      "source_location": "L161"
     },
     {
       "id": "test_orchestrator_test_buildconfig",
@@ -3406,6 +3550,18 @@
       "norm_label": "tmpworkspacesdir()",
       "source_file": "test/orchestrator.test.js",
       "source_location": "L48"
+    },
+    {
+      "id": "usage_printsummary",
+      "label": "printSummary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "printsummary()",
+      "source_file": "usage.js",
+      "source_location": "L9"
     },
     {
       "id": "usage_track",
@@ -3528,66 +3684,6 @@
       "source_location": "L8"
     },
     {
-      "id": "models_getcatalog",
-      "label": "getCatalog()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "getcatalog()",
-      "source_file": "models.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "models_getrates",
-      "label": "getRates()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "getrates()",
-      "source_file": "models.js",
-      "source_location": "L23"
-    },
-    {
-      "id": "models_hasrates",
-      "label": "hasRates()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "hasrates()",
-      "source_file": "models.js",
-      "source_location": "L34"
-    },
-    {
-      "id": "usage_printsummary",
-      "label": "printSummary()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "printsummary()",
-      "source_file": "usage.js",
-      "source_location": "L9"
-    },
-    {
-      "id": "sandbox_runsandboxed",
-      "label": "runSandboxed()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "runsandboxed()",
-      "source_file": "sandbox.js",
-      "source_location": "L9"
-    },
-    {
       "id": "server",
       "label": "server.js",
       "_origin": "ast",
@@ -3607,7 +3703,7 @@
       "file_type": "code",
       "norm_label": "app",
       "source_file": "server.js",
-      "source_location": "L164"
+      "source_location": "L165"
     },
     {
       "id": "server_chathistories",
@@ -3618,7 +3714,7 @@
       "file_type": "code",
       "norm_label": "chathistories",
       "source_file": "server.js",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "server_dirname",
@@ -3629,7 +3725,7 @@
       "file_type": "code",
       "norm_label": "__dirname",
       "source_file": "server.js",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "server_fs_roots",
@@ -3640,7 +3736,7 @@
       "file_type": "code",
       "norm_label": "fs_roots",
       "source_file": "server.js",
-      "source_location": "L29"
+      "source_location": "L30"
     },
     {
       "id": "server_httpserver",
@@ -3651,7 +3747,7 @@
       "file_type": "code",
       "norm_label": "httpserver",
       "source_file": "server.js",
-      "source_location": "L286"
+      "source_location": "L287"
     },
     {
       "id": "server_ledger",
@@ -3662,7 +3758,7 @@
       "file_type": "code",
       "norm_label": "ledger",
       "source_file": "server.js",
-      "source_location": "L32"
+      "source_location": "L33"
     },
     {
       "id": "server_native_client_origins",
@@ -3673,7 +3769,7 @@
       "file_type": "code",
       "norm_label": "native_client_origins",
       "source_file": "server.js",
-      "source_location": "L67"
+      "source_location": "L68"
     },
     {
       "id": "server_runcontexts",
@@ -3684,7 +3780,7 @@
       "file_type": "code",
       "norm_label": "runcontexts",
       "source_file": "server.js",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "server_runregistry",
@@ -3695,7 +3791,7 @@
       "file_type": "code",
       "norm_label": "runregistry",
       "source_file": "server.js",
-      "source_location": "L33"
+      "source_location": "L34"
     },
     {
       "id": "server_servercapabilities",
@@ -3706,7 +3802,7 @@
       "file_type": "code",
       "norm_label": "servercapabilities",
       "source_file": "server.js",
-      "source_location": "L44"
+      "source_location": "L45"
     },
     {
       "id": "server_shutdown_grace_ms",
@@ -3717,7 +3813,7 @@
       "file_type": "code",
       "norm_label": "shutdown_grace_ms",
       "source_file": "server.js",
-      "source_location": "L459"
+      "source_location": "L473"
     },
     {
       "id": "server_transcripts_dir",
@@ -3728,7 +3824,7 @@
       "file_type": "code",
       "norm_label": "transcripts_dir",
       "source_file": "server.js",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "server_wss",
@@ -3739,7 +3835,40 @@
       "file_type": "code",
       "norm_label": "wss",
       "source_file": "server.js",
-      "source_location": "L287"
+      "source_location": "L288"
+    },
+    {
+      "id": "test_verified_chat_test",
+      "label": "verified-chat.test.js",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "verified-chat.test.js",
+      "source_file": "test/verified-chat.test.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "verified_chat",
+      "label": "verified-chat.js",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "verified-chat.js",
+      "source_file": "verified-chat.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "verified_chat_chat_prompts",
+      "label": "CHAT_PROMPTS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "chat_prompts",
+      "source_file": "verified-chat.js",
+      "source_location": "L8"
     },
     {
       "id": "android",
@@ -4444,138 +4573,6 @@
       "norm_label": "triforce cross-platform client plan",
       "source_file": "CROSS_PLATFORM_CLIENT_PLAN.md",
       "source_location": "L1"
-    },
-    {
-      "id": "node_child_process",
-      "label": "node:child_process",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "node:child_process",
-      "source_file": "node:child_process"
-    },
-    {
-      "id": "node_os",
-      "label": "node:os",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "node:os",
-      "source_file": "node:os"
-    },
-    {
-      "id": "node_path",
-      "label": "node:path",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "node:path",
-      "source_file": "node:path"
-    },
-    {
-      "id": "node_util",
-      "label": "node:util",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "node:util",
-      "source_file": "node:util"
-    },
-    {
-      "id": "promises",
-      "label": "node:fs/promises",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "node:fs/promises",
-      "source_file": "node:fs/promises"
-    },
-    {
-      "id": "agent",
-      "label": "agent.js",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "agent.js",
-      "source_file": "agent.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "agent_retryable_statuses",
-      "label": "RETRYABLE_STATUSES",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "retryable_statuses",
-      "source_file": "agent.js",
-      "source_location": "L19"
-    },
-    {
-      "id": "test_agent_test",
-      "label": "agent.test.js",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "agent.test.js",
-      "source_file": "test/agent.test.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_server_protocol_test",
-      "label": "server-protocol.test.js",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "server-protocol.test.js",
-      "source_file": "test/server-protocol.test.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_verified_chat_test",
-      "label": "verified-chat.test.js",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "verified-chat.test.js",
-      "source_file": "test/verified-chat.test.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "verified_chat",
-      "label": "verified-chat.js",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "verified-chat.js",
-      "source_file": "verified-chat.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "verified_chat_chat_prompts",
-      "label": "CHAT_PROMPTS",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "agent.js",
-      "file_type": "code",
-      "norm_label": "chat_prompts",
-      "source_file": "verified-chat.js",
-      "source_location": "L8"
     },
     {
       "id": "clients_shared_package_devdependencies",
@@ -6038,7 +6035,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
-      "source_location": "L55"
+      "source_location": "L56"
     },
     {
       "id": "package_devdependencies_pngjs",
@@ -6049,7 +6046,7 @@
       "file_type": "code",
       "norm_label": "pngjs",
       "source_file": "package.json",
-      "source_location": "L56"
+      "source_location": "L57"
     },
     {
       "id": "package_main",
@@ -6104,7 +6101,7 @@
       "file_type": "concept",
       "norm_label": "pngjs",
       "source_file": "package.json",
-      "source_location": "L56"
+      "source_location": "L57"
     },
     {
       "id": "client_architecture",
@@ -6243,7 +6240,7 @@
       "file_type": "code",
       "norm_label": "scripts",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L37"
     },
     {
       "id": "package_scripts_build",
@@ -6254,7 +6251,7 @@
       "file_type": "code",
       "norm_label": "build",
       "source_file": "package.json",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "package_scripts_cli",
@@ -6265,7 +6262,7 @@
       "file_type": "code",
       "norm_label": "cli",
       "source_file": "package.json",
-      "source_location": "L38"
+      "source_location": "L39"
     },
     {
       "id": "package_scripts_desktop_check",
@@ -6276,7 +6273,7 @@
       "file_type": "code",
       "norm_label": "desktop:check",
       "source_file": "package.json",
-      "source_location": "L45"
+      "source_location": "L46"
     },
     {
       "id": "package_scripts_dev_client",
@@ -6287,7 +6284,7 @@
       "file_type": "code",
       "norm_label": "dev:client",
       "source_file": "package.json",
-      "source_location": "L44"
+      "source_location": "L45"
     },
     {
       "id": "package_scripts_lint",
@@ -6298,7 +6295,7 @@
       "file_type": "code",
       "norm_label": "lint",
       "source_file": "package.json",
-      "source_location": "L43"
+      "source_location": "L44"
     },
     {
       "id": "package_scripts_start",
@@ -6309,7 +6306,7 @@
       "file_type": "code",
       "norm_label": "start",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L38"
     },
     {
       "id": "package_scripts_test",
@@ -6320,7 +6317,7 @@
       "file_type": "code",
       "norm_label": "test",
       "source_file": "package.json",
-      "source_location": "L39"
+      "source_location": "L40"
     },
     {
       "id": "package_scripts_test_server",
@@ -6331,7 +6328,7 @@
       "file_type": "code",
       "norm_label": "test:server",
       "source_file": "package.json",
-      "source_location": "L40"
+      "source_location": "L41"
     },
     {
       "id": "package_scripts_typecheck",
@@ -6342,7 +6339,7 @@
       "file_type": "code",
       "norm_label": "typecheck",
       "source_file": "package.json",
-      "source_location": "L42"
+      "source_location": "L43"
     },
     {
       "id": "package_scripts_version_check",
@@ -6353,7 +6350,7 @@
       "file_type": "code",
       "norm_label": "version:check",
       "source_file": "package.json",
-      "source_location": "L46"
+      "source_location": "L47"
     },
     {
       "id": "package_scripts_version_sync",
@@ -6364,7 +6361,7 @@
       "file_type": "code",
       "norm_label": "version:sync",
       "source_file": "package.json",
-      "source_location": "L47"
+      "source_location": "L48"
     },
     {
       "id": "clients_shared_src_test_setup",
@@ -6440,6 +6437,17 @@
       "community_name": "files",
       "file_type": "concept",
       "norm_label": "cli.js",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "ref_credit_extender_js",
+      "label": "credit-extender.js",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "files",
+      "file_type": "concept",
+      "norm_label": "credit-extender.js",
       "source_file": "package.json",
       "source_location": "L15"
     },
@@ -8001,6 +8009,17 @@
       "source_location": "L4"
     },
     {
+      "id": "packages_protocol_src_index_protocol_version",
+      "label": "PROTOCOL_VERSION",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.js",
+      "file_type": "code",
+      "norm_label": "protocol_version",
+      "source_file": "packages/protocol/src/index.js",
+      "source_location": "L3"
+    },
+    {
       "id": "packages_protocol_src_index_runcommandschema",
       "label": "runCommandSchema",
       "_origin": "ast",
@@ -8661,7 +8680,7 @@
       "file_type": "code",
       "norm_label": "dependencies",
       "source_file": "package.json",
-      "source_location": "L49"
+      "source_location": "L50"
     },
     {
       "id": "package_dependencies_dotenv",
@@ -8672,7 +8691,7 @@
       "file_type": "code",
       "norm_label": "dotenv",
       "source_file": "package.json",
-      "source_location": "L50"
+      "source_location": "L51"
     },
     {
       "id": "package_dependencies_express",
@@ -8683,7 +8702,7 @@
       "file_type": "code",
       "norm_label": "express",
       "source_file": "package.json",
-      "source_location": "L51"
+      "source_location": "L52"
     },
     {
       "id": "package_dependencies_ws",
@@ -8694,7 +8713,7 @@
       "file_type": "code",
       "norm_label": "ws",
       "source_file": "package.json",
-      "source_location": "L52"
+      "source_location": "L53"
     },
     {
       "id": "package_dependencies_zod",
@@ -8705,7 +8724,7 @@
       "file_type": "code",
       "norm_label": "zod",
       "source_file": "package.json",
-      "source_location": "L53"
+      "source_location": "L54"
     },
     {
       "id": "dotenv",
@@ -8716,7 +8735,7 @@
       "file_type": "concept",
       "norm_label": "dotenv",
       "source_file": "package.json",
-      "source_location": "L50"
+      "source_location": "L51"
     },
     {
       "id": "express",
@@ -8727,7 +8746,7 @@
       "file_type": "concept",
       "norm_label": "express",
       "source_file": "package.json",
-      "source_location": "L51"
+      "source_location": "L52"
     },
     {
       "id": "package_json_zod",
@@ -8738,7 +8757,7 @@
       "file_type": "concept",
       "norm_label": "zod",
       "source_file": "package.json",
-      "source_location": "L53"
+      "source_location": "L54"
     },
     {
       "id": "ws",
@@ -8749,7 +8768,7 @@
       "file_type": "concept",
       "norm_label": "ws",
       "source_file": "package.json",
-      "source_location": "L52"
+      "source_location": "L53"
     },
     {
       "id": "public_manifest",
@@ -8994,17 +9013,6 @@
       "source_location": "L1"
     },
     {
-      "id": "clients_shared_src_core_native_integration",
-      "label": "native-integration.ts",
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": "native-integration.ts",
-      "source_file": "clients/shared/src/core/native-integration.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "clients_shared_src_core_platform_credentials",
       "label": "platform-credentials.ts",
       "_origin": "ast",
@@ -9035,17 +9043,6 @@
       "file_type": "code",
       "norm_label": "platform-credentials.test.ts",
       "source_file": "clients/shared/src/core/platform-credentials.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "clients_shared_src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "platform-credentials.ts",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "clients/shared/src/main.tsx",
       "source_location": "L1"
     },
     {
@@ -9112,6 +9109,28 @@
       "file_type": "code",
       "norm_label": "pipeline.test.ts",
       "source_file": "clients/shared/src/core/pipeline.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "clients_shared_src_core_native_integration",
+      "label": "native-integration.ts",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "main.tsx",
+      "file_type": "code",
+      "norm_label": "native-integration.ts",
+      "source_file": "clients/shared/src/core/native-integration.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "clients_shared_src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "main.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "clients/shared/src/main.tsx",
       "source_location": "L1"
     },
     {
@@ -10911,83 +10930,6 @@
       "source_location": "L7"
     },
     {
-      "id": "router",
-      "label": "router.js",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "router.js",
-      "source_file": "router.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "router_classifiers",
-      "label": "CLASSIFIERS",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "classifiers",
-      "source_file": "router.js",
-      "source_location": "L29"
-    },
-    {
-      "id": "router_cli_ids",
-      "label": "CLI_IDS",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "cli_ids",
-      "source_file": "router.js",
-      "source_location": "L5"
-    },
-    {
-      "id": "router_default_router_hints",
-      "label": "DEFAULT_ROUTER_HINTS",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "default_router_hints",
-      "source_file": "router.js",
-      "source_location": "L19"
-    },
-    {
-      "id": "subscription_ledger",
-      "label": "subscription-ledger.js",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "subscription-ledger.js",
-      "source_file": "subscription-ledger.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_router_test",
-      "label": "router.test.js",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "router.test.js",
-      "source_file": "test/router.test.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_router_test_nocooldown",
-      "label": "noCooldown",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "SubscriptionLedger",
-      "file_type": "code",
-      "norm_label": "nocooldown",
-      "source_file": "test/router.test.js",
-      "source_location": "L7"
-    },
-    {
       "id": "test_subscription_ledger_test",
       "label": "subscription-ledger.test.js",
       "_origin": "ast",
@@ -11054,11 +10996,220 @@
       "source_location": "L1"
     },
     {
+      "id": "agent",
+      "label": "agent.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "agent.js",
+      "source_file": "agent.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "agent_retryable_statuses",
+      "label": "RETRYABLE_STATUSES",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "retryable_statuses",
+      "source_file": "agent.js",
+      "source_location": "L19"
+    },
+    {
+      "id": "credit_extender",
+      "label": "credit-extender.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "credit-extender.js",
+      "source_file": "credit-extender.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "pipeline",
+      "label": "pipeline.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "pipeline.js",
+      "source_file": "pipeline.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "pipeline_dirname",
+      "label": "__dirname",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "__dirname",
+      "source_file": "pipeline.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "pipeline_system_prompts",
+      "label": "SYSTEM_PROMPTS",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts",
+      "source_file": "pipeline.js",
+      "source_location": "L15"
+    },
+    {
+      "id": "pipeline_system_prompts_build",
+      "label": "SYSTEM_PROMPTS_BUILD",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts_build",
+      "source_file": "pipeline.js",
+      "source_location": "L35"
+    },
+    {
+      "id": "pipeline_system_prompts_mode2",
+      "label": "SYSTEM_PROMPTS_MODE2",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts_mode2",
+      "source_file": "pipeline.js",
+      "source_location": "L21"
+    },
+    {
+      "id": "pipeline_system_prompts_workspace",
+      "label": "SYSTEM_PROMPTS_WORKSPACE",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "system_prompts_workspace",
+      "source_file": "pipeline.js",
+      "source_location": "L28"
+    },
+    {
+      "id": "router",
+      "label": "router.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "router.js",
+      "source_file": "router.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "router_classifiers",
+      "label": "CLASSIFIERS",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "classifiers",
+      "source_file": "router.js",
+      "source_location": "L29"
+    },
+    {
+      "id": "router_cli_ids",
+      "label": "CLI_IDS",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "cli_ids",
+      "source_file": "router.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "router_default_router_hints",
+      "label": "DEFAULT_ROUTER_HINTS",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "default_router_hints",
+      "source_file": "router.js",
+      "source_location": "L19"
+    },
+    {
+      "id": "sandbox",
+      "label": "sandbox.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "sandbox.js",
+      "source_file": "sandbox.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "subscription_ledger",
+      "label": "subscription-ledger.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "subscription-ledger.js",
+      "source_file": "subscription-ledger.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_credit_extender_test",
+      "label": "credit-extender.test.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "credit-extender.test.js",
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_router_test",
+      "label": "router.test.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "router.test.js",
+      "source_file": "test/router.test.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "test_router_test_nocooldown",
+      "label": "noCooldown",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "nocooldown",
+      "source_file": "test/router.test.js",
+      "source_location": "L7"
+    },
+    {
+      "id": "test_sandbox_test",
+      "label": "sandbox.test.js",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "pipeline.js",
+      "file_type": "code",
+      "norm_label": "sandbox.test.js",
+      "source_file": "test/sandbox.test.js",
+      "source_location": "L1"
+    },
+    {
       "id": "test_workspace_test",
       "label": "workspace.test.js",
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "workspace.test.js",
       "source_file": "test/workspace.test.js",
@@ -11069,7 +11220,7 @@
       "label": "_exec",
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "_exec",
       "source_file": "test/workspace.test.js",
@@ -11080,7 +11231,7 @@
       "label": "workspace.js",
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "workspace.js",
       "source_file": "workspace.js",
@@ -11091,7 +11242,7 @@
       "label": "DEFAULT_WORKSPACE_KEEP",
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "default_workspace_keep",
       "source_file": "workspace.js",
@@ -11102,7 +11253,7 @@
       "label": "execFileAsync",
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "execfileasync",
       "source_file": "workspace.js",
@@ -11113,7 +11264,7 @@
       "label": "SNAPSHOT_SKIP_DIRS",
       "_origin": "ast",
       "community": 86,
-      "community_name": "workspace.js",
+      "community_name": "pipeline.js",
       "file_type": "code",
       "norm_label": "snapshot_skip_dirs",
       "source_file": "workspace.js",
@@ -11131,15 +11282,103 @@
       "source_location": "L1"
     },
     {
-      "id": "packages_protocol_src_index_protocol_version",
-      "label": "PROTOCOL_VERSION",
+      "id": "node_child_process",
+      "label": "node:child_process",
       "_origin": "ast",
-      "community": 87,
-      "community_name": "connection.ts",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "confidence": "EXTRACTED",
       "file_type": "code",
-      "norm_label": "protocol_version",
-      "source_file": "packages/protocol/src/index.js",
-      "source_location": "L3"
+      "norm_label": "node:child_process",
+      "source_file": "node:child_process"
+    },
+    {
+      "id": "node_os",
+      "label": "node:os",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "node:os",
+      "source_file": "node:os"
+    },
+    {
+      "id": "node_path",
+      "label": "node:path",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "node:path",
+      "source_file": "node:path"
+    },
+    {
+      "id": "node_util",
+      "label": "node:util",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "node:util",
+      "source_file": "node:util"
+    },
+    {
+      "id": "promises",
+      "label": "node:fs/promises",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "node:fs/promises",
+      "source_file": "node:fs/promises"
+    },
+    {
+      "id": "models",
+      "label": "models.js",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "models.js",
+      "source_file": "models.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "models_allowed_models",
+      "label": "ALLOWED_MODELS",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "allowed_models",
+      "source_file": "models.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "models_rates",
+      "label": "RATES",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "rates",
+      "source_file": "models.js",
+      "source_location": "L7"
+    },
+    {
+      "id": "models_warnedmodels",
+      "label": "warnedModels",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "warnedmodels",
+      "source_file": "models.js",
+      "source_location": "L21"
     },
     {
       "id": "orchestrator",
@@ -11162,6 +11401,17 @@
       "norm_label": "__dirname",
       "source_file": "orchestrator.js",
       "source_location": "L9"
+    },
+    {
+      "id": "test_agent_test",
+      "label": "agent.test.js",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "agent.test.js",
+      "source_file": "test/agent.test.js",
+      "source_location": "L1"
     },
     {
       "id": "test_orchestrator_test",
@@ -11195,6 +11445,39 @@
       "norm_label": "__dirname",
       "source_file": "test/orchestrator.test.js",
       "source_location": "L11"
+    },
+    {
+      "id": "test_server_protocol_test",
+      "label": "server-protocol.test.js",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "server-protocol.test.js",
+      "source_file": "test/server-protocol.test.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "usage",
+      "label": "usage.js",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "usage.js",
+      "source_file": "usage.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "usage_records",
+      "label": "records",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "orchestrator.test.js",
+      "file_type": "code",
+      "norm_label": "records",
+      "source_file": "usage.js",
+      "source_location": "L3"
     },
     {
       "id": "fs_browser",
@@ -11289,160 +11572,6 @@
       "norm_label": "graphify",
       "source_file": ".agents/rules/graphify.md",
       "source_location": "L6"
-    },
-    {
-      "id": "models",
-      "label": "models.js",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "models.js",
-      "source_file": "models.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "models_allowed_models",
-      "label": "ALLOWED_MODELS",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "allowed_models",
-      "source_file": "models.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "models_rates",
-      "label": "RATES",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "rates",
-      "source_file": "models.js",
-      "source_location": "L7"
-    },
-    {
-      "id": "models_warnedmodels",
-      "label": "warnedModels",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "warnedmodels",
-      "source_file": "models.js",
-      "source_location": "L21"
-    },
-    {
-      "id": "usage",
-      "label": "usage.js",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "usage.js",
-      "source_file": "usage.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "usage_records",
-      "label": "records",
-      "_origin": "ast",
-      "community": 90,
-      "community_name": "models.js",
-      "file_type": "code",
-      "norm_label": "records",
-      "source_file": "usage.js",
-      "source_location": "L3"
-    },
-    {
-      "id": "pipeline",
-      "label": "pipeline.js",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "pipeline.js",
-      "source_file": "pipeline.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "pipeline_dirname",
-      "label": "__dirname",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "__dirname",
-      "source_file": "pipeline.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "pipeline_system_prompts",
-      "label": "SYSTEM_PROMPTS",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "system_prompts",
-      "source_file": "pipeline.js",
-      "source_location": "L15"
-    },
-    {
-      "id": "pipeline_system_prompts_build",
-      "label": "SYSTEM_PROMPTS_BUILD",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "system_prompts_build",
-      "source_file": "pipeline.js",
-      "source_location": "L35"
-    },
-    {
-      "id": "pipeline_system_prompts_mode2",
-      "label": "SYSTEM_PROMPTS_MODE2",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "system_prompts_mode2",
-      "source_file": "pipeline.js",
-      "source_location": "L21"
-    },
-    {
-      "id": "pipeline_system_prompts_workspace",
-      "label": "SYSTEM_PROMPTS_WORKSPACE",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "system_prompts_workspace",
-      "source_file": "pipeline.js",
-      "source_location": "L28"
-    },
-    {
-      "id": "sandbox",
-      "label": "sandbox.js",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "sandbox.js",
-      "source_file": "sandbox.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "test_sandbox_test",
-      "label": "sandbox.test.js",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "pipeline.js",
-      "file_type": "code",
-      "norm_label": "sandbox.test.js",
-      "source_file": "test/sandbox.test.js",
-      "source_location": "L1"
     },
     {
       "id": "docker",
@@ -12575,6 +12704,282 @@
       "weight": 1.0
     },
     {
+      "source": "credit_extender_iscapacitysignal",
+      "target": "agent_geterrorstatus",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "router_pickpool",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "agent_ask",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "credit_extender_cliagentconfig",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "agent_getretryafterms",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "credit_extender_iscapacitysignal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "router_pickcli",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "workspace_createworkspacefromdir",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L152",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "pipeline_stripcodefences",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "workspace_parseworkspacemanifest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "workspace_createworkspace",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "workspace_runworkspacetest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "workspace_getworkspacediff",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "pipeline_parseverdict",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "credit_extender_normalizepool",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "router_loadrouterhints",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "router_classifytask",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender_routedask",
+      "target": "router_nocapacityerror",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender_routedask",
+      "target": "router_pickcli",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender_routedask",
+      "target": "agent_ask",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender_routedask",
+      "target": "credit_extender_cliagentconfig",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender_routedask",
+      "target": "credit_extender_iscapacitysignal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender_routedask",
+      "target": "agent_getretryafterms",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
       "source": "fs_browser_confinepath",
       "target": "fs_browser_underroot",
       "relation": "calls",
@@ -13111,7 +13516,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L205",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -13123,7 +13528,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L205",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -13135,7 +13540,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L205",
+      "source_location": "L206",
       "weight": 1.0
     },
     {
@@ -13147,7 +13552,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L124",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -13159,7 +13564,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L134",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -13171,7 +13576,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server.js",
-      "source_location": "L504",
+      "source_location": "L518",
       "weight": 1.0
     },
     {
@@ -13784,6 +14189,18 @@
       "context": "call",
       "source_file": "workspace.js",
       "source_location": "L231",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender_runcreditextender",
+      "target": "credit_extender_runcreditextender_routedask",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "credit-extender.js",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -14437,6 +14854,18 @@
     {
       "source": "package_files",
       "target": "ref_cli_js",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "package_files",
+      "target": "ref_credit_extender_js",
       "relation": "extends",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15443,6 +15872,198 @@
       "weight": 1.0
     },
     {
+      "source": "credit_extender",
+      "target": "workspace_createworkspace",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "workspace_createworkspacefromdir",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "workspace_getworkspacediff",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "workspace_parseworkspacemanifest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "workspace_runworkspacetest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "pipeline_parseverdict",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "pipeline_stripcodefences",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "agent_ask",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "agent_geterrorstatus",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "agent_getretryafterms",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "router_classifytask",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "router_cli_ids",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "router_loadrouterhints",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "router_nocapacityerror",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "router_pickcli",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "router_pickpool",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "orchestrator",
       "target": "usage_printsummary",
       "relation": "imports",
@@ -15499,7 +16120,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -15511,7 +16132,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -15523,7 +16144,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L52",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -15535,7 +16156,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -15547,7 +16168,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -15876,6 +16497,18 @@
     },
     {
       "source": "server",
+      "target": "credit_extender_runcreditextender",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
       "target": "workspace_applydiff",
       "relation": "imports",
       "_origin": "ast",
@@ -15883,7 +16516,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -15895,7 +16528,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -15907,7 +16540,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -15919,7 +16552,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -15931,7 +16564,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -15943,7 +16576,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -15980,6 +16613,18 @@
       "context": "import",
       "source_file": "test/cli-input.test.js",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "test_credit_extender_test",
+      "target": "credit_extender_runcreditextender",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -16670,6 +17315,54 @@
       "weight": 1.0
     },
     {
+      "source": "credit_extender",
+      "target": "workspace",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "pipeline",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "agent",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "router",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "credit-extender.js",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "orchestrator",
       "target": "usage",
       "relation": "imports_from",
@@ -16851,7 +17544,7 @@
     },
     {
       "source": "server",
-      "target": "fs_browser",
+      "target": "credit_extender",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16863,6 +17556,18 @@
     },
     {
       "source": "server",
+      "target": "fs_browser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server.js",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "server",
       "target": "models",
       "relation": "imports_from",
       "_origin": "ast",
@@ -16870,7 +17575,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -16882,7 +17587,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "server.js",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -16919,6 +17624,18 @@
       "context": "import",
       "source_file": "test/cli-input.test.js",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "test_credit_extender_test",
+      "target": "credit_extender",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -21217,6 +21934,50 @@
       "weight": 1.0
     },
     {
+      "source": "credit_extender",
+      "target": "credit_extender_cliagentconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "credit-extender.js",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "credit_extender_normalizepool",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "credit-extender.js",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "credit_extender_iscapacitysignal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "credit-extender.js",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "credit_extender",
+      "target": "credit_extender_runcreditextender",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "credit-extender.js",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
       "source": "cross_platform_client_plan",
       "target": "cross_platform_client_plan_triforce_cross_platform_client_plan",
       "relation": "contains",
@@ -21961,7 +22722,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -21977,17 +22738,6 @@
     },
     {
       "source": "package",
-      "target": "package_dependencies",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L49",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
       "target": "package_main",
       "relation": "contains",
       "_origin": "ast",
@@ -21999,13 +22749,24 @@
     },
     {
       "source": "package",
+      "target": "package_dependencies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
       "target": "package_devdependencies",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L55",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -22049,7 +22810,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -22060,7 +22821,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -22071,7 +22832,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L52",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -22082,7 +22843,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -22093,7 +22854,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -22104,7 +22865,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -22115,7 +22876,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -22126,7 +22887,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -22137,7 +22898,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -22148,7 +22909,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -22159,7 +22920,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L42",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -22170,7 +22931,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -22181,7 +22942,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -22192,7 +22953,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L45",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -22203,7 +22964,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -22214,7 +22975,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -23831,7 +24592,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L121",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -23842,7 +24603,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L164",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -23853,7 +24614,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L182",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -23864,7 +24625,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L188",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -23875,7 +24636,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L192",
+      "source_location": "L193",
       "weight": 1.0
     },
     {
@@ -23886,7 +24647,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L197",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -23897,7 +24658,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L204",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -23908,7 +24669,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L208",
+      "source_location": "L209",
       "weight": 1.0
     },
     {
@@ -23919,7 +24680,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -23930,7 +24691,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -23941,7 +24702,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L286",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -23952,7 +24713,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L287",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -23963,7 +24724,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -23974,7 +24735,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -23985,7 +24746,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -23996,7 +24757,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -24007,7 +24768,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -24018,7 +24779,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -24029,7 +24790,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L459",
+      "source_location": "L473",
       "weight": 1.0
     },
     {
@@ -24040,7 +24801,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L466",
+      "source_location": "L480",
       "weight": 1.0
     },
     {
@@ -24051,7 +24812,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L484",
+      "source_location": "L498",
       "weight": 1.0
     },
     {
@@ -24062,7 +24823,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L52",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -24073,7 +24834,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L67",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -24084,7 +24845,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server.js",
-      "source_location": "L77",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -24195,6 +24956,39 @@
       "confidence_score": 1.0,
       "source_file": "test/cli-input.test.js",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "test_credit_extender_test",
+      "target": "test_credit_extender_test_collect",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "test_credit_extender_test",
+      "target": "test_credit_extender_test_e429",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "test_credit_extender_test",
+      "target": "test_credit_extender_test_fakeledger",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "test/credit-extender.test.js",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -26619,5 +27413,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8f2400d26a5cbce491dec9a7b514b643501de948"
+  "built_at_commit": "215cb6039e2db2153abf2ebdd7d8ff6aa7e0753e"
 }
