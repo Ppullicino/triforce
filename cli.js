@@ -2,7 +2,7 @@
 import readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import { spawn, fork, execSync, execFileSync } from 'node:child_process';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, chmod } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import WebSocket from 'ws';
@@ -226,6 +226,7 @@ async function setupWizard() {
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const CLI_PORT = process.env.PORT || '3000';
 
 function getNetworkIPs() {
   const interfaces = os.networkInterfaces();
@@ -385,7 +386,130 @@ async function promptLoop(defaultMode, config) {
   }
 }
 
+// ── triforce init / doctor ──
+
+async function ensureEnvToken() {
+  const envPath = join(__dirname, '.env');
+  let text = '';
+  try { text = await readFile(envPath, 'utf8'); } catch { /* new file */ }
+  const existing = text.match(/^TRIFORCE_TOKEN=(.+)$/m)?.[1]?.trim();
+  if (existing) return { token: existing, created: false };
+  const token = randomBytes(32).toString('hex');
+  const next = (text.endsWith('\n') || !text ? text : text + '\n') + `TRIFORCE_TOKEN=${token}\n`;
+  await writeFile(envPath, next, { mode: 0o600 });
+  await chmod(envPath, 0o600).catch(() => {});
+  return { token, created: true };
+}
+
+async function fetchCapabilities(token) {
+  try {
+    const res = await fetch(`http://localhost:${CLI_PORT}/api/capabilities`, { headers: { cookie: `triforce_token=${token}` } });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+async function waitForCapabilities(token, { timeoutMs = 30000 } = {}) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const caps = await fetchCapabilities(token);
+    if (caps) return caps;
+    await new Promise(r => setTimeout(r, 1000));
+  }
+  return null;
+}
+
+async function renderQR(text) {
+  try {
+    const mod = await import('qrcode-terminal');
+    (mod.default ?? mod).generate(text, { small: true });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function printAccess(token, caps) {
+  const ips = getNetworkIPs();
+  const urls = (ips.length ? ips : ['localhost']).map(ip => `http://${ip}:${CLI_PORT}/login`);
+  const lines = [
+    'Triforce access',
+    '===============',
+    ...urls.map(u => `  ${u}`),
+    `  token: ${token}`,
+    caps ? `  sandbox: ${caps.sandbox}   modes: ${JSON.stringify(caps.modes)}   fsRoots: ${JSON.stringify(caps.fsRoots)}` : '  (server not reachable yet)',
+    '',
+    'Open a URL, paste the token on the login page. Keep this file private.',
+  ];
+  console.log('\n' + lines.join('\n') + '\n');
+  await writeFile(join(__dirname, 'triforce-access.txt'), lines.join('\n') + '\n', { mode: 0o600 }).catch(() => {});
+  if (urls[0]) {
+    console.log('Scan to open on a phone:');
+    const ok = await renderQR(urls[0]);
+    if (!ok) console.log(`  (install "qrcode-terminal" for a scannable code — URL above)`);
+  }
+}
+
+async function triforceInit() {
+  console.log('\n=== triforce init ===\n');
+  await checkAndInstallDependencies();
+  await setupWizard(); // dependency check + the three CLI login walk-throughs
+  const { token, created } = await ensureEnvToken();
+  console.log(created ? '\nGenerated TRIFORCE_TOKEN in .env (chmod 600).' : '\nReusing existing TRIFORCE_TOKEN from .env.');
+
+  const fsRoots = (await rl.question('Filesystem-navigator roots (colon-separated absolute paths) [$HOME]: ')).trim();
+  const installAns = await rl.question('Install & start the systemd service now (needs sudo)? (y/n) [y]: ');
+  if (!installAns.toLowerCase().startsWith('n')) {
+    await new Promise(resolve => {
+      const env = { ...process.env };
+      if (fsRoots) env.TRIFORCE_FS_ROOTS = fsRoots;
+      const child = spawn('sudo', ['bash', join(__dirname, 'install-service.sh')], { stdio: 'inherit', env });
+      child.on('close', resolve);
+    });
+  } else {
+    console.log(`\nWhen ready:  ${fsRoots ? `TRIFORCE_FS_ROOTS=${fsRoots} ` : ''}sudo bash install-service.sh`);
+  }
+
+  console.log('\nWaiting for the server to report a working sandbox...');
+  const caps = await waitForCapabilities(token, { timeoutMs: 30000 });
+  if (!caps) console.log(`⚠ Could not reach http://localhost:${CLI_PORT}/api/capabilities yet — check journalctl -u triforce -n 50.`);
+  else if (caps.sandbox !== 'systemd') console.log(`⚠ sandbox: ${caps.sandbox} — Mode 1/2 runs need systemd (see DOCKER.md / RUNNING.md).`);
+  else console.log('✅ sandbox: systemd — all three modes are available.');
+
+  await printAccess(token, caps);
+}
+
+async function triforceDoctor() {
+  console.log('\n=== triforce doctor ===\n');
+  await checkAndInstallDependencies();
+  console.log('\nCLI logins:');
+  console.log(`  ${checkClaudeLogin() ? '✅' : '❌'} claude`);
+  console.log(`  ${checkCodexLogin() ? '✅' : '❌'} codex`);
+  console.log(`  ${checkAgyLogin() ? '✅' : '❌'} agy`);
+
+  let token = process.env.TRIFORCE_TOKEN;
+  if (!token) {
+    try { token = (await readFile(join(__dirname, '.env'), 'utf8')).match(/^TRIFORCE_TOKEN=(.+)$/m)?.[1]?.trim(); } catch { /* none */ }
+  }
+  const caps = token ? await fetchCapabilities(token) : null;
+  console.log('\nServer:');
+  if (!token) console.log('  ⚠ no TRIFORCE_TOKEN found (run `triforce init`).');
+  else if (!caps) console.log(`  ❌ http://localhost:${CLI_PORT}/api/capabilities unreachable.`);
+  else {
+    console.log(`  ✅ reachable — protocol ${caps.protocolVersion}, sandbox ${caps.sandbox}`);
+    console.log(`  modes: ${JSON.stringify(caps.modes)}   fsRoots: ${JSON.stringify(caps.fsRoots)}`);
+    console.log(`  features: ${(caps.features || []).join(', ')}`);
+  }
+  const wsRoot = process.env.TRIFORCE_WORKSPACE_ROOT || join(os.homedir(), '.local/share/triforce/workspaces');
+  console.log(`\nWorkspace root: ${wsRoot} (${existsSync(wsRoot) ? 'present' : 'will be created on first run'})`);
+  if (token && caps) await printAccess(token, caps);
+}
+
 async function main() {
+  const sub = process.argv[2];
+  if (sub === 'init') { await triforceInit(); rl.close(); return; }
+  if (sub === 'doctor') { await triforceDoctor(); rl.close(); return; }
+
   let config;
   let defaultMode = 1;
 

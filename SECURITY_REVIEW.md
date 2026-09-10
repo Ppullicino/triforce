@@ -27,6 +27,23 @@ Triforce access token, host metadata, run content, and update integrity.
 | Deep links and external navigation | Neither native shell registers an application deep-link handler. HTTP(S) links outside packaged content open externally. If deep links are added later, they require a new input-validation review. |
 | Update-channel compromise | The Tauri updater code path is present but has no endpoint/public key and therefore cannot install updates. Step 8 must configure only signed HTTPS metadata and owner-controlled signing keys. Android update signing remains owner/store controlled. |
 
+## Filesystem navigator and apply (protocol 1.2)
+
+The `fs.*` command family plus the `apply` diff-back flow widen the server's trust
+boundary the most in this release. Threat model and controls:
+
+| Threat | Control |
+| --- | --- |
+| Path traversal (`..`, absolute paths) | `fs-browser.confinePath()` resolves the target and verifies it is inside an allowed root before any read. `TRIFORCE_FS_ROOTS` (colon-separated absolute paths) defaults to `$HOME`; deny by default. |
+| Symlink escape | Every path segment at or below the root is `realpath`-resolved and re-checked against the roots; a link pointing outside is rejected (`FS_DENIED`), listing and reading included. Fuzz/escape cases are covered by `test/fs-browser.test.js`. |
+| Secret disclosure | A denylist (`.env`, `.ssh`, `.aws`, `.config`, `.npmrc`, `.git-credentials`, other CLIs' credential dirs, private-key filenames) is refused even inside a root; dotfiles are hidden from listings by default; `readBudgeted()` skips them and vendored dirs. |
+| Implicit / unintended writes | Runs never execute against the real folder — always a sandboxed **copy** seeded from a `.gitignore`-aware snapshot. The real folder is modified **only** by an explicit `apply` command. |
+| TOCTOU on apply (folder changed after the run) | `apply` recomputes `hashTree()` of the real folder and refuses if any tracked file differs from the snapshot taken when the run started. The safe default is to write into a fresh `triforce/apply-*` git branch (`TRIFORCE_APPLY_GIT_POLICY` = `branch`); `refuse` aborts on a dirty tree, `force` writes in place. |
+| Accidental overwrite / partial apply | Per-file path allowlist (`scope: "files"` + `paths`); each path re-validated with `safePath`; the result reports `applied` / `deleted` / `skipped` and the branch. |
+| Large / binary folders | Snapshot and reader enforce `MAX_FILES` / `MAX_TOTAL_BYTES` / per-file caps and skip binaries; `node_modules`, `.git`, build output are never walked. |
+| Multi-user exposure | Still a single operator token; the FS roots are the server user's. Sharing the access URL shares that user's filesystem view — documented in `OPERATIONS.md`. |
+| Mode 3 write attempts | Verified chat cannot execute or write at all; folder context is exposed read-only. Modes 1 & 2 still require `sandbox: "systemd"`. |
+
 ## Compatibility and deployment rules
 
 - Put remote servers behind HTTPS and configure the proxy to preserve the public host

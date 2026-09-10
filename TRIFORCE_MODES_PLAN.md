@@ -31,9 +31,24 @@ Work landed on this branch, in order:
    - Full detail + login walk‑throughs in `DOCKER.md`.
 3. **This plan**, including the Mode 1 position rename (§2).
 
-Not yet built: the three‑mode redesign itself (§2), the filesystem navigator (§3),
-`triforce init` onboarding (§4). The dashboard still shows the old
-architect/developer/reviewer triangle.
+**Update (P0–P4 landed on `modes-p*` branches, PRs #1–#5):** the redesign in this
+document is now implemented.
+
+- **P0** — protocol `1.2.0`, `router.js`, `subscription-ledger.js`, session `kind`,
+  `serverCapabilities.fsRoots`, `GET /api/ledger`.
+- **P1** — Mode 3 verified chat (`verified-chat.js`, `chat` command, chat UI).
+- **P2** — filesystem navigator (`fs-browser.js`), `workspace.js`
+  `snapshotDir`/`createWorkspaceFromDir`/`applyDiff`, Mode 1 rebuilt as the single
+  Prompt Designer↔Supervisor↔Coder↔Supervisor build engine in `pipeline.js`
+  (`SYSTEM_PROMPTS_BUILD`, verbatim original prompt to the Supervisor, `diff`
+  events); folder bar + diff/apply in the dashboard.
+- **P3** — Mode 2 credit extender (`credit-extender.js`: router + ledger failover,
+  `route` events, deliberation); per‑CLI headroom bar replaces the $‑cost bar.
+- **P4** — `triforce init` / `triforce doctor` in `cli.js`,
+  `install-service.sh` `TRIFORCE_FS_ROOTS` pass‑through, docs.
+
+Deferred: the shared‑client Miller‑column browser and a richer diff viewer;
+cross‑restart Mode 3 conversation memory.
 
 Where run data lands: `~/.local/share/triforce/runs/` and `.../workspaces/` — inside
 the container that is the `triforce-systemd-home` (or `triforce-home`) named volume;
@@ -351,13 +366,15 @@ secret disclosure) and the mitigations above.
 
 ## 10. Phased delivery
 
+Status: **P0–P4 complete** (branches `modes-p0-foundations` … `modes-p4-onboarding`).
+
 | Phase | Scope | Acceptance |
 | --- | --- | --- |
-| **P0 — foundations** | Move `safePath` → `fs-browser.js`; `subscription-ledger.js` + `router.js` (pure, tested); protocol 1.2 schemas + capability fields; `run-registry` "session kind". No UI. | New unit tests green; `server-protocol.test.js` updated; capabilities shows `modes`/`fsRoots`. |
-| **P1 — Mode 3 (verified chat)** | `verifiedChat.js` engine; `chat` command + events; chat view in `public/index.html`; conversation persistence + replay. Multi‑CLI fan‑out/reconcile proven here. | Ask a question → draft + 2 checks + reconciled answer streamed and persisted; reconnect resumes; works with 1–3 CLIs logged in. |
-| **P2 — filesystem navigator + Mode 1** | `fs.*` API + column UI + folder chip; `createWorkspace` from real dir; `getWorkspaceDiff` viewer; `apply` with pre‑flight + git policy; merge Mode‑2 loop + workspace loop into the Mode 1 engine. | Pick a real folder → run Mode 1 → review diff → Apply → changes land; escape/symlink tests pass; dirty‑git policy enforced. |
-| **P3 — Mode 2 (credit extender)** | Wire router + ledger into a roleless engine; task‑fit table; failover on capacity signal; optional deliberation for Q&A; per‑CLI headroom bar replaces $‑cost bar. | Under a simulated `429` from one CLI, work continues on another; headroom bar reflects ledger; deliberated answer beats single‑model on a fixed eval set. |
-| **P4 — onboarding + polish** | `triforce init` / `doctor`; QR + `triforce-access.txt`; native clients (desktop/Android) updated to protocol 1.2; docs (`RUNNING.md`, `SECURITY_REVIEW.md`, `OPERATIONS.md`, `CLIENT_ARCHITECTURE.md`). | Fresh machine → `triforce init` → URL in browser → all three modes usable end‑to‑end. |
+| **P0 — foundations** ✅ | Move `safePath` → `fs-browser.js`; `subscription-ledger.js` + `router.js` (pure, tested); protocol 1.2 schemas + capability fields; `run-registry` "session kind". No UI. | New unit tests green; `server-protocol.test.js` updated; capabilities shows `modes`/`fsRoots`. |
+| **P1 — Mode 3 (verified chat)** ✅ | `verifiedChat.js` engine; `chat` command + events; chat view in `public/index.html`; conversation persistence + replay. Multi‑CLI fan‑out/reconcile proven here. | Ask a question → draft + 2 checks + reconciled answer streamed and persisted; reconnect resumes; works with 1–3 CLIs logged in. |
+| **P2 — filesystem navigator + Mode 1** ✅ | `fs.*` API + column UI + folder chip; `createWorkspace` from real dir; `getWorkspaceDiff` viewer; `apply` with pre‑flight + git policy; merge Mode‑2 loop + workspace loop into the Mode 1 engine. | Pick a real folder → run Mode 1 → review diff → Apply → changes land; escape/symlink tests pass; dirty‑git policy enforced. |
+| **P3 — Mode 2 (credit extender)** ✅ | Wire router + ledger into a roleless engine; task‑fit table; failover on capacity signal; optional deliberation for Q&A; per‑CLI headroom bar replaces $‑cost bar. | Under a simulated `429` from one CLI, work continues on another; headroom bar reflects ledger; deliberated answer beats single‑model on a fixed eval set. |
+| **P4 — onboarding + polish** ✅ | `triforce init` / `doctor`; QR + `triforce-access.txt`; native clients (desktop/Android) updated to protocol 1.2; docs (`RUNNING.md`, `SECURITY_REVIEW.md`, `OPERATIONS.md`, `CLIENT_ARCHITECTURE.md`). | Fresh machine → `triforce init` → URL in browser → all three modes usable end‑to‑end. |
 
 Each phase: branch, tests in a container, `graphify update .`, PR.
 

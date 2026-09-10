@@ -24,14 +24,14 @@
     "semantic_hash": ""
   },
   "install-service.sh": {
-    "mtime": 1788511604.9252145,
-    "seen": 1788956022.6928227,
-    "ast_hash": "7a56e4fa8ad13233427244ecce050a27",
+    "mtime": 1789026789.212289,
+    "seen": 1789027116.3311512,
+    "ast_hash": "5595b4f0aa2830e985716a2f11038fdd",
     "semantic_hash": ""
   },
   "models.config.json": {
-    "mtime": 1789026662.3379893,
-    "seen": 1789026721.909535,
+    "mtime": 1789027083.7026217,
+    "seen": 1789027116.3311527,
     "ast_hash": "1eabf143d14555356485ded8fdd6defe",
     "semantic_hash": ""
   },
@@ -96,9 +96,9 @@
     "semantic_hash": ""
   },
   "RUNNING.md": {
-    "mtime": 1788955842.892047,
-    "seen": 1788956022.6928678,
-    "ast_hash": "5f4484438b06e8e48fa73b5f322a506d",
+    "mtime": 1789027021.887828,
+    "seen": 1789027116.3312182,
+    "ast_hash": "d0f05c29583e81bf564d64ee35decf75",
     "semantic_hash": ""
   },
   "public/index.html": {
@@ -168,9 +168,9 @@
     "semantic_hash": ""
   },
   "cli.js": {
-    "mtime": 1788955802.178979,
-    "seen": 1788956022.6927798,
-    "ast_hash": "6bd4090956a257aa1e0b1ac186b98143",
+    "mtime": 1789026902.8751168,
+    "seen": 1789027116.3310916,
+    "ast_hash": "024431d278a1dca9367983fc7763a28a",
     "semantic_hash": ""
   },
   "REVIEW_FIX_LOG.md": {
@@ -306,9 +306,9 @@
     "semantic_hash": ""
   },
   "CLIENT_ARCHITECTURE.md": {
-    "mtime": 1788511604.904215,
-    "seen": 1788956022.6928608,
-    "ast_hash": "919f09d25b8a261bc31d384472d7cd46",
+    "mtime": 1789027048.7813046,
+    "seen": 1789027116.3312097,
+    "ast_hash": "6552000e61dece60329e592b1d584a9c",
     "semantic_hash": ""
   },
   "clients/shared/index.html": {
@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "SECURITY_REVIEW.md": {
-    "mtime": 1788511604.904215,
-    "seen": 1788956022.692869,
-    "ast_hash": "d48683be142c81cf8470e4abd9930a49",
+    "mtime": 1789027038.5805035,
+    "seen": 1789027116.3312194,
+    "ast_hash": "fb34e2d4a948f462d70c49733e4122ba",
     "semantic_hash": ""
   },
   "public/login.html": {
@@ -840,9 +840,9 @@
     "semantic_hash": ""
   },
   "RELEASE_NOTES.md": {
-    "mtime": 1788511604.904215,
-    "seen": 1788956022.6928658,
-    "ast_hash": "572d5cff6718e52655db57610873a0c2",
+    "mtime": 1789026991.86941,
+    "seen": 1789027116.331216,
+    "ast_hash": "fa2d9a5fbcac50e105a0aed835491989",
     "semantic_hash": ""
   },
   "SIGNING.md": {
@@ -858,9 +858,9 @@
     "semantic_hash": ""
   },
   "OPERATIONS.md": {
-    "mtime": 1788511604.904215,
-    "seen": 1788956022.6928637,
-    "ast_hash": "1f18471d1d8e170dcf864b34f2abe57f",
+    "mtime": 1789027001.8622167,
+    "seen": 1789027116.3312142,
+    "ast_hash": "5bdefcac33f00eab68e7364805842042",
     "semantic_hash": ""
   },
   "RELEASE_CHECKLIST.md": {
@@ -942,9 +942,9 @@
     "semantic_hash": ""
   },
   "TRIFORCE_MODES_PLAN.md": {
-    "mtime": 1788967986.3663046,
-    "seen": 1788967996.0321224,
-    "ast_hash": "7a42e5f030f3b5a0e40162ab6084afa5",
+    "mtime": 1789026968.2918649,
+    "seen": 1789027116.3312216,
+    "ast_hash": "9252fe8c04a2a576f2f96a4dc2977d47",
     "semantic_hash": ""
   },
   "DOCKER.md": {
@@ -1041,6 +1041,12 @@
     "mtime": 1789026633.7995968,
     "seen": 1789026721.9095607,
     "ast_hash": "649cb57cea9d28ac9419bc0ffb470630",
+    "semantic_hash": ""
+  },
+  "test/cli-init.test.js": {
+    "mtime": 1789026912.1429405,
+    "seen": 1789027116.3311765,
+    "ast_hash": "c4bbedba1fcff5e6319708c205c5b900",
     "semantic_hash": ""
   }
 }

@@ -18,7 +18,12 @@ they must never include tokens, cookies, provider keys, or unredacted proxy logs
 ## Data and backup
 
 Back up the server's `.env` through a secrets manager, `models.config.json`, deployment
-configuration, and `TRIFORCE_WORKSPACE_ROOT` if generated workspaces must survive.
+configuration, and `TRIFORCE_WORKSPACE_ROOT` if generated workspaces must survive. Also
+back up `${TRIFORCE_RUNS_DIR}/ledger.json` (the per-CLI subscription ledger — rolling
+call/token windows and cooldowns; losing it just resets the Mode 2 headroom estimate)
+and, if set, record `TRIFORCE_FS_ROOTS` (colon-separated absolute paths the filesystem
+navigator is confined to; default `$HOME`) and `TRIFORCE_APPLY_GIT_POLICY`
+(`branch` | `refuse` | `force`, default `branch`) alongside the deployment config.
 Back up transcripts only when `TRIFORCE_TRANSCRIPTS=1` and organizational policy
 allows their sensitive task/output content. Run history/event replay is deliberately
 bounded in memory and is lost on restart; it is not a database or backup source.
@@ -32,8 +37,9 @@ verify permissions before declaring backups healthy.
 
 ## Upgrade
 
-1. Read `RELEASE_NOTES.md`, verify protocol compatibility and artifact checksums, and
-   retain the prior signed server/client artifacts.
+1. Read `RELEASE_NOTES.md` — **protocol 1.2.0 redefines what `mode` 1/2/3 do**; the
+   server must be upgraded before clients, and any automation sending `run` commands
+   re-reviewed. Verify artifact checksums and retain the prior signed artifacts.
 2. Back up configuration/workspaces and drain or finish the active run.
 3. Upgrade the server first, run the capability/readiness and deterministic remote E2E
    checks, then upgrade clients in a small canary group.

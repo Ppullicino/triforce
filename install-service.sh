@@ -44,6 +44,16 @@ if ! grep -q '^TRIFORCE_TOKEN=' "$SCRIPT_DIR/.env"; then
   printf 'TRIFORCE_TOKEN=%s\n' "$(openssl rand -hex 32)" >> "$SCRIPT_DIR/.env"
 fi
 
+# Pass through the filesystem-navigator roots if the operator set them for this
+# install (colon-separated absolute paths; defaults to $HOME inside the server).
+if [ -n "${TRIFORCE_FS_ROOTS:-}" ]; then
+  if grep -q '^TRIFORCE_FS_ROOTS=' "$SCRIPT_DIR/.env"; then
+    sed -i "s|^TRIFORCE_FS_ROOTS=.*|TRIFORCE_FS_ROOTS=${TRIFORCE_FS_ROOTS}|" "$SCRIPT_DIR/.env"
+  else
+    printf 'TRIFORCE_FS_ROOTS=%s\n' "${TRIFORCE_FS_ROOTS}" >> "$SCRIPT_DIR/.env"
+  fi
+fi
+
 echo "Installing Triforce systemd service..."
 sed -e "s|@USER@|$SERVICE_USER|g" \
     -e "s|@WORKDIR@|$SCRIPT_DIR|g" \
