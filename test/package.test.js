@@ -18,7 +18,7 @@ test('npm package contains every backend runtime module', async () => {
   const [manifest] = Array.isArray(parsed) ? parsed : Object.values(parsed);
   const files = new Set(manifest.files.map(file => file.path));
 
-  for (const required of ['agent.js', 'cli-input.js', 'run-registry.js', 'sandbox.js', 'server.js', 'workspace.js', 'packages/protocol/src/index.js']) {
+  for (const required of ['agent.js', 'cli-input.js', 'router.js', 'run-registry.js', 'sandbox.js', 'server.js', 'subscription-ledger.js', 'workspace.js', 'packages/protocol/src/index.js']) {
     assert.ok(files.has(required), `npm package is missing ${required}`);
   }
 });

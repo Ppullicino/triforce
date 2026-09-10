@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { homedir } from 'node:os';
 import { RunRegistry } from './run-registry.js';
+import { SubscriptionLedger } from './subscription-ledger.js';
 import { capabilities, isCompatibleProtocol, validateClientCommand } from './packages/protocol/src/index.js';
 import { executePipeline } from './pipeline.js';
 import { execFile } from 'node:child_process';
@@ -20,10 +21,17 @@ const WORKSPACES_DIR = process.env.TRIFORCE_WORKSPACE_ROOT || join(homedir(), '.
 if (process.env.TRIFORCE_TRANSCRIPTS === '1') await mkdir(TRANSCRIPTS_DIR, { recursive: true, mode: 0o700 });
 const AUTH_TOKEN = process.env.TRIFORCE_TOKEN || randomBytes(32).toString('hex');
 if (!process.env.TRIFORCE_TOKEN) console.warn(`TRIFORCE_TOKEN was not set; generated one-time token: ${AUTH_TOKEN}`);
-const runRegistry = new RunRegistry();
+
+// Filesystem navigator roots (protocol 1.2). Reads are confined to these.
+const FS_ROOTS = String(process.env.TRIFORCE_FS_ROOTS || homedir())
+  .split(':').map(value => value.trim()).filter(Boolean);
+
+const ledger = new SubscriptionLedger();
+const runRegistry = new RunRegistry({ ledger });
 
 let serverCapabilities = {
   ...capabilities,
+  fsRoots: FS_ROOTS,
   sandbox: 'unavailable',
 };
 
@@ -279,6 +287,7 @@ app.get('/api/config', async (req, res) => {
 
 app.get('/api/catalog', (_req, res) => res.json(getCatalog()));
 app.get('/api/capabilities', (_req, res) => res.json(serverCapabilities));
+app.get('/api/ledger', (_req, res) => res.json({ ledger: ledger.snapshot() }));
 app.get('/api/runs', (_req, res) => res.json({ runs: runRegistry.list() }));
 app.get('/api/runs/:runId', (req, res) => {
   const run = runRegistry.get(req.params.runId);

@@ -21,7 +21,7 @@ const BASE_DELAY_MS = 1000;
 const PROVIDER_TIMEOUT_MS = Number(process.env.PROVIDER_TIMEOUT_MS) || 120000;
 const MAX_PROVIDER_OUTPUT_BYTES = Number(process.env.MAX_PROVIDER_OUTPUT_BYTES) || 10 * 1024 * 1024;
 
-function getErrorStatus(err) {
+export function getErrorStatus(err) {
   const status = err?.status ?? err?.statusCode ?? err?.error?.status ?? err?.error?.code ?? err?.code ?? null;
   if (status !== null) {
     if (typeof status === 'string' && status.toUpperCase() === 'RESOURCE_EXHAUSTED') {
@@ -39,12 +39,12 @@ function getErrorStatus(err) {
   return null;
 }
 
-function isRetryableError(err) {
+export function isRetryableError(err) {
   if (err?.name === 'AbortError') return false;
   return RETRYABLE_STATUSES.has(getErrorStatus(err)) || ['ECONNRESET', 'ETIMEDOUT', 'EAI_AGAIN'].includes(err?.code);
 }
 
-function getRetryAfterMs(err) {
+export function getRetryAfterMs(err) {
   const headers = err?.headers || err?.response?.headers;
   let retryAfterValue = null;
   

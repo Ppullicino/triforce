@@ -128,6 +128,38 @@ test('RunRegistry persistence, crash recovery, index restoration, and subscribe 
   await fs.rm(tmpDir, { recursive: true, force: true });
 });
 
+test('session kind defaults to build and round-trips through persistence', async () => {
+  const tmpDir = join(os.tmpdir(), `triforce-test-kind-${randomUUID()}`);
+  const registry = new RunRegistry({ runsDir: tmpDir });
+
+  const buildRun = registry.start({ task: 'b', config: {}, mode: 1 }, async () => {});
+  await buildRun.completion;
+  assert.equal(registry.snapshot(buildRun).kind, 'build');
+
+  const chatRun = registry.start({ task: 'c', config: {}, mode: 3, kind: 'chat' }, async () => {});
+  await chatRun.completion;
+  assert.equal(registry.snapshot(chatRun).kind, 'chat');
+  await registry.flush();
+
+  const reloaded = new RunRegistry({ runsDir: tmpDir });
+  await reloaded.load();
+  assert.equal(reloaded.snapshot(reloaded.get(chatRun.id)).kind, 'chat');
+  assert.equal(reloaded.snapshot(reloaded.get(buildRun.id)).kind, 'build');
+
+  await fs.rm(tmpDir, { recursive: true, force: true });
+});
+
+test('getLedgerSnapshot returns null without a ledger and a per-CLI view with one', async () => {
+  const bare = new RunRegistry({ runsDir: join(os.tmpdir(), `triforce-test-noledger-${randomUUID()}`) });
+  assert.equal(bare.getLedgerSnapshot(), null);
+
+  const withLedger = new RunRegistry({
+    runsDir: join(os.tmpdir(), `triforce-test-ledger-${randomUUID()}`),
+    ledger: { snapshot: () => ({ 'claude-cli': { headroom: 1 } }) },
+  });
+  assert.deepEqual(withLedger.getLedgerSnapshot(), { 'claude-cli': { headroom: 1 } });
+});
+
 test('RunRegistry cancellation and active run release', async () => {
   const tmpDir = join(os.tmpdir(), `triforce-test-cancel-${randomUUID()}`);
   const registry = new RunRegistry({ runsDir: tmpDir });

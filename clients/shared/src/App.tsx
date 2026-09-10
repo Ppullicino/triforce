@@ -1,4 +1,4 @@
-import { PROTOCOL_VERSION, type AgentRole, type PipelineConfiguration, type PipelineMode } from '@triforce/protocol';
+import { PROTOCOL_VERSION, type AgentConfiguration, type AgentRole, type PipelineMode } from '@triforce/protocol';
 import { type FormEvent, useEffect, useMemo, useState } from 'react';
 import { TriforceConnection, type ConnectionState } from './core/connection';
 import { BrowserHostStorage, HostRepository, type HostProfile } from './core/hosts';
@@ -13,10 +13,13 @@ const connectionMessages: Partial<Record<ConnectionState, string>> = {
   incompatible: `This server requires an incompatible protocol version. Client protocol: ${PROTOCOL_VERSION}.`,
   unreachable: 'Unable to reach the server. Check its URL, network, and TLS certificate; certificate errors are never bypassed.',
 };
-const defaultConfig: PipelineConfiguration = {
-  architect: { provider: 'anthropic', model: 'claude-sonnet-4-6' },
-  developer: { provider: 'google', model: 'gemini-2.5-flash' },
-  reviewer: { provider: 'google', model: 'gemini-2.5-flash' },
+// The build screen always edits a full architect/developer/reviewer triad; the
+// protocol type keeps every position optional for Modes 2/3.
+type BuildTriad = Record<AgentRole, AgentConfiguration>;
+const defaultConfig: BuildTriad = {
+  architect: { provider: 'claude-cli', model: 'claude-cli-default' },
+  developer: { provider: 'codex-cli', model: 'codex-cli-default' },
+  reviewer: { provider: 'agy-cli', model: 'agy-cli-default' },
 };
 
 export function App() {
