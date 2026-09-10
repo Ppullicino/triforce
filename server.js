@@ -9,10 +9,11 @@ import { dirname, join } from 'node:path';
 import { homedir } from 'node:os';
 import { RunRegistry } from './run-registry.js';
 import { SubscriptionLedger } from './subscription-ledger.js';
-import { capabilities, isCompatibleProtocol, validateClientCommand } from './packages/protocol/src/index.js';
+import { capabilities, isCompatibleProtocol, normalizePipelineConfig, validateClientCommand } from './packages/protocol/src/index.js';
 import { executePipeline } from './pipeline.js';
 import { runVerifiedChat } from './verified-chat.js';
-import { readFolderContext } from './folder-context.js';
+import * as fsBrowser from './fs-browser.js';
+import { applyDiff, createWorkspaceFromDir } from './workspace.js';
 import { execFile } from 'node:child_process';
 import { ALLOWED_MODELS, checkConfigForWarnings, getCatalog } from './models.js';
 import { gcWorkspaces } from './workspace.js';
@@ -35,6 +36,10 @@ const runRegistry = new RunRegistry({ ledger });
 // transcript for reconnect/replay of the current turn).
 const chatHistories = new Map();
 const CHAT_HISTORY_MAX_MESSAGES = 40;
+
+// runId -> { workspaceDir, realDir, snapshot } for the `apply` diff-back flow.
+const runContexts = new Map();
+const APPLY_GIT_POLICY = process.env.TRIFORCE_APPLY_GIT_POLICY || 'branch';
 
 let serverCapabilities = {
   ...capabilities,
@@ -108,67 +113,43 @@ async function runValidationPipeline(ws, task, _config, mode, signal) {
 }
 
 /**
- * Executes the Triforce multi-agent pipeline.
- * Supports two modes:
- * Mode 1 (Sequential Handoff): Run standard sequence (Architect -> Developer -> Sandbox -> Reviewer)
- *        with full task/plan context passed forward (piggybacking) to save costs and reduce reasoning gaps.
- * Mode 2 (Cooperative Loop): Run a prompt designer specification loop and coder loop, where the
- *        Supervisor checks the specification/code and requests corrections in up to 3 iterative loops.
+ * Executes the Triforce Mode 1 structured-build pipeline
+ * (Prompt Designer → Supervisor → Coder → Supervisor), optionally seeded from a
+ * selected real folder. `run` commands for modes 2/3 fall through here until
+ * their dedicated engines land (P3); Mode 3 chat has its own `chat` command.
  */
-async function runPipeline(ws, task, config, mode = 1, signal) {
+async function runPipeline(ws, task, config, mode = 1, signal, workingDir, seededWorkspace) {
   if (typeof task !== 'string' || !task.trim() || task.length > 50000) throw new Error('Task must be 1-50000 characters');
   if (!config || typeof config !== 'object') throw new Error('Invalid pipeline configuration');
-  const maxIterations = Math.min(10, Math.max(1, Number.parseInt(config.maxIterations ?? 3, 10) || 3));
-  for (const role of ['architect', 'developer', 'reviewer']) {
-    if (!config[role] || typeof config[role].provider !== 'string' || typeof config[role].model !== 'string') throw new Error(`Invalid ${role} configuration`);
-    if (!ALLOWED_MODELS.get(config[role].provider)?.has(config[role].model)) throw new Error(`Unsupported ${role} provider/model`);
+  const effective = normalizePipelineConfig(config);
+  for (const [position, legacy] of [['promptDesigner', 'architect'], ['coder', 'developer'], ['supervisor', 'reviewer']]) {
+    const entry = effective[position] ?? effective[legacy];
+    if (!entry || typeof entry.provider !== 'string' || typeof entry.model !== 'string') throw new Error(`Invalid ${position} configuration`);
+    if (!ALLOWED_MODELS.get(entry.provider)?.has(entry.model)) throw new Error(`Unsupported ${position} provider/model`);
   }
-  mode = [2, 3].includes(mode) ? mode : 1;
   const send = (data) => { if (ws.readyState === 1) ws.send(JSON.stringify(data)); };
-
   const runLog = { architect: '', developer: '', reviewer: '' };
 
   try {
     await executePipeline(
       task,
-      config,
-      mode,
+      effective,
+      1,
       {
         workspacesDir: WORKSPACES_DIR,
         packageRoot: __dirname,
         dependencyRoot: join(__dirname, 'node_modules'),
+        workingDir: workingDir || undefined,
+        seededWorkspace: seededWorkspace || undefined,
         signal,
       },
       (event) => {
         if (ws.readyState !== 1) return;
-
         if (event.type === 'output') {
-          const { role, text, iteration } = event;
-          if (mode === 2) {
-            const iterHeader = `\n--- ITERATION ${iteration} ---\n`;
-            const textToSave = role === 'reviewer'
-              ? (event.label === 'Prompt Check' ? iterHeader + '[Prompt Check]\n' + text + '\n' : iterHeader + '[Code Check]\n' + text + '\n')
-              : iterHeader + text + '\n';
-            runLog[role] += textToSave;
-            send({ type: 'output', role, text: runLog[role] });
-          } else if (mode === 3) {
-            if (role === 'reviewer') {
-              runLog.reviewer += `\n--- ITERATION ${iteration} ---\n${text}\n`;
-              send({ type: 'output', role: 'reviewer', text: runLog.reviewer });
-            } else {
-              runLog[role] = text;
-              send({ type: 'output', role, text });
-            }
-          } else {
-            runLog[role] = text;
-            send({ type: 'output', role, text });
-          }
-        } else if (event.type === 'usage') {
-          send(event);
-        } else if (event.type === 'cost') {
-          send(event);
-        } else if (event.type === 'done') {
-          send(event);
+          const { role, text, iteration, label } = event;
+          const header = `\n--- ITERATION ${iteration ?? 1}${label ? ` · ${label}` : ''} ---\n`;
+          runLog[role] = (runLog[role] || '') + header + text + '\n';
+          send({ type: 'output', role, text: runLog[role] });
         } else {
           send(event);
         }
@@ -320,6 +301,7 @@ httpServer.on('upgrade', (req, socket, head) => {
 
 wss.on('connection', (ws) => {
   const unsubscribe = new Set();
+  let workingDir = null; // session-scoped selected real folder (fs.selectWorking)
   ws.on('close', () => {
     for (const remove of unsubscribe) remove();
     unsubscribe.clear();
@@ -329,7 +311,7 @@ wss.on('connection', (ws) => {
     let msg;
     try { msg = JSON.parse(raw); } catch { return; }
 
-    if (!['run', 'subscribe', 'capabilities', 'cancel', 'chat'].includes(msg.type)) return;
+    if (!['run', 'subscribe', 'capabilities', 'cancel', 'chat', 'fs.roots', 'fs.list', 'fs.stat', 'fs.selectWorking', 'apply'].includes(msg.type)) return;
     const parsed = validateClientCommand(msg);
     if (!parsed.success) {
       return ws.send(JSON.stringify({ type: 'protocol_error', code: 'INVALID_COMMAND', message: parsed.error.issues[0]?.message || 'Invalid command' }));
@@ -354,6 +336,48 @@ wss.on('connection', (ws) => {
       }
       return;
     }
+    if (command.type === 'fs.roots') {
+      return ws.send(JSON.stringify({ type: 'fs_list', kind: 'roots', roots: fsBrowser.roots(process.env.TRIFORCE_FS_ROOTS) }));
+    }
+    if (command.type === 'fs.list') {
+      try {
+        const { path, entries } = await fsBrowser.list(command.path, { roots: FS_ROOTS });
+        return ws.send(JSON.stringify({ type: 'fs_list', kind: 'list', path, entries }));
+      } catch (err) {
+        return ws.send(JSON.stringify({ type: 'protocol_error', code: 'FS_DENIED', message: err.message }));
+      }
+    }
+    if (command.type === 'fs.stat') {
+      try {
+        return ws.send(JSON.stringify({ type: 'fs_list', kind: 'stat', entry: await fsBrowser.statEntry(command.path, { roots: FS_ROOTS }) }));
+      } catch (err) {
+        return ws.send(JSON.stringify({ type: 'protocol_error', code: 'FS_DENIED', message: err.message }));
+      }
+    }
+    if (command.type === 'fs.selectWorking') {
+      try {
+        const entry = await fsBrowser.statEntry(command.path, { roots: FS_ROOTS });
+        if (entry.type !== 'dir') throw new Error('Working folder must be a directory');
+        workingDir = entry.path;
+        return ws.send(JSON.stringify({ type: 'fs_list', kind: 'working', path: workingDir, isGitRepo: entry.isGitRepo }));
+      } catch (err) {
+        return ws.send(JSON.stringify({ type: 'protocol_error', code: 'FS_DENIED', message: err.message }));
+      }
+    }
+    if (command.type === 'apply') {
+      const ctx = runContexts.get(command.runId);
+      if (!ctx) return ws.send(JSON.stringify({ type: 'apply_result', runId: command.runId, ok: false, reason: 'no applyable context for this run (was it seeded from a folder?)' }));
+      try {
+        const result = await applyDiff(ctx.workspaceDir, ctx.realDir, {
+          snapshot: ctx.snapshot,
+          gitPolicy: APPLY_GIT_POLICY,
+          paths: command.scope === 'files' ? command.paths : undefined,
+        });
+        return ws.send(JSON.stringify({ type: 'apply_result', runId: command.runId, ok: !result.reason, ...result }));
+      } catch (err) {
+        return ws.send(JSON.stringify({ type: 'apply_result', runId: command.runId, ok: false, reason: err.message }));
+      }
+    }
     if (command.type === 'chat') {
       if (shuttingDown) {
         return ws.send(JSON.stringify({
@@ -365,7 +389,7 @@ wss.on('connection', (ws) => {
       const history = chatHistories.get(conversationId) ?? [];
       let folderContext = '';
       if (command.folder) {
-        folderContext = await readFolderContext(command.folder, FS_ROOTS).catch(() => '');
+        folderContext = await fsBrowser.readBudgeted(command.folder, { roots: FS_ROOTS }).catch(() => '');
       }
       try {
         const run = runRegistry.start(
@@ -406,9 +430,19 @@ wss.on('connection', (ws) => {
       }
       try {
         const useValidationPipeline = process.env.NODE_ENV === 'test' && process.env.TRIFORCE_E2E_FAKE_PIPELINE === '1';
+        let seed = null;
+        if (workingDir && !useValidationPipeline) {
+          seed = await createWorkspaceFromDir(workingDir, WORKSPACES_DIR, { dependencyRoot: join(__dirname, 'node_modules') });
+        }
+        const selectedFolder = workingDir;
         const run = runRegistry.start(command, (pipelineSocket, signal) => useValidationPipeline
           ? runValidationPipeline(pipelineSocket, command.task, command.config, command.mode, signal)
-          : runPipeline(pipelineSocket, command.task, command.config, command.mode, signal));
+          : runPipeline(pipelineSocket, command.task, command.config, command.mode, signal, selectedFolder,
+              seed ? { id: seed.id, directory: seed.directory, testFile: seed.testFile, files: seed.files } : null));
+        if (seed) {
+          runContexts.set(run.id, { workspaceDir: seed.directory, realDir: selectedFolder, snapshot: seed.snapshot });
+          while (runContexts.size > 50) runContexts.delete(runContexts.keys().next().value);
+        }
         ws.send(JSON.stringify({ type: 'run_started', run: runRegistry.snapshot(run) }));
         unsubscribe.add(runRegistry.subscribe(run, ws));
       } catch (err) {

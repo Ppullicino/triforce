@@ -1451,6 +1451,44 @@
   #chatOpts { display: flex; gap: 14px; align-items: center; font-size: 11px; opacity: .7; padding-bottom: 6px; }
 </style>
 
+<style>
+  #folderBar { position: fixed; left: 50%; transform: translateX(-50%); bottom: 96px; z-index: 30;
+    display: flex; gap: 6px; align-items: center; background: rgba(10,8,0,.85); border: 1px solid rgba(210,158,52,.3);
+    border-radius: 8px; padding: 6px 8px; font-size: 12px; max-width: 92vw; }
+  body.chat-mode #folderBar { display: none; }
+  #folderInput { background: rgba(255,255,255,.05); color: inherit; border: 1px solid rgba(210,158,52,.3);
+    border-radius: 5px; padding: 5px 8px; font: inherit; font-size: 12px; width: min(46vw, 420px); }
+  #folderBar button { background: transparent; color: var(--gold-bright,#f5c451); border: 1px solid var(--gold-bright,#f5c451);
+    border-radius: 5px; padding: 5px 10px; cursor: pointer; font-size: 11px; letter-spacing: .08em; }
+  #folderChip { color: var(--pass-bright,#7bd88f); max-width: 34vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #diffPanel { position: fixed; inset: 96px 0 0 0; display: none; flex-direction: column; background: var(--bg,#0a0800);
+    z-index: 45; padding: 16px clamp(12px,6vw,120px) 16px; }
+  #diffPanel.show { display: flex; }
+  #diffPanel pre { flex: 1; overflow: auto; font-size: 12px; line-height: 1.45; white-space: pre;
+    border: 1px solid rgba(210,158,52,.2); border-radius: 6px; padding: 10px; }
+  #diffActions { display: flex; gap: 10px; align-items: center; padding-top: 10px; }
+  #diffActions button { padding: 7px 16px; border-radius: 6px; cursor: pointer; font-size: 12px; letter-spacing: .08em;
+    border: 1px solid var(--gold-bright,#f5c451); background: transparent; color: var(--gold-bright,#f5c451); }
+  #diffMsg { font-size: 12px; opacity: .8; }
+</style>
+
+<div id="folderBar">
+  <input id="folderInput" placeholder="/path/to/project — optional working folder" spellcheck="false" />
+  <button type="button" id="folderUse">USE FOLDER</button>
+  <button type="button" id="folderClear">CLEAR</button>
+  <span id="folderChip"></span>
+  <button type="button" id="diffOpen" style="display:none">VIEW DIFF</button>
+</div>
+
+<div id="diffPanel">
+  <pre id="diffText"></pre>
+  <div id="diffActions">
+    <button type="button" id="diffApply">APPLY TO FOLDER</button>
+    <button type="button" id="diffClose">CLOSE</button>
+    <span id="diffMsg"></span>
+  </div>
+</div>
+
 <div id="chatPanel">
   <div id="chatLog"></div>
   <div id="chatOpts">
@@ -1883,6 +1921,7 @@
   // ── EVENT HANDLER ──
   function handleEvent(event) {
     if (selectedMode === 3) { chatHandleEvent(event); return; }
+    if (typeof fsHandleEvent === 'function') fsHandleEvent(event);
     switch (event.type) {
 
       case 'status': {
@@ -2282,6 +2321,47 @@
     window.addEventListener('resize', resize);
     resize();
     requestAnimationFrame(draw);
+  })();
+
+  // ── FILESYSTEM NAVIGATOR + DIFF/APPLY (Modes 1/2) ──
+  (function () {
+    const input = document.getElementById('folderInput');
+    const chip = document.getElementById('folderChip');
+    const diffOpen = document.getElementById('diffOpen');
+    const panel = document.getElementById('diffPanel');
+    const diffText = document.getElementById('diffText');
+    const diffMsg = document.getElementById('diffMsg');
+    let currentRunId = null;
+    let latestDiff = '';
+
+    document.getElementById('folderUse').addEventListener('click', () => {
+      const p = input.value.trim();
+      if (p && ws && ws.readyState === 1) ws.send(JSON.stringify({ type: 'fs.selectWorking', path: p }));
+    });
+    document.getElementById('folderClear').addEventListener('click', () => {
+      input.value = ''; chip.textContent = ''; diffOpen.style.display = 'none'; latestDiff = '';
+    });
+    diffOpen.addEventListener('click', () => { diffText.textContent = latestDiff; panel.classList.add('show'); });
+    document.getElementById('diffClose').addEventListener('click', () => panel.classList.remove('show'));
+    document.getElementById('diffApply').addEventListener('click', () => {
+      if (currentRunId && ws && ws.readyState === 1) {
+        diffMsg.textContent = 'applying…';
+        ws.send(JSON.stringify({ type: 'apply', runId: currentRunId, scope: 'all' }));
+      }
+    });
+
+    window.fsHandleEvent = function (event) {
+      if (event.type === 'run_started' && event.run && event.run.kind !== 'chat') { currentRunId = event.run.id; latestDiff = ''; diffOpen.style.display = 'none'; }
+      else if (event.type === 'fs_list' && event.kind === 'working') { chip.textContent = '📁 ' + event.path + (event.isGitRepo ? ' (git)' : ''); }
+      else if (event.type === 'fs_list' && event.kind === 'roots') { /* reserved for a future column browser */ }
+      else if (event.type === 'protocol_error' && event.code === 'FS_DENIED') { chip.textContent = '⚠ ' + event.message; }
+      else if (event.type === 'diff' && typeof event.diff === 'string') { latestDiff = event.diff; diffOpen.style.display = ''; }
+      else if (event.type === 'apply_result') {
+        diffMsg.textContent = event.ok
+          ? 'applied ' + ((event.applied || []).length) + ' file(s)' + (event.branch ? ' on ' + event.branch : '')
+          : 'blocked: ' + (event.reason || 'unknown');
+      }
+    };
   })();
 
   // ── MODE 3: VERIFIED CHAT ──

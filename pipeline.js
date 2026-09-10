@@ -6,8 +6,9 @@ import { randomBytes } from 'node:crypto';
 import { Agent } from './agent.js';
 import { runSandboxed } from './sandbox.js';
 import { getRates } from './models.js';
-import { createWorkspace, parseWorkspaceManifest, runWorkspaceTest, getWorkspaceDiff, gcWorkspaces } from './workspace.js';
+import { createWorkspace, createWorkspaceFromDir, parseWorkspaceManifest, runWorkspaceTest, getWorkspaceDiff, gcWorkspaces } from './workspace.js';
 import { track } from './usage.js';
+import { normalizePipelineConfig } from './packages/protocol/src/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -27,6 +28,15 @@ export const SYSTEM_PROMPTS_MODE2 = {
 export const SYSTEM_PROMPTS_WORKSPACE = {
   coder: 'You are the Workspace Coder in Triforce. Build the requested multi-file project. Return ONLY one valid JSON object with this shape: {"files":[{"path":"relative/path","content":"complete file contents"}],"testFile":"test.js"}. Include every required source, asset, package manifest, and automated test as text. Paths must be relative and may not contain .., .git, or node_modules. The testFile must be runnable with Node, must import and exercise the application in-process, and must not spawn child processes. Do not use markdown fences or add prose outside the JSON.',
   reviewer: 'You are the Workspace Reviewer in Triforce. Review the requested task, architecture plan, generated file manifest, and isolated test output. Return exactly VERDICT: PASS or VERDICT: FAIL followed by FEEDBACK: with concise, actionable details. PASS only when the generated project satisfies the task and its tests exited successfully.',
+};
+
+// Mode 1 — structured build. Prompt Designer → Supervisor → Coder → Supervisor,
+// every review anchored to the verbatim original human prompt.
+export const SYSTEM_PROMPTS_BUILD = {
+  promptDesigner: 'You are the Prompt Designer in the Triforce structured-build loop. Turn the ORIGINAL HUMAN PROMPT into a precise implementation spec for a programmer: goals, concrete changes, file-level plan, and the acceptance test. Stay strictly within the scope of the original prompt — do not add features it did not ask for. If the Supervisor requests changes, revise accordingly. Output ONLY the spec, no preamble, no markdown fences.',
+  supervisorPromptCheck: 'You are the Supervisor reviewing an implementation spec AGAINST the verbatim ORIGINAL HUMAN PROMPT. Judge only: is it in scope, complete, and unambiguous? Output exactly:\nVERDICT: [APPROVE or REVISE]\nFEEDBACK: [specifics if REVISE]',
+  coder: 'You are the Coder in the Triforce structured-build loop. Implement the APPROVED SPEC by returning ONLY one valid JSON object: {"files":[{"path":"relative/path","content":"complete file contents"}],"testFile":"path/to/test.js"}. When editing an existing project, return every file you change or add with its full new contents; unlisted files are left untouched. Paths are relative and may not contain .., .git, or node_modules. The testFile must run under Node in-process and must not spawn child processes. No markdown fences, no prose outside the JSON.',
+  supervisorCodeCheck: 'You are the Supervisor reviewing generated code AGAINST the verbatim ORIGINAL HUMAN PROMPT and the APPROVED SPEC, given the file manifest, the isolated test output, and the diff. Output exactly:\nVERDICT: [PASS or FAIL]\nFEEDBACK: [specific required fixes if FAIL]\nPASS only when the change satisfies the original prompt and its tests exited successfully.',
 };
 
 
@@ -94,6 +104,8 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
     workspacesDir,
     packageRoot = __dirname,
     dependencyRoot,
+    workingDir,
+    seededWorkspace,
     signal,
   } = options;
 
@@ -146,7 +158,7 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
   let activeWorkspaceDir = null;
 
   const collectOldWorkspaces = async () => {
-    if (mode !== 3 || !workspacesDir) return;
+    if (!workspacesDir) return;
     try {
       const { removed } = await gcWorkspaces(workspacesDir, { protect: activeWorkspaceDir ? [activeWorkspaceDir] : [] });
       if (removed.length) onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[33m[Workspace GC] Removed ${removed.length} old workspace(s).\x1b[0m\r\n` });
@@ -154,305 +166,136 @@ export async function executePipeline(task, config, mode = 1, options = {}, onEv
   };
 
   try {
-    if (mode === 3) {
+    // ── Mode 1: structured build (Prompt Designer → Supervisor → Coder → Supervisor) ──
+    const norm = normalizePipelineConfig(config);
+    const designerCfg = norm.promptDesigner ?? norm.architect;
+    const coderCfg = norm.coder ?? norm.developer;
+    const supervisorCfg = norm.supervisor ?? norm.reviewer;
+    for (const [label, c] of [['Prompt Designer', designerCfg], ['Coder', coderCfg], ['Supervisor', supervisorCfg]]) {
+      if (!c?.provider || !c?.model) throw new Error(`Mode 1 requires a ${label} model`);
+    }
+
+    const designer = new Agent({ ...designerCfg, systemPrompt: SYSTEM_PROMPTS_BUILD.promptDesigner });
+    const promptSupervisor = new Agent({ ...supervisorCfg, systemPrompt: SYSTEM_PROMPTS_BUILD.supervisorPromptCheck });
+    const coder = new Agent({ ...coderCfg, systemPrompt: SYSTEM_PROMPTS_BUILD.coder });
+    const codeSupervisor = new Agent({ ...supervisorCfg, systemPrompt: SYSTEM_PROMPTS_BUILD.supervisorCodeCheck });
+
+    const maxPromptIterations = Math.min(10, Math.max(1, Number.parseInt(config.maxPromptIterations ?? maxIterations, 10) || maxIterations));
+    const maxCodeIterations = Math.min(10, Math.max(1, Number.parseInt(config.maxCodeIterations ?? maxIterations, 10) || maxIterations));
+    const ORIGINAL = `ORIGINAL HUMAN PROMPT (defines scope — never exceed it):\n${task}`;
+
+    // Stage A — design the implementation spec, reviewed against the original prompt.
+    let spec = '';
+    let specApproved = false;
+    let designerPrompt = `${ORIGINAL}\n\nProduce the implementation spec.`;
+    for (let i = 1; i <= maxPromptIterations && !specApproved; i++) {
       checkAbort();
-      onEvent({ type: 'status', stage: 'architect', label: 'Stage 1: Workspace Architect' });
-      const architect = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
-      const { text: plan, usage: planUsage } = await architect.call(task, signal);
-      trackUsage('architect', config.architect.model, planUsage);
-      runLog.architect = plan;
-      onEvent({ type: 'output', role: 'architect', text: plan, iteration: 1 });
-      await logTranscript('architect', runHeader + plan + '\n');
-
-      const coder = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS_WORKSPACE.coder });
-      const reviewer = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS_WORKSPACE.reviewer });
-      let coderPrompt = `TASK:\n${task}\n\nARCHITECTURE PLAN:\n${plan}`;
-      let approved = false;
-      let workspace = null;
-
-      for (let iteration = 1; iteration <= maxIterations && !approved; iteration++) {
-        checkAbort();
-        onEvent({ type: 'status', stage: 'developer', label: `Stage 2: Workspace Coder (${iteration})` });
-        const { text, usage } = await coder.call(coderPrompt, signal);
-        trackUsage('developer', config.developer.model, usage);
-        runLog.developer = text;
-        onEvent({ type: 'output', role: 'developer', text, iteration });
-        await logTranscript('developer', runHeader + `\n--- ITERATION ${iteration} ---\n` + text + '\n');
-
-        let manifest, result;
-        try {
-          manifest = parseWorkspaceManifest(text);
-          workspace = await createWorkspace(manifest, workspacesDir, { dependencyRoot, existingWorkspace: workspace, iteration });
-          activeWorkspaceDir = workspace.directory;
-          onEvent({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files });
-          onEvent({ type: 'pty', role: 'developer', data: `\r\n\x1b[32m[Workspace] Wrote ${workspace.files.length} files to ${workspace.directory}\x1b[0m\r\n` });
-          onEvent({ type: 'status', stage: 'sandbox', label: `Stage 3: Workspace Tests (${iteration})` });
-          checkAbort();
-          result = await runWorkspaceTest(workspace, {
-            packageRoot,
-            onOutput: (value, kind) => onEvent({ type: 'pty', role: 'developer', data: kind === 'stderr' ? `\x1b[31m${value}\x1b[0m` : value }),
-            signal,
-          });
-        } catch (err) {
-          if (err.name === 'AbortError') throw err;
-          result = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
-        }
-        checkAbort();
-        onEvent({ type: 'sandbox', ...result });
-
-        const summary = [
-          `Workspace: ${workspace?.directory ?? '(manifest rejected)'}`,
-          `Files: ${workspace?.files.join(', ') ?? '(none)'}`,
-          `Exit code: ${result.exitCode}`,
-          result.timedOut ? 'Status: TIMED OUT' : '',
-          result.stdout ? `stdout:\n${result.stdout}` : 'stdout: (empty)',
-          result.stderr ? `stderr:\n${result.stderr}` : '',
-        ].filter(Boolean).join('\n');
-        
-        onEvent({ type: 'status', stage: 'reviewer', label: `Stage 4: Workspace Review (${iteration})` });
-        let reviewPrompt = `TASK:\n${task}\n\nPLAN:\n${plan}\n\nGENERATED MANIFEST:\n${text}\n\nTEST RESULTS:\n${summary}`;
-        if (iteration > 1) {
-          const diffText = await getWorkspaceDiff(workspace);
-          if (diffText) {
-            const boundedDiff = diffText.length > 20480 ? diffText.substring(0, 20480) + '\n... [diff truncated] ...' : diffText;
-            reviewPrompt += `\n\nGIT DIFF OF LAST ITERATION:\n\`\`\`diff\n${boundedDiff}\n\`\`\``;
-          }
-        }
-        const { text: review, usage: reviewUsage } = await reviewer.call(reviewPrompt, signal);
-        trackUsage('reviewer', config.reviewer.model, reviewUsage);
-        runLog.reviewer += `\n--- ITERATION ${iteration} ---\n${review}\n`;
-        onEvent({ type: 'output', role: 'reviewer', text: review, iteration });
-        await logTranscript('reviewer', runHeader + runLog.reviewer);
-        const allowedVerdicts = new Set(['PASS', 'FAIL']);
-        const parsedResult = parseVerdict(review, allowedVerdicts);
-        if (!parsedResult.parsed) {
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] Failed to parse workspace review verdict: "${review}"\x1b[0m\r\n` });
-          await logTranscript('reviewer', `\n[PARSE FAILURE] Failed to parse verdict from workspace review:\n${review}\n`);
-        }
-        approved = parsedResult.verdict === 'PASS' && result.exitCode === 0 && !result.timedOut;
-        if (approved) {
-          pipelinePassed = true;
-          completedWorkspaceDir = workspace.directory;
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[PASS] Project preserved at ${workspace.directory}\x1b[0m\r\n` });
-        } else {
-          pipelinePassed = false;
-          const feedback = parsedResult.feedback || summary;
-          coderPrompt = `TASK:\n${task}\n\nARCHITECTURE PLAN:\n${plan}\n\nPREVIOUS ATTEMPT RESULTS:\n${summary}\n\nREVIEWER FEEDBACK:\n${feedback}\n\nReturn a complete corrected workspace JSON manifest.`;
-        }
-      }
-      if (!approved) {
-        throw new Error(`Failed to produce a passing workspace after ${maxIterations} iterations.`);
-      }
-    } else if (mode === 2) {
-      const designerAgent = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS_MODE2.designer });
-      const coderAgent = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS_MODE2.coder });
-      const promptSupervisor = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS_MODE2.supervisorPromptCheck });
-      const codeSupervisor = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS_MODE2.supervisorCodeCheck });
-
-      let spec = '';
-      let specApproved = false;
-
-      // ── Stage 1 & 4 (Prompt Loop) ──
-      onEvent({ type: 'status', stage: 'architect', label: 'Stage 1: Prompt Designer' });
-      let designerPrompt = `TASK:\n${task}`;
-      let promptLoopCount = 0;
-
-      while (promptLoopCount < maxIterations && !specApproved) {
-        checkAbort();
-        promptLoopCount++;
-        const iterHeader = `\n--- ITERATION ${promptLoopCount} ---\n`;
-        
-        // Call Prompt Designer
-        onEvent({ type: 'pty', role: 'architect', data: `\r\n\x1b[35m[Iteration ${promptLoopCount}] Running Prompt Designer...\x1b[0m\r\n` });
-        const { text, usage } = await designerAgent.call(designerPrompt, signal);
-        trackUsage('architect', config.architect.model, usage);
-        spec = text;
-        runLog.architect += iterHeader + text + '\n';
-        onEvent({ type: 'output', role: 'architect', text, iteration: promptLoopCount });
-        await logTranscript('architect', runHeader + iterHeader + text + '\n');
-
-        // Call Supervisor for Prompt Check
-        checkAbort();
-        onEvent({ type: 'status', stage: 'reviewer', label: `Stage 4: Supervisor (Prompt Check ${promptLoopCount})` });
-        onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[35m[Iteration ${promptLoopCount}] Running Supervisor (Prompt Check)...\x1b[0m\r\n` });
-        
-        const { text: supervisorResult, usage: checkUsage } = await promptSupervisor.call(`SPECIFICATION TO REVIEW:\n${spec}`, signal);
-        trackUsage('reviewer', config.reviewer.model, checkUsage);
-        runLog.reviewer += iterHeader + '[Prompt Check]\n' + supervisorResult + '\n';
-        onEvent({ type: 'output', role: 'reviewer', text: supervisorResult, iteration: promptLoopCount, label: 'Prompt Check' });
-        await logTranscript('reviewer', runHeader + iterHeader + '[Prompt Check]\n' + supervisorResult + '\n');
-
-        // Parse verdict
-        const allowedVerdicts = new Set(['GREENLIGHT', 'FIX']);
-        const parsedResult = parseVerdict(supervisorResult, allowedVerdicts);
-        if (!parsedResult.parsed) {
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] Failed to parse supervisor prompt verdict: "${supervisorResult}"\x1b[0m\r\n` });
-          await logTranscript('reviewer', `\n[PARSE FAILURE] Failed to parse verdict from supervisor prompt review:\n${supervisorResult}\n`);
-        }
-        const verdict = parsedResult.verdict || 'FIX';
-        if (verdict === 'GREENLIGHT') {
-          specApproved = true;
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[GREENLIGHT] Specification approved by Supervisor.\x1b[0m\r\n` });
-        } else {
-          const feedback = parsedResult.feedback || 'Please refine the specification.';
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[FIX] Supervisor requested refinement.\x1b[0m\r\n` });
-          
-          // Update Prompt Designer's next prompt with feedback
-          designerPrompt = `SPECIFICATION GENERATED:\n${spec}\n\nSUPERVISOR FEEDBACK:\n${feedback}\n\nPlease update the specification to address this feedback.`;
-          // Set state back to architect
-          onEvent({ type: 'status', stage: 'architect', label: `Stage 1: Prompt Designer (Iteration ${promptLoopCount + 1})` });
-        }
-      }
-
-      if (!specApproved) {
-        throw new Error(`Failed to design a specification acceptable to the Supervisor after ${maxIterations} iterations.`);
-      }
-
-      // ── Stage 2 & 4 (Code Loop) ──
-      let codeApproved = false;
-      let codeLoopCount = 0;
-      let coderPrompt = `SPECIFICATION:\n${spec}`;
-      let code = '';
-
-      while (codeLoopCount < maxIterations && !codeApproved) {
-        checkAbort();
-        codeLoopCount++;
-        const iterHeader = `\n--- ITERATION ${codeLoopCount} ---\n`;
-
-        // Call Coder (Developer)
-        onEvent({ type: 'status', stage: 'developer', label: `Stage 2: Coder (Iteration ${codeLoopCount})` });
-        onEvent({ type: 'pty', role: 'developer', data: `\r\n\x1b[35m[Iteration ${codeLoopCount}] Running Coder...\x1b[0m\r\n` });
-        const { text, usage } = await coderAgent.call(coderPrompt, signal);
-        trackUsage('developer', config.developer.model, usage);
-        code = stripCodeFences(text);
-        runLog.developer += iterHeader + code + '\n';
-        onEvent({ type: 'output', role: 'developer', text: code, iteration: codeLoopCount });
-        await logTranscript('developer', runHeader + iterHeader + code + '\n');
-
-        // Run Sandbox
-        checkAbort();
-        onEvent({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
-        let sandboxResult;
-        try {
-          sandboxResult = await runSandboxed(code, {
-            timeoutMs: 10000,
-            onOutput: (text, kind) => {
-              const data = kind === 'stderr' ? `\x1b[31m${text}\x1b[0m` : text;
-              onEvent({ type: 'pty', role: 'developer', data });
-            },
-            signal,
-          });
-          const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
-          await logTranscript('developer', sandboxLog);
-        } catch (err) {
-          if (err.name === 'AbortError') throw err;
-          sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
-        }
-        checkAbort();
-        onEvent({ type: 'sandbox', ...sandboxResult });
-
-        // Call Supervisor for Code Check
-        onEvent({ type: 'status', stage: 'reviewer', label: `Stage 4: Supervisor (Code Check ${codeLoopCount})` });
-        onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[35m[Iteration ${codeLoopCount}] Running Supervisor (Code Check)...\x1b[0m\r\n` });
-
-        const executionSummary = [
-          `Exit code: ${sandboxResult.exitCode ?? 0}`,
-          sandboxResult.timedOut ? 'Status: TIMED OUT' : '',
-          sandboxResult.stdout ? `stdout:\n${sandboxResult.stdout}` : 'stdout: (empty)',
-          sandboxResult.stderr ? `stderr:\n${sandboxResult.stderr}` : '',
-        ].filter(Boolean).join('\n');
-
-        const prompt = `SPECIFICATION:\n${spec}\n\nCODE GENERATED:\n${code}\n\nSANDBOX RUN RESULTS:\n${executionSummary}`;
-        const { text: supervisorResult, usage: checkUsage } = await codeSupervisor.call(prompt, signal);
-        trackUsage('reviewer', config.reviewer.model, checkUsage);
-        runLog.reviewer += iterHeader + '[Code Check]\n' + supervisorResult + '\n';
-        onEvent({ type: 'output', role: 'reviewer', text: supervisorResult, iteration: codeLoopCount, label: 'Code Check' });
-        await logTranscript('reviewer', runHeader + iterHeader + '[Code Check]\n' + supervisorResult + '\n');
-
-        // Parse verdict
-        const allowedVerdicts = new Set(['PASS', 'FAIL']);
-        const parsedResult = parseVerdict(supervisorResult, allowedVerdicts);
-        if (!parsedResult.parsed) {
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] Failed to parse supervisor code verdict: "${supervisorResult}"\x1b[0m\r\n` });
-          await logTranscript('reviewer', `\n[PARSE FAILURE] Failed to parse verdict from supervisor code review:\n${supervisorResult}\n`);
-        }
-        const verdict = parsedResult.verdict || 'FAIL';
-        if (verdict === 'PASS' && sandboxResult.exitCode === 0 && !sandboxResult.timedOut) {
-          codeApproved = true;
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[PASS] Code approved by Supervisor.\x1b[0m\r\n` });
-        } else {
-          pipelinePassed = false;
-          const feedback = parsedResult.feedback || 'Please fix the code.';
-          onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[FAIL] Supervisor flagged code issues.\x1b[0m\r\n` });
-
-          // Update Coder's prompt with feedback and sandbox results
-          coderPrompt = `PREVIOUS CODE:\n${code}\n\nSANDBOX RUN RESULTS:\n${executionSummary}\n\nSUPERVISOR FEEDBACK:\n${feedback}\n\nPlease update the code to fix these issues. Output ONLY the updated Javascript code, no comments or markdown.`;
-        }
-      }
-
-      if (!codeApproved) {
-        throw new Error(`Failed to write code that passes Supervisor checks after ${maxIterations} iterations.`);
-      }
-    } else {
-      // ── Mode 1: Sequential Pipeline ──
-      checkAbort();
-      onEvent({ type: 'status', stage: 'architect', label: 'Stage 1: Claude Code' });
-      const architect = new Agent({ ...config.architect, systemPrompt: SYSTEM_PROMPTS.architect });
-      const { text: plan, usage: planUsage } = await architect.call(task, signal);
-      trackUsage('architect', config.architect.model, planUsage);
-      runLog.architect = plan;
-      onEvent({ type: 'output', role: 'architect', text: plan, iteration: 1 });
-      await logTranscript('architect', runHeader + plan + '\n');
+      onEvent({ type: 'status', stage: 'architect', label: `Prompt Designer (${i})` });
+      const { text, usage } = await designer.call(designerPrompt, signal);
+      trackUsage('architect', designerCfg.model, usage);
+      spec = text;
+      runLog.architect += `\n--- ITERATION ${i} ---\n${text}\n`;
+      onEvent({ type: 'output', role: 'architect', text: spec, iteration: i });
+      await logTranscript('architect', runHeader + spec + '\n');
 
       checkAbort();
-      onEvent({ type: 'status', stage: 'developer', label: 'Stage 2: Codex' });
-      const developer = new Agent({ ...config.developer, systemPrompt: SYSTEM_PROMPTS.developer });
-      const prompt = `TASK:\n${task}\n\nPLAN:\n${plan}`;
-      const { text: coderResult, usage: coderUsage } = await developer.call(prompt, signal);
-      trackUsage('developer', config.developer.model, coderUsage);
-      const code = stripCodeFences(coderResult);
-      runLog.developer = code;
-      onEvent({ type: 'output', role: 'developer', text: code, iteration: 1 });
-      await logTranscript('developer', runHeader + code + '\n');
+      onEvent({ type: 'status', stage: 'reviewer', label: `Supervisor · prompt check (${i})` });
+      const { text: review, usage: rUsage } = await promptSupervisor.call(`${ORIGINAL}\n\nPROPOSED IMPLEMENTATION SPEC:\n${spec}`, signal);
+      trackUsage('reviewer', supervisorCfg.model, rUsage);
+      runLog.reviewer += `\n--- ITERATION ${i} · prompt check ---\n${review}\n`;
+      onEvent({ type: 'output', role: 'reviewer', text: review, iteration: i, label: 'Prompt Check' });
+      await logTranscript('reviewer', runHeader + runLog.reviewer);
+      const parsed = parseVerdict(review, new Set(['APPROVE', 'REVISE', 'GREENLIGHT', 'FIX']));
+      if (!parsed.parsed) onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] prompt-check verdict unclear\x1b[0m\r\n` });
+      const verdict = parsed.verdict || 'REVISE';
+      if (verdict === 'APPROVE' || verdict === 'GREENLIGHT') {
+        specApproved = true;
+        onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[APPROVE] Spec approved.\x1b[0m\r\n` });
+      } else {
+        designerPrompt = `${ORIGINAL}\n\nCURRENT SPEC:\n${spec}\n\nSUPERVISOR REQUESTED CHANGES:\n${parsed.feedback || 'Tighten scope and remove ambiguity.'}\n\nReturn the revised spec.`;
+      }
+    }
+    if (!specApproved) throw new Error(`Supervisor did not approve an implementation spec within ${maxPromptIterations} iterations.`);
 
+    // Stage B — build in a workspace copy of the selected folder (if any), test, review.
+    let workspace = null;
+    if (seededWorkspace) {
+      workspace = seededWorkspace;
+      activeWorkspaceDir = workspace.directory;
+      onEvent({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files, source: workingDir });
+    } else if (workingDir) {
       checkAbort();
-      onEvent({ type: 'status', stage: 'sandbox', label: 'Stage 3: Sandbox' });
-      let sandboxResult;
+      onEvent({ type: 'status', stage: 'developer', label: 'Seeding workspace from selected folder' });
+      const seeded = await createWorkspaceFromDir(workingDir, workspacesDir, { dependencyRoot });
+      workspace = { id: seeded.id, directory: seeded.directory, testFile: seeded.testFile, files: seeded.files };
+      activeWorkspaceDir = workspace.directory;
+      onEvent({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files, source: seeded.sourceDir });
+    }
+
+    let coderPrompt = `${ORIGINAL}\n\nAPPROVED SPEC:\n${spec}\n\n${workingDir ? 'You are editing an existing project already present in the workspace.' : 'Create the project from scratch.'} Return the full workspace JSON manifest.`;
+    let approved = false;
+    for (let i = 1; i <= maxCodeIterations && !approved; i++) {
+      checkAbort();
+      onEvent({ type: 'status', stage: 'developer', label: `Coder (${i})` });
+      const { text, usage } = await coder.call(coderPrompt, signal);
+      trackUsage('developer', coderCfg.model, usage);
+      runLog.developer = text;
+      onEvent({ type: 'output', role: 'developer', text, iteration: i });
+      await logTranscript('developer', runHeader + `\n--- ITERATION ${i} ---\n` + text + '\n');
+
+      let result;
       try {
-        sandboxResult = await runSandboxed(code, {
-          timeoutMs: 10000,
-          onOutput: (text, kind) => {
-            const data = kind === 'stderr' ? `\x1b[31m${text}\x1b[0m` : text;
-            onEvent({ type: 'pty', role: 'developer', data });
-          },
+        const manifest = parseWorkspaceManifest(text);
+        workspace = await createWorkspace(manifest, workspacesDir, { dependencyRoot, existingWorkspace: workspace, iteration: i });
+        activeWorkspaceDir = workspace.directory;
+        onEvent({ type: 'workspace', id: workspace.id, path: workspace.directory, files: workspace.files });
+        onEvent({ type: 'status', stage: 'sandbox', label: `Workspace tests (${i})` });
+        checkAbort();
+        result = await runWorkspaceTest(workspace, {
+          packageRoot,
+          onOutput: (value, kind) => onEvent({ type: 'pty', role: 'developer', data: kind === 'stderr' ? `\x1b[31m${value}\x1b[0m` : value }),
           signal,
         });
-        const sandboxLog = `\n// EXIT: ${sandboxResult.exitCode}${sandboxResult.timedOut ? ' (TIMED OUT)' : ''}\n// stdout:\n${sandboxResult.stdout}`;
-        await logTranscript('developer', sandboxLog);
       } catch (err) {
         if (err.name === 'AbortError') throw err;
-        sandboxResult = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
+        result = { stdout: '', stderr: err.message, exitCode: 1, timedOut: false };
       }
       checkAbort();
-      onEvent({ type: 'sandbox', ...sandboxResult });
+      onEvent({ type: 'sandbox', ...result });
 
-      onEvent({ type: 'status', stage: 'reviewer', label: 'Stage 4: Antigravity' });
-      const reviewer = new Agent({ ...config.reviewer, systemPrompt: SYSTEM_PROMPTS.reviewer });
-      const executionSummary = [
-        `Exit code: ${sandboxResult.exitCode ?? 0}`,
-        sandboxResult.timedOut ? 'Status: TIMED OUT' : '',
-        sandboxResult.stdout ? `stdout:\n${sandboxResult.stdout}` : 'stdout: (empty)',
-        sandboxResult.stderr ? `stderr:\n${sandboxResult.stderr}` : '',
+      const diffText = await getWorkspaceDiff(workspace).catch(() => '');
+      if (diffText) {
+        onEvent({ type: 'diff', iteration: i, diff: diffText.length > 40960 ? diffText.slice(0, 40960) + '\n… [diff truncated] …' : diffText });
+      }
+
+      const summary = [
+        `Files: ${workspace?.files.join(', ') ?? '(none)'}`,
+        `Exit code: ${result.exitCode}`,
+        result.timedOut ? 'Status: TIMED OUT' : '',
+        result.stdout ? `stdout:\n${result.stdout}` : 'stdout: (empty)',
+        result.stderr ? `stderr:\n${result.stderr}` : '',
       ].filter(Boolean).join('\n');
 
-      const reviewPrompt = `TASK:\n${task}\n\nARCHITECT PLAN:\n${runLog.architect}\n\nCODE:\n${runLog.developer}\n\nEXECUTION RESULTS:\n${executionSummary}`;
-      const { text: reviewText, usage: reviewerUsage } = await reviewer.call(reviewPrompt, signal);
-      trackUsage('reviewer', config.reviewer.model, reviewerUsage);
-      runLog.reviewer = reviewText;
-      pipelinePassed = sandboxResult.exitCode === 0 && !sandboxResult.timedOut && !/\bFAIL\b/i.test(reviewText);
-      onEvent({ type: 'output', role: 'reviewer', text: reviewText, iteration: 1 });
-      await logTranscript('reviewer', runHeader + reviewText + '\n');
+      onEvent({ type: 'status', stage: 'reviewer', label: `Supervisor · code check (${i})` });
+      const reviewPrompt = `${ORIGINAL}\n\nAPPROVED SPEC:\n${spec}\n\nGENERATED MANIFEST:\n${runLog.developer}\n\nTEST RESULTS:\n${summary}${diffText ? `\n\nDIFF:\n\`\`\`diff\n${diffText.slice(0, 20480)}\n\`\`\`` : ''}`;
+      const { text: review, usage: rUsage } = await codeSupervisor.call(reviewPrompt, signal);
+      trackUsage('reviewer', supervisorCfg.model, rUsage);
+      runLog.reviewer += `\n--- ITERATION ${i} · code check ---\n${review}\n`;
+      onEvent({ type: 'output', role: 'reviewer', text: review, iteration: i, label: 'Code Check' });
+      await logTranscript('reviewer', runHeader + runLog.reviewer);
+      const parsed = parseVerdict(review, new Set(['PASS', 'FAIL', 'FIX']));
+      if (!parsed.parsed) onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[31m[Parse Warning] code-check verdict unclear\x1b[0m\r\n` });
+      approved = parsed.verdict === 'PASS' && result.exitCode === 0 && !result.timedOut;
+      if (approved) {
+        pipelinePassed = true;
+        completedWorkspaceDir = workspace.directory;
+        onEvent({ type: 'pty', role: 'reviewer', data: `\r\n\x1b[32m[PASS] Build approved at ${workspace.directory}\x1b[0m\r\n` });
+      } else {
+        pipelinePassed = false;
+        coderPrompt = `${ORIGINAL}\n\nAPPROVED SPEC:\n${spec}\n\nPREVIOUS TEST RESULTS:\n${summary}\n\nSUPERVISOR FEEDBACK:\n${parsed.feedback || summary}\n\nReturn a complete corrected workspace JSON manifest.`;
+      }
     }
+    if (!approved) throw new Error(`Build did not pass Supervisor review within ${maxCodeIterations} iterations.`);
 
     // Run graphify update . to keep the graph current
     try {

@@ -12,6 +12,8 @@ export interface PipelineViewState {
   usage: Record<AgentRole, UsageItem>;
   sandbox: Record<string, unknown> | null;
   workspace: Record<string, unknown> | null;
+  diff: string;
+  applyResult: Record<string, unknown> | null;
   elapsed: number | null;
   error: string | null;
 }
@@ -22,7 +24,7 @@ export function initialPipelineState(): PipelineViewState {
     runId: null, status: 'idle', stage: '', label: '',
     outputs: { architect: '', developer: '', reviewer: '' }, terminal: '',
     usage: { architect: { ...emptyUsage }, developer: { ...emptyUsage }, reviewer: { ...emptyUsage } },
-    sandbox: null, workspace: null, elapsed: null, error: null,
+    sandbox: null, workspace: null, diff: '', applyResult: null, elapsed: null, error: null,
   };
 }
 
@@ -41,6 +43,8 @@ export function reducePipeline(state: PipelineViewState, event: ServerEvent): Pi
     case 'usage': return { ...state, runId, usage: event.usage as PipelineViewState['usage'] };
     case 'sandbox': return { ...state, runId, sandbox: event as Record<string, unknown> };
     case 'workspace': return { ...state, runId, workspace: event as Record<string, unknown> };
+    case 'diff': return { ...state, runId, diff: String(event.diff ?? '') };
+    case 'apply_result': return { ...state, runId, applyResult: event as Record<string, unknown> };
     case 'done': return { ...state, runId, status: event.passed === false ? 'failed' : 'completed', elapsed: Number(event.elapsed ?? 0) };
     case 'error': return { ...state, runId, status: 'failed', error: String(event.message ?? 'Pipeline failed') };
     default: return state;

@@ -110,6 +110,43 @@ test('exposes the per-CLI subscription ledger behind authorization', async () =>
   }
 });
 
+test('serves the filesystem navigator confined to fsRoots and reports apply for unknown runs', async () => {
+  const { child, port } = await startServer();
+  const origin = `http://127.0.0.1:${port}`;
+  try {
+    const caps = await (await fetch(`${origin}/api/capabilities`, { headers: { cookie: `triforce_token=${token}` } })).json();
+    const ws = new WebSocket(`ws://127.0.0.1:${port}`, { headers: { cookie: `triforce_token=${token}`, origin } });
+    ws.on('error', () => {});
+    await once(ws, 'open');
+
+    const rpc = async (msg) => { ws.send(JSON.stringify(msg)); return JSON.parse((await once(ws, 'message'))[0]); };
+
+    const rootsMsg = await rpc({ type: 'fs.roots' });
+    assert.equal(rootsMsg.type, 'fs_list');
+    assert.deepEqual(rootsMsg.roots, caps.fsRoots);
+
+    const listMsg = await rpc({ type: 'fs.list', path: caps.fsRoots[0] });
+    assert.equal(listMsg.type, 'fs_list');
+    assert.equal(listMsg.kind, 'list');
+    assert.ok(Array.isArray(listMsg.entries));
+
+    const denied = await rpc({ type: 'fs.list', path: '/etc' });
+    assert.equal(denied.type, 'protocol_error');
+    assert.equal(denied.code, 'FS_DENIED');
+
+    const select = await rpc({ type: 'fs.selectWorking', path: caps.fsRoots[0] });
+    assert.equal(select.kind, 'working');
+
+    const apply = await rpc({ type: 'apply', runId: crypto.randomUUID() });
+    assert.equal(apply.type, 'apply_result');
+    assert.equal(apply.ok, false);
+    ws.close();
+  } finally {
+    child.kill('SIGTERM');
+    await once(child, 'exit').catch(() => {});
+  }
+});
+
 test('accepts a verified-chat command, starting a kind:chat session with a conversation id', async () => {
   const { child, port } = await startServer();
   const origin = `http://127.0.0.1:${port}`;

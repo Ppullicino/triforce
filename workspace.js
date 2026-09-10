@@ -1,7 +1,7 @@
-import { mkdir, rm, symlink, writeFile, readdir, realpath } from 'node:fs/promises';
+import { mkdir, rm, symlink, writeFile, readFile, readdir, realpath, stat } from 'node:fs/promises';
 import { dirname, isAbsolute, join, normalize, sep } from 'node:path';
 import { spawn, execFile } from 'node:child_process';
-import { randomBytes } from 'node:crypto';
+import { createHash, randomBytes } from 'node:crypto';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
@@ -145,6 +145,199 @@ export async function getWorkspaceDiff(workspace) {
   } catch (err) {
     return '';
   }
+}
+
+// ── Real-folder snapshot / apply (protocol 1.2 filesystem navigator) ──
+
+const SNAPSHOT_SKIP_DIRS = new Set(['.git', 'node_modules', 'dist', 'build', 'target', 'coverage', '.next', '.cache', '.venv', 'venv']);
+const HASH_MAX_FILES = 5000;
+
+function parseGitignore(text) {
+  const rules = [];
+  for (const raw of String(text || '').split('\n')) {
+    const line = raw.trim();
+    if (!line || line.startsWith('#')) continue;
+    const negate = line.startsWith('!');
+    const body = (negate ? line.slice(1) : line).replace(/^\/+/, '').replace(/\/+$/, '');
+    if (!body) continue;
+    rules.push({ negate, body, dirOnly: raw.trimEnd().endsWith('/') });
+  }
+  return rules;
+}
+
+function gitignoreMatch(rules, relPath, isDir) {
+  let ignored = false;
+  const segments = relPath.split('/');
+  for (const rule of rules) {
+    const { body } = rule;
+    let hit = false;
+    if (body.includes('/')) {
+      hit = relPath === body || relPath.startsWith(body + '/');
+    } else if (body.startsWith('*.')) {
+      const ext = body.slice(1);
+      hit = relPath.endsWith(ext);
+    } else {
+      hit = segments.includes(body);
+    }
+    if (hit && rule.dirOnly && !isDir && !relPath.includes(body + '/')) hit = false;
+    if (hit) ignored = !rule.negate;
+  }
+  return ignored;
+}
+
+async function isBinary(path) {
+  try {
+    const fd = await readFile(path);
+    const slice = fd.subarray(0, 8192);
+    return slice.includes(0);
+  } catch { return true; }
+}
+
+/**
+ * Walk a real directory, honouring .gitignore, and return its text files plus a
+ * content hash per file. Used to seed a workspace and to detect drift before apply.
+ * @param {string} realDir
+ * @param {{ maxFiles?: number, maxBytes?: number, hashOnly?: boolean }} [opts]
+ */
+export async function snapshotDir(realDir, opts = {}) {
+  const maxFiles = opts.maxFiles ?? MAX_FILES;
+  const maxBytes = opts.maxBytes ?? MAX_TOTAL_BYTES;
+  const root = await realpath(realDir);
+  let gitRules = [];
+  try { gitRules = parseGitignore(await readFile(join(root, '.gitignore'), 'utf8')); } catch { /* none */ }
+
+  const files = [];
+  const hashes = {};
+  const mtimes = {};
+  let total = 0;
+  let truncated = false;
+  const queue = [''];
+  while (queue.length) {
+    const relDir = queue.shift();
+    let entries;
+    try { entries = await readdir(join(root, relDir), { withFileTypes: true }); } catch { continue; }
+    for (const entry of entries) {
+      const rel = relDir ? `${relDir}/${entry.name}` : entry.name;
+      if (SNAPSHOT_SKIP_DIRS.has(entry.name)) continue;
+      if (gitignoreMatch(gitRules, rel, entry.isDirectory())) continue;
+      const full = join(root, rel);
+      if (entry.isDirectory()) { queue.push(rel); continue; }
+      if (!entry.isFile()) continue;
+      let info;
+      try { info = await stat(full); } catch { continue; }
+      const hashOnly = opts.hashOnly === true;
+      if (!hashOnly) {
+        if (files.length >= maxFiles || total + info.size > maxBytes) { truncated = true; continue; }
+        if (info.size > MAX_FILE_BYTES || await isBinary(full)) { truncated = true; continue; }
+      }
+      if (Object.keys(hashes).length >= HASH_MAX_FILES) { truncated = true; break; }
+      let content;
+      try { content = await readFile(full, 'utf8'); } catch { continue; }
+      hashes[rel] = createHash('sha256').update(content).digest('hex');
+      mtimes[rel] = info.mtimeMs;
+      if (!hashOnly) { files.push({ path: rel, content }); total += Buffer.byteLength(content); }
+    }
+  }
+  return { root, files, hashes, mtimes, truncated };
+}
+
+/** Content-hash map of a real dir (drift detection for apply pre-flight). */
+export async function hashTree(realDir) {
+  const { hashes } = await snapshotDir(realDir, { hashOnly: true });
+  return hashes;
+}
+
+/**
+ * Seed a fresh workspace copy from a real directory's current contents.
+ * @param {string} realDir
+ * @param {string} root  TRIFORCE_WORKSPACE_ROOT
+ */
+export async function createWorkspaceFromDir(realDir, root, { dependencyRoot } = {}) {
+  const snapshot = await snapshotDir(realDir);
+  const detectedTest = snapshot.files.find(f => /(^|\/)(test\.[cm]?js|.*\.test\.[cm]?js)$/.test(f.path))?.path;
+  const files = [...snapshot.files];
+  let testFile = detectedTest;
+  if (!testFile) {
+    testFile = 'triforce.smoke.test.js';
+    files.push({ path: testFile, content: "// Triforce seed smoke test (no project test detected)\nprocess.exit(0);\n" });
+  }
+  const workspace = await createWorkspace({ files, testFile }, root, { dependencyRoot });
+  return { ...workspace, sourceDir: snapshot.root, snapshot };
+}
+
+/**
+ * Write a completed run's changes back into the real folder.
+ * @param {string} workspaceDir  the sandboxed copy after a run
+ * @param {string} realDir       the user's real folder
+ * @param {object} opts
+ * @param {{ hashes: Record<string,string> }} opts.snapshot  from createWorkspaceFromDir
+ * @param {'branch'|'refuse'|'force'} [opts.gitPolicy]
+ * @param {string[]} [opts.paths]  restrict apply to these relative paths
+ * @returns {Promise<{ applied: string[], deleted: string[], skipped: string[], branch: string|null, reason?: string }>}
+ */
+export async function applyDiff(workspaceDir, realDir, opts = {}) {
+  const { snapshot, gitPolicy = 'branch', paths } = opts;
+  const realRoot = await realpath(realDir);
+  const allow = paths ? new Set(paths.map(p => safePath(p))) : null;
+
+  // 1. Drift check — the real folder must be unchanged since the snapshot.
+  if (snapshot?.hashes) {
+    const current = await hashTree(realRoot);
+    const drifted = [];
+    for (const [rel, hash] of Object.entries(snapshot.hashes)) {
+      if (current[rel] !== hash) drifted.push(rel);
+    }
+    for (const rel of Object.keys(current)) {
+      if (!(rel in snapshot.hashes)) drifted.push(rel);
+    }
+    if (drifted.length) {
+      return { applied: [], deleted: [], skipped: drifted, branch: null, reason: `real folder changed since snapshot (${drifted.slice(0, 5).join(', ')}${drifted.length > 5 ? ', …' : ''})` };
+    }
+  }
+
+  // 2. Git policy.
+  let branch = null;
+  const isGit = (await checkGit()) && await realpath(join(realRoot, '.git')).then(() => true, () => false);
+  if (isGit) {
+    let dirty = '';
+    try { dirty = (await runGit(realRoot, ['status', '--porcelain'])).trim(); } catch { /* treat as clean */ }
+    if (dirty && gitPolicy === 'refuse') {
+      return { applied: [], deleted: [], skipped: [], branch: null, reason: 'real folder is a dirty git tree (gitPolicy=refuse)' };
+    }
+    if (gitPolicy === 'branch') {
+      branch = `triforce/apply-${new Date().toISOString().replaceAll(/[:.]/g, '-')}`;
+      try { await runGit(realRoot, ['checkout', '-b', branch]); } catch (err) { return { applied: [], deleted: [], skipped: [], branch: null, reason: `could not create branch: ${err.message}` }; }
+    }
+  }
+
+  // 3. Diff workspace vs snapshot, write into the real folder.
+  const after = await snapshotDir(workspaceDir);
+  const afterByPath = new Map(after.files.map(f => [f.path, f.content]));
+  const applied = [];
+  const deleted = [];
+  const skipped = [];
+
+  for (const [rel, content] of afterByPath) {
+    if (rel === 'triforce.smoke.test.js' || rel === 'node_modules') continue;
+    let safe;
+    try { safe = safePath(rel); } catch { skipped.push(rel); continue; }
+    if (allow && !allow.has(safe)) continue;
+    if (snapshot?.hashes?.[rel] === createHash('sha256').update(content).digest('hex')) continue; // unchanged
+    const target = join(realRoot, safe);
+    if (target !== realRoot && !target.startsWith(realRoot + sep)) { skipped.push(rel); continue; }
+    await mkdir(dirname(target), { recursive: true });
+    await writeFile(target, content, 'utf8');
+    applied.push(safe);
+  }
+  for (const rel of Object.keys(snapshot?.hashes ?? {})) {
+    if (afterByPath.has(rel)) continue;
+    let safe;
+    try { safe = safePath(rel); } catch { continue; }
+    if (allow && !allow.has(safe)) continue;
+    try { await rm(join(realRoot, safe), { force: true }); deleted.push(safe); } catch { skipped.push(safe); }
+  }
+
+  return { applied, deleted, skipped, branch };
 }
 
 export async function createWorkspace(manifest, root, { dependencyRoot, existingWorkspace, iteration = 1 } = {}) {
